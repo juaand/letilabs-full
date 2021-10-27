@@ -1,0 +1,27 @@
+@import '../../stylesheets/variables';
+
+.Header {
+    &__logo {
+      position: relative;
+      .navbar-brand {
+        background: url(../../images/Leti.svg) no-repeat center center / contain;
+        width: 18rem;
+        height: 6rem;
+        display: block;
+        margin: 2rem auto;
+      }
+    }
+  
+    &__search {
+      position: absolute;
+      right: 0;
+    }
+  
+    &__nav {
+      display: flex;
+      justify-content: space-around;
+      font-weight: 500;
+      color: $leti-nav;
+      font-size: 1.6rem;
+    }
+  }

@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
+.blue-text {
+  color: #055aa5;
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Mulish', sans-serif;
+}
+
+body {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: #4a4a4a;
+}
+
+.video {
+  height: 69.5rem;
+  background: rgba(205, 32, 47, 0.7);
+}
+
+.Nosotros__valor {
+  margin: 6rem 0;
+  line-height: 3.8rem;
+}
+
+@media (max-width: 576px) {
+  .Header__nav {
+    display: unset;
+  }
+}

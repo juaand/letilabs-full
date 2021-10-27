@@ -1,0 +1,24 @@
+.Header__logo {
+  position: relative;
+}
+
+.Header__logo .navbar-brand {
+  background: url(../../images/Leti.svg) no-repeat center center/contain;
+  width: 18rem;
+  height: 6rem;
+  display: block;
+  margin: 2rem auto;
+}
+
+.Header__search {
+  position: absolute;
+  right: 0;
+}
+
+.Header__nav {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 500;
+  color: #737b7f;
+  font-size: 1.6rem;
+}

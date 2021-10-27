@@ -1,0 +1,32 @@
+@import 'variables';
+@import 'fonts';
+
+html {
+  font-size: 10px;
+  font-family: 'Mulish', sans-serif;
+}
+body {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: $leti-text;
+}
+
+.video {
+  height: 69.5rem;
+  background: rgba($leti-red, 0.7);
+}
+
+.Nosotros {
+  &__valor {
+    margin: 6rem 0;
+    line-height: 3.8rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Header {
+    &__nav {
+      display: unset;
+    }
+  }
+}
