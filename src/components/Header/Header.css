@@ -14,11 +14,3 @@
   position: absolute;
   right: 0;
 }
-
-.Header__nav {
-  display: flex;
-  justify-content: space-around;
-  font-weight: 500;
-  color: #737b7f;
-  font-size: 1.6rem;
-}
