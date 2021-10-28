@@ -1,6 +1,7 @@
 import './Header.css'
 import React from 'react'
 import Nav from '../Nav/Nav'
+import {NavLink} from 'react-router-dom'
 
 function Header() {
     return (
@@ -9,7 +10,7 @@ function Header() {
                 <div className="container">
                     <div className="row justify-content-between Header__logo">
                         <div className="col-12 d-flex justify-content-center">
-                            <a className="navbar-brand" href="#"></a>
+                            <NavLink className="navbar-brand" to="/"></NavLink>
                             <form className="d-flex Header__search">
                                 <input
                                     className="form-control me-2"

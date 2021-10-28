@@ -1,8 +1,13 @@
 import './OurCompanies.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Header from '../../Header/Header'
 
 function OurCompanies() {
+
+    useEffect(() => {
+        document.title = "Grupo Leti | Nuestras Empresas"
+    }, [])
+
     return (
         <>
             <Header />

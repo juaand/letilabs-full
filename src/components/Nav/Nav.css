@@ -6,6 +6,10 @@
   font-size: 1.6rem;
 }
 
+.Nav .nav-link {
+  margin: 0 3rem;
+}
+
 @media (max-width: 576px) {
   .Nav__nav {
     display: unset;

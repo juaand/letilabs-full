@@ -7,6 +7,10 @@
     color: $leti-nav;
     font-size: 1.6rem;
   }
+
+  .nav-link {
+    margin: 0 3rem;
+  }
 }
 
 @media (max-width: 576px) {
