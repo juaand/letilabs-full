@@ -1,31 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
-.blue-text {
-  color: #055aa5;
+@font-face {
+  font-family: 'Tripleta';
+  src: url("../fonts/tripleta-light.otf") format("otf");
 }
 
 html {
   font-size: 10px;
-  font-family: 'Mulish', sans-serif;
 }
 
 body {
   font-size: 2.4rem;
   line-height: 3rem;
   color: #4a4a4a;
+  font-family: 'Mulish', sans-serif;
 }
 
-.video {
-  height: 69.5rem;
-  background: rgba(205, 32, 47, 0.7);
+.blue-text {
+  color: #055aa5;
 }
 
-.Nosotros__valor {
-  margin: 6rem 0;
-  line-height: 3.8rem;
+h1 {
+  font-family: 'Tripleta';
 }
 
-@media (max-width: 576px) {
-  .Header__nav {
-    display: unset;
-  }
+.leti-btn {
+  color: #055aa5;
+  border: solid 0.1rem #055aa5;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2.4rem;
+}
+
+/* --- SMOOTHER YAY! --- */
+.parallax {
+  transition: transform 10s cubic-bezier(0, 1, 0.5, 1);
+  transform: rotate(-150deg);
 }

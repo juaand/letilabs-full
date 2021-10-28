@@ -1,5 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap');
 
+@font-face {
+  font-family: 'Tripleta';
+  src: url('../fonts/tripleta-light.otf') format('otf');
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: $leti-text;
+  font-family: 'Mulish', sans-serif;
+}
+
 .blue-text {
   color: $leti-blue;
+}
+
+h1 {
+  font-family: 'Tripleta';
 }

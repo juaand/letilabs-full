@@ -1,0 +1,66 @@
+@import '../../../../stylesheets/variables';
+@import 'Arrows';
+
+.Carousel {
+  margin: 10rem 0;
+  &__image {
+    height: 27rem;
+  }
+
+  &__desc {
+    text-align: center;
+  }
+
+  .slick-next,
+  .slick-prev {
+    width: 4rem;
+    height: 4rem;
+    display: block;
+    &:before {
+      content: '';
+    }
+  }
+
+  .slick-next {
+    background: url(../../../../images/next-arrow.svg) no-repeat center center /
+      contain;
+    transform: translate(-55rem, 17rem);
+  }
+
+  .slick-prev {
+    background: url(../../../../images/prev-arrow.svg) no-repeat center center /
+      contain;
+    transform: translate(55rem, 17rem);
+  }
+
+  .slick-slide:not(.slick-current) {
+    h3 {
+      display: none;
+    }
+  }
+
+  .slick-dots {
+    bottom: -6rem;
+    position: relative;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 20rem;
+      border-top: solid 0.1px #4a4a4a;
+      position: absolute;
+      left: 50%;
+      margin-left: -10rem;
+    }
+
+    .slick-active {
+      button {
+        width: 2rem;
+        height: 2rem;
+        border: solid 0.1rem $leti-text;
+        border-radius: 4rem;
+        opacity: 0.7;
+      }
+    }
+  }
+}

@@ -1,32 +1,21 @@
 @import 'variables';
 @import 'fonts';
 
-html {
-  font-size: 10px;
-  font-family: 'Mulish', sans-serif;
-}
-body {
-  font-size: 2.4rem;
-  line-height: 3rem;
-  color: $leti-text;
-}
-
-.video {
-  height: 69.5rem;
-  background: rgba($leti-red, 0.7);
+.leti-btn {
+  color: $leti-blue;
+  border: solid 0.1rem $leti-blue;
+  font-weight: 400;
+  text-decoration: none;
+  font-size: 2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2.4rem;
 }
 
-.Nosotros {
-  &__valor {
-    margin: 6rem 0;
-    line-height: 3.8rem;
-  }
-}
+/* --- SMOOTHER YAY! --- */
 
-@media (max-width: 576px) {
-  .Header {
-    &__nav {
-      display: unset;
-    }
-  }
+.parallax {
+  transition: transform 10s cubic-bezier(0, 1, 0.5, 1);
+  transform: rotate(-150deg);
 }
