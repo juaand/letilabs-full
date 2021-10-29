@@ -1,4 +1,4 @@
-.Nosotros__valor {
-  margin: 6rem 0;
-  line-height: 3.8rem;
+main {
+  position: relative;
+  overflow: hidden;
 }

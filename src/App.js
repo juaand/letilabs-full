@@ -5,6 +5,8 @@ import {useAuthContext} from './contexts/AuthContext'
 import Home from './components/Screens/Home/Home'
 import AboutUs from './components/Screens/AboutUs/AboutUs'
 import OurCompanies from './components/Screens/OurCompanies/OurCompanies'
+import Footer from './components/Footer/Footer'
+import Header from './components/Header/Header'
 
 
 function App() {
@@ -13,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
@@ -28,7 +31,7 @@ function App() {
         {/* {user && <Redirect to='/biopsias' />} */}
         {/* {!user && <Redirect to='/login' />} */}
       </Switch>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }

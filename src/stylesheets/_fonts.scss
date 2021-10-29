@@ -1,5 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap');
 
+@font-face {
+  font-family: 'Tripleta';
+  src: url('../fonts/TripletaLight.woff2') format('woff2'),
+    url('../fonts/TripletaLight.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TripletaBold';
+  src: url('../fonts/TRIPLETAExtraBold.woff2') format('woff2'),
+    url('../fonts/TRIPLETAExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 2.4rem;
+  line-height: 3rem;
+  color: $leti-text;
+  font-family: 'Mulish', sans-serif;
+}
+
 .blue-text {
   color: $leti-blue;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Tripleta';
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-family: 'TripletaBold';
+  font-size: 3rem;
 }

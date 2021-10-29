@@ -1,0 +1,64 @@
+@import '../../stylesheets/variables';
+
+.Footer {
+  background: $leti-back;
+  padding: 8rem 0;
+  font-size: 1.8rem;
+
+  &__logo {
+    background: url(../../images/grupo-leti.svg) no-repeat center center /
+      contain;
+    height: 7rem;
+  }
+
+  &__info {
+    padding-top: 3rem;
+    padding-left: 3rem;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    li {
+      list-style: none;
+      a {
+        color: $leti-nav;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__copy {
+    background: $leti-text;
+    color: $leti-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    font-size: 1.8rem;
+  }
+
+  &__rrss {
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+      align-items: flex-end;
+  }
+
+  &__icon {
+      width: 3rem;
+      height: 3rem;
+
+      &.facebook {
+          background: url(../../images/facebook.svg) no-repeat center center / cover;
+      }
+
+      &.instagram {
+          background: url(../../images/instagram.svg) no-repeat center center / cover;
+      }
+
+      &.linkedin {
+          background: url(../../images/linkedin.svg) no-repeat center center / cover;
+      }
+  }
+}

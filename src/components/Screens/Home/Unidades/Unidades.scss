@@ -1,0 +1,37 @@
+@import '../../../../stylesheets/variables';
+
+.Unidades {
+  margin: 20rem auto;
+
+  &__row {
+    margin: 8rem 0;
+  }
+
+  &__logo {
+    min-height: 29rem;
+    background-size: 30rem !important;
+  }
+
+  &__desc {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 0 3rem;
+    flex-direction: column;
+
+    &__right {
+      text-align: right;
+      align-items: flex-end;
+    }
+  }
+
+  &__square-btn {
+    background: url(../../../../images/plus.svg) no-repeat center center /
+      contain;
+    width: 6.5rem;
+    height: 6.5rem;
+    border: solid 0.15rem $leti-blue;
+    background-size: 3rem;
+    margin-top: 3rem;
+  }
+}

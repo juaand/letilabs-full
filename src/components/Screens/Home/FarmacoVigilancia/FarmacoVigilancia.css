@@ -1,0 +1,48 @@
+.FarmacoVigilancia {
+  margin: 10rem 0;
+}
+
+.FarmacoVigilancia__especialistas, .FarmacoVigilancia__espacio {
+  min-height: 50rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 3rem;
+  font-family: 'TripletaBold';
+  line-height: 3.8rem;
+}
+
+.FarmacoVigilancia__especialistas {
+  background: url(../../../../images/especialistas.png) no-repeat center center/cover;
+}
+
+.FarmacoVigilancia__espacio {
+  background: url(../../../../images/espacio.png) no-repeat center center/cover;
+}
+
+.FarmacoVigilancia__info {
+  display: flex;
+  justify-content: center;
+  padding: 6rem 0;
+}
+
+.FarmacoVigilancia__texto {
+  font-size: 2rem;
+  color: #737b7f;
+  text-align: right;
+}
+
+.FarmacoVigilancia__texto strong {
+  color: #4a4a4a;
+}
+
+.FarmacoVigilancia__form {
+  margin-bottom: 10rem;
+}
+
+.FarmacoVigilancia__form .leti-btn {
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
