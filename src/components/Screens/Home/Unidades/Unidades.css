@@ -13,7 +13,7 @@
 
 .Unidades__desc {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: center;
   padding: 0 3rem;
   flex-direction: column;
