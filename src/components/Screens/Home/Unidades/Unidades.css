@@ -1,0 +1,34 @@
+.Unidades {
+  margin: 20rem auto;
+}
+
+.Unidades__row {
+  margin: 8rem 0;
+}
+
+.Unidades__logo {
+  min-height: 29rem;
+  background-size: 30rem !important;
+}
+
+.Unidades__desc {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 0 3rem;
+  flex-direction: column;
+}
+
+.Unidades__desc__right {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.Unidades__square-btn {
+  background: url(../../../../images/plus.svg) no-repeat center center/contain;
+  width: 6.5rem;
+  height: 6.5rem;
+  border: solid 0.15rem #055aa5;
+  background-size: 3rem;
+  margin-top: 3rem;
+}

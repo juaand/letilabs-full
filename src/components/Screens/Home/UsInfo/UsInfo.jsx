@@ -21,9 +21,8 @@ function UsInfo() {
                     }} className="leti-btn">Conoce más sobre nosotros
                     </Link>
                 </div>
-                <div className="leti-blue-triangle parallax" data-speed="-.3" data-axis="vertical"></div>
-                <div className="leti-red-triangle parallax" data-speed=".3" data-axis="horizontal"></div>
-
+                <div className="leti-blue-triangle parallax" data-speed="-.1" data-axis="vertical"></div>
+                <div className="leti-red-triangle parallax" data-speed=".1" data-axis="horizontal"></div>
             </div>
         </section>
     )

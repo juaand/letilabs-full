@@ -4,16 +4,21 @@ import Header from '../../Header/Header'
 import Video from './Video/Video'
 import UsInfo from './UsInfo/UsInfo'
 import Carousel from './Carousel/Carousel'
+import Unidades from './Unidades/Unidades'
+import Portafolio from './Portafolio/Portafolio'
+import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 
 
 function Home() {
     return (
         <>
-            <Header />
             <main>
                 <Video />
                 <UsInfo />
                 <Carousel />
+                <Unidades />
+                <Portafolio />
+                <FarmacoVigilancia/>
             </main>
         </>
     )

@@ -1,0 +1,53 @@
+@import '../../../../stylesheets/variables';
+
+.FarmacoVigilancia {
+  margin: 10rem 0;
+
+  &__especialistas,
+  &__espacio {
+    min-height: 50rem;
+    color: $leti-white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 3rem;
+    font-family: 'TripletaBold';
+    line-height: 3.8rem;
+  }
+
+  &__especialistas {
+    background: url(../../../../images/especialistas.png) no-repeat center
+      center / cover;
+  }
+
+  &__espacio {
+    background: url(../../../../images/espacio.png) no-repeat center center /
+      cover;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    padding: 6rem 0;
+  }
+
+  &__texto {
+    font-size: 2rem;
+    color: #737b7f;
+    text-align: right;
+
+    strong {
+      color: $leti-text;
+    }
+  }
+
+  &__form {
+      margin-bottom: 10rem;
+
+      .leti-btn {
+          margin-top: 1rem;
+          margin-left: 3rem;
+      }
+  }
+}
