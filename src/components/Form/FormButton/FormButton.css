@@ -1,0 +1,26 @@
+.Button {
+  padding: 0.8rem 3.2rem;
+  margin: auto;
+  display: block;
+  transition: all 200ms ease;
+  border-radius: 1.6rem;
+}
+
+.Button__enter {
+  margin-top: 2rem;
+  background: #43d9b2;
+  border: 0;
+  color: #fff;
+  padding: 1.2rem;
+  width: 100%;
+  font-size: 1.8rem;
+}
+
+.Button:hover {
+  background: #4289dd;
+}
+
+button:disabled {
+  opacity: 0.3;
+  background: #43d9b2;
+}

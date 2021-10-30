@@ -1,6 +1,10 @@
 @import 'variables';
 @import 'fonts';
 
+body {
+  margin-top: 18rem;
+}
+
 .leti-btn {
   color: $leti-blue;
   border: solid 0.1rem $leti-blue;
