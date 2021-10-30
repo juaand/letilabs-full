@@ -1,9 +1,16 @@
 import './Header.css'
-import React from 'react'
+import React, {useState} from 'react'
 import Nav from '../Nav/Nav'
 import {NavLink} from 'react-router-dom'
 
 function Header() {
+
+    const [bool, setBool] = useState(false)
+
+    const showSearch = () => {
+        setBool(!bool)
+    }
+
     return (
         <>
             <header className="Header">
@@ -11,22 +18,26 @@ function Header() {
                     <div className="row justify-content-between Header__logo">
                         <div className="col-12 d-flex justify-content-center">
                             <NavLink className="navbar-brand" to="/"></NavLink>
-                            <form className="d-flex Header__search">
-                                <input
-                                    className="form-control me-2"
-                                    type="search"
-                                    placeholder="Search"
-                                    aria-label="Search"
-                                />
-                                <button className="btn btn-outline-success" type="submit">
-                                    Search
-                                </button>
-                            </form>
+                            <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>
                         </div>
                     </div>
                 </div>
                 <Nav />
             </header>
+                <section className={`container-fluid Search ${bool && 'show'}`}>
+                    <form className="container d-flex align-items-center">
+                        <div className="Search__form">
+                            <input
+                                className="Search__form-input form-control me-2"
+                                type="search"
+                                placeholder="Buscar..."
+                                aria-label="Search"
+                            />
+                        </div>
+                        <button type="submit">BUSCAR</button>
+                    </form>
+                </section>
+            
         </>
     )
 }
