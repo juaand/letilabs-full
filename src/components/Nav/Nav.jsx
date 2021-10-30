@@ -2,7 +2,7 @@ import './Nav.css'
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 
-function Nav() {
+function Nav({initSearch}) {
     return (
         <nav className="Nav navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
@@ -22,13 +22,13 @@ function Nav() {
                     id="navbarNavAltMarkup"
                 >
                     <div className="navbar-nav">
-                        <NavLink activeClassName="active" className="nav-link" to="/sobre-nosotros">Sobre nosotros</NavLink>
-                        <NavLink activeClassName="active" className="nav-link" to="/nuestras-empresas">Nuestras empresas</NavLink>
-                        <NavLink activeClassName="active" className="nav-link" to="/investigacion-y-desarrollo">Investigación y desarrollo</NavLink>
-                        <NavLink activeClassName="active" className="nav-link" to="/proposito-y-responsabilidad-social">Propósito y responsabilidad social</NavLink>
-                        <NavLink activeClassName="active" className="nav-link" to="/nuestra-gente">Nuestra gente</NavLink>
-                        <NavLink activeClassName="active" className="nav-link" to="/productos">Productos</NavLink>
-                        <NavLink activeClassName="active" className="nav-link" to="/noticias">Noticias</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/sobre-nosotros">Sobre nosotros</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/nuestras-empresas">Nuestras empresas</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/investigacion-y-desarrollo">Investigación y desarrollo</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/proposito-y-responsabilidad-social">Propósito y responsabilidad social</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/nuestra-gente">Nuestra gente</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/productos">Productos</NavLink>
+                        <NavLink onClick={initSearch} activeClassName="active" className="nav-link" to="/noticias">Noticias</NavLink>
                     </div>
                 </div>
             </div>

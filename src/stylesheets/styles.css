@@ -48,6 +48,10 @@ h2 {
   font-size: 3rem;
 }
 
+body {
+  margin-top: 18rem;
+}
+
 .leti-btn {
   color: #055aa5;
   border: solid 0.1rem #055aa5;
