@@ -43,7 +43,7 @@ function Footer() {
             </footer>
             <section className="container-fluid">
                 <div className="row">
-                    <div className="col-12 Footer__copy">Copyright by Grupo Leti</div>
+                    <div className="col-12 Footer__copy"> Copyright {new Date().getFullYear()} © by Grupo Leti</div>
                 </div>
             </section>
         </>
