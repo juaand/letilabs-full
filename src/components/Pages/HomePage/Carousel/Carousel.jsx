@@ -1,5 +1,5 @@
 import './Carousel.css'
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import Slider from "react-slick"
 import homeCarousel from '../../../../data/homeCarousel'
 
