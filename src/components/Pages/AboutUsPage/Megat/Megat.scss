@@ -1,0 +1,39 @@
+@import '../../../../stylesheets/variables';
+
+.Megat {
+  padding: 20rem 0 10rem 0;
+  position: relative;
+
+  &__logo {
+    background: url(../../../../images/megat.svg) no-repeat center center /
+      contain;
+    width: 26rem;
+    height: 11rem;
+    margin: 3rem 0;
+  }
+
+  &__desc {
+    margin-bottom: 3rem;
+  }
+
+  &__clip {
+    height: 70rem;
+    background: url(../../../../images/bubbles.png) no-repeat left center /
+      cover;
+    background-attachment: fixed;
+    mask-image: url(../../../../images/triangulo-rojo.svg);
+    mask-size: 55rem;
+    mask-repeat: no-repeat;
+    mask-position: top left;
+  }
+
+  &__blue-stroke {
+    background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat
+      center center / contain;
+    position: absolute;
+    width: 56rem;
+    height: 56rem;
+    z-index: -1;
+    top: 15rem;
+  }
+}

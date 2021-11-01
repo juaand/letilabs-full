@@ -1,5 +1,5 @@
 import './Footer.css'
-import React,  {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 function Footer() {
@@ -10,7 +10,9 @@ function Footer() {
         if (window.screen.width <= 576) {
             setBool(!bool)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
     return (
         <>
             <footer className="container-fluid Footer">

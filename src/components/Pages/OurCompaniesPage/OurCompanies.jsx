@@ -1,6 +1,5 @@
 import './OurCompanies.css'
-import React, {useState, useEffect} from 'react'
-import Header from '../../Header/Header'
+import React, {useEffect} from 'react'
 
 function OurCompanies() {
 

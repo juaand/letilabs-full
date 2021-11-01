@@ -1,9 +1,9 @@
 import './AboutUs.css'
 import React from 'react'
-import Header from '../../Header/Header'
 import Banner from './Banner/Banner'
 import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 import Timeline from './Timeline/Timeline'
+import Megat from './Megat/Megat'
 
 function AboutUs() {
     return (
@@ -11,6 +11,7 @@ function AboutUs() {
             <Banner />
             <MarcandoPauta />
             <Timeline />
+            <Megat />
         </main>
     )
 }

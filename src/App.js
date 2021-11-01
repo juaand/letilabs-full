@@ -1,7 +1,7 @@
 import React from 'react'
-import AuthenticatedRoute from './AuthenticatedRoute'
-import {Redirect, Route, Switch} from 'react-router-dom'
-import {useAuthContext} from './contexts/AuthContext'
+// import AuthenticatedRoute from './AuthenticatedRoute'
+import {Route, Switch} from 'react-router-dom'
+// import {useAuthContext} from './contexts/AuthContext'
 import Home from './components/Pages/HomePage/Home'
 import AboutUs from './components/Pages/AboutUsPage/AboutUs'
 import OurCompanies from './components/Pages/OurCompaniesPage/OurCompanies'
@@ -12,7 +12,7 @@ import SearchPage from './components/Pages/SearchPage/SearchPage'
 
 function App() {
 
-  const {user} = useAuthContext()
+  // const {user} = useAuthContext()
 
   return (
     <div className="App">
