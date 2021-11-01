@@ -4,6 +4,7 @@ import Banner from './Banner/Banner'
 import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 import Timeline from './Timeline/Timeline'
 import Megat from './Megat/Megat'
+import Gallery from './Gallery/Gallery'
 
 function AboutUs() {
     return (
@@ -11,6 +12,7 @@ function AboutUs() {
             <Banner />
             <MarcandoPauta />
             <Timeline />
+            <Gallery />
             <Megat />
         </main>
     )
