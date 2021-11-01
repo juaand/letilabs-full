@@ -1,14 +1,39 @@
 @import '../../../../stylesheets/variables';
 
 .Unidades {
-  margin: 20rem auto;
+  margin: 20rem auto 10rem auto;
+  position: relative;
+
+  .big-gray-triangle,
+  .small-gray-triangle {
+    position: absolute;
+    opacity: 0.4;
+    z-index: -1;
+  }
+
+  .big-gray-triangle {
+    background: url(../../../../images/big-grey.svg) no-repeat center center /
+      contain;
+    width: 70rem;
+    height: 70rem;
+    right: -10rem;
+    top: -15rem;
+  }
+
+  .small-gray-triangle {
+    background: url(../../../../images/small-grey.svg) no-repeat center center /
+      contain;
+    width: 50rem;
+    height: 55rem;
+    right: 27rem;
+  }
 
   &__row {
     margin: 8rem 0;
   }
 
   &__logo {
-    min-height: 29rem;
+    min-height: 39rem;
     background-size: 30rem !important;
   }
 
@@ -30,8 +55,36 @@
       contain;
     width: 6.5rem;
     height: 6.5rem;
-    border: solid 0.15rem var(--leti-blue);
+    border: solid 0.15rem $leti-blue;
     background-size: 3rem;
     margin-top: 3rem;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      background: $leti-blue url(../../../../images/plus-white.svg) no-repeat
+        center center / contain;
+      background-size: 3rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Unidades {
+    margin: 0;
+    margin-top: 20rem;
+
+    &__row {
+      margin: 4rem 0;
+    }
+
+    &__desc {
+      font-size: 1.6rem;
+      margin-top: 1rem;
+    }
+
+    &__logo {
+      min-height: 18rem;
+      background-size: 15rem !important;
+    }
   }
 }

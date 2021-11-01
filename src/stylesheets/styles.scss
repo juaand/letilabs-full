@@ -6,8 +6,8 @@ body {
 }
 
 .leti-btn {
-  color: var(--leti-blue);
-  border: solid 0.1rem var(--leti-blue);
+  color: $leti-blue;
+  border: solid 0.1rem $leti-blue;
   font-weight: 400;
   text-decoration: none;
   font-size: 2rem;
@@ -15,6 +15,14 @@ body {
   justify-content: center;
   align-items: center;
   padding: 2rem 2.4rem;
+  background: $leti-white;
+  transition: all 200ms ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background: $leti-blue;
+    color: $leti-white;
+  }
 }
 
 /* --- SMOOTHER YAY! --- */
@@ -22,4 +30,14 @@ body {
 .parallax {
   transition: transform 10s cubic-bezier(0, 1, 0.5, 1);
   transform: rotate(-150deg);
+}
+
+@media (max-width: 576px) {
+  body {
+    margin-top: 10rem;
+  }
+
+  .leti-btn {
+    display: flex;
+  }
 }

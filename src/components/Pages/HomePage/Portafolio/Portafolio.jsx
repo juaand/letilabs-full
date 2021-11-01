@@ -8,7 +8,7 @@ function Portafolio() {
             <section className="container-fluid Portafolio">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-sm-7">
+                        <div className="col-11 col-sm-7">
                             <div className="row justify-content-between">
                                 {dataPortafolio.map(el =>
                                     <div className="col-12 col-sm-5 Portafolio__item">

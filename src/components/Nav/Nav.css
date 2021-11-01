@@ -1,17 +1,8 @@
-:root {
-  --leti-nav: #737b7f;
-  --leti-red: #cd202f;
-  --leti-text: #4a4a4a;
-  --leti-blue: #055aa5;
-  --leti-white: #fff;
-  --leti-back: #f5f5f5;
-}
-
 .Nav__nav {
   display: flex;
   justify-content: space-around;
   font-weight: 500;
-  color: var(--leti-nav);
+  color: #737b7f;
   font-size: 1.6rem;
 }
 
@@ -20,7 +11,35 @@
 }
 
 @media (max-width: 576px) {
+  .Nav {
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+    transition: all 0.3s;
+  }
   .Nav__nav {
     display: unset;
+    top: 7rem;
+    position: absolute;
+    left: -2rem;
+    width: 576px;
+    background: #fff;
+  }
+  .Nav.thin {
+    top: 1rem;
+  }
+  .Nav .navbar-toggler {
+    border: 0;
+    outline: unset;
+  }
+  .Nav .navbar-toggler:focus {
+    outline: none;
+    border: 0;
+  }
+  .Nav .navbar-toggler .navbar-toggler-icon {
+    background-image: url(../../images/toggler.svg);
+  }
+  .Nav .navbar-nav {
+    padding-bottom: 2rem;
   }
 }

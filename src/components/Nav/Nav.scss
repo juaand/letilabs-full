@@ -4,7 +4,7 @@
     display: flex;
     justify-content: space-around;
     font-weight: 500;
-    color: var(--leti-nav);
+    color: $leti-nav;
     font-size: 1.6rem;
   }
 
@@ -15,8 +15,40 @@
 
 @media (max-width: 576px) {
   .Nav {
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+    transition: all 0.3s;
+
     &__nav {
       display: unset;
+      top: 7rem;
+      position: absolute;
+      left: -2rem;
+      width: 576px;
+      background: $leti-white;
+    }
+
+    &.thin {
+      top: 1rem;
+    }
+
+    .navbar-toggler {
+      border: 0;
+      outline: unset;
+
+      &:focus {
+        outline: none;
+        border: 0;
+      }
+
+      .navbar-toggler-icon {
+        background-image: url(../../images/toggler.svg);
+      }
+    }
+
+    .navbar-nav {
+      padding-bottom: 2rem;
     }
   }
 }

@@ -3,7 +3,7 @@
 .Header {
   position: fixed;
   top: 0;
-  background: var(--leti-white);
+  background: $leti-white;
   z-index: 5;
   width: 100%;
 
@@ -42,6 +42,17 @@
 
     &-close {
       background: url(../../images/close.svg) no-repeat center center / contain;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Header {
+    &__search {
+      width: 2.4rem;
+      height: 2.4rem;
+      right: 2rem;
+      margin-top: -1rem;
     }
   }
 }

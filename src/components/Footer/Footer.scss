@@ -1,7 +1,7 @@
 @import '../../stylesheets/variables';
 
 .Footer {
-  background: var(--leti-back);
+  background: $leti-back;
   padding: 8rem 0;
   font-size: 1.8rem;
 
@@ -13,7 +13,7 @@
 
   &__info {
     padding-top: 3rem;
-    padding-left: 3rem;
+    padding-left: 2rem;
   }
 
   &__nav {
@@ -22,15 +22,15 @@
     li {
       list-style: none;
       a {
-        color: var(--leti-nav);
+        color: $leti-nav;
         text-decoration: none;
       }
     }
   }
 
   &__copy {
-    background: var(--leti-text);
-    color: var(--leti-white);
+    background: $leti-text;
+    color: $leti-white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,6 +60,29 @@
 
     &.linkedin {
       background: url(../../images/linkedin.svg) no-repeat center center / cover;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Footer {
+    padding: 4rem 0;
+    font-size: 1.6rem;
+
+    &__logo {
+      margin-left: 2rem;
+    }
+
+    &__nav {
+      margin-top: 3rem;
+      font-size: 1.4rem;
+      border-top: solid 0.1rem rgba($leti-text, 0.1);
+      padding-top: 3rem;
+    }
+
+    &__icon {
+      margin-right: 2rem;
+      width: 2.5rem;
     }
   }
 }

@@ -11,13 +11,13 @@ function FarmacoVigilancia() {
                 </div>
             </section>
             <section className="container FarmacoVigilancia__form">
-                <div className="row">
-                    <div className="col-12 col-sm-6 FarmacoVigilancia__texto">
+                <div className="row justify-content-center">
+                    <div className="col-11 col-sm-6 FarmacoVigilancia__texto">
                         <strong>Farmacovigilancia</strong>
                         <p>¿Tuviste algún efecto adverso<br />
                             con alguno de nuestro productos? </p>
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-11 col-sm-6">
                         <div className="leti-btn">Infórmanos aquí</div>
                     </div></div>
             </section>

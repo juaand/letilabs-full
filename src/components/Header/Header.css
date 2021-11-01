@@ -1,16 +1,7 @@
-:root {
-  --leti-nav: #737b7f;
-  --leti-red: #cd202f;
-  --leti-text: #4a4a4a;
-  --leti-blue: #055aa5;
-  --leti-white: #fff;
-  --leti-back: #f5f5f5;
-}
-
 .Header {
   position: fixed;
   top: 0;
-  background: var(--leti-white);
+  background: #fff;
   z-index: 5;
   width: 100%;
 }
@@ -52,4 +43,13 @@
 
 .Header__search-close {
   background: url(../../images/close.svg) no-repeat center center/contain;
+}
+
+@media (max-width: 576px) {
+  .Header__search {
+    width: 2.4rem;
+    height: 2.4rem;
+    right: 2rem;
+    margin-top: -1rem;
+  }
 }

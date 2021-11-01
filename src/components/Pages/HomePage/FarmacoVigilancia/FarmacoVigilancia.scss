@@ -6,7 +6,7 @@
   &__especialistas,
   &__espacio {
     min-height: 50rem;
-    color: var(--leti-white);
+    color: $leti-white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,6 @@
   &__especialistas {
     background: url(../../../../images/especialistas.png) no-repeat center
       center / cover;
-    background-size: 105%;
   }
 
   &__espacio {
@@ -39,7 +38,7 @@
     text-align: right;
 
     strong {
-      color: var(--leti-text);
+      color: $leti-text;
     }
   }
 
@@ -49,6 +48,30 @@
     .leti-btn {
       margin-top: 1rem;
       margin-left: 3rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .FarmacoVigilancia {
+    margin: 0;
+
+    &__especialistas,
+    &__espacio {
+      min-height: 30rem;
+    }
+
+    &__texto {
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    &__form {
+      margin-bottom: 5rem;
+
+      .leti-btn {
+        margin-left: 0;
+      }
     }
   }
 }

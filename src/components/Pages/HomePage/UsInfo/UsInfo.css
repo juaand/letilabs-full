@@ -31,3 +31,21 @@
   right: 0;
   transform: rotate(-150deg);
 }
+
+@media (max-width: 576px) {
+  .Nosotros {
+    margin: 0rem auto 45rem auto;
+    font-size: 2rem;
+  }
+  .Nosotros .row {
+    justify-content: center;
+  }
+  .Nosotros .leti-red-triangle {
+    right: -5rem;
+  }
+  .Nosotros .leti-blue-triangle,
+  .Nosotros .leti-red-triangle {
+    top: 50rem;
+    z-index: -1;
+  }
+}

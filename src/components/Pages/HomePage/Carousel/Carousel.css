@@ -1,13 +1,4 @@
 @charset "UTF-8";
-:root {
-  --leti-nav: #737b7f;
-  --leti-red: #cd202f;
-  --leti-text: #4a4a4a;
-  --leti-blue: #055aa5;
-  --leti-white: #fff;
-  --leti-back: #f5f5f5;
-}
-
 .slick-list,
 .slick-slider,
 .slick-track {
@@ -290,12 +281,15 @@
 .Carousel .slick-dots .slick-active button {
   width: 2rem;
   height: 2rem;
-  border: solid 0.1rem var(--leti-text);
+  border: solid 0.1rem #4a4a4a;
   border-radius: 4rem;
   opacity: 0.7;
 }
 
 @media (max-width: 576px) {
+  .Carousel {
+    margin: 4rem 0;
+  }
   .Carousel .slick-next {
     transform: translate(-5rem, 17rem);
   }
