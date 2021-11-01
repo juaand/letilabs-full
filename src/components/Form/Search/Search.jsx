@@ -1,5 +1,5 @@
 import './Search.css'
-import React, {useEffect} from 'react'
+import React from 'react'
 import {useFormState} from '../../../hooks/useFormState'
 import InputWithLabel from '../InputWithLabel/InputWithLabel'
 import {useHistory} from 'react-router-dom'
