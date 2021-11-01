@@ -1,14 +1,5 @@
-:root {
-  --leti-nav: #737b7f;
-  --leti-red: #cd202f;
-  --leti-text: #4a4a4a;
-  --leti-blue: #055aa5;
-  --leti-white: #fff;
-  --leti-back: #f5f5f5;
-}
-
 .Footer {
-  background: var(--leti-back);
+  background: #f5f5f5;
   padding: 8rem 0;
   font-size: 1.8rem;
 }
@@ -20,7 +11,7 @@
 
 .Footer__info {
   padding-top: 3rem;
-  padding-left: 3rem;
+  padding-left: 2rem;
 }
 
 .Footer__nav {
@@ -33,13 +24,13 @@
 }
 
 .Footer__nav li a {
-  color: var(--leti-nav);
+  color: #737b7f;
   text-decoration: none;
 }
 
 .Footer__copy {
-  background: var(--leti-text);
-  color: var(--leti-white);
+  background: #4a4a4a;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,4 +60,24 @@
 
 .Footer__icon.linkedin {
   background: url(../../images/linkedin.svg) no-repeat center center/cover;
+}
+
+@media (max-width: 576px) {
+  .Footer {
+    padding: 4rem 0;
+    font-size: 1.6rem;
+  }
+  .Footer__logo {
+    margin-left: 2rem;
+  }
+  .Footer__nav {
+    margin-top: 3rem;
+    font-size: 1.4rem;
+    border-top: solid 0.1rem rgba(74, 74, 74, 0.1);
+    padding-top: 3rem;
+  }
+  .Footer__icon {
+    margin-right: 2rem;
+    width: 2.5rem;
+  }
 }

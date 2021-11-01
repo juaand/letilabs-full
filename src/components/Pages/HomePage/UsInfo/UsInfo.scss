@@ -34,4 +34,23 @@
   }
 }
 
-@media (max-width: 576px) {}
+@media (max-width: 576px) {
+  .Nosotros {
+    margin: 0rem auto 45rem auto;
+    font-size: 2rem;
+
+    .row {
+      justify-content: center;
+    }
+
+    .leti-red-triangle {
+      right: -5rem;
+    }
+
+    .leti-blue-triangle,
+    .leti-red-triangle {
+      top: 50rem;
+      z-index: -1;
+    }
+  }
+}

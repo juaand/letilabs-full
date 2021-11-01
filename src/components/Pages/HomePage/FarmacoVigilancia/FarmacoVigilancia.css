@@ -1,19 +1,10 @@
-:root {
-  --leti-nav: #737b7f;
-  --leti-red: #cd202f;
-  --leti-text: #4a4a4a;
-  --leti-blue: #055aa5;
-  --leti-white: #fff;
-  --leti-back: #f5f5f5;
-}
-
 .FarmacoVigilancia {
   margin: 30rem 0 10rem 0;
 }
 
 .FarmacoVigilancia__especialistas, .FarmacoVigilancia__espacio {
   min-height: 50rem;
-  color: var(--leti-white);
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,7 +16,6 @@
 
 .FarmacoVigilancia__especialistas {
   background: url(../../../../images/especialistas.png) no-repeat center center/cover;
-  background-size: 105%;
 }
 
 .FarmacoVigilancia__espacio {
@@ -45,7 +35,7 @@
 }
 
 .FarmacoVigilancia__texto strong {
-  color: var(--leti-text);
+  color: #4a4a4a;
 }
 
 .FarmacoVigilancia__form {
@@ -55,4 +45,23 @@
 .FarmacoVigilancia__form .leti-btn {
   margin-top: 1rem;
   margin-left: 3rem;
+}
+
+@media (max-width: 576px) {
+  .FarmacoVigilancia {
+    margin: 0;
+  }
+  .FarmacoVigilancia__especialistas, .FarmacoVigilancia__espacio {
+    min-height: 30rem;
+  }
+  .FarmacoVigilancia__texto {
+    margin: 2rem 0;
+    text-align: left;
+  }
+  .FarmacoVigilancia__form {
+    margin-bottom: 5rem;
+  }
+  .FarmacoVigilancia__form .leti-btn {
+    margin-left: 0;
+  }
 }

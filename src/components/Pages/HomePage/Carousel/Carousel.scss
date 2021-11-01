@@ -58,7 +58,7 @@
       button {
         width: 2rem;
         height: 2rem;
-        border: solid 0.1rem var(--leti-text);
+        border: solid 0.1rem $leti-text;
         border-radius: 4rem;
         opacity: 0.7;
       }
@@ -68,6 +68,7 @@
 
 @media (max-width: 576px) {
   .Carousel {
+    margin: 4rem 0;
     .slick-next {
       transform: translate(-5rem, 17rem);
     }

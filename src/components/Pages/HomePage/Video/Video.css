@@ -1,13 +1,13 @@
-:root {
-  --leti-nav: #737b7f;
-  --leti-red: #cd202f;
-  --leti-text: #4a4a4a;
-  --leti-blue: #055aa5;
-  --leti-white: #fff;
-  --leti-back: #f5f5f5;
-}
-
 .Video {
   height: 69.5rem;
-  background: rgba(var(--leti-red), 0.7);
+  background: url(../../../../images/video-bg.png) no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 576px) {
+  .Video {
+    height: 30rem;
+  }
 }

@@ -25,12 +25,12 @@
 body {
   font-size: 2.4rem;
   line-height: 3rem;
-  color: var(--leti-text);
+  color: $leti-text;
   font-family: 'Mulish', sans-serif;
 }
 
 .blue-text {
-  color: var(--leti-blue);
+  color: $leti-blue;
 }
 
 h1,
@@ -49,4 +49,10 @@ h1 {
 h2 {
   font-family: 'TripletaBold';
   font-size: 3rem;
+}
+
+@media (max-width: 576px) {
+  h1 {
+    font-size: 3.6rem;
+  }
 }

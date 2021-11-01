@@ -1,5 +1,5 @@
 import './Unidades.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import unidadesNegocio from '../../../../data/unidadesNegocio'
 import {Link} from 'react-router-dom'
 
@@ -7,15 +7,25 @@ function Unidades() {
 
     let n = 1
 
+    const [bool, setBool] = useState(true)
+
+    useEffect(() => {
+        if (window.screen.width <= 576) {
+            setBool(false)
+        }
+    }, [])
+
     return (
-        <>
-            <div className="container Unidades">
+        <section className="Unidades">
+            <div className="big-gray-triangle"></div>
+            <div className="small-gray-triangle"></div>
+            <div className="container">
                 <h1>Nos conformamos <br />de 3 unidades<br /> de negocio</h1>
             </div>
             <div className="container-fluid">
                 {unidadesNegocio.map(el =>
                     <>
-                        {n % 2 === 0 ?
+                        {bool && n % 2 === 0 ?
                             <div className="row Unidades__row justify-content-end">
                                 <div className="col-12 col-sm-4 Unidades__desc Unidades__desc__right">
                                     {el.desc}
@@ -40,7 +50,7 @@ function Unidades() {
                     </>
                 )}
             </div>
-        </>
+        </section>
     )
 }
 
