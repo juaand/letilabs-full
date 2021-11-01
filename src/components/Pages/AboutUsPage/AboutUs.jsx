@@ -1,13 +1,15 @@
 import './AboutUs.css'
 import React from 'react'
 import Header from '../../Header/Header'
+import Banner from './Banner/Banner'
+import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 
 function AboutUs() {
     return (
-        <>
-            <Header />
-            <h1>SOBRE NOSOTROS</h1>
-        </>
+        <main>
+            <Banner />
+            <MarcandoPauta/>
+        </main>
     )
 }
 

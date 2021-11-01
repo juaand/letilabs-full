@@ -1,0 +1,41 @@
+.Banner {
+  background: #fbfbfb;
+  position: relative;
+  overflow: hidden;
+}
+
+.Banner__title {
+  height: 70rem;
+}
+
+.Banner__bg {
+  background: url(../../../../images/about-us-bg.png) no-repeat center center/contain;
+  height: 70rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 4;
+}
+
+.Banner .leti-red-triangle,
+.Banner .leti-blue-triangle {
+  position: absolute;
+  z-index: 0;
+  transform: rotate(0);
+}
+
+.Banner .leti-red-triangle {
+  background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
+  width: 75rem;
+  height: 75rem;
+  right: 0rem;
+  top: 0rem;
+}
+
+.Banner .leti-blue-triangle {
+  background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
+  width: 55rem;
+  height: 55rem;
+  right: 25rem;
+  top: 15rem;
+}

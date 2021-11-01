@@ -10,16 +10,14 @@ import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 
 function Home() {
     return (
-        <>
-            <main>
-                <Video />
-                <UsInfo />
-                <Carousel />
-                <Unidades />
-                <Portafolio />
-                <FarmacoVigilancia/>
-            </main>
-        </>
+        <main>
+            <Video />
+            <UsInfo />
+            <Carousel />
+            <Unidades />
+            <Portafolio />
+            <FarmacoVigilancia />
+        </main>
     )
 }
 
