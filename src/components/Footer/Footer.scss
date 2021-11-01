@@ -1,7 +1,7 @@
 @import '../../stylesheets/variables';
 
 .Footer {
-  background: $leti-back;
+  background: var(--leti-back);
   padding: 8rem 0;
   font-size: 1.8rem;
 
@@ -22,15 +22,15 @@
     li {
       list-style: none;
       a {
-        color: $leti-nav;
+        color: var(--leti-nav);
         text-decoration: none;
       }
     }
   }
 
   &__copy {
-    background: $leti-text;
-    color: $leti-white;
+    background: var(--leti-text);
+    color: var(--leti-white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,26 +39,27 @@
   }
 
   &__rrss {
-      display: flex;
-      justify-content: space-around;
-      flex-direction: column;
-      align-items: flex-end;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   &__icon {
-      width: 3rem;
-      height: 3rem;
+    width: 3rem;
+    height: 3rem;
 
-      &.facebook {
-          background: url(../../images/facebook.svg) no-repeat center center / cover;
-      }
+    &.facebook {
+      background: url(../../images/facebook.svg) no-repeat center center / cover;
+    }
 
-      &.instagram {
-          background: url(../../images/instagram.svg) no-repeat center center / cover;
-      }
+    &.instagram {
+      background: url(../../images/instagram.svg) no-repeat center center /
+        cover;
+    }
 
-      &.linkedin {
-          background: url(../../images/linkedin.svg) no-repeat center center / cover;
-      }
+    &.linkedin {
+      background: url(../../images/linkedin.svg) no-repeat center center / cover;
+    }
   }
 }

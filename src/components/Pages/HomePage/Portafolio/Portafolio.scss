@@ -2,30 +2,30 @@
 
 .Portafolio {
   position: relative;
-  background: $leti-back;
+  background: var(--leti-back);
   padding: 15rem 0 12rem 0;
   overflow: visible;
 
   &__item {
     margin-bottom: 3rem;
     font-size: 2.4rem;
-    color: $leti-text;
+    color: var(--leti-text);
   }
 }
 
 .big-red-triangle {
   position: absolute;
-  width: 100rem;
+  width: 140rem;
   height: 100rem;
-  background: url(../../../../images/triangulo-rojo.svg) no-repeat center center /
+  background: url(../../../../images/triangulo-rojo.svg) no-repeat left center /
     contain;
-  top: -10rem;
-  right: -40rem;
-  color: $leti-white;
+  top: -15rem;
+  right: -65rem;
+  color: var(--leti-white);
   display: flex;
   align-items: center;
   padding-left: 10rem;
-  padding-right: 50rem;
+  padding-right: 90rem;
   padding-top: 10rem;
 
   h1 {
@@ -36,11 +36,11 @@
 .big-blue-triangle {
   position: absolute;
   width: 100rem;
-  height: 70rem;
+  height: 90rem;
   background: url(../../../../images/triangulo-azul.svg) no-repeat center center /
     contain;
-  top: -10rem;
-  right: -70rem;
+  top: -30rem;
+  right: -75rem;
 }
 
 .juan {

@@ -20,10 +20,10 @@ function Portafolio() {
                         </div>
                     </div>
                 </div>
-                <div className="big-red-triangle">
+                <div className="big-red-triangle parallax" data-speed=".1" data-axis="horizontal">
                     <h1>Nuestro portafolio cuenta con 4 tipos de medicamentos</h1>
                 </div>
-                <div className="big-blue-triangle"></div>
+                <div className="big-blue-triangle parallax" data-speed="-.1" data-axis="horizontal"></div>
             </section>
         </>
     )

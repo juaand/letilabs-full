@@ -18,19 +18,19 @@
   font-display: swap;
 }
 
-html {
+:root {
   font-size: 10px;
 }
 
 body {
   font-size: 2.4rem;
   line-height: 3rem;
-  color: $leti-text;
+  color: var(--leti-text);
   font-family: 'Mulish', sans-serif;
 }
 
 .blue-text {
-  color: $leti-blue;
+  color: var(--leti-blue);
 }
 
 h1,

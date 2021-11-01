@@ -6,8 +6,8 @@ body {
 }
 
 .leti-btn {
-  color: $leti-blue;
-  border: solid 0.1rem $leti-blue;
+  color: var(--leti-blue);
+  border: solid 0.1rem var(--leti-blue);
   font-weight: 400;
   text-decoration: none;
   font-size: 2rem;

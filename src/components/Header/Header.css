@@ -1,7 +1,16 @@
+:root {
+  --leti-nav: #737b7f;
+  --leti-red: #cd202f;
+  --leti-text: #4a4a4a;
+  --leti-blue: #055aa5;
+  --leti-white: #fff;
+  --leti-back: #f5f5f5;
+}
+
 .Header {
   position: fixed;
   top: 0;
-  background: #fff;
+  background: var(--leti-white);
   z-index: 5;
   width: 100%;
 }

@@ -1,3 +1,12 @@
+:root {
+  --leti-nav: #737b7f;
+  --leti-red: #cd202f;
+  --leti-text: #4a4a4a;
+  --leti-blue: #055aa5;
+  --leti-white: #fff;
+  --leti-back: #f5f5f5;
+}
+
 .Unidades {
   margin: 20rem auto;
 }
@@ -28,7 +37,7 @@
   background: url(../../../../images/plus.svg) no-repeat center center/contain;
   width: 6.5rem;
   height: 6.5rem;
-  border: solid 0.15rem #055aa5;
+  border: solid 0.15rem var(--leti-blue);
   background-size: 3rem;
   margin-top: 3rem;
 }

@@ -1,8 +1,17 @@
+:root {
+  --leti-nav: #737b7f;
+  --leti-red: #cd202f;
+  --leti-text: #4a4a4a;
+  --leti-blue: #055aa5;
+  --leti-white: #fff;
+  --leti-back: #f5f5f5;
+}
+
 .Nav__nav {
   display: flex;
   justify-content: space-around;
   font-weight: 500;
-  color: #737b7f;
+  color: var(--leti-nav);
   font-size: 1.6rem;
 }
 

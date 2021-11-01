@@ -1,12 +1,12 @@
 @import '../../../../stylesheets/variables';
 
 .FarmacoVigilancia {
-  margin: 10rem 0;
+  margin: 30rem 0 10rem 0;
 
   &__especialistas,
   &__espacio {
     min-height: 50rem;
-    color: $leti-white;
+    color: var(--leti-white);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,6 +19,7 @@
   &__especialistas {
     background: url(../../../../images/especialistas.png) no-repeat center
       center / cover;
+    background-size: 105%;
   }
 
   &__espacio {
@@ -38,16 +39,16 @@
     text-align: right;
 
     strong {
-      color: $leti-text;
+      color: var(--leti-text);
     }
   }
 
   &__form {
-      margin-bottom: 10rem;
+    margin-bottom: 10rem;
 
-      .leti-btn {
-          margin-top: 1rem;
-          margin-left: 3rem;
-      }
+    .leti-btn {
+      margin-top: 1rem;
+      margin-left: 3rem;
+    }
   }
 }

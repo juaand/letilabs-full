@@ -3,7 +3,7 @@
 
 .Carousel {
   margin: 10rem 0;
-  
+
   &__image {
     height: 27rem;
   }
@@ -20,18 +20,19 @@
     &:before {
       content: '';
     }
+    z-index: 4;
   }
 
   .slick-next {
     background: url(../../../../images/next-arrow.svg) no-repeat center center /
       contain;
-    transform: translate(-55rem, 17rem);
+    transform: translate(-80rem, 15.5rem);
   }
 
   .slick-prev {
     background: url(../../../../images/prev-arrow.svg) no-repeat center center /
       contain;
-    transform: translate(55rem, 17rem);
+    transform: translate(80rem, 15.5rem);
   }
 
   .slick-slide:not(.slick-current) {
@@ -42,7 +43,6 @@
 
   .slick-dots {
     bottom: -6rem;
-    position: relative;
 
     &:before {
       content: '';
@@ -58,10 +58,22 @@
       button {
         width: 2rem;
         height: 2rem;
-        border: solid 0.1rem $leti-text;
+        border: solid 0.1rem var(--leti-text);
         border-radius: 4rem;
         opacity: 0.7;
       }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Carousel {
+    .slick-next {
+      transform: translate(-5rem, 17rem);
+    }
+
+    .slick-prev {
+      transform: translate(5rem, 17rem);
     }
   }
 }

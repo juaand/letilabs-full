@@ -7,12 +7,11 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthContextProvider} from './contexts/AuthContext'
 
 
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>
       <AuthContextProvider>
-        <App />
+          <App />
       </AuthContextProvider>
     </Router>
   </React.StrictMode>,

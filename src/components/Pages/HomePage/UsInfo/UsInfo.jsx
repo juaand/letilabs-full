@@ -6,8 +6,8 @@ function UsInfo() {
 
     return (
         <section class="container Nosotros">
-            <div class="row">
-                <div class="col-12 col-sm-6">
+            <div class="row justify-content-center">
+                <div class="col-11 col-sm-6">
                     <p class="Nosotros__valor">
                         <span class="blue-text">Laboratorios Leti</span> es un laboratorio
                         farmacéutico venezolano que desde hace 70 años, crea soluciones de
@@ -21,8 +21,8 @@ function UsInfo() {
                     }} className="leti-btn">Conoce más sobre nosotros
                     </Link>
                 </div>
-                <div className="leti-blue-triangle parallax" data-speed="-.1" data-axis="vertical"></div>
-                <div className="leti-red-triangle parallax" data-speed=".1" data-axis="horizontal"></div>
+                <div className="leti-blue-triangle parallax-rotate" data-speed="-.1" data-axis="vertical"></div>
+                <div className="leti-red-triangle parallax-rotate" data-speed=".1" data-axis="vertical"></div>
             </div>
         </section>
     )
