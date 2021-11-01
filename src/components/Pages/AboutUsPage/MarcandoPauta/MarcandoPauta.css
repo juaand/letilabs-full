@@ -1,0 +1,13 @@
+.MarcandoPauta {
+  background: #f5f5f5;
+}
+
+.MarcandoPauta__text {
+  display: flex;
+  align-items: center;
+  height: 68rem;
+}
+
+.MarcandoPauta__bg {
+  background: url(../../../../images/marcando-pauta.png) no-repeat center center/contain;
+}

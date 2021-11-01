@@ -1,10 +1,45 @@
 @import '../../../../stylesheets/variables';
 .Banner {
-  height: 70rem;
   background: #fbfbfb;
+  position: relative;
+  overflow: hidden;
+
+  &__title {
+      height: 70rem;
+  }
 
   &__bg {
     background: url(../../../../images/about-us-bg.png) no-repeat center center /
       contain;
+    height: 70rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 4;
+  }
+
+  .leti-red-triangle,
+  .leti-blue-triangle {
+    position: absolute;
+    z-index: 0;
+    transform: rotate(0);
+  }
+
+  .leti-red-triangle {
+    background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat
+      center center / contain;
+    width: 75rem;
+    height: 75rem;
+    right: 0rem;
+    top: 0rem;
+  }
+
+  .leti-blue-triangle {
+    background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat
+      center center / contain;
+    width: 55rem;
+    height: 55rem;
+    right: 25rem;
+    top: 15rem;
   }
 }

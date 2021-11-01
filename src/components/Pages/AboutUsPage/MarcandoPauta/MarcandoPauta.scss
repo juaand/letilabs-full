@@ -1,0 +1,15 @@
+@import '../../../../stylesheets/variables';
+
+.MarcandoPauta {
+  background: $leti-back;
+
+  &__text {
+    display: flex;
+    align-items: center;
+    height: 68rem;
+  }
+
+  &__bg {
+      background: url(../../../../images/marcando-pauta.png) no-repeat center center / contain;
+  }
+}
