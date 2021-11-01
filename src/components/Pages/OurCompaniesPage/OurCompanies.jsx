@@ -10,7 +10,6 @@ function OurCompanies() {
 
     return (
         <>
-            <Header />
             <h1>NUESTRAS EMPRESAS</h1>
         </>
     )

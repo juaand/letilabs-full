@@ -1,0 +1,10 @@
+@import '../../../../stylesheets/variables';
+.Banner {
+  height: 70rem;
+  background: #fbfbfb;
+
+  &__bg {
+    background: url(../../../../images/about-us-bg.png) no-repeat center center /
+      contain;
+  }
+}

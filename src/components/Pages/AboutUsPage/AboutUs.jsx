@@ -1,13 +1,13 @@
 import './AboutUs.css'
 import React from 'react'
 import Header from '../../Header/Header'
+import Banner from './Banner/Banner'
 
 function AboutUs() {
     return (
-        <>
-            <Header />
-            <h1>SOBRE NOSOTROS</h1>
-        </>
+        <main>
+            <Banner />
+        </main>
     )
 }
 

@@ -1,0 +1,8 @@
+.Banner {
+  height: 70rem;
+  background: #fbfbfb;
+}
+
+.Banner__bg {
+  background: url(../../../../images/about-us-bg.png) no-repeat center center/contain;
+}
