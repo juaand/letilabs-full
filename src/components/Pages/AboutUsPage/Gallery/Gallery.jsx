@@ -1,5 +1,5 @@
 import './Gallery.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect, createElement} from 'react'
 import dataGallery from '../../../../data/dataGallery'
 
 function Gallery() {
@@ -15,6 +15,11 @@ function Gallery() {
         setBackImage(img)
     }
 
+    useEffect(() => {
+        const firstLi = document.querySelector('li')
+        firstLi.classList.add('active')
+    }, [])
+
     return (
         <>
             <section className="container-fluid Gallery">
@@ -25,12 +30,13 @@ function Gallery() {
             </section>
             <section className="container-fluid Gallery__nav">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-12 col-sm-6">
                         <ul>
                             {
                                 dataGallery.map(el =>
                                     <>
-                                        <li onClick={(e) => setSelectedBg(e, el.imgPath)}>{el.title}</li>
+                                        <li onClick={(e) => setSelectedBg(e, el.imgPath)}>{el.title}
+                                        </li>
                                     </>
                                 )
                             }

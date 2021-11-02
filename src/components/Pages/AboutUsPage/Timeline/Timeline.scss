@@ -4,6 +4,7 @@
 .Timeline {
   position: relative;
   padding: 0;
+  background: $leti-back;
 
   &__image {
     height: 65rem;
@@ -14,6 +15,18 @@
     flex-direction: column;
     justify-content: space-between;
     background: $leti-back;
+    position: relative;
+
+    &:after {
+      content: '';
+      width: 100%;
+      height: 4rem;
+      bottom: 0rem;
+      background: #e9eaee;
+      position: absolute;
+      right: 0;
+      z-index: 0;
+    }
   }
 
   &__year {
@@ -28,6 +41,7 @@
     padding: 2rem 0 2rem 4rem;
     font-size: 2rem;
     line-height: 3rem;
+    margin-bottom: 5rem;
   }
 
   .slick-next,
@@ -56,5 +70,40 @@
   .slick-prev {
     background: url(../../../../images/prev-arrow.svg) no-repeat center center /
       contain;
+  }
+}
+
+@media (max-width: 576px) {
+  .Timeline {
+    &__image {
+      height: 38rem;
+    }
+
+    &__year {
+      font-size: 7rem;
+      margin-left: 2rem;
+      margin-top: 7rem;
+    }
+
+    &__desc {
+      padding: 2rem 4rem 0 4rem;
+      font-size: 1.6rem;
+      line-height: 3rem;
+      margin-top: 8rem;
+    }
+
+    .slick-next {
+      transform: translate(-24rem, 8rem) !important;
+    }
+
+    .slick-prev {
+      transform: translate(6rem, 8rem) !important;
+    }
+
+    &__info {
+      &:after {
+        content: unset;
+      }
+    }
   }
 }

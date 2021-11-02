@@ -21,20 +21,61 @@
     height: 70rem;
     background: url(../../../../images/bubbles.png) no-repeat left center /
       cover;
+    background-size: 50%;
     background-attachment: fixed;
-    mask-image: url(../../../../images/triangulo-rojo.svg);
+    mask-image: url(../../../../images/mask.svg);
     mask-size: 55rem;
     mask-repeat: no-repeat;
     mask-position: top left;
+    position: absolute;
   }
 
   &__blue-stroke {
     background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat
       center center / contain;
     position: absolute;
-    width: 56rem;
-    height: 56rem;
+    width: 40rem;
+    height: 40rem;
     z-index: -1;
-    top: 15rem;
+    top: 25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Megat {
+    margin-top: 0;
+    padding-top: 0;
+
+    .row {
+      justify-content: center;
+    }
+
+    &__clip {
+      background: url(../../../../images/bubbles.png) no-repeat center center /
+        cover;
+      background-attachment: fixed;
+      mask-position: top center;
+      height: 40rem;
+      width: 55rem;
+      mask-size: 40rem;
+      left: -10rem;
+    }
+
+    &__blue-stroke {
+      position: absolute;
+      width: 30rem;
+      height: 30rem;
+      z-index: -1;
+      top: 10rem;
+    }
+
+    &__info {
+      margin-top: 50rem;
+      font-size: 1.6rem;
+    }
+
+    &__logo {
+      width: 20rem;
+    }
   }
 }

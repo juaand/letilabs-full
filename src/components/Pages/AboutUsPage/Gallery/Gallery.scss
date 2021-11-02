@@ -34,3 +34,31 @@
     text-align: right;
   }
 }
+
+@media (max-width: 576px) {
+  .Gallery {
+    padding: 0;
+
+    h1 {
+      padding: 4rem 4rem 4rem 3rem;
+      margin: 0;
+    }
+
+    &__image {
+      position: static;
+      top: 20rem;
+      right: 0;
+      height: 30rem;
+    }
+
+    &__nav {
+      text-align: left;
+      font-size: 1.8rem;
+      ul {
+        li {
+          margin: 1rem 0;
+        }
+      }
+    }
+  }
+}

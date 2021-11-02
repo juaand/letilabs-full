@@ -11,3 +11,14 @@
 .MarcandoPauta__bg {
   background: url(../../../../images/marcando-pauta.png) no-repeat center center/contain;
 }
+
+@media (max-width: 576px) {
+  .MarcandoPauta__text {
+    height: 30rem;
+    font-size: 2rem;
+  }
+  .MarcandoPauta__bg {
+    background-position: top;
+    height: 50rem;
+  }
+}
