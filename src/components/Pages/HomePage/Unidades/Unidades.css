@@ -62,6 +62,10 @@
   background-size: 3rem;
 }
 
+.Unidades__logos .Unidades__row:nth-child(5) .Unidades__logo {
+  background-size: 45rem 30rem !important;
+}
+
 @media (max-width: 576px) {
   .Unidades {
     margin: 0;

@@ -22,7 +22,7 @@ function Unidades() {
             <div className="container">
                 <h1>Nos conformamos <br />de 3 unidades<br /> de negocio</h1>
             </div>
-            <div className="container-fluid">
+            <div className="container-fluid Unidades__logos">
                 {unidadesNegocio.map(el =>
                     <>
                         {bool && n % 2 === 0 ?
@@ -31,13 +31,13 @@ function Unidades() {
                                     {el.desc}
                                     <Link to="/" className="Unidades__square-btn"></Link>
                                 </div>
-                                <div className="col-12 col-sm-4 Unidades__logo" style={{
+                                <div className="col-12 col-sm-5 Unidades__logo" style={{
                                     background: `#f5f5f5 url("./images/${el.name.toLowerCase()}.svg") no-repeat center center / contain`
                                 }}></div>
                             </div>
                             :
                             <div className="row Unidades__row">
-                                <div className="col-12 col-sm-6 Unidades__logo" style={{
+                                <div className="col-12 col-sm-5 Unidades__logo" style={{
                                     background: `#f5f5f5 url("./images/${el.name.toLowerCase()}.svg") no-repeat center center / contain`
                                 }}></div>
                                 <div className="col-12 col-sm-4 Unidades__desc">
