@@ -1,1 +1,17 @@
-/* No CSS */
+.SearchPage {
+  font-size: 1.8rem;
+}
+
+.SearchPage__bg {
+  background: url(../../../images/search-bg.png) no-repeat center top/cover;
+  padding-top: 23rem;
+}
+
+.SearchPage__form-input {
+  color: #055aa5 !important;
+  padding-bottom: 3rem;
+}
+
+.SearchPage__resultados {
+  margin: 3rem 0;
+}

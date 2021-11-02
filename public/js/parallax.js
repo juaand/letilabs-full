@@ -7,15 +7,19 @@ document.onscroll = () => {
     // Menu collapse effect
 
     if (depth > 100) {
-        document.querySelector('.navbar-brand ').classList.add('thin')
+        document.querySelector('.navbar-brand').classList.add('thin')
+        document.querySelector('.Search').classList.add('thin')
+
         if (window.screen.width <= 576) {
             document.querySelector('.Nav').classList.add('thin')
-        } 
+        }
     } else {
-        document.querySelector('.navbar-brand ').classList.remove('thin')
+        document.querySelector('.navbar-brand').classList.remove('thin')
+        document.querySelector('.Search').classList.remove('thin')
+
         if (window.screen.width <= 576) {
             document.querySelector('.Nav').classList.remove('thin')
-        } 
+        }
     }
 
 
