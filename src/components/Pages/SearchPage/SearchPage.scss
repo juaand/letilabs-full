@@ -1,0 +1,19 @@
+@import '../../../stylesheets/variables';
+
+.SearchPage {
+  font-size: 1.8rem;
+
+  &__bg {
+    background: url(../../../images/search-bg.png) no-repeat center top / cover;
+    padding-top: 23rem;
+  }
+
+  &__form-input {
+    color: $leti-blue !important;
+    padding-bottom: 3rem;
+  }
+
+  &__resultados {
+      margin: 3rem 0;
+  }
+}

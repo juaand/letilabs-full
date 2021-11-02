@@ -26,11 +26,12 @@ function Search({bool}) {
 
     const searchSubmit = (event) => {
         event.preventDefault()
-        console.log(data.search)
+
         history.push({
             pathname: '/buscar',
             state: {
                 buscar: data.search,
+                hideSearchIcon: true
             }
         })
     }
