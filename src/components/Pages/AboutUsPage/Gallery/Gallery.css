@@ -32,3 +32,26 @@
 .Gallery__nav ul li.active {
   font-weight: 600;
 }
+
+@media (max-width: 576px) {
+  .Gallery {
+    padding: 0;
+  }
+  .Gallery h1 {
+    padding: 4rem 4rem 4rem 3rem;
+    margin: 0;
+  }
+  .Gallery__image {
+    position: static;
+    top: 20rem;
+    right: 0;
+    height: 30rem;
+  }
+  .Gallery__nav {
+    text-align: left;
+    font-size: 1.8rem;
+  }
+  .Gallery__nav ul li {
+    margin: 1rem 0;
+  }
+}

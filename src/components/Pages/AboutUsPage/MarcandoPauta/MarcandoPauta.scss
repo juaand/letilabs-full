@@ -10,6 +10,21 @@
   }
 
   &__bg {
-      background: url(../../../../images/marcando-pauta.png) no-repeat center center / contain;
+    background: url(../../../../images/marcando-pauta.png) no-repeat center
+      center / contain;
+  }
+}
+
+@media (max-width: 576px) {
+  .MarcandoPauta {
+    &__text {
+      height: 30rem;
+      font-size: 2rem;
+    }
+
+    &__bg {
+      background-position: top;
+      height: 50rem;
+    }
   }
 }

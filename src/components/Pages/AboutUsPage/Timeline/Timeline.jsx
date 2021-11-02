@@ -4,6 +4,7 @@ import Slider from "react-slick"
 import TimelineData from '../../../../data/timeline'
 
 function Timeline() {
+
     let settings = {
         slidesToShow: 1,
         speed: 500,
@@ -13,7 +14,7 @@ function Timeline() {
             {
                 breakpoint: 576,
                 settings: {
-                    arrows: false,
+                    arrows: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
@@ -21,13 +22,12 @@ function Timeline() {
         ]
     }
 
-
     useEffect(() => {
         const getImageWidth = document.querySelector('.Timeline__image').offsetWidth
 
-        document.querySelector('.slick-prev').style.transform = `translate(${(getImageWidth + 50) / 10}rem, 4.5rem)`
+        document.querySelector('.slick-prev').style.transform = `translate(${(getImageWidth + 50) / 10}rem, 0rem)`
 
-        document.querySelector('.slick-next').style.transform = `translate(${(-getImageWidth * (.08))}rem, 4.5rem)`
+        document.querySelector('.slick-next').style.transform = `translate(${(-getImageWidth * (.08))}rem, 0rem)`
 
     }, [])
 
@@ -43,7 +43,8 @@ function Timeline() {
                             <div className="col-12 col-sm-6 Timeline__info">
                                 <div className="Timeline__year">{el.year}</div>
                                 <div className="row">
-                                    <h3 className="col-12 col-sm-7 Timeline__desc">{el.desc}</h3>
+                                    <p className="col-12 col-sm-7 Timeline__desc" dangerouslySetInnerHTML={{__html: el.desc}}>
+                                    </p>
                                 </div>
                             </div>
                         </div>
