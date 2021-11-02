@@ -73,6 +73,11 @@
     margin: 0;
     margin-top: 20rem;
 
+    .big-gray-triangle,
+    .small-gray-triangle {
+      display: none;
+    }
+
     &__row {
       margin: 4rem 0;
     }

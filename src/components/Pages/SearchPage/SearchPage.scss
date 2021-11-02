@@ -14,6 +14,18 @@
   }
 
   &__resultados {
-      margin: 3rem 0;
+    margin: 3rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .SearchPage {
+    font-size: 1.6rem;
+
+    &__bg {
+      background: url(../../../images/search-bg.png) no-repeat center top /
+        cover;
+      padding-top: 10rem;
+    }
   }
 }

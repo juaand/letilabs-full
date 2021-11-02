@@ -39,3 +39,18 @@
   background-color: transparent;
   outline: none;
 }
+
+@media (max-width: 576px) {
+  .Search.show {
+    top: 10rem;
+    height: 10rem;
+  }
+  .Search.show.thin {
+    top: 5rem;
+  }
+  .Search__form-input {
+    background-position: 1rem 0.5rem;
+    background-size: 2.4rem;
+    font-size: 1.6rem;
+  }
+}

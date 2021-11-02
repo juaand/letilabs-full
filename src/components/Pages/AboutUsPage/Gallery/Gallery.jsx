@@ -7,7 +7,7 @@ function Gallery() {
     const [backImage, setBackImage] = useState(dataGallery[0].imgPath)
 
     const setSelectedBg = (e, img) => {
-        console.log(e.target)
+
         document.querySelectorAll('.active').forEach(el => {
             el.classList.remove('active')
         })

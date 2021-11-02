@@ -40,3 +40,24 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .Search {
+    &.show {
+      top: 10rem;
+      height: 10rem;
+
+      &.thin {
+        top: 5rem;
+      }
+    }
+
+    &__form {
+      &-input {
+        background-position: 1rem 0.5rem;
+        background-size: 2.4rem;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}

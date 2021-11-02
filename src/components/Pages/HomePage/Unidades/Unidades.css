@@ -67,6 +67,10 @@
     margin: 0;
     margin-top: 20rem;
   }
+  .Unidades .big-gray-triangle,
+  .Unidades .small-gray-triangle {
+    display: none;
+  }
   .Unidades__row {
     margin: 4rem 0;
   }
