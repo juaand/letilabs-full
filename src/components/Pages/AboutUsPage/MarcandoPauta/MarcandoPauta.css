@@ -9,7 +9,7 @@
 }
 
 .MarcandoPauta__bg {
-  background: url(../../../../images/marcando-pauta.png) no-repeat center center/contain;
+  background: url(../../../../images/marcando-pauta.png) no-repeat center bottom/cover;
 }
 
 @media (max-width: 576px) {

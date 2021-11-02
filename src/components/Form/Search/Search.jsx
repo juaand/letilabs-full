@@ -38,19 +38,21 @@ function Search({bool}) {
 
     return (
         <section className={`container-fluid Search ${bool && 'show'}`}>
-            <form onSubmit={searchSubmit} className="container d-flex align-items-center">
-                <div className="Search__form">
-                    <InputWithLabel
-                        value={data.search}
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        name="search"
-                        type="text"
-                        className="Search__form-input"
-                        placeholder="Buscar..."
-                    />
-                </div>
-            </form>
+            <div className="row">
+                <form onSubmit={searchSubmit} className="container d-flex align-items-center">
+                    <div className="Search__form">
+                        <InputWithLabel
+                            value={data.search}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="search"
+                            type="text"
+                            className="Search__form-input"
+                            placeholder="Buscar..."
+                        />
+                    </div>
+                </form>
+            </div>
         </section>
     )
 }

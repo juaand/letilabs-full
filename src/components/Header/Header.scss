@@ -10,7 +10,8 @@
   &__logo {
     position: relative;
     .navbar-brand {
-      background: url(../../images/leti.svg) no-repeat center center / contain;
+      background: url(../../images/grupo-leti.svg) no-repeat center center /
+        contain;
       width: 18rem;
       height: 6rem;
       display: block;
@@ -18,8 +19,8 @@
       transition: all 0.3s;
 
       &.thin {
-        width: 12rem;
-        height: 3rem;
+        width: 15rem;
+        height: 5rem;
         margin: 1rem auto;
       }
     }
@@ -48,7 +49,7 @@
 
 @media (max-width: 576px) {
   .Header {
-    box-shadow: 0 0.2rem 0.4rem 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
     &__search {
       width: 2.4rem;
       height: 2.4rem;

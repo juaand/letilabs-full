@@ -16,24 +16,26 @@
 }
 
 .Megat__clip {
-  height: 70rem;
+  height: 90rem;
   background: url(../../../../images/bubbles.png) no-repeat left center/cover;
   background-size: 50%;
   background-attachment: fixed;
   mask-image: url(../../../../images/mask.svg);
-  mask-size: 55rem;
+  mask-size: 90rem;
   mask-repeat: no-repeat;
   mask-position: top left;
   position: absolute;
+  top: -30rem;
+  left: -30rem;
 }
 
 .Megat__blue-stroke {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   position: absolute;
-  width: 40rem;
-  height: 40rem;
+  width: 60rem;
+  height: 60rem;
   z-index: -1;
-  top: 25rem;
+  top: -15rem;
 }
 
 @media (max-width: 576px) {
@@ -52,13 +54,14 @@
     width: 55rem;
     mask-size: 40rem;
     left: -10rem;
+    top: 0rem;
   }
   .Megat__blue-stroke {
     position: absolute;
     width: 30rem;
     height: 30rem;
     z-index: -1;
-    top: 10rem;
+    top: 5rem;
   }
   .Megat__info {
     margin-top: 50rem;
