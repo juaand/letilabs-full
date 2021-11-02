@@ -11,7 +11,7 @@
 }
 
 .Header__logo .navbar-brand {
-  background: url(../../images/leti.svg) no-repeat center center/contain;
+  background: url(../../images/grupo-leti.svg) no-repeat center center/contain;
   width: 18rem;
   height: 6rem;
   display: block;
@@ -20,8 +20,8 @@
 }
 
 .Header__logo .navbar-brand.thin {
-  width: 12rem;
-  height: 3rem;
+  width: 15rem;
+  height: 5rem;
   margin: 1rem auto;
 }
 
