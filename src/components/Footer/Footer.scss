@@ -6,8 +6,7 @@
   font-size: 1.8rem;
 
   &__logo {
-    background: url(../../images/grupo-leti.svg) no-repeat center center /
-      contain;
+    background: url(../../images/grupo-leti.svg) no-repeat left center / contain;
     height: 7rem;
   }
 
@@ -24,6 +23,10 @@
       a {
         color: $leti-nav;
         text-decoration: none;
+
+        &:hover {
+          color: $leti-red;
+        }
       }
     }
   }

@@ -5,7 +5,7 @@
 }
 
 .Footer__logo {
-  background: url(../../images/grupo-leti.svg) no-repeat center center/contain;
+  background: url(../../images/grupo-leti.svg) no-repeat left center/contain;
   height: 7rem;
 }
 
@@ -26,6 +26,10 @@
 .Footer__nav li a {
   color: #737b7f;
   text-decoration: none;
+}
+
+.Footer__nav li a:hover {
+  color: #cd202f;
 }
 
 .Footer__copy {
