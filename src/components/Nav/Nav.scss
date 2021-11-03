@@ -6,10 +6,17 @@
     font-weight: 500;
     color: $leti-nav;
     font-size: 1.6rem;
+    line-height: 2rem;
+  }
+
+  .navbar-nav {
+    display: flex;
+    align-items: center;
   }
 
   .nav-link {
-    margin: 0 3rem;
+    margin: 0 2rem;
+    text-align: center;
   }
 }
 

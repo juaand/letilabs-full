@@ -4,10 +4,17 @@
   font-weight: 500;
   color: #737b7f;
   font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.Nav .navbar-nav {
+  display: flex;
+  align-items: center;
 }
 
 .Nav .nav-link {
-  margin: 0 3rem;
+  margin: 0 2rem;
+  text-align: center;
 }
 
 @media (max-width: 576px) {
