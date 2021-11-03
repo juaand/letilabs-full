@@ -56,10 +56,7 @@
 
     .navbar-nav {
       padding-bottom: 2rem;
-    }
-
-    .nav-link {
-      text-align: left;
+      align-items: flex-start;
     }
   }
 }

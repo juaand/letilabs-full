@@ -48,8 +48,6 @@
   }
   .Nav .navbar-nav {
     padding-bottom: 2rem;
-  }
-  .Nav .nav-link {
-    text-align: left;
+    align-items: flex-start;
   }
 }
