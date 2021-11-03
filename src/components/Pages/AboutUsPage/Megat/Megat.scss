@@ -55,7 +55,7 @@
     &__clip {
       background: url(../../../../images/bubbles.png) no-repeat top center /
         cover;
-      background-attachment: scroll;
+      background-attachment: fixed;
       mask-position: top center;
       height: 40rem;
       width: 55rem;
