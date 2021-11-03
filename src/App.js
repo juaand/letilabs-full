@@ -15,14 +15,14 @@ function App() {
   // const {user} = useAuthContext()
 
   return (
-    <div className="App">
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
-        <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
-        <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
-        {/*  <Route exact path="/register" login component={Register} />
+      <div className="App">
+        <Header />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
+          <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
+          <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
+          {/*  <Route exact path="/register" login component={Register} />
         <Route exact path='/activate/:token' render={(props) => <Login {...props} confirmed />} />
         <AuthenticatedRoute exact path="/pacientes" render={(props) => <Patients {...props} user={user} />} />
         <AuthenticatedRoute exact path="/biopsias" render={(props) => <MyInfo {...props} user={user} />} />
@@ -31,10 +31,10 @@ function App() {
         <AuthenticatedRoute exact path="/nueva-biopsia" render={(props) => <NewBiopsy {...props} user={user} />} />
         <AuthenticatedRoute exact path="/nuevo-paciente" render={(props) => <NewPatient {...props} user={user} />} />
         {/* {user && <Redirect to='/biopsias' />} */}
-        {/* {!user && <Redirect to='/login' />} */}
-      </Switch>
-      <Footer />
-    </div>
+          {/* {!user && <Redirect to='/login' />} */}
+        </Switch>
+        <Footer />
+      </div>
   )
 }
 

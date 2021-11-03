@@ -18,6 +18,9 @@
   }
 
   &__clip {
+    position: absolute;
+    top: -30rem;
+    left: -30rem;
     height: 90rem;
     background: url(../../../../images/bubbles.png) no-repeat left center /
       cover;
@@ -27,9 +30,6 @@
     mask-size: 90rem;
     mask-repeat: no-repeat;
     mask-position: top left;
-    position: absolute;
-    top: -30rem;
-    left: -30rem;
   }
 
   &__blue-stroke {
