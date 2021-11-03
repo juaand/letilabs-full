@@ -12,7 +12,7 @@ http.interceptors.response.use(
     function (error) {
         if (error.response?.status === 401) {
             localStorage.clear()
-            window.location.assign("/login")
+            window.location.assign("/admin")
         }
 
         return Promise.reject(error)
@@ -20,44 +20,46 @@ http.interceptors.response.use(
 )
 
 //admin.routes
-export const getAllbiopsies = () => http.get('/biopsies')
-export const getAllPatients = () => http.get('/patients')
-export const deleteDate = (dateId) => http.get(`/delete-date/${dateId}`)
-export const getPatientHistories = (id) => http.get(`/histories/${id}`)
-export const createDate = ({userId, date}) => http.post("/add-date", {userId, date})
-export const addPatient = ({
-    name,
-    email,
-    dni,
-    address,
-    zipcode,
-    city,
-    phone,
-    birthdate,
-    sex,
-    work,
-    insurance_carrier,
-    marital_status
-}) => http.post('/patient/add', {
-    name,
-    email,
-    dni,
-    address,
-    zipcode,
-    city,
-    phone,
-    birthdate,
-    sex,
-    work,
-    insurance_carrier,
-    marital_status
-})
+// export const getAllbiopsies = () => http.get('/biopsies')
+// export const getAllPatients = () => http.get('/patients')
+// export const deleteDate = (dateId) => http.get(`/delete-date/${dateId}`)
+// export const getPatientHistories = (id) => http.get(`/histories/${id}`)
+// export const createDate = ({userId, date}) => http.post("/add-date", {userId, date})
+// export const addPatient = ({
+//     name,
+//     email,
+//     dni,
+//     address,
+//     zipcode,
+//     city,
+//     phone,
+//     birthdate,
+//     sex,
+//     work,
+//     insurance_carrier,
+//     marital_status
+// }) => http.post('/patient/add', {
+//     name,
+//     email,
+//     dni,
+//     address,
+//     zipcode,
+//     city,
+//     phone,
+//     birthdate,
+//     sex,
+//     work,
+//     insurance_carrier,
+//     marital_status
+// })
 
 //user.routes
-export const login = ({email, password}) =>
-    http.post("/login", {email, password})
+export const doLogin = ({email, password}) =>
+    http.post("/admin", {email, password})
 export const logOut = () => http.post("/logout")
-export const activateUser = (token) => http.get(`/activate/${token}`)
+
+//admin.routes
+export const edit = () => http.get("/admin/edit")
 
 //biopsy.routes
 export const dropBiopsy = (id) => http.get(`/biopsy/${id}/delete`)

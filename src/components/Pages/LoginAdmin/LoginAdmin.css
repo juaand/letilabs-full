@@ -1,0 +1,135 @@
+.Modal {
+  position: fixed;
+  width: 100vw;
+  height: 100%;
+  background: rgba(53, 57, 110, 0.9);
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  z-index: 10;
+}
+
+.Modal__header {
+  height: 14rem;
+  width: 100%;
+  margin-bottom: 2.4rem;
+  border-radius: 0.8rem 0.8rem 0 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-bottom: solid 0.3rem #ea7676;
+}
+
+.Modal__header__login {
+  background: url(../../../images/login.jpg) no-repeat center center/cover;
+}
+
+.Modal__header__register {
+  background: url(../../../images/register.jpg) no-repeat center center/cover;
+}
+
+.Modal__form {
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.8);
+  color: #FFF;
+}
+
+.Modal__body {
+  background: #FFF;
+  padding: 3rem 0;
+  border-radius: 0.8rem;
+  position: relative;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  padding-top: 16rem;
+}
+
+.Modal__body__info {
+  max-height: 55rem;
+  overflow: scroll;
+  padding: 0 3rem;
+}
+
+.Modal__body__info_register {
+  max-height: 52rem;
+}
+
+.Modal__close {
+  position: absolute;
+  top: -6rem;
+  right: 0rem;
+  background: url(../../../images/times.svg) no-repeat center center/contain;
+  width: 4rem;
+  height: 4rem;
+  content: '';
+  display: block;
+}
+
+.Modal__close:hover {
+  cursor: pointer;
+}
+
+.Modal__register {
+  color: #35396e;
+  text-align: center;
+  margin-top: 3.2rem;
+}
+
+.Modal__register span {
+  color: #ea7676;
+}
+
+.Modal__register span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.Modal__alert {
+  background: none;
+  border: 0;
+  color: #ea7676;
+  text-align: center;
+  margin-top: 0.8rem;
+}
+
+.Modal__google_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 4.5rem;
+  background: #35396e;
+  border-radius: 4rem;
+  color: #FFF;
+  text-decoration: none;
+  margin: 3rem auto;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+  border: 0;
+  padding: 0.8rem 2.4rem;
+}
+
+.Modal__google_btn:hover {
+  color: #FFF;
+  background: #ea7676;
+}
+
+.Modal__google_btn svg {
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+}
+/*# sourceMappingURL=LoginAdmin.css.map */

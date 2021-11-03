@@ -35,16 +35,27 @@
 }
 
 .Unidades__desc {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   padding: 0 3rem;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .Unidades__desc__right {
   text-align: right;
-  align-items: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .Unidades__square-btn {
@@ -54,6 +65,7 @@
   border: solid 0.15rem #055aa5;
   background-size: 3rem;
   margin-top: 3rem;
+  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
@@ -93,3 +105,4 @@
     background-size: 24rem 10rem !important;
   }
 }
+/*# sourceMappingURL=Unidades.css.map */

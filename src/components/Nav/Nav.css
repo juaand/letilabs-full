@@ -3,8 +3,11 @@
 }
 
 .Nav__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   font-weight: 500;
   color: #737b7f;
   font-size: 1.6rem;
@@ -12,8 +15,12 @@
 }
 
 .Nav .navbar-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .Nav .nav-link {
@@ -48,8 +55,12 @@
 .Nav__sub-nav a {
   color: #055aa5;
   text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .Nav__sub-nav-cta:after {
@@ -60,6 +71,7 @@
   margin-top: 0.4rem;
   background: url(../../images/sub-nav-arrow.svg) no-repeat center center/contain;
   margin-left: 0.8rem;
+  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
@@ -84,6 +96,7 @@
     position: absolute;
     top: 3rem;
     left: 2rem;
+    -webkit-transition: all 0.3s;
     transition: all 0.3s;
   }
   .Nav__nav {
@@ -110,6 +123,9 @@
   }
   .Nav .navbar-nav {
     padding-bottom: 2rem;
-    align-items: flex-start;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
 }
+/*# sourceMappingURL=Nav.css.map */

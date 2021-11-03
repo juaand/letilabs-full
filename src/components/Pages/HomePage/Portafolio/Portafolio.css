@@ -19,12 +19,17 @@
   top: -15rem;
   right: -65rem;
   color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding-left: 10rem;
   padding-right: 90rem;
   padding-top: 10rem;
-  transform: rotate(0);
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
 }
 
 .Portafolio .big-red-triangle h1 {
@@ -38,7 +43,8 @@
   background: url(../../../../images/triangulo-azul.svg) no-repeat center center/contain;
   top: -30rem;
   right: -75rem;
-  transform: rotate(0);
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
 }
 
 @media (max-width: 576px) {
@@ -47,7 +53,9 @@
     margin-top: 20rem;
   }
   .Portafolio .row {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .Portafolio h2 {
     font-size: 2.2rem;
@@ -76,3 +84,4 @@
     z-index: 0;
   }
 }
+/*# sourceMappingURL=Portafolio.css.map */
