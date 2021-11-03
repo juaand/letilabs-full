@@ -1,5 +1,5 @@
 import './Home.css'
-import React from 'react'
+import React, {useEffect} from 'react'
 import Video from './Video/Video'
 import UsInfo from './UsInfo/UsInfo'
 import Carousel from './Carousel/Carousel'
@@ -9,6 +9,11 @@ import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 
 
 function Home() {
+
+    useEffect(() => {
+        document.title = "Grupo Leti | Inicio"
+    }, [])
+
     return (
         <main>
             <Video />
