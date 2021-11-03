@@ -47,9 +47,7 @@
     justify-content: center;
   }
   .Megat__clip {
-    background: url(../../../../images/bubbles.png) no-repeat bottom center/cover;
-    background-size: 100%;
-    background-attachment: fixed;
+    background: url(../../../../images/bubbles.png) no-repeat center bottom/cover;
     mask-position: top center;
     height: 40rem;
     width: 55rem;
