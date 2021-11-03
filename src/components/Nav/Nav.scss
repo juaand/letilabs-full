@@ -1,5 +1,8 @@
 @import '../../stylesheets/variables';
+
 .Nav {
+  position: relative;
+  
   &__nav {
     display: flex;
     justify-content: space-around;
@@ -17,6 +20,71 @@
   .nav-link {
     margin: 0 2rem;
     text-align: center;
+    border-bottom: solid 0.3rem transparent;
+
+    &:hover {
+      border-bottom: solid 0.3rem $leti-blue;
+    }
+  }
+
+  &__sub-nav {
+    background: $leti-subnav;
+    position: absolute;
+    top: -0.4rem;
+    padding: 4rem;
+    font-size: 1.6rem;
+    display: block;
+
+    h3 {
+      font-size: 2.4rem;
+      margin-bottom: 3rem;
+    }
+
+    p {
+      margin-bottom: 3rem;
+      padding-right: 3rem;
+    }
+
+    a {
+      color: $leti-blue;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    &-cta {
+      &:after {
+        content: '';
+        display: inline-block;
+        width: 0.8rem;
+        height: 0.8rem;
+        margin-top: 0.4rem;
+        background: url(../../images/sub-nav-arrow.svg) no-repeat center center /
+          contain;
+        margin-left: 0.8rem;
+        transition: all 200ms ease-in-out;
+      }
+
+      &:hover {
+        &:after {
+          margin-left: 1.6rem;
+        }
+      }
+    }
+
+    &-info {
+      border-right: solid 0.1rem $leti-text;
+    }
+
+    &-anchors {
+      padding-left: 3rem;
+
+      a {
+        &:hover {
+          color: $leti-red;
+        }
+      }
+    }
   }
 }
 

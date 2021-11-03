@@ -1,3 +1,7 @@
+.Nav {
+  position: relative;
+}
+
 .Nav__nav {
   display: flex;
   justify-content: space-around;
@@ -15,6 +19,64 @@
 .Nav .nav-link {
   margin: 0 2rem;
   text-align: center;
+  border-bottom: solid 0.3rem transparent;
+}
+
+.Nav .nav-link:hover {
+  border-bottom: solid 0.3rem #055aa5;
+}
+
+.Nav__sub-nav {
+  background: #E9EAEE;
+  position: absolute;
+  top: -0.4rem;
+  padding: 4rem;
+  font-size: 1.6rem;
+  display: block;
+}
+
+.Nav__sub-nav h3 {
+  font-size: 2.4rem;
+  margin-bottom: 3rem;
+}
+
+.Nav__sub-nav p {
+  margin-bottom: 3rem;
+  padding-right: 3rem;
+}
+
+.Nav__sub-nav a {
+  color: #055aa5;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.Nav__sub-nav-cta:after {
+  content: '';
+  display: inline-block;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-top: 0.4rem;
+  background: url(../../images/sub-nav-arrow.svg) no-repeat center center/contain;
+  margin-left: 0.8rem;
+  transition: all 200ms ease-in-out;
+}
+
+.Nav__sub-nav-cta:hover:after {
+  margin-left: 1.6rem;
+}
+
+.Nav__sub-nav-info {
+  border-right: solid 0.1rem #4a4a4a;
+}
+
+.Nav__sub-nav-anchors {
+  padding-left: 3rem;
+}
+
+.Nav__sub-nav-anchors a:hover {
+  color: #cd202f;
 }
 
 @media (max-width: 576px) {
