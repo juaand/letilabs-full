@@ -2,7 +2,7 @@
 
 .Nav {
   position: relative;
-  
+
   &__nav {
     display: flex;
     justify-content: space-around;
@@ -91,13 +91,13 @@
 @media (max-width: 576px) {
   .Nav {
     position: absolute;
-    top: 3rem;
+    top: 5rem;
     left: 2rem;
     transition: all 0.3s;
 
     &__nav {
       display: unset;
-      top: 7rem;
+      top: 5rem;
       position: absolute;
       left: -2rem;
       width: 576px;
@@ -105,12 +105,16 @@
     }
 
     &.thin {
-      top: 1rem;
+      top: 2rem;
+      .navbar-toggler {
+        margin-top: 0;
+      }
     }
 
     .navbar-toggler {
       border: 0;
       outline: unset;
+      margin-top: -1rem;
 
       &:focus {
         outline: none;
@@ -123,8 +127,72 @@
     }
 
     .navbar-nav {
-      padding-bottom: 2rem;
       align-items: flex-start;
+      background: $leti-subnav;
+      height: 92vh;
+      display: flex;
+      justify-content: space-around;
+      padding-bottom: 8rem;
+      padding-top: 2rem;
+
+      a {
+        color: $leti-blue !important;
+        display: inline-flex;
+        position: relative;
+        width: 58%;
+
+        &:after {
+          position: absolute;
+          content: '';
+          width: 0.8rem;
+          height: 0.8rem;
+          margin-top: 0.7rem;
+          background: url(../../images/sub-nav-arrow.svg) no-repeat 0 center /
+            contain;
+          right: 0;
+        }
+      }
+    }
+
+    &__sub-nav {
+      width: 576px !important;
+      left: -2rem !important;
+      height: 92vh;
+      top: 5rem !important;
+      padding: 0;
+
+      .row {
+        justify-content: center;
+      }
+
+      &-device {
+        display: flex;
+        align-items: center;
+
+        &:before {
+          content: '';
+          width: 0.8rem;
+          height: 0.8rem;
+          margin-right: 0.8rem;
+          background: url(../../images/back-arrow.svg) no-repeat 0 center /
+            contain;
+        }
+      }
+
+      &-info {
+        padding: 0.8rem 4rem 4rem 4rem;
+        border-right: 0;
+        border-bottom: solid 0.1rem $leti-text;
+
+        p {
+          padding-right: 19rem;
+        }
+      }
+
+      &-anchors {
+        padding-top: 3rem;
+        padding-left: 4rem;
+      }
     }
   }
 }

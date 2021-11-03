@@ -82,24 +82,28 @@
 @media (max-width: 576px) {
   .Nav {
     position: absolute;
-    top: 3rem;
+    top: 5rem;
     left: 2rem;
     transition: all 0.3s;
   }
   .Nav__nav {
     display: unset;
-    top: 7rem;
+    top: 5rem;
     position: absolute;
     left: -2rem;
     width: 576px;
     background: #fff;
   }
   .Nav.thin {
-    top: 1rem;
+    top: 2rem;
+  }
+  .Nav.thin .navbar-toggler {
+    margin-top: 0;
   }
   .Nav .navbar-toggler {
     border: 0;
     outline: unset;
+    margin-top: -1rem;
   }
   .Nav .navbar-toggler:focus {
     outline: none;
@@ -109,7 +113,60 @@
     background-image: url(../../images/toggler.svg);
   }
   .Nav .navbar-nav {
-    padding-bottom: 2rem;
     align-items: flex-start;
+    background: #E9EAEE;
+    height: 92vh;
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 8rem;
+    padding-top: 2rem;
+  }
+  .Nav .navbar-nav a {
+    color: #055aa5 !important;
+    display: inline-flex;
+    position: relative;
+    width: 58%;
+  }
+  .Nav .navbar-nav a:after {
+    position: absolute;
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-top: 0.7rem;
+    background: url(../../images/sub-nav-arrow.svg) no-repeat 0 center/contain;
+    right: 0;
+  }
+  .Nav__sub-nav {
+    width: 576px !important;
+    left: -2rem !important;
+    height: 92vh;
+    top: 5rem !important;
+    padding: 0;
+  }
+  .Nav__sub-nav .row {
+    justify-content: center;
+  }
+  .Nav__sub-nav-device {
+    display: flex;
+    align-items: center;
+  }
+  .Nav__sub-nav-device:before {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-right: 0.8rem;
+    background: url(../../images/back-arrow.svg) no-repeat 0 center/contain;
+  }
+  .Nav__sub-nav-info {
+    padding: 0.8rem 4rem 4rem 4rem;
+    border-right: 0;
+    border-bottom: solid 0.1rem #4a4a4a;
+  }
+  .Nav__sub-nav-info p {
+    padding-right: 19rem;
+  }
+  .Nav__sub-nav-anchors {
+    padding-top: 3rem;
+    padding-left: 4rem;
   }
 }

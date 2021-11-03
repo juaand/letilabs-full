@@ -21,8 +21,11 @@ function Nav({initSearch}) {
     const [subNavData, setSubNavData] = useState()
     const [subNavSet, setSubNavSet] = useState({})
     const [bool, setBool] = useState(false)
+    const [isDevice, setIsDevice] = useState(false)
 
     const showSubNav = (e, data) => {
+
+        console.log('hago click')
 
         e.target.classList.add('open')
 
@@ -33,7 +36,22 @@ function Nav({initSearch}) {
         setSubNavData(data)
     }
 
+    const hideMenu = () => {
+        console.log('kk')
+        const isMenuOpen = document.querySelector('.show')
+
+        if (isMenuOpen) {
+            isMenuOpen.classList.remove('show')
+            setBool(!bool)
+        }
+    }
+
     useEffect(() => {
+
+        if (window.screen.width <= 576) {
+            setIsDevice(!isDevice)
+        }
+
         const getNavW = document.querySelector('.navbar-nav').offsetWidth
         const getNavH = document.querySelector('.navbar-nav').offsetHeight
         const getNav = document.querySelector('.navbar-nav').getBoundingClientRect()
@@ -75,22 +93,22 @@ function Nav({initSearch}) {
                 </div>
             </nav>
             {bool &&
-                <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(false)}>
+                <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(!bool)}>
                     <div className="Nav__sub-nav" style={{
                         width: subNavSet.width,
                         left: subNavSet.x,
                         top: subNavSet.top
                     }}>
-                    {console.log(subNavSet)}
                         <div className="row">
-                            <div className="col-4 Nav__sub-nav-info">
+                            <div className="col-12 col-sm-4 Nav__sub-nav-info">
+                                {isDevice && <p onClick={() => setBool(!bool)} className="Nav__sub-nav-device">Atrás</p>}
                                 <h3>{subNavData.title}</h3>
                                 <p>{subNavData.desc}</p>
-                                <Link className="Nav__sub-nav-cta" to={seoURL(subNavData.nav_btn)}>{subNavData.nav_cta}</Link>
+                                <Link onClick={hideMenu} className="Nav__sub-nav-cta" to={seoURL(subNavData.nav_btn)}>{subNavData.nav_cta}</Link>
                             </div>
-                            <div className="col-4 Nav__sub-nav-anchors">
+                            <div className="col-12 col-sm-4 Nav__sub-nav-anchors">
                                 {subNavData.sub_nav.map(el =>
-                                    <Link to={`${seoURL(subNavData.nav_btn)}#${seoURL(el.sub_text)}`}>{el.sub_text}</Link>
+                                    <Link onClick={hideMenu} to={`${seoURL(subNavData.nav_btn)}#${seoURL(el.sub_text)}`}>{el.sub_text}</Link>
                                 )}
                             </div>
                         </div>
