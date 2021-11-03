@@ -86,4 +86,7 @@
     min-height: 18rem;
     background-size: 15rem !important;
   }
+  .Unidades__logos .Unidades__row:nth-child(5) .Unidades__logo {
+    background-size: unset !important;
+  }
 }
