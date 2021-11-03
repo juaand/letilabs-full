@@ -3,8 +3,12 @@
 }
 
 .MarcandoPauta__text {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 68rem;
 }
 
@@ -22,3 +26,4 @@
     height: 50rem;
   }
 }
+/*# sourceMappingURL=MarcandoPauta.css.map */

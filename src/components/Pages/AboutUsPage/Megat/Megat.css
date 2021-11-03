@@ -23,10 +23,14 @@
   background: url(../../../../images/bubbles.png) no-repeat left center/cover;
   background-size: 50%;
   background-attachment: fixed;
-  mask-image: url(../../../../images/mask.svg);
-  mask-size: 90rem;
-  mask-repeat: no-repeat;
-  mask-position: top left;
+  -webkit-mask-image: url(../../../../images/mask.svg);
+          mask-image: url(../../../../images/mask.svg);
+  -webkit-mask-size: 90rem;
+          mask-size: 90rem;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-position: top left;
+          mask-position: top left;
 }
 
 .Megat__blue-stroke {
@@ -44,14 +48,18 @@
     padding-top: 0;
   }
   .Megat .row {
-    justify-content: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
   .Megat__clip {
     background: url(../../../../images/bubbles.png) no-repeat center bottom/cover;
-    mask-position: top center;
+    -webkit-mask-position: top center;
+            mask-position: top center;
     height: 40rem;
     width: 55rem;
-    mask-size: 40rem;
+    -webkit-mask-size: 40rem;
+            mask-size: 40rem;
     left: -10rem;
     top: 0rem;
     background-repeat: repeat-y;
@@ -71,3 +79,4 @@
     width: 20rem;
   }
 }
+/*# sourceMappingURL=Megat.css.map */

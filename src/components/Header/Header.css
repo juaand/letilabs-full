@@ -16,6 +16,7 @@
   height: 6rem;
   display: block;
   margin: 2rem auto;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
 
@@ -47,7 +48,8 @@
 
 @media (max-width: 576px) {
   .Header {
-    box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
   }
   .Header__search {
     width: 2.4rem;
@@ -56,3 +58,4 @@
     margin-top: -1rem;
   }
 }
+/*# sourceMappingURL=Header.css.map */
