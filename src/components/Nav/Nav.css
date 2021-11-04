@@ -3,11 +3,8 @@
 }
 
 .Nav__nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  justify-content: space-around;
   font-weight: 500;
   color: #737b7f;
   font-size: 1.6rem;
@@ -15,12 +12,8 @@
 }
 
 .Nav .navbar-nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .Nav .nav-link {
@@ -55,12 +48,8 @@
 .Nav__sub-nav a {
   color: #055aa5;
   text-decoration: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
 
 .Nav__sub-nav-cta:after {
@@ -71,7 +60,6 @@
   margin-top: 0.4rem;
   background: url(../../images/sub-nav-arrow.svg) no-repeat center center/contain;
   margin-left: 0.8rem;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
@@ -96,7 +84,6 @@
     position: absolute;
     top: 5rem;
     left: 2rem;
-    -webkit-transition: all 0.3s;
     transition: all 0.3s;
   }
   .Nav__nav {
@@ -131,7 +118,7 @@
     height: 92vh;
     display: flex;
     justify-content: space-around;
-    padding-bottom: 8rem;
+    padding-bottom: 12rem;
     padding-top: 2rem;
   }
   .Nav .navbar-nav a {
@@ -183,4 +170,3 @@
     padding-left: 4rem;
   }
 }
-/*# sourceMappingURL=Nav.css.map */
