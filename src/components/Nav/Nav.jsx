@@ -12,6 +12,7 @@ function Nav({initSearch}) {
             .replace(/\s+/g, '-')            // Change whitespace to dashes
             .toLowerCase()                  // Change to lowercase
             .replace(/&/g, '-and-')          // Replace ampersand
+            // eslint-disable-next-line
             .replace(/[^a-z0-9\-]/g, '')     // Remove anything that is not a letter, number or dash
             .replace(/-+/g, '-')             // Remove duplicate dashes
             .replace(/^-*/, '')              // Remove starting dashes
