@@ -36,6 +36,7 @@ function Nav({initSearch}) {
     }
 
     const hideMenu = () => {
+
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {

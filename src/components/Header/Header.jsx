@@ -7,9 +7,14 @@ import Search from '../Form/Search/Search'
 function Header() {
 
     const [bool, setBool] = useState(false)
+    const [hideOnDevice, setHideOnDevice] = useState(false)
 
     const showSearch = () => {
         setBool(!bool)
+
+        if (window.screen.width <= 576) {
+            setHideOnDevice(!hideOnDevice)
+        }
     }
 
     return (
@@ -23,7 +28,7 @@ function Header() {
                         </div>
                     </div>
                 </div>
-                <Nav initSearch={() => setBool(false)} />
+               {!hideOnDevice && <Nav initSearch={() => setBool(false)} />} 
             </header>
             <Search bool={bool} />
         </>
