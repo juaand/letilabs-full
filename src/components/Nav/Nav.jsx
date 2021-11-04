@@ -63,6 +63,7 @@ function Nav({initSearch}) {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+
     return (
         <section className="Nav" onMouseLeave={() => setBool(false)}>
             <nav className="navbar navbar-expand-lg navbar-light p-0">
