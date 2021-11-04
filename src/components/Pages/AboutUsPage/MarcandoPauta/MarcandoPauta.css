@@ -3,21 +3,20 @@
 }
 
 .MarcandoPauta__text {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 68rem;
+  align-items: center;
+  height: 80rem;
+  font-size: 3rem;
+  line-height: 4.4rem;
 }
 
 .MarcandoPauta__bg {
-  background: url(../../../../images/marcando-pauta.png) no-repeat center bottom/cover;
+  background: url(../../../../images/marcando-pauta.png) no-repeat right bottom/contain;
 }
 
 @media (max-width: 576px) {
   .MarcandoPauta__text {
+    margin-top: 3rem;
     height: 30rem;
     font-size: 2rem;
   }
@@ -26,4 +25,3 @@
     height: 50rem;
   }
 }
-/*# sourceMappingURL=MarcandoPauta.css.map */

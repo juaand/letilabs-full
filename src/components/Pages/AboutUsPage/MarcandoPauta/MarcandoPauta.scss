@@ -6,18 +6,21 @@
   &__text {
     display: flex;
     align-items: center;
-    height: 68rem;
+    height: 80rem;
+    font-size: 3rem;
+    line-height: 4.4rem;
   }
 
   &__bg {
-    background: url(../../../../images/marcando-pauta.png) no-repeat center
-      bottom / cover;
+    background: url(../../../../images/marcando-pauta.png) no-repeat right
+      bottom / contain;
   }
 }
 
 @media (max-width: 576px) {
   .MarcandoPauta {
     &__text {
+      margin-top: 3rem;
       height: 30rem;
       font-size: 2rem;
     }
