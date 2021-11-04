@@ -35,7 +35,7 @@ function SearchPage(props) {
         if (hideSearchIcon) {
             document.querySelector('.Header__search').classList.remove('Header__search-close')
         }
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
