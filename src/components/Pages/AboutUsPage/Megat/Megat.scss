@@ -22,9 +22,10 @@
     top: -30rem;
     left: -30rem;
     height: 90rem;
+    width: 100%;
     background: url(../../../../images/bubbles.png) no-repeat left center /
       cover;
-    background-size: 50%;
+    background-size: 40%;
     background-attachment: fixed;
     mask-image: url(../../../../images/mask.svg);
     mask-size: 90rem;
@@ -53,15 +54,14 @@
     }
 
     &__clip {
+      position: static;
       background: url(../../../../images/bubbles.png) no-repeat center bottom /
         cover;
+      background-attachment: fixed;
       mask-position: top center;
-      height: 40rem;
-      width: 55rem;
-      mask-size: 40rem;
-      left: -10rem;
-      top: 0rem;
-      background-repeat: repeat-y;
+      height: 45rem;
+      mask-size: 42rem;
+      margin-left: -20rem;
     }
 
     &__blue-stroke {
@@ -73,7 +73,7 @@
     }
 
     &__info {
-      margin-top: 50rem;
+      margin-top: 5rem;
       font-size: 1.6rem;
     }
 

@@ -20,17 +20,14 @@
   top: -30rem;
   left: -30rem;
   height: 90rem;
+  width: 100%;
   background: url(../../../../images/bubbles.png) no-repeat left center/cover;
-  background-size: 50%;
+  background-size: 40%;
   background-attachment: fixed;
-  -webkit-mask-image: url(../../../../images/mask.svg);
-          mask-image: url(../../../../images/mask.svg);
-  -webkit-mask-size: 90rem;
-          mask-size: 90rem;
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-position: top left;
-          mask-position: top left;
+  mask-image: url(../../../../images/mask.svg);
+  mask-size: 90rem;
+  mask-repeat: no-repeat;
+  mask-position: top left;
 }
 
 .Megat__blue-stroke {
@@ -48,21 +45,16 @@
     padding-top: 0;
   }
   .Megat .row {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
   .Megat__clip {
+    position: static;
     background: url(../../../../images/bubbles.png) no-repeat center bottom/cover;
-    -webkit-mask-position: top center;
-            mask-position: top center;
-    height: 40rem;
-    width: 55rem;
-    -webkit-mask-size: 40rem;
-            mask-size: 40rem;
-    left: -10rem;
-    top: 0rem;
-    background-repeat: repeat-y;
+    background-attachment: fixed;
+    mask-position: top center;
+    height: 45rem;
+    mask-size: 42rem;
+    margin-left: -20rem;
   }
   .Megat__blue-stroke {
     position: absolute;
@@ -72,11 +64,10 @@
     top: 5rem;
   }
   .Megat__info {
-    margin-top: 50rem;
+    margin-top: 5rem;
     font-size: 1.6rem;
   }
   .Megat__logo {
     width: 20rem;
   }
 }
-/*# sourceMappingURL=Megat.css.map */
