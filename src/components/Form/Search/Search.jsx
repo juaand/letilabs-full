@@ -38,7 +38,6 @@ function Search({bool}) {
 
     return (
         <section className={`container-fluid Search ${bool && 'show'}`}>
-            <div className="row">
                 <form onSubmit={searchSubmit} className="container d-flex align-items-center">
                     <div className="Search__form">
                         <InputWithLabel
@@ -52,7 +51,6 @@ function Search({bool}) {
                         />
                     </div>
                 </form>
-            </div>
         </section>
     )
 }
