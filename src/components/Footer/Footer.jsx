@@ -1,8 +1,23 @@
 import './Footer.css'
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
+import dataNav from '../../data/dataNav'
 
 function Footer() {
+
+    const seoURL = (str) => {
+        return str.toString()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\s+/g, '-')
+            .toLowerCase()
+            .replace(/&/g, '-and-')
+            // eslint-disable-next-line
+            .replace(/[^a-z0-9\-]/g, '')
+            .replace(/-+/g, '-')
+            .replace(/^-*/, '')
+            .replace(/-*$/, '')
+    }
 
     const [bool, setBool] = useState(false)
 
@@ -27,15 +42,12 @@ function Footer() {
                         </div>
                         <div className={`col-12 col-sm-4 Footer__nav ${bool && 'order-last'}`}>
                             <ul>
-                                <li>
-                                    <Link to="/">Inicio</Link>
-                                </li>
-                                <li>
-                                    <Link to="/sobre-nosotros">Sobre nosotros</Link>
-                                </li>
-                                <li>
-                                    <Link to="/nuestras-empresas">Nuestras empresas</Link>
-                                </li>
+
+                                {dataNav.map(el =>
+                                    <li>
+                                        <NavLink activeClassName="active" className="nav-link" to={seoURL(el.nav_btn)}>{el.nav_btn}</NavLink>
+                                    </li>
+                                )}
                             </ul>
                         </div>
                         <div className="col-6 col-sm-4 Footer__rrss">
