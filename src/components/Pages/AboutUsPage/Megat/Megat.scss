@@ -55,15 +55,14 @@
 
     &__clip {
       position: static;
-      background: url(../../../../images/bubbles.png) no-repeat center bottom /
+      background: url(../../../../images/bubbles.png) repeat center bottom /
         cover;
       background-attachment: fixed;
       mask-position: top center;
       height: 45rem;
-      mask-size: 42rem;
+      mask-size: 40rem;
       margin-left: -20rem;
-
-      background-size: 50%;
+      background-size: 100%;
     }
 
     &__blue-stroke {
