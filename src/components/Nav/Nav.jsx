@@ -26,8 +26,6 @@ function Nav({initSearch}) {
 
     const showSubNav = (e, data) => {
 
-        console.log('hago click')
-
         e.target.classList.add('open')
 
         if (e.target.classList.contains('open')) {
@@ -38,7 +36,6 @@ function Nav({initSearch}) {
     }
 
     const hideMenu = () => {
-        console.log('kk')
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {
