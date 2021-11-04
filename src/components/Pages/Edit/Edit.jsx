@@ -1,16 +1,21 @@
 import './Edit.css'
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 
-function Edit() {
+function Edit({user}) {
+
+
+    const [userData] = useState(user)
+
+    console.log(userData)
 
     useEffect(() => {
         document.title = "Grupo Leti | Edit"
     }, [])
 
     return (
-        <>
+        <main className="container">
             <h1>EDIT</h1>
-        </>
+        </main>
     )
 }
 

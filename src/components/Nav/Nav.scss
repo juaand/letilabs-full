@@ -86,6 +86,46 @@
       }
     }
   }
+
+  &__admin {
+    font-size: 1.6rem;
+
+    &-nav {
+      padding-right: 2.4rem;
+      display: flex;
+      justify-content: flex-end;
+      position: relative;
+
+      &:after {
+        content: '';
+        width: 1.8rem;
+        height: 1.8rem;
+        background: url(../../images/logout.svg) no-repeat center center /
+          contain;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -0.9rem;
+        transition: all 200ms ease-in-out;
+      }
+
+      &:hover {
+        &:after {
+          right: -0.8rem;
+        }
+      }
+    }
+
+    &-logout {
+      color: $leti-red;
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        color: $leti-red;
+      }
+    }
+  }
 }
 
 @media (max-width: 576px) {

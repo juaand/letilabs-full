@@ -2,8 +2,12 @@ import './Nav.css'
 import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import dataNav from '../../data/dataNav'
+import {useAuthContext} from '../../contexts/AuthContext'
 
 function Nav({initSearch}) {
+
+    const {user} = useAuthContext()
+    const {logout} = useAuthContext()
 
     const seoURL = (str) => {
         return str.toString()         // Convert to string
@@ -51,23 +55,26 @@ function Nav({initSearch}) {
             setIsDevice(!isDevice)
         }
 
-        const getNavW = document.querySelector('.navbar-nav').offsetWidth
-        const getNavH = document.querySelector('.navbar-nav').offsetHeight
-        const getNav = document.querySelector('.navbar-nav').getBoundingClientRect()
+        if (!user) {
+            const getNavW = document.querySelector('.navbar-nav').offsetWidth
+            const getNavH = document.querySelector('.navbar-nav').offsetHeight
+            const getNav = document.querySelector('.navbar-nav').getBoundingClientRect()
+            setSubNavSet({
+                width: getNavW,
+                height: getNavH,
+                top: getNavH,
+                x: getNav.x
+            })
+        }
 
-        setSubNavSet({
-            width: getNavW,
-            height: getNavH,
-            top: getNavH,
-            x: getNav.x
-        })
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     return (
         <section className="Nav" onMouseLeave={() => setBool(false)}>
-            <nav className="navbar navbar-expand-lg navbar-light p-0">
+            {!user && <nav className="navbar navbar-expand-lg navbar-light p-0">
                 <div className="container-fluid">
                     <button
                         className="navbar-toggler"
@@ -85,14 +92,25 @@ function Nav({initSearch}) {
                         id="navbarNavAltMarkup"
                     >
                         <div className="navbar-nav">
-                            {dataNav.map(el =>
+                            {!user && dataNav.map(el =>
                                 <NavLink onMouseOver={(e) => showSubNav(e, el)} onClick={initSearch} activeClassName="active" className="nav-link" to={seoURL(el.nav_btn)}>{el.nav_btn}</NavLink>
                             )}
                         </div>
                     </div>
                 </div>
-            </nav>
-            {bool &&
+            </nav>}
+            {user &&
+                <div className="container-fluid Nav__admin">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-6">Hola, {user.name}</div>
+                            <div className="col-6 Nav__admin-nav">
+                                <NavLink to="/" className="Nav__admin-logout" onClick={logout}>Salir</NavLink></div>
+                        </div>
+                    </div>
+                </div>
+            }
+            {bool && !user &&
                 <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(!bool)}>
                     <div className="Nav__sub-nav" style={{
                         width: subNavSet.width,
