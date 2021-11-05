@@ -6,20 +6,20 @@
   .label {
     text-transform: none;
     margin-bottom: 1rem;
+    color: $leti-nav;
   }
 
   .form-control {
-    background: $white;
+    background: $leti-white;
     font-size: 1.6rem;
-    border: solid 0.1rem rgba($blue, 0.5);
-    border-radius: 0.8rem;
-    height: 4rem;
+    border: solid 0.1rem $leti-nav;
+    height: 6rem;
     margin-bottom: 2rem;
   }
 }
 
 .invalid-feedback {
-  color: $red;
+  color: $leti-red;
   font-size: 1.2rem;
 }
 
@@ -33,4 +33,5 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
 }

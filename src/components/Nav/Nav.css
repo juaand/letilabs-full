@@ -27,7 +27,7 @@
 }
 
 .Nav__sub-nav {
-  background: #E9EAEE;
+  background: #e9eaee;
   position: absolute;
   top: -0.4rem;
   padding: 4rem;
@@ -151,7 +151,7 @@
   }
   .Nav .navbar-nav {
     align-items: flex-start;
-    background: #E9EAEE;
+    background: #e9eaee;
     height: 92vh;
     display: flex;
     justify-content: space-around;

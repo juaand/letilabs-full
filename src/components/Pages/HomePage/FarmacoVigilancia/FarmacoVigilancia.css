@@ -5,15 +5,9 @@
 .FarmacoVigilancia__especialistas, .FarmacoVigilancia__espacio {
   min-height: 50rem;
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   font-size: 3rem;
   font-family: 'TripletaBold';
@@ -29,12 +23,8 @@
 }
 
 .FarmacoVigilancia__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
   padding: 6rem 0;
 }
 
@@ -75,4 +65,3 @@
     margin-left: 0;
   }
 }
-/*# sourceMappingURL=FarmacoVigilancia.css.map */

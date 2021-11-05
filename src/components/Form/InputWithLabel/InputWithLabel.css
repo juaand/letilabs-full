@@ -1,1 +1,33 @@
-/* No CSS */
+.form-group {
+  margin-top: 2rem;
+}
+
+.form-group .label {
+  text-transform: none;
+  margin-bottom: 1rem;
+  color: #737b7f;
+}
+
+.form-group .form-control {
+  background: #fff;
+  font-size: 1.6rem;
+  border: solid 0.1rem #737b7f;
+  height: 6rem;
+  margin-bottom: 2rem;
+}
+
+.invalid-feedback {
+  color: #cd202f;
+  font-size: 1.2rem;
+}
+
+.hidden {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
+}

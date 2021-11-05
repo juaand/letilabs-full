@@ -1,15 +1,9 @@
 .Video {
   height: 70rem;
   background: url(../../../../images/video-bg.png) no-repeat center center/cover;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 576px) {
@@ -17,4 +11,3 @@
     height: 30rem;
   }
 }
-/*# sourceMappingURL=Video.css.map */

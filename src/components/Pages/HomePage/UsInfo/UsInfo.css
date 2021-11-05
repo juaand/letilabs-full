@@ -19,8 +19,7 @@
   position: absolute;
   right: -40rem;
   bottom: calc(var(--section-padding) * -1);
-  -webkit-transform: rotate(50deg);
-          transform: rotate(50deg);
+  transform: rotate(50deg);
 }
 
 .Nosotros .leti-blue-triangle {
@@ -30,8 +29,7 @@
   position: absolute;
   bottom: calc(var(--section-padding) * -1);
   right: 0;
-  -webkit-transform: rotate(-150deg);
-          transform: rotate(-150deg);
+  transform: rotate(-150deg);
 }
 
 @media (max-width: 576px) {
@@ -40,9 +38,7 @@
     font-size: 2rem;
   }
   .Nosotros .row {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
   .Nosotros .leti-red-triangle {
     right: -5rem;
@@ -53,4 +49,3 @@
     z-index: -1;
   }
 }
-/*# sourceMappingURL=UsInfo.css.map */

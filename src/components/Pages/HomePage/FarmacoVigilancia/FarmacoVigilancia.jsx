@@ -1,7 +1,15 @@
 import './FarmacoVigilancia.css'
-import React from 'react'
+import React, {useState} from 'react'
+import ModalFarmacoVigilancia from '../ModalFarmacoVigilancia/ModalFarmacoVigilancia'
 
 function FarmacoVigilancia() {
+
+    const [bool, setBool] = useState(false)
+
+    const showModal = () => {
+        setBool(!bool)
+    }
+
     return (
         <>
             <section className="container-fluid FarmacoVigilancia">
@@ -18,9 +26,11 @@ function FarmacoVigilancia() {
                             con alguno de nuestro productos? </p>
                     </div>
                     <div className="col-11 col-sm-6">
-                        <div className="leti-btn">Infórmanos aquí</div>
-                    </div></div>
+                        <div className="leti-btn" onClick={showModal}>Infórmanos aquí</div>
+                    </div>
+                </div>
             </section>
+            {bool && <ModalFarmacoVigilancia hideModal={() => setBool(!bool)}/>}
         </>
     )
 }

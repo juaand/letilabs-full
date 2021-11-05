@@ -64,18 +64,11 @@ body {
   font-weight: 400;
   text-decoration: none;
   font-size: 2rem;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   padding: 2rem 2.4rem;
   background: #fff;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
@@ -87,12 +80,8 @@ body {
 
 /* --- SMOOTHER YAY! --- */
 .parallax {
-  -webkit-transition: -webkit-transform 10s cubic-bezier(0, 1, 0.5, 1);
-  transition: -webkit-transform 10s cubic-bezier(0, 1, 0.5, 1);
   transition: transform 10s cubic-bezier(0, 1, 0.5, 1);
-  transition: transform 10s cubic-bezier(0, 1, 0.5, 1), -webkit-transform 10s cubic-bezier(0, 1, 0.5, 1);
-  -webkit-transform: rotate(-150deg);
-          transform: rotate(-150deg);
+  transform: rotate(-150deg);
 }
 
 @media (max-width: 576px) {
@@ -100,9 +89,6 @@ body {
     margin-top: 10rem;
   }
   .leti-btn {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
   }
 }
-/*# sourceMappingURL=styles.css.map */
