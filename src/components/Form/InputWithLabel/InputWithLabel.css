@@ -31,3 +31,9 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   box-shadow: 0 0 0 30px white inset !important;
 }
+
+@media (max-width: 576px) {
+  .form-group {
+    margin-top: 1rem;
+  }
+}

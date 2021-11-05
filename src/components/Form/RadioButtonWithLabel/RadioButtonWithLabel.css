@@ -26,3 +26,9 @@
 .RadioButtonWithLabel__radio-buttons .form-check .form-check-input:checked {
   background-color: #055aa5;
 }
+
+@media (max-width: 576px) {
+  .RadioButtonWithLabel {
+    margin: 1rem 0;
+  }
+}
