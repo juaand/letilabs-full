@@ -72,23 +72,23 @@
       }
 
       &__calendar {
-          width: 100%;
+        width: 100%;
         font-family: 'Mulish', sans-serif !important;
       }
     }
   }
 
   .react-calendar {
-      width: 100% !important;
+    width: 100% !important;
     &__tile {
-        color: $leti-nav;
-        text-transform: capitalize;
-        font-size: 1.8rem;
+      color: $leti-nav;
+      text-transform: capitalize;
+      font-size: 1.8rem;
 
-        &--hasActive {
-          background: $leti-blue;
-          color: $leti-white;
-        }
+      &--hasActive {
+        background: $leti-blue;
+        color: $leti-white;
+      }
       &--active {
         background: transparent;
         border: solid 0.2rem $leti-blue;
@@ -115,12 +115,37 @@
     }
 
     &__navigation {
-        button {
-            font-size: 1.4rem;
-            text-transform: uppercase;
-            color: $leti-blue;
-            font-weight: 600;
-        }
+      button {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        color: $leti-blue;
+        font-weight: 600;
+      }
     }
+  }
+}
+
+@media (max-width: 576px) {
+  .ModalFarmacoVigilancia {
+    &__container {
+      padding: 2rem;
+      padding-top: 8rem;
+      font-size: 1.6rem;
+    }
+
+    &__close {
+      top: 2rem;
+      right: 2rem;
+      width: 5rem;
+      height: 5rem;
+    }
+
+    &__container {
+    
+        strong {
+          font-size: 2rem;
+          margin: 2rem 0;
+        }
+      }
   }
 }

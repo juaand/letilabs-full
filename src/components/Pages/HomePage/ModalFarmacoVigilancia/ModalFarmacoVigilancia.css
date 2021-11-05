@@ -119,3 +119,21 @@
   color: #055aa5;
   font-weight: 600;
 }
+
+@media (max-width: 576px) {
+  .ModalFarmacoVigilancia__container {
+    padding: 2rem;
+    padding-top: 8rem;
+    font-size: 1.6rem;
+  }
+  .ModalFarmacoVigilancia__close {
+    top: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+  }
+  .ModalFarmacoVigilancia__container strong {
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+}
