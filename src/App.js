@@ -9,7 +9,8 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import SearchPage from './components/Pages/SearchPage/SearchPage'
 import LoginPage from './components/Pages/LoginPage/LoginPage'
-import Edit from './components/Pages/Edit/Edit'
+import Edit from './components/Pages/AdminPage/AdminPage'
+import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
           <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
           <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
+          <Route path="*" render={() => <NotFoundPage />} />
          {!user && <Redirect to='/' />}
         </Switch>
         <Footer />
