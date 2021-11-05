@@ -1,1 +1,14 @@
-<svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-times fa-w-10 fa-3x"><path fill="#055aa5" d="M193.94 256L296.5 153.44l21.15-21.15c3.12-3.12 3.12-8.19 0-11.31l-22.63-22.63c-3.12-3.12-8.19-3.12-11.31 0L160 222.06 36.29 98.34c-3.12-3.12-8.19-3.12-11.31 0L2.34 120.97c-3.12 3.12-3.12 8.19 0 11.31L126.06 256 2.34 379.71c-3.12 3.12-3.12 8.19 0 11.31l22.63 22.63c3.12 3.12 8.19 3.12 11.31 0L160 289.94 262.56 392.5l21.15 21.15c3.12 3.12 8.19 3.12 11.31 0l22.63-22.63c3.12-3.12 3.12-8.19 0-11.31L193.94 256z" class=""></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="23.784" height="23.8" viewBox="0 0 23.784 23.8">
+  <g id="Group_21" data-name="Group 21" transform="matrix(0.719, -0.695, 0.695, 0.719, -9.73, 11.48)">
+    <g id="Group_19" data-name="Group 19">
+      <g id="Path_2" data-name="Path 2">
+        <path id="Path_2-2" data-name="Path 2" d="M.652,0V30" transform="translate(14.348)" fill="none"/>
+        <path id="Path_2-3" data-name="Path 2" d="M.652,0V30" transform="translate(14.348)" fill="none" stroke="#055aa5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      </g>
+      <g id="Path_2-4" data-name="Path 2">
+        <path id="Path_2-5" data-name="Path 2" d="M30,0H0" transform="translate(0 15.652)" fill="none"/>
+        <path id="Path_2-6" data-name="Path 2" d="M30,0H0" transform="translate(0 15.652)" fill="none" stroke="#055aa5" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      </g>
+    </g>
+  </g>
+</svg>

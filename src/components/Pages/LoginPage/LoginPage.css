@@ -5,15 +5,9 @@
   background: rgba(53, 57, 110, 0.9);
   top: 0;
   left: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   z-index: 10;
 }
 
@@ -47,7 +41,6 @@
   padding: 3rem 0;
   border-radius: 0.8rem;
   position: relative;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   padding-top: 16rem;
 }
@@ -101,22 +94,15 @@
 }
 
 .Modal__google_btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   height: 4.5rem;
   background: #35396e;
   border-radius: 4rem;
   color: #FFF;
   text-decoration: none;
   margin: 3rem auto;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
   border: 0;
   padding: 0.8rem 2.4rem;
@@ -132,4 +118,3 @@
   height: 2rem;
   margin-right: 1rem;
 }
-/*# sourceMappingURL=LoginAdmin.css.map */

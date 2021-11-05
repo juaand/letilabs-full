@@ -1,0 +1,29 @@
+@import '../../../stylesheets/variables';
+
+.RadioButtonWithLabel {
+  margin: 2rem 0 5rem 0;
+  display: block;
+
+  &__label {
+    color: $leti-nav;
+  }
+
+  &__radio-buttons {
+    margin-top: 2rem;
+
+    .form-check {
+      margin-right: 4rem;
+
+      .form-check-label {
+        color: $leti-nav;
+      }
+
+        .form-check-input {
+          border: 0.1rem solid $leti-blue;
+          &:checked {
+              background-color: $leti-blue;
+          }
+        }
+    }
+  }
+}

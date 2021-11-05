@@ -10,3 +10,10 @@
 .NotFoundPage .leti-btn {
   margin: 4rem auto 4rem auto;
 }
+
+@media (max-width: 576px) {
+  .NotFoundPage__icon {
+    margin-top: 4rem;
+    height: 14rem;
+  }
+}

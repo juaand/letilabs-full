@@ -12,15 +12,10 @@
 }
 
 .slick-slider {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  box-sizing: border-box;
   user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
-  -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
@@ -42,7 +37,6 @@
 
 .slick-slider .slick-list,
 .slick-slider .slick-track {
-  -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -120,7 +114,6 @@
   top: 50%;
   width: 20px;
   height: 20px;
-  -webkit-transform: translate(0, -50%);
   transform: translate(0, -50%);
   cursor: pointer;
   color: transparent;
@@ -249,7 +242,6 @@
   display: block;
   z-index: 4;
   opacity: 0.4;
-  -webkit-transition: all 200ms ease-in-out;
   transition: all 200ms ease-in-out;
 }
 
@@ -265,14 +257,12 @@
 
 .Carousel .slick-next {
   background: url(../../../../images/next-arrow.svg) no-repeat center center/contain;
-  -webkit-transform: translate(-80rem, 15.5rem);
-          transform: translate(-80rem, 15.5rem);
+  transform: translate(-80rem, 15.5rem);
 }
 
 .Carousel .slick-prev {
   background: url(../../../../images/prev-arrow.svg) no-repeat center center/contain;
-  -webkit-transform: translate(80rem, 15.5rem);
-          transform: translate(80rem, 15.5rem);
+  transform: translate(80rem, 15.5rem);
 }
 
 .Carousel .slick-slide:not(.slick-current) h3 {
@@ -303,12 +293,9 @@
 
 @media (max-width: 576px) {
   .Carousel .slick-next {
-    -webkit-transform: translate(-5rem, 17rem);
-            transform: translate(-5rem, 17rem);
+    transform: translate(-5rem, 17rem);
   }
   .Carousel .slick-prev {
-    -webkit-transform: translate(5rem, 17rem);
-            transform: translate(5rem, 17rem);
+    transform: translate(5rem, 17rem);
   }
 }
-/*# sourceMappingURL=Carousel.css.map */
