@@ -20,7 +20,11 @@ http.interceptors.response.use(
 )
 
 
-//user.routes
+//admin.routes
 export const login = ({email, password}) =>
     http.post("/login", {email, password})
 export const logOut = () => http.post("/logout")
+
+
+//vigilancia form routes
+export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
