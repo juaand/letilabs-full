@@ -8,7 +8,7 @@ import {Link, Redirect} from 'react-router-dom'
 import {useFormState} from '../../../hooks/useFormState'
 
 
-const LoginPage = (props) => {
+const LoginPage = () => {
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -54,12 +54,13 @@ const LoginPage = (props) => {
     }
 
     return (
-        <>
-            <section className="login container head-bg"></section>
-            <div className={props.login ? 'container-fluid my-info' : 'container-fluid my-info login-bg'}>
+        <main className="container-fluid LoginPage">
+            <div className="container">
+                <div className="leti-blue-triangle"></div>
+                <div className="leti-red-triangle"></div>
                 <div className="row justify-content-center">
-                    <div className="col-sm-6 col-xl-4 col-11 login-block">
-                        <h1>Ingresa con tu cuenta</h1>
+                    <div className="col-sm-6 col-xl-4 col-11">
+                        <h1>Área administrativa</h1>
 
                         <form onSubmit={handleSubmit}>
 
@@ -91,18 +92,15 @@ const LoginPage = (props) => {
 
                             <Button
                                 type="submit"
-                                className="Button Button__enter"
+                                className="leti-btn"
                                 disabled={isError}
                             >Ingresa</Button>
                         </form>
-                        <div className="col-12 d-flex justify-content-center options">
-                            <Link to="/register"><strong>Registrate aquí</strong></Link>
-                            <Link to="/forgot-password">¿Olvidaste tu contraseña?</Link>
-                        </div>
                     </div>
                 </div>
             </div>
-        </>
+        </main>
+
     )
 }
 

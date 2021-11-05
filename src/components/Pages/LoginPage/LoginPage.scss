@@ -1,122 +1,50 @@
+@import '../../../stylesheets/variables';
 
-.Modal {
-  position: fixed;
-  width: 100vw;
-  height: 100%;
-  background: rgba(#35396e, 0.9);
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 10;
+.LoginPage {
+  position: relative;
+  padding: 10rem 0 20rem 0;
 
-  &__header {
-    height: 14rem;
-    width: 100%;
-    margin-bottom: 2.4rem;
-    border-radius: 0.8rem 0.8rem 0 0;
+  .leti-red-triangle {
+    background: url(../../../images/triangulo-rojo-stroke.svg) no-repeat center
+      center / contain;
+    width: 95rem;
+    height: 95rem;
     position: absolute;
-    left: 0;
-    top: 0;
-    border-bottom: solid 0.3rem #ea7676;
-
-    &__login {
-      background: url(../../../images/login.jpg) no-repeat center center / cover;
-    }
-
-    &__register {
-      background: url(../../../images/register.jpg) no-repeat center center / cover;
-    }
+    right: -40rem;
+    bottom: calc(var(--section-padding) * -1);
+    transform: rotate(50deg);
+    z-index: -1;
   }
 
-  &__form {
-    padding: 3rem;
-    background: rgba(#000, 0.8);
-    color: #FFF;
-  }
-
-  &__body {
-    background: #FFF;
-    padding: 3rem 0;
-    border-radius: 0.8rem;
-    position: relative;
-    transition: all 200ms ease-in-out;
-    padding-top: 16rem;
-
-    &__info {
-        max-height: 55rem;
-        overflow: scroll;
-        padding: 0 3rem;
-
-        &_register {
-            max-height: 52rem;
-        }
-    }
-  }
-
-  &__close {
+  .leti-blue-triangle {
+    background: url(../../../images/triangulo-azul-stroke.svg) no-repeat center
+      center / contain;
+    width: 80rem;
+    height: 70rem;
     position: absolute;
-    top: -6rem;
-    right: 0rem;
-    background: url(../../../images/times.svg) no-repeat center center / contain;
-    width: 4rem;
-    height: 4rem;
-    content: '';
-    display: block;
+    bottom: calc(var(--section-padding) * -1);
+    right: 0;
+    transform: rotate(-150deg);
+    z-index: -1;
+  }
+}
 
-    &:hover {
-      cursor: pointer;
-    }
+@media (max-width: 576px) {
+  .LoginPage {
+  padding: 5rem 0;
+
+  .leti-red-triangle {
+    width: 30rem;
+    height: 30rem;
+    right: 0;
+    bottom: -10rem;
   }
 
-  &__register {
-    color: #35396e;
-    text-align: center;
-    margin-top: 3.2rem;
-
-    span {
-      color: #ea7676;
-
-      &:hover {
-        cursor: pointer;
-        text-decoration: underline;
-      }
-    }
+  .leti-blue-triangle {
+    width: 50rem;
+    height: 40rem;
+    right: 0;
+    bottom: -5rem;
   }
-
-  &__alert {
-    background: none;
-    border: 0;
-    color: #ea7676;
-    text-align: center;
-    margin-top: 0.8rem;
-  }
-
-  &__google_btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 4.5rem;
-      background: #35396e;
-      border-radius: 4rem;
-      color: #FFF;
-      text-decoration: none;
-      margin: 3rem auto;
-      transition: all 200ms ease-in-out;
-      border: 0;
-      padding: 0.8rem 2.4rem;
-
-
-      &:hover {
-          color: #FFF;
-          background: #ea7676;
-      }
-
-      svg {
-          width: 2rem;
-          height: 2rem;
-          margin-right: 1rem;
-      }
-  }
+}
 }
