@@ -1,7 +1,7 @@
-import './Edit.css'
+import './AdminPage.css'
 import React, {useState, useEffect} from 'react'
 
-function Edit({user}) {
+function AdminPage({user}) {
 
 
     const [userData] = useState(user)
@@ -9,14 +9,14 @@ function Edit({user}) {
     console.log(userData)
 
     useEffect(() => {
-        document.title = "Grupo Leti | Edit"
+        document.title = "Grupo Leti"
     }, [])
 
     return (
         <main className="container">
-            <h1>EDIT</h1>
+            <h1>AdminPage</h1>
         </main>
     )
 }
 
-export default Edit
+export default AdminPage

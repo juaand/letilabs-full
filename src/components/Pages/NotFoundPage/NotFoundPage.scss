@@ -1,0 +1,14 @@
+@import '../../../stylesheets/variables';
+
+.NotFoundPage {
+    font-size: 2.4rem;
+    
+    &__icon {
+        height: 28rem;
+        background: url(../../../images/404-icon.svg) no-repeat center / contain;
+    }
+
+    .leti-btn {
+        margin: 4rem auto 4rem auto;
+    }
+}
