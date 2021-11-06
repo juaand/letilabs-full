@@ -37,7 +37,9 @@ function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-6 col-sm-4">
-                            <div className="Footer__logo"></div>
+                            <Link to={`${user ? "/admin" : "/"}`}>
+                                <div className="Footer__logo"></div>
+                            </Link>
                             <div className="Footer__info">
                                 <p>info@grupoleti.com</p>
                                 <p>+580000000000</p>
