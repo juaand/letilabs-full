@@ -95,7 +95,7 @@
 @media (max-width: 576px) {
   .Nav {
     position: absolute;
-    top: 5rem;
+    top: 3rem;
     left: 2rem;
     transition: all 0.3s;
 
@@ -118,9 +118,7 @@
     .navbar-toggler {
       border: 0;
       outline: unset;
-      margin-top: -2.4rem;
       margin-left: -2rem;
-
 
       &:focus {
         outline: none;
@@ -198,6 +196,56 @@
       &-anchors {
         padding-top: 3rem;
         padding-left: 4rem;
+      }
+    }
+
+    &__welcome {
+      display: flex;
+      align-items: center;
+      font-size: 1.6rem;
+      position: absolute;
+      padding-top: 1.6rem;
+      top: 0;
+      left: 0rem;
+      padding-left: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: solid 0.1rem $leti-nav;
+      border-top: solid 0.1rem $leti-nav;
+      background-color: $leti-white;
+      width: 100%;
+      margin-top: 0rem;
+
+      &-span {
+        font-weight: 600;
+        color: $leti-red;
+        display: inline-block;
+        margin-left: 0.4rem;
+      }
+
+      &:before {
+        content: '';
+        width: 3rem;
+        height: 3rem;
+        border-radius: 3rem;
+        background: url(../../images/triangulo-rojo.svg) no-repeat center center /
+          contain;
+        background-size: 40%;
+        display: inline-block;
+        margin-right: 1rem;
+        transform: rotate(180deg);
+        border: solid 0.2rem $leti-red;
+      }
+    }
+
+    &__logout {
+      background: url(../../images/logout.svg) no-repeat center center / contain;
+      width: 2.4rem;
+      height: 2.4rem;
+      position: absolute;
+      left: 57%;
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }
