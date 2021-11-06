@@ -26,8 +26,38 @@
     }
   }
 
+  &__welcome {
+    display: flex;
+    align-items: center;
+    font-size: 1.6rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -1.5rem;
+
+    &-span {
+      font-weight: 600;
+      color: $leti-red;
+      display: inline-block;
+      margin-left: 0.4rem;
+    }
+
+    &:before {
+      content: '';
+      width: 3rem;
+      height: 3rem;
+      border-radius: 3rem;
+      background: url(../../images/triangulo-rojo.svg) no-repeat center center /
+        contain;
+      background-size: 40%;
+      display: inline-block;
+      margin-right: 1rem;
+      transform: rotate(180deg);
+      border: solid 0.2rem $leti-red;
+    }
+  }
+
+  &__logout,
   &__search {
-    background: url(../../images/search.svg) no-repeat center center / contain;
     border: 0;
     width: 3rem;
     height: 3rem;
@@ -36,6 +66,10 @@
     right: 0;
     top: 50%;
     margin-top: -1.5rem;
+  }
+
+  &__search {
+    background: url(../../images/search.svg) no-repeat center center / contain;
 
     &:hover {
       cursor: pointer;
@@ -43,6 +77,14 @@
 
     &-close {
       background: url(../../images/close.svg) no-repeat center center / contain;
+    }
+  }
+
+  &__logout {
+    background: url(../../images/logout.svg) no-repeat center center / contain;
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }
