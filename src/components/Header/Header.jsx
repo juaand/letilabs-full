@@ -34,7 +34,7 @@ function Header() {
                             }
                             <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin" : "/"}`} />
                             {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>}
-                            {user && <div onClick={logout} className="Header__logout"></div>}
+                            {user && <div onClick={logout} className="Header__logout d-none d-sm-flex"></div>}
                         </div>
                     </div>
                 </div>

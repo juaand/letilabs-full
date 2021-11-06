@@ -93,6 +93,19 @@
   .Header {
     box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
 
+    &__welcome {
+      padding-top: 1.6rem;
+      top: 0;
+      left: 0rem;
+      padding-left: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: solid 0.1rem $leti-nav;
+      border-top: solid 0.1rem $leti-nav;
+      background-color: $leti-white;
+      width: 100%;
+      margin-top: 0rem;
+    }
+
     &__logo {
       .navbar-brand {
         width: 12rem;

@@ -7,6 +7,7 @@ import {useAuthContext} from '../../contexts/AuthContext'
 function Nav({initSearch}) {
 
     const {user} = useAuthContext()
+    const {logout} = useAuthContext()
 
     const seoURL = (str) => {
         return str.toString()         // Convert to string
@@ -71,7 +72,7 @@ function Nav({initSearch}) {
 
     return (
         <section className="Nav" onMouseLeave={() => setBool(false)}>
-            {!user && <nav className="navbar navbar-expand-lg navbar-light p-0">
+            <nav className="navbar navbar-expand-lg navbar-light p-0">
                 <div className="container-fluid">
                     <button
                         className="navbar-toggler"
@@ -92,44 +93,22 @@ function Nav({initSearch}) {
                             {!user && dataNav.map(el =>
                                 <NavLink onMouseOver={(e) => showSubNav(e, el)} onClick={initSearch} activeClassName="active" className="nav-link" to={seoURL(el.nav_btn)}>{el.nav_btn}</NavLink>
                             )}
+                            {user && user.role === 'Admin' &&
+                                <>
+                                    <div className="Nav__welcome d-flex d-sm-none">
+                                        Hola, <span className="Nav__welcome-span">{user.name}</span>
+                                        <div onClick={logout} className="Nav__logout"></div>
+                                    </div>
+                                    <NavLink onClick={hideMenu} activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>
-            </nav>}
-            {user && user.role === 'Admin' &&
-                <div className="container Nav__admin">
-                    <nav className="navbar navbar-expand-lg navbar-light p-0">
-                        <div className="container-fluid">
-                            <button
-                                className="navbar-toggler"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#navbarAdmin"
-                                aria-controls="navbarAdmin"
-                                aria-expanded="false"
-                                aria-label="Toggle navigation"
-                            >
-                                <span className="navbar-toggler-icon"></span>
-                            </button>
-                            <div
-                                className="collapse navbar-collapse Nav__nav"
-                                id="navbarAdmin"
-                            >
-                                <div className="navbar-nav">
+            </nav>
 
-                                    {user && user.role === 'Admin' &&
-                                        <div className="Header__welcome d-flex d-sm-none">
-                                            Hola, <span className="Header__welcome-span">{user.name}</span>
-                                        </div>
-                                    }
-                                    <NavLink onClick={hideMenu} activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
-                                </div>
-                            </div>
-                        </div>
-                    </nav>
-                </div>
-            }
-            {bool && !user &&
+            {
+                bool && !user &&
                 <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(!bool)}>
                     <div className="Nav__sub-nav" style={{
                         width: subNavSet.width,
@@ -152,7 +131,7 @@ function Nav({initSearch}) {
                     </div>
                 </div>
             }
-        </section>
+        </section >
     )
 }
 

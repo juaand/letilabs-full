@@ -12,6 +12,13 @@ function Home() {
 
     useEffect(() => {
         document.title = "Grupo Leti | Inicio"
+
+        const isMenuOpen = document.querySelector('.show')
+
+        if (isMenuOpen) {
+            isMenuOpen.classList.remove('show')
+        }
+        
     }, [])
 
     return (

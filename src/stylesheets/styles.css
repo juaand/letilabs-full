@@ -86,7 +86,7 @@ body {
 
 @media (max-width: 576px) {
   body {
-    margin-top: 10rem;
+    margin-top: 8rem;
   }
   .leti-btn {
     display: flex;

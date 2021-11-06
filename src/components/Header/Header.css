@@ -89,6 +89,18 @@
   .Header {
     box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
   }
+  .Header__welcome {
+    padding-top: 1.6rem;
+    top: 0;
+    left: 0rem;
+    padding-left: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: solid 0.1rem #737b7f;
+    border-top: solid 0.1rem #737b7f;
+    background-color: #fff;
+    width: 100%;
+    margin-top: 0rem;
+  }
   .Header__logo .navbar-brand {
     width: 12rem;
     height: 4rem;
