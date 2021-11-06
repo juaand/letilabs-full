@@ -24,7 +24,8 @@ http.interceptors.response.use(
 export const login = ({email, password}) =>
     http.post("/login", {email, password})
 export const logOut = () => http.post("/logout")
+export const getFarmVigData = () => http.get("/farmvigdata")
 
 
-//vigilancia form routes
+//user routes
 export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
