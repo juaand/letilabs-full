@@ -3,8 +3,11 @@ import React, {useState} from 'react'
 import Nav from '../Nav/Nav'
 import {NavLink} from 'react-router-dom'
 import Search from '../Form/Search/Search'
+import {useAuthContext} from '../../contexts/AuthContext'
 
 function Header() {
+
+    const {user} = useAuthContext()
 
     const [bool, setBool] = useState(false)
     const [hideOnDevice, setHideOnDevice] = useState(false)
@@ -24,7 +27,7 @@ function Header() {
                     <div className="row justify-content-between Header__logo">
                         <div className="col-12 d-flex justify-content-center">
                             <NavLink onClick={() => setBool(false)} className="navbar-brand" to="/" />
-                            <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>
+                            {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>}
                         </div>
                     </div>
                 </div>
