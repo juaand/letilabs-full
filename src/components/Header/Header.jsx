@@ -8,6 +8,7 @@ import {useAuthContext} from '../../contexts/AuthContext'
 function Header() {
 
     const {user} = useAuthContext()
+    const {logout} = useAuthContext()
 
     const [bool, setBool] = useState(false)
     const [hideOnDevice, setHideOnDevice] = useState(false)
@@ -25,9 +26,15 @@ function Header() {
             <header className="Header">
                 <div className="container">
                     <div className="row justify-content-between Header__logo">
-                        <div className="col-12 d-flex justify-content-center">
+                        <div className="col-12 d-flex justify-content-between">
+                            {user && user.role === 'Admin' &&
+                                <div className="Header__welcome">
+                                    Hola, <span className="Header__welcome-span">{user.name}</span>
+                                </div>
+                            }
                             <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin" : "/"}`} />
                             {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>}
+                            {user && <div onClick={logout} className="Header__logout"></div>}
                         </div>
                     </div>
                 </div>

@@ -25,8 +25,36 @@
   margin: 1rem auto;
 }
 
-.Header__search {
-  background: url(../../images/search.svg) no-repeat center center/contain;
+.Header__welcome {
+  display: flex;
+  align-items: center;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 50%;
+  margin-top: -1.5rem;
+}
+
+.Header__welcome-span {
+  font-weight: 600;
+  color: #cd202f;
+  display: inline-block;
+  margin-left: 0.4rem;
+}
+
+.Header__welcome:before {
+  content: '';
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
+  background: url(../../images/triangulo-rojo.svg) no-repeat center center/contain;
+  background-size: 40%;
+  display: inline-block;
+  margin-right: 1rem;
+  transform: rotate(180deg);
+  border: solid 0.2rem #cd202f;
+}
+
+.Header__logout, .Header__search {
   border: 0;
   width: 3rem;
   height: 3rem;
@@ -37,12 +65,24 @@
   margin-top: -1.5rem;
 }
 
+.Header__search {
+  background: url(../../images/search.svg) no-repeat center center/contain;
+}
+
 .Header__search:hover {
   cursor: pointer;
 }
 
 .Header__search-close {
   background: url(../../images/close.svg) no-repeat center center/contain;
+}
+
+.Header__logout {
+  background: url(../../images/logout.svg) no-repeat center center/contain;
+}
+
+.Header__logout:hover {
+  cursor: pointer;
 }
 
 @media (max-width: 576px) {

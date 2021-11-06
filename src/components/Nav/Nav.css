@@ -83,61 +83,6 @@
   font-size: 1.6rem;
 }
 
-.Nav__admin-nav {
-  padding-right: 2.4rem;
-  display: flex;
-  justify-content: flex-end;
-  position: relative;
-}
-
-.Nav__admin-nav:after {
-  content: '';
-  width: 1.8rem;
-  height: 1.8rem;
-  background: url(../../images/logout.svg) no-repeat center center/contain;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  margin-top: -0.9rem;
-  transition: all 200ms ease-in-out;
-}
-
-.Nav__admin-nav:hover:after {
-  right: -0.8rem;
-}
-
-.Nav__admin-logout {
-  color: #cd202f;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.Nav__admin-logout:hover {
-  color: #cd202f;
-}
-
-.Nav__admin-welcome {
-  display: flex;
-  align-items: center;
-}
-
-.Nav__admin-welcome-span {
-  font-weight: 600;
-  color: #cd202f;
-}
-
-.Nav__admin-welcome:before {
-  content: '';
-  width: 2.4rem;
-  height: 2.4rem;
-  border-radius: 2.4rem;
-  background: url(../../images/triangulo-rojo.svg) no-repeat center center/contain;
-  background-size: 60%;
-  display: inline-block;
-  margin-right: 1rem;
-  transform: rotate(180deg);
-}
-
 @media (max-width: 576px) {
   .Nav {
     position: absolute;
