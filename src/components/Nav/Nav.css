@@ -116,6 +116,28 @@
   color: #cd202f;
 }
 
+.Nav__admin-welcome {
+  display: flex;
+  align-items: center;
+}
+
+.Nav__admin-welcome-span {
+  font-weight: 600;
+  color: #cd202f;
+}
+
+.Nav__admin-welcome:before {
+  content: '';
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 2.4rem;
+  background: url(../../images/triangulo-rojo.svg) no-repeat center center/contain;
+  background-size: 60%;
+  display: inline-block;
+  margin-right: 1rem;
+  transform: rotate(180deg);
+}
+
 @media (max-width: 576px) {
   .Nav {
     position: absolute;

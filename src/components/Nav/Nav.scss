@@ -125,6 +125,29 @@
         color: $leti-red;
       }
     }
+
+    &-welcome {
+      display: flex;
+      align-items: center;
+
+      &-span {
+        font-weight: 600;
+        color: $leti-red;
+      }
+
+      &:before {
+        content: '';
+        width: 2.4rem;
+        height: 2.4rem;
+        border-radius: 2.4rem;
+        background: url(../../images/triangulo-rojo.svg) no-repeat center center /
+          contain;
+        background-size: 60%;
+        display: inline-block;
+        margin-right: 1rem;
+        transform: rotate(180deg);
+      }
+    }
   }
 }
 

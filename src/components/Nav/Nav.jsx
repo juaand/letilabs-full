@@ -66,8 +66,6 @@ function Nav({initSearch}) {
                 x: getNav.x
             })
         }
-
-
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -99,16 +97,43 @@ function Nav({initSearch}) {
                     </div>
                 </div>
             </nav>}
-            {user &&
-                <div className="container-fluid Nav__admin">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-6">Hola, {user.name}</div>
-                            <div className="col-6 Nav__admin-nav">
-                                <NavLink to="/" className="Nav__admin-logout" onClick={logout}>Salir</NavLink></div>
+            {user && user.role === 'Admin' &&
+                <>
+                    <div className="container-fluid">
+                        <div className="container Nav__admin">
+                            <div className="row">
+                                <div className="col-6 Nav__admin-welcome">Hola, <span className="Nav__admin-welcome-span">{user.name}</span></div>
+                                <div className="col-6 Nav__admin-nav">
+                                    <NavLink to="/" className="Nav__admin-logout" onClick={logout}>Salir</NavLink></div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <div className="container Nav Nav__admin">
+                        <nav className="navbar navbar-expand-lg navbar-light p-0">
+                            <div className="container-fluid">
+                                <button
+                                    className="navbar-toggler"
+                                    type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#navbarAdmin"
+                                    aria-controls="navbarAdmin"
+                                    aria-expanded="false"
+                                    aria-label="Toggle navigation"
+                                >
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
+                                <div
+                                    className="collapse navbar-collapse Nav__admin__nav"
+                                    id="navbarAdmin"
+                                >
+                                    <div className="navbar-nav">
+                                        <NavLink activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                    </div>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </>
             }
             {bool && !user &&
                 <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(!bool)}>

@@ -11,6 +11,7 @@ import SearchPage from './components/Pages/SearchPage/SearchPage'
 import LoginPage from './components/Pages/LoginPage/LoginPage'
 import Edit from './components/Pages/AdminPage/AdminPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
+import AdminFarVigPage from './components/Pages/AdminFarVigPage/AdminFarVigPage'
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" login component={LoginPage} />
           <AuthenticatedRoute exact path="/admin" render={(props) => <Edit {...props} user={user} />} />
+          <AuthenticatedRoute exact path="/admin-farmacovigilancia" render={(props) => <AdminFarVigPage {...props} user={user} />} />
           <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
           <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
           <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
