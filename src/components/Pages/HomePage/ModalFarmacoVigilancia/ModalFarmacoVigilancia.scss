@@ -23,7 +23,7 @@
     &--success {
       height: auto;
       position: relative;
-      padding-bottom: 4rem;
+      overflow: hidden;
 
       .leti-btn {
         margin-top: 3rem;
@@ -178,6 +178,28 @@
       strong {
         font-size: 2rem;
         margin: 2rem 0;
+      }
+
+      &--success {
+        padding: 4rem 2rem;
+  
+        .leti-btn {
+          margin-top: 3rem;
+        }
+  
+        .leti-red-triangle {
+          width: 20rem;
+          height: 20rem;
+          right: -10rem;
+          top: -10rem;
+        }
+  
+        .leti-blue-triangle {
+          width: 15rem;
+          height: 15rem;
+          right: -5rem;
+          top: 0;
+        }
       }
     }
   }
