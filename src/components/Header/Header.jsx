@@ -28,7 +28,7 @@ function Header() {
                     <div className="row justify-content-between Header__logo">
                         <div className="col-12 d-flex justify-content-between">
                             {user && user.role === 'Admin' &&
-                                <div className="Header__welcome">
+                                <div className="Header__welcome d-none d-sm-flex">
                                     Hola, <span className="Header__welcome-span">{user.name}</span>
                                 </div>
                             }

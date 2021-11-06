@@ -92,6 +92,21 @@
 @media (max-width: 576px) {
   .Header {
     box-shadow: 0 0.2rem 0.4rem 0 rgba(0, 0, 0, 0.2);
+
+    &__logo {
+      .navbar-brand {
+        width: 12rem;
+        height: 4rem;
+      }
+    }
+
+    &__logout {
+      right: 2rem;
+      width: 2rem;
+      height: 2rem;
+      margin-top: -1rem;
+    }
+
     &__search {
       width: 2.4rem;
       height: 2.4rem;
