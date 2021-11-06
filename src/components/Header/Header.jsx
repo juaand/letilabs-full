@@ -26,12 +26,12 @@ function Header() {
                 <div className="container">
                     <div className="row justify-content-between Header__logo">
                         <div className="col-12 d-flex justify-content-center">
-                            <NavLink onClick={() => setBool(false)} className="navbar-brand" to="/" />
+                            <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin" : "/"}`} />
                             {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>}
                         </div>
                     </div>
                 </div>
-               {!hideOnDevice && <Nav initSearch={() => setBool(false)} />} 
+                {!hideOnDevice && <Nav initSearch={() => setBool(false)} />}
             </header>
             <Search bool={bool} />
         </>
