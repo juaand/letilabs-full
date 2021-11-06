@@ -107,7 +107,8 @@
   .Nav .navbar-toggler {
     border: 0;
     outline: unset;
-    margin-top: -1rem;
+    margin-top: -2.4rem;
+    margin-left: -2rem;
   }
   .Nav .navbar-toggler:focus {
     outline: none;

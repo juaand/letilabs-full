@@ -97,7 +97,7 @@ function Nav({initSearch}) {
                 </div>
             </nav>}
             {user && user.role === 'Admin' &&
-                <div className="container Nav Nav__admin">
+                <div className="container Nav__admin">
                     <nav className="navbar navbar-expand-lg navbar-light p-0">
                         <div className="container-fluid">
                             <button
@@ -116,13 +116,18 @@ function Nav({initSearch}) {
                                 id="navbarAdmin"
                             >
                                 <div className="navbar-nav">
-                                    <NavLink activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+
+                                    {user && user.role === 'Admin' &&
+                                        <div className="Header__welcome d-flex d-sm-none">
+                                            Hola, <span className="Header__welcome-span">{user.name}</span>
+                                        </div>
+                                    }
+                                    <NavLink onClick={hideMenu} activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
                                 </div>
                             </div>
                         </div>
                     </nav>
                 </div>
-
             }
             {bool && !user &&
                 <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(!bool)}>
