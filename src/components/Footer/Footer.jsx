@@ -2,8 +2,11 @@ import './Footer.css'
 import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import dataNav from '../../data/dataNav'
+import {useAuthContext} from '../../contexts/AuthContext'
 
 function Footer() {
+
+    const {user} = useAuthContext()
 
     const seoURL = (str) => {
         return str.toString()
@@ -42,12 +45,16 @@ function Footer() {
                         </div>
                         <div className={`col-12 col-sm-4 Footer__nav ${bool && 'order-last'}`}>
                             <ul>
-
-                                {dataNav.map(el =>
+                                {!user && dataNav.map(el =>
                                     <li>
                                         <NavLink activeClassName="active" className="nav-link" to={seoURL(el.nav_btn)}>{el.nav_btn}</NavLink>
                                     </li>
                                 )}
+                                {user && user.role === 'Admin' &&
+                                    <li>
+                                        <NavLink activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                    </li>
+                                }
                             </ul>
                         </div>
                         <div className="col-6 col-sm-4 Footer__rrss">
