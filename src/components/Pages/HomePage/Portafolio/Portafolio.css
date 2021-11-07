@@ -1,5 +1,4 @@
 .Portafolio {
-  position: relative;
   background: #f5f5f5;
   padding: 15rem 0 12rem 0;
   overflow: visible;
@@ -11,13 +10,18 @@
   color: #4a4a4a;
 }
 
-.Portafolio .big-red-triangle {
+.Portafolio__triangles {
+  position: relative;
+}
+
+.Portafolio__triangles .big-red-triangle {
   position: absolute;
   width: 140rem;
   height: 100rem;
   background: url(../../../../images/triangulo-rojo.svg) no-repeat left center/contain;
-  top: -15rem;
-  right: -65rem;
+  top: 50%;
+  margin-top: -50rem;
+  left: 0rem;
   color: #fff;
   display: flex;
   align-items: center;
@@ -27,11 +31,11 @@
   transform: rotate(0);
 }
 
-.Portafolio .big-red-triangle h1 {
+.Portafolio__triangles .big-red-triangle h1 {
   font-size: 4.6rem;
 }
 
-.Portafolio .big-blue-triangle {
+.Portafolio__triangles .big-blue-triangle {
   position: absolute;
   width: 100rem;
   height: 90rem;
@@ -55,24 +59,24 @@
   .Portafolio__item {
     font-size: 1.6rem;
   }
-  .Portafolio .big-red-triangle {
+  .Portafolio__triangles .big-red-triangle {
     width: 70rem;
     height: 50rem;
-    top: -27rem;
+    top: -60rem;
     right: -35rem;
     padding-left: 6rem;
     padding-right: 36rem;
     padding-top: 6rem;
     z-index: 1;
   }
-  .Portafolio .big-red-triangle h1 {
+  .Portafolio__triangles .big-red-triangle h1 {
     font-size: 3rem;
   }
-  .Portafolio .big-blue-triangle {
+  .Portafolio__triangles .big-blue-triangle {
     width: 50rem;
     height: 25rem;
-    top: -16rem;
-    right: 5rem;
+    top: -96rem;
+    right: 8rem;
     z-index: 0;
   }
 }
