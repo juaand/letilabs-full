@@ -56,17 +56,16 @@ function ModalFarmacoVigilancia({hideModal}) {
     const handleSubmit = async (event) => {
         event.preventDefault()
         data.effects = effects
-        console.log(data)
 
-        // try {
-        //     const newVigilancia = await vigilanciaForm(data)
-        //     document.querySelector('form').reset()
-        //     document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
-        //     setFormResponse(newVigilancia)
-        //     setMessage(!message)
-        // } catch (err) {
-        //     setRegisterError(err.response?.data?.message)
-        // }
+        try {
+            const newVigilancia = await vigilanciaForm(data)
+            document.querySelector('form').reset()
+            document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
+            setFormResponse(newVigilancia)
+            setMessage(!message)
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
     }
 
     const handleChange = (e) => {
