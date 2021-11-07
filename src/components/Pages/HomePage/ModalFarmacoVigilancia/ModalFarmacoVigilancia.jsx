@@ -7,6 +7,8 @@ import Button from '../../../Form/FormButton/FormButton'
 import DateTimePicker from "react-datetime-picker"
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import {vigilanciaForm} from '../../../../services/ApiClient'
+import homeCarousel from '../../../../data/homeCarousel'
+import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 
 function ModalFarmacoVigilancia({hideModal}) {
 
@@ -54,16 +56,17 @@ function ModalFarmacoVigilancia({hideModal}) {
     const handleSubmit = async (event) => {
         event.preventDefault()
         data.effects = effects
+        console.log(data)
 
-        try {
-            const newVigilancia = await vigilanciaForm(data)
-            document.querySelector('form').reset()
-            document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
-            setFormResponse(newVigilancia)
-            setMessage(!message)
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
-        }
+        // try {
+        //     const newVigilancia = await vigilanciaForm(data)
+        //     document.querySelector('form').reset()
+        //     document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
+        //     setFormResponse(newVigilancia)
+        //     setMessage(!message)
+        // } catch (err) {
+        //     setRegisterError(err.response?.data?.message)
+        // }
     }
 
     const handleChange = (e) => {
@@ -134,16 +137,17 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         />
                                                     </div>
 
-                                                    <InputWithLabel
+                                                    <DropdownWithLabel
                                                         value={data.medicine}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="medicine"
-                                                        type="text"
                                                         label="Medicamento que tomó"
+                                                        name="medicine"
+                                                        onChange={onChange}
                                                         className={`form-control ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
                                                         tabindex="5"
+                                                        list="medicines"
+                                                        data={homeCarousel}
                                                     />
+
                                                 </div>
                                                 <div className="col-12 col-sm-5">
 
