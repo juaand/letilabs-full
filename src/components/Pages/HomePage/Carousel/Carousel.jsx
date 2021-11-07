@@ -29,7 +29,7 @@ function Carousel() {
     return (
         <>
             <div className="container">
-                <h1>Nuestro <br />productos</h1>
+                <h1>Nuestros <br />productos</h1>
             </div>
             <div className="container-fluid Carousel">
                 <Slider {...settings}>
