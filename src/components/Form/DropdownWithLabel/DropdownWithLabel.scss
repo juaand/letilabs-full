@@ -1,0 +1,11 @@
+.DropdownWithLabel {
+  input::-webkit-calendar-picker-indicator {
+    opacity: 0.5;
+    margin-bottom: 1rem;
+  }
+
+  datalist {
+    background: red !important;
+    width: 100%;
+  }
+}
