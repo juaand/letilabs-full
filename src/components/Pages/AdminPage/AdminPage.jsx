@@ -1,12 +1,7 @@
 import './AdminPage.css'
-import React, {useState, useEffect} from 'react'
+import React, {useEffect} from 'react'
 
 function AdminPage({user}) {
-
-
-    const [userData] = useState(user)
-
-    console.log(userData)
 
     useEffect(() => {
         document.title = "Grupo Leti"

@@ -1,12 +1,15 @@
 import './AdminFarVigPage.css'
 import React, {useState, useEffect} from 'react'
 import {getFarmVigData} from '../../../services/ApiClient'
+import DeleteFarmVigModal from './DeleteFarmVigModal/DeleteFarmVigModal'
 
 function AdminFarVigPage() {
 
 
     const [farVig, setFarVig] = useState([])
     const [search, setSearch] = useState('')
+    const [bool, setBool] = useState(false)
+    const [card, setCard] = useState([])
 
     const filteredCards = farVig.filter(card => {
         return (
@@ -36,6 +39,20 @@ function AdminFarVigPage() {
         setSearch(e.target.value)
     }
 
+    const showModal = (farmVig) => {
+        setCard(farmVig)
+        setBool(!bool)
+    }
+
+    const hideModal = () => {
+        setBool(!bool)
+    }
+
+    const updateCardsData = async () => {
+        const allFarmVig = await getFarmVigData()
+        setFarVig(allFarmVig)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const allFarmVig = await getFarmVigData()
@@ -47,6 +64,7 @@ function AdminFarVigPage() {
 
     return (
         <main className="container-fluid AdminFarVigPage">
+            {bool && <DeleteFarmVigModal card={card} hideModal={hideModal} data={updateCardsData} />}
             <div className="row">
                 <div className="col-12 AdminFarVigPage__bg">
                     <div className="container">
@@ -61,7 +79,9 @@ function AdminFarVigPage() {
                             <div className="col-sm-4">
                                 <div className="card" key={farmVig.id}>
                                     <div className="card-body">
-                                        <span className="AdminFarVigPage__date">{new Date(farmVig.createdAt).getDate()} / {new Date(farmVig.createdAt).getMonth()} / {new Date(farmVig.createdAt).getFullYear()}</span>
+                                        <span onClick={() => showModal(farmVig)} className="AdminFarVigPage__delete"></span>
+                                        <span className="AdminFarVigPage__date">{new Date(farmVig.createdAt).getDate()} / {new Date(farmVig.createdAt).getMonth()} / {new Date(farmVig.createdAt).getFullYear()}
+                                        </span>
                                         <p className="AdminFarVigPage__medicine">{farmVig.medicine}</p>
                                         <p className="AdminFarVigPage__patient">
                                             {farmVig.name} {farmVig.lastname}</p>

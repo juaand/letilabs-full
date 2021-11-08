@@ -20,12 +20,15 @@ http.interceptors.response.use(
 )
 
 
-//admin.routes
+//admin routes
 export const login = ({email, password}) =>
     http.post("/login", {email, password})
 export const logOut = () => http.post("/logout")
+
+
+//farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
 
-
-//user routes
 export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
+
+export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
