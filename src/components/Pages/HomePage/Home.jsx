@@ -6,11 +6,26 @@ import Carousel from './Carousel/Carousel'
 import Unidades from './Unidades/Unidades'
 import Portafolio from './Portafolio/Portafolio'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
-
+import {createContent} from '../../../services/ApiClient'
 
 function Home() {
 
+    const data = {
+        content: '',
+        url: '/',
+        name: 'home'
+    }
+
+
     useEffect(() => {
+        const mainContent = document.querySelector('main').innerText
+
+        const fetchData = async () => {
+            data.content = mainContent
+            await createContent(data)
+        }
+        fetchData()
+
         document.title = "Grupo Leti | Inicio"
 
         const isMenuOpen = document.querySelector('.show')
@@ -18,7 +33,8 @@ function Home() {
         if (isMenuOpen) {
             isMenuOpen.classList.remove('show')
         }
-        
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

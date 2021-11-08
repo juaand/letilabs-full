@@ -32,3 +32,6 @@ export const getFarmVigData = () => http.get("/farmvigdata")
 export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
 
 export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
+
+//content routes
+export const createContent = ({content, url, name}) => http.post("/update-content", {content, url, name})
