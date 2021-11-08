@@ -4,7 +4,10 @@
   &__bg {
     background: url(../../../images/farmvig-bg.jpg) no-repeat right top /
       contain;
-    padding-top: 23rem;
+    height: 23rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .card {
@@ -51,5 +54,26 @@
     font-size: 1.4rem;
     line-height: 1.8rem;
     margin-top: 1.2rem;
+  }
+
+  &__search {
+    padding-left: 7rem;
+    height: 6.4rem;
+    font-size: 1.6rem;
+    border-radius: 0;
+    background: $leti-white url(../../../images/input-search.svg) no-repeat 2rem
+      center / 3.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .AdminFarVigPage {
+    &__search {
+      padding-left: 4rem;
+      font-size: 1.4rem;
+      border-radius: 0;
+      background-size: 2.2rem;
+      background-position-x: 1rem;
+    }
   }
 }

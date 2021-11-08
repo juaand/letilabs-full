@@ -26,6 +26,14 @@
   border-bottom: solid 0.3rem #055aa5;
 }
 
+.Nav .nav-link.active {
+  pointer-events: none;
+}
+
+.Nav .nav-link__admin:hover {
+  border-bottom: solid 0.3rem transparent;
+}
+
 .Nav__sub-nav {
   background: #e9eaee;
   position: absolute;
@@ -77,10 +85,6 @@
 
 .Nav__sub-nav-anchors a:hover {
   color: #cd202f;
-}
-
-.Nav__admin {
-  font-size: 1.6rem;
 }
 
 @media (max-width: 576px) {
