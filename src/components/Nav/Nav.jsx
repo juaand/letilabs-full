@@ -99,7 +99,8 @@ function Nav({initSearch}) {
                                         Hola, <span className="Nav__welcome-span">{user.name}</span>
                                         <div onClick={logout} className="Nav__logout"></div>
                                     </div>
-                                    <NavLink onClick={hideMenu} activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                    <NavLink onClick={hideMenu} activeClassName="active" className="nav-link nav-link__admin" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                    <NavLink onClick={hideMenu} activeClassName="active" className="nav-link nav-link__admin" to="/admin-editar-contenido">Editar contenido</NavLink>
                                 </>
                             }
                         </div>

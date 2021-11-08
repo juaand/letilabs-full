@@ -25,6 +25,16 @@
     &:hover {
       border-bottom: solid 0.3rem $leti-blue;
     }
+
+    &.active {
+      pointer-events: none;
+    }
+
+    &__admin {
+      &:hover {
+        border-bottom: solid 0.3rem transparent;
+      }
+    }
   }
 
   &__sub-nav {
@@ -85,10 +95,6 @@
         }
       }
     }
-  }
-
-  &__admin {
-    font-size: 1.6rem;
   }
 }
 
