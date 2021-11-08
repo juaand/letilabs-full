@@ -1,1 +1,50 @@
-/* No CSS */
+.AdminFarVigPage__bg {
+  background: url(../../../images/farmvig-bg.jpg) no-repeat right top/contain;
+  padding-top: 23rem;
+}
+
+.AdminFarVigPage .card {
+  border: 0;
+  border-top: solid 0.1rem #e9eaee;
+  border-radius: 0;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  font-size: 1.6rem;
+}
+
+.AdminFarVigPage .card .card-body {
+  position: relative;
+}
+
+.AdminFarVigPage__date {
+  position: absolute;
+  top: -3.6rem;
+  right: 0rem;
+  font-size: 1.2rem;
+  color: #cd202f;
+  background: #fff;
+  padding: 0 0.8rem;
+  font-weight: 600;
+}
+
+.AdminFarVigPage__medicine {
+  font-family: 'TripletaBold';
+  position: absolute;
+  background: #fff;
+  color: #055aa5;
+  top: -3.6rem;
+  left: 0rem;
+  padding: 0 0.8rem;
+}
+
+.AdminFarVigPage__patient {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+}
+
+.AdminFarVigPage__desc {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}

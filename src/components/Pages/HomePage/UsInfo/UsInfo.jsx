@@ -5,11 +5,11 @@ import {Link} from 'react-router-dom'
 function UsInfo() {
 
     return (
-        <section class="container Nosotros">
-            <div class="row">
-                <div class="col-11 col-sm-6">
-                    <p class="Nosotros__valor">
-                        <span class="blue-text">Laboratorios Leti</span> es un laboratorio
+        <section className="container Nosotros">
+            <div className="row">
+                <div className="col-11 col-sm-6">
+                    <p className="Nosotros__valor">
+                        <span className="blue-text">Laboratorios Leti</span> es un laboratorio
                         farmacéutico venezolano que desde hace 70 años, crea soluciones de
                         salud a través de la producción y comercialización de un amplio
                         portafolio de medicamentos desarrollados con tecnología y

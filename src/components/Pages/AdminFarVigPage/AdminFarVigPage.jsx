@@ -6,6 +6,22 @@ function AdminFarVigPage() {
 
     const [farVig, setFarVig] = useState([])
 
+    const getSex = (str) => {
+        if (str === 'F') {
+            return 'femenino'
+        } else {
+            return 'masculino'
+        }
+    }
+
+    const getPrescribed = (str) => {
+        if (str === 'No') {
+            return 'no'
+        } else {
+            return ''
+        }
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const allFarmVig = await getFarmVigData()
@@ -25,19 +41,28 @@ function AdminFarVigPage() {
     // sex: "F"
 
     return (
-        <main className="container">
-            <h1>FARMACO VIGILANCIA PAGE</h1>
-            {farVig.map(farmVig =>
-                <div className="card" key={farmVig.id}>
-                    <div className="card-body">
-                        <p>{farmVig.medicine}</p>
-                        <h5 className="card-title">{farmVig.name}</h5>
-                        <p>{farmVig.effects}</p>
-                        <p>{farmVig.prescribed}</p>
-                        <p>{new Date().getFullYear() - new Date(farmVig.date).getFullYear()}</p>
-                    </div>
+        <main className="container-fluid AdminFarVigPage">
+            <div className="row">
+                <div className="col-12 AdminFarVigPage__bg"></div>
+            </div>
+            <div className="container">
+                <div className="row">
+                    {farVig.map(farmVig =>
+                        <div className="col-sm-4">
+                            <div className="card" key={farmVig.id}>
+                                <div className="card-body">
+                                <span className="AdminFarVigPage__date">{new Date(farmVig.createdAt).getDate()} / {new Date(farmVig.createdAt).getMonth()} / {new Date(farmVig.createdAt).getFullYear()}</span>
+                                    <p className="AdminFarVigPage__medicine">{farmVig.medicine}</p>
+                                    <p className="AdminFarVigPage__patient">
+                                        {farmVig.name} {farmVig.lastname}</p>
+                                    <p className="AdminFarVigPage__desc">paciente {getSex(farmVig.sex)} de {new Date().getFullYear() - new Date(farmVig.date).getFullYear()} años de edad con medicamento {getPrescribed(farmVig.prescribed)} prescrito presenta los siguientes efectos:</p>
+                                    <p className="AdminFarVigPage__effects">{farmVig.effects}</p>
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
-            )}
+            </div>
         </main>
     )
 }
