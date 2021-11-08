@@ -11,6 +11,20 @@
   align-items: center;
 }
 
+.ModalFarmacoVigilancia__form {
+  position: relative;
+}
+
+.ModalFarmacoVigilancia__form .alert {
+  position: absolute;
+  bottom: 0;
+  color: #cd202f;
+  background: transparent;
+  border: 0;
+  width: 90%;
+  font-size: 1.4rem;
+}
+
 .ModalFarmacoVigilancia__container {
   background: #fff;
   padding: 9rem;

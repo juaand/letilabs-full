@@ -109,7 +109,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                        <form onSubmit={handleSubmit}>
+                                        <form onSubmit={handleSubmit} className="ModalFarmacoVigilancia__form">
                                             <div className="row justify-content-between">
                                                 <div className="col-12 col-sm-5">
 

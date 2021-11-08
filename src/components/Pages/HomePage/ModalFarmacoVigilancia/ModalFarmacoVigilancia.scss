@@ -12,6 +12,20 @@
   justify-content: center;
   align-items: center;
 
+  &__form {
+    position: relative;
+
+    .alert {
+      position: absolute;
+      bottom: 0;
+      color: $leti-red;
+      background: transparent;
+      border: 0;
+      width: 90%;
+      font-size: 1.4rem;
+    }
+  }
+
   &__container {
     background: $leti-white;
     padding: 9rem;
@@ -182,18 +196,18 @@
 
       &--success {
         padding: 4rem 2rem;
-  
+
         .leti-btn {
           margin-top: 3rem;
         }
-  
+
         .leti-red-triangle {
           width: 20rem;
           height: 20rem;
           right: -10rem;
           top: -10rem;
         }
-  
+
         .leti-blue-triangle {
           width: 15rem;
           height: 15rem;
