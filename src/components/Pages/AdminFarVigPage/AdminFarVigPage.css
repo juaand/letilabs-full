@@ -17,17 +17,34 @@
 
 .AdminFarVigPage .card .card-body {
   position: relative;
+  padding-top: 3rem;
 }
 
 .AdminFarVigPage__date {
-  position: absolute;
-  top: -3.6rem;
-  right: 0rem;
   font-size: 1.2rem;
   color: #cd202f;
-  background: #fff;
   padding: 0 0.8rem;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+}
+
+.AdminFarVigPage__delete {
+  position: absolute;
+  width: 6rem;
+  height: 1.8rem;
+  display: inline-block;
+  background: #fff url(../../../images/trash.svg) no-repeat center center/contain;
+  margin-left: 2rem;
+  top: -3.2rem;
+  right: 0;
+}
+
+.AdminFarVigPage__delete:hover {
+  cursor: pointer;
 }
 
 .AdminFarVigPage__medicine {
