@@ -60,10 +60,7 @@ const LoginPage = () => {
                 <div className="leti-red-triangle"></div>
                 <div className="row justify-content-center">
                     <div className="col-sm-6 col-xl-4 col-11">
-                        <h1>Área administrativa</h1>
-
                         <form onSubmit={handleSubmit}>
-
                             <InputWithLabel
                                 value={data.email}
                                 onBlur={onBlur}
