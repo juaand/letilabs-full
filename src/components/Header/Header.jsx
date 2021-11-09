@@ -13,7 +13,6 @@ function Header() {
     const [bool, setBool] = useState(false)
     const [hideOnDevice, setHideOnDevice] = useState(false)
 
-
     const showSearch = () => {
         setBool(!bool)
 

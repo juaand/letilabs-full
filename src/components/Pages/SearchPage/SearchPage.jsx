@@ -7,12 +7,13 @@ import {Link} from 'react-router-dom'
 
 function SearchPage(props) {
 
-    const searchSentence = props?.location?.state.buscar
-    const hideSearchIcon = props?.location?.state.hideSearchIcon
+    const searchSentence = props?.location?.state?.buscar
+    const hideSearchIcon = props?.location?.state?.hideSearchIcon
+
+    const [matches, setMatches] = useState([])
+    const [newSearch, setNewSearch] = useState(searchSentence)
 
     const title = props.title || 'Buscar'
-
-    //"the fox jumped over the fence".replace(/fox/,"<span class="blue-text">fox</span>")
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -30,16 +31,27 @@ function SearchPage(props) {
     )
 
     const {data} = state
-    const [matches, setMatches] = useState([])
 
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1).toLowerCase().replace(`${searchSentence.toLowerCase()}`, `<span class="blue-text">${searchSentence}</span>`) + '...' : string.toLowerCase().replace(`${searchSentence.toLowerCase()}`, `<span class="blue-text">${searchSentence}</span>`) + '...'
     }
 
+    const searchSubmit = (event) => {
+        event.preventDefault()
+        data.search = event.target.search.value
+        setNewSearch(event.target.search.value)
+
+        //Busqueda de contenido en la API
+        const fetchData = async () => {
+            const contentData = await searchContent(data.search)
+            setMatches(contentData)
+        }
+        fetchData()
+    }
+
     useEffect(() => {
 
         document.title = `Grupo Leti | ${title}`
-
 
         const searchOpen = document.querySelector('.show')
         if (searchOpen) {
@@ -68,18 +80,20 @@ function SearchPage(props) {
                 <div className="col-12 SearchPage__bg"></div>
             </div>
             <div className="container">
-                <InputWithLabel
-                    value={data.search}
-                    onBlur={onBlur}
-                    onChange={onChange}
-                    name="search"
-                    type="text"
-                    className="Search__form-input SearchPage__form-input"
-                    placeholder="Buscar..."
-                />
+                <form onSubmit={searchSubmit}>
+                    <InputWithLabel
+                        value={data.search}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        name="search"
+                        type="text"
+                        className="Search__form-input SearchPage__form-input"
+                        placeholder="Buscar..."
+                    />
+                </form>
                 {matches.length > 0 ?
                     <p className="SearchPage__resultados">
-                        Resultados {matches.length} – {matches.length} de {matches.length} para <span className="blue-text">{searchSentence}</span>
+                        Resultados {matches.length} – {matches.length} de {matches.length} para <span className="blue-text">{newSearch}</span>
                     </p>
                     :
                     <div className="row">
