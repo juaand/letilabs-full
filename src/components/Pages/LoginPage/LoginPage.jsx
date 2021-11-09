@@ -50,7 +50,7 @@ const LoginPage = () => {
     const isError = Object.values(error).some(err => err)
 
     if (user && user.role === 'Admin') {
-        return <Redirect to="/admin" />
+        return <Redirect to="/admin-farmacovigilancia" />
     }
 
     return (
