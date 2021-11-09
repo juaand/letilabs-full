@@ -11,7 +11,7 @@ import {createContent} from '../../../services/ApiClient'
 function Home(props) {
 
     const data = {
-        content: '',
+        content: [],
         url: '/',
         name: 'Inicio'
     }
@@ -19,10 +19,12 @@ function Home(props) {
     const title = props.title || 'Inicio'
 
     useEffect(() => {
-        const mainContent = document.querySelector('main').innerText
+        const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+        mainContent.forEach(content => {
+            data.content.push(content.innerHTML)
+        })
 
         const fetchData = async () => {
-            data.content = mainContent
             await createContent(data)
         }
         fetchData()

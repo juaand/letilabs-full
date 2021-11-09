@@ -33,7 +33,7 @@ function SearchPage(props) {
     const [matches, setMatches] = useState([])
 
     const truncate = (string, n) => {
-        return string?.length > n ? string.substr(0, n - 1).toLowerCase().replace(`${searchSentence.toLowerCase()}`, `<span class="blue-text">${searchSentence}</span>`) + '...' : string
+        return string?.length > n ? string.substr(0, n - 1).toLowerCase().replace(`${searchSentence.toLowerCase()}`, `<span class="blue-text">${searchSentence}</span>`) + '...' : string.toLowerCase().replace(`${searchSentence.toLowerCase()}`, `<span class="blue-text">${searchSentence}</span>`) + '...'
     }
 
     useEffect(() => {
@@ -77,7 +77,7 @@ function SearchPage(props) {
                     className="Search__form-input SearchPage__form-input"
                     placeholder="Buscar..."
                 />
-                <p className="SearchPage__resultados">Resultados 1 – 5 de 5 para <span className="blue-text">{searchSentence}</span></p>
+                <p className="SearchPage__resultados">Resultados 1 – {matches.length} de {matches.length} para <span className="blue-text">{searchSentence}</span></p>
             </div>
             <div className="container">
                 <div className="row">

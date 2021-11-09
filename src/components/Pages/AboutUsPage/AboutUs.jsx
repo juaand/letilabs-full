@@ -10,7 +10,7 @@ import {createContent} from '../../../services/ApiClient'
 function AboutUs(props) {
 
     const data = {
-        content: '',
+        content: [],
         url: '/sobre-nosotros',
         name: 'Sobre nosotros'
     }
@@ -18,11 +18,12 @@ function AboutUs(props) {
     const title = props.title || 'Sobre nosotros'
 
     useEffect(() => {
-
-        const mainContent = document.querySelector('main').innerText
+        const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+        mainContent.forEach(content => {
+            data.content.push(content.innerHTML)
+        })
 
         const fetchData = async () => {
-            data.content = mainContent
             await createContent(data)
         }
         fetchData()
