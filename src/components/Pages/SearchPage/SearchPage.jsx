@@ -98,7 +98,7 @@ function SearchPage(props) {
                     :
                     <div className="row">
                         <p className="col-12 col-sm-6 SearchPage__resultados-vacio">
-                            <p>Lo sentimos, pero no se han encontrado resultados.</p>
+                            <p>Lo sentimos, pero no se han encontrado resultados para <span className="blue-text">{newSearch}</span>.</p>
 
                             <p>Asegúrate que todas las palabras están escritas correctamente.</p>
                             <p>Prueba con diferentes palabras clave.</p>
