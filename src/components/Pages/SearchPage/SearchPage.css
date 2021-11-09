@@ -16,6 +16,14 @@
   margin: 3rem 0 8rem 0;
 }
 
+.SearchPage__resultados-vacio {
+  margin: 4rem 0 8rem 0;
+}
+
+.SearchPage__resultados-vacio p:first-child {
+  margin-bottom: 4rem;
+}
+
 .SearchPage__resultados-matchs {
   margin-bottom: 5rem;
   border-bottom: 1px solid #e9eaee;

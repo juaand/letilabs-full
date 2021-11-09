@@ -77,7 +77,22 @@ function SearchPage(props) {
                     className="Search__form-input SearchPage__form-input"
                     placeholder="Buscar..."
                 />
-                <p className="SearchPage__resultados">Resultados 1 – {matches.length} de {matches.length} para <span className="blue-text">{searchSentence}</span></p>
+                {matches.length > 0 ?
+                    <p className="SearchPage__resultados">
+                        Resultados {matches.length} – {matches.length} de {matches.length} para <span className="blue-text">{searchSentence}</span>
+                    </p>
+                    :
+                    <div className="row">
+                        <p className="col-12 col-sm-6 SearchPage__resultados-vacio">
+                            <p>Lo sentimos, pero no se han encontrado resultados.</p>
+
+                            <p>Asegúrate que todas las palabras están escritas correctamente.</p>
+                            <p>Prueba con diferentes palabras clave.</p>
+                            <p>Prueba con palabras más generales.</p>
+                            <p>¿Sigues sin conseguir la respuesta? Envíanos un correo electrónico con tu pregunta y trataremos de ayudarte.</p>
+                        </p>
+                    </div>
+                }
             </div>
             <div className="container">
                 <div className="row">

@@ -16,6 +16,14 @@
   &__resultados {
     margin: 3rem 0 8rem 0;
 
+    &-vacio {
+      margin: 4rem 0 8rem 0;
+
+      p:first-child {
+        margin-bottom: 4rem;
+      }
+    }
+
     &-matchs {
       margin-bottom: 5rem;
       border-bottom: 1px solid $leti-subnav;
