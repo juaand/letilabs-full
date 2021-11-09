@@ -1,12 +1,16 @@
 import './SearchPage.css'
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../hooks/useFormState'
+import {searchContent} from '../../../services/ApiClient'
+import {Link} from 'react-router-dom'
 
 function SearchPage(props) {
 
     const searchSentence = props?.location?.state.buscar
     const hideSearchIcon = props?.location?.state.hideSearchIcon
+
+    const title = props.title || 'Buscar'
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -24,8 +28,17 @@ function SearchPage(props) {
     )
 
     const {data} = state
+    const [matches, setMatches] = useState([])
+
+    const truncate = (string, n) => {
+        return string?.length > n ? string.substr(0, n - 1) + '...' : string
+    }
 
     useEffect(() => {
+
+        document.title = `Grupo Leti | ${title}`
+
+
         const searchOpen = document.querySelector('.show')
         if (searchOpen) {
             searchOpen.classList.remove('show')
@@ -35,8 +48,18 @@ function SearchPage(props) {
         if (hideSearchIcon) {
             document.querySelector('.Header__search').classList.remove('Header__search-close')
         }
+
+        //Busqueda de contenido en la API
+        const fetchData = async () => {
+            const contentData = await searchContent(data.search)
+            console.log(contentData)
+            setMatches(contentData)
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
 
     return (
         <section className="container-fluid SearchPage">
@@ -54,6 +77,19 @@ function SearchPage(props) {
                     placeholder="Buscar..."
                 />
                 <p className="SearchPage__resultados">Resultados 1 – 5 de 5 para <span className="blue-text">{searchSentence}</span></p>
+            </div>
+            <div className="container">
+                <div className="row">
+                    {matches.map(match =>
+                        <div className="col-12 SearchPage__resultados-matchs">
+                            <Link className="SearchPage__link" to={match.url}>
+                                <p className="SearchPage__title">{match.name} | Grupo Leti</p>
+                                <p className="SearchPage__url">{document.location.origin}{match.url}</p>
+                            </Link>
+                            <p className="SearchPage__content">{truncate(match.content, 110)}</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </section>
     )

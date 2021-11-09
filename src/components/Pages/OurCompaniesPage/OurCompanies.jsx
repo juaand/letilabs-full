@@ -1,10 +1,12 @@
 import './OurCompanies.css'
 import React, {useEffect} from 'react'
 
-function OurCompanies() {
+function OurCompanies(props) {
+
+    const title = props.title || 'Nuestras empresas'
 
     useEffect(() => {
-        document.title = "Grupo Leti | Nuestras Empresas"
+        document.title = `Grupo Leti | ${title}`
     }, [])
 
     return (

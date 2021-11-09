@@ -8,14 +8,15 @@ import Portafolio from './Portafolio/Portafolio'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {createContent} from '../../../services/ApiClient'
 
-function Home() {
+function Home(props) {
 
     const data = {
         content: '',
         url: '/',
-        name: 'home'
+        name: 'Inicio'
     }
 
+    const title = props.title || 'Inicio'
 
     useEffect(() => {
         const mainContent = document.querySelector('main').innerText
@@ -26,7 +27,7 @@ function Home() {
         }
         fetchData()
 
-        document.title = "Grupo Leti | Inicio"
+        document.title = `Grupo Leti | ${title}`
 
         const isMenuOpen = document.querySelector('.show')
 

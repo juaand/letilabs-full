@@ -35,3 +35,6 @@ export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
 
 //content routes
 export const createContent = ({content, url, name}) => http.post("/update-content", {content, url, name})
+
+//search routes
+export const searchContent = (search) => http.get(`/search/${search}`)
