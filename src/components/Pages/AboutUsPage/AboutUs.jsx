@@ -6,8 +6,11 @@ import Timeline from './Timeline/Timeline'
 import Megat from './Megat/Megat'
 import Gallery from './Gallery/Gallery'
 import {createContent} from '../../../services/ApiClient'
+import { useAuthContext } from '../../../contexts/AuthContext'
+
 
 function AboutUs() {
+    const {user} = useAuthContext()
 
     const data = {
         content: '',
@@ -16,14 +19,15 @@ function AboutUs() {
     }
 
     useEffect(() => {
-
-        const mainContent = document.querySelector('main').innerText
-
-        const fetchData = async () => {
-            data.content = mainContent
-            await createContent(data)
+        if(user) {
+            const mainContent = document.querySelector('main').innerText
+    
+            const fetchData = async () => {
+                data.content = mainContent
+                await createContent(data)
+            }
+            fetchData()
         }
-        fetchData()
 
         document.title = "Grupo Leti | Sobre nosotros"
 

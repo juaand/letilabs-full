@@ -7,9 +7,10 @@ import Unidades from './Unidades/Unidades'
 import Portafolio from './Portafolio/Portafolio'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {createContent} from '../../../services/ApiClient'
+import { useAuthContext } from '../../../contexts/AuthContext'
 
 function Home() {
-
+    const {user} = useAuthContext()
     const data = {
         content: '',
         url: '/',
@@ -18,13 +19,15 @@ function Home() {
 
 
     useEffect(() => {
-        const mainContent = document.querySelector('main').innerText
-
-        const fetchData = async () => {
-            data.content = mainContent
-            await createContent(data)
+        if(user) {
+            const mainContent = document.querySelector('main').innerText
+    
+            const fetchData = async () => {
+                data.content = mainContent
+                await createContent(data)
+            }
+            fetchData()
         }
-        fetchData()
 
         document.title = "Grupo Leti | Inicio"
 
