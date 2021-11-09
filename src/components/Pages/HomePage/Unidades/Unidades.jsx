@@ -29,7 +29,7 @@ function Unidades() {
                         {bool && n % 2 === 0 ?
                             <div className="row Unidades__row justify-content-end">
                                 <div className="col-12 col-sm-4 Unidades__desc Unidades__desc__right">
-                                    {el.desc}
+                                    <p>{el.desc}</p>
                                     <Link to="/" className="Unidades__square-btn"></Link>
                                 </div>
                                 <div className="col-12 col-sm-5 Unidades__logo" style={{
@@ -42,7 +42,7 @@ function Unidades() {
                                     background: `#f5f5f5 url("./images/${el.name.toLowerCase()}.svg") no-repeat center center / contain`
                                 }}></div>
                                 <div className="col-12 col-sm-4 Unidades__desc">
-                                    {el.desc}
+                                    <p>{el.desc}</p>
                                     <Link to="/" className="Unidades__square-btn"></Link>
                                 </div>
                             </div>

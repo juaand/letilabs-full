@@ -12,6 +12,8 @@ function SearchPage(props) {
 
     const title = props.title || 'Buscar'
 
+    //"the fox jumped over the fence".replace(/fox/,"<span class="blue-text">fox</span>")
+
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
@@ -31,7 +33,7 @@ function SearchPage(props) {
     const [matches, setMatches] = useState([])
 
     const truncate = (string, n) => {
-        return string?.length > n ? string.substr(0, n - 1) + '...' : string
+        return string?.length > n ? string.substr(0, n - 1).toLowerCase().replace(`${searchSentence.toLowerCase()}`, `<span class="blue-text">${searchSentence}</span>`) + '...' : string
     }
 
     useEffect(() => {
@@ -52,7 +54,6 @@ function SearchPage(props) {
         //Busqueda de contenido en la API
         const fetchData = async () => {
             const contentData = await searchContent(data.search)
-            console.log(contentData)
             setMatches(contentData)
         }
         fetchData()
@@ -86,7 +87,8 @@ function SearchPage(props) {
                                 <p className="SearchPage__title">{match.name} | Grupo Leti</p>
                                 <p className="SearchPage__url">{document.location.origin}{match.url}</p>
                             </Link>
-                            <p className="SearchPage__content">{truncate(match.content, 110)}</p>
+                            <p className="SearchPage__content" dangerouslySetInnerHTML={{__html: `${truncate(match.content, 110)}`}}>
+                            </p>
                         </div>
                     )}
                 </div>
