@@ -7,6 +7,7 @@ function AdminPage(props) {
 
     useEffect(() => {
         document.title = `Grupo Leti | ${title}`
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

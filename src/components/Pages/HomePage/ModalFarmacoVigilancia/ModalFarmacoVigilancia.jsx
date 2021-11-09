@@ -45,6 +45,7 @@ function ModalFarmacoVigilancia({hideModal}) {
         }
     )
 
+    // eslint-disable-next-line no-unused-vars
     const [date, setDate] = useState(new Date())
     const [registerError, setRegisterError] = useState(null)
     const [effects, setEffects] = useState(state.data.effects)
