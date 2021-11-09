@@ -7,9 +7,10 @@ import Unidades from './Unidades/Unidades'
 import Portafolio from './Portafolio/Portafolio'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {createContent} from '../../../services/ApiClient'
+import { useAuthContext } from '../../../contexts/AuthContext'
 
 function Home(props) {
-
+    const {user} = useAuthContext()
     const data = {
         content: [],
         url: '/',
@@ -19,6 +20,7 @@ function Home(props) {
     const title = props.title || 'Inicio'
 
     useEffect(() => {
+        if(user) {
         const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
         mainContent.forEach(content => {
             data.content.push(content.innerHTML)
@@ -26,8 +28,10 @@ function Home(props) {
 
         const fetchData = async () => {
             await createContent(data)
+          }
+          fetchData()
         }
-        fetchData()
+         
 
         document.title = `Grupo Leti | ${title}`
 

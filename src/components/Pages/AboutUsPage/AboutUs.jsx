@@ -6,18 +6,21 @@ import Timeline from './Timeline/Timeline'
 import Megat from './Megat/Megat'
 import Gallery from './Gallery/Gallery'
 import {createContent} from '../../../services/ApiClient'
+import { useAuthContext } from '../../../contexts/AuthContext'
 
-function AboutUs(props) {
 
+
+function AboutUs() {
+    const {user} = useAuthContext()
     const data = {
         content: [],
         url: '/sobre-nosotros',
         name: 'Sobre nosotros'
     }
 
-    const title = props.title || 'Sobre nosotros'
 
     useEffect(() => {
+      if(user) {
         const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
         mainContent.forEach(content => {
             data.content.push(content.innerHTML)
@@ -25,8 +28,8 @@ function AboutUs(props) {
 
         const fetchData = async () => {
             await createContent(data)
+          }
         }
-        fetchData()
 
         document.title = `Grupo Leti | ${title}`
 
