@@ -7,13 +7,15 @@ import Megat from './Megat/Megat'
 import Gallery from './Gallery/Gallery'
 import {createContent} from '../../../services/ApiClient'
 
-function AboutUs() {
+function AboutUs(props) {
 
     const data = {
         content: '',
         url: '/sobre-nosotros',
-        name: 'aboutUs'
+        name: 'Sobre nosotros'
     }
+
+    const title = props.title || 'Sobre nosotros'
 
     useEffect(() => {
 
@@ -25,7 +27,7 @@ function AboutUs() {
         }
         fetchData()
 
-        document.title = "Grupo Leti | Sobre nosotros"
+        document.title = `Grupo Leti | ${title}`
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
