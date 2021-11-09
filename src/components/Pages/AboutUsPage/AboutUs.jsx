@@ -10,7 +10,7 @@ import { useAuthContext } from '../../../contexts/AuthContext'
 
 
 
-function AboutUs() {
+function AboutUs(props) {
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -18,6 +18,7 @@ function AboutUs() {
         name: 'Sobre nosotros'
     }
 
+    const title = props.title || 'Sobre nosotros'
 
     useEffect(() => {
       if(user) {
@@ -29,6 +30,7 @@ function AboutUs() {
         const fetchData = async () => {
             await createContent(data)
           }
+          fetchData()
         }
 
         document.title = `Grupo Leti | ${title}`
