@@ -1,7 +1,5 @@
 import './AdminEditPage.css'
-import React, {useEffect, useState} from 'react'
-import useFetch from "react-fetch-hook";
-import {createContent} from '../../../services/ApiClient'
+import React, {useEffect} from 'react'
 import { useHistory } from 'react-router';
 
 
