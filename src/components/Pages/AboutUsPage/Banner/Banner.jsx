@@ -7,7 +7,8 @@ function Banner() {
             <div className="container">
                 <div className="row d-flex">
                     <div className="col-12 col-sm-6 Banner__title">
-                        <h1>Desarrollamos soluciones que marcan la diferencia en la vida de los venezolanos</h1></div>
+                        <h1>Desarrollamos soluciones que marcan la diferencia en la vida de los venezolanos</h1>
+                    </div>
                     <div className="col-12 col-sm-6 Banner__bg"></div>
                 </div>
             </div>

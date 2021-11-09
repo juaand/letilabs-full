@@ -41,8 +41,9 @@ function Footer() {
                                 <div className="Footer__logo"></div>
                             </Link>
                             <div className="Footer__info">
-                                <p>info@grupoleti.com</p>
-                                <p>+580000000000</p>
+                                <ul>
+                                    <li>info@grupoleti.com</li>
+                                    <li>+580000000000</li></ul>
                             </div>
                         </div>
                         <div className={`col-12 col-sm-4 Footer__nav ${bool && 'order-last'}`}>
@@ -53,9 +54,14 @@ function Footer() {
                                     </li>
                                 )}
                                 {user && user.role === 'Admin' &&
-                                    <li>
-                                        <NavLink activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
-                                    </li>
+                                    <>
+                                        <li>
+                                            <NavLink activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink activeClassName="active" className="nav-link" to="/admin-editar-contenido">Editar contenido</NavLink>
+                                        </li>
+                                    </>
                                 }
                             </ul>
                         </div>

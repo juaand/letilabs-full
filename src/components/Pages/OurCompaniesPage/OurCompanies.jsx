@@ -6,7 +6,9 @@ import useFetch from "react-fetch-hook";
 const fs = require('fs');
 
 
-function OurCompanies() {
+function OurCompanies(props) {
+
+    const title = props.title || 'Nuestras empresas'
 
 
         // const [newPage, setNewPage] = useState([])
@@ -37,7 +39,8 @@ function OurCompanies() {
 });
 
     useEffect(() => {
-        document.title = "Grupo Leti | Nuestras Empresas"
+        document.title = `Grupo Leti | ${title}`
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

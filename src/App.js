@@ -23,14 +23,14 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/" render={(props) => <Home {...props} title="Inicio"/>} />
           <Route exact path="/login" login component={LoginPage} />
           <AuthenticatedRoute exact path="/admin" render={(props) => <Edit {...props} user={user} />} />
           <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
           <AuthenticatedRoute exact path="/admin-farmacovigilancia" render={(props) => <AdminFarVigPage {...props} user={user} />} />
-          <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
-          <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
-          <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
+          <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} title="Sobre nosotros"/>} />
+          <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} title="Nuestras empresas"/>} />
+          <Route exact path="/buscar" render={(props) => <SearchPage {...props} title="Buscar"/>} />
           <Route path="*" render={() => <NotFoundPage />} />
          {!user && <Redirect to='/' />}
         </Switch>

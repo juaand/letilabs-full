@@ -9,27 +9,31 @@ import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {createContent} from '../../../services/ApiClient'
 import { useAuthContext } from '../../../contexts/AuthContext'
 
-function Home() {
+function Home(props) {
     const {user} = useAuthContext()
     const data = {
-        content: '',
+        content: [],
         url: '/',
-        name: 'home'
+        name: 'Inicio'
     }
 
+    const title = props.title || 'Inicio'
 
     useEffect(() => {
         if(user) {
-            const mainContent = document.querySelector('main').innerText
-    
-            const fetchData = async () => {
-                data.content = mainContent
-                await createContent(data)
-            }
-            fetchData()
-        }
+        const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+        mainContent.forEach(content => {
+            data.content.push(content.innerHTML)
+        })
 
-        document.title = "Grupo Leti | Inicio"
+        const fetchData = async () => {
+            await createContent(data)
+          }
+          fetchData()
+        }
+         
+
+        document.title = `Grupo Leti | ${title}`
 
         const isMenuOpen = document.querySelector('.show')
 

@@ -9,27 +9,29 @@ import {createContent} from '../../../services/ApiClient'
 import { useAuthContext } from '../../../contexts/AuthContext'
 
 
+
 function AboutUs() {
     const {user} = useAuthContext()
-
     const data = {
-        content: '',
+        content: [],
         url: '/sobre-nosotros',
-        name: 'aboutUs'
+        name: 'Sobre nosotros'
     }
 
+
     useEffect(() => {
-        if(user) {
-            const mainContent = document.querySelector('main').innerText
-    
-            const fetchData = async () => {
-                data.content = mainContent
-                await createContent(data)
-            }
-            fetchData()
+      if(user) {
+        const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+        mainContent.forEach(content => {
+            data.content.push(content.innerHTML)
+        })
+
+        const fetchData = async () => {
+            await createContent(data)
+          }
         }
 
-        document.title = "Grupo Leti | Sobre nosotros"
+        document.title = `Grupo Leti | ${title}`
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])

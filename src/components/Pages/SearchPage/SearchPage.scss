@@ -14,7 +14,50 @@
   }
 
   &__resultados {
-    margin: 3rem 0;
+    margin: 3rem 0 8rem 0;
+
+    &-vacio {
+      margin: 4rem 0 8rem 0;
+
+      p:first-child {
+        margin-bottom: 4rem;
+      }
+    }
+
+    &-matchs {
+      margin-bottom: 5rem;
+      border-bottom: 1px solid $leti-subnav;
+      padding-bottom: 5rem;
+    }
+  }
+
+  &__link {
+    color: $leti-text;
+    text-decoration: none;
+
+    &:hover {
+      .SearchPage__url {
+        color: $leti-blue;
+      }
+      color: $leti-blue;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+  &__url {
+    font-size: 1.8rem;
+    font-weight: 400;
+    opacity: 0.8;
+  }
+
+  &__content {
+    font-size: 2.4rem;
+    margin-top: 3rem;
+    font-weight: 400;
   }
 }
 

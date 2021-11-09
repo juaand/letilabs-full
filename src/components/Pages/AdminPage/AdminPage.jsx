@@ -1,10 +1,13 @@
 import './AdminPage.css'
 import React, {useEffect} from 'react'
 
-function AdminPage({user}) {
+function AdminPage(props) {
+
+    const title = props.title || 'Administrador'
 
     useEffect(() => {
-        document.title = "Grupo Leti"
+        document.title = `Grupo Leti | ${title}`
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
