@@ -30,7 +30,7 @@
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 75rem;
   height: 75rem;
-  right: 0rem;
+  right: -8rem;
   top: 0rem;
 }
 
@@ -38,7 +38,7 @@
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 55rem;
   height: 55rem;
-  right: 25rem;
+  right: 5rem;
   top: 15rem;
 }
 
