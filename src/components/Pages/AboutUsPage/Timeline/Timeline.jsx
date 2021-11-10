@@ -31,7 +31,6 @@ function Timeline() {
 
         const getTimelineHeight = document.querySelector('.Timeline__info').offsetHeight
 
-
         const PrevArrow = document.querySelector('.slick-prev')
         const NextArrow = document.querySelector('.slick-next')
 
