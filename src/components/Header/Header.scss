@@ -7,6 +7,10 @@
   z-index: 5;
   width: 100%;
 
+  &.thin {
+    box-shadow: 0 0.2rem 0.8rem 0 rgba($leti-black, 0.2);
+  }
+
   &__logo {
     position: relative;
     .navbar-brand {

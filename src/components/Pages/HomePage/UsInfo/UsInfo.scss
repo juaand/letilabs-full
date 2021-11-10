@@ -4,7 +4,7 @@
 
 .Nosotros {
   position: relative;
-  margin: 10rem auto 30rem auto;
+  margin: 10rem auto 15rem auto;
 
   &__valor {
     margin: 6rem 0;
@@ -36,7 +36,7 @@
 
 @media (max-width: 576px) {
   .Nosotros {
-    margin: 0rem auto 45rem auto;
+    margin: 0rem auto 20rem auto;
     font-size: 2rem;
 
     .row {
@@ -44,12 +44,20 @@
     }
 
     .leti-red-triangle {
+      width: 30rem;
+      height: 30rem;
       right: -5rem;
+    }
+
+    .leti-blue-triangle {
+      width: 25rem;
+      height: 25rem;
+      right: 0;
     }
 
     .leti-blue-triangle,
     .leti-red-triangle {
-      top: 50rem;
+      top: 55rem;
       z-index: -1;
     }
   }

@@ -14,9 +14,10 @@
 
   .slick-next,
   .slick-prev {
+    position: absolute;
     width: 4rem;
     height: 4rem;
-    display: block;
+    top: 32.5rem;
     z-index: 4;
     opacity: 0.4;
     transition: all 200ms ease-in-out;
@@ -33,13 +34,11 @@
   .slick-next {
     background: url(../../../../images/next-arrow.svg) no-repeat center center /
       contain;
-    transform: translate(-80rem, 15.5rem);
   }
 
   .slick-prev {
     background: url(../../../../images/prev-arrow.svg) no-repeat center center /
       contain;
-    transform: translate(80rem, 15.5rem);
   }
 
   .slick-slide:not(.slick-current) {
@@ -50,6 +49,9 @@
 
   .slick-dots {
     bottom: -6rem;
+    width: auto;
+    left: 50%;
+    margin-left: -7.5rem;
 
     &:before {
       content: '';
@@ -75,6 +77,12 @@
 
 @media (max-width: 576px) {
   .Carousel {
+    margin: 2rem 0 2rem 0;
+
+    h1 {
+      margin-left: 2rem;
+    }
+
     .slick-next {
       transform: translate(-5rem, 17rem);
     }

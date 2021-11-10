@@ -12,7 +12,7 @@ function Megat() {
                     <h1>Laboratorios Leti en latinoamérica</h1>
                     <div className="Megat__logo"></div>
                     <p className="Megat__desc">Empresa homóloga de Laboratorios Leti que desarrolla productos de nuestro portafolio para los ecuatorianos</p>
-                    <Link to="/" className="leti-btn">Conocer Megat</Link>
+                    <a href="https://megat.com.ec/" target="_blank" className="leti-btn" rel="noreferrer">Conocer Megat</a>
                 </div>
             </div>
         </section>

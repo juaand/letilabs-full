@@ -80,10 +80,16 @@ function ModalFarmacoVigilancia({hideModal}) {
         error.date = false
     }
 
+    const clickedOutside = (e) => {
+        if (!document.querySelector('.ModalFarmacoVigilancia__container').contains(e.target)) {
+            hideModal()
+        }
+    }
+
     const isError = Object.values(error).some(err => err)
 
     return (
-        <section className="ModalFarmacoVigilancia">
+        <section className="ModalFarmacoVigilancia" onClick={clickedOutside}>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-11 col-sm-12 ModalFarmacoVigilancia__container">

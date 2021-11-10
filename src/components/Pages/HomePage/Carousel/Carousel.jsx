@@ -1,5 +1,5 @@
 import './Carousel.css'
-import React from 'react'
+import React, {useEffect} from 'react'
 import Slider from "react-slick"
 import homeCarousel from '../../../../data/homeCarousel'
 
@@ -25,13 +25,25 @@ function Carousel() {
         ]
     }
 
+    useEffect(() => {
+        const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
+
+        console.log(getSlickDots)
+        const getNextArrow = document.querySelector('.slick-next')
+        const getPrevArrow = document.querySelector('.slick-prev')
+
+        getNextArrow.style.right = `${((window.screen.width - getSlickDots.right) / 10) - 10}rem`
+
+        getPrevArrow.style.left = `${(getSlickDots.left / 10) - 10}rem`
+
+    }, [])
 
     return (
-        <>
+        <section className="Carousel">
             <div className="container">
                 <h1>Nuestros <br />productos</h1>
             </div>
-            <div className="container-fluid Carousel">
+            <div className="container-fluid p-0">
                 <Slider {...settings}>
                     {homeCarousel.map(el =>
                         <>
@@ -45,7 +57,7 @@ function Carousel() {
                     )}
                 </Slider>
             </div>
-        </>
+        </section>
     )
 }
 

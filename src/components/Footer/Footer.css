@@ -93,4 +93,10 @@
     margin-right: 2rem;
     width: 2.5rem;
   }
+  .Footer__info ul {
+    padding-left: 2rem;
+  }
+  .Footer__info ul li {
+    font-size: 1.6rem;
+  }
 }

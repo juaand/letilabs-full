@@ -96,5 +96,14 @@
       margin-right: 2rem;
       width: 2.5rem;
     }
+
+    &__info {
+      ul {
+        padding-left: 2rem;
+        li {
+          font-size: 1.6rem;
+        }
+      }
+    }
   }
 }
