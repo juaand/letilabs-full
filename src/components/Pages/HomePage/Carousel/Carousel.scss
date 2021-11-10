@@ -77,6 +77,12 @@
 
 @media (max-width: 576px) {
   .Carousel {
+    margin: 2rem 0 2rem 0;
+
+    h1 {
+      margin-left: 2rem;
+    }
+
     .slick-next {
       transform: translate(-5rem, 17rem);
     }

@@ -39,11 +39,11 @@ function Carousel() {
     }, [])
 
     return (
-        <>
+        <section className="Carousel">
             <div className="container">
                 <h1>Nuestros <br />productos</h1>
             </div>
-            <div className="container-fluid Carousel">
+            <div className="container-fluid p-0">
                 <Slider {...settings}>
                     {homeCarousel.map(el =>
                         <>
@@ -57,7 +57,7 @@ function Carousel() {
                     )}
                 </Slider>
             </div>
-        </>
+        </section>
     )
 }
 
