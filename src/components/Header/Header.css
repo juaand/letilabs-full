@@ -6,6 +6,10 @@
   width: 100%;
 }
 
+.Header.thin {
+  box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.2);
+}
+
 .Header__logo {
   position: relative;
 }

@@ -7,6 +7,7 @@ document.onscroll = () => {
     // Menu collapse effect
 
     if (depth > 100) {
+        document.querySelector('.Header').classList.add('thin')
         document.querySelector('.navbar-brand').classList.add('thin')
         document.querySelector('.Search').classList.add('thin')
 
@@ -14,6 +15,7 @@ document.onscroll = () => {
             document.querySelector('.Nav').classList.add('thin')
         }
     } else {
+        document.querySelector('.Header').classList.remove('thin')
         document.querySelector('.navbar-brand').classList.remove('thin')
         document.querySelector('.Search').classList.remove('thin')
 
@@ -30,7 +32,7 @@ document.onscroll = () => {
         diff = eachElement.getBoundingClientRect().top
         speed = eachElement.dataset.speed
 
-        scaleSum = diff * speed * 0.01
+        let scaleSum = diff * speed * 0.01
 
         eachElement.style.transform = `scale(${scaleSum})`
     })
