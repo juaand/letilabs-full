@@ -23,11 +23,28 @@ function Timeline() {
     }
 
     useEffect(() => {
-        const getImageWidth = document.querySelector('.Timeline__image').offsetWidth
+        const getAllDesc = Array.from(new Set(document.querySelectorAll('.Timeline__desc')))
 
-        document.querySelector('.slick-prev').style.transform = `translate(${(getImageWidth + 50) / 10}rem, 0rem)`
+        const getDescX = getAllDesc[0].getBoundingClientRect().x
 
-        document.querySelector('.slick-next').style.transform = `translate(${(-getImageWidth * (.08))}rem, 0rem)`
+        const getDescsMaxHeight = Math.max(...getAllDesc.map(item => item.offsetHeight))
+
+        const getTimelineHeight = document.querySelector('.Timeline__info').offsetHeight
+
+
+        const PrevArrow = document.querySelector('.slick-prev')
+        const NextArrow = document.querySelector('.slick-next')
+
+        if (window.screen.width > 576) {
+        //Arrows top position
+        PrevArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 8}rem`
+        NextArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 8}rem`
+
+        //Prev arrows left position
+        PrevArrow.style.left = `${(-getDescX / 10) + 4}rem`
+        //Next arrows right position
+        NextArrow.style.left = `${(-getDescX / 10) + 14}rem`
+        }
 
     }, [])
 
