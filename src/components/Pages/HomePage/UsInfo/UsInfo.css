@@ -41,11 +41,18 @@
     justify-content: center;
   }
   .Nosotros .leti-red-triangle {
+    width: 30rem;
+    height: 30rem;
     right: -5rem;
+  }
+  .Nosotros .leti-blue-triangle {
+    width: 25rem;
+    height: 25rem;
+    right: 0;
   }
   .Nosotros .leti-blue-triangle,
   .Nosotros .leti-red-triangle {
-    top: 50rem;
+    top: 55rem;
     z-index: -1;
   }
 }
