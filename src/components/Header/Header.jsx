@@ -23,8 +23,7 @@ function Header() {
         }
     }
 
-    console.log(location.pathname)
-
+    const isSearchPage = location.pathname === '/buscar'
 
     return (
         <>
@@ -38,7 +37,7 @@ function Header() {
                                 </div>
                             }
                             <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin" : "/"}`} />
-                            {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'}`}></div>}
+                            {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'} ${isSearchPage && 'd-none'}`}></div>}
                             {user && <div onClick={logout} className="Header__logout d-none d-sm-flex"></div>}
                         </div>
                     </div>

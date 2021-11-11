@@ -34,10 +34,8 @@ function Gallery() {
                         <ul>
                             {
                                 dataGallery.map(el =>
-                                    <>
-                                        <li onClick={(e) => setSelectedBg(e, el.imgPath)}>{el.title}
-                                        </li>
-                                    </>
+                                    <li onClick={(e) => setSelectedBg(e, el.imgPath)}>{el.title}
+                                    </li>
                                 )
                             }
                         </ul>
