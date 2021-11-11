@@ -28,7 +28,6 @@ function Carousel() {
     useEffect(() => {
         const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
 
-        console.log(getSlickDots)
         const getNextArrow = document.querySelector('.slick-next')
         const getPrevArrow = document.querySelector('.slick-prev')
 
@@ -46,14 +45,14 @@ function Carousel() {
             <div className="container-fluid p-0">
                 <Slider {...settings}>
                     {homeCarousel.map(el =>
-                        <>
+                        <div>
                             <div className="Carousel__product">
                                 <div className="Carousel__image" style={{
                                     background: `url("./images/${el.name.toLowerCase()}.png") no-repeat center center / contain`
                                 }}></div>
                             </div>
                             <h3 className="Carousel__desc">{el.desc}</h3>
-                        </>
+                        </div>
                     )}
                 </Slider>
             </div>

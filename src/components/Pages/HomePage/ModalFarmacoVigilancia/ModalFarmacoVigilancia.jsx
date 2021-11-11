@@ -128,10 +128,10 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         type="text"
                                                         label="Nombre del paciente"
                                                         className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                        tabindex="1"
+                                                        tabIndex="1"
                                                     />
 
-                                                    <div className="form-group ModalFarmacoVigilancia__date" tabindex="3">
+                                                    <div className="form-group ModalFarmacoVigilancia__date" tabIndex="3">
                                                         <label className="label" htmlFor="date">
                                                             Fecha de nacimiento
                                                         </label>
@@ -149,7 +149,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         name="medicine"
                                                         onChange={onChange}
                                                         className={`form-control ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
-                                                        tabindex="5"
+                                                        tabIndex="5"
                                                         list="medicines"
                                                         data={homeCarousel}
                                                     />
@@ -165,7 +165,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         type="text"
                                                         label="Apellido del paciente"
                                                         className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
-                                                        tabindex="2"
+                                                        tabIndex="2"
                                                     />
 
                                                     <RadioButtonWithLabel data={['F', 'M']} name="sex"
@@ -173,7 +173,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         onBlur={onBlur}
                                                         onChange={onChange}
                                                         label="Género"
-                                                        tabindex="4"
+                                                        tabIndex="4"
                                                     />
 
                                                     <RadioButtonWithLabel data={['Si', 'No']} name="prescribed"
@@ -181,7 +181,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         onBlur={onBlur}
                                                         onChange={onChange}
                                                         label="¿El medicamento fue prescrito?"
-                                                        tabindex="6"
+                                                        tabIndex="6"
                                                     />
 
                                                 </div>
@@ -194,7 +194,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         rows="4"
                                                         className="form-control textarea"
                                                         placeholder=""
-                                                        tabindex="7"
+                                                        tabIndex="7"
                                                     />
                                                 </div>
                                                 <div className="col-12 d-flex justify-content-end">
