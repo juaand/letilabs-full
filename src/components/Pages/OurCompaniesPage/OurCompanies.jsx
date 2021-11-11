@@ -15,7 +15,6 @@ function OurCompanies(props) {
     return (
         <>
             <h1>NUESTRAS EMPRESAS</h1>
-            
         </>
     )
 }
