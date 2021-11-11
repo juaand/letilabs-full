@@ -80,6 +80,7 @@
   .FindProduct__form .leti-btn {
     background: none;
     height: 6.2rem;
+    width: 100.5%;
   }
   .FindProduct__form .leti-btn:before {
     content: 'Buscar el producto';
