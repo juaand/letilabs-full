@@ -27,8 +27,7 @@ function Carousel() {
 
     useEffect(() => {
         const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
-
-        console.log(getSlickDots)
+        
         const getNextArrow = document.querySelector('.slick-next')
         const getPrevArrow = document.querySelector('.slick-prev')
 

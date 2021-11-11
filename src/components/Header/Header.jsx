@@ -1,11 +1,13 @@
 import './Header.css'
 import React, {useState} from 'react'
 import Nav from '../Nav/Nav'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useLocation} from 'react-router-dom'
 import Search from '../Form/Search/Search'
 import {useAuthContext} from '../../contexts/AuthContext'
 
 function Header() {
+
+    const location = useLocation()
 
     const {user} = useAuthContext()
     const {logout} = useAuthContext()
@@ -20,6 +22,8 @@ function Header() {
             setHideOnDevice(!hideOnDevice)
         }
     }
+
+    console.log(location.pathname)
 
 
     return (
