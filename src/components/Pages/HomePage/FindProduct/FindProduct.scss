@@ -1,0 +1,26 @@
+@import '../../../../stylesheets/variables';
+
+.FindProduct {
+  background: url(../../../../images/find-product-bg.png) no-repeat left center;
+  min-height: 42rem;
+  display: flex;
+  align-items: center;
+
+  form {
+    padding: 0;
+  }
+
+  &__form {
+    align-items: center;
+
+    .form-group {
+      .form-control {
+        border-radius: 0;
+      }
+    }
+
+    .DropdownWithLabel {
+      margin-top: 2rem !important;
+    }
+  }
+}

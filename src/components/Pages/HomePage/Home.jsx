@@ -8,6 +8,7 @@ import Portafolio from './Portafolio/Portafolio'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {createContent} from '../../../services/ApiClient'
 import { useAuthContext } from '../../../contexts/AuthContext'
+import FindProduct from './FindProduct/FindProduct'
 
 function Home(props) {
     const {user} = useAuthContext()
@@ -51,6 +52,7 @@ function Home(props) {
             <Carousel />
             <Unidades />
             <Portafolio />
+            <FindProduct />
             <FarmacoVigilancia />
         </main>
     )

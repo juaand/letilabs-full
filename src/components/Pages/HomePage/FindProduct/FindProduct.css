@@ -1,0 +1,22 @@
+.FindProduct {
+  background: url(../../../../images/find-product-bg.png) no-repeat left center;
+  min-height: 42rem;
+  display: flex;
+  align-items: center;
+}
+
+.FindProduct form {
+  padding: 0;
+}
+
+.FindProduct__form {
+  align-items: center;
+}
+
+.FindProduct__form .form-group .form-control {
+  border-radius: 0;
+}
+
+.FindProduct__form .DropdownWithLabel {
+  margin-top: 2rem !important;
+}
