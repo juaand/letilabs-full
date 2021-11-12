@@ -4,7 +4,7 @@ import {Helmet} from "react-helmet"
 function Seo({title, content, name, meta = []}) {
     return (
         <Helmet title={title}
-            htmlAttributes={{lang: "en"}}
+            htmlAttributes={{lang: "es"}}
             meta={[
                 {
                     name: name,
