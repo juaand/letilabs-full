@@ -4,10 +4,12 @@ import Nav from '../Nav/Nav'
 import {NavLink, useLocation} from 'react-router-dom'
 import Search from '../Form/Search/Search'
 import {useAuthContext} from '../../contexts/AuthContext'
+import {useHistory} from 'react-router-dom'
 
 function Header() {
 
     const location = useLocation()
+    const history = useHistory()
 
     const {user} = useAuthContext()
     const {logout} = useAuthContext()
@@ -21,6 +23,13 @@ function Header() {
         if (window.screen.width <= 576) {
             setHideOnDevice(!hideOnDevice)
         }
+    }
+
+    const logoutUser = () => {
+        logout()
+        history.push({
+            pathname: '/login'
+        })
     }
 
     const isSearchPage = location.pathname === '/buscar'
@@ -38,7 +47,7 @@ function Header() {
                             }
                             <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin" : "/"}`} />
                             {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'} ${isSearchPage && 'd-none'}`}></div>}
-                            {user && <div onClick={logout} className="Header__logout d-none d-sm-flex"></div>}
+                            {user && <div onClick={logoutUser} className="Header__logout d-none d-sm-flex"></div>}
                         </div>
                     </div>
                 </div>
