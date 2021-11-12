@@ -6,11 +6,10 @@ import Timeline from './Timeline/Timeline'
 import Megat from './Megat/Megat'
 import Gallery from './Gallery/Gallery'
 import {createContent} from '../../../services/ApiClient'
-import { useAuthContext } from '../../../contexts/AuthContext'
+import {useAuthContext} from '../../../contexts/AuthContext'
+import {Helmet} from "react-helmet"
 
-
-
-function AboutUs(props) {
+function AboutUs() {
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -18,34 +17,36 @@ function AboutUs(props) {
         name: 'Sobre nosotros'
     }
 
-    const title = props.title || 'Sobre nosotros'
-
     useEffect(() => {
-      if(user) {
-        const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
-        mainContent.forEach(content => {
-            data.content.push(content.innerHTML)
-        })
+        if (user) {
+            const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+            mainContent.forEach(content => {
+                data.content.push(content.innerHTML)
+            })
 
-        const fetchData = async () => {
-            await createContent(data)
-          }
-          fetchData()
+            const fetchData = async () => {
+                await createContent(data)
+            }
+            fetchData()
         }
-
-        document.title = `Grupo Leti | ${title}`
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <main>
-            <Banner />
-            <MarcandoPauta />
-            <Timeline />
-            <Gallery />
-            <Megat />
-        </main>
+        <>
+            <Helmet>
+                <title>Grupo Leti | Sobre Nosotros</title>
+                <meta name="description" content="Esta página fue realizada por Andrés Martínez y Juan Romero" />
+            </Helmet>
+            <main>
+                <Banner />
+                <MarcandoPauta />
+                <Timeline />
+                <Gallery />
+                <Megat />
+            </main>
+        </>
     )
 }
 
