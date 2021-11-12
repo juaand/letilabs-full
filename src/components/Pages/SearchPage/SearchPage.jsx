@@ -4,12 +4,11 @@ import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../hooks/useFormState'
 import {searchContent} from '../../../services/ApiClient'
 import {Link} from 'react-router-dom'
-import {Helmet} from "react-helmet"
+import Seo from '../../Seo/Seo'
 
 function SearchPage(props) {
 
     const searchSentence = props?.location?.state?.buscar
-    const hideSearchIcon = props?.location?.state?.hideSearchIcon
 
     const [matches, setMatches] = useState([])
     const [newSearch, setNewSearch] = useState(searchSentence)
@@ -55,11 +54,6 @@ function SearchPage(props) {
             searchOpen.classList.remove('show')
         }
 
-        //Se setea el icono de la lupa en la cabecera
-        if (hideSearchIcon) {
-            document.querySelector('.Header__search').classList.remove('Header__search-close')
-        }
-
         //Busqueda de contenido en la API
         const fetchData = async () => {
             const contentData = await searchContent(data.search)
@@ -73,10 +67,7 @@ function SearchPage(props) {
 
     return (
         <>
-            <Helmet>
-                <title>Grupo Leti | Buscar</title>
-                <meta name="description" content="Esta página fue realizada por Andrés Martínez y Juan Romero" />
-            </Helmet>
+            <Seo title='Grupo Leti | Buscar' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
             <section className="container-fluid SearchPage">
                 <div className="row">
                     <div className="col-12 SearchPage__bg"></div>
