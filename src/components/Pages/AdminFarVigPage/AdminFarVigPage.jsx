@@ -2,6 +2,7 @@ import './AdminFarVigPage.css'
 import React, {useState, useEffect} from 'react'
 import {getFarmVigData} from '../../../services/ApiClient'
 import DeleteFarmVigModal from './DeleteFarmVigModal/DeleteFarmVigModal'
+import {Helmet} from "react-helmet"
 
 function AdminFarVigPage() {
 
@@ -63,6 +64,10 @@ function AdminFarVigPage() {
     }, [])
 
     return (
+        <>
+        <Helmet>
+            <title>Grupo Leti | Farmaco vigilancia</title>
+        </Helmet>
         <main className="container-fluid AdminFarVigPage">
             {bool && <DeleteFarmVigModal card={card} hideModal={hideModal} data={updateCardsData} />}
             <div className="row">
@@ -94,6 +99,7 @@ function AdminFarVigPage() {
                 </div>
             </div>
         </main>
+        </>
     )
 }
 

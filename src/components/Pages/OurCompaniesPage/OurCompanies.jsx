@@ -1,19 +1,15 @@
 import './OurCompanies.css'
-import React, {useEffect} from 'react'
+import React from 'react'
+import {Helmet} from "react-helmet"
 
-
-function OurCompanies(props) {
-
-    const title = props.title || 'Nuestras empresas'
-
-
-    useEffect(() => {
-        document.title = `Grupo Leti | ${title}`
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+function OurCompanies() {
 
     return (
         <>
+            <Helmet>
+                <title>Grupo Leti | Nuestras empresas</title>
+                <meta name="description" content="Esta página fue realizada por Andrés Martínez y Juan Romero" />
+            </Helmet>
             <h1>NUESTRAS EMPRESAS</h1>
         </>
     )

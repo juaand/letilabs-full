@@ -7,10 +7,11 @@ import Unidades from './Unidades/Unidades'
 import Portafolio from './Portafolio/Portafolio'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {createContent} from '../../../services/ApiClient'
-import { useAuthContext } from '../../../contexts/AuthContext'
+import {useAuthContext} from '../../../contexts/AuthContext'
 import FindProduct from './FindProduct/FindProduct'
+import {Helmet} from "react-helmet"
 
-function Home(props) {
+function Home() {
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -18,23 +19,18 @@ function Home(props) {
         name: 'Inicio'
     }
 
-    const title = props.title || 'Inicio'
-
     useEffect(() => {
-        if(user) {
-        const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
-        mainContent.forEach(content => {
-            data.content.push(content.innerHTML)
-        })
+        if (user) {
+            const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+            mainContent.forEach(content => {
+                data.content.push(content.innerHTML)
+            })
 
-        const fetchData = async () => {
-            await createContent(data)
-          }
-          fetchData()
+            const fetchData = async () => {
+                await createContent(data)
+            }
+            fetchData()
         }
-         
-
-        document.title = `Grupo Leti | ${title}`
 
         const isMenuOpen = document.querySelector('.show')
 
@@ -46,15 +42,21 @@ function Home(props) {
     }, [])
 
     return (
-        <main>
-            <Video />
-            <UsInfo />
-            <Carousel />
-            <Unidades />
-            <Portafolio />
-            <FindProduct />
-            <FarmacoVigilancia />
-        </main>
+        <>
+            <Helmet>
+                <title>Grupo Leti | Inicio</title>
+                <meta name="description" content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
+            </Helmet>
+            <main>
+                <Video />
+                <UsInfo />
+                <Carousel />
+                <Unidades />
+                <Portafolio />
+                <FindProduct />
+                <FarmacoVigilancia />
+            </main>
+        </>
     )
 }
 

@@ -6,7 +6,7 @@ import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Form/FormButton/FormButton'
 import {Redirect} from 'react-router-dom'
 import {useFormState} from '../../../hooks/useFormState'
-
+import {Helmet} from "react-helmet"
 
 const LoginPage = () => {
 
@@ -54,50 +54,54 @@ const LoginPage = () => {
     }
 
     return (
-        <main className="container-fluid LoginPage">
-            <div className="container">
-                <div className="leti-blue-triangle"></div>
-                <div className="leti-red-triangle"></div>
-                <div className="row justify-content-center">
-                    <div className="col-sm-6 col-xl-4 col-11">
-                        <form onSubmit={handleSubmit}>
-                            <InputWithLabel
-                                value={data.email}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="email"
-                                type="text"
-                                label="Correo electrónico"
-                                className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
-                                placeholder="Enter email"
+        <>
+            <Helmet>
+                <title>Grupo Leti | Administrador login</title>
+            </Helmet>
+            <main className="container-fluid LoginPage">
+                <div className="container">
+                    <div className="leti-blue-triangle"></div>
+                    <div className="leti-red-triangle"></div>
+                    <div className="row justify-content-center">
+                        <div className="col-sm-6 col-xl-4 col-11">
+                            <form onSubmit={handleSubmit}>
+                                <InputWithLabel
+                                    value={data.email}
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    name="email"
+                                    type="text"
+                                    label="Correo electrónico"
+                                    className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                                    placeholder="Enter email"
 
-                            />
+                                />
 
-                            <InputWithLabel
-                                value={data.password}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="password"
-                                type="password"
-                                label="Contraseña"
-                                className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
-                                placeholder="Enter password"
-                            />
+                                <InputWithLabel
+                                    value={data.password}
+                                    onBlur={onBlur}
+                                    onChange={onChange}
+                                    name="password"
+                                    type="password"
+                                    label="Contraseña"
+                                    className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
+                                    placeholder="Enter password"
+                                />
 
-                            {loginError && <div className="alert alert-danger">{loginError}</div>}
+                                {loginError && <div className="alert alert-danger">{loginError}</div>}
 
 
-                            <Button
-                                type="submit"
-                                className="leti-btn"
-                                disabled={isError}
-                            >Ingresa</Button>
-                        </form>
+                                <Button
+                                    type="submit"
+                                    className="leti-btn"
+                                    disabled={isError}
+                                >Ingresa</Button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
-
+            </main>
+        </>
     )
 }
 

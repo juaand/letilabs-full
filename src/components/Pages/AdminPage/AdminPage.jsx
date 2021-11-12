@@ -1,19 +1,18 @@
 import './AdminPage.css'
-import React, {useEffect} from 'react'
+import React from 'react'
+import {Helmet} from "react-helmet"
 
-function AdminPage(props) {
-
-    const title = props.title || 'Administrador'
-
-    useEffect(() => {
-        document.title = `Grupo Leti | ${title}`
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+function AdminPage() {
 
     return (
-        <main className="container">
-            <h1>AdminPage</h1>
-        </main>
+        <>
+            <Helmet>
+                <title>Grupo Leti | Administrador</title>
+            </Helmet>
+            <main className="container">
+                <h1>AdminPage</h1>
+            </main>
+        </>
     )
 }
 

@@ -9,7 +9,7 @@ import Footer from './components/Footer/Footer'
 import Header from './components/Header/Header'
 import SearchPage from './components/Pages/SearchPage/SearchPage'
 import LoginPage from './components/Pages/LoginPage/LoginPage'
-import Edit from './components/Pages/AdminPage/AdminPage'
+import AdminPage from './components/Pages/AdminPage/AdminPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 import AdminFarVigPage from './components/Pages/AdminFarVigPage/AdminFarVigPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
@@ -25,7 +25,7 @@ function App() {
         <Switch>
           <Route exact path="/" render={(props) => <Home {...props} title="Inicio"/>} />
           <Route exact path="/login" login component={LoginPage} />
-          <AuthenticatedRoute exact path="/admin" render={(props) => <Edit {...props} user={user} />} />
+          <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
           <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
           <AuthenticatedRoute exact path="/admin-farmacovigilancia" render={(props) => <AdminFarVigPage {...props} user={user} />} />
           <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
