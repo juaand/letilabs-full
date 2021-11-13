@@ -5,6 +5,7 @@ import Banner from './Banner/Banner'
 import CompaniesInfo from './CompaniesInfo/CompaniesInfo'
 import BannerProductos from './BannerProductos/BannerProductos'
 import Innovar from './Innovar/Innovar'
+import Cuidar from './Cuidar/Cuidar'
 
 function OurCompanies() {
 
@@ -16,6 +17,7 @@ function OurCompanies() {
                 <CompaniesInfo />
                 <BannerProductos />
                 <Innovar />
+                <Cuidar />
             </main>
         </>
     )

@@ -34,7 +34,7 @@ document.onscroll = () => {
 
         let scaleSum = diff * speed * 0.01
 
-        eachElement.style.transform = `scale(${scaleSum})`
+        eachElement.style.transform = `scale(${scaleSum / 100})` 
     })
 
 
