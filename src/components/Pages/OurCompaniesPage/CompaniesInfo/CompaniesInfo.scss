@@ -24,7 +24,7 @@
     transition: all 0.3s ease-in-out;
 
     strong {
-        color: $leti-text;
+      color: $leti-text;
     }
 
     &-body {
@@ -114,6 +114,105 @@
           background: url(../../../../images/plus.svg) no-repeat center / 3rem;
           margin: 4rem 3rem;
           transition: all 0.1s ease-in-out;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .CompaniesInfoResp {
+    background: $leti-back-dark;
+    padding: 4rem 0rem;
+    height: 30rem;
+    border-left: 0;
+    overflow: visible;
+    margin-bottom: 40rem;
+
+    .slick-slide {
+      div {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    &__card {
+      font-size: 1.4rem;
+      padding-top: 0rem;
+      color: $leti-nav;
+      background: $leti-back;
+      width: 90% !important;
+
+      &-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 4rem 0 2rem 0;
+      }
+
+      &-body {
+        max-height: unset;
+        height: auto;
+        padding: 0 2rem;
+
+        &:after {
+          opacity: 0;
+        }
+      }
+
+      &-biocontrolled {
+        width: 24rem;
+      }
+
+      &-genven {
+        width: 18rem;
+      }
+
+      &-leti {
+        width: 10rem;
+      }
+
+      &-footer {
+        justify-content: flex-start !important;
+      }
+
+      &-link {
+        width: 6rem;
+        height: 6rem;
+        display: block;
+        border: solid 0.1rem $leti-blue;
+        background: url(../../../../images/plus.svg) no-repeat center / 3rem;
+        margin: 2rem 0 4rem 2rem;
+      }
+    }
+
+    .slick-dots {
+      margin-top: 2rem;
+      li {
+        button {
+          &:before {
+            font-size: 1rem;
+            line-height: 2rem;
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            width: 2rem;
+            height: 2rem;
+            content: '•';
+            text-align: center;
+            opacity: 0.3;
+            color: $leti-dots;
+            border-radius: 2rem;
+          }
+        }
+
+        &.slick-active {
+          button {
+            &:before {
+              opacity: 1;
+              border: solid 0.1rem $leti-dots;
+            }
+          }
         }
       }
     }
