@@ -1,17 +1,17 @@
-.Banner {
+.Banner__ourCompanies {
   background: #fbfbfb;
   position: relative;
   overflow: hidden;
 }
 
-.Banner__title {
+.Banner__ourCompanies__title {
   height: 70rem;
   display: flex;
   align-items: center;
 }
 
-.Banner__bg {
-  background: url(../../../../images/about-us-bg.png) no-repeat center center/contain;
+.Banner__ourCompanies__bg {
+  background: url(../../../../images/our-companies-bg.png) no-repeat center bottom/contain;
   height: 70rem;
   position: absolute;
   bottom: 0;
@@ -19,14 +19,14 @@
   z-index: 1;
 }
 
-.Banner .leti-red-triangle,
-.Banner .leti-blue-triangle {
+.Banner__ourCompanies .leti-red-triangle,
+.Banner__ourCompanies .leti-blue-triangle {
   position: absolute;
   z-index: 0;
   transform: rotate(0);
 }
 
-.Banner .leti-red-triangle {
+.Banner__ourCompanies .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 75rem;
   height: 75rem;
@@ -34,7 +34,7 @@
   top: 0rem;
 }
 
-.Banner .leti-blue-triangle {
+.Banner__ourCompanies .leti-blue-triangle {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 55rem;
   height: 55rem;

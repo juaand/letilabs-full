@@ -1,54 +1,55 @@
 @import '../../../../stylesheets/variables';
 .Banner {
-  background: #fbfbfb;
-  position: relative;
-  overflow: hidden;
+  &__ourCompanies {
+    background: #fbfbfb;
+    position: relative;
+    overflow: hidden;
 
-  &__title {
-    height: 70rem;
-    display: flex;
-    align-items: center;
-  }
+    &__title {
+      height: 70rem;
+      display: flex;
+      align-items: center;
+    }
 
-  &__bg {
-    background: url(../../../../images/about-us-bg.png) no-repeat center center /
-      contain;
-    height: 70rem;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-  }
+    &__bg {
+      background: url(../../../../images/our-companies-bg.png) no-repeat center
+        bottom / contain;
+      height: 70rem;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+    }
 
-  .leti-red-triangle,
-  .leti-blue-triangle {
-    position: absolute;
-    z-index: 0;
-    transform: rotate(0);
-  }
+    .leti-red-triangle,
+    .leti-blue-triangle {
+      position: absolute;
+      z-index: 0;
+      transform: rotate(0);
+    }
 
-  .leti-red-triangle {
-    background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat
-      center center / contain;
-    width: 75rem;
-    height: 75rem;
-    right: -8rem;
-    top: 0rem;
-  }
+    .leti-red-triangle {
+      background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat
+        center center / contain;
+      width: 75rem;
+      height: 75rem;
+      right: -8rem;
+      top: 0rem;
+    }
 
-  .leti-blue-triangle {
-    background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat
-      center center / contain;
-    width: 55rem;
-    height: 55rem;
-    right: 5rem;
-    top: 15rem;
+    .leti-blue-triangle {
+      background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat
+        center center / contain;
+      width: 55rem;
+      height: 55rem;
+      right: 5rem;
+      top: 15rem;
+    }
   }
 }
 
 @media (max-width: 576px) {
   .Banner {
-
     &__title {
       height: 70rem;
       align-items: flex-start;
@@ -59,9 +60,9 @@
     }
 
     &__bg {
-      background: url(../../../../images/about-us-bg.png) no-repeat 8rem
-        bottom / contain;
-        background-size: 115%;
+      background: url(../../../../images/about-us-bg.png) no-repeat 8rem bottom /
+        contain;
+      background-size: 115%;
     }
 
     .leti-red-triangle {
@@ -70,7 +71,7 @@
       right: -5%;
       top: 30%;
     }
-  
+
     .leti-blue-triangle {
       width: 35rem;
       height: 35rem;
