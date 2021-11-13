@@ -1,0 +1,44 @@
+@import '../../../../stylesheets/variables';
+.BannerProductos {
+  margin-top: 20rem;
+  position: relative;
+
+  &__title {
+    margin-bottom: 13rem;
+    text-align: right;
+  }
+
+  &__subtitle {
+    margin-bottom: 30rem;
+  }
+
+  &__img {
+    &-azitomicina,
+    &-diklason,
+    &-ulgarin {
+      position: absolute;
+    }
+
+    &-azitomicina {
+      bottom: 0;
+      left: 20%;
+    }
+
+    &-diklason {
+      transform: rotate(12deg);
+      bottom: 10%;
+      right: 10%;
+    }
+
+    &-ulgarin {
+      transform: rotate(22deg);
+      left: 10%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .BannerProductos {
+    margin: 10rem auto;
+  }
+}

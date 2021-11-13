@@ -1,0 +1,39 @@
+.BannerProductos {
+  margin-top: 20rem;
+  position: relative;
+}
+
+.BannerProductos__title {
+  margin-bottom: 13rem;
+  text-align: right;
+}
+
+.BannerProductos__subtitle {
+  margin-bottom: 30rem;
+}
+
+.BannerProductos__img-azitomicina, .BannerProductos__img-diklason, .BannerProductos__img-ulgarin {
+  position: absolute;
+}
+
+.BannerProductos__img-azitomicina {
+  bottom: 0;
+  left: 20%;
+}
+
+.BannerProductos__img-diklason {
+  transform: rotate(12deg);
+  bottom: 10%;
+  right: 10%;
+}
+
+.BannerProductos__img-ulgarin {
+  transform: rotate(22deg);
+  left: 10%;
+}
+
+@media (max-width: 576px) {
+  .BannerProductos {
+    margin: 10rem auto;
+  }
+}

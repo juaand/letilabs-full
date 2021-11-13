@@ -3,6 +3,7 @@ import React from 'react'
 import Seo from '../../Seo/Seo'
 import Banner from './Banner/Banner'
 import CompaniesInfo from './CompaniesInfo/CompaniesInfo'
+import BannerProductos from './BannerProductos/BannerProductos'
 
 function OurCompanies() {
 
@@ -12,6 +13,7 @@ function OurCompanies() {
             <main>
                 <Banner />
                 <CompaniesInfo />
+                <BannerProductos />
             </main>
         </>
     )
