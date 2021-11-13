@@ -4,6 +4,7 @@ import Seo from '../../Seo/Seo'
 import Banner from './Banner/Banner'
 import CompaniesInfo from './CompaniesInfo/CompaniesInfo'
 import BannerProductos from './BannerProductos/BannerProductos'
+import Innovar from './Innovar/Innovar'
 
 function OurCompanies() {
 
@@ -14,6 +15,7 @@ function OurCompanies() {
                 <Banner />
                 <CompaniesInfo />
                 <BannerProductos />
+                <Innovar />
             </main>
         </>
     )

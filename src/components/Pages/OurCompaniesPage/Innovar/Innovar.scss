@@ -1,0 +1,124 @@
+@import '../../../../stylesheets/variables';
+
+.Innovar {
+  background: $leti-back;
+  height: 41rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  &__title {
+    margin-left: 30rem;
+  }
+
+  [class*='bubbles'] {
+    position: absolute;
+  }
+
+  &__bubbles {
+    &-mid {
+      width: 15.5rem;
+      height: 15.5rem;
+      right: -5rem;
+      top: 20rem;
+    }
+
+    &-big {
+      width: 51rem;
+      height: 51rem;
+      top: -5rem;
+      left: -18.5rem;
+    }
+
+    &-000 {
+      width: 2.8rem;
+      height: 2.8rem;
+      right: 13rem;
+      top: 23rem;
+    }
+
+    &-002 {
+      width: 4.5rem;
+      height: 4.5rem;
+      top: -10rem;
+      left: 10rem;
+    }
+
+    &-003 {
+      width: 1.8rem;
+      height: 1.8rem;
+      top: -6rem;
+      left: 15rem;
+    }
+
+    &-004 {
+      width: 6.5rem;
+      height: 6.5rem;
+      top: 3.2rem;
+      left: 31rem;
+    }
+
+    &-005 {
+      width: 3rem;
+      height: 3rem;
+      left: 30rem;
+      top: 35rem;
+    }
+
+    &-006 {
+      width: 6.5rem;
+      height: 6.5rem;
+      left: 52rem;
+      top: 30rem;
+    }
+
+    &-007 {
+      width: 3rem;
+      height: 3rem;
+      left: 87rem;
+      top: 34rem;
+    }
+
+    &-008 {
+      width: 4.5rem;
+      height: 4.5rem;
+      left: 90.5rem;
+      top: 4.6rem;
+    }
+
+    &-009 {
+      width: 3rem;
+      height: 3rem;
+      left: 88rem;
+      top: 11rem;
+    }
+
+    &-0010 {
+      width: 1.8rem;
+      height: 1.8rem;
+      left: 117.5rem;
+      top: 12rem;
+    }
+
+    &-0011 {
+      width: 1.8rem;
+      height: 1.8rem;
+      left: 120rem;
+      top: 32rem;
+    }
+
+    &-0012 {
+      width: 5.5rem;
+      height: 5.5rem;
+      left: 122rem;
+      top: 33rem;
+    }
+
+    &-0014 {
+      width: 5.5rem;
+      height: 5.5rem;
+      left: 138rem;
+      top: 17rem;
+    }
+  }
+}

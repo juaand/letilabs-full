@@ -18,7 +18,7 @@
 
 .BannerProductos__img-azitomicina {
   bottom: 0;
-  left: 20%;
+  left: 28rem;
 }
 
 .BannerProductos__img-diklason {
@@ -29,7 +29,7 @@
 
 .BannerProductos__img-ulgarin {
   transform: rotate(22deg);
-  left: 10%;
+  left: 10rem;
 }
 
 @media (max-width: 576px) {
