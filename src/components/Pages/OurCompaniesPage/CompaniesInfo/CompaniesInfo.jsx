@@ -25,7 +25,8 @@ function CompaniesInfo() {
                     )}
                 </div>
             </div>
-            <div className="CompaniesInfo__absolute d-block d-sm-none">
+            {/* Responsive */}
+            <div className="row d-block d-sm-none">
                 ESTO SOLO SE MUESTRA EN MÓVILES
             </div>
         </section>

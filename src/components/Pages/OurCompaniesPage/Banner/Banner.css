@@ -43,27 +43,27 @@
 }
 
 @media (max-width: 576px) {
-  .Banner__title {
+  .Banner__ourCompanies__title {
     height: 70rem;
     align-items: flex-start;
   }
-  .Banner__title h1 {
+  .Banner__ourCompanies__title h1 {
     margin-top: 3rem;
   }
-  .Banner__bg {
-    background: url(../../../../images/about-us-bg.png) no-repeat 8rem bottom/contain;
-    background-size: 115%;
+  .Banner__ourCompanies__bg {
+    background: url(../../../../images/our-companies-bg.png) no-repeat right bottom/contain;
+    background-size: 100%;
   }
-  .Banner .leti-red-triangle {
+  .Banner__ourCompanies .leti-red-triangle {
     width: 35rem;
     height: 35rem;
     right: -5%;
-    top: 30%;
+    top: 40%;
   }
-  .Banner .leti-blue-triangle {
+  .Banner__ourCompanies .leti-blue-triangle {
     width: 35rem;
     height: 35rem;
     right: -25%;
-    top: 55%;
+    top: 75%;
   }
 }
