@@ -1,0 +1,9 @@
+@import '../../../../stylesheets/variables';
+
+.CompaniesInfo {
+    background: $leti-back-dark;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 0 7rem 0;
+}
