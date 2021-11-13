@@ -7,7 +7,7 @@ import Megat from './Megat/Megat'
 import Gallery from './Gallery/Gallery'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import {Helmet} from "react-helmet"
+import Seo from '../../Seo/Seo'
 
 function AboutUs() {
     const {user} = useAuthContext()
@@ -35,10 +35,7 @@ function AboutUs() {
 
     return (
         <>
-            <Helmet>
-                <title>Grupo Leti | Sobre Nosotros</title>
-                <meta name="description" content="Esta página fue realizada por Andrés Martínez y Juan Romero" />
-            </Helmet>
+        <Seo title='Grupo Leti | Sobre nosotros' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
             <main>
                 <Banner />
                 <MarcandoPauta />

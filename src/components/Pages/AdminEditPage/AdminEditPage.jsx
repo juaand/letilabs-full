@@ -1,7 +1,7 @@
 import './AdminEditPage.css'
 import React from 'react'
 import {useHistory} from 'react-router'
-import {Helmet} from "react-helmet"
+import Seo from '../../Seo/Seo'
 
 function AdminEditPage() {
     let history = useHistory()
@@ -14,9 +14,7 @@ function AdminEditPage() {
 
     return (
         <>
-            <Helmet>
-                <title>Grupo Leti | Administrador</title>
-            </Helmet>
+            <Seo title='Grupo Leti | Administrador' />
             <main>
                 <h1>AdminEditPage</h1>
                 <div onClick={handleClick}>editar</div>

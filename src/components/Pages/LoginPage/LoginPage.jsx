@@ -6,7 +6,7 @@ import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../Form/FormButton/FormButton'
 import {Redirect} from 'react-router-dom'
 import {useFormState} from '../../../hooks/useFormState'
-import {Helmet} from "react-helmet"
+import Seo from '../../Seo/Seo'
 
 const LoginPage = () => {
 
@@ -55,9 +55,7 @@ const LoginPage = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Grupo Leti | Administrador login</title>
-            </Helmet>
+            <Seo title='Grupo Leti | Administrador login' />
             <main className="container-fluid LoginPage">
                 <div className="container">
                     <div className="leti-blue-triangle"></div>

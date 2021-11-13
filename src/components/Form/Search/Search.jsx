@@ -30,8 +30,7 @@ function Search({bool}) {
         history.push({
             pathname: '/buscar',
             state: {
-                buscar: data.search,
-                hideSearchIcon: true
+                buscar: data.search
             }
         })
     }

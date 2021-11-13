@@ -1,14 +1,12 @@
 import './NotFoundPage.css'
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {Helmet} from "react-helmet"
+import Seo from '../../Seo/Seo'
 
 function NotFoundPage() {
     return (
         <>
-            <Helmet>
-                <title>Grupo Leti | 404</title>
-            </Helmet>
+            <Seo title='Grupo Leti | 404' />
             <main className="container NotFoundPage">
                 <div className="row justify-content-center">
                     <div className="col-12 NotFoundPage__icon"></div>
