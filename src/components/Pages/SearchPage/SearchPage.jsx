@@ -57,6 +57,7 @@ function SearchPage(props) {
         //Busqueda de contenido en la API
         const fetchData = async () => {
             const contentData = await searchContent(data.search)
+            console.log(contentData)
             setMatches(contentData)
         }
         fetchData()
