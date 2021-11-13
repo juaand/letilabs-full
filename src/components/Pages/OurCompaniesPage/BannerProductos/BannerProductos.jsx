@@ -4,9 +4,9 @@ import React from 'react'
 function BannerProductos() {
     return (
         <section className="container-fluid BannerProductos">
-        <img src="./images/azitomicina.png" className="BannerProductos__img-azitomicina" alt="grupo leti azitomicina"/>
-        <img src="./images/diklason.png" className="BannerProductos__img-diklason" alt="grupo leti diklason"/>
-        <img src="./images/ulgarin.png" className="BannerProductos__img-ulgarin" alt="grupo leti ulgarin"/>
+        <img data-speed=".2" data-axis="horizontal" src="./images/ulgarin.png" className="parallax BannerProductos__img-ulgarin" alt="grupo leti ulgarin"/>
+        <img data-speed="-.08" data-axis="horizontal" src="./images/azitomicina.png" className="parallax BannerProductos__img-azitomicina" alt="grupo leti azitomicina"/>
+        <img data-speed=".1" data-axis="horizontal" src="./images/diklason.png" className="parallax BannerProductos__img-diklason" alt="grupo leti diklason"/>
             <div className="container">
                 <div className="row justify-content-end">
                     <div className="col-12 col-sm-8">
