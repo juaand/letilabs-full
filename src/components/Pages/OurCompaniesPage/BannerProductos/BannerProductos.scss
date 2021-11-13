@@ -27,7 +27,7 @@
     &-diklason {
       transform: rotate(12deg);
       bottom: 10%;
-      right: 10%;
+      right: 8%;
     }
 
     &-ulgarin {
@@ -39,6 +39,35 @@
 
 @media (max-width: 576px) {
   .BannerProductos {
-    margin: 10rem auto;
+    margin: 10rem auto 0rem auto;
+
+    &__title {
+      margin-bottom: 20rem;
+      text-align: right;
+    }
+    
+    &__subtitle {
+      margin-bottom: 30rem;
+    }
+  
+    &__img {
+      &-azitomicina {
+        width: 80%;
+        bottom: 10rem;
+        left: -25%;
+      }
+  
+      &-diklason {
+        width: 50%;
+        bottom: 4rem;
+        right: -2rem;
+      }
+  
+      &-ulgarin {
+        top: 20rem;
+        left: 4%;
+        width: 25rem;
+      }
+    }
   }
 }
