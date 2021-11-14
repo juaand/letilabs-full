@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
+import Banner from './Banner/Banner'
 
 
 function LetiPage() {
@@ -39,6 +40,7 @@ function LetiPage() {
         <>
             <Seo title='Grupo Leti | Leti' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
             <main>
+                <Banner />
             </main>
         </>
     )
