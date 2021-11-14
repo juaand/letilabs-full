@@ -13,7 +13,7 @@ function Banner() {
                 </div>
             </div>
             <div className="leti-blue-triangle parallax" data-speed="-.2" data-axis="vertical"></div>
-            <div className="leti-red-triangle parallax" data-speed=".3" data-axis="vertical"></div>
+            <div className="leti-red-triangle parallax" data-speed=".05" data-axis="vertical"></div>
         </section>
     )
 }

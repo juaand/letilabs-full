@@ -12,10 +12,10 @@
 
 .Banner__ourCompanies__bg {
   background: url(../../../../images/our-companies-bg.png) no-repeat center bottom/contain;
-  height: 70rem;
+  height: 60rem;
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: -10rem;
   z-index: 1;
 }
 
@@ -53,17 +53,18 @@
   .Banner__ourCompanies__bg {
     background: url(../../../../images/our-companies-bg.png) no-repeat right bottom/contain;
     background-size: 100%;
+    right: 0;
   }
   .Banner__ourCompanies .leti-red-triangle {
     width: 35rem;
     height: 35rem;
     right: -5%;
-    top: 40%;
+    top: 55%;
   }
   .Banner__ourCompanies .leti-blue-triangle {
     width: 35rem;
     height: 35rem;
     right: -25%;
-    top: 75%;
+    top: 65%;
   }
 }
