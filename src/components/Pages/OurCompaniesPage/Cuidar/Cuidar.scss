@@ -30,10 +30,39 @@
     position: absolute;
     background: url(../../../../images/cuidar-stroke.svg) no-repeat center /
       contain;
-      left: 50%;
-      margin-left: -28rem;
+    left: 50%;
+    margin-left: -28rem;
     width: 60rem;
     height: 60rem;
     transform: rotate(0deg);
+  }
+}
+
+@media (max-width: 576px) {
+  .Cuidar {
+    background: none;
+    margin-top: 6rem;
+
+    h1 {
+      margin-top: -5rem;
+    }
+
+    &__clip {
+      &-content {
+        margin-top: 2rem;
+        height: 35rem;
+        width: 60rem;
+        mask-size: 40rem;
+        mask-position: center;
+        background-size: 100%;
+      }
+    }
+
+    &__stroke {
+      top: -2rem;
+      left: 80%;
+      width: 35rem;
+      height: 35rem;
+    }
   }
 }
