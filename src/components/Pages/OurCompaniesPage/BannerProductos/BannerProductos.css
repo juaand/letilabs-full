@@ -1,0 +1,62 @@
+.BannerProductos {
+  margin-top: 20rem;
+  position: relative;
+}
+
+.BannerProductos__title {
+  margin-bottom: 13rem;
+  text-align: right;
+}
+
+.BannerProductos__subtitle {
+  margin-bottom: 30rem;
+}
+
+.BannerProductos__img-azitomicina, .BannerProductos__img-diklason, .BannerProductos__img-ulgarin {
+  position: absolute;
+  transform: rotate(0deg);
+}
+
+.BannerProductos__img-azitomicina {
+  bottom: 0;
+  left: 28rem;
+}
+
+.BannerProductos__img-diklason {
+  transform: rotate(12deg);
+  bottom: 10%;
+  right: 8%;
+}
+
+.BannerProductos__img-ulgarin {
+  transform: rotate(22deg);
+  left: 10rem;
+}
+
+@media (max-width: 576px) {
+  .BannerProductos {
+    margin: 10rem auto 0rem auto;
+  }
+  .BannerProductos__title {
+    margin-bottom: 20rem;
+    text-align: right;
+  }
+  .BannerProductos__subtitle {
+    margin-bottom: 30rem;
+  }
+  .BannerProductos__img-azitomicina {
+    width: 80%;
+    bottom: 10rem;
+    left: -25%;
+  }
+  .BannerProductos__img-diklason {
+    width: 50%;
+    bottom: 4rem;
+    right: -2rem;
+  }
+  .BannerProductos__img-ulgarin {
+    top: 20rem;
+    left: 4%;
+    width: 25rem;
+  }
+}

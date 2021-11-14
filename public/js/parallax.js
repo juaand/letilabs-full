@@ -34,7 +34,7 @@ document.onscroll = () => {
 
         let scaleSum = diff * speed * 0.01
 
-        eachElement.style.transform = `scale(${scaleSum})`
+        eachElement.style.transform = `scale(${scaleSum / 100})` 
     })
 
 
@@ -51,7 +51,7 @@ document.onscroll = () => {
 
     document.querySelectorAll('.parallax').forEach(eachElement => {
 
-        diff = eachElement.getBoundingClientRect().top
+        diff = eachElement.getBoundingClientRect().top - 910
         speed = eachElement.dataset.speed
         axis = eachElement.dataset.axis
 

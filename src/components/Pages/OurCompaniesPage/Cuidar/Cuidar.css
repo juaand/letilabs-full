@@ -1,0 +1,58 @@
+.Cuidar {
+  margin: 7rem 0;
+  background: url(../../../../images/cuidar-left-bg.svg) no-repeat -15% center, url(../../../../images/cuidar-right-bg.svg) no-repeat 115% center;
+}
+
+.Cuidar__clip {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+}
+
+.Cuidar__clip-content {
+  position: static;
+  height: 60rem;
+  width: 62.6rem;
+  background: url(../../../../images/cuidar.png) no-repeat center center/cover;
+  mask-image: url(../../../../images/cuidar-mask.svg);
+  mask-size: 60rem;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  margin-bottom: 3rem;
+  transform: rotate(0deg);
+}
+
+.Cuidar__stroke {
+  position: absolute;
+  background: url(../../../../images/cuidar-stroke.svg) no-repeat center/contain;
+  left: 50%;
+  margin-left: -28rem;
+  width: 60rem;
+  height: 60rem;
+  transform: rotate(0deg);
+}
+
+@media (max-width: 576px) {
+  .Cuidar {
+    background: none;
+    margin-top: 6rem;
+  }
+  .Cuidar h1 {
+    margin-top: -5rem;
+  }
+  .Cuidar__clip-content {
+    margin-top: 2rem;
+    height: 35rem;
+    width: 60rem;
+    mask-size: 40rem;
+    mask-position: center;
+    background-size: 100%;
+  }
+  .Cuidar__stroke {
+    top: -2rem;
+    left: 80%;
+    width: 35rem;
+    height: 35rem;
+  }
+}
