@@ -118,3 +118,18 @@
   left: 138rem;
   top: 17rem;
 }
+
+@media (max-width: 576px) {
+  .Innovar__title {
+    margin-left: 0rem;
+  }
+  .Innovar__bubbles-000, .Innovar__bubbles-006, .Innovar__bubbles-007, .Innovar__bubbles-008, .Innovar__bubbles-009, .Innovar__bubbles-0010, .Innovar__bubbles-0011, .Innovar__bubbles-0012, .Innovar__bubbles-0014 {
+    display: none;
+  }
+  .Innovar__bubbles-big {
+    width: 20rem;
+    height: 20rem;
+    top: -8.5rem;
+    left: -8.5rem;
+  }
+}

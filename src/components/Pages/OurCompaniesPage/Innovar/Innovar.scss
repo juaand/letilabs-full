@@ -122,3 +122,32 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .Innovar {
+    &__title {
+      margin-left: 0rem;
+    }
+
+    &__bubbles {
+      &-000,
+      &-006,
+      &-007,
+      &-008,
+      &-009,
+      &-0010,
+      &-0011,
+      &-0012,
+      &-0014 {
+        display: none;
+      }
+
+      &-big {
+        width: 20rem;
+        height: 20rem;
+        top: -8.5rem;
+        left: -8.5rem;
+      }
+    }
+  }
+}
