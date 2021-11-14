@@ -14,12 +14,12 @@
 
 .BannerProductos__img-azitomicina, .BannerProductos__img-diklason, .BannerProductos__img-ulgarin {
   position: absolute;
-  transform: rotate(0deg);
 }
 
 .BannerProductos__img-azitomicina {
   bottom: 0;
   left: 28rem;
+  transform: rotate(0deg);
 }
 
 .BannerProductos__img-diklason {
