@@ -6,6 +6,7 @@ import CompaniesInfo from './CompaniesInfo/CompaniesInfo'
 import BannerProductos from './BannerProductos/BannerProductos'
 import Innovar from './Innovar/Innovar'
 import Cuidar from './Cuidar/Cuidar'
+import BottomCta from './BottomCta/BottomCta'
 
 function OurCompanies() {
 
@@ -18,6 +19,7 @@ function OurCompanies() {
                 <BannerProductos />
                 <Innovar />
                 <Cuidar />
+                <BottomCta />
             </main>
         </>
     )

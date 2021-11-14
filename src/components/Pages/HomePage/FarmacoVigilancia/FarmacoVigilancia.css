@@ -52,7 +52,9 @@
     margin: 0;
   }
   .FarmacoVigilancia__especialistas, .FarmacoVigilancia__espacio {
+    font-size: 2.2rem;
     min-height: 30rem;
+    padding: 0 2rem;
   }
   .FarmacoVigilancia__texto {
     margin: 2rem 0;
