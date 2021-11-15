@@ -8,7 +8,7 @@ function Banner() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-sm-7 Banner__Genven__title">
-                        <img className="Banner__Genven-logo" src="./images/genven.svg" alt="Leti" />
+                        <img className="Banner__Genven-logo" src="./images/genven.svg" alt="Genven" />
                         <h3><span className="blue-text">Genven Genéricos Venezolanos,</span> es nuestra línea de
                             genéricos de Laboratorios Leti S.A.V, con más de 25
                             años en el mercado farmacéutico venezolano.<br /><br />
