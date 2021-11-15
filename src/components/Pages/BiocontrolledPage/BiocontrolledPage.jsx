@@ -7,6 +7,7 @@ import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
 import Equipo from './Equipo/Equipo'
+import Carousel from './Carousel/Carousel'
 
 
 function BiocontrolledPage() {
@@ -45,6 +46,7 @@ function BiocontrolledPage() {
             <main>
                 <Banner />
                 <InfoCards />
+                <Carousel />
                 <Timeline />
                 <Equipo />
             </main>

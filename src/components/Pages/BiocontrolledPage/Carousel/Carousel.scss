@@ -1,0 +1,112 @@
+@import '../../../../stylesheets/variables';
+@import 'Arrows';
+
+.Carousel {
+  &__Biocontrolled {
+    margin: 10rem 0;
+
+    h1 {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    &__desc {
+      text-align: center;
+      position: relative;
+      overflow: visible;
+      margin: auto;
+      padding-top: 7rem;
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        margin-left: -1.5rem;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 3rem;
+        background-color: $leti-blue;
+        z-index: 2;
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0rem;
+        left: 50%;
+        margin-left: -2.5rem;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 3rem;
+        border: solid 0.1rem $leti-blue;
+        z-index: 1;
+        background: $leti-white;
+      }
+    }
+
+    .slick-list {
+      position: relative;
+      width: 80%;
+      margin: auto;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        border-top: solid 0.3rem $leti-blue;
+        top: 2.5rem;
+      }
+    }
+
+    .slick-next,
+    .slick-prev {
+      position: absolute;
+      width: 4rem;
+      height: 4rem;
+      top: 2.5rem;
+      z-index: 4;
+      opacity: 0.4;
+      transition: all 200ms ease-in-out;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:before {
+        content: '';
+      }
+    }
+
+    .slick-next {
+      background: url(../../../../images/next-arrow.svg) no-repeat center center /
+        contain;
+        right: 6rem;
+    }
+
+    .slick-prev {
+      background: url(../../../../images/prev-arrow.svg) no-repeat center center /
+        contain;
+        left: 6rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Carousel {
+    margin: 2rem 0 2rem 0;
+
+    h1 {
+      margin-left: 2rem;
+    }
+
+    .slick-next {
+      transform: translate(-5rem, 17rem);
+    }
+
+    .slick-prev {
+      transform: translate(5rem, 17rem);
+    }
+  }
+}

@@ -1,0 +1,329 @@
+@charset "UTF-8";
+.slick-list,
+.slick-slider,
+.slick-track {
+  position: relative;
+  display: block;
+}
+
+.slick-loading .slick-slide,
+.slick-loading .slick-track {
+  visibility: hidden;
+}
+
+.slick-slider {
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.slick-list:focus {
+  outline: 0;
+}
+
+.slick-list.dragging {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.slick-slider .slick-list,
+.slick-slider .slick-track {
+  transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+  top: 0;
+  left: 0;
+}
+
+.slick-track:after,
+.slick-track:before {
+  display: table;
+  content: '';
+}
+
+.slick-track:after {
+  clear: both;
+}
+
+.slick-slide {
+  display: none;
+  float: left;
+  height: 100%;
+  min-height: 1px;
+}
+
+[dir='rtl'] .slick-slide {
+  float: right;
+}
+
+.slick-slide img {
+  display: block;
+}
+
+.slick-slide.slick-loading img {
+  display: none;
+}
+
+.slick-slide.dragging img {
+  pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+  display: block;
+}
+
+.slick-vertical .slick-slide {
+  display: block;
+  height: auto;
+  border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+  display: none;
+}
+.slick-dots,
+.slick-next,
+.slick-prev {
+  position: absolute;
+  display: block;
+  padding: 0;
+}
+
+.slick-dots li button:before,
+.slick-next:before,
+.slick-prev:before {
+  font-family: slick;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-next,
+.slick-prev {
+  font-size: 0;
+  line-height: 0;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(0, -50%);
+  cursor: pointer;
+  color: transparent;
+  border: none;
+  outline: 0;
+}
+
+.slick-next:focus,
+.slick-next:hover,
+.slick-prev:focus,
+.slick-prev:hover {
+  color: transparent;
+  outline: 0;
+}
+
+.slick-next:focus:before,
+.slick-next:hover:before,
+.slick-prev:focus:before,
+.slick-prev:hover:before {
+  opacity: 1;
+}
+
+.slick-next.slick-disabled:before,
+.slick-prev.slick-disabled:before {
+  opacity: 0.25;
+}
+
+.slick-prev {
+  left: -25px;
+}
+
+[dir='rtl'] .slick-prev {
+  right: -25px;
+  left: auto;
+}
+
+.slick-next {
+  right: -25px;
+}
+
+[dir='rtl'] .slick-next {
+  right: auto;
+  left: -25px;
+}
+
+.slick-dotted.slick-slider {
+  margin-bottom: 30px;
+}
+
+.slick-dots {
+  bottom: -25px;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.slick-dots li button {
+  font-size: 0;
+  line-height: 0;
+  display: block;
+  width: 20px;
+  height: 20px;
+  padding: 5px;
+  cursor: pointer;
+  color: transparent;
+  border: 0;
+  outline: 0;
+  background: 0 0;
+}
+
+.slick-dots li button:focus,
+.slick-dots li button:hover {
+  outline: 0;
+}
+
+.slick-dots li button:focus:before,
+.slick-dots li button:hover:before {
+  opacity: 1;
+}
+
+.slick-dots li button:before {
+  font-size: 6px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: '•';
+  text-align: center;
+  opacity: 0.25;
+  color: #000;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #000;
+}
+.Carousel__Biocontrolled {
+  margin: 10rem 0;
+}
+
+.Carousel__Biocontrolled h1 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.Carousel__Biocontrolled__desc {
+  text-align: center;
+  position: relative;
+  overflow: visible;
+  margin: auto;
+  padding-top: 7rem;
+}
+
+.Carousel__Biocontrolled__desc:before {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  margin-left: -1.5rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
+  background-color: #055aa5;
+  z-index: 2;
+}
+
+.Carousel__Biocontrolled__desc:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0rem;
+  left: 50%;
+  margin-left: -2.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 3rem;
+  border: solid 0.1rem #055aa5;
+  z-index: 1;
+  background: #fff;
+}
+
+.Carousel__Biocontrolled .slick-list {
+  position: relative;
+  width: 80%;
+  margin: auto;
+}
+
+.Carousel__Biocontrolled .slick-list:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  border-top: solid 0.3rem #055aa5;
+  top: 2.5rem;
+}
+
+.Carousel__Biocontrolled .slick-next,
+.Carousel__Biocontrolled .slick-prev {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  top: 2.5rem;
+  z-index: 4;
+  opacity: 0.4;
+  transition: all 200ms ease-in-out;
+}
+
+.Carousel__Biocontrolled .slick-next:hover,
+.Carousel__Biocontrolled .slick-prev:hover {
+  opacity: 1;
+}
+
+.Carousel__Biocontrolled .slick-next:before,
+.Carousel__Biocontrolled .slick-prev:before {
+  content: '';
+}
+
+.Carousel__Biocontrolled .slick-next {
+  background: url(../../../../images/next-arrow.svg) no-repeat center center/contain;
+  right: 6rem;
+}
+
+.Carousel__Biocontrolled .slick-prev {
+  background: url(../../../../images/prev-arrow.svg) no-repeat center center/contain;
+  left: 6rem;
+}
+
+@media (max-width: 576px) {
+  .Carousel {
+    margin: 2rem 0 2rem 0;
+  }
+  .Carousel h1 {
+    margin-left: 2rem;
+  }
+  .Carousel .slick-next {
+    transform: translate(-5rem, 17rem);
+  }
+  .Carousel .slick-prev {
+    transform: translate(5rem, 17rem);
+  }
+}
