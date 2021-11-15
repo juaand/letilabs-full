@@ -5,6 +5,7 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
+import Timeline from './Timeline/Timeline'
 
 
 function LetiPage() {
@@ -43,6 +44,7 @@ function LetiPage() {
             <main>
                 <Banner />
                 <InfoCards />
+                <Timeline />
             </main>
         </>
     )
