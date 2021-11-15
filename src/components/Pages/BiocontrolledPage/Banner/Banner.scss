@@ -1,7 +1,7 @@
 @import '../../../../stylesheets/variables';
 
 .Banner {
-  &__Leti {
+  &__Biocontrolled {
     position: relative;
     &-logo {
       margin-top: 6rem;
@@ -13,13 +13,13 @@
       display: flex;
       align-items: flex-start;
       flex-direction: column;
-      justify-content: space-around;
+      justify-content: center;
 
       h3 {
         font-size: 3rem;
         font-family: 'Mulish', sans-serif;
         font-weight: 500;
-        margin-bottom: 8rem;
+        margin: 8rem auto;
       }
     }
 
@@ -27,7 +27,7 @@
       position: absolute;
       width: 54rem;
       height: 54rem;
-      background: url(../../../../images/leti-banner-img.png) no-repeat center /
+      background: url(../../../../images/biocontrolled-banner.png) no-repeat center /
         contain;
       right: -6rem;
       top: -18rem;
@@ -49,7 +49,7 @@
 
 @media (max-width: 576px) {
   .Banner {
-    &__Leti {
+    &__Biocontrolled {
       &-logo {
         width: 13rem;
         margin: 5rem 0 3rem 0;

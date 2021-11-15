@@ -13,8 +13,8 @@ function BiocontrolledPage() {
     const {user} = useAuthContext()
     const data = {
         content: [],
-        url: '/laboratorios-leti',
-        name: 'Laboratorios Leti'
+        url: '/biocontrolled',
+        name: 'Biocontrolled'
     }
 
     useEffect(() => {
@@ -41,7 +41,7 @@ function BiocontrolledPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Biocontrolled' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
+            <Seo title='Grupo Leti | Biocontrolled' name='description' content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
             <main>
                 <Banner />
                 <InfoCards />
