@@ -35,7 +35,7 @@ function Timeline() {
         const PrevArrow = document.querySelector('.Timeline__leti .slick-prev')
         const NextArrow = document.querySelector('.Timeline__leti .slick-next')
 
-        if (window.screen.width > 576) {
+        if (letiTimeline.length > 1 && window.screen.width > 576) {
             //Arrows top position
             PrevArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
             NextArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`

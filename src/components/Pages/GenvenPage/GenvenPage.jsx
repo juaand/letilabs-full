@@ -7,6 +7,7 @@ import Banner from './Banner/Banner'
 import Video from './Video/Video'
 import Timeline from './Timeline/Timeline'
 import Equipo from './Equipo/Equipo'
+import Productos from './Productos/Productos'
 
 
 function GenvenPage() {
@@ -45,6 +46,7 @@ function GenvenPage() {
             <main>
                 <Banner />
                 <Video />
+                <Productos />
                 <Timeline />
                 <Equipo />
             </main>
