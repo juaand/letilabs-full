@@ -44,8 +44,7 @@
   }
   .Equipo__clip {
     position: static;
-    background: url(../../../../images/bubbles.png) repeat center bottom/cover;
-    background-attachment: fixed;
+    background: url(../../../../images/equipo.jpg) repeat center top/cover;
     mask-position: top center;
     height: 45rem;
     mask-size: 40rem;
