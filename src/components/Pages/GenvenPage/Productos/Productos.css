@@ -48,14 +48,26 @@
 }
 
 @media (max-width: 576px) {
-  .Equipo {
+  .Productos {
     margin-top: 0;
+    padding-bottom: 0;
     padding-top: 0;
+    background: url(../../../../images/productos-resp-bg.png) no-repeat right bottom/contain;
+    height: 86rem;
   }
-  .Equipo .row {
+  .Productos [class*='__genven'] {
+    display: none;
+  }
+  .Productos .row {
     justify-content: center;
+    background: #fff;
+    padding-bottom: 3rem;
+    padding-top: 6rem;
   }
-  .Equipo__info {
+  .Productos__info {
     font-size: 1.6rem;
+  }
+  .Productos .leti-btn {
+    margin-top: 0rem;
   }
 }

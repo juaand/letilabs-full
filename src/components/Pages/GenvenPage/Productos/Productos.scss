@@ -55,16 +55,31 @@
 }
 
 @media (max-width: 576px) {
-  .Equipo {
+  .Productos {
     margin-top: 0;
+    padding-bottom: 0;
     padding-top: 0;
+    background: url(../../../../images/productos-resp-bg.png) no-repeat right
+      bottom / contain;
+      height: 86rem;
+
+  [class*='__genven'] {
+    display: none;
+  }
 
     .row {
       justify-content: center;
+      background: $leti-white;
+      padding-bottom: 3rem;
+    padding-top: 6rem;
     }
 
     &__info {
       font-size: 1.6rem;
     }
+
+  .leti-btn {
+    margin-top: 0rem;
+  }
   }
 }

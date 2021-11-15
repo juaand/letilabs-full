@@ -74,6 +74,9 @@
 }
 
 @media (max-width: 576px) {
+  .Timeline__leti {
+    margin-top: 4rem;
+  }
   .Timeline__leti__image {
     height: 38rem;
   }
