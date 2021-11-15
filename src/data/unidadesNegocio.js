@@ -1,9 +1,9 @@
 const unidadesNegocio = [
   {
     id: 1,
-    name: 'Leti',
+    name: 'Laboratorios Leti',
     desc: 'Desarrollamos las más grandes marcas de medicinas OTC del país, así como productos éticos de alta calidad',
-    info: '<strong>Laboratorios Leti</strong> es una empresa 100% venezolana que ha ido fortaleciendo su portafolio, con áreas de productos de prescripción RX, sin prescripción OTC, de recomendación del especialista OTX, naturales FitoLeti, oncológicos, productos de nanotecnología, test genéticos, HIV que cuentan con tecnología de vanguardia y primera línea para ofrecer al venezolano medicamentos de alta calidad.',
+    info: '<strong>Laboratorios Leti</strong> es una empresa 100% venezolana que ha ido fortaleciendo su portafolio, con áreas de productos de prescripción RX, sin prescripción OTC, de recomendación del especialista OTX, naturales FitoLeti, oncológicos, productos de nanotecnología, test genéticos, HIV que cuentan con tecnología de vanguardia y primera línea para ofrecer al venezolano medicamentos de alta calidad.'
   },
   {
     id: 2,

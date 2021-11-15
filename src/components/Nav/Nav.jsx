@@ -125,14 +125,14 @@ function Nav({initSearch}) {
                             </div>
                             <div className="col-12 col-sm-4 Nav__sub-nav-anchors">
                                 {subNavData.sub_nav.map(el =>
-                                    <Link onClick={hideMenu} to={`${seoURL(subNavData.nav_btn)}#${seoURL(el.sub_text)}`}>{el.sub_text}</Link>
+                                    <Link onClick={hideMenu} to={`${seoURL(el.sub_text)}`}>{el.sub_text}</Link>
                                 )}
                             </div>
                         </div>
                     </div>
                 </div>
             }
-        </section >
+        </section>
     )
 }
 

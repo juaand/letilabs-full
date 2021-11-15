@@ -25,6 +25,20 @@ function CompaniesInfo() {
         ]
     }
 
+    const seoURL = (str) => {
+        return str.toString()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\s+/g, '-')
+            .toLowerCase()
+            .replace(/&/g, '-and-')
+            // eslint-disable-next-line
+            .replace(/[^a-z0-9\-]/g, '')
+            .replace(/-+/g, '-')
+            .replace(/^-*/, '')
+            .replace(/-*$/, '')
+    }
+
 
     return (
         <>
@@ -32,9 +46,9 @@ function CompaniesInfo() {
                 <div className="CompaniesInfo__absolute">
                     <div className="row justify-content-around">
                         {unidadesNegocio.map(el =>
-                            <Link to={`/${el.name.toLowerCase()}`} className="col-sm-3 CompaniesInfo__card">
+                            <Link to={`/${seoURL(el.name).toLowerCase()}`} className="col-sm-3 CompaniesInfo__card">
                                 <div className="CompaniesInfo__card-img">
-                                    <img src={`./images/${el.name.toLowerCase()}.svg`} className="CompaniesInfo__card-logo" alt={"conoce más sobre" + el.name} />
+                                    <img src={`./images/${seoURL(el.name).toLowerCase()}.svg`} className="CompaniesInfo__card-logo" alt={"conoce más sobre " + el.name} />
                                 </div>
                                 <div className="CompaniesInfo__card-body">
                                     <p className="CompaniesInfo__card-text" dangerouslySetInnerHTML={{__html: el.info}}>
@@ -55,14 +69,14 @@ function CompaniesInfo() {
                         {unidadesNegocio.map(el =>
                             <div className="CompaniesInfoResp__card">
                                 <div className="CompaniesInfoResp__card-img">
-                                    <img src={`./images/${el.name.toLowerCase()}.svg`} className={`CompaniesInfoResp__card-${el.name.toLowerCase()}`} alt={"conoce más sobre " + el.name} />
+                                    <img src={`./images/${seoURL(el.name).toLowerCase()}.svg`} className={`CompaniesInfoResp__card-${seoURL(el.name).toLowerCase()}`} alt={"conoce más sobre " + el.name} />
                                 </div>
                                 <div className="CompaniesInfoResp__card-body">
                                     <p className="CompaniesInfoResp__card-text" dangerouslySetInnerHTML={{__html: el.info}}>
                                     </p>
                                 </div>
                                 <div className="CompaniesInfoResp__card-footer">
-                                    <div className="CompaniesInfoResp__card-link"></div>
+                                    <Link to={`/${seoURL(el.name).toLowerCase()}`} className="CompaniesInfoResp__card-link"></Link>
                                 </div>
                             </div>
                         )}

@@ -24,7 +24,7 @@ function Home() {
         if (user) {
             const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
             mainContent.forEach(content => {
-                data.content.push(content.innerHTML)
+                data.content.push(content.innerText)
             })
 
             const fetchData = async () => {
