@@ -6,6 +6,7 @@ import Seo from '../../Seo/Seo'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
+import Equipo from './Equipo/Equipo'
 
 
 function LaboratoriosLetiPage() {
@@ -45,6 +46,7 @@ function LaboratoriosLetiPage() {
                 <Banner />
                 <InfoCards />
                 <Timeline />
+                <Equipo />
             </main>
         </>
     )

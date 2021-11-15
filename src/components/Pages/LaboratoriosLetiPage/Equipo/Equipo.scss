@@ -1,0 +1,73 @@
+@import '../../../../stylesheets/variables';
+
+.Equipo {
+  padding: 20rem 0 10rem 0;
+  margin-top: 16rem;
+  position: relative;
+
+  &__desc {
+    margin-bottom: 3rem;
+  }
+
+  &__clip {
+    position: absolute;
+    top: -20rem;
+    left: -30rem;
+    height: 90rem;
+    width: 90rem;
+    background: url(../../../../images/equipo.jpg) repeat left center / cover;
+    mask-image: url(../../../../images/mask.svg);
+    mask-size: 90rem;
+    mask-repeat: no-repeat;
+    mask-position: top left;
+  }
+
+  &__red-stroke {
+    background: url(../../../../images/equipo-stroke.svg) no-repeat center
+      center / contain;
+    position: absolute;
+    width: 60rem;
+    height: 60rem;
+    z-index: -1;
+    top: -5rem;
+  }
+
+  .leti-btn {
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Equipo {
+    margin-top: 0;
+    padding-top: 0;
+
+    .row {
+      justify-content: center;
+    }
+
+    &__clip {
+      position: static;
+      background: url(../../../../images/bubbles.png) repeat center bottom /
+        cover;
+      background-attachment: fixed;
+      mask-position: top center;
+      height: 45rem;
+      mask-size: 40rem;
+      margin-left: -20rem;
+      background-size: 100%;
+    }
+
+    &__red-stroke {
+      position: absolute;
+      width: 30rem;
+      height: 30rem;
+      z-index: -1;
+      top: 5rem;
+    }
+
+    &__info {
+      font-size: 1.6rem;
+    }
+  }
+}
