@@ -12,6 +12,8 @@ function AdminEditPage() {
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
         setTimeout(() => {history.push("/nuestras-empresas")}, 1)
         setTimeout(() => {history.push("/laboratorios-leti")}, 1)
+        setTimeout(() => {history.push("/genven")}, 1)
+        setTimeout(() => {history.push("/biocontrolled")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
 
