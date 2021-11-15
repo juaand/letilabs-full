@@ -1,20 +1,21 @@
-import './LaboratoriosLetiPage.css'
+import './GenvenPage.css'
 import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
 import Banner from './Banner/Banner'
-import InfoCards from './InfoCards/InfoCards'
+import Video from './Video/Video'
 import Timeline from './Timeline/Timeline'
 import Equipo from './Equipo/Equipo'
+import Productos from './Productos/Productos'
 
 
-function LaboratoriosLetiPage() {
+function GenvenPage() {
     const {user} = useAuthContext()
     const data = {
         content: [],
-        url: '/laboratorios-leti',
-        name: 'Laboratorios Leti'
+        url: '/genven',
+        name: 'Genven'
     }
 
     useEffect(() => {
@@ -41,10 +42,11 @@ function LaboratoriosLetiPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Laboratorios Leti' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
+            <Seo title='Grupo Leti | Genven' name='description' content="Genven Genéricos Venezolanos, es nuestra línea de genéricos de Laboratorios Leti S.A.V, con más de 25 años en el mercado farmacéutico venezolano." />
             <main>
                 <Banner />
-                <InfoCards />
+                <Video />
+                <Productos />
                 <Timeline />
                 <Equipo />
             </main>
@@ -52,4 +54,4 @@ function LaboratoriosLetiPage() {
     )
 }
 
-export default LaboratoriosLetiPage
+export default GenvenPage

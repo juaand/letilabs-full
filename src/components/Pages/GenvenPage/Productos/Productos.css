@@ -1,0 +1,73 @@
+.Productos {
+  padding: 20rem 0 10rem 0;
+  position: relative;
+}
+
+.Productos [class*='__genven'] {
+  position: absolute;
+}
+
+.Productos__genven-001 {
+  background: url(../../../../images/genven001.png) no-repeat right center/contain;
+  width: 37rem;
+  height: 42rem;
+  top: 12rem;
+  right: 3rem;
+  transform: rotate(0deg);
+}
+
+.Productos__genven-002 {
+  background: url(../../../../images/genven002.png) no-repeat center center/contain;
+  width: 52rem;
+  height: 23.5rem;
+  top: 54rem;
+  right: -15rem;
+  transform: rotate(0deg);
+  z-index: 1;
+}
+
+.Productos__genven-003 {
+  background: url(../../../../images/genven003.png) no-repeat center center/contain;
+  width: 40rem;
+  height: 37.5rem;
+  top: -6rem;
+  right: -20rem;
+  transform: rotate(0deg);
+  z-index: -1;
+}
+
+.Productos__desc {
+  margin-bottom: 3rem;
+  font-size: 3rem;
+  text-align: right;
+}
+
+.Productos .leti-btn {
+  margin-top: 3rem;
+  float: right;
+}
+
+@media (max-width: 576px) {
+  .Productos {
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    background: url(../../../../images/productos-resp-bg.png) no-repeat right bottom/contain;
+    height: 86rem;
+  }
+  .Productos [class*='__genven'] {
+    display: none;
+  }
+  .Productos .row {
+    justify-content: center;
+    background: #fff;
+    padding-bottom: 3rem;
+    padding-top: 6rem;
+  }
+  .Productos__info {
+    font-size: 1.6rem;
+  }
+  .Productos .leti-btn {
+    margin-top: 0rem;
+  }
+}

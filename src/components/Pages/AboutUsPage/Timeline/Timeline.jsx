@@ -34,7 +34,7 @@ function Timeline() {
         const PrevArrow = document.querySelector('.slick-prev')
         const NextArrow = document.querySelector('.slick-next')
 
-        if (window.screen.width > 576) {
+        if (TimelineData.length > 1 && window.screen.width > 576) {
         //Arrows top position
         PrevArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 8}rem`
         NextArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 8}rem`

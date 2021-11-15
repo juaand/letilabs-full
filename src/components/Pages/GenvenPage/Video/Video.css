@@ -1,0 +1,14 @@
+.Video__genven {
+  height: 70rem;
+  background: url(../../../../images/genven-video.jpg) no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 576px) {
+  .Video__genven {
+    height: 30rem;
+    margin-top: 20rem;
+  }
+}

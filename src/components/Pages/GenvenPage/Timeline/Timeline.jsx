@@ -1,7 +1,7 @@
 import './Timeline.css'
 import React, {useEffect} from 'react'
 import Slider from "react-slick"
-import letiTimeline from '../../../../data/letiTimeline'
+import genvenTimeline from '../../../../data/genvenTimeline'
 import {Link} from 'react-router-dom'
 
 function Timeline() {
@@ -35,7 +35,7 @@ function Timeline() {
         const PrevArrow = document.querySelector('.Timeline__leti .slick-prev')
         const NextArrow = document.querySelector('.Timeline__leti .slick-next')
 
-        if (letiTimeline.length > 1 && window.screen.width > 576) {
+        if (genvenTimeline.length > 1 && window.screen.width > 576) {
             //Arrows top position
             PrevArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
             NextArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
@@ -51,7 +51,7 @@ function Timeline() {
     return (
         <section className="container-fluid Timeline__leti">
             <Slider {...settings}>
-                {letiTimeline.map(el =>
+                {genvenTimeline.map(el =>
                     <>
                         <div className="Timeline__leti__product row">
                             <div className="Timeline__leti__image col-12 col-sm-6" style={{
@@ -63,8 +63,8 @@ function Timeline() {
                                     </p>
                                 </div>
                                 <div className="row Timeline__leti__btn">
-                                    <div className="col-11 col-sm-4">
-                                        <Link to="/" className="leti-btn">Leer más</Link>
+                                    <div className="col-11 col-sm-6">
+                                        <Link to="/" className="leti-btn">Conoce sobre esta iniciativa</Link>
                                     </div>
                                 </div>
                             </div>

@@ -14,6 +14,7 @@ import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 import AdminFarVigPage from './components/Pages/AdminFarVigPage/AdminFarVigPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
 import LaboratoriosLetiPage from './components/Pages/LaboratoriosLetiPage/LaboratoriosLetiPage'
+import GenvenPage from './components/Pages/GenvenPage/GenvenPage'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
           <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
           <Route exact path="/laboratorios-leti" render={(props) => <LaboratoriosLetiPage {...props} />} />
+          <Route exact path="/genven" render={(props) => <GenvenPage {...props} />} />
           <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
           <Route path="*" render={() => <NotFoundPage />} />
          {!user && <Redirect to='/' />}
