@@ -314,16 +314,40 @@
 }
 
 @media (max-width: 576px) {
-  .Carousel {
-    margin: 2rem 0 2rem 0;
+  .Carousel__Biocontrolled {
+    margin-top: 4rem;
   }
-  .Carousel h1 {
-    margin-left: 2rem;
+  .Carousel__Biocontrolled h1 {
+    margin-bottom: 2rem;
   }
-  .Carousel .slick-next {
-    transform: translate(-5rem, 17rem);
+  .Carousel__Biocontrolled .slick-list {
+    width: 100%;
   }
-  .Carousel .slick-prev {
-    transform: translate(5rem, 17rem);
+  .Carousel__Biocontrolled .slick-list:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    border-top: solid 0.3rem #055aa5;
+    top: 2.5rem;
+  }
+  .Carousel__Biocontrolled .slick-next,
+  .Carousel__Biocontrolled .slick-prev {
+    top: 14rem;
+  }
+  .Carousel__Biocontrolled .slick-next {
+    right: 3rem;
+  }
+  .Carousel__Biocontrolled .slick-prev {
+    left: 3rem;
+  }
+  .Carousel__Biocontrolled .slick-dots {
+    bottom: -4.5rem;
+  }
+  .Carousel__Biocontrolled .slick-dots .slick-active button {
+    width: 2rem;
+    height: 2rem;
+    border: solid 0.1rem #737b7f;
+    border-radius: 4rem;
+    opacity: 0.7;
   }
 }

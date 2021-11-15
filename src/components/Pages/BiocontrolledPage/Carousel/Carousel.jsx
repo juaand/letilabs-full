@@ -17,7 +17,8 @@ function Carousel() {
             {
                 breakpoint: 576,
                 settings: {
-                    arrows: false,
+                    arrows: true,
+                    dots: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }
@@ -36,7 +37,7 @@ function Carousel() {
                 <Slider {...settings}>
                     {biocontrolledCarousel.map(el =>
                         <div>
-                            <h3 className="col-4 Carousel__Biocontrolled__desc">
+                            <h3 className="col-8 col-sm-4 Carousel__Biocontrolled__desc">
                                 {el.info}</h3>
                         </div>
                     )}
