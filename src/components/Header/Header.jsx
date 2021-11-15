@@ -34,6 +34,7 @@ function Header() {
 
     const isSearchPage = location.pathname === '/buscar'
 
+
     return (
         <>
             <header className="Header">

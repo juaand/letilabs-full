@@ -36,6 +36,11 @@ function LaboratoriosLetiPage() {
             isMenuOpen.classList.remove('show')
         }
 
+        const isCloseSearch = document.querySelector('.Header__search-close')
+        if (isCloseSearch) {
+            isCloseSearch.classList.remove('Header__search-close')
+        }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
