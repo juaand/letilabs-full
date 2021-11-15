@@ -9,6 +9,20 @@ function Unidades() {
 
     const [bool, setBool] = useState(true)
 
+    const seoURL = (str) => {
+        return str.toString()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/\s+/g, '-')
+            .toLowerCase()
+            .replace(/&/g, '-and-')
+            // eslint-disable-next-line
+            .replace(/[^a-z0-9\-]/g, '')
+            .replace(/-+/g, '-')
+            .replace(/^-*/, '')
+            .replace(/-*$/, '')
+    }
+
     useEffect(() => {
         if (window.screen.width <= 576) {
             setBool(false)
@@ -39,7 +53,7 @@ function Unidades() {
                             :
                             <div className="row Unidades__row">
                                 <div className="col-12 col-sm-5 Unidades__logo" style={{
-                                    background: `#f5f5f5 url("./images/${el.name.toLowerCase()}.svg") no-repeat center center / contain`
+                                    background: `#f5f5f5 url("./images/${seoURL(el.name).toLowerCase()}.svg") no-repeat center center / contain`
                                 }}></div>
                                 <div className="col-12 col-sm-4 Unidades__desc">
                                     <p>{el.desc}</p>
