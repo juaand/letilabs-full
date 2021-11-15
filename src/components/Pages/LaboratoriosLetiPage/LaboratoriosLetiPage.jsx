@@ -1,4 +1,4 @@
-import './LetiPage.css'
+import './LaboratoriosLetiPage.css'
 import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
@@ -8,7 +8,7 @@ import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
 
 
-function LetiPage() {
+function LaboratoriosLetiPage() {
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -50,4 +50,4 @@ function LetiPage() {
     )
 }
 
-export default LetiPage
+export default LaboratoriosLetiPage

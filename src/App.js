@@ -13,7 +13,7 @@ import AdminPage from './components/Pages/AdminPage/AdminPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 import AdminFarVigPage from './components/Pages/AdminFarVigPage/AdminFarVigPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
-import LetiPage from './components/Pages/LetiPage/LetiPage'
+import LaboratoriosLetiPage from './components/Pages/LaboratoriosLetiPage/LaboratoriosLetiPage'
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
           <AuthenticatedRoute exact path="/admin-farmacovigilancia" render={(props) => <AdminFarVigPage {...props} user={user} />} />
           <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
           <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
-          <Route exact path="/leti" render={(props) => <LetiPage {...props} />} />
+          <Route exact path="/laboratorios-leti" render={(props) => <LaboratoriosLetiPage {...props} />} />
           <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
           <Route path="*" render={() => <NotFoundPage />} />
          {!user && <Redirect to='/' />}
