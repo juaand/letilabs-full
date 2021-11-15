@@ -11,7 +11,7 @@ function AdminEditPage() {
         setTimeout(() => {history.push("/sobre-nosotros")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
         setTimeout(() => {history.push("/nuestras-empresas")}, 1)
-        setTimeout(() => {history.push("/leti")}, 1)
+        setTimeout(() => {history.push("/laboratorios-leti")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
 

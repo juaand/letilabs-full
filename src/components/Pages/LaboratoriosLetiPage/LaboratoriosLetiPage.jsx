@@ -13,8 +13,8 @@ function LaboratoriosLetiPage() {
     const {user} = useAuthContext()
     const data = {
         content: [],
-        url: '/leti',
-        name: 'Leti prod'
+        url: '/laboratorios-leti',
+        name: 'Laboratorios Leti'
     }
 
     useEffect(() => {
@@ -41,7 +41,7 @@ function LaboratoriosLetiPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Leti' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
+            <Seo title='Grupo Leti | Laboratorios Leti' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
             <main>
                 <Banner />
                 <InfoCards />
