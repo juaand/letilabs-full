@@ -51,8 +51,8 @@
   .Banner {
     &__Biocontrolled {
       &-logo {
-        width: 13rem;
-        margin: 5rem 0 3rem 0;
+        width: 28rem;
+        margin-top: 5rem;
       }
 
       &__title {
@@ -60,7 +60,7 @@
         justify-content: flex-start;
         h3 {
           font-size: 2rem;
-          margin-bottom: 8rem;
+          margin: 4rem auto 8rem auto;
           line-height: 2.8rem;
         }
       }

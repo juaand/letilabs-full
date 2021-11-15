@@ -8,13 +8,13 @@
   margin-bottom: 3rem;
 }
 
-.Equipo__clip {
+.Equipo__clip-biocontrolled {
   position: absolute;
   top: -20rem;
   left: -30rem;
   height: 90rem;
   width: 90rem;
-  background: url(../../../../images/equipo.jpg) repeat left center/cover;
+  background: url(../../../../images/bicontrolled-bottom.jpg) repeat left top/cover;
   mask-image: url(../../../../images/mask.svg);
   mask-size: 90rem;
   mask-repeat: no-repeat;
@@ -42,9 +42,9 @@
   .Equipo .row {
     justify-content: center;
   }
-  .Equipo__clip {
+  .Equipo__clip-biocontrolled {
     position: static;
-    background: url(../../../../images/equipo.jpg) repeat center top/cover;
+    background: url(../../../../images/bicontrolled-bottom.jpg) repeat center top/cover;
     mask-position: top center;
     height: 45rem;
     mask-size: 40rem;
