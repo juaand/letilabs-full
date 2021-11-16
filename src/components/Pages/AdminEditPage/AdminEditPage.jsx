@@ -1,7 +1,8 @@
 import './AdminEditPage.css'
-import React from 'react'
+import React, {Suspense} from 'react'
 import {useHistory} from 'react-router'
 import Seo from '../../Seo/Seo'
+import Loader from '../../Loader/Loader'
 
 function AdminEditPage() {
     let history = useHistory()
@@ -20,10 +21,12 @@ function AdminEditPage() {
     return (
         <>
             <Seo title='Grupo Leti | Administrador' />
-            <main>
-                <h1>AdminEditPage</h1>
-                <div onClick={handleClick}>editar</div>
-            </main>
+            <Suspense fallback={<Loader />}>
+                <main>
+                    <h1>AdminEditPage</h1>
+                    <div onClick={handleClick}>editar</div>
+                </main>
+            </Suspense>
         </>
     )
 }

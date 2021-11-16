@@ -7,14 +7,14 @@ import Loader from '../../Loader/Loader'
 
 
 function Home() {
-    const Video = React.lazy(() => import('./Video/Video'))
-    const UsInfo = React.lazy(() => import('./UsInfo/UsInfo'))
-    const Carousel = React.lazy(() => import('./Carousel/Carousel'))
-    const Unidades = React.lazy(() => import('./Unidades/Unidades'))
-    const Portafolio = React.lazy(() => import('./Portafolio/Portafolio'))
-    const FarmacoVigilancia = React.lazy(() => import('./FarmacoVigilancia/FarmacoVigilancia'))
-    const FindProduct = React.lazy(() => import('./FindProduct/FindProduct'))
 
+const Video = React.lazy(() => import('./Video/Video'))
+const UsInfo = React.lazy(() => import('./UsInfo/UsInfo'))
+const Carousel = React.lazy(() => import('./Carousel/Carousel'))
+const Unidades = React.lazy(() => import('./Unidades/Unidades'))
+const Portafolio = React.lazy(() => import('./Portafolio/Portafolio'))
+const FindProduct = React.lazy(() => import('./FindProduct/FindProduct'))
+const FarmacoVigilancia = React.lazy(() => import('./FarmacoVigilancia/FarmacoVigilancia'))
 
     const {user} = useAuthContext()
     const data = {
@@ -48,7 +48,7 @@ function Home() {
     return (
         <>
             <Seo title='Grupo Leti | Inicio' name='description' content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
-            <Suspense fallback={<Loader />}>
+            <Suspense fallback={<Loader/>}>
                 <main>
                     <Video />
                     <UsInfo />

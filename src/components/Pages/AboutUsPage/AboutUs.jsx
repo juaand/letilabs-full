@@ -1,15 +1,19 @@
 import './AboutUs.css'
-import React, {useEffect} from 'react'
-import Banner from './Banner/Banner'
-import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
-import Timeline from './Timeline/Timeline'
-import Megat from './Megat/Megat'
-import Gallery from './Gallery/Gallery'
+import React, {useEffect, Suspense} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
+import Loader from '../../Loader/Loader'
 
 function AboutUs() {
+    const Banner = React.lazy(() => import('./Banner/Banner'))
+    const MarcandoPauta = React.lazy(() => import('./MarcandoPauta/MarcandoPauta'))
+    const Timeline = React.lazy(() => import('./Timeline/Timeline'))
+    const Megat = React.lazy(() => import('./Megat/Megat'))
+    const Gallery = React.lazy(() => import('./Gallery/Gallery'))
+
+
+
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -35,14 +39,16 @@ function AboutUs() {
 
     return (
         <>
-        <Seo title='Grupo Leti | Sobre nosotros' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
-            <main>
-                <Banner />
-                <MarcandoPauta />
-                <Timeline />
-                <Gallery />
-                <Megat />
-            </main>
+            <Seo title='Grupo Leti | Sobre nosotros' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
+            <Suspense fallback={<Loader />}>
+                <main>
+                    <Banner />
+                    <MarcandoPauta />
+                    <Timeline />
+                    <Gallery />
+                    <Megat />
+                </main>
+            </Suspense>
         </>
     )
 }
