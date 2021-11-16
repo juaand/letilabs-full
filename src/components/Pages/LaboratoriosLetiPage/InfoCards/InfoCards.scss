@@ -3,39 +3,43 @@
 .InfoCards {
   min-height: 35rem;
 
-  &__cards {
-    background: $leti-back;
-    padding: 4rem;
-    margin: 0 2rem;
+  &__Leti {
+    &__cards {
+      background: $leti-back;
+      padding: 4rem;
+      margin: 0 2rem;
 
-    h4 {
-      font-family: 'TripletaBold';
-      font-size: 2.4rem;
-      color: $leti-text;
-    }
+      h4 {
+        font-family: 'TripletaBold';
+        font-size: 2.4rem;
+        color: $leti-text;
+      }
 
-    p {
-      margin-top: 3rem;
-      font-size: 2rem;
-      line-height: 3rem;
+      p {
+        margin-top: 3rem;
+        font-size: 1.8rem;
+        line-height: 3rem;
+      }
     }
   }
 }
 
 @media (max-width: 576px) {
   .InfoCards {
-    &__cards {
-      padding: 2rem;
-      margin: 1rem 2rem;
-      width: 91.66% !important;
+    &__Leti {
+      &__cards {
+        padding: 2rem;
+        margin: 1rem 2rem;
+        width: 91.6666%;
 
-      h4 {
-        font-size: 2rem;
-      }
+        h4 {
+          font-size: 2rem;
+        }
 
-      p {
-        font-size: 1.6rem;
-        margin-top: 1.5rem;
+        p {
+          font-size: 1.6rem;
+          margin-top: 1.5rem;
+        }
       }
     }
   }
