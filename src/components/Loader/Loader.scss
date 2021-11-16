@@ -19,9 +19,16 @@
     padding: 4rem 0;
   }
 
+  &__text {
+    margin-top: 20rem;
+    font-size: 2rem;
+    color: $leti-nav;
+  }
+
   &__stroke {
     &__red {
-      background: url(../../images/triangulo-rojo-stroke.svg) no-repeat center / contain;
+      background: url(../../images/triangulo-rojo-stroke.svg) no-repeat center /
+        contain;
       width: 10rem;
       height: 10rem;
       transform: rotate(0deg);
@@ -35,7 +42,8 @@
     }
 
     &__blue {
-      background: url(../../images/triangulo-azul-stroke.svg) no-repeat center / contain;
+      background: url(../../images/triangulo-azul-stroke.svg) no-repeat center /
+        contain;
       width: 8rem;
       height: 8rem;
       transform: rotate(0deg);

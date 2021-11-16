@@ -18,6 +18,12 @@
   padding: 4rem 0;
 }
 
+.Loader__text {
+  margin-top: 20rem;
+  font-size: 2rem;
+  color: #737b7f;
+}
+
 .Loader__stroke__red {
   background: url(../../images/triangulo-rojo-stroke.svg) no-repeat center/contain;
   width: 10rem;
