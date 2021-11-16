@@ -12,6 +12,10 @@
   line-height: 3.8rem;
 }
 
+.Nosotros .leti-btn {
+  background: #fff;
+}
+
 .Nosotros .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 65rem;

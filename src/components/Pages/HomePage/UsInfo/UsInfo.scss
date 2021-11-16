@@ -1,3 +1,5 @@
+@import '../../../../stylesheets/variables';
+
 :root {
   --section-padding: 18rem;
 }
@@ -9,6 +11,10 @@
   &__valor {
     margin: 6rem 0;
     line-height: 3.8rem;
+  }
+
+  .leti-btn {
+    background: $leti-white;
   }
 
   .leti-red-triangle {
