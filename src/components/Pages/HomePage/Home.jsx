@@ -1,20 +1,20 @@
 import './Home.css'
-import React, {useEffect, Suspense} from 'react'
+import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
-import Loader from '../../Loader/Loader'
+import Video from './Video/Video'
+import UsInfo from './UsInfo/UsInfo'
+import Carousel from './Carousel/Carousel'
+import Unidades from './Unidades/Unidades'
+import Portafolio from './Portafolio/Portafolio'
+import FindProduct from './FindProduct/FindProduct'
+import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 
 
 function Home() {
 
-const Video = React.lazy(() => import('./Video/Video'))
-const UsInfo = React.lazy(() => import('./UsInfo/UsInfo'))
-const Carousel = React.lazy(() => import('./Carousel/Carousel'))
-const Unidades = React.lazy(() => import('./Unidades/Unidades'))
-const Portafolio = React.lazy(() => import('./Portafolio/Portafolio'))
-const FindProduct = React.lazy(() => import('./FindProduct/FindProduct'))
-const FarmacoVigilancia = React.lazy(() => import('./FarmacoVigilancia/FarmacoVigilancia'))
+    
 
     const {user} = useAuthContext()
     const data = {
@@ -48,17 +48,15 @@ const FarmacoVigilancia = React.lazy(() => import('./FarmacoVigilancia/FarmacoVi
     return (
         <>
             <Seo title='Grupo Leti | Inicio' name='description' content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
-            <Suspense fallback={<Loader/>}>
-                <main>
-                    <Video />
-                    <UsInfo />
-                    <Carousel />
-                    <Unidades />
-                    <Portafolio />
-                    <FindProduct />
-                    <FarmacoVigilancia />
-                </main>
-            </Suspense>
+            <main>
+                <Video />
+                <UsInfo />
+                <Carousel />
+                <Unidades />
+                <Portafolio />
+                <FindProduct />
+                <FarmacoVigilancia />
+            </main>
         </>
     )
 }
