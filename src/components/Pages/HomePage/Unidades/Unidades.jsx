@@ -2,26 +2,14 @@ import './Unidades.css'
 import React, {useState, useEffect} from 'react'
 import unidadesNegocio from '../../../../data/unidadesNegocio'
 import {Link} from 'react-router-dom'
+import {seoURL} from '../../../../hooks/seoURL'
+
 
 function Unidades() {
 
     let n = 1
 
     const [bool, setBool] = useState(true)
-
-    const seoURL = (str) => {
-        return str.toString()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/\s+/g, '-')
-            .toLowerCase()
-            .replace(/&/g, '-and-')
-            // eslint-disable-next-line
-            .replace(/[^a-z0-9\-]/g, '')
-            .replace(/-+/g, '-')
-            .replace(/^-*/, '')
-            .replace(/-*$/, '')
-    }
 
     useEffect(() => {
         if (window.screen.width <= 576) {

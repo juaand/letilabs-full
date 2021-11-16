@@ -3,7 +3,7 @@ import React from 'react'
 import unidadesNegocio from '../../../../data/unidadesNegocio'
 import {Link} from 'react-router-dom'
 import Slider from 'react-slick'
-
+import {seoURL} from '../../../../hooks/seoURL'
 
 function CompaniesInfo() {
     let settings = {
@@ -23,20 +23,6 @@ function CompaniesInfo() {
                 }
             }
         ]
-    }
-
-    const seoURL = (str) => {
-        return str.toString()
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/\s+/g, '-')
-            .toLowerCase()
-            .replace(/&/g, '-and-')
-            // eslint-disable-next-line
-            .replace(/[^a-z0-9\-]/g, '')
-            .replace(/-+/g, '-')
-            .replace(/^-*/, '')
-            .replace(/-*$/, '')
     }
 
 

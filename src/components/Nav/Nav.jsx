@@ -3,25 +3,12 @@ import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import dataNav from '../../data/dataNav'
 import {useAuthContext} from '../../contexts/AuthContext'
+import {seoURL} from '../../hooks/seoURL'
 
 function Nav({initSearch}) {
 
     const {user} = useAuthContext()
     const {logout} = useAuthContext()
-
-    const seoURL = (str) => {
-        return str.toString()         // Convert to string
-            .normalize('NFD')               // Change diacritics
-            .replace(/[\u0300-\u036f]/g, '') // Remove illegal characters
-            .replace(/\s+/g, '-')            // Change whitespace to dashes
-            .toLowerCase()                  // Change to lowercase
-            .replace(/&/g, '-and-')          // Replace ampersand
-            // eslint-disable-next-line
-            .replace(/[^a-z0-9\-]/g, '')     // Remove anything that is not a letter, number or dash
-            .replace(/-+/g, '-')             // Remove duplicate dashes
-            .replace(/^-*/, '')              // Remove starting dashes
-            .replace(/-*$/, '')             // Remove trailing dashes
-    }
 
     const [subNavData, setSubNavData] = useState()
     const [subNavSet, setSubNavSet] = useState({})
