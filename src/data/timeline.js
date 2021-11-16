@@ -7,13 +7,13 @@ const TimelineData = [
   },
   {
     id: '2',
-    imgURL: 'marcando-pauta.png',
+    imgURL: 'natural.jpg',
     year: '1955',
     desc: 'El Dr. José María Massa Servitja y Don Joaquín Massa Servitja, quiénes con tecnología europea dan inmunológicas.'
   },
   {
     id: '3',
-    imgURL: 'espacio.png',
+    imgURL: 'eticos.jpg',
     year: '1965',
     desc: 'Lorem ipsum dolor si ameet.'
   }
