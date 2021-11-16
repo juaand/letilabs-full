@@ -45,7 +45,7 @@ function Unidades() {
                                 }}></div>
                                 <div className="col-12 col-sm-4 Unidades__desc">
                                     <p>{el.desc}</p>
-                                    <Link to="/" className="Unidades__square-btn"></Link>
+                                    <Link to={`/${seoURL(el.name).toLowerCase()}`} className="Unidades__square-btn"></Link>
                                 </div>
                             </div>
                         }
