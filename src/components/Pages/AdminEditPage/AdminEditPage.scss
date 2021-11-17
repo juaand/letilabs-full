@@ -1,0 +1,23 @@
+@import '../../../stylesheets/variables';
+
+.AdminEditPage {
+    border-top: solid 0.1rem $leti-subnav;
+
+    &__Nav {
+        border-right: solid 0.1rem $leti-subnav;
+        ul {
+            padding: 0;
+        }
+
+        &-link {
+            font-size: 1.4rem;
+            border-bottom: solid 0.1rem $leti-subnav;
+            padding: 1rem 2rem;
+
+            &:hover {
+                cursor: pointer;
+                color: $leti-blue;
+            }
+        }
+    }
+}

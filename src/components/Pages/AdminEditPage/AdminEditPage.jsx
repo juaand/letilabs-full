@@ -2,6 +2,7 @@ import './AdminEditPage.css'
 import React from 'react'
 import {useHistory} from 'react-router'
 import Seo from '../../Seo/Seo'
+import dataNav from '../../../data/dataNav'
 
 function AdminEditPage() {
     let history = useHistory()
@@ -20,9 +21,20 @@ function AdminEditPage() {
     return (
         <>
             <Seo title='Grupo Leti | Administrador' />
-            <main>
-                <h1>AdminEditPage</h1>
-                <div onClick={handleClick}>editar</div>
+            <main className="container-fluid AdminEditPage">
+                <div className="row">
+                    <div className="col-2 p-0 AdminEditPage__Nav">
+                        <ul>
+                            {dataNav.map(el =>
+                                <li className="AdminEditPage__Nav-link">
+                                    {el.nav_btn}
+                                </li>
+                            )}
+                            <li className="AdminEditPage__Nav-link" onClick={handleClick}>Subir contenido a la API</li>
+                        </ul>
+                    </div>
+                    <div className="col-10">CONTENIDO</div>
+                </div>
             </main>
         </>
     )

@@ -1,1 +1,22 @@
-/* No CSS */
+.AdminEditPage {
+  border-top: solid 0.1rem #e9eaee;
+}
+
+.AdminEditPage__Nav {
+  border-right: solid 0.1rem #e9eaee;
+}
+
+.AdminEditPage__Nav ul {
+  padding: 0;
+}
+
+.AdminEditPage__Nav-link {
+  font-size: 1.4rem;
+  border-bottom: solid 0.1rem #e9eaee;
+  padding: 1rem 2rem;
+}
+
+.AdminEditPage__Nav-link:hover {
+  cursor: pointer;
+  color: #055aa5;
+}

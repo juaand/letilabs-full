@@ -37,6 +37,7 @@
     position: absolute;
     top: 50%;
     margin-top: -1.5rem;
+    margin-left: 2rem;
 
     &-span {
       font-weight: 600;
@@ -86,6 +87,7 @@
 
   &__logout {
     background: url(../../images/logout.svg) no-repeat center center / contain;
+    margin-right: 2rem;
 
     &:hover {
       cursor: pointer;
