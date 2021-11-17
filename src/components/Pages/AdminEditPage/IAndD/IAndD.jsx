@@ -1,6 +1,6 @@
 import React from 'react'
 
-function IAD() {
+function IAndD() {
     return (
         <div>
             <h1>Investigación y Desarrollo</h1>
@@ -8,4 +8,4 @@ function IAD() {
     )
 }
 
-export default IAD
+export default IAndD

@@ -7,6 +7,8 @@ import {seoURL} from '../../../../hooks/seoURL'
 
 function Nav({getActiveItem}) {
 
+    const adminNav = ['Inicio', 'Sobre nosotros', 'Nuestras empresas', 'Investigación y desarrollo', 'Propósito y responsabilidad social', 'Nuestra gente', 'Productos', 'Noticias']
+
     let history = useHistory()
 
     const clearInitActive = () => {
@@ -33,14 +35,14 @@ function Nav({getActiveItem}) {
 
     return (
 
-        <ul className=" AdminEditPage__Nav">
-            {dataNav.map((el, i) =>
+        <ul className="AdminEditPage__Nav">
+            {adminNav.map((el, i) =>
                 <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""}`} onClick={(e) => {
-                    getActiveItem(seoURL(el.nav_btn))
+                    getActiveItem(seoURL(el))
                     clearInitActive()
                     e.target.classList.add("active")
                 }}>
-                    {el.nav_btn}
+                    {el}
                 </li>
             )}
             <li className="AdminEditPage__Nav-link api" onClick={handleClick}>Subir contenido a la API</li>
