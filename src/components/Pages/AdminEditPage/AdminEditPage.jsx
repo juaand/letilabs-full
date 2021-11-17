@@ -25,8 +25,8 @@ function AdminEditPage() {
                 <div className="row">
                     <div className="col-2 p-0 AdminEditPage__Nav">
                         <ul>
-                            {dataNav.map(el =>
-                                <li className="AdminEditPage__Nav-link">
+                            {dataNav.map((el, i) =>
+                                <li className={`AdminEditPage__Nav-link ${i === 0 ? "active" : ""}`}>
                                     {el.nav_btn}
                                 </li>
                             )}

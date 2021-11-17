@@ -7,8 +7,6 @@ import {seoURL} from '../../../../hooks/seoURL'
 
 function Unidades() {
 
-    let n = 1
-
     const [bool, setBool] = useState(true)
 
     useEffect(() => {
@@ -26,9 +24,9 @@ function Unidades() {
                 <h1>Nos conformamos <br />de 3 unidades<br /> de negocio</h1>
             </div>
             <div className="container-fluid Unidades__logos">
-                {unidadesNegocio.map(el =>
+                {unidadesNegocio.map((el,i) =>
                     <>
-                        {bool && n % 2 === 0 ?
+                        {bool && i % 2 !== 0 ?
                             <div className="row Unidades__row justify-content-end">
                                 <div className="col-12 col-sm-4 Unidades__desc Unidades__desc__right">
                                     <p>{el.desc}</p>
@@ -49,7 +47,6 @@ function Unidades() {
                                 </div>
                             </div>
                         }
-                        <div className="d-none">{n++}</div>
                     </>
                 )}
             </div>
