@@ -35,7 +35,7 @@ function BiocontrolledPage() {
         if (isMenuOpen) {
             isMenuOpen.classList.remove('show')
         }
-        
+
         const isCloseSearch = document.querySelector('.Header__search-close')
         if (isCloseSearch) {
             isCloseSearch.classList.remove('Header__search-close')
