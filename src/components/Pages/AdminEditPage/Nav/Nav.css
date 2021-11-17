@@ -1,5 +1,6 @@
 .AdminEditPage__Nav {
   padding: 0;
+  position: relative;
 }
 
 .AdminEditPage__Nav-link {
@@ -7,19 +8,28 @@
   border-bottom: solid 0.1rem #e9eaee;
   padding: 1rem 2rem;
   list-style: none;
+  color: #737b7f;
 }
 
 .AdminEditPage__Nav-link:hover {
   cursor: pointer;
   color: #055aa5;
+  border-right: solid 0.3rem #055aa5;
 }
 
 .AdminEditPage__Nav-link.active, .AdminEditPage__Nav-link.currentActive {
-  color: #cd202f;
+  color: #055aa5;
   font-weight: 600;
+  border-right: solid 0.3rem #055aa5;
+  pointer-events: none;
 }
 
 .AdminEditPage__Nav-link.api {
-  background: #cd202f;
   color: #fff;
+  background: #055aa5;
+}
+
+.AdminEditPage__Nav-link.api:hover {
+  background: #cd202f;
+  border-right: solid 0.3rem #cd202f;
 }

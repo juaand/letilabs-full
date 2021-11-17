@@ -3,26 +3,37 @@
 .AdminEditPage {
   &__Nav {
     padding: 0;
+    position: relative;
 
     &-link {
       font-size: 1.4rem;
       border-bottom: solid 0.1rem $leti-subnav;
       padding: 1rem 2rem;
       list-style: none;
+      color: $leti-nav;
 
       &:hover {
         cursor: pointer;
         color: $leti-blue;
+        border-right: solid 0.3rem $leti-blue;
       }
 
-      &.active, &.currentActive {
-        color: $leti-red;
+      &.active,
+      &.currentActive {
+        color: $leti-blue;
         font-weight: 600;
+        border-right: solid 0.3rem $leti-blue;
+        pointer-events: none;
       }
 
       &.api {
-        background: $leti-red;
         color: $leti-white;
+        background: $leti-blue;
+
+        &:hover {
+          background: $leti-red;
+          border-right: solid 0.3rem $leti-red;
+        }
       }
     }
   }
