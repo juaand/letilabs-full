@@ -6,8 +6,19 @@ import {seoURL} from '../../../../hooks/seoURL'
 
 
 function Nav({getActiveItem}) {
-    
+
     let history = useHistory()
+
+    const clearInitActive = () => {
+        const initActive = document.querySelector('.currentActive')
+        const isActive = document.querySelector('.active')
+
+        if (initActive) {
+            initActive.classList.remove('currentActive')
+        }
+
+        isActive.classList.remove('active')
+    }
 
     function handleClick() {
         setTimeout(() => {history.push("/")}, 1)
@@ -19,12 +30,16 @@ function Nav({getActiveItem}) {
         setTimeout(() => {history.push("/biocontrolled")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
-    
+
     return (
 
         <ul className=" AdminEditPage__Nav">
             {dataNav.map((el, i) =>
-                <li className={`AdminEditPage__Nav-link ${i === 0 ? "active" : ""}`} onClick={() => getActiveItem(seoURL(el.nav_btn))}>
+                <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""}`} onClick={(e) => {
+                    getActiveItem(seoURL(el.nav_btn))
+                    clearInitActive()
+                    e.target.classList.add("active")
+                }}>
                     {el.nav_btn}
                 </li>
             )}

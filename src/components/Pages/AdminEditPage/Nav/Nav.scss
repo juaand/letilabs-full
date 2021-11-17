@@ -15,7 +15,7 @@
         color: $leti-blue;
       }
 
-      &.active {
+      &.active, &.currentActive {
         color: $leti-red;
         font-weight: 600;
       }

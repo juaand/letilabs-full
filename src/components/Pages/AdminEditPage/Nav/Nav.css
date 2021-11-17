@@ -14,7 +14,7 @@
   color: #055aa5;
 }
 
-.AdminEditPage__Nav-link.active {
+.AdminEditPage__Nav-link.active, .AdminEditPage__Nav-link.currentActive {
   color: #cd202f;
   font-weight: 600;
 }

@@ -3,7 +3,7 @@ import React from 'react'
 function Proposito() {
     return (
         <div>
-            <h1>Proposito</h1>
+            <h1>Propósito y responsabilidad social</h1>
         </div>
     )
 }
