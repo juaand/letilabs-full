@@ -1,28 +1,41 @@
 import './AdminEditPage.css'
-import React from 'react'
-import {useHistory} from 'react-router'
+import React, {useState} from 'react'
 import Seo from '../../Seo/Seo'
+import Nav from './Nav/Nav'
+import SobreNosotros from './SobreNosotros/SobreNosotros'
+import NuestrasEmpresas from './NuestrasEmpresas/NuestrasEmpresas'
+import IAD from './IAD/IAD'
+import Proposito from './Proposito/Proposito'
+import NuestraGente from './NuestraGente/NuestraGente'
+import Productos from './Productos/Productos'
+import Noticias from './Noticias/Noticias'
 
 function AdminEditPage() {
-    let history = useHistory()
 
-    function handleClick() {
-        setTimeout(() => {history.push("/")}, 1)
-        setTimeout(() => {history.push("/sobre-nosotros")}, 1)
-        setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
-        setTimeout(() => {history.push("/nuestras-empresas")}, 1)
-        setTimeout(() => {history.push("/laboratorios-leti")}, 1)
-        setTimeout(() => {history.push("/genven")}, 1)
-        setTimeout(() => {history.push("/biocontrolled")}, 1)
-        setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
+    const [initNavValue, setInitNavValue] = useState('sobre-nosotros')
+
+    const getActiveNav = (activeNav) => {
+        setInitNavValue(activeNav)
     }
 
     return (
         <>
             <Seo title='Grupo Leti | Administrador' />
-            <main>
-                <h1>AdminEditPage</h1>
-                <div onClick={handleClick}>editar</div>
+            <main className="container-fluid AdminEditPage">
+                <div className="row">
+                    <div className="col-2 p-0 AdminEditPage__NavContent">
+                        <Nav getActiveItem={getActiveNav} />
+                    </div>
+                    <div className="col-10 AdminEditPage__Content">
+                        {initNavValue === 'sobre-nosotros' && <SobreNosotros />}
+                        {initNavValue === 'nuestras-empresas' && <NuestrasEmpresas />}
+                        {initNavValue === 'investigacion-y-desarrollo' && <IAD />}
+                        {initNavValue === 'proposito-y-responsabilidad-social' && <Proposito />}
+                        {initNavValue === 'nuestra-gente' && <NuestraGente />}
+                        {initNavValue === 'productos' && <Productos />}
+                        {initNavValue === 'noticias' && <Noticias />}
+                    </div>
+                </div>
             </main>
         </>
     )

@@ -38,7 +38,7 @@ function Header() {
     return (
         <>
             <header className="Header">
-                <div className="container">
+                <div className={user ? "container-fluid" : "container"}>
                     <div className="row justify-content-between Header__logo">
                         <div className="col-12 d-flex justify-content-between">
                             {user && user.role === 'Admin' &&

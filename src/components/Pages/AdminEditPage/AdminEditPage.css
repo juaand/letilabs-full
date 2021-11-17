@@ -1,1 +1,11 @@
-/* No CSS */
+.AdminEditPage {
+  border-top: solid 0.1rem #e9eaee;
+}
+
+.AdminEditPage__NavContent {
+  border-right: solid 0.1rem #e9eaee;
+}
+
+.AdminEditPage__Content {
+  padding: 2rem;
+}

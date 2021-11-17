@@ -1,0 +1,13 @@
+@import '../../../stylesheets/variables';
+
+.AdminEditPage {
+  border-top: solid 0.1rem $leti-subnav;
+
+  &__NavContent {
+    border-right: solid 0.1rem $leti-subnav;
+  }
+
+  &__Content {
+    padding: 2rem;
+  }
+}

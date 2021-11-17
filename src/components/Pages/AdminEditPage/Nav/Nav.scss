@@ -1,0 +1,29 @@
+@import '../../../../stylesheets/variables';
+
+.AdminEditPage {
+  &__Nav {
+    padding: 0;
+
+    &-link {
+      font-size: 1.4rem;
+      border-bottom: solid 0.1rem $leti-subnav;
+      padding: 1rem 2rem;
+      list-style: none;
+
+      &:hover {
+        cursor: pointer;
+        color: $leti-blue;
+      }
+
+      &.active, &.currentActive {
+        color: $leti-red;
+        font-weight: 600;
+      }
+
+      &.api {
+        background: $leti-red;
+        color: $leti-white;
+      }
+    }
+  }
+}
