@@ -1,16 +1,18 @@
 import './BiocontrolledPage.css'
-import React, {useEffect} from 'react'
+import React, {useEffect, Suspense} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
-import Banner from './Banner/Banner'
-import InfoCards from './InfoCards/InfoCards'
-import Timeline from './Timeline/Timeline'
-import Equipo from './Equipo/Equipo'
-import Carousel from './Carousel/Carousel'
+import Loader from '../../Loader/Loader'
 
 
 function BiocontrolledPage() {
+    const Banner = React.lazy(() => import('./Banner/Banner'))
+    const InfoCards = React.lazy(() => import('./InfoCards/InfoCards'))
+    const Timeline = React.lazy(() => import('./Timeline/Timeline'))
+    const Equipo = React.lazy(() => import('./Equipo/Equipo'))
+    const Carousel = React.lazy(() => import('./Carousel/Carousel'))
+
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -47,13 +49,15 @@ function BiocontrolledPage() {
     return (
         <>
             <Seo title='Grupo Leti | Biocontrolled' name='description' content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
-            <main>
-                <Banner />
-                <InfoCards />
-                <Carousel />
-                <Timeline />
-                <Equipo />
-            </main>
+            <Suspense fallback={<Loader />}>
+                <main>
+                    <Banner />
+                    <InfoCards />
+                    <Carousel />
+                    <Timeline />
+                    <Equipo />
+                </main>
+            </Suspense>
         </>
     )
 }
