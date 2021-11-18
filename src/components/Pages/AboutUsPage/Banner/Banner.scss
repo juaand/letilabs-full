@@ -46,7 +46,6 @@
 
 @media (max-width: 576px) {
   .Banner {
-
     &__title {
       height: 70rem;
       align-items: flex-start;
@@ -57,9 +56,9 @@
     }
 
     &__bg {
-      background: url(../../../../images/about-us-bg.png) no-repeat 8rem
-        bottom / contain;
-        background-size: 115%;
+      background: url(../../../../images/about-us-bg.png) no-repeat 8rem bottom /
+        contain;
+      background-size: 115%;
     }
 
     .leti-red-triangle {
@@ -68,7 +67,7 @@
       right: -5%;
       top: 30%;
     }
-  
+
     .leti-blue-triangle {
       width: 35rem;
       height: 35rem;
