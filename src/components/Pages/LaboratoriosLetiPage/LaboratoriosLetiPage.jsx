@@ -1,14 +1,16 @@
 import './LaboratoriosLetiPage.css'
-import React, {useEffect} from 'react'
+import React, {useEffect, Suspense} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
-import Banner from './Banner/Banner'
-import InfoCards from './InfoCards/InfoCards'
-import Timeline from './Timeline/Timeline'
-import Equipo from './Equipo/Equipo'
+import Loader from '../../Loader/Loader'
 
 function LaboratoriosLetiPage() {
+
+    const Banner = React.lazy(() => import('./Banner/Banner'))
+    const InfoCards = React.lazy(() => import('./InfoCards/InfoCards'))
+    const Timeline = React.lazy(() => import('./Timeline/Timeline'))
+    const Equipo = React.lazy(() => import('./Equipo/Equipo'))
 
     const {user} = useAuthContext()
     const data = {
@@ -47,12 +49,14 @@ function LaboratoriosLetiPage() {
     return (
         <>
             <Seo title='Grupo Leti | Laboratorios Leti' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
-            <main>
-                <Banner />
-                <InfoCards />
-                <Timeline />
-                <Equipo />
-            </main>
+            <Suspense fallback={<Loader />}>
+                <main>
+                    <Banner />
+                    <InfoCards />
+                    <Timeline />
+                    <Equipo />
+                </main>
+            </Suspense>
         </>
     )
 }
