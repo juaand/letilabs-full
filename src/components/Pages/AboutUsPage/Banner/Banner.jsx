@@ -1,5 +1,6 @@
 import './Banner.css'
 import React from 'react'
+import {Fade} from "react-awesome-reveal"
 
 function Banner() {
     return (
@@ -9,7 +10,11 @@ function Banner() {
                     <div className="col-12 col-sm-6 Banner__title">
                         <h1>Desarrollamos soluciones que marcan la diferencia en la vida de los venezolanos</h1>
                     </div>
-                    <div className="col-12 col-sm-6 Banner__bg"></div>
+                    <div className="col-12 col-sm-6 Banner__bg">
+                        <Fade triggerOnce>
+                            <img src="/images/about-us-bg.png" alt="Sobre nosotros banner" />
+                        </Fade>
+                    </div>
                 </div>
             </div>
             <div className="leti-blue-triangle parallax" data-speed="-.2" data-axis="vertical"></div>
