@@ -7,22 +7,22 @@ const dataGallery = [
   {
     id: 2,
     title: 'Innovación',
-    imgPath: 'alivet.png'
+    imgPath: 'espacio.png'
   },
   {
     id: 3,
     title: 'Portafolio',
-    imgPath: 'antux.png'
+    imgPath: 'eticos.jpg'
   },
   {
     id: 4,
     title: 'Equipo',
-    imgPath: 'planta-produccion.png'
+    imgPath: 'natural.jpg'
   },
   {
     id: 5,
     title: 'Networking',
-    imgPath: 'letisan.png'
+    imgPath: 'talento.jpg'
   }
 ]
 
