@@ -1,5 +1,5 @@
 import './AboutUs.css'
-import React, {useEffect} from 'react'
+import React, {useEffect, Suspense} from 'react'
 import Banner from './Banner/Banner'
 import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 import Timeline from './Timeline/Timeline'
@@ -8,6 +8,7 @@ import Gallery from './Gallery/Gallery'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
+import Loader from '../../Loader/Loader'
 
 function AboutUs() {
     const {user} = useAuthContext()
@@ -35,14 +36,16 @@ function AboutUs() {
 
     return (
         <>
-        <Seo title='Grupo Leti | Sobre nosotros' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
-            <main>
-                <Banner />
-                <MarcandoPauta />
-                <Timeline />
-                <Gallery />
-                <Megat />
-            </main>
+            <Seo title='Grupo Leti | Sobre nosotros' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
+            <Suspense fallback={<Loader />}>
+                <main>
+                    <Banner />
+                    <MarcandoPauta />
+                    <Timeline />
+                    <Gallery />
+                    <Megat />
+                </main>
+            </Suspense>
         </>
     )
 }
