@@ -6,8 +6,16 @@ function Megat() {
     return (
         <section className="container-fluid Megat">
             <div className="row">
-                <div className="col-12 col-sm-6 Megat__clip" />
-                <div className="Megat__blue-stroke parallax-rotate" data-speed="0.1" />
+                <Fade triggerOnce delay={400}>
+                    <Slide direction="up" triggerOnce>
+                        <div className="Megat__blue-stroke parallax-rotate" data-speed="0.1" />
+                    </Slide>
+                </Fade>
+                <Fade triggerOnce>
+                    <Slide triggerOnce>
+                        <div className="col-12 col-sm-6 Megat__clip" />
+                    </Slide>
+                </Fade>
                 <div className="col-11 col-sm-5 offset-sm-6 Megat__info">
                     <Fade triggerOnce>
                         <Slide direction="down" triggerOnce>
