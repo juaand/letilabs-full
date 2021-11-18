@@ -4,6 +4,7 @@ import {useFormState} from '../../../../hooks/useFormState'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 import dataSpecialities from '../../../../data/dataSpecialities'
+import {Slide} from 'react-awesome-reveal'
 
 
 function FindProduct() {
@@ -46,7 +47,9 @@ function FindProduct() {
             <div className="container">
                 <div className="row FindProduct__row">
                     <div className="col-12 col-sm-10">
-                        <h1>Encuentra un producto...</h1>
+                        <Slide direction="down" triggerOnce>
+                            <h1>Encuentra un producto...</h1>
+                        </Slide>
                         <form className="FindProduct__form">
                             <div className="input-group">
                                 <div className="col-12 p-0 col-sm-7 FindProduct__label">

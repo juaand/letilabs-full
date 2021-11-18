@@ -22,7 +22,7 @@ function Unidades() {
             <div className="big-gray-triangle"></div>
             <div className="small-gray-triangle"></div>
             <div className="container">
-                <Fade delay={1000} triggerOnce>
+                <Fade delay={500} triggerOnce>
                     <h1>Nos conformamos <br />de 3 unidades<br /> de negocio</h1>
                 </Fade>
             </div>
@@ -30,7 +30,7 @@ function Unidades() {
                 {unidadesNegocio.map((el, i) =>
                     <>
                         {bool && i % 2 !== 0 ?
-                            <Fade delay={1000} triggerOnce>
+                            <Fade delay={700} triggerOnce>
                                 <div className="row Unidades__row justify-content-end">
                                     <div className="col-12 col-sm-4 Unidades__desc Unidades__desc__right">
                                         <p>{el.desc}</p>
@@ -42,7 +42,7 @@ function Unidades() {
                                 </div>
                             </Fade>
                             :
-                            <Fade delay={1000} triggerOnce>
+                            <Fade delay={600} triggerOnce>
                                 <div className="row Unidades__row">
                                     <div className="col-12 col-sm-5 Unidades__logo" style={{
                                         background: `#f5f5f5 url("./images/${seoURL(el.name).toLowerCase()}.svg") no-repeat center center / contain`

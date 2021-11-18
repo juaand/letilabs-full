@@ -1,5 +1,6 @@
 import './Cuidar.css'
 import React from 'react'
+import {Fade} from "react-awesome-reveal"
 
 function Cuidar() {
     return (
@@ -11,7 +12,9 @@ function Cuidar() {
                         <div className="Cuidar__clip-content parallax" data-speed="0.06" data-axis="vertical" />
                     </div>
                     <div className="col-12 col-sm-5">
-                        <h1 className="text-center">Cuidar la salud de los venezolanos</h1>
+                        <Fade direction="down" triggerOnce>
+                            <h1 className="text-center">Cuidar la salud de los venezolanos</h1>
+                        </Fade>
                     </div>
                 </div>
             </div>

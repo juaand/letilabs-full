@@ -1,26 +1,20 @@
 import './Megat.css'
 import React from 'react'
-import {Fade, Slide} from "react-awesome-reveal"
+import {Fade} from "react-awesome-reveal"
 
 function Megat() {
     return (
         <section className="container-fluid Megat">
             <div className="row">
-                <Fade triggerOnce delay={400}>
-                    <Slide direction="up" triggerOnce>
-                        <div className="Megat__blue-stroke parallax-rotate" data-speed="0.1" />
-                    </Slide>
+                <Fade triggerOnce delay={400} direction="up">
+                    <div className="Megat__blue-stroke parallax-rotate" data-speed="0.1" />
                 </Fade>
-                <Fade triggerOnce>
-                    <Slide triggerOnce>
-                        <div className="col-12 col-sm-6 Megat__clip" />
-                    </Slide>
+                <Fade direction="left" triggerOnce>
+                    <div className="col-12 col-sm-6 Megat__clip" />
                 </Fade>
                 <div className="col-11 col-sm-5 offset-sm-6 Megat__info">
-                    <Fade triggerOnce>
-                        <Slide direction="down" triggerOnce>
-                            <h1>Laboratorios Leti en latinoamérica</h1>
-                        </Slide>
+                    <Fade direction="down" triggerOnce>
+                        <h1>Laboratorios Leti en latinoamérica</h1>
                     </Fade>
                     <Fade triggerOnce delay={200}>
                         <div className="Megat__logo"></div>

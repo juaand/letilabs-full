@@ -12,13 +12,17 @@
     }
 
     &__bg {
-      background: url(../../../../images/our-companies-bg.png) no-repeat center
-        bottom / contain;
       height: 60rem;
       position: absolute;
       bottom: 0;
-      right: -10rem;
-      z-index: 1;
+      right: 0rem;
+      z-index: 1; 
+
+      img {
+        right: 0;
+        position: absolute;
+        bottom: 0;
+      }
     }
 
     .leti-red-triangle,

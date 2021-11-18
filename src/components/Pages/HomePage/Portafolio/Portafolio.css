@@ -21,7 +21,7 @@
   background: url(../../../../images/triangulo-rojo.svg) no-repeat left center/contain;
   top: 50%;
   margin-top: -50rem;
-  left: 10rem;
+  left: 20rem;
   color: #fff;
   display: flex;
   align-items: center;
@@ -41,7 +41,7 @@
   height: 90rem;
   background: url(../../../../images/triangulo-azul.svg) no-repeat center center/contain;
   top: -30rem;
-  right: -75rem;
+  right: -60rem;
   transform: rotate(0);
 }
 

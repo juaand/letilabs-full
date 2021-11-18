@@ -1,7 +1,7 @@
 import './Gallery.css'
 import React, {useState} from 'react'
 import dataGallery from '../../../../data/dataGallery'
-import {Fade, Slide} from "react-awesome-reveal"
+import {Fade} from "react-awesome-reveal"
 
 function Gallery() {
 
@@ -19,11 +19,9 @@ function Gallery() {
     return (
         <>
             <section className="container-fluid Gallery">
-                <Slide duration={600} triggerOnce>
-                    <Fade>
-                        <h1>Hoy contamos con lo mejor</h1>
-                    </Fade>
-                </Slide>
+                <Fade direction="left" duration={600} triggerOnce>
+                    <h1>Hoy contamos con lo mejor</h1>
+                </Fade>
                 <Fade delay={600} triggerOnce>
                     <div className="col-12 col-sm-6 Gallery__image" style={{
                         background: `url("./images/${backImage}") no-repeat center center / cover`
