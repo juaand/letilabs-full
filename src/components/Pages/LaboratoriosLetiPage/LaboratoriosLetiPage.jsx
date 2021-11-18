@@ -8,8 +8,8 @@ import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
 import Equipo from './Equipo/Equipo'
 
-
 function LaboratoriosLetiPage() {
+
     const {user} = useAuthContext()
     const data = {
         content: [],

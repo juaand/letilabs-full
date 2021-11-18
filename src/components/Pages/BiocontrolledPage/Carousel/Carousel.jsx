@@ -3,6 +3,7 @@ import './Carousel.css'
 import React from 'react'
 import Slider from "react-slick"
 import biocontrolledCarousel from '../../../../data/biocontrolledCarousel'
+import {Fade} from 'react-awesome-reveal'
 
 
 function Carousel() {
@@ -31,18 +32,22 @@ function Carousel() {
     return (
         <section className="Carousel__Biocontrolled">
             <div className="container">
-                <h1>Logros <br /> hasta ahora</h1>
+                <Fade direction="down" triggerOnce>
+                    <h1>Logros <br /> hasta ahora</h1>
+                </Fade>
             </div>
-            <div className="container-fluid p-0">
-                <Slider {...settings}>
-                    {biocontrolledCarousel.map(el =>
-                        <div>
-                            <h3 className="col-8 col-sm-4 Carousel__Biocontrolled__desc">
-                                {el.info}</h3>
-                        </div>
-                    )}
-                </Slider>
-            </div>
+            <Fade triggerOnce>
+                <div className="container-fluid p-0">
+                    <Slider {...settings}>
+                        {biocontrolledCarousel.map(el =>
+                            <div>
+                                <h3 className="col-8 col-sm-4 Carousel__Biocontrolled__desc">
+                                    {el.info}</h3>
+                            </div>
+                        )}
+                    </Slider>
+                </div>
+            </Fade>
         </section>
     )
 }

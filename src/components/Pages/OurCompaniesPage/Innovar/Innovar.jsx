@@ -1,7 +1,20 @@
 import './Innovar.css'
 import React from 'react'
+import {Reveal} from "react-awesome-reveal"
+import {keyframes} from "@emotion/react"
 
 function Innovar() {
+
+    const customAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(-10rem, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }`
 
     return (
         <section className="container-fluid Innovar">
@@ -45,7 +58,7 @@ function Innovar() {
             <div className={`Innovar__bubbles-0011 parallax`} style={{
                 background: `url("./images/bb-0011.png") no-repeat center center / contain`
             }} data-speed="0.44" data-axis="vertical" />
-            
+
             <div className={`Innovar__bubbles-0012 parallax`} style={{
                 background: `url("./images/bb-0012.png") no-repeat center center / contain`
             }} data-speed="-0.26" />
@@ -55,7 +68,9 @@ function Innovar() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-sm-6 Innovar__title">
-                        <h1>Innovar en el mercado farmacéutico</h1>
+                        <Reveal keyframes={customAnimation}>
+                            <h1>Innovar en el mercado farmacéutico</h1>
+                        </Reveal>
                     </div>
                 </div>
             </div>

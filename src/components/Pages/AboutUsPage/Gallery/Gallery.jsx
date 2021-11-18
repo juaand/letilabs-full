@@ -1,6 +1,7 @@
 import './Gallery.css'
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import dataGallery from '../../../../data/dataGallery'
+import {Fade} from "react-awesome-reveal"
 
 function Gallery() {
 
@@ -15,26 +16,25 @@ function Gallery() {
         setBackImage(img)
     }
 
-    useEffect(() => {
-        const firstLi = document.querySelector('li')
-        firstLi.classList.add('active')
-    }, [])
-
     return (
         <>
             <section className="container-fluid Gallery">
-                <h1>Hoy contamos con lo mejor</h1>
-                <div className="col-12 col-sm-6 Gallery__image" style={{
-                    background: `url("./images/${backImage}") no-repeat center center / cover`
-                }} />
+                <Fade direction="left" duration={600} triggerOnce>
+                    <h1>Hoy contamos con lo mejor</h1>
+                </Fade>
+                <Fade delay={600} triggerOnce>
+                    <div className="col-12 col-sm-6 Gallery__image" style={{
+                        background: `url("./images/${backImage}") no-repeat center center / cover`
+                    }} />
+                </Fade>
             </section>
             <section className="container-fluid Gallery__nav">
                 <div className="row">
                     <div className="col-12 col-sm-6">
                         <ul>
                             {
-                                dataGallery.map(el =>
-                                    <li onClick={(e) => setSelectedBg(e, el.imgPath)}>{el.title}
+                                dataGallery.map((el, i) =>
+                                    <li class={i === 0 && "active"} onClick={(e) => setSelectedBg(e, el.imgPath)}>{el.title}
                                     </li>
                                 )
                             }

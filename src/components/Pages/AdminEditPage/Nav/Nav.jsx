@@ -1,8 +1,8 @@
 import './Nav.css'
 import React from 'react'
 import {useHistory} from 'react-router'
-import dataNav from '../../../../data/dataNav'
 import {seoURL} from '../../../../hooks/seoURL'
+
 
 
 function Nav({getActiveItem}) {

@@ -11,12 +11,17 @@
 }
 
 .Banner__ourCompanies__bg {
-  background: url(../../../../images/our-companies-bg.png) no-repeat center bottom/contain;
   height: 60rem;
   position: absolute;
   bottom: 0;
-  right: -10rem;
+  right: 0rem;
   z-index: 1;
+}
+
+.Banner__ourCompanies__bg img {
+  right: 0;
+  position: absolute;
+  bottom: 0;
 }
 
 .Banner__ourCompanies .leti-red-triangle,

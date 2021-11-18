@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 import Slider from "react-slick"
 import biocontrolledTimeline from '../../../../data/biocontrolledTimeline'
 import {Link} from 'react-router-dom'
+import {Fade} from 'react-awesome-reveal'
 
 function Timeline() {
 
@@ -49,30 +50,32 @@ function Timeline() {
     }, [])
 
     return (
-        <section className="container-fluid Timeline__leti">
-            <Slider {...settings}>
-                {biocontrolledTimeline.map(el =>
-                    <>
-                        <div className="Timeline__leti__product row">
-                            <div className="Timeline__leti__image col-12 col-sm-6" style={{
-                                background: `url("./images/${el.imgURL}") no-repeat left center / cover`
-                            }}></div>
-                            <div className="col-12 col-sm-6 Timeline__leti__info">
-                                <div className="row">
-                                    <p className="col-12 col-sm-5 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}}>
-                                    </p>
-                                </div>
-                                <div className="row Timeline__leti__btn">
-                                    <div className="col-11 col-sm-5">
-                                        <Link to="/" className="leti-btn">Únete al equipo</Link>
+        <Fade direction="up" triggerOnce>
+            <section className="container-fluid Timeline__leti">
+                <Slider {...settings}>
+                    {biocontrolledTimeline.map(el =>
+                        <>
+                            <div className="Timeline__leti__product row">
+                                <div className="Timeline__leti__image col-12 col-sm-6" style={{
+                                    background: `url("./images/${el.imgURL}") no-repeat left center / cover`
+                                }}></div>
+                                <div className="col-12 col-sm-6 Timeline__leti__info">
+                                    <div className="row">
+                                        <p className="col-12 col-sm-5 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}}>
+                                        </p>
+                                    </div>
+                                    <div className="row Timeline__leti__btn">
+                                        <div className="col-11 col-sm-5">
+                                            <Link to="/" className="leti-btn">Únete al equipo</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </>
-                )}
-            </Slider>
-        </section>
+                        </>
+                    )}
+                </Slider>
+            </section>
+        </Fade>
     )
 }
 
