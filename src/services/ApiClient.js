@@ -25,6 +25,10 @@ export const login = ({email, password}) =>
     http.post("/login", {email, password})
 export const logOut = () => http.post("/logout")
 
+//admin edit routes home
+
+export const getUsInfo = () => http.get("/usinfodata")
+export const updateUsInfoData = ({description, url, buttonTitle, id}) => http.patch("/updateusinfodata", {description, url, buttonTitle, id})
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
