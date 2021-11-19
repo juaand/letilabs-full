@@ -27,6 +27,7 @@ function App() {
     <div className="App">
       <Header />
       <Switch>
+        {/* Aqui se cargan las rutas que van con el loader */}
         <Suspense fallback={<Loader />}>
           <Route exact path="/" render={(props) => <Home {...props} />} />
           <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
