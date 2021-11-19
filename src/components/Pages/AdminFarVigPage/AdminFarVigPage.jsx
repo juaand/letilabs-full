@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 import {getFarmVigData} from '../../../services/ApiClient'
 import DeleteFarmVigModal from './DeleteFarmVigModal/DeleteFarmVigModal'
+import Loader from '../../Loader/Loader'
 
 
 function AdminFarVigPage() {
@@ -66,6 +67,7 @@ function AdminFarVigPage() {
 
     return (
         <>
+            {!filteredCards.length && <Loader />}
             <Helmet>
                 <title>Grupo Leti | Administrador FarmacoVigilancia</title>
             </Helmet>
