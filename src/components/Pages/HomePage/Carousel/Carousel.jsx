@@ -39,7 +39,7 @@ function Carousel() {
     }, [])
 
     return (
-        <Fade delay={1000} triggerOnce>
+        <Fade delay={800} triggerOnce>
             <section className="Carousel">
                 <div className="container">
                     <h1>Nuestros <br />productos</h1>

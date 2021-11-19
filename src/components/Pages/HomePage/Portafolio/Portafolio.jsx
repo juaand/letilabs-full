@@ -19,7 +19,7 @@ function Portafolio() {
                 </div>
                 <div className="col-12 col-sm-5 Portafolio__triangles order-xs-1">
                     <div className="big-red-triangle parallax" data-speed=".1" data-axis="horizontal">
-                        <Fade triggerOnce>
+                        <Fade delay={400} triggerOnce>
                             <h1>Nuestro portafolio cuenta con 4 tipos de medicamentos</h1>
                         </Fade>
                     </div>

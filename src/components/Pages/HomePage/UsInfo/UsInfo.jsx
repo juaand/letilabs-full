@@ -33,7 +33,7 @@ function UsInfo() {
                         </Link>
                     </Fade>
                 </div>
-                <Fade cascade triggerOnce>
+                <Fade cascade duration={600} triggerOnce>
                     <div className="leti-blue-triangle parallax-rotate" data-speed="-.1" data-axis="vertical"></div>
                     <div className="leti-red-triangle parallax-rotate" data-speed=".05" data-axis="vertical"></div>
                 </Fade>
