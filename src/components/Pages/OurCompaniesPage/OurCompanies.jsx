@@ -1,5 +1,5 @@
 import './OurCompanies.css'
-import React, {useEffect, Suspense} from 'react'
+import React, {useEffect} from 'react'
 import Seo from '../../Seo/Seo'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'

@@ -1,5 +1,5 @@
 import './GenvenPage.css'
-import React, {Suspense, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Seo from '../../Seo/Seo'
