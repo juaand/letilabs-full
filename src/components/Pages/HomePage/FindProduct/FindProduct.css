@@ -45,10 +45,11 @@
 .FindProduct__form .leti-btn {
   background: url(../../../../images/search.svg) no-repeat center/4rem;
   height: 7.6rem;
+  transition: all 0.1s ease-in-out;
 }
 
 .FindProduct__form .leti-btn:hover {
-  background: blue;
+  border-width: 0.3rem;
 }
 
 @media (max-width: 576px) {

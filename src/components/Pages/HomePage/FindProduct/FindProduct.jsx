@@ -32,7 +32,7 @@ function FindProduct() {
     const searchSubmit = (event) => {
         event.preventDefault()
 
-        console.log('hola')
+        console.log('comming soon')
 
         // history.push({
         //     pathname: '/buscar',
