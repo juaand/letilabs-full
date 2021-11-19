@@ -2,7 +2,7 @@ import './LaboratoriosLetiPage.css'
 import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import Seo from '../../Seo/Seo'
+import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
@@ -46,7 +46,11 @@ function LaboratoriosLetiPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Laboratorios Leti' name='description' content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
+            <Helmet>
+                <title>Grupo Leti | Laboratorios Leti</title>
+                <meta name="description" content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
+                <meta name="keywords" content="Grupo Leti, Laboratorios Leti, Leti" />
+            </Helmet>
             <main>
                 <Banner />
                 <InfoCards />

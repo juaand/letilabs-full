@@ -1,10 +1,10 @@
 import './SearchPage.css'
 import React, {useState, useEffect} from 'react'
-import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../hooks/useFormState'
 import {searchContent} from '../../../services/ApiClient'
 import {Link} from 'react-router-dom'
-import Seo from '../../Seo/Seo'
+import {Helmet} from 'react-helmet'
+import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 
 function SearchPage(props) {
 
@@ -68,7 +68,11 @@ function SearchPage(props) {
 
     return (
         <>
-            <Seo title='Grupo Leti | Buscar' name='description' content='Esta página fue realizada por Andrés Martínez y Juan Romero' />
+            <Helmet>
+                <title>Grupo Leti | Buscar</title>
+                <meta name="description" content="Resultados de búsqueda" />
+                <meta name="keywords" content="Grupo Leti,  Nuestras empresas, Leti" />
+            </Helmet>
             <section className="container-fluid SearchPage">
                 <div className="row">
                     <div className="col-12 SearchPage__bg"></div>

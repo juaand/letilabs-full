@@ -2,7 +2,7 @@ import './GenvenPage.css'
 import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import Seo from '../../Seo/Seo'
+import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import Video from './Video/Video'
 import Timeline from './Timeline/Timeline'
@@ -48,7 +48,11 @@ function GenvenPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Genven' name='description' content="Genven Genéricos Venezolanos, es nuestra línea de genéricos de Laboratorios Leti S.A.V, con más de 25 años en el mercado farmacéutico venezolano." />
+            <Helmet>
+                <title>Grrupo Leti | Genven</title>
+                <meta name="description" content="Genven Genéricos Venezolanos, es nuestra línea de genéricos de Laboratorios Leti S.A.V, con más de 25 años en el mercado farmacéutico venezolano." />
+                <meta name="keywords" content="Grupo Leti, Genven" />
+            </Helmet>
             <main>
                 <Banner />
                 <Video />

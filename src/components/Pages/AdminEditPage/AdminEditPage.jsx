@@ -1,6 +1,6 @@
 import './AdminEditPage.css'
 import React, {useState} from 'react'
-import Seo from '../../Seo/Seo'
+import {Helmet} from 'react-helmet'
 import Nav from './Nav/Nav'
 import Inicio from './Inicio/Inicio'
 import SobreNosotros from './SobreNosotros/SobreNosotros'
@@ -21,7 +21,10 @@ function AdminEditPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Administrador' />
+
+            <Helmet>
+                <title>Grupo Leti | Administrador de contenidos</title>
+            </Helmet>
             <main className="container-fluid AdminEditPage">
                 <div className="row">
                     <div className="col-2 p-0 AdminEditPage__NavContent">

@@ -1,8 +1,9 @@
 import './Home.css'
 import React, {useEffect} from 'react'
+import {Helmet} from 'react-helmet'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import Seo from '../../Seo/Seo'
+// import Seo from '../../Seo/Seo'
 import Video from './Video/Video'
 import UsInfo from './UsInfo/UsInfo'
 import Carousel from './Carousel/Carousel'
@@ -45,7 +46,11 @@ function Home() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Inicio' name='description' content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
+            <Helmet>
+                <title>Grupo Leti | Inicio</title>
+                <meta name="description" content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
+                <meta name="keywords" content="Grupo Leti, Inicio" />
+            </Helmet>
             <main>
                 <Video />
                 <UsInfo />

@@ -2,11 +2,11 @@ import './LoginPage.css'
 import React, {useState} from 'react'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {login} from '../../../services/ApiClient'
-import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../Form/FormButton/FormButton'
 import {Redirect} from 'react-router-dom'
 import {useFormState} from '../../../hooks/useFormState'
-import Seo from '../../Seo/Seo'
+import {Helmet} from 'react-helmet'
+import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import Button from '../../Form/FormButton/FormButton'
 
 const LoginPage = () => {
 
@@ -55,7 +55,9 @@ const LoginPage = () => {
 
     return (
         <>
-            <Seo title='Grupo Leti | Administrador login' />
+            <Helmet>
+                <title>Grupo Leti | Ingresa</title>
+            </Helmet>
             <main className="container-fluid LoginPage">
                 <div className="container">
                     <div className="leti-blue-triangle"></div>

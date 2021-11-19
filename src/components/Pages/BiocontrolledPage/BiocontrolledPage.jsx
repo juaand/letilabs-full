@@ -2,7 +2,7 @@ import './BiocontrolledPage.css'
 import React, {useEffect} from 'react'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import Seo from '../../Seo/Seo'
+import { Helmet } from 'react-helmet'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
@@ -47,7 +47,11 @@ function BiocontrolledPage() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Biocontrolled' name='description' content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
+            <Helmet>
+                <title>Grupo Leti | Biocontrolled</title>
+                <meta name="description" content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
+                <meta name="keywords" content="Grupo Leti, Biocontrolled" />
+            </Helmet>
             <main>
                 <Banner />
                 <InfoCards />

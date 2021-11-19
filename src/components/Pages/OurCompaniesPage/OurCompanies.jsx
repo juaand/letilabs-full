@@ -1,6 +1,6 @@
 import './OurCompanies.css'
 import React, {useEffect} from 'react'
-import Seo from '../../Seo/Seo'
+import {Helmet} from 'react-helmet'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import Banner from './Banner/Banner'
@@ -44,7 +44,11 @@ function OurCompanies() {
 
     return (
         <>
-            <Seo title='Grupo Leti | Nuestras empresas' name='description' content='Nos conformamos por tres grandes unidades de negocio, que se dedican a diferentes áreas, pero trabajan entre ellas para lograr mejores resultados' />
+            <Helmet>
+                <title>Grupo Leti | Nuestras empresas</title>
+                <meta name="description" content="Nos conformamos por tres grandes unidades de negocio, que se dedican a diferentes áreas, pero trabajan entre ellas para lograr mejores resultados" />
+                <meta name="keywords" content="Grupo Leti,  Nuestras empresas, Leti" />
+            </Helmet>
             <main>
                 <Banner />
                 <CompaniesInfo />
