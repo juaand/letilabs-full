@@ -14,6 +14,8 @@
 .DeleteFarmVigModal .card {
   margin-bottom: 0;
   padding-bottom: 0;
+  border: 0;
+  border-top: solid 0.1rem #e9eaee;
 }
 
 .DeleteFarmVigModal .card .leti-btn {

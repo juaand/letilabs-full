@@ -12,11 +12,13 @@
 
   .card {
     border: 0;
-    border-top: solid 0.1rem $leti-subnav;
+    border: solid 0.1rem $leti-subnav;
     border-radius: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 8rem;
     padding: 2rem;
     font-size: 1.6rem;
+    border-bottom: solid 0.3rem $leti-blue;
+    min-height: 30rem;
 
     .card-body {
       position: relative;
@@ -72,6 +74,13 @@
     font-size: 1.4rem;
     line-height: 1.8rem;
     margin-top: 1.2rem;
+
+  }
+
+  &__effects{
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: $leti-nav;
   }
 
   &__search {
