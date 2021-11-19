@@ -7,8 +7,6 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {AuthContextProvider} from './contexts/AuthContext'
 import ScrollToTop from './hooks/scrollToTop'
 
-
-
 ReactDOM.render(
   <React.StrictMode>
     <Router>
