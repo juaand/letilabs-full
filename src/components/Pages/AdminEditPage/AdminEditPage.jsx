@@ -2,14 +2,14 @@ import './AdminEditPage.css'
 import React, {useState} from 'react'
 import {Helmet} from 'react-helmet'
 import Nav from './Nav/Nav'
-import Inicio from './Inicio/Inicio'
-import SobreNosotros from './SobreNosotros/SobreNosotros'
-import NuestrasEmpresas from './NuestrasEmpresas/NuestrasEmpresas'
-import IAndD from './IAndD/IAndD'
-import Proposito from './Proposito/Proposito'
-import NuestraGente from './NuestraGente/NuestraGente'
-import Productos from './Productos/Productos'
-import Noticias from './Noticias/Noticias'
+import EditHome from './EditHome/EditHome'
+import EditAboutUs from './EditAboutUs/EditAboutUs'
+import EditOurCompanies from './EditOurCompanies/EditOurCompanies'
+import EditIAndD from './EditIAndD/EditIAndD'
+import EditPurpose from './EditPurpose/EditPurpose'
+import EditOurPeople from './EditOurPeople/EditOurPeople'
+import EditProducts from './EditProducts/EditProducts'
+import EditNews from './EditNews/EditNews'
 
 function AdminEditPage() {
 
@@ -31,14 +31,14 @@ function AdminEditPage() {
                         <Nav getActiveItem={getActiveNav} />
                     </div>
                     <div className="col-10 AdminEditPage__Content">
-                        {initNavValue === 'inicio' && <Inicio />}
-                        {initNavValue === 'sobre-nosotros' && <SobreNosotros />}
-                        {initNavValue === 'nuestras-empresas' && <NuestrasEmpresas />}
-                        {initNavValue === 'investigacion-y-desarrollo' && <IAndD />}
-                        {initNavValue === 'proposito-y-responsabilidad-social' && <Proposito />}
-                        {initNavValue === 'nuestra-gente' && <NuestraGente />}
-                        {initNavValue === 'productos' && <Productos />}
-                        {initNavValue === 'noticias' && <Noticias />}
+                        {initNavValue === 'inicio' && <EditHome />}
+                        {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
+                        {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
+                        {initNavValue === 'investigacion-y-desarrollo' && <EditIAndD />}
+                        {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
+                        {initNavValue === 'nuestra-gente' && <EditOurPeople />}
+                        {initNavValue === 'productos' && <EditProducts />}
+                        {initNavValue === 'noticias' && <EditNews />}
                     </div>
                 </div>
             </main>
