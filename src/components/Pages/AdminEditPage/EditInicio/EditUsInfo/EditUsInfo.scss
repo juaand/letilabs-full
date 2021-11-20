@@ -1,7 +1,7 @@
 @import '../../../../../stylesheets/variables';
 
-.EditUsInfo {
-  border-top: solid 0.1rem $leti-subnav;
+.EditContent {
+  border: solid 0.1rem $leti-subnav;
   margin: 4rem 0;
   padding: 3rem 2.4rem;
   position: relative;
@@ -10,10 +10,12 @@
     font-family: 'Mulish', sans-serif;
     font-weight: 400;
     position: absolute;
-    top: -2.4rem;
+    top: -1.4rem;
     left: 1rem;
     background: $leti-white;
     padding: 0rem 1rem;
+    color: $leti-blue;
+    font-size: 2rem;
   }
 }
 

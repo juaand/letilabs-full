@@ -1,4 +1,3 @@
-import './EditUsInfo.css'
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getUsInfo, updateUsInfoData} from '../../../../../services/ApiClient'
@@ -40,7 +39,7 @@ function EditUsInfo() {
     const updateUsInfo = async (event) => {
         event.preventDefault()
         data.id = usInfoData._id
-        console.log(data)
+
         try {
             await updateUsInfoData(data)
                 .then(usInfo => {
@@ -68,7 +67,7 @@ function EditUsInfo() {
     }, [])
 
     return (
-        <section className="container-fluid EditUsInfo">
+        <section className="container-fluid EditContent">
             <h2>sobre nosotros</h2>
             <form className="AdminEdit__form" onSubmit={updateUsInfo}>
                 <div className="row">

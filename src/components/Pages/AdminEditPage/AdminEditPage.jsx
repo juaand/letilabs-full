@@ -2,7 +2,7 @@ import './AdminEditPage.css'
 import React, {useState} from 'react'
 import {Helmet} from 'react-helmet'
 import Nav from './Nav/Nav'
-import Inicio from './Inicio/Inicio'
+import EditInicio from './EditInicio/EditInicio'
 import SobreNosotros from './SobreNosotros/SobreNosotros'
 import NuestrasEmpresas from './NuestrasEmpresas/NuestrasEmpresas'
 import IAndD from './IAndD/IAndD'
@@ -31,7 +31,7 @@ function AdminEditPage() {
                         <Nav getActiveItem={getActiveNav} />
                     </div>
                     <div className="col-10 AdminEditPage__Content">
-                        {initNavValue === 'inicio' && <Inicio />}
+                        {initNavValue === 'inicio' && <EditInicio />}
                         {initNavValue === 'sobre-nosotros' && <SobreNosotros />}
                         {initNavValue === 'nuestras-empresas' && <NuestrasEmpresas />}
                         {initNavValue === 'investigacion-y-desarrollo' && <IAndD />}
