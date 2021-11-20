@@ -1,4 +1,3 @@
-import './EditInicio.css'
 import React from 'react'
 import EditUsInfo from './EditUsInfo/EditUsInfo'
 import EditVideo from './EditVideo/EditVideo'
@@ -8,21 +7,20 @@ import EditPortafolio from './EditPortafolio/EditPortafolio'
 import EditFindProduct from './EditFindProduct/EditFindProduct'
 import EditFarmacoVigilancia from './EditFarmacoVigilancia/EditFarmacoVigilancia'
 
-function Inicio() {
+function EditInicio() {
 
     return (
-        <>
-            <main>
-                <EditVideo/>
-                <EditUsInfo />
-                <EditCarousel />
-                <EditUnidades />
-                <EditPortafolio />
-                <EditFindProduct />
-                <EditFarmacoVigilancia />
-            </main>
-        </>
+        <main>
+            <h2 className="EditContent EditContent__title">Editar página Inicio</h2>
+            <EditVideo />
+            <EditUsInfo />
+            <EditCarousel />
+            <EditUnidades />
+            <EditPortafolio />
+            <EditFindProduct />
+            <EditFarmacoVigilancia />
+        </main>
     )
 }
 
-export default Inicio
+export default EditInicio

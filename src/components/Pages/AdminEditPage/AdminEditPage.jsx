@@ -3,13 +3,13 @@ import React, {useState} from 'react'
 import {Helmet} from 'react-helmet'
 import Nav from './Nav/Nav'
 import EditInicio from './EditInicio/EditInicio'
-import SobreNosotros from './SobreNosotros/SobreNosotros'
-import NuestrasEmpresas from './NuestrasEmpresas/NuestrasEmpresas'
-import IAndD from './IAndD/IAndD'
-import Proposito from './Proposito/Proposito'
-import NuestraGente from './NuestraGente/NuestraGente'
-import Productos from './Productos/Productos'
-import Noticias from './Noticias/Noticias'
+import EditSobreNosotros from './EditSobreNosotros/EditSobreNosotros'
+import EditNuestrasEmpresas from './EditNuestrasEmpresas/EditNuestrasEmpresas'
+import EditIAndD from './EditIAndD/EditIAndD'
+import EditProposito from './EditProposito/EditProposito'
+import EditNuestraGente from './EditNuestraGente/EditNuestraGente'
+import EditProductos from './EditProductos/EditProductos'
+import EditNoticias from './EditNoticias/EditNoticias'
 
 function AdminEditPage() {
 
@@ -32,13 +32,13 @@ function AdminEditPage() {
                     </div>
                     <div className="col-10 AdminEditPage__Content">
                         {initNavValue === 'inicio' && <EditInicio />}
-                        {initNavValue === 'sobre-nosotros' && <SobreNosotros />}
-                        {initNavValue === 'nuestras-empresas' && <NuestrasEmpresas />}
-                        {initNavValue === 'investigacion-y-desarrollo' && <IAndD />}
-                        {initNavValue === 'proposito-y-responsabilidad-social' && <Proposito />}
-                        {initNavValue === 'nuestra-gente' && <NuestraGente />}
-                        {initNavValue === 'productos' && <Productos />}
-                        {initNavValue === 'noticias' && <Noticias />}
+                        {initNavValue === 'sobre-nosotros' && <EditSobreNosotros />}
+                        {initNavValue === 'nuestras-empresas' && <EditNuestrasEmpresas />}
+                        {initNavValue === 'investigacion-y-desarrollo' && <EditIAndD />}
+                        {initNavValue === 'proposito-y-responsabilidad-social' && <EditProposito />}
+                        {initNavValue === 'nuestra-gente' && <EditNuestraGente />}
+                        {initNavValue === 'productos' && <EditProductos />}
+                        {initNavValue === 'noticias' && <EditNoticias />}
                     </div>
                 </div>
             </main>
