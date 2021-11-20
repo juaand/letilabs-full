@@ -1,6 +1,6 @@
 import React from 'react'
 
-function EditNuestraGente() {
+function EditOurPeople() {
     return (
 
         <main>
@@ -9,4 +9,4 @@ function EditNuestraGente() {
     )
 }
 
-export default EditNuestraGente
+export default EditOurPeople

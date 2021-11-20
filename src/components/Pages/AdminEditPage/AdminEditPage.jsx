@@ -2,14 +2,14 @@ import './AdminEditPage.css'
 import React, {useState} from 'react'
 import {Helmet} from 'react-helmet'
 import Nav from './Nav/Nav'
-import EditInicio from './EditInicio/EditInicio'
-import EditSobreNosotros from './EditSobreNosotros/EditSobreNosotros'
-import EditNuestrasEmpresas from './EditNuestrasEmpresas/EditNuestrasEmpresas'
+import EditHome from './EditHome/EditHome'
+import EditAboutUs from './EditAboutUs/EditAboutUs'
+import EditOurCompanies from './EditOurCompanies/EditOurCompanies'
 import EditIAndD from './EditIAndD/EditIAndD'
-import EditProposito from './EditProposito/EditProposito'
-import EditNuestraGente from './EditNuestraGente/EditNuestraGente'
-import EditProductos from './EditProductos/EditProductos'
-import EditNoticias from './EditNoticias/EditNoticias'
+import EditPurpose from './EditPurpose/EditPurpose'
+import EditOurPeople from './EditOurPeople/EditOurPeople'
+import EditProducts from './EditProducts/EditProducts'
+import EditNews from './EditNews/EditNews'
 
 function AdminEditPage() {
 
@@ -31,14 +31,14 @@ function AdminEditPage() {
                         <Nav getActiveItem={getActiveNav} />
                     </div>
                     <div className="col-10 AdminEditPage__Content">
-                        {initNavValue === 'inicio' && <EditInicio />}
-                        {initNavValue === 'sobre-nosotros' && <EditSobreNosotros />}
-                        {initNavValue === 'nuestras-empresas' && <EditNuestrasEmpresas />}
+                        {initNavValue === 'inicio' && <EditHome />}
+                        {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
+                        {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
                         {initNavValue === 'investigacion-y-desarrollo' && <EditIAndD />}
-                        {initNavValue === 'proposito-y-responsabilidad-social' && <EditProposito />}
-                        {initNavValue === 'nuestra-gente' && <EditNuestraGente />}
-                        {initNavValue === 'productos' && <EditProductos />}
-                        {initNavValue === 'noticias' && <EditNoticias />}
+                        {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
+                        {initNavValue === 'nuestra-gente' && <EditOurPeople />}
+                        {initNavValue === 'productos' && <EditProducts />}
+                        {initNavValue === 'noticias' && <EditNews />}
                     </div>
                 </div>
             </main>

@@ -7,7 +7,7 @@ import EditPortafolio from './EditPortafolio/EditPortafolio'
 import EditFindProduct from './EditFindProduct/EditFindProduct'
 import EditFarmacoVigilancia from './EditFarmacoVigilancia/EditFarmacoVigilancia'
 
-function EditInicio() {
+function EditHome() {
 
     return (
         <main>
@@ -23,4 +23,4 @@ function EditInicio() {
     )
 }
 
-export default EditInicio
+export default EditHome
