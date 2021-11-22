@@ -11,7 +11,7 @@
 }
 
 .EditContent {
-  border: solid 0.1rem #e9eaee;
+  border: solid 0.1rem #055aa5;
   margin: 4rem 0;
   padding: 3rem 2.4rem;
   position: relative;
@@ -22,8 +22,26 @@
   font-weight: 400;
   border: 0;
   margin: 0;
+  margin-left: 2rem;
   font-family: 'Mulish', sans-serif;
   color: #055aa5;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding-left: 3rem;
+}
+
+.EditContent__title:before {
+  content: '';
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  background: url("../../../images/title-icon.svg") no-repeat center center/contain;
+  margin-right: 1rem;
+  position: absolute;
+  z-index: 0;
+  left: 0;
 }
 
 .EditContent h2 {
@@ -38,8 +56,14 @@
   font-size: 2rem;
 }
 
-.AdminEdit__form__label {
+.AdminEdit__form__title {
   font-size: 1.6rem;
+  font-weight: 600;
+  color: #055aa5;
+}
+
+.AdminEdit__form__label {
+  font-size: 1.4rem;
   margin-bottom: 1rem;
   font-weight: 600;
 }

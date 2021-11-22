@@ -69,7 +69,7 @@ function EditUsInfo() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>sobre nosotros</h2>
+            <h2>Sobre nosotros</h2>
             <form className="AdminEdit__form" onSubmit={updateUsInfo}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -121,7 +121,7 @@ function EditUsInfo() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Editar Sobre Nosotros</Button>
+                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Sobre Nosotros</Button>
                     </div>
 
                 </div>

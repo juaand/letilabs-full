@@ -1,21 +1,21 @@
+import './EditUnidades.css'
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getUnidades, updateUnidadesData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+import {seoURL} from '../../../../../hooks/seoURL'
+import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditUnidades() {
-
-    const [unidadesData, setUnidadesData] = useState()
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
-                id: '',
-                logo: unidadesData?.logo,
-                desc: unidadesData?.desc,
-                url: unidadesData?.url,
+                logo: '',
+                desc: '',
+                url: '',
             },
             error: {
                 logo: false,
@@ -33,16 +33,18 @@ function EditUnidades() {
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
+    const [unidadesData, setUnidadesData] = useState()
+    const [modalData, setModalData] = useState()
+    const [bool, setBool] = useState(false)
 
 
     const updateUnidadesInfo = async (event) => {
         event.preventDefault()
-        data.id = unidadesData._id
 
         try {
             await updateUnidadesData(data)
                 .then(unidades => {
-                    setUnidadesData(unidades[0])
+                    setUnidadesData(unidades)
                 })
                 .catch(error => {
                     setRegisterError(error)
@@ -55,9 +57,17 @@ function EditUnidades() {
         data.description = e.target.getContent()
     }
 
+    const showModal = (data) => {
+        setModalData(data)
+        setBool(!bool)
+    }
+
+    const deleteItem = (data) => {
+        setUnidadesData(data)
+        setBool(!bool)
+    }
 
     useEffect(() => {
-        
         const fetchData = async () => {
             const getUnidadesData = await getUnidades()
             setUnidadesData(getUnidadesData)
@@ -67,64 +77,79 @@ function EditUnidades() {
     }, [])
 
     return (
-        <section className="container-fluid EditContent">
-            <h2>Unidades de negocio</h2>
-            <form className="AdminEdit__form" onSubmit={updateUnidadesInfo}>
-            <div className="row">
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            logo
-                        </p>
-                        <InputWithLabel
-                            value={data?.logo}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="logo"
-                            type="text"
-                            className={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
-                            placeholder={unidadesData?.logo}
-                        />
-                        <p className="AdminEdit__form__label">
-                            description
-                        </p>
-                        <Editor
-                            onChange={handleUnidadesDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                                placeholder: unidadesData?.desc
-                            }}
-                        />
-                         <p className="AdminEdit__form__label">
-                            url
-                        </p>
-                        <InputWithLabel
-                            value={data?.url}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="url"
-                            type="text"
-                            className={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
-                            placeholder={unidadesData?.url}
-                        />
-                    </div>
-                    <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Editar Unidades</Button>
-                    </div>
-
+        <>
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            <section className="container-fluid EditContent">
+                <h2>Eliminar unidad de negocio</h2>
+                <div className="row justify-content-around">
+                    {unidadesData?.map(el =>
+                        <div className="col-2 EditUnidades__trash" onClick={() => showModal(el)}>
+                            <img className="EditUnidades__img" src={"./images/" + seoURL(el.name) + ".svg"} alt={el.name} />
+                        </div>
+                    )}
                 </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+            </section>
+            <section className="container-fluid EditContent">
+                <h2>Añadir unidad de negocio</h2>
+                <form className="AdminEdit__form" onSubmit={updateUnidadesInfo}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                logo
+                            </p>
+                            <InputWithLabel
+                                value={data?.logo}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="logo"
+                                type="text"
+                                className={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
+                                placeholder={unidadesData?.logo}
+                            />
+                            <p className="AdminEdit__form__label">
+                                url
+                            </p>
+                            <InputWithLabel
+                                value={data?.url}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="url"
+                                type="text"
+                                className={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
+                                placeholder={unidadesData?.url}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                description
+                            </p>
+                            <Editor
+                                onChange={handleUnidadesDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                    placeholder: unidadesData?.desc
+                                }}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir unidad de negocio</Button>
+                        </div>
+
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
+        </>
     )
 }
 

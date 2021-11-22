@@ -33,10 +33,12 @@ export const getUnidades = () => http.get("/unidadesiniciodata")
 export const getPortfolio = () => http.get("/portfolioiniciodata")
 export const getFarmaco = () => http.get("/farmacoiniciodata")
 export const updateUsInfoData = ({description, url, buttonTitle, id}) => http.patch("/updateusinfodata", {description, url, buttonTitle, id})
-export const updateCarouselData = ({name, desc, img, id}) => http.patch("/updatecarouseliniciodata", {name, desc, img, id})
+export const addCarouselData = ({desc, img, name}) => http.get("/addcarouseliniciodata", {desc, img, name})
 export const updateUnidadesData = ({logo, desc, url, id}) => http.patch("/updateunidadesiniciodata", {logo, desc, url, id})
 export const updatePortfolioData = ({title, description, id}) => http.patch("/updateportfolioiniciodata", {title, description, id})
 export const updateFarmacoData = ({title, subTitle, buttonTitle, id}) => http.patch("/updatefarmacoiniciodata", {title, subTitle, buttonTitle, id})
+export const deleteCarItem = (id) => http.get(`/deletecaritem/${id}`)
+export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
 
 
 //farmaco vigilancia routes
