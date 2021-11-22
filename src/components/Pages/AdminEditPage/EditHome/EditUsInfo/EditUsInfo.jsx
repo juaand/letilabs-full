@@ -20,8 +20,8 @@ function EditUsInfo() {
             },
             error: {
                 description: true,
-                url: true,
-                buttonTitle: true,
+                url: false,
+                buttonTitle: false,
             },
             touch: {},
         },
@@ -58,6 +58,7 @@ function EditUsInfo() {
 
 
     useEffect(() => {
+        
         const fetchData = async () => {
             const getUsInfoData = await getUsInfo()
             setUsInfoData(getUsInfoData)
