@@ -8,7 +8,7 @@ function InfoCards() {
     return (
         <section className="container InfoCards__Leti">
             <div className="row justify-content-around">
-                <Fade className="col InfoCards__Leti__cards" cascade delay={300} direction="up" triggerOnce>
+                <Fade className="col-11 col-sm-4 InfoCards__Leti__cards" cascade delay={300} direction="up" triggerOnce>
                     {dataLeti.map(el =>
                         <>
                             <h4>{el.title}</h4>
