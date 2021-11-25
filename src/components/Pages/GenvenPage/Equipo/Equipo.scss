@@ -48,13 +48,11 @@
 
     &__clip {
       position: static;
-      background: url(../../../../images/equipo.jpg) repeat center top /
-        cover;
+      background: url(../../../../images/equipo.jpg) repeat center top / contain;
       mask-position: top center;
       height: 45rem;
       mask-size: 40rem;
       margin-left: -20rem;
-      background-size: 100%;
     }
 
     &__red-stroke {
