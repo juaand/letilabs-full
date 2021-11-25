@@ -28,7 +28,7 @@ function Productos() {
                     <Fade direction="up" triggerOnce>
                         <h1 className="Productos__desc">Ofrecemos terapias en las principales áreas terapéuticas: Cardiovascular, anti-infecciosos, anti-inflamatorios y analgésicos.</h1>
                     </Fade>
-                    <Reveal delay={200} keyframes={customAnimation}>
+                    <Reveal delay={200} keyframes={customAnimation} triggerOnce>
                         <Link to="/productos" className="leti-btn">Conoce los productos</Link>
                     </Reveal>
                 </div>
