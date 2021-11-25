@@ -65,7 +65,7 @@ function Timeline() {
                                         </p>
                                     </div>
                                     <div className="row Timeline__leti__btn">
-                                        <div className="col-11 col-sm-6">
+                                        <div className="col-11 col-sm-8">
                                             <Link to="/" className="leti-btn">Conoce sobre esta iniciativa</Link>
                                         </div>
                                     </div>

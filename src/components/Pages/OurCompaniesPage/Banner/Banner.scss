@@ -12,16 +12,18 @@
     }
 
     &__bg {
-      height: 60rem;
-      position: absolute;
-      bottom: 0;
-      right: 0rem;
-      z-index: 1; 
-
-      img {
-        right: 0;
+      [class*='css-'] {
+        height: 70rem;
         position: absolute;
         bottom: 0;
+        right: 0;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+  
+        img {
+          height: 90%;
+        }
       }
     }
 
@@ -65,10 +67,13 @@
       }
 
       &__bg {
-        background: url(../../../../images/our-companies-bg.png) no-repeat right
-          bottom / contain;
-        background-size: 100%;
-        right: 0;
+        [class*='css-'] {
+          right: -15%;
+  
+          img {
+            height: 55%;
+          }
+        }
       }
 
       .leti-red-triangle {

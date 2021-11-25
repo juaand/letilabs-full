@@ -66,5 +66,9 @@
       top: 55rem;
       z-index: -1;
     }
+
+    [class*="css-"] {
+      z-index: -1;
+    }
   }
 }

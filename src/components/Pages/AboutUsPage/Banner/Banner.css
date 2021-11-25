@@ -10,12 +10,18 @@
   align-items: center;
 }
 
-.Banner__bg {
+.Banner__bg [class*='css-'] {
   height: 70rem;
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.Banner__bg [class*='css-'] img {
+  height: 90%;
 }
 
 .Banner .leti-red-triangle,
@@ -49,15 +55,17 @@
   .Banner__title h1 {
     margin-top: 3rem;
   }
-  .Banner__bg {
-    background: url(../../../../images/about-us-bg.png) no-repeat 8rem bottom/contain;
-    background-size: 115%;
+  .Banner__bg [class*='css-'] {
+    right: -15%;
+  }
+  .Banner__bg [class*='css-'] img {
+    height: 65%;
   }
   .Banner .leti-red-triangle {
     width: 35rem;
     height: 35rem;
     right: -5%;
-    top: 30%;
+    top: 40%;
   }
   .Banner .leti-blue-triangle {
     width: 35rem;

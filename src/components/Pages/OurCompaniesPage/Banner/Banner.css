@@ -10,18 +10,18 @@
   align-items: center;
 }
 
-.Banner__ourCompanies__bg {
-  height: 60rem;
+.Banner__ourCompanies__bg [class*='css-'] {
+  height: 70rem;
   position: absolute;
   bottom: 0;
-  right: 0rem;
+  right: 0;
   z-index: 1;
+  display: flex;
+  align-items: flex-end;
 }
 
-.Banner__ourCompanies__bg img {
-  right: 0;
-  position: absolute;
-  bottom: 0;
+.Banner__ourCompanies__bg [class*='css-'] img {
+  height: 90%;
 }
 
 .Banner__ourCompanies .leti-red-triangle,
@@ -55,10 +55,11 @@
   .Banner__ourCompanies__title h1 {
     margin-top: 3rem;
   }
-  .Banner__ourCompanies__bg {
-    background: url(../../../../images/our-companies-bg.png) no-repeat right bottom/contain;
-    background-size: 100%;
-    right: 0;
+  .Banner__ourCompanies__bg [class*='css-'] {
+    right: -15%;
+  }
+  .Banner__ourCompanies__bg [class*='css-'] img {
+    height: 55%;
   }
   .Banner__ourCompanies .leti-red-triangle {
     width: 35rem;
