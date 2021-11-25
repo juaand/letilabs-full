@@ -44,12 +44,11 @@
   }
   .Equipo__clip-biocontrolled {
     position: static;
-    background: url(../../../../images/bicontrolled-bottom.jpg) repeat center top/cover;
+    background: url(../../../../images/bicontrolled-bottom.jpg) no-repeat center 3rem/contain;
     mask-position: top center;
     height: 45rem;
     mask-size: 40rem;
     margin-left: -20rem;
-    background-size: 100%;
   }
   .Equipo__red-stroke {
     position: absolute;
