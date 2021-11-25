@@ -42,7 +42,7 @@
 
 @media (max-width: 576px) {
   .Search.show {
-    top: 10rem;
+    top: 6rem;
     height: 10rem;
   }
   .Search.show.thin {
