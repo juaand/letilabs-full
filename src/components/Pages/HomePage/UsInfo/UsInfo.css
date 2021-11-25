@@ -59,4 +59,7 @@
     top: 55rem;
     z-index: -1;
   }
+  .Nosotros [class*="css-"] {
+    z-index: -1;
+  }
 }
