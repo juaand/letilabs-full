@@ -68,8 +68,8 @@
   }
 
   &__logos {
-    .Unidades__row {
-      &:nth-child(5) {
+    [class*="css-"]{
+      &:nth-child(3) {
         .Unidades__logo {
           background-size: 45rem 30rem !important;
         }
@@ -107,13 +107,13 @@
     }
 
     &__logos {
-      .Unidades__row {
+      [class*="css-"] {
         &:nth-child(1) {
           .Unidades__logo {
             background-size: 11rem 10rem !important;
           }
         }
-        &:nth-child(5) {
+        &:nth-child(3) {
           .Unidades__logo {
             background-size: 24rem 10rem !important;
           }

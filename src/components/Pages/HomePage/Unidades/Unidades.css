@@ -62,7 +62,7 @@
   background-size: 3rem;
 }
 
-.Unidades__logos .Unidades__row:nth-child(5) .Unidades__logo {
+.Unidades__logos [class*="css-"]:nth-child(3) .Unidades__logo {
   background-size: 45rem 30rem !important;
 }
 
@@ -89,10 +89,10 @@
     min-height: 18rem;
     background-size: 15rem !important;
   }
-  .Unidades__logos .Unidades__row:nth-child(1) .Unidades__logo {
+  .Unidades__logos [class*="css-"]:nth-child(1) .Unidades__logo {
     background-size: 11rem 10rem !important;
   }
-  .Unidades__logos .Unidades__row:nth-child(5) .Unidades__logo {
+  .Unidades__logos [class*="css-"]:nth-child(3) .Unidades__logo {
     background-size: 24rem 10rem !important;
   }
 }
