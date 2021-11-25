@@ -16,7 +16,7 @@ function Banner() {
                             <h3>Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto.</h3>
                         </Fade>
                     </div>
-                    <Fade cascade delay={500} triggerOnce>
+                    <Fade cascade delay={300} triggerOnce>
                         <div className="Banner__Leti__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__Leti__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>

@@ -20,7 +20,7 @@ function Banner() {
                                 Esta planta de manufactura cuenta con <span className="blue-text">tecnología de punta y estrictos controles de calidad</span> en el proceso de fabricación de sus productos, lo que se traduce en medicamentos de comprobada eficacia terapéutica, que cumplen con los rigurosos controles exigidos por las Autoridades Sanitarias nacionales.</h3>
                         </Fade>
                     </div>
-                    <Fade cascade delay={500} triggerOnce>
+                    <Fade cascade delay={300} triggerOnce>
                         <div className="Banner__Genven__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__Genven__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>
