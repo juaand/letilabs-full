@@ -40,6 +40,19 @@ export const updateFarmacoData = ({title, subTitle, buttonTitle, id}) => http.pa
 export const deleteCarItem = (id) => http.get(`/deletecaritem/${id}`)
 export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
 
+//admin edit routes about us
+
+export const getTimeLine = () => http.get("/timelineaboutusdata")
+export const getBanner = () => http.get("/bannerdata")
+export const getMarcandoPauta = () => http.get("/marcandopautadata")
+export const getMegat = () => http.get("/megatdata")
+export const getGallery= () => http.get("/galleryaboutusdata")
+export const addTimeLineData = ({year, imgURL, desc, id}) => http.get("/addtimelineaboutusdata", {year, imgURL, desc, id})
+export const addGalleryData = ({mainTitle, title, imgPath, id}) => http.get("/addgalleryaboutusdata", {mainTitle, title, imgPath, id})
+export const updateBannerData = ({description, imgURL, id}) => http.patch("/updatebannerdata", {description, imgURL, id})
+export const updateMarcandoPautaData = ({description, imgURL, id}) => http.patch("/updatemarcandopautadata", {description, imgURL, id})
+export const updateMegatData = ({title, description, url, buttonTitle, id}) => http.patch("/updatemegatdata", {title, description, url, buttonTitle, id})
+
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
