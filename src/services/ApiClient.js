@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
     withCredentials: true,
 })
 
@@ -46,7 +46,7 @@ export const getTimeLine = () => http.get("/timelineaboutusdata")
 export const getBanner = () => http.get("/bannerdata")
 export const getMarcandoPauta = () => http.get("/marcandopautadata")
 export const getMegat = () => http.get("/megatdata")
-export const getGallery= () => http.get("/galleryaboutusdata")
+export const getGallery = () => http.get("/galleryaboutusdata")
 export const addTimeLineData = ({year, imgURL, desc, id}) => http.get("/addtimelineaboutusdata", {year, imgURL, desc, id})
 export const addGalleryData = ({mainTitle, title, imgPath, id}) => http.get("/addgalleryaboutusdata", {mainTitle, title, imgPath, id})
 export const updateBannerData = ({description, imgURL, id}) => http.patch("/updatebannerdata", {description, imgURL, id})
