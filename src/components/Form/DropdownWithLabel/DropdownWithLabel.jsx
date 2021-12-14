@@ -14,7 +14,7 @@ function DropdownWithLabel({label, placeholder, name, onChange, onBlur, classNam
                 onChange={onChange}
                 className={className} />
             <datalist id={list}>
-                {data.map(item => <option value={item?.name} />)}
+                {data.map(item => <option value={item} />)}
             </datalist>
         </div>
     )

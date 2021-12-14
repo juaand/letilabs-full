@@ -1,4 +1,35 @@
+@import '../../../stylesheets/variables';
+
 main {
   position: relative;
   overflow: hidden;
+}
+
+.CookieConsent {
+  background: $leti-blue url(../../../images/cookiesBg.svg) no-repeat left
+    center !important;
+  background-size: contain;
+  padding: 3rem 0;
+  position: relative;
+  box-shadow: 0 -0.2rem 2rem 0 rgba($leti-black, 0.2);
+
+  h1 {
+    font-size: 3rem;
+  }
+
+  button {
+    border: solid 0.1rem $leti-white !important;
+    color: $leti-white !important;
+    font-size: 1.6rem !important;
+    background: transparent !important;
+    transition: all 0.3s ease-in-out;
+    padding: 1rem 2rem !important;
+    margin-right: 8rem !important;
+    margin-top: 3rem !important;
+
+    &:hover {
+      color: $leti-blue !important;
+      background: $leti-white !important;
+    }
+  }
 }

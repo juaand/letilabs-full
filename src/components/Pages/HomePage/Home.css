@@ -2,3 +2,31 @@ main {
   position: relative;
   overflow: hidden;
 }
+
+.CookieConsent {
+  background: #055aa5 url(../../../images/cookiesBg.svg) no-repeat left center !important;
+  background-size: contain;
+  padding: 3rem 0;
+  position: relative;
+  box-shadow: 0 -0.2rem 2rem 0 rgba(0, 0, 0, 0.2);
+}
+
+.CookieConsent h1 {
+  font-size: 3rem;
+}
+
+.CookieConsent button {
+  border: solid 0.1rem #fff !important;
+  color: #fff !important;
+  font-size: 1.6rem !important;
+  background: transparent !important;
+  transition: all 0.3s ease-in-out;
+  padding: 1rem 2rem !important;
+  margin-right: 8rem !important;
+  margin-top: 3rem !important;
+}
+
+.CookieConsent button:hover {
+  color: #055aa5 !important;
+  background: #fff !important;
+}

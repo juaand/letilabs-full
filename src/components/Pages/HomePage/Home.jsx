@@ -3,7 +3,6 @@ import React, {useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-// import Seo from '../../Seo/Seo'
 import Video from './Video/Video'
 import UsInfo from './UsInfo/UsInfo'
 import Carousel from './Carousel/Carousel'
@@ -11,6 +10,7 @@ import Unidades from './Unidades/Unidades'
 import Portafolio from './Portafolio/Portafolio'
 import FindProduct from './FindProduct/FindProduct'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
+import CookieConsent from "react-cookie-consent"
 
 
 function Home() {
@@ -60,6 +60,25 @@ function Home() {
                 <FindProduct />
                 <FarmacoVigilancia />
             </main>
+            <CookieConsent
+                location="bottom"
+                buttonText="Aceptar"
+                cookieName="cookieConsentimiento"
+                style={{fontSize: "14px", color: "#fff"}}
+                expires={150}
+            >
+                <div className="container Cookies__container">
+                    <div className="row">
+                        <div className="col-12 col-sm-4">
+                            <h1>Política de cookies</h1>
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p>
+                                Utilizamos cookies para poder ofrecerle la mejor experiencia posible en el sitio web. Esto incluye las cookies que son necesarias para el funcionamiento del sitio web, así como otras cookies que se utilizan únicamente con fines estadísticos anónimos. {" "}</p>
+                        </div>
+                    </div>
+                </div>
+            </CookieConsent>
         </>
     )
 }

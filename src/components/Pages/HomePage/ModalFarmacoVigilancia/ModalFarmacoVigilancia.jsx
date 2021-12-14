@@ -7,7 +7,7 @@ import Button from '../../../Form/FormButton/FormButton'
 import DateTimePicker from "react-datetime-picker"
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import {vigilanciaForm} from '../../../../services/ApiClient'
-import homeCarousel from '../../../../data/homeCarousel'
+import vadevecum from '../../../../data/vadevecum'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 
 function ModalFarmacoVigilancia({hideModal}) {
@@ -88,6 +88,10 @@ function ModalFarmacoVigilancia({hideModal}) {
 
     const isError = Object.values(error).some(err => err)
 
+
+    const getVadevecumNames = vadevecum.map(el => el.name)
+    const dataList = [...new Set(getVadevecumNames)].sort()
+
     return (
         <section className="ModalFarmacoVigilancia" onClick={clickedOutside}>
             <div className="container">
@@ -151,7 +155,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         className={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
                                                         tabIndex="5"
                                                         list="medicines"
-                                                        data={homeCarousel}
+                                                        data={dataList}
                                                     />
 
                                                 </div>
