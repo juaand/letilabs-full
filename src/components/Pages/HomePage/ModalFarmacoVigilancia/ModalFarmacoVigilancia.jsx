@@ -114,8 +114,8 @@ function ModalFarmacoVigilancia({hideModal}) {
                                         <h1>Estamos para cuidarte</h1></div>
                                     <div className="col-12 col-sm-5">
                                         <p><strong>Farmacovigilancia</strong></p>
-                                        <p>Facilita la recolección, vigilancia, investigación y evaluación de la información sobre reacciones adversas de los medicamentos, lo que permite realizar correctivos y establecer la seguridad terapéutica de los mismos.</p>
-                                        <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarlo.</p>
+                                        <p>Conscientes de la responsabilidad por ofrecer medicamentos de alta calidad, facilitamos la recolección, evaluación e investigación de la información sobre posibles reacciones adversas de nuestros medicamentos, para realizar correctivos y establecer la máxima seguridad terapéutica de los mismos.</p>
+                                        <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarle.</p>
                                     </div>
                                 </div>
                                 <div className="row">

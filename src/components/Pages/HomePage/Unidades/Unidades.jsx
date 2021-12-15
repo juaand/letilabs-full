@@ -23,7 +23,7 @@ function Unidades() {
             <div className="small-gray-triangle"></div>
             <div className="container">
                 <Fade triggerOnce>
-                    <h1>Nos conformamos <br />de 3 unidades<br /> de negocio</h1>
+                    <h1>Consolidados <br />en 3 unidades<br /> de negocio</h1>
                 </Fade>
             </div>
             <div className="container-fluid Unidades__logos">

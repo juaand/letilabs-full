@@ -29,8 +29,13 @@ function Footer() {
                             </Link>
                             <div className="Footer__info">
                                 <ul>
-                                    <li>info@grupoleti.com</li>
-                                    <li>+580000000000</li></ul>
+                                    <li>
+                                        <a href="mailto:info@grupoleti.com">mailto:info@grupoleti.com</a>
+                                    </li>
+                                    <li>
+                                        <a href="tel:+582123602511">+582123602511</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div className={`col-12 col-sm-4 Footer__nav ${bool && 'order-last'}`}>

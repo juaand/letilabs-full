@@ -38,10 +38,12 @@ function FarmacoVigilancia() {
                     <div className="row justify-content-center">
                         <div className="col-11 col-sm-6 FarmacoVigilancia__texto">
                             <strong>Farmacovigilancia</strong>
-                            <p>¿Tuviste algún efecto adverso<br />
-                                con alguno de nuestro productos? </p>
+                            <p>¿Tiene algún comentario o efecto adverso<br />
+                                de alguno de nuestro productos?
+                                <br />
+                                ¡Su opinión es importante para nosotros! </p>
                         </div>
-                        <div className="col-11 col-sm-6">
+                        <div className="col-11 col-sm-6 d-flex align-items-center">
                             <div className="leti-btn" onClick={showModal}>Infórmanos aquí</div>
                         </div>
                     </div>
