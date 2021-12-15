@@ -11,7 +11,7 @@ function MarcandoPauta() {
                         <div className="col-11 col-sm-9 offset-sm-5">
                             <Fade direction="down" triggerOnce>
                                 <p>
-                                    Contamos con un talento humano calificado y cualificado que con su <span className="blue-text">ingenio</span> e <span className="blue-text">increíble calidad humana,</span> trabajan día a día por los venezolanos que velan por su salud y la de los demás
+                                    Contamos con el mejor talento que con su <span className="blue-text">ingenio</span> e <span className="blue-text">increíble calidad humana,</span> trabajan muy comprometidos día a día por los venezolanos, velando por la salud de todo un país.
                                 </p>
                             </Fade>
                         </div>
