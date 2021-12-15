@@ -9,7 +9,7 @@ function Banner() {
                 <div className="row d-flex">
                     <div className="col-12 col-sm-6 Banner__title">
                         <Fade direction="left" duration={600} triggerOnce>
-                            <h1>Desarrollamos soluciones que marcan la diferencia en la vida de los venezolanos</h1>
+                            <h1>Desarrollamos soluciones de salud que marcan la diferencia en la vida de los venezolanos</h1>
                         </Fade>
                     </div>
                     <div className="col-12 col-sm-6 Banner__bg">
