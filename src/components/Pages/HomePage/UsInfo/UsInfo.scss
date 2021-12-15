@@ -15,6 +15,10 @@
 
   .leti-btn {
     background: $leti-white;
+
+    &:hover {
+      background: $leti-blue;
+    }
   }
 
   .leti-red-triangle {
@@ -67,7 +71,7 @@
       z-index: -1;
     }
 
-    [class*="css-"] {
+    [class*='css-'] {
       z-index: -1;
     }
   }

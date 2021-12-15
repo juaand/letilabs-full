@@ -16,6 +16,10 @@
   background: #fff;
 }
 
+.Nosotros .leti-btn:hover {
+  background: #055aa5;
+}
+
 .Nosotros .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 65rem;
@@ -59,7 +63,7 @@
     top: 55rem;
     z-index: -1;
   }
-  .Nosotros [class*="css-"] {
+  .Nosotros [class*='css-'] {
     z-index: -1;
   }
 }
