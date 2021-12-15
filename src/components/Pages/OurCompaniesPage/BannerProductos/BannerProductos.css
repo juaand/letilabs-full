@@ -23,9 +23,9 @@
 }
 
 .BannerProductos__img-diklason {
-  transform: rotate(12deg);
   bottom: 10%;
   right: 8%;
+  height: 50rem;
 }
 
 .BannerProductos__img-ulgarin {
@@ -51,6 +51,7 @@
   }
   .BannerProductos__img-diklason {
     width: 50%;
+    height: auto;
     bottom: 4rem;
     right: -2rem;
   }

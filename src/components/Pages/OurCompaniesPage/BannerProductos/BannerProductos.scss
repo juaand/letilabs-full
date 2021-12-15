@@ -26,9 +26,9 @@
     }
 
     &-diklason {
-      transform: rotate(12deg);
       bottom: 10%;
       right: 8%;
+      height: 50rem;
     }
 
     &-ulgarin {
@@ -46,24 +46,25 @@
       margin-bottom: 20rem;
       text-align: right;
     }
-    
+
     &__subtitle {
       margin-bottom: 30rem;
     }
-  
+
     &__img {
       &-azitomicina {
         width: 80%;
         bottom: 10rem;
         left: -25%;
       }
-  
+
       &-diklason {
         width: 50%;
+        height: auto;
         bottom: 4rem;
         right: -2rem;
       }
-  
+
       &-ulgarin {
         top: 20rem;
         left: 4%;
