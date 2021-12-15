@@ -30,7 +30,7 @@ function App() {
         <Route exact path="/" render={(props) => <Home {...props} />} />
         <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
         <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
-        <Route exact path="/laboratorios-leti" render={(props) => <LaboratoriosLetiPage {...props} />} />
+        <Route exact path="/leti" render={(props) => <LaboratoriosLetiPage {...props} />} />
         <Route exact path="/genven" render={(props) => <GenvenPage {...props} />} />
         <Route exact path="/biocontrolled" render={(props) => <BiocontrolledPage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
