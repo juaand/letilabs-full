@@ -22,6 +22,11 @@
         font-weight: 500;
       }
     }
+
+    a {
+      color: $leti-text;
+      text-decoration: none;
+    }
   }
 
   &__nav {
