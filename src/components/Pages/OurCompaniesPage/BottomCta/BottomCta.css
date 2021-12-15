@@ -37,6 +37,7 @@
 .BottomCta__img:hover .BottomCta__talento:before,
 .BottomCta__img:hover .BottomCta__megat:before {
   opacity: 1;
+  background: rgba(5, 90, 165, 0.8);
 }
 
 .BottomCta__talento, .BottomCta__megat {
@@ -52,7 +53,7 @@
   display: block;
   background: rgba(5, 90, 165, 0.4);
   transition: all 0.2s ease-in-out;
-  opacity: 0;
+  opacity: 1;
 }
 
 .BottomCta__talento {
@@ -60,7 +61,7 @@
 }
 
 .BottomCta__megat {
-  background: url(../../../../images/megat.jpg) no-repeat left top/cover;
+  background: url(../../../../images/megat.jpg) no-repeat left -20rem/cover;
 }
 
 @media (max-width: 576px) {

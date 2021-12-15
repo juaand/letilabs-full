@@ -10,7 +10,7 @@ function Banner() {
                 <div className="row">
                     <div className="col-12 col-sm-7 Banner__Leti__title">
                         <Fade triggerOnce>
-                            <img className="Banner__Leti-logo" src="./images/laboratorios-leti.svg" alt="Leti" />
+                            <img className="Banner__Leti-logo" src="./images/leti.svg" alt="Leti" />
                         </Fade>
                         <Fade delay={300} direction="left" triggerOnce>
                             <h3>Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto.</h3>
