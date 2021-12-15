@@ -25,9 +25,8 @@ function Nav({getActiveItem}) {
     function handleClick() {
         setTimeout(() => {history.push("/")}, 1)
         setTimeout(() => {history.push("/sobre-nosotros")}, 1)
-        setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
         setTimeout(() => {history.push("/nuestras-empresas")}, 1)
-        setTimeout(() => {history.push("/laboratorios-leti")}, 1)
+        setTimeout(() => {history.push("/leti")}, 1)
         setTimeout(() => {history.push("/genven")}, 1)
         setTimeout(() => {history.push("/biocontrolled")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
