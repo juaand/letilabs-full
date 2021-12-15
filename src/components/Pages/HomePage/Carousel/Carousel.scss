@@ -83,12 +83,16 @@
       margin-left: 2rem;
     }
 
-    .slick-next {
-      transform: translate(-5rem, 17rem);
+    .slick-dots {
+      display: none !important;
     }
 
-    .slick-prev {
-      transform: translate(5rem, 17rem);
-    }
+    // .slick-next {
+    //   transform: translate(-5rem, 17rem);
+    // }
+
+    // .slick-prev {
+    //   transform: translate(5rem, 17rem);
+    // }
   }
 }

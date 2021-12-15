@@ -3,6 +3,7 @@ import React, {useEffect} from 'react'
 import Slider from "react-slick"
 import homeCarousel from '../../../../data/homeCarousel'
 import {Fade} from "react-awesome-reveal"
+import {seoURL} from '../../../../helpers/globals'
 
 
 function Carousel() {
@@ -32,9 +33,10 @@ function Carousel() {
         const getNextArrow = document.querySelector('.slick-next')
         const getPrevArrow = document.querySelector('.slick-prev')
 
-        getNextArrow.style.right = `${((window.screen.width - getSlickDots.right) / 10) - 10}rem`
+        getNextArrow.style.left = `${((getSlickDots.left + getSlickDots.width) / 10) - 16}rem`
+        getPrevArrow.style.left = `${(getSlickDots.x / 10) - 27}rem`
 
-        getPrevArrow.style.left = `${(getSlickDots.left / 10) - 10}rem`
+        document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
 
     }, [])
 
@@ -50,10 +52,9 @@ function Carousel() {
                             <div>
                                 <div className="Carousel__product">
                                     <div className="Carousel__image" style={{
-                                        background: `url("./images/${el.name.toLowerCase()}.png") no-repeat center center / contain`
+                                        background: `url("./images/${seoURL(el.name)}.png") no-repeat center center / contain`
                                     }}></div>
                                 </div>
-                                <h3 className="Carousel__desc">{el.desc}</h3>
                             </div>
                         )}
                     </Slider>

@@ -300,10 +300,7 @@
   .Carousel h1 {
     margin-left: 2rem;
   }
-  .Carousel .slick-next {
-    transform: translate(-5rem, 17rem);
-  }
-  .Carousel .slick-prev {
-    transform: translate(5rem, 17rem);
+  .Carousel .slick-dots {
+    display: none !important;
   }
 }
