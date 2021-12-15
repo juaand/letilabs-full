@@ -20,7 +20,7 @@ const dataNav = [
         nav_path: 'nuestras-empresas',
         sub_nav: [
             {
-                sub_text: 'Laboratorios Leti',
+                sub_text: 'Leti',
                 subNav_path: 'leti'
             },
             {
