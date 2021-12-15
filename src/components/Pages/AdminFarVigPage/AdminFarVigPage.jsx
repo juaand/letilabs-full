@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet'
 import {getFarmVigData} from '../../../services/ApiClient'
 import DeleteFarmVigModal from './DeleteFarmVigModal/DeleteFarmVigModal'
 import Loader from '../../Loader/Loader'
+import {JSONToCSVConvertor} from '../../../helpers/globals'
 
 
 function AdminFarVigPage() {
@@ -76,10 +77,17 @@ function AdminFarVigPage() {
                 <div className="row">
                     <div className="col-12 AdminFarVigPage__bg">
                         <div className="container">
-                            <input type="text" className="form-control AdminFarVigPage__search" placeholder="Buscar por producto o nombre del paciente" onChange={handleChange} value={search} /></div>
+                            <input type="text" className="form-control AdminFarVigPage__search" placeholder="Filtrar por producto o nombre del paciente" onChange={handleChange} value={search} />
+                        </div>
                     </div>
                 </div>
                 <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <button className="AdminFarVigPage__download" onClick={() => JSONToCSVConvertor(filteredCards, "", true)}
+                            >Descargar reporte</button>
+                        </div>
+                    </div>
                     <div className="row">
                         {filteredCards.length === 0 ?
                             <h1 className="col-12 loader">Sin <span>resultados</span></h1> :
@@ -107,3 +115,4 @@ function AdminFarVigPage() {
 }
 
 export default AdminFarVigPage
+

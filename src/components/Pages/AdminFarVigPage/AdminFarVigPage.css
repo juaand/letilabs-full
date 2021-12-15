@@ -22,6 +22,38 @@
   padding-top: 3rem;
 }
 
+.AdminFarVigPage__download {
+  border: 0;
+  background: transparent;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  color: #055aa5;
+  padding: 1.5rem;
+  border: solid 0.2rem #055aa5;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  margin: -4rem auto 6rem auto;
+}
+
+.AdminFarVigPage__download:hover {
+  background: #055aa5;
+  color: white;
+}
+
+.AdminFarVigPage__download:hover:before {
+  background: url(../../../images/download_white.svg) no-repeat center center/contain;
+}
+
+.AdminFarVigPage__download:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  background: url(../../../images/download.svg) no-repeat center center/contain;
+  margin-right: 1rem;
+}
+
 .AdminFarVigPage__date {
   font-size: 1.2rem;
   color: #cd202f;

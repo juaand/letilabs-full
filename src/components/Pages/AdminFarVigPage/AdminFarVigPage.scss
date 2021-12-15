@@ -26,6 +26,40 @@
     }
   }
 
+  &__download {
+    border: 0;
+    background: transparent;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    color: $leti-blue;
+    padding: 1.5rem;
+    border: solid 0.2rem $leti-blue;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    margin: -4rem auto 6rem auto;
+
+    &:hover {
+      background: $leti-blue;
+      color: white;
+
+      &:before {
+        background: url(../../../images/download_white.svg) no-repeat center
+          center / contain;
+      }
+    }
+
+    &:before {
+      content: '';
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      background: url(../../../images/download.svg) no-repeat center center /
+        contain;
+      margin-right: 1rem;
+    }
+  }
+
   &__date {
     font-size: 1.2rem;
     color: $leti-red;
@@ -74,10 +108,9 @@
     font-size: 1.4rem;
     line-height: 1.8rem;
     margin-top: 1.2rem;
-
   }
 
-  &__effects{
+  &__effects {
     font-size: 1.4rem;
     line-height: 1.8rem;
     color: $leti-nav;
