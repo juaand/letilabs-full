@@ -7,7 +7,7 @@ function BannerProductos() {
         <section className="container-fluid BannerProductos">
             <img data-speed="-.2" data-axis="horizontal" src="./images/ulgarin.png" className="parallax BannerProductos__img-ulgarin" alt="grupo leti ulgarin" />
             <img data-speed=".08" data-axis="horizontal" src="./images/azitomicina.png" className="parallax BannerProductos__img-azitomicina" alt="grupo leti azitomicina" />
-            <img data-speed="-.06" data-axis="horizontal" src="./images/diklason.png" className="parallax BannerProductos__img-diklason" alt="grupo leti diklason" />
+            <img data-speed="-.06" data-axis="horizontal" src="./images/diklason_box.png" className="parallax BannerProductos__img-diklason" alt="grupo leti diklason" />
             <div className="container">
                 <div className="row justify-content-end">
                     <div className="col-12 col-sm-8">

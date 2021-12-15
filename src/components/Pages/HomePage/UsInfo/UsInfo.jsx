@@ -23,7 +23,7 @@ function UsInfo() {
                 <div className="col-11 col-sm-6">
                     <Reveal keyframes={customAnimation}>
                         <p className="Nosotros__valor">
-                            <span className="blue-text">Grupo Leti</span> es un laboratorio farmacéutico venezolano que por más de 70 años ha generado soluciones de salud con la producción y comercialización de un amplio portafolio de medicamentos, sustentado por nuestro destacado y comprometido talento humano. Somos pioneros en el desarrollo del sector, con tecnología de vanguardia y cumpliendo los más altos estándares de calidad globales para mejorar la calidad de vida de todos constante y oportunamente.
+                            <span className="blue-text">Grupo Leti</span> es un laboratorio farmacéutico venezolano que por más de 70 años ha generado soluciones de salud con la producción y comercialización de un amplio portafolio de medicamentos, sustentado por nuestro destacado y comprometido talento humano. Somos pioneros en el desarrollo del sector, con tecnología de vanguardia y cumpliendo los más altos estándares de calidad globales para mejorar la vida de todos constante y oportunamente.
                         </p>
                     </Reveal>
                     <Fade triggerOnce>
