@@ -1,15 +1,20 @@
 @import '../../../../stylesheets/variables';
 
 .Video {
-  height: 70rem;
-  background: url(../../../../images/video-bg.png) no-repeat center center / cover;
+  background: url(../../../../images/video-bg.png) no-repeat center center /
+    cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 108rem;
 }
 
 @media (max-width: 576px) {
   .Video {
-    height: 30rem;
+    padding: 0;
+    min-height: 30rem;
+    video {
+      width: 100%;
+    }
   }
 }
