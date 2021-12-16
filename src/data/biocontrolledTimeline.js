@@ -1,7 +1,7 @@
 const biocontrolledTimeline = [
   {
     id: '1',
-    imgURL: 'biocontrolled-equipo.png',
+    imgURL: 'biocontrolled-equipo.jpg',
     desc: 'Siempre estamos en busca de especialistas con ganas de innovar'
   },
 ]
