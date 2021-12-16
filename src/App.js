@@ -16,6 +16,7 @@ import AdminPage from './components/Pages/AdminPage/AdminPage'
 import AdminFarVigPage from './components/Pages/AdminFarVigPage/AdminFarVigPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
+import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/AreasTerapeuticasPage'
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Route exact path="/leti" render={(props) => <LaboratoriosLetiPage {...props} />} />
         <Route exact path="/genven" render={(props) => <GenvenPage {...props} />} />
         <Route exact path="/biocontrolled" render={(props) => <BiocontrolledPage {...props} />} />
+        <Route exact path="/areas-terapeuticas" render={(props) => <AreasTerapeuticasPage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />

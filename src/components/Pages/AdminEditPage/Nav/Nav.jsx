@@ -29,6 +29,7 @@ function Nav({getActiveItem}) {
         setTimeout(() => {history.push("/leti")}, 1)
         setTimeout(() => {history.push("/genven")}, 1)
         setTimeout(() => {history.push("/biocontrolled")}, 1)
+        setTimeout(() => {history.push("/areas-terapeuticas")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
 
