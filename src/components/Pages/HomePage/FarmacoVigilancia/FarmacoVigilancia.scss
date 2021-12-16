@@ -39,7 +39,7 @@
         transform: scale(1.2);
 
         &:before {
-          opacity: 1;
+          background: rgba($leti-blue, 0.8);
         }
       }
     }
@@ -58,7 +58,7 @@
       display: block;
       background: rgba($leti-blue, 0.4);
       transition: all 0.2s ease-in-out;
-      opacity: 0;
+      opacity: 1;
     }
   }
 
@@ -68,7 +68,7 @@
   }
 
   &__espacio {
-    background: url(../../../../images/espacio.png) no-repeat left top / cover;
+    background: url(../../../../images/espacio.jpg) no-repeat left top / cover;
   }
 
   &__info {
