@@ -57,11 +57,11 @@
 }
 
 .BottomCta__talento {
-  background: url(../../../../images/talento.jpg) no-repeat center/cover;
+  background: url(../../../../images/nuestras-empresas-talento.jpg) no-repeat center/cover;
 }
 
 .BottomCta__megat {
-  background: url(../../../../images/megat.jpg) no-repeat left -20rem/cover;
+  background: url(../../../../images/nuestras-empresas-megat.jpg) no-repeat center center/cover;
 }
 
 @media (max-width: 576px) {
