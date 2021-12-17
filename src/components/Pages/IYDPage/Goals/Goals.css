@@ -37,7 +37,7 @@
   margin-left: 10rem;
 }
 
-.Goals__title {
+.Goals__subtitle {
   font-family: 'tripletaBold';
   font-size: 3rem;
   display: flex;
@@ -119,15 +119,25 @@
   .Goals__info {
     margin-left: 2rem;
   }
-  .Goals__title {
+  .Goals__subtitle {
     font-size: 2.2rem;
+  }
+  .Goals__title {
+    margin-bottom: 10rem;
   }
   .Goals__desc {
     font-size: 1.6rem;
     margin-bottom: 2rem;
     padding-right: 2rem;
   }
-  .Goals__cells-000, .Goals__cells-009, .Goals__cells-0010, .Goals__cells-0011, .Goals__cells-0012, .Goals__cells-0014 {
+  .Goals__cells-001, .Goals__cells-002 {
     display: none;
+  }
+  .Goals__cells-005 {
+    left: 5rem;
+    top: 15rem;
+  }
+  .Goals__cells-006 {
+    top: 10rem;
   }
 }

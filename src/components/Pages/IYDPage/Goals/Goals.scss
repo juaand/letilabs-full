@@ -38,7 +38,7 @@
     margin-left: 10rem;
   }
 
-  &__title {
+  &__subtitle {
     font-family: 'tripletaBold';
     font-size: 3rem;
     display: flex;
@@ -111,11 +111,11 @@
     }
 
     &__number {
-        margin-left: 2rem;
+      margin-left: 2rem;
       width: 4.7rem;
       height: 4.7rem;
       position: relative;
-      
+
       &:after {
         width: 5.7rem;
         height: 5.7rem;
@@ -128,8 +128,12 @@
       margin-left: 2rem;
     }
 
-    &__title {
+    &__subtitle {
       font-size: 2.2rem;
+    }
+
+    &__title {
+        margin-bottom: 10rem;
     }
 
     &__desc {
@@ -139,13 +143,18 @@
     }
 
     &__cells {
-      &-000,
-      &-009,
-      &-0010,
-      &-0011,
-      &-0012,
-      &-0014 {
+      &-001,
+      &-002 {
         display: none;
+      }
+
+      &-005 {
+          left: 5rem;
+        top: 15rem;
+      }
+
+      &-006 {
+        top: 10rem;
       }
     }
   }

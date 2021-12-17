@@ -78,7 +78,4 @@
   .BottomCta__equipo, .BottomCta__novedades {
     height: 30rem;
   }
-  .BottomCta__equipo:before, .BottomCta__novedades:before {
-    display: none;
-  }
 }

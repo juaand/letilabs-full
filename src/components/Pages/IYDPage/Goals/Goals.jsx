@@ -43,7 +43,7 @@ function Goals() {
             <div className="container">
                 <div className="row">
                     <div className="col-12 col-sm-6 Goals__title">
-                        <Reveal keyframes={customAnimation}>
+                        <Reveal keyframes={customAnimation} triggerOnce>
                             <h1>Qué queremos lograr</h1>
                         </Reveal>
                     </div>
@@ -52,7 +52,7 @@ function Goals() {
                             <Fade triggerOnce cascade direction="up">
                                 <p className="Goals__number">{key + 1}</p>
                                 <div className="Goals__info">
-                                    <p className="Goals__title">{el.title}</p>
+                                    <p className="Goals__subtitle">{el.title}</p>
                                     <p className="Goals__desc">{el.desc}</p>
                                 </div>
                             </Fade>

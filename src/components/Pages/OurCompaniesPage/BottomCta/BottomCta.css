@@ -78,7 +78,4 @@
   .BottomCta__talento, .BottomCta__megat {
     height: 30rem;
   }
-  .BottomCta__talento:before, .BottomCta__megat:before {
-    display: none;
-  }
 }
