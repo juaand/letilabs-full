@@ -1,0 +1,11 @@
+.Tech {
+  background: url(../../../images/tech-page-bg.svg) no-repeat right 57% /
+    70rem;
+}
+
+@media (max-width: 576px) {
+  .Tech {
+    background: url(../../../images/tech-page-bg.svg) no-repeat right 57% /
+    30rem;
+  }
+}

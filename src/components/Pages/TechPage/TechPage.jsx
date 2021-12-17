@@ -1,3 +1,4 @@
+import './TechPage.css'
 import React, {useEffect} from 'react'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
@@ -47,7 +48,7 @@ function TechPage() {
                 <meta name="description" content="Nuestra planta está ubicada en Guarenas, estado Miranda, y es la planta producción de fármacos más grande a nivel nacional. Cuenta con la única planta de cefalosporínicos existentes en Venezuela y una de las pocas penicilínicos, siendo modelo de Latinoamérica." />
                 <meta name="keywords" content="Grupo Leti, Tecnología" />
             </Helmet>
-            <main>
+            <main className="Tech">
                 <Banner />
                 <Video />
                 <Map />
