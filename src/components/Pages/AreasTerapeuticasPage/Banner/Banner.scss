@@ -49,7 +49,7 @@
 
 @media (max-width: 576px) {
   .Banner {
-    &__Biocontrolled {
+    &__AreasTerapeuticas {
       &-logo {
         width: 28rem;
         margin-top: 5rem;
@@ -58,9 +58,11 @@
       &__title {
         height: 85rem;
         justify-content: flex-start;
+        margin-top: 6rem;
+        
         h3 {
           font-size: 2rem;
-          margin: 4rem auto 8rem auto;
+          margin: 0 auto 8rem auto;
           line-height: 2.8rem;
         }
       }

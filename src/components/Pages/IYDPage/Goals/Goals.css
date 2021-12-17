@@ -104,6 +104,29 @@
   .Goals__title {
     margin-left: 0rem;
   }
+  .Goals__number {
+    margin-left: 2rem;
+    width: 4.7rem;
+    height: 4.7rem;
+    position: relative;
+  }
+  .Goals__number:after {
+    width: 5.7rem;
+    height: 5.7rem;
+    top: -0.5rem;
+    left: -0.5rem;
+  }
+  .Goals__info {
+    margin-left: 2rem;
+  }
+  .Goals__title {
+    font-size: 2.2rem;
+  }
+  .Goals__desc {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    padding-right: 2rem;
+  }
   .Goals__cells-000, .Goals__cells-009, .Goals__cells-0010, .Goals__cells-0011, .Goals__cells-0012, .Goals__cells-0014 {
     display: none;
   }

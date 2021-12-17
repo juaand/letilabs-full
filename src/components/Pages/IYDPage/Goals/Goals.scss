@@ -35,7 +35,7 @@
   }
 
   &__info {
-      margin-left: 10rem;
+    margin-left: 10rem;
   }
 
   &__title {
@@ -108,6 +108,34 @@
   .Goals {
     &__title {
       margin-left: 0rem;
+    }
+
+    &__number {
+        margin-left: 2rem;
+      width: 4.7rem;
+      height: 4.7rem;
+      position: relative;
+      
+      &:after {
+        width: 5.7rem;
+        height: 5.7rem;
+        top: -0.5rem;
+        left: -0.5rem;
+      }
+    }
+
+    &__info {
+      margin-left: 2rem;
+    }
+
+    &__title {
+      font-size: 2.2rem;
+    }
+
+    &__desc {
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      padding-right: 2rem;
     }
 
     &__cells {

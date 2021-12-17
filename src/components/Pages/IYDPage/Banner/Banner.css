@@ -43,26 +43,27 @@
 }
 
 @media (max-width: 576px) {
-  .Banner__Biocontrolled-logo {
+  .Banner__IYD-logo {
     width: 28rem;
     margin-top: 5rem;
   }
-  .Banner__Biocontrolled__title {
+  .Banner__IYD__title {
     height: 85rem;
     justify-content: flex-start;
+    margin-top: 6rem;
   }
-  .Banner__Biocontrolled__title h3 {
+  .Banner__IYD__title h3 {
     font-size: 2rem;
-    margin: 4rem auto 8rem auto;
+    margin: 0rem auto 8rem auto;
     line-height: 2.8rem;
   }
-  .Banner__Biocontrolled__bg {
+  .Banner__IYD__bg {
     width: 38rem;
     height: 38rem;
     right: -6rem;
     top: 32rem;
   }
-  .Banner__Biocontrolled__blue {
+  .Banner__IYD__blue {
     width: 30rem;
     height: 30rem;
     right: -6rem;
