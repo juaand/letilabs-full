@@ -1,0 +1,124 @@
+@import '../../../../stylesheets/variables';
+
+.Goals {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 10rem 0;
+
+  [class*='cells'] {
+    position: absolute;
+  }
+
+  &__number {
+    background: $leti-blue;
+    color: $leti-white;
+    width: 5.7rem;
+    height: 5.7rem;
+    border-radius: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    &:after {
+      content: '';
+      width: 7.7rem;
+      height: 7.7rem;
+      border: solid 0.1rem $leti-blue;
+      display: block;
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      border-radius: 14rem;
+    }
+  }
+
+  &__info {
+      margin-left: 10rem;
+  }
+
+  &__title {
+    font-family: 'tripletaBold';
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+  }
+
+  &__desc {
+    font-size: 2.4rem;
+    color: $leti-nav;
+    margin-bottom: 9rem;
+    padding-right: 10rem;
+  }
+
+  &__cells {
+    &-001 {
+      width: 19rem;
+      height: 19rem;
+      left: -4rem;
+      bottom: -4rem;
+    }
+
+    &-002 {
+      width: 7rem;
+      height: 7rem;
+      top: 7rem;
+      left: 7rem;
+    }
+
+    &-003 {
+      width: 1.8rem;
+      height: 1.8rem;
+      top: -6rem;
+      right: 15rem;
+    }
+
+    &-004 {
+      width: 6.5rem;
+      height: 6.5rem;
+      top: 3.2rem;
+      left: 35%;
+    }
+
+    &-005 {
+      width: 3rem;
+      height: 3rem;
+      left: 30rem;
+      top: 25rem;
+    }
+
+    &-006 {
+      width: 5rem;
+      height: 5rem;
+      right: 6rem;
+      top: 30rem;
+    }
+
+    &-007 {
+      width: 3rem;
+      height: 3rem;
+      left: 87rem;
+      top: 34rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Goals {
+    &__title {
+      margin-left: 0rem;
+    }
+
+    &__cells {
+      &-000,
+      &-009,
+      &-0010,
+      &-0011,
+      &-0012,
+      &-0014 {
+        display: none;
+      }
+    }
+  }
+}

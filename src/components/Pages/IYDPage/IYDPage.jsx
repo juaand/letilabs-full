@@ -5,6 +5,7 @@ import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import BottomCta from './BottomCta/BottomCta'
+import Goals from './Goals/Goals'
 
 function IYDPage() {
     const {user} = useAuthContext()
@@ -49,6 +50,7 @@ function IYDPage() {
             <main>
                 <Banner />
                 <InfoCards />
+                <Goals />
                 <BottomCta />
             </main>
         </>
