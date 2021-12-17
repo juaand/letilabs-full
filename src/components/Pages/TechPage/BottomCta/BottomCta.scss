@@ -33,7 +33,7 @@
       }
 
       .BottomCta__equipo,
-      .BottomCta__novedades {
+      .BottomCta__manufactura {
         transform: scale(1.2);
 
         &:before {
@@ -45,7 +45,7 @@
   }
 
   &__equipo,
-  &__novedades {
+  &__manufactura {
     width: auto;
     height: 50rem;
     transition: all 0.2s ease-in-out;
@@ -62,13 +62,12 @@
   }
 
   &__equipo {
-    background: url(../../../../images/iyd-equipo.jpg)
-      no-repeat center / cover;
+    background: url(../../../../images/tech-equipo.jpg) no-repeat center / cover;
   }
 
-  &__novedades {
-    background: url(../../../../images/iyd-novedades.jpg)
-      no-repeat center center / cover;
+  &__manufactura {
+    background: url(../../../../images/tech-manufactura.jpg) no-repeat center
+      center / cover;
   }
 }
 
@@ -88,7 +87,7 @@
     }
 
     &__equipo,
-    &__novedades {
+    &__manufactura {
       height: 30rem;
     }
   }

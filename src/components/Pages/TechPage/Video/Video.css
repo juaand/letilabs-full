@@ -1,0 +1,24 @@
+.Video__tech {
+  height: 70rem;
+  background: url(../../../../images/tech-video-bg.jpg) no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Video__tech-title {
+  background: #f5f5f5;
+  text-align: center;
+  size: 5.5rem;
+  padding: 6rem 0;
+}
+
+.Video__tech-title h1 {
+  margin: 0;
+}
+
+@media (max-width: 576px) {
+  .Video__tech {
+    height: 30rem;
+  }
+}

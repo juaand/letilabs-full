@@ -1,0 +1,52 @@
+@import '../../../../stylesheets/variables.scss';
+
+.Map {
+  background: $leti-back;
+  margin-top: 45rem;
+  position: relative;
+
+  &__image {
+    background: url(../../../../images/tech-map-image.png) no-repeat center
+      center / cover;
+    height: 50rem;
+    padding: 0;
+    position: absolute;
+    left: 0;
+    top: -25rem;
+  }
+
+  &__info {
+    font-size: 2.4rem;
+    padding: 10rem 0;
+
+    p {
+      width: 30rem;
+      padding-left: 3rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Map {
+    margin-top: 13.5rem;
+
+    &__image {
+      height: 35rem;
+      position: static;
+
+      iframe {
+        height: 35rem;
+      }
+    }
+
+    &__info {
+      font-size: 1.6rem;
+      padding: 4rem 2rem;
+
+      p {
+        width: unset;
+        padding: 0;
+      }
+    }
+  }
+}

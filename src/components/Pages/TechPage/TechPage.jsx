@@ -3,6 +3,8 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
+import Video from './Video/Video'
+import Map from './Map/Map'
 import BottomCta from './BottomCta/BottomCta'
 
 function TechPage() {
@@ -47,6 +49,8 @@ function TechPage() {
             </Helmet>
             <main>
                 <Banner />
+                <Video />
+                <Map />
                 <BottomCta />
             </main>
         </>
