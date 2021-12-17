@@ -1,13 +1,13 @@
-.Banner__AreasTerapeuticas {
+.Banner__IYD {
   position: relative;
 }
 
-.Banner__AreasTerapeuticas-logo {
+.Banner__IYD-logo {
   margin-top: 6rem;
   display: block;
 }
 
-.Banner__AreasTerapeuticas__title {
+.Banner__IYD__title {
   height: 70rem;
   display: flex;
   align-items: flex-start;
@@ -15,24 +15,24 @@
   justify-content: center;
 }
 
-.Banner__AreasTerapeuticas__title h3 {
+.Banner__IYD__title h3 {
   font-size: 3rem;
   font-family: 'Mulish', sans-serif;
   font-weight: 500;
   margin: 1rem auto 10rem auto;
 }
 
-.Banner__AreasTerapeuticas__bg {
+.Banner__IYD__bg {
   position: absolute;
   width: 54rem;
   height: 54rem;
-  background: url(../../../../images/areas-terapeuticas-banner.png) no-repeat center/contain;
+  background: url(../../../../images/iyd-banner.png) no-repeat center/contain;
   right: -6rem;
   top: -10rem;
   transform: rotate(0deg);
 }
 
-.Banner__AreasTerapeuticas__blue {
+.Banner__IYD__blue {
   position: absolute;
   width: 44rem;
   height: 44rem;
