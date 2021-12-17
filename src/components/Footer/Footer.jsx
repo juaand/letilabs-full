@@ -30,7 +30,7 @@ function Footer() {
                             <div className="Footer__info">
                                 <ul>
                                     <li>
-                                        <a href="mailto:info@grupoleti.com">info@grupoleti.com</a>
+                                        <a href="mailto:comunicaciones.leti@leti.com.ve">comunicaciones.leti@leti.com.ve</a>
                                     </li>
                                     <li>
                                         <a href="tel:+582123602511">+582123602511</a>

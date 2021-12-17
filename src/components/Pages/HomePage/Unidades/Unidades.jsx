@@ -34,7 +34,7 @@ function Unidades() {
                                 <div className="row Unidades__row justify-content-end">
                                     <div className="col-12 col-sm-4 Unidades__desc Unidades__desc__right">
                                         <p>{el.desc}</p>
-                                        <Link to="/" className="Unidades__square-btn"></Link>
+                                        <Link to={`/${seoURL(el.name).toLowerCase()}`} className="Unidades__square-btn"></Link>
                                     </div>
                                     <div className="col-12 col-sm-5 Unidades__logo" style={{
                                         background: `#f5f5f5 url("./images/${el.name.toLowerCase()}.svg") no-repeat center center / contain`

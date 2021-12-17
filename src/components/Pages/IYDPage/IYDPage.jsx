@@ -1,18 +1,17 @@
-import './AreasTerapeuticasPage.css'
 import React, {useEffect} from 'react'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
-import Timeline from './Timeline/Timeline'
+import InfoCards from './InfoCards/InfoCards'
 import BottomCta from './BottomCta/BottomCta'
 
-function AreasTerapeuticasPage() {
+function IYDPage() {
     const {user} = useAuthContext()
     const data = {
         content: [],
-        url: '/areas-terapeuticas',
-        name: 'Áreas terapéuticas',
+        url: '/investigacion-y-desarrollo',
+        name: 'Investigación y desarrollo',
     }
 
     useEffect(() => {
@@ -40,22 +39,20 @@ function AreasTerapeuticasPage() {
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
     return (
         <>
-
             <Helmet>
-                <title>Grupo Leti | Áreas terapéuticas</title>
-                <meta name="description" content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
-                <meta name="keywords" content="Grupo Leti, Áreas Terapéuticas" />
+                <title>Grupo Leti | Investigación y desarrollo</title>
+                <meta name="description" content="Para nosotros siempre ha sido prioridad contar con la tecnlogía e infraestructura que nos permita desarrollar los mejores productos, y además en las cantidades necesarias para cuidar de la salud de todo el país." />
+                <meta name="keywords" content="Grupo Leti, Investigación y desarrollo" />
             </Helmet>
             <main>
                 <Banner />
-                <Timeline />
+                <InfoCards />
                 <BottomCta />
             </main>
         </>
     )
 }
 
-export default AreasTerapeuticasPage
+export default IYDPage

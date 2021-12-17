@@ -1,0 +1,110 @@
+@import '../../../../stylesheets/variables';
+
+.AreasTimeline {
+  position: relative;
+  background: $leti-back;
+  padding: 8rem 0;
+
+  &__image {
+    height: 40rem;
+    padding: 0;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: $leti-back;
+  }
+
+  &__title {
+    font-family: 'TripletaBold';
+    font-size: 3rem;
+    color: $leti-red;
+    display: block;
+    margin-top: 12rem;
+  }
+
+  &__desc {
+    padding: 2rem 20rem 2rem 4rem;
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-bottom: 5rem;
+    background: $leti-subnav;
+    font-size: 1.8rem;
+    color: $leti-text;
+    font-weight: 400;
+    height: 20rem;
+
+  }
+
+  .slick-slider {
+    position: relative;
+    display: block;
+
+    .slick-next,
+    .slick-prev {
+      width: 4rem;
+      height: 4rem;
+      z-index: 4;
+      opacity: 0.4;
+      transition: all 200ms ease-in-out;
+      position: absolute;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      &:before {
+        content: '';
+      }
+    }
+
+    .slick-next {
+      background: url(../../../../images/next-arrow.svg) no-repeat center center /
+        contain;
+      transform: rotate(90deg);
+    }
+
+    .slick-prev {
+      background: url(../../../../images/prev-arrow.svg) no-repeat center center /
+        contain;
+      transform: rotate(90deg);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Timeline {
+    &__image {
+      height: 38rem;
+    }
+
+    &__year {
+      font-size: 7rem;
+      margin-left: 2rem;
+      margin-top: 7rem;
+    }
+
+    &__desc {
+      padding: 2rem 4rem 0 4rem;
+      font-size: 1.6rem;
+      line-height: 3rem;
+      margin-top: 8rem;
+    }
+
+    .slick-next {
+      transform: translate(-24rem, 8rem) !important;
+    }
+
+    .slick-prev {
+      transform: translate(6rem, 8rem) !important;
+    }
+
+    &__info {
+      &:after {
+        content: unset;
+      }
+    }
+  }
+}

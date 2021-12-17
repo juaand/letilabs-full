@@ -9,7 +9,7 @@ function Banner() {
                 <div className="row d-flex">
                     <div className="col-12 col-sm-6 Banner__ourCompanies__title">
                         <Fade direction="left" duration={600} triggerOnce>
-                            <h1>Nos conformamos por tres grandes unidades de negocio, que se dedican a diferentes áreas, pero trabajan entre ellas para lograr <span className="blue-text">mejores resultados</span></h1>
+                            <h1>Sustentados por tres grandes unidades de negocio, que se ocupan de áreas específicas, y se integran entre ellas para lograr <span className="blue-text">mejores resultados</span></h1>
                         </Fade>
                     </div>
                     <div className="col-12 col-sm-6 Banner__ourCompanies__bg">

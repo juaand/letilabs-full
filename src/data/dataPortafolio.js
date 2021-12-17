@@ -16,7 +16,7 @@ const dataPortafolio = [
   },
   {
     id: 4,
-    title: 'Naturales',
+    title: 'Fitomedicamentos',
     desc: 'Medicamentos con principios activos naturales estandarizados, con aval científico y licencias internacionales.'
   }
 ]
