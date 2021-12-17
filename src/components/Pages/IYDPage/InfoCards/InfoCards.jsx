@@ -16,7 +16,6 @@ function InfoCards() {
                         </>)}
                 </Fade>
             </div>
-
         </section>
     )
 }

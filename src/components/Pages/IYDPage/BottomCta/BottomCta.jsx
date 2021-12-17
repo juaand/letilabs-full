@@ -8,21 +8,20 @@ function BottomCta() {
         <section className="container-fluid BottomCta">
             <div className="row">
                 <div className="col-12 col-sm-6 p-0 BottomCta__img">
-                    <div className="BottomCta__portfolio" />
+                    <div className="BottomCta__equipo" />
                     <div className="BottomCta__title">
                         <Fade direction="up" triggerOnce>
-                            <h2>Conoce nuestro amplio portafolio</h2>
-                            <Link to="/" className="leti-btn" rel="noopener noreferrer">Listado de productos</Link>
+                            <h2>Impulsados por el propósito y compromiso</h2>
+                            <Link to="/" className="leti-btn" rel="noopener noreferrer">Conoce a nuestra gente</Link>
                         </Fade>
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 p-0 BottomCta__img">
-                    <div className="BottomCta__investigacion" />
+                    <div className="BottomCta__novedades" />
                     <div className="BottomCta__title">
                         <Fade cascade delay={300} direction="up" triggerOnce>
-                            <h2>Nos apasionan las nuevas ideas y la innovación
-                            </h2>
-                            <Link to="/" className="leti-btn" rel="noopener noreferrer">Conoce nuestra investigación</Link>
+                            <h2>Entérate de las novedades</h2>
+                            <Link to="/" className="leti-btn" rel="noopener noreferrer">Lee más</Link>
                         </Fade>
                     </div>
                 </div>

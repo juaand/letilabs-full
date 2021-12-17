@@ -32,8 +32,8 @@
         border-width: 0.3rem;
       }
 
-      .BottomCta__investigacion,
-      .BottomCta__portfolio {
+      .BottomCta__equipo,
+      .BottomCta__novedades {
         transform: scale(1.2);
 
         &:before {
@@ -44,8 +44,8 @@
     }
   }
 
-  &__investigacion,
-  &__portfolio {
+  &__equipo,
+  &__novedades {
     width: auto;
     height: 50rem;
     transition: all 0.2s ease-in-out;
@@ -61,13 +61,13 @@
     }
   }
 
-  &__investigacion {
-    background: url(../../../../images/areas-terapeuticas-investigacion.jpg)
+  &__equipo {
+    background: url(../../../../images/iyd-equipo.jpg)
       no-repeat center / cover;
   }
 
-  &__portfolio {
-    background: url(../../../../images/areas-terapeuticas-portfolio.jpg)
+  &__novedades {
+    background: url(../../../../images/iyd-novedades.jpg)
       no-repeat center center / cover;
   }
 }
@@ -87,8 +87,8 @@
       }
     }
 
-    &__investigacion,
-    &__portfolio {
+    &__equipo,
+    &__novedades {
       height: 30rem;
 
       &:before {
