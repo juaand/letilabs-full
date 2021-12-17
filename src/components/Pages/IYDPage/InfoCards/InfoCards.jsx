@@ -2,6 +2,7 @@ import './InfoCards.css'
 import React from 'react'
 import dataIyd from '../../../../data/dataIyd'
 import {Fade} from 'react-awesome-reveal'
+import {Link} from 'react-router-dom'
 
 
 function InfoCards() {
@@ -13,7 +14,9 @@ function InfoCards() {
                         <>
                             <h4>{el.title}</h4>
                             <p>{el.info}</p>
-                        </>)}
+                            <Link to={el.btn} className="leti-btn InfoGoals__btn" />
+                        </>
+                    )}
                 </Fade>
             </div>
         </section>

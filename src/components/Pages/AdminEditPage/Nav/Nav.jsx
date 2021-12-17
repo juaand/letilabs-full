@@ -31,6 +31,9 @@ function Nav({getActiveItem}) {
         setTimeout(() => {history.push("/biocontrolled")}, 1)
         setTimeout(() => {history.push("/areas-terapeuticas")}, 1)
         setTimeout(() => {history.push("/investigacion-y-desarrollo")}, 1)
+        setTimeout(() => {history.push("/tecnologia")}, 1)
+        setTimeout(() => {history.push("/manufactura")}, 1)
+        setTimeout(() => {history.push("/alianzas")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
 

@@ -3,6 +3,19 @@
 .InfoCards {
   min-height: 35rem;
 
+  .InfoGoals {
+    &__btn {
+      width: 6rem;
+      height: 6rem;
+      margin-top: 2rem;
+      background: url(../../../../images/plus.svg) no-repeat center;
+
+      &:hover {
+        background: $leti-blue url(../../../../images/plus-white.svg) no-repeat center;
+      }
+    }
+  }
+
   &__cards {
     background: $leti-back;
     padding: 4rem;

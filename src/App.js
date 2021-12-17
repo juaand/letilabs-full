@@ -18,6 +18,7 @@ import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/AreasTerapeuticasPage'
 import IYDPage from './components/Pages/IYDPage/IYDPage'
+import TechPage from './components/Pages/TechPage/TechPage'
 
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route exact path="/biocontrolled" render={(props) => <BiocontrolledPage {...props} />} />
         <Route exact path="/areas-terapeuticas" render={(props) => <AreasTerapeuticasPage {...props} />} />
         <Route exact path="/investigacion-y-desarrollo" render={(props) => <IYDPage {...props} />} />
+        <Route exact path="/tecnologia" render={(props) => <TechPage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
