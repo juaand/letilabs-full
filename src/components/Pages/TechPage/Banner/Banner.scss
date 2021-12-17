@@ -1,7 +1,7 @@
 @import '../../../../stylesheets/variables';
 
 .Banner {
-  &__IYD {
+  &__Tech {
     position: relative;
     &-logo {
       margin-top: 6rem;
@@ -27,7 +27,7 @@
       position: absolute;
       width: 54rem;
       height: 54rem;
-      background: url(../../../../images/iyd-banner.png) no-repeat center /
+      background: url(../../../../images/tech-banner.png) no-repeat center /
         contain;
       right: -6rem;
       top: -10rem;
@@ -49,7 +49,7 @@
 
 @media (max-width: 576px) {
   .Banner {
-    &__IYD {
+    &__Tech {
       &-logo {
         width: 28rem;
         margin-top: 5rem;
@@ -59,7 +59,7 @@
         height: 85rem;
         justify-content: flex-start;
         margin-top: 6rem;
-        
+
         h3 {
           font-size: 2rem;
           margin: 0rem auto 8rem auto;
