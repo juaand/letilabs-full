@@ -4,6 +4,7 @@ import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
+import Carousel from './Carousel/Carousel'
 import BottomCta from './BottomCta/BottomCta'
 
 
@@ -51,6 +52,7 @@ function AlliancesPage() {
             </Helmet>
             <main>
                 <Banner />
+                <Carousel />
                 <BottomCta />
             </main>
         </>
