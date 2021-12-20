@@ -6,6 +6,7 @@ import {createContent} from '../../../services/ApiClient'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Director from './Director/Director'
+import BottomCta from './BottomCta/BottomCta'
 
 function OurPeoplePage() {
 
@@ -49,6 +50,7 @@ function OurPeoplePage() {
                 <Banner />
                 <InfoCards />
                 <Director />
+                <BottomCta />
             </main>
         </>
     )

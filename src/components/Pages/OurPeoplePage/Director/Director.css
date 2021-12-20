@@ -6,11 +6,11 @@
 
 .Director__image {
   background: url(../../../../images/director-image.jpg) no-repeat center center/cover;
-  height: 60rem;
+  height: 61rem;
   padding: 0;
   position: absolute;
   left: 0;
-  top: -25rem;
+  top: -35rem;
 }
 
 .Director__info {
@@ -37,19 +37,26 @@
 }
 
 @media (max-width: 576px) {
-  .Map {
-    margin-top: 13.5rem;
+  .Director {
+    margin-top: 0rem;
   }
-  .Map__image {
+  .Director__image {
     height: 35rem;
     position: static;
   }
-  .Map__info {
+  .Director__info {
     font-size: 1.6rem;
     padding: 4rem 2rem;
   }
-  .Map__info p {
+  .Director__info h1 {
+    position: static;
+    font-size: 3.6rem;
+  }
+  .Director__info p {
     width: unset;
     padding: 0;
+  }
+  .Director__info .leti-btn {
+    margin-left: 0;
   }
 }

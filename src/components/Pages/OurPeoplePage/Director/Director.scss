@@ -8,11 +8,11 @@
   &__image {
     background: url(../../../../images/director-image.jpg) no-repeat center
       center / cover;
-    height: 60rem;
+    height: 61rem;
     padding: 0;
     position: absolute;
     left: 0;
-    top: -25rem;
+    top: -35rem;
   }
 
   &__info {
@@ -40,8 +40,8 @@
 }
 
 @media (max-width: 576px) {
-  .Map {
-    margin-top: 13.5rem;
+  .Director {
+    margin-top: 0rem;
 
     &__image {
       height: 35rem;
@@ -52,9 +52,18 @@
       font-size: 1.6rem;
       padding: 4rem 2rem;
 
+      h1 {
+        position: static;
+        font-size: 3.6rem;
+      }
+
       p {
         width: unset;
         padding: 0;
+      }
+
+      .leti-btn {
+        margin-left: 0;
       }
     }
   }
