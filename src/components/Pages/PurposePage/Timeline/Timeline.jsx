@@ -2,7 +2,6 @@ import './Timeline.css'
 import React, {useEffect} from 'react'
 import Slider from "react-slick"
 import purposeTimeline from '../../../../data/purposeTimeline'
-import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
 
 function Timeline() {
