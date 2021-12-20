@@ -1,0 +1,48 @@
+@import '../../../../stylesheets/variables.scss';
+
+.Certificate {
+  position: relative;
+
+  &__visible {
+    overflow: visible;
+  }
+
+  &__img {
+    background: $leti-back;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20rem;
+    position: absolute;
+    left: 0;
+    width: 40%;
+    height: 55rem;
+    text-align: center;
+  }
+
+  &__info {
+    height: 55rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 6rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .Certificate {
+    &__img {
+      width: 100%;
+      height: 37rem;
+      position: static;
+      padding: 0 2rem;
+      font-size: 1.6rem;
+    }
+
+    &__info {
+      height: 37rem;
+      margin-bottom: 3rem;
+      font-size: 1.6rem;
+    }
+  }
+}

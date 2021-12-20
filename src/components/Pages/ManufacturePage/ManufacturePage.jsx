@@ -6,6 +6,7 @@ import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import BottomCta from './BottomCta/BottomCta'
 import Carousel from './Carousel/Carousel'
+import Certificate from './Certificate/Certificate'
 
 function ManufacturePage() {
     const {user} = useAuthContext()
@@ -50,6 +51,7 @@ function ManufacturePage() {
             <main>
                 <Banner />
                 <Carousel />
+                <Certificate />
                 <BottomCta />
             </main>
         </>
