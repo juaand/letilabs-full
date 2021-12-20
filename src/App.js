@@ -19,6 +19,7 @@ import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/AreasTerapeuticasPage'
 import IYDPage from './components/Pages/IYDPage/IYDPage'
 import TechPage from './components/Pages/TechPage/TechPage'
+import ManufacturePage from './components/Pages/ManufacturePage/ManufacturePage'
 
 
 
@@ -39,6 +40,7 @@ function App() {
         <Route exact path="/areas-terapeuticas" render={(props) => <AreasTerapeuticasPage {...props} />} />
         <Route exact path="/investigacion-y-desarrollo" render={(props) => <IYDPage {...props} />} />
         <Route exact path="/tecnologia" render={(props) => <TechPage {...props} />} />
+        <Route exact path="/manufactura" render={(props) => <ManufacturePage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
