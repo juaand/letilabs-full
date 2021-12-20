@@ -1,0 +1,76 @@
+.Banner__Purpose {
+  background: #fbfbfb;
+  position: relative;
+  overflow: hidden;
+}
+
+.Banner__Purpose__title {
+  height: 70rem;
+  display: flex;
+  align-items: center;
+}
+
+.Banner__Purpose__bg [class*='css-'] {
+  height: 70rem;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.Banner__Purpose__bg [class*='css-'] img {
+  height: 70%;
+}
+
+.Banner__Purpose .leti-red-triangle,
+.Banner__Purpose .leti-blue-triangle {
+  position: absolute;
+  z-index: 0;
+  transform: rotate(0);
+}
+
+.Banner__Purpose .leti-red-triangle {
+  background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
+  width: 75rem;
+  height: 75rem;
+  right: -8rem;
+  top: 0rem;
+}
+
+.Banner__Purpose .leti-blue-triangle {
+  background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
+  width: 55rem;
+  height: 55rem;
+  right: 5rem;
+  top: 15rem;
+}
+
+@media (max-width: 576px) {
+  .Banner__Purpose__title {
+    height: 70rem;
+    align-items: flex-start;
+  }
+  .Banner__Purpose__title h1 {
+    margin-top: 3rem;
+  }
+  .Banner__Purpose__bg [class*='css-'] {
+    right: -15%;
+  }
+  .Banner__Purpose__bg [class*='css-'] img {
+    height: 55%;
+  }
+  .Banner__Purpose .leti-red-triangle {
+    width: 35rem;
+    height: 35rem;
+    right: -5%;
+    top: 55%;
+  }
+  .Banner__Purpose .leti-blue-triangle {
+    width: 35rem;
+    height: 35rem;
+    right: -25%;
+    top: 65%;
+  }
+}

@@ -21,6 +21,7 @@ import IYDPage from './components/Pages/IYDPage/IYDPage'
 import TechPage from './components/Pages/TechPage/TechPage'
 import ManufacturePage from './components/Pages/ManufacturePage/ManufacturePage'
 import AlliancesPage from './components/Pages/AlliancesPage/AlliancesPage'
+import PurposePage from './components/Pages/PurposePage/PurposePage'
 
 
 
@@ -43,6 +44,8 @@ function App() {
         <Route exact path="/tecnologia" render={(props) => <TechPage {...props} />} />
         <Route exact path="/manufactura" render={(props) => <ManufacturePage {...props} />} />
         <Route exact path="/alianzas" render={(props) => <AlliancesPage {...props} />} />
+        <Route exact path="/proposito-y-responsabilidad-social" render={(props) =>
+          <PurposePage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
