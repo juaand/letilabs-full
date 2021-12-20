@@ -29,24 +29,24 @@
   border-width: 0.3rem;
 }
 
-.BottomCta__img:hover .BottomCta__terapias,
-.BottomCta__img:hover .BottomCta__medicamento {
+.BottomCta__img:hover .BottomCta__aliadonuevo,
+.BottomCta__img:hover .BottomCta__aliadoantiguo {
   transform: scale(1.2);
 }
 
-.BottomCta__img:hover .BottomCta__terapias:before,
-.BottomCta__img:hover .BottomCta__medicamento:before {
+.BottomCta__img:hover .BottomCta__aliadonuevo:before,
+.BottomCta__img:hover .BottomCta__aliadoantiguo:before {
   opacity: 1;
   background: rgba(5, 90, 165, 0.8);
 }
 
-.BottomCta__terapias, .BottomCta__medicamento {
+.BottomCta__aliadonuevo, .BottomCta__aliadoantiguo {
   width: auto;
   height: 50rem;
   transition: all 0.2s ease-in-out;
 }
 
-.BottomCta__terapias:before, .BottomCta__medicamento:before {
+.BottomCta__aliadonuevo:before, .BottomCta__aliadoantiguo:before {
   content: '';
   width: 100%;
   height: 100%;
@@ -56,12 +56,12 @@
   opacity: 1;
 }
 
-.BottomCta__terapias {
-  background: url(../../../../images/manufactura-terapias.jpg) no-repeat center/cover;
+.BottomCta__aliadonuevo {
+  background: url(../../../../images/aliado-nuevo.jpg) no-repeat center/cover;
 }
 
-.BottomCta__medicamento {
-  background: url(../../../../images/manufactura-medicamento.jpg) no-repeat center center/cover;
+.BottomCta__aliadoantiguo {
+  background: url(../../../../images/aliado-antiguo.jpg) no-repeat center center/cover;
 }
 
 @media (max-width: 576px) {
@@ -75,7 +75,7 @@
   .BottomCta__title .leti-btn {
     opacity: 1;
   }
-  .BottomCta__terapias, .BottomCta__medicamento {
+  .BottomCta__aliadonuevo, .BottomCta__aliadoantiguo {
     height: 30rem;
   }
 }

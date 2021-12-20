@@ -32,8 +32,8 @@
         border-width: 0.3rem;
       }
 
-      .BottomCta__terapias,
-      .BottomCta__medicamento {
+      .BottomCta__aliadonuevo,
+      .BottomCta__aliadoantiguo {
         transform: scale(1.2);
 
         &:before {
@@ -44,8 +44,8 @@
     }
   }
 
-  &__terapias,
-  &__medicamento {
+  &__aliadonuevo,
+  &__aliadoantiguo {
     width: auto;
     height: 50rem;
     transition: all 0.2s ease-in-out;
@@ -61,14 +61,14 @@
     }
   }
 
-  &__terapias {
-    background: url(../../../../images/manufactura-terapias.jpg) no-repeat
-      center / cover;
+  &__aliadonuevo {
+    background: url(../../../../images/aliado-nuevo.jpg) no-repeat center /
+      cover;
   }
 
-  &__medicamento {
-    background: url(../../../../images/manufactura-medicamento.jpg) no-repeat
-      center center / cover;
+  &__aliadoantiguo {
+    background: url(../../../../images/aliado-antiguo.jpg) no-repeat center
+      center / cover;
   }
 }
 
@@ -87,8 +87,8 @@
       }
     }
 
-    &__terapias,
-    &__medicamento {
+    &__aliadonuevo,
+    &__aliadoantiguo {
       height: 30rem;
     }
   }
