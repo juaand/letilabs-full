@@ -5,6 +5,7 @@ import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import BottomCta from './BottomCta/BottomCta'
+import Carousel from './Carousel/Carousel'
 
 function ManufacturePage() {
     const {user} = useAuthContext()
@@ -48,6 +49,7 @@ function ManufacturePage() {
             </Helmet>
             <main>
                 <Banner />
+                <Carousel />
                 <BottomCta />
             </main>
         </>
