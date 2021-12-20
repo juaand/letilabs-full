@@ -15,7 +15,7 @@ function Banner() {
                     </div>
                     <div className="col-12 col-sm-6 Banner__OurPeople__bg">
                         <Fade delay={300} duration={600} triggerOnce>
-                            <img src="/images/purpose-bg.png" alt="Propósito y responsabilidad social banner" />
+                            <img src="/images/our-people-bg.png" alt="Propósito y responsabilidad social banner" />
                         </Fade>
                     </div>
                 </div>

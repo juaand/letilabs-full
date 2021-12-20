@@ -8,10 +8,17 @@
   height: 70rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Banner__OurPeople__title h1 {
+  font-size: 5.4rem;
+  margin-bottom: 4rem;
 }
 
 .Banner__OurPeople__bg [class*='css-'] {
-  height: 70rem;
+  height: 90rem;
   position: absolute;
   bottom: 0;
   right: 0;
