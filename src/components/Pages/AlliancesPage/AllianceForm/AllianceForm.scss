@@ -1,0 +1,25 @@
+@import '../../../../stylesheets/variables';
+
+.AllianceForm {
+  &__links {
+    a {
+      color: $leti-blue;
+      text-decoration: none;
+      font-size: 2rem;
+      margin-right: 2rem;
+    }
+  }
+
+  &__form {
+    margin: 6rem 0 12rem 0;
+  }
+
+  .DropdownWithLabel {
+    &.mt-5 {
+      margin-top: 2rem !important;
+    }
+    label {
+      margin-bottom: 1rem;
+    }
+  }
+}

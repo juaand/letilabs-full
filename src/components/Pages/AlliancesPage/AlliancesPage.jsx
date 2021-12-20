@@ -6,6 +6,7 @@ import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import Carousel from './Carousel/Carousel'
 import BottomCta from './BottomCta/BottomCta'
+import AllianceForm from './AllianceForm/AllianceForm'
 
 
 function AlliancesPage() {
@@ -53,6 +54,7 @@ function AlliancesPage() {
             <main>
                 <Banner />
                 <Carousel />
+                <AllianceForm />
                 <BottomCta />
             </main>
         </>

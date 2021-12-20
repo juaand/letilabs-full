@@ -1,0 +1,18 @@
+.AllianceForm__links a {
+  color: #055aa5;
+  text-decoration: none;
+  font-size: 2rem;
+  margin-right: 2rem;
+}
+
+.AllianceForm__form {
+  margin: 6rem 0 12rem 0;
+}
+
+.AllianceForm .DropdownWithLabel.mt-5 {
+  margin-top: 2rem !important;
+}
+
+.AllianceForm .DropdownWithLabel label {
+  margin-bottom: 1rem;
+}
