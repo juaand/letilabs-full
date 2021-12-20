@@ -29,24 +29,24 @@
   border-width: 0.3rem;
 }
 
-.BottomCta__img:hover .BottomCta__talento,
-.BottomCta__img:hover .BottomCta__megat {
+.BottomCta__img:hover .BottomCta__terapias,
+.BottomCta__img:hover .BottomCta__medicamento {
   transform: scale(1.2);
 }
 
-.BottomCta__img:hover .BottomCta__talento:before,
-.BottomCta__img:hover .BottomCta__megat:before {
+.BottomCta__img:hover .BottomCta__terapias:before,
+.BottomCta__img:hover .BottomCta__medicamento:before {
   opacity: 1;
   background: rgba(5, 90, 165, 0.8);
 }
 
-.BottomCta__talento, .BottomCta__megat {
+.BottomCta__terapias, .BottomCta__medicamento {
   width: auto;
   height: 50rem;
   transition: all 0.2s ease-in-out;
 }
 
-.BottomCta__talento:before, .BottomCta__megat:before {
+.BottomCta__terapias:before, .BottomCta__medicamento:before {
   content: '';
   width: 100%;
   height: 100%;
@@ -56,12 +56,12 @@
   opacity: 1;
 }
 
-.BottomCta__talento {
-  background: url(../../../../images/nuestras-empresas-talento.jpg) no-repeat center/cover;
+.BottomCta__terapias {
+  background: url(../../../../images/manufactura-terapias.jpg) no-repeat center/cover;
 }
 
-.BottomCta__megat {
-  background: url(../../../../images/nuestras-empresas-megat.jpg) no-repeat center center/cover;
+.BottomCta__medicamento {
+  background: url(../../../../images/manufactura-medicamento.jpg) no-repeat center center/cover;
 }
 
 @media (max-width: 576px) {
@@ -75,7 +75,7 @@
   .BottomCta__title .leti-btn {
     opacity: 1;
   }
-  .BottomCta__talento, .BottomCta__megat {
+  .BottomCta__terapias, .BottomCta__medicamento {
     height: 30rem;
   }
 }

@@ -32,8 +32,8 @@
         border-width: 0.3rem;
       }
 
-      .BottomCta__talento,
-      .BottomCta__megat {
+      .BottomCta__terapias,
+      .BottomCta__medicamento {
         transform: scale(1.2);
 
         &:before {
@@ -44,8 +44,8 @@
     }
   }
 
-  &__talento,
-  &__megat {
+  &__terapias,
+  &__medicamento {
     width: auto;
     height: 50rem;
     transition: all 0.2s ease-in-out;
@@ -61,13 +61,13 @@
     }
   }
 
-  &__talento {
-    background: url(../../../../images/nuestras-empresas-talento.jpg) no-repeat
+  &__terapias {
+    background: url(../../../../images/manufactura-terapias.jpg) no-repeat
       center / cover;
   }
 
-  &__megat {
-    background: url(../../../../images/nuestras-empresas-megat.jpg) no-repeat
+  &__medicamento {
+    background: url(../../../../images/manufactura-medicamento.jpg) no-repeat
       center center / cover;
   }
 }
@@ -87,8 +87,8 @@
       }
     }
 
-    &__talento,
-    &__megat {
+    &__terapias,
+    &__medicamento {
       height: 30rem;
     }
   }

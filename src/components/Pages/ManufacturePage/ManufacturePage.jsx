@@ -46,7 +46,7 @@ function ManufacturePage() {
                 <meta name="description" content="Diariamente se manufacturan XX cantidades de todo tipo de medicinas, que salen de la planta para ser distribuidos en todo el país." />
                 <meta name="keywords" content="Grupo Leti, Manufactura" />
             </Helmet>
-            <main className="Tech">
+            <main>
                 <Banner />
                 <BottomCta />
             </main>
