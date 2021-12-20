@@ -5,6 +5,7 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
+import Director from './Director/Director'
 
 function OurPeoplePage() {
 
@@ -47,6 +48,7 @@ function OurPeoplePage() {
             <main>
                 <Banner />
                 <InfoCards />
+                <Director />
             </main>
         </>
     )

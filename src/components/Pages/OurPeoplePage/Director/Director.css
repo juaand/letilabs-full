@@ -1,0 +1,55 @@
+.Director {
+  background: #f5f5f5;
+  margin-top: 45rem;
+  position: relative;
+}
+
+.Director__image {
+  background: url(../../../../images/director-image.jpg) no-repeat center center/cover;
+  height: 60rem;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: -25rem;
+}
+
+.Director__info {
+  font-size: 2.4rem;
+  padding: 10rem 0;
+  position: relative;
+}
+
+.Director__info h1 {
+  position: absolute;
+  left: 3rem;
+  font-size: 5rem;
+  top: -20rem;
+}
+
+.Director__info p {
+  width: 30rem;
+  padding-left: 3rem;
+  margin-bottom: 3rem;
+}
+
+.Director__info .leti-btn {
+  margin-left: 3rem;
+}
+
+@media (max-width: 576px) {
+  .Map {
+    margin-top: 13.5rem;
+  }
+  .Map__image {
+    height: 35rem;
+    position: static;
+  }
+  .Map__info {
+    font-size: 1.6rem;
+    padding: 4rem 2rem;
+  }
+  .Map__info p {
+    width: unset;
+    padding: 0;
+  }
+}
