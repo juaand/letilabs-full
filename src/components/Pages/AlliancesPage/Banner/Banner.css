@@ -1,0 +1,72 @@
+.Banner__Manufacture {
+  position: relative;
+}
+
+.Banner__Manufacture-logo {
+  margin-top: 6rem;
+  display: block;
+}
+
+.Banner__Manufacture__title {
+  height: 70rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Banner__Manufacture__title h3 {
+  font-size: 3rem;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+  margin: 1rem auto 10rem auto;
+}
+
+.Banner__Manufacture__bg {
+  position: absolute;
+  width: 54rem;
+  height: 54rem;
+  background: url(../../../../images/manufacture-banner.png) no-repeat center/contain;
+  right: -6rem;
+  top: -10rem;
+  transform: rotate(0deg);
+}
+
+.Banner__Manufacture__blue {
+  position: absolute;
+  width: 44rem;
+  height: 44rem;
+  background: url(../../../../images/leti-blue-banner.png) no-repeat center/contain;
+  right: -6rem;
+  top: 12rem;
+  transform: rotate(0deg);
+}
+
+@media (max-width: 576px) {
+  .Banner__Manufacture-logo {
+    width: 28rem;
+    margin-top: 5rem;
+  }
+  .Banner__Manufacture__title {
+    height: 85rem;
+    justify-content: flex-start;
+    margin-top: 6rem;
+  }
+  .Banner__Manufacture__title h3 {
+    font-size: 2rem;
+    margin: 0rem auto 8rem auto;
+    line-height: 2.8rem;
+  }
+  .Banner__Manufacture__bg {
+    width: 38rem;
+    height: 38rem;
+    right: -6rem;
+    top: 32rem;
+  }
+  .Banner__Manufacture__blue {
+    width: 30rem;
+    height: 30rem;
+    right: -6rem;
+    top: 48rem;
+  }
+}

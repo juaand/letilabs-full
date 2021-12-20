@@ -20,6 +20,7 @@ import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/Area
 import IYDPage from './components/Pages/IYDPage/IYDPage'
 import TechPage from './components/Pages/TechPage/TechPage'
 import ManufacturePage from './components/Pages/ManufacturePage/ManufacturePage'
+import AlliancesPage from './components/Pages/AlliancesPage/AlliancesPage'
 
 
 
@@ -41,6 +42,7 @@ function App() {
         <Route exact path="/investigacion-y-desarrollo" render={(props) => <IYDPage {...props} />} />
         <Route exact path="/tecnologia" render={(props) => <TechPage {...props} />} />
         <Route exact path="/manufactura" render={(props) => <ManufacturePage {...props} />} />
+        <Route exact path="/alianzas" render={(props) => <AlliancesPage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
