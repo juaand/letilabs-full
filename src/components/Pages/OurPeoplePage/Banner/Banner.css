@@ -55,26 +55,31 @@
 }
 
 @media (max-width: 576px) {
-  .Banner__Purpose__title {
-    height: 70rem;
+  .Banner__OurPeople__title {
+    height: 90rem;
     align-items: flex-start;
+    justify-content: flex-start;
   }
-  .Banner__Purpose__title h1 {
+  .Banner__OurPeople__title h1 {
     margin-top: 3rem;
+    font-size: 3.2rem;
   }
-  .Banner__Purpose__bg [class*='css-'] {
-    right: -15%;
+  .Banner__OurPeople__title p {
+    font-size: 2rem;
   }
-  .Banner__Purpose__bg [class*='css-'] img {
-    height: 55%;
+  .Banner__OurPeople__bg [class*='css-'] {
+    right: 10%;
   }
-  .Banner__Purpose .leti-red-triangle {
+  .Banner__OurPeople__bg [class*='css-'] img {
+    height: 45%;
+  }
+  .Banner__OurPeople .leti-red-triangle {
     width: 35rem;
     height: 35rem;
     right: -5%;
     top: 55%;
   }
-  .Banner__Purpose .leti-blue-triangle {
+  .Banner__OurPeople .leti-blue-triangle {
     width: 35rem;
     height: 35rem;
     right: -25%;

@@ -63,22 +63,27 @@
 
 @media (max-width: 576px) {
   .Banner {
-    &__Purpose {
+    &__OurPeople {
       &__title {
-        height: 70rem;
+        height: 90rem;
         align-items: flex-start;
+        justify-content: flex-start;
 
         h1 {
           margin-top: 3rem;
+          font-size: 3.2rem;
+        }
+        p {
+          font-size: 2rem;
         }
       }
 
       &__bg {
         [class*='css-'] {
-          right: -15%;
+          right: 10%;
 
           img {
-            height: 55%;
+            height: 45%;
           }
         }
       }

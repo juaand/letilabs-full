@@ -1,0 +1,60 @@
+.InfoCards {
+  min-height: 35rem;
+}
+
+.InfoCards__OurPeople {
+  background: url(../../../../images/ourpeople-infocards.jpg) no-repeat top center/cover;
+  height: 52rem;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 20rem;
+  padding-top: 10rem;
+}
+
+.InfoCards__OurPeople h1 {
+  text-align: center;
+  font-family: 'TripletaBold';
+  color: #fff;
+  width: 67%;
+  margin: auto;
+}
+
+.InfoCards__OurPeople__cards {
+  background: #f5f5f5;
+  padding: 4rem;
+  margin: 1rem;
+  margin-top: 6rem;
+}
+
+.InfoCards__OurPeople__cards h4 {
+  font-family: 'TripletaBold';
+  font-size: 2.4rem;
+  color: #4a4a4a;
+}
+
+.InfoCards__OurPeople__cards p {
+  margin-top: 3rem;
+  font-size: 1.8rem;
+  line-height: 3rem;
+}
+
+@media (max-width: 576px) {
+  .InfoCards__OurPeople {
+    height: 38rem;
+    margin-bottom: 50rem;
+  }
+  .InfoCards__OurPeople h1 {
+    font-size: 3rem;
+  }
+  .InfoCards__OurPeople__cards {
+    padding: 2rem;
+    margin: 1rem 2rem;
+  }
+  .InfoCards__OurPeople__cards h4 {
+    font-size: 2rem;
+  }
+  .InfoCards__OurPeople__cards p {
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+  }
+}

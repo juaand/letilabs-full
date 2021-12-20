@@ -4,6 +4,7 @@ import {Helmet} from 'react-helmet'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import Banner from './Banner/Banner'
+import InfoCards from './InfoCards/InfoCards'
 
 function OurPeoplePage() {
 
@@ -45,6 +46,7 @@ function OurPeoplePage() {
             </Helmet>
             <main>
                 <Banner />
+                <InfoCards />
             </main>
         </>
     )

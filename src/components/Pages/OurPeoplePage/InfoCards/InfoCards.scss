@@ -1,0 +1,68 @@
+@import '../../../../stylesheets/variables';
+
+.InfoCards {
+  min-height: 35rem;
+
+  &__OurPeople {
+    background: url(../../../../images/ourpeople-infocards.jpg) no-repeat top
+      center / cover;
+    height: 52rem;
+    position: relative;
+    overflow: visible;
+    margin-bottom: 20rem;
+    padding-top: 10rem;
+
+    h1 {
+      text-align: center;
+      font-family: 'TripletaBold';
+      color: $leti-white;
+      width: 67%;
+      margin: auto;
+    }
+
+    &__cards {
+      background: $leti-back;
+      padding: 4rem;
+      margin: 1rem;
+      margin-top: 6rem;
+
+      h4 {
+        font-family: 'TripletaBold';
+        font-size: 2.4rem;
+        color: $leti-text;
+      }
+
+      p {
+        margin-top: 3rem;
+        font-size: 1.8rem;
+        line-height: 3rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .InfoCards {
+    &__OurPeople {
+      height: 38rem;
+      margin-bottom: 50rem;
+
+      h1 {
+        font-size: 3rem;
+      }
+      &__cards {
+        padding: 2rem;
+        margin: 1rem 2rem;
+
+        h4 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1.6rem;
+          margin-top: 1.5rem;
+        }
+      }
+    }
+  }
+}
