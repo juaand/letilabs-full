@@ -1,0 +1,20 @@
+@import '../../../stylesheets/variables';
+
+.SingleProductPage {
+  &__back {
+    color: $leti-blue;
+    font-size: 2rem;
+    display: inherit;
+    margin: 8rem auto 12rem auto;
+
+    &:before {
+      content: '';
+      width: 3.6rem;
+      height: 3.6rem;
+      background: url(../../../images/back-to-prod.svg) no-repeat center center /
+        contain;
+      display: inline;
+      margin-right: 1rem;
+    }
+  }
+}
