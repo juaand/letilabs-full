@@ -3,6 +3,7 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
+import InfoCards from './InfoCards/InfoCards'
 
 function OurPhilosophyPage() {
     const {user} = useAuthContext()
@@ -46,6 +47,7 @@ function OurPhilosophyPage() {
             </Helmet>
             <main>
                 <Banner />
+                <InfoCards />
             </main>
         </>
     )
