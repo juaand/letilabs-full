@@ -7,7 +7,6 @@ import {Slide} from 'react-awesome-reveal'
 import vadevecum from '../../../../data/vadevecum'
 import {useHistory} from 'react-router'
 
-
 function FindProduct() {
 
     const {state, onChange} = useFormState(
@@ -61,7 +60,7 @@ function FindProduct() {
                                             onChange={onChange}
                                             className={`product form-control ${touch.search && error.search ? "is-invalid" : ""}`}
                                             list="searchs"
-                                            data={vadevecum.map(v => v.name).sort()}
+                                            data={[...new Set(vadevecum.map(v => v.name))].sort()}
                                         />
                                     </div>
                                     <div className="col-12 p-0 col-sm-4">
