@@ -24,6 +24,7 @@ import AlliancesPage from './components/Pages/AlliancesPage/AlliancesPage'
 import PurposePage from './components/Pages/PurposePage/PurposePage'
 import OurPeoplePage from './components/Pages/OurPeoplePage/OurPeoplePage'
 import OurPhilosophyPage from './components/Pages/OurPhilosophyPage/OurPhilosophyPage'
+import ProductsPage from './components/Pages/ProductsPage/ProductsPage'
 
 
 
@@ -51,6 +52,7 @@ function App() {
         <Route exact path="/nuestra-gente" render={(props) => <OurPeoplePage {...props} />} />
         <Route exact path="/nuestra-filosofia" render={(props) =>
           <OurPhilosophyPage {...props} />} />
+        <Route exact path="/productos" render={(props) => <ProductsPage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />

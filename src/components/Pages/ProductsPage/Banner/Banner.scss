@@ -1,0 +1,85 @@
+@import '../../../../stylesheets/variables';
+
+.Banner {
+  &__OurPhilosophy {
+    position: relative;
+    &-logo {
+      margin-top: 6rem;
+      display: block;
+    }
+
+    &__title {
+      height: 70rem;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        font-size: 3rem;
+        font-family: 'Mulish', sans-serif;
+        font-weight: 500;
+        margin: 1rem auto 10rem auto;
+      }
+    }
+
+    &__bg {
+      position: absolute;
+      width: 54rem;
+      height: 54rem;
+      background: url(../../../../images/our-philosophy-banner.png) no-repeat
+        center / contain;
+      right: -6rem;
+      top: -10rem;
+      transform: rotate(0deg);
+    }
+
+    &__blue {
+      position: absolute;
+      width: 44rem;
+      height: 44rem;
+      background: url(../../../../images/leti-blue-banner.png) no-repeat center /
+        contain;
+      right: -6rem;
+      top: 12rem;
+      transform: rotate(0deg);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .Banner {
+    &__OurPhilosophy {
+      &-logo {
+        width: 28rem;
+        margin-top: 5rem;
+      }
+
+      &__title {
+        height: 85rem;
+        justify-content: flex-start;
+        margin-top: 6rem;
+
+        h3 {
+          font-size: 2rem;
+          margin: 0rem auto 8rem auto;
+          line-height: 2.8rem;
+        }
+      }
+
+      &__bg {
+        width: 38rem;
+        height: 38rem;
+        right: -6rem;
+        top: 40rem;
+      }
+
+      &__blue {
+        width: 30rem;
+        height: 30rem;
+        right: -6rem;
+        top: 56rem;
+      }
+    }
+  }
+}

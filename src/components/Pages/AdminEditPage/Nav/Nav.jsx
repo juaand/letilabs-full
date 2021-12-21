@@ -36,6 +36,8 @@ function Nav({getActiveItem}) {
         setTimeout(() => {history.push("/alianzas")}, 1)
         setTimeout(() => {history.push("/proposito-y-responsabilidad-social")}, 1)
         setTimeout(() => {history.push("/nuestra-gente")}, 1)
+        setTimeout(() => {history.push("/nuestra-filosofia")}, 1)
+        setTimeout(() => {history.push("/productos")}, 1)
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
 
