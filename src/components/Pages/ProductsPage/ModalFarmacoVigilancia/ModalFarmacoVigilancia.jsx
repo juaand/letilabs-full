@@ -1,51 +1,54 @@
-import './AllianceForm.css'
+import './ModalFarmacoVigilancia.css'
 import React, {useState} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
-import {vigilanciaForm} from '../../../../services/ApiClient'
-import Button from '../../../Form/FormButton/FormButton'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+import RadioButtonWithLabel from '../../../Form/RadioButtonWithLabel/RadioButtonWithLabel'
+import Button from '../../../Form/FormButton/FormButton'
+import DateTimePicker from "react-datetime-picker"
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
+import {vigilanciaForm} from '../../../../services/ApiClient'
+import vadevecum from '../../../../data/vadevecum'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
-import dataCountry from '../../../../data/dataCountry'
 
-function AllianceForm() {
+function ModalFarmacoVigilancia({hideModal}) {
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 name: "",
                 lastname: "",
-                mail: "",
-                phone: "",
-                country: "",
-                company: "",
-                desc: ""
+                sex: "",
+                medicine: "",
+                date: new Date(),
+                effects: "",
+                prescribed: ""
             },
             error: {
                 name: true,
                 lastname: true,
-                mail: true,
-                phone: true,
-                country: true,
-                desc: true,
-                company: true
+                sex: true,
+                medicine: true,
+                date: true,
+                prescribed: true,
+                effects: true
             },
             touch: {},
         },
         {
             name: v => v.length,
             lastname: v => v.length,
-            mail: v => v.length,
-            phone: v => v.length,
-            country: v => v.length,
-            company: v => v.length,
-            desc: v => v.length
+            sex: v => v.length,
+            medicine: v => v.length,
+            date: v => v.length,
+            effects: v => v.length,
+            prescribed: v => v.length
         }
     )
 
     // eslint-disable-next-line no-unused-vars
+    const [date, setDate] = useState(new Date())
     const [registerError, setRegisterError] = useState(null)
-    const [init, setInit] = useState(state.data.desc)
+    const [effects, setEffects] = useState(state.data.effects)
     const [formResponse, setFormResponse] = useState([])
     const [message, setMessage] = useState(false)
 
@@ -53,60 +56,73 @@ function AllianceForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        data.desc = init
+        data.effects = effects
 
         try {
-            console.log(data)
-            // const newVigilancia = await vigilanciaForm(data)
-            // document.querySelector('form').reset()
-            // document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
-            // setFormResponse(newVigilancia)
-            // setMessage(!message)
+            const newVigilancia = await vigilanciaForm(data)
+            document.querySelector('form').reset()
+            document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
+            setFormResponse(newVigilancia)
+            setMessage(!message)
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
     }
 
     const handleChange = (e) => {
-        setInit(e.target.value)
-        error.desc = false
+        setEffects(e.target.value)
+        error.effects = false
     }
 
+    const setTime = (e) => {
+        setDate(e)
+        data.date = e
+        error.date = false
+    }
+
+    const clickedOutside = (e) => {
+        if (!document.querySelector('.ModalFarmacoVigilancia__container').contains(e.target)) {
+            hideModal()
+        }
+    }
 
     const isError = Object.values(error).some(err => err)
 
+
+    const getVadevecumNames = vadevecum.map(el => el.name)
+    const dataList = [...new Set(getVadevecumNames)].sort()
+
     return (
-        <section className="AllianceForm">
+        <section className="ModalFarmacoVigilancia" onClick={clickedOutside}>
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-11 col-sm-12 AllianceForm__container">
+                    <div className="col-11 col-sm-12 ModalFarmacoVigilancia__container">
                         {message &&
                             <>
                                 <h1>Gracias {formResponse.name},</h1>
                                 <p>Tu comentario ha sido enviado exitosamente.</p>
                                 <div className="leti-blue-triangle"></div>
                                 <div className="leti-red-triangle"></div>
+                                <div className="leti-btn" onClick={hideModal}>Cerrar</div>
                             </>
                         }
                         {!message &&
                             <>
+                                <span className="ModalFarmacoVigilancia__close" onClick={hideModal}></span>
                                 <div className="row">
                                     <div className="col-12">
-                                        <h1>¡Tu contribución cuenta!</h1>
-                                    </div>
+                                        <h1>Estamos para cuidarte</h1></div>
                                     <div className="col-12 col-sm-5">
-                                        <p>¿Quieres aliarte con nosotros?
-                                            Compártenos tu iniciativa aquí o contáctanos.</p>
-                                        <div className="AllianceForm__links">
-                                            <a href="tel:+582123602511"
-                                            >+582123602511</a>                                     <a href="mailto:comunicaciones.leti@leti.com">comunicaciones.leti@leti.com.ve</a></div>
+                                        <p><strong>Farmacovigilancia</strong></p>
+                                        <p>Conscientes de la responsabilidad por ofrecer medicamentos de alta calidad, facilitamos la recolección, evaluación e investigación de la información sobre posibles reacciones adversas de nuestros medicamentos, para realizar correctivos y establecer la máxima seguridad terapéutica de los mismos.</p>
+                                        <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarle.</p>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="col-12">
-                                        <form onSubmit={handleSubmit} className="AllianceForm__form">
+                                        <form onSubmit={handleSubmit} className="ModalFarmacoVigilancia__form">
                                             <div className="row justify-content-between">
-                                                <div className="col-12 col-sm-6">
+                                                <div className="col-12 col-sm-5">
 
                                                     <InputWithLabel
                                                         value={data.name}
@@ -114,84 +130,69 @@ function AllianceForm() {
                                                         onChange={onChange}
                                                         name="name"
                                                         type="text"
-                                                        label="Nombre"
+                                                        label="Nombre del paciente"
                                                         className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                         tabIndex="1"
                                                     />
 
+                                                    <div className="form-group ModalFarmacoVigilancia__date" tabIndex="3">
+                                                        <label className="label" htmlFor="date">
+                                                            Fecha de nacimiento
+                                                        </label>
+                                                        <DateTimePicker
+                                                            onChange={setTime}
+                                                            value={data.date}
+                                                            locale="es-ES"
+                                                            format="dd-MM-y"
+                                                        />
+                                                    </div>
+
+                                                    <DropdownWithLabel
+                                                        value={data.medicine}
+                                                        label="Medicamento que tomó"
+                                                        name="medicine"
+                                                        onChange={onChange}
+                                                        className={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
+                                                        tabIndex="5"
+                                                        list="medicines"
+                                                        data={dataList}
+                                                    />
+
                                                 </div>
-                                                <div className="col-12 col-sm-6">
+                                                <div className="col-12 col-sm-5">
+
                                                     <InputWithLabel
                                                         value={data.lastname}
                                                         onBlur={onBlur}
                                                         onChange={onChange}
                                                         name="lastname"
                                                         type="text"
-                                                        label="Apellido"
+                                                        label="Apellido del paciente"
                                                         className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
                                                         tabIndex="2"
                                                     />
-                                                </div>
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.mail}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="mail"
-                                                        type="email"
-                                                        label="Email"
-                                                        className={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
-                                                        tabIndex="3"
-                                                    />
 
-                                                </div>
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.phone}
+                                                    <RadioButtonWithLabel data={['F', 'M']} name="sex"
+                                                        value={data.genero}
                                                         onBlur={onBlur}
                                                         onChange={onChange}
-                                                        name="phone"
-                                                        type="text"
-                                                        label="Teléfono"
-                                                        className={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
+                                                        label="Género"
                                                         tabIndex="4"
                                                     />
 
-                                                </div>
-
-                                                <div className="col-12 col-sm-6">
-
-                                                    <DropdownWithLabel
-                                                        value={data.country}
-                                                        label="País"
-                                                        name="country"
-                                                        onChange={onChange}
-                                                        className={`form-control AllianceForm__dropdown ${touch.country && error.country ? "is-invalid" : ""}`}
-                                                        tabIndex="5"
-                                                        list="countries"
-                                                        data={dataCountry}
-                                                    />
-
-                                                </div>
-
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.company}
+                                                    <RadioButtonWithLabel data={['Si', 'No']} name="prescribed"
+                                                        value={data.prescribed}
                                                         onBlur={onBlur}
                                                         onChange={onChange}
-                                                        name="company"
-                                                        type="text"
-                                                        label="Empresa/Institución"
-                                                        className={`form-control ${touch.company && error.company ? "is-invalid" : ""}`}
+                                                        label="¿El medicamento fue prescrito?"
                                                         tabIndex="6"
                                                     />
 
                                                 </div>
                                                 <div className="col-12">
-
                                                     <TextAreaWithLabel
-                                                        label="Cuéntanos sobre tu iniciativa"
-                                                        value={init}
+                                                        label="Describa detalladamente el/los efectos presentados"
+                                                        value={effects}
                                                         onChange={handleChange}
                                                         name="effects"
                                                         rows="4"
@@ -201,7 +202,6 @@ function AllianceForm() {
                                                     />
                                                 </div>
                                                 <div className="col-12 d-flex justify-content-end">
-
                                                     <Button
                                                         type="submit"
                                                         className={`leti-btn ${isError && "disabled"}`}
@@ -222,7 +222,6 @@ function AllianceForm() {
             </div>
         </section>
     )
-
 }
 
-export default AllianceForm
+export default ModalFarmacoVigilancia

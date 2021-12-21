@@ -1,0 +1,39 @@
+.FarmacoVigilancia {
+  margin-bottom: 10rem;
+}
+
+.FarmacoVigilancia__texto {
+  font-size: 2rem;
+  color: #737b7f;
+  text-align: right;
+}
+
+.FarmacoVigilancia__texto strong {
+  color: #4a4a4a;
+}
+
+.FarmacoVigilancia__form {
+  margin-bottom: 10rem;
+}
+
+.FarmacoVigilancia__form .leti-btn {
+  margin-top: 1rem;
+  margin-left: 3rem;
+}
+
+@media (max-width: 576px) {
+  .FarmacoVigilancia {
+    margin: 0;
+  }
+  .FarmacoVigilancia__texto {
+    margin: 2rem 0;
+    text-align: left;
+    font-size: 1.6rem;
+  }
+  .FarmacoVigilancia__form {
+    margin-bottom: 5rem;
+  }
+  .FarmacoVigilancia__form .leti-btn {
+    margin-left: 0;
+  }
+}

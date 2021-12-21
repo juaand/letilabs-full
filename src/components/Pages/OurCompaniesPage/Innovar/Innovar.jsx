@@ -8,7 +8,7 @@ function Innovar() {
     const customAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translate3d(-10rem, 0, 0);
+    transform: translate3d(-10rem, -10rem, 0);
   }
 
   to {

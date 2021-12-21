@@ -4,6 +4,8 @@ import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import FindProduct from './FindProduct/FindProduct'
+import Bottom from './Bottom/Bottom'
+import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 
 function ProductsPage() {
     const {user} = useAuthContext()
@@ -48,6 +50,8 @@ function ProductsPage() {
             <main>
                 <Banner />
                 <FindProduct />
+                <Bottom />
+                <FarmacoVigilancia />
             </main>
         </>
     )

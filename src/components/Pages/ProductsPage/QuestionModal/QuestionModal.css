@@ -1,0 +1,204 @@
+.QuestionModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.QuestionModal__form {
+  position: relative;
+}
+
+.QuestionModal__form .alert {
+  position: absolute;
+  bottom: 0;
+  color: #cd202f;
+  background: transparent;
+  border: 0;
+  width: 90%;
+  font-size: 1.4rem;
+}
+
+.QuestionModal__container {
+  background: #fff;
+  padding: 9rem;
+  font-size: 2rem;
+  position: relative;
+  overflow: scroll;
+  height: 90vh;
+  padding-top: 14rem;
+}
+
+.QuestionModal__container--success {
+  height: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.QuestionModal__container--success .leti-btn {
+  margin-top: 3rem;
+}
+
+.QuestionModal__container--success .leti-red-triangle {
+  background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
+  width: 45rem;
+  height: 45rem;
+  position: absolute;
+  right: 0rem;
+  top: -10rem;
+  transform: rotate(50deg);
+  z-index: 0;
+}
+
+.QuestionModal__container--success .leti-blue-triangle {
+  background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
+  width: 30rem;
+  height: 30rem;
+  position: absolute;
+  right: 0;
+  top: -10rem;
+  transform: rotate(-150deg);
+  z-index: 0;
+}
+
+.QuestionModal__container strong {
+  font-family: 'TripletaBold';
+  font-size: 2.4rem;
+  display: block;
+  margin: 3rem 0;
+}
+
+.QuestionModal__close {
+  position: absolute;
+  top: 9rem;
+  right: 9rem;
+  font-size: 2rem;
+  color: #000;
+  cursor: pointer;
+  width: 6rem;
+  height: 6rem;
+  border: solid 0.1rem #055aa5;
+  background: url("../../../../images/close.svg") no-repeat center/contain;
+  background-size: 50%;
+}
+
+.QuestionModal__close:hover {
+  border: solid 0.3rem #055aa5;
+}
+
+.QuestionModal__date label {
+  display: block;
+}
+
+.QuestionModal__date .react-datetime-picker {
+  width: 100%;
+  height: 6rem;
+}
+
+.QuestionModal__date .react-datetime-picker__wrapper {
+  border-color: #737b7f;
+  padding: 0 1rem;
+}
+
+.QuestionModal__date .react-datetime-picker__inputGroup {
+  color: #737b7f;
+}
+
+.QuestionModal__date .react-datetime-picker__inputGroup input {
+  color: #737b7f;
+}
+
+.QuestionModal__date .react-datetime-picker__button__icon {
+  stroke: #737b7f;
+}
+
+.QuestionModal__date .react-datetime-picker__calendar {
+  width: 100%;
+  font-family: 'Mulish', sans-serif !important;
+}
+
+.QuestionModal .react-calendar {
+  width: 100% !important;
+}
+
+.QuestionModal .react-calendar__tile {
+  color: #737b7f;
+  text-transform: capitalize;
+  font-size: 1.8rem;
+}
+
+.QuestionModal .react-calendar__tile--hasActive {
+  background: #055aa5;
+  color: #fff;
+}
+
+.QuestionModal .react-calendar__tile--active {
+  background: transparent;
+  border: solid 0.2rem #055aa5;
+  color: #055aa5 !important;
+}
+
+.QuestionModal .react-calendar__tile--now {
+  background: rgba(5, 90, 165, 0.1);
+}
+
+.QuestionModal .react-calendar__month-view__days__day {
+  color: #737b7f;
+}
+
+.QuestionModal .react-calendar__month-view__weekdays {
+  color: #cd202f;
+}
+
+.QuestionModal .react-calendar__month-view--weekend {
+  color: #cd202f;
+}
+
+.QuestionModal .react-calendar__navigation button {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  color: #055aa5;
+  font-weight: 600;
+}
+
+@media (max-width: 576px) {
+  .QuestionModal__container {
+    padding: 2rem;
+    padding-top: 8rem;
+    font-size: 1.6rem;
+  }
+  .QuestionModal__close {
+    top: 2rem;
+    right: 2rem;
+    width: 5rem;
+    height: 5rem;
+  }
+  .QuestionModal__container strong {
+    font-size: 2rem;
+    margin: 2rem 0;
+  }
+  .QuestionModal__container--success {
+    padding: 4rem 2rem;
+  }
+  .QuestionModal__container--success .leti-btn {
+    margin-top: 3rem;
+  }
+  .QuestionModal__container--success .leti-red-triangle {
+    width: 20rem;
+    height: 20rem;
+    right: -10rem;
+    top: -10rem;
+  }
+  .QuestionModal__container--success .leti-blue-triangle {
+    width: 15rem;
+    height: 15rem;
+    right: -5rem;
+    top: 0;
+  }
+}

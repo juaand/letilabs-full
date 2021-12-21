@@ -1,0 +1,44 @@
+@import '../../../../stylesheets/variables';
+
+.FarmacoVigilancia {
+  margin-bottom: 10rem;
+
+  &__texto {
+    font-size: 2rem;
+    color: #737b7f;
+    text-align: right;
+
+    strong {
+      color: $leti-text;
+    }
+  }
+
+  &__form {
+    margin-bottom: 10rem;
+
+    .leti-btn {
+      margin-top: 1rem;
+      margin-left: 3rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .FarmacoVigilancia {
+    margin: 0;
+
+    &__texto {
+      margin: 2rem 0;
+      text-align: left;
+      font-size: 1.6rem;
+    }
+
+    &__form {
+      margin-bottom: 5rem;
+
+      .leti-btn {
+        margin-left: 0;
+      }
+    }
+  }
+}
