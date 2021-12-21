@@ -1,15 +1,16 @@
 import './FindProduct.css'
 import React from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
-import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 import dataSpecialities from '../../../../data/dataSpecialities'
 import {Slide} from 'react-awesome-reveal'
+import vadevecum from '../../../../data/vadevecum'
+import {useHistory} from 'react-router'
 
 
 function FindProduct() {
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state, onChange} = useFormState(
         {
             data: {
                 search: "",
@@ -29,18 +30,18 @@ function FindProduct() {
 
     const {data, error, touch} = state
 
+    let history = useHistory()
+
     const searchSubmit = (event) => {
         event.preventDefault()
 
-        console.log('comming soon')
-
-        // history.push({
-        //     pathname: '/buscar',
-        //     state: {
-        //         buscar: data.search,
-        //         hideSearchIcon: true
-        //     }
-        // })
+        history.push({
+            pathname: '/producto',
+            state: {
+                buscar: data.search,
+                especialidad: data.especialidad
+            }
+        })
     }
     return (
         <Slide direction="up" triggerOnce>
@@ -48,18 +49,19 @@ function FindProduct() {
                 <div className="container">
                     <div className="row FindProduct__row">
                         <div className="col-12 col-sm-10">
-                            <h1>Encuentra un producto...</h1>
+                            <h1>Buscas un medicamento en específico?<br />¡Encuéntralo aquí!</h1>
                             <form className="FindProduct__form">
                                 <div className="input-group">
                                     <div className="col-12 p-0 col-sm-7 FindProduct__label">
-                                        <InputWithLabel
+                                        <DropdownWithLabel
+                                            placeholder="Escribe nombre o condición"
                                             value={data.search}
-                                            onBlur={onBlur}
-                                            onChange={onChange}
+                                            label=""
                                             name="search"
-                                            type="text"
-                                            className="InputWithLabel form-control"
-                                            placeholder="Escribe el nombre o condición"
+                                            onChange={onChange}
+                                            className={`product form-control ${touch.search && error.search ? "is-invalid" : ""}`}
+                                            list="searchs"
+                                            data={vadevecum.map(v => v.name).sort()}
                                         />
                                     </div>
                                     <div className="col-12 p-0 col-sm-4">
@@ -69,7 +71,7 @@ function FindProduct() {
                                             label=""
                                             name="especialidad"
                                             onChange={onChange}
-                                            className={`form-control ${touch.especialidad && error.especialidad ? "is-invalid" : ""}`}
+                                            className={`category form-control ${touch.especialidad && error.especialidad ? "is-invalid" : ""}`}
                                             list="especialidades"
                                             data={dataSpecialities}
                                         />
@@ -84,7 +86,7 @@ function FindProduct() {
 
             </section>
 
-        </Slide >
+        </Slide>
     )
 }
 

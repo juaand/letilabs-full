@@ -21,29 +21,31 @@
 
     .DropdownWithLabel {
       .form-control {
-        background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem
-          center;
-        padding-left: 6rem;
+        &.category {
+          background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem
+            center;
+          padding-left: 6rem;
+          height: 7.6rem;
+          border-radius: 0;
+          margin: 0;
+          border: none;
+          border-top: solid 0.1rem $leti-nav;
+          border-bottom: solid 0.1rem $leti-nav;
+        }
+
+        &.product {
+          padding-left: 2rem;
+          border-left: solid 0.1rem $leti-nav;
+          background: url(../../../../images/inputwithlabel.svg) no-repeat right
+            center;
+            border-right: none;
+            height: 7.6rem;
+        }
       }
     }
 
     .form-group {
       margin: 0 !important;
-
-      .form-control {
-        height: 7.6rem;
-        border-radius: 0;
-        margin: 0;
-        border: none;
-        border-top: solid 0.1rem $leti-nav;
-        border-bottom: solid 0.1rem $leti-nav;
-
-        &.InputWithLabel {
-          border-left: solid 0.1rem $leti-nav;
-          background: url(../../../../images/inputwithlabel.svg) no-repeat right
-            center;
-        }
-      }
     }
 
     .leti-btn {
@@ -77,21 +79,25 @@
       }
       .DropdownWithLabel {
         .form-control {
-          background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem
-            center;
-          padding-left: 6rem;
+          &.category {
+            background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem
+              center;
+            padding-left: 6rem;
+          }
         }
       }
 
       .form-group {
         .form-control {
-          height: 6.2rem;
-          border: 0;
-
-          &.InputWithLabel {
-            background: url(../../../../images/dropdown-resp-bottom.svg)
-              no-repeat center bottom;
+          &.category {
+            height: 6.2rem;
             border: 0;
+
+            &.InputWithLabel {
+              background: url(../../../../images/dropdown-resp-bottom.svg)
+                no-repeat center bottom;
+              border: 0;
+            }
           }
         }
       }

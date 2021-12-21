@@ -19,16 +19,9 @@
   height: 7.6rem;
 }
 
-.FindProduct__form .DropdownWithLabel .form-control {
+.FindProduct__form .DropdownWithLabel .form-control.category {
   background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem center;
   padding-left: 6rem;
-}
-
-.FindProduct__form .form-group {
-  margin: 0 !important;
-}
-
-.FindProduct__form .form-group .form-control {
   height: 7.6rem;
   border-radius: 0;
   margin: 0;
@@ -37,9 +30,16 @@
   border-bottom: solid 0.1rem #737b7f;
 }
 
-.FindProduct__form .form-group .form-control.InputWithLabel {
+.FindProduct__form .DropdownWithLabel .form-control.product {
+  padding-left: 2rem;
   border-left: solid 0.1rem #737b7f;
   background: url(../../../../images/inputwithlabel.svg) no-repeat right center;
+  border-right: none;
+  height: 7.6rem;
+}
+
+.FindProduct__form .form-group {
+  margin: 0 !important;
 }
 
 .FindProduct__form .leti-btn {
@@ -66,15 +66,15 @@
     border: solid 0.1rem #737b7f;
     border-bottom: 0;
   }
-  .FindProduct__form .DropdownWithLabel .form-control {
+  .FindProduct__form .DropdownWithLabel .form-control.category {
     background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem center;
     padding-left: 6rem;
   }
-  .FindProduct__form .form-group .form-control {
+  .FindProduct__form .form-group .form-control.category {
     height: 6.2rem;
     border: 0;
   }
-  .FindProduct__form .form-group .form-control.InputWithLabel {
+  .FindProduct__form .form-group .form-control.category.InputWithLabel {
     background: url(../../../../images/dropdown-resp-bottom.svg) no-repeat center bottom;
     border: 0;
   }
