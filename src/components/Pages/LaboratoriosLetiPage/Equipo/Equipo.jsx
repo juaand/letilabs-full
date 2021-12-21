@@ -20,7 +20,7 @@ function Equipo() {
                         <p className="blue-text">Ramón, director de unidad</p>
                     </Fade>
                     <Fade triggerOnce direction="up" delay={200}>
-                        <Link to="/equipo" className="leti-btn">Conoce nuestra filosofía</Link>
+                        <Link to="/nuestra-filosofia" className="leti-btn">Conoce nuestra filosofía</Link>
                     </Fade>
                 </div>
             </div>

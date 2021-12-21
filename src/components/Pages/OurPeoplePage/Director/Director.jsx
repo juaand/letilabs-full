@@ -14,7 +14,7 @@ function Director() {
                         <h1>Liderados por profesionales de trayectoria</h1>
                         <Fade triggerOnce direction="up" duration={1600}>
                             <p>(Cita director de Laboratorios Leti)</p>
-                            <Link to="/" className="leti-btn">Concoce nuestra filosofía</Link>
+                            <Link to="/nuestra-filosofia" className="leti-btn">Concoce nuestra filosofía</Link>
                         </Fade>
                     </div>
                 </div>

@@ -23,6 +23,7 @@ import ManufacturePage from './components/Pages/ManufacturePage/ManufacturePage'
 import AlliancesPage from './components/Pages/AlliancesPage/AlliancesPage'
 import PurposePage from './components/Pages/PurposePage/PurposePage'
 import OurPeoplePage from './components/Pages/OurPeoplePage/OurPeoplePage'
+import OurPhilosophyPage from './components/Pages/OurPhilosophyPage/OurPhilosophyPage'
 
 
 
@@ -48,6 +49,8 @@ function App() {
         <Route exact path="/proposito-y-responsabilidad-social" render={(props) =>
           <PurposePage {...props} />} />
         <Route exact path="/nuestra-gente" render={(props) => <OurPeoplePage {...props} />} />
+        <Route exact path="/nuestra-filosofia" render={(props) =>
+          <OurPhilosophyPage {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />

@@ -21,7 +21,7 @@ function BottomCta() {
                     <div className="BottomCta__title">
                         <Fade cascade delay={300} direction="up" triggerOnce>
                             <h2>Orgullosos de ser un equipo de líderes visionarios</h2>
-                            <Link to="/" className="leti-btn" rel="noopener noreferrer">Nuestra filosofía</Link>
+                            <Link to="/nuestra-filosofia" className="leti-btn" rel="noopener noreferrer">Nuestra filosofía</Link>
                         </Fade>
                     </div>
                 </div>
