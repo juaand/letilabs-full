@@ -4,6 +4,7 @@ import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
+import Letter from './Letter/Letter'
 
 function OurPhilosophyPage() {
     const {user} = useAuthContext()
@@ -48,6 +49,7 @@ function OurPhilosophyPage() {
             <main>
                 <Banner />
                 <InfoCards />
+                <Letter />
             </main>
         </>
     )
