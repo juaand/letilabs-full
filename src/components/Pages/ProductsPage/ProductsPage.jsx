@@ -3,6 +3,7 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
+import FindProduct from './FindProduct/FindProduct'
 
 function ProductsPage() {
     const {user} = useAuthContext()
@@ -46,6 +47,7 @@ function ProductsPage() {
             </Helmet>
             <main>
                 <Banner />
+                <FindProduct />
             </main>
         </>
     )

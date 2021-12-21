@@ -17,12 +17,12 @@ function Banner() {
                             </h3>
                         </Fade>
                     </div>
-                    <div className="col-12 Banner__Products__btns">
+                    <Fade delay={300} direction="down" triggerOnce className="col-12 Banner__Products__btns">
                         <div className="row">
                             <Link to="/" className="col-12 col-sm-3 col-lg-3 leti-btn">Conoce todos los productos</Link>
                             <Link to="/" className="col-12 col-sm-3 col-lg-3  leti-btn">Descubre nuestras áreas terapéuticas</Link>
                         </div>
-                    </div>
+                    </Fade>
                     <Fade cascade delay={300} triggerOnce>
                         <div className="Banner__Products__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__Products__bg parallax" data-speed="-.1" data-axis="vertical"></div>
