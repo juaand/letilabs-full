@@ -1,8 +1,23 @@
 @import '../../../../stylesheets/variables';
 
 .Banner {
-  &__OurPhilosophy {
+  &__Products {
     position: relative;
+
+    .leti-btn {
+      margin-right: 2rem;
+      margin-top: 3rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__btns {
+      position: absolute;
+      bottom: 4rem;
+    }
+
     &-logo {
       margin-top: 6rem;
       display: block;
@@ -19,7 +34,7 @@
         font-size: 3rem;
         font-family: 'Mulish', sans-serif;
         font-weight: 500;
-        margin: 1rem auto 10rem auto;
+        margin: 1rem auto;
       }
     }
 
@@ -27,8 +42,8 @@
       position: absolute;
       width: 54rem;
       height: 54rem;
-      background: url(../../../../images/our-philosophy-banner.png) no-repeat
-        center / contain;
+      background: url(../../../../images/products-banner.png) no-repeat center /
+        contain;
       right: -6rem;
       top: -10rem;
       transform: rotate(0deg);
@@ -49,7 +64,12 @@
 
 @media (max-width: 576px) {
   .Banner {
-    &__OurPhilosophy {
+    &__Products {
+
+      &__btns {
+        display: none;
+      }
+
       &-logo {
         width: 28rem;
         margin-top: 5rem;

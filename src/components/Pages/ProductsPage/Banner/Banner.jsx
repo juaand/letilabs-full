@@ -1,26 +1,31 @@
 import './Banner.css'
 import React from 'react'
 import {Fade} from 'react-awesome-reveal'
+import {Link} from 'react-router-dom'
 
 function Banner() {
 
     return (
-        <section className="container-fluid Banner__OurPhilosophy">
+        <section className="container-fluid Banner__Products">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-sm-7 Banner__OurPhilosophy__title">
+                    <div className="col-12 col-sm-9 Banner__Products__title">
                         <Fade delay={300} direction="left" triggerOnce>
-                            <h1>Filosofía Leti</h1>
+                            <h1>Trabajamos cada día para poner nuestros conocimientos y habilidades al servicio de las personas:</h1>
                             <h3>
-                                Todos los líderes de cada unidad y demás áreas de trabajo, trabajan en conjunto para promover la relación de sinergia entre todas las empresas y así lograr los mejores resultados.
-                                <br /><br />
-                                Contamos con un talento humano excepcional y altamente calificado que trabaja día a día generando soluciones para los venezolanos, bajo los principios y ética del grupo.
+                                Desarrollando y poniendo a su disposición productos que abarquen una amplia gama de necesidades.
                             </h3>
                         </Fade>
                     </div>
+                    <div className="col-12 Banner__Products__btns">
+                        <div className="row">
+                            <Link to="/" className="col-12 col-sm-3 col-lg-3 leti-btn">Conoce todos los productos</Link>
+                            <Link to="/" className="col-12 col-sm-3 col-lg-3  leti-btn">Descubre nuestras áreas terapéuticas</Link>
+                        </div>
+                    </div>
                     <Fade cascade delay={300} triggerOnce>
-                        <div className="Banner__OurPhilosophy__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
-                        <div className="Banner__OurPhilosophy__bg parallax" data-speed="-.1" data-axis="vertical"></div>
+                        <div className="Banner__Products__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
+                        <div className="Banner__Products__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>
                 </div>
             </div>
