@@ -10,8 +10,12 @@ function Banner() {
                 <div className="row">
                     <div className="col-12 col-sm-7 Banner__OurPhilosophy__title">
                         <Fade delay={300} direction="left" triggerOnce>
-                            <h1>Pilares de I&D</h1>
-                            <h3>Para nosotros siempre ha sido prioridad contar con la tecnlogía e infraestructura que nos permita desarrollar los mejores productos, y además en las cantidades necesarias para cuidar de la salud de todo el país.</h3>
+                            <h1>Filosofía Leti</h1>
+                            <h3>
+                                Todos los líderes de cada unidad y demás áreas de trabajo, trabajan en conjunto para promover la relación de sinergia entre todas las empresas y así lograr los mejores resultados.
+                                <br /><br />
+                                Contamos con un talento humano excepcional y altamente calificado que trabaja día a día generando soluciones para los venezolanos, bajo los principios y ética del grupo.
+                            </h3>
                         </Fade>
                     </div>
                     <Fade cascade delay={300} triggerOnce>
