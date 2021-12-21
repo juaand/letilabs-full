@@ -5,6 +5,7 @@ import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Letter from './Letter/Letter'
+import Megat from './Bottom/Bottom'
 
 function OurPhilosophyPage() {
     const {user} = useAuthContext()
@@ -50,6 +51,7 @@ function OurPhilosophyPage() {
                 <Banner />
                 <InfoCards />
                 <Letter />
+                <Megat />
             </main>
         </>
     )

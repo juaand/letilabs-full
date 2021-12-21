@@ -1,0 +1,73 @@
+.Megat {
+  padding: 20rem 0 10rem 0;
+  margin-top: 24rem;
+  position: relative;
+}
+
+.Megat__logo {
+  background: url(../../../../images/megat.svg) no-repeat center center/contain;
+  width: 26rem;
+  height: 11rem;
+  margin: 3rem 0;
+}
+
+.Megat__desc {
+  margin-bottom: 3rem;
+}
+
+.Megat__clip {
+  position: absolute;
+  top: -20rem;
+  left: -30rem;
+  height: 90rem;
+  width: 90rem;
+  background: url(../../../../images/bubbles.png) repeat left center/cover;
+  background-size: 70%;
+  background-attachment: fixed;
+  mask-image: url(../../../../images/mask.svg);
+  mask-size: 90rem;
+  mask-repeat: no-repeat;
+  mask-position: top left;
+}
+
+.Megat__blue-stroke {
+  background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  z-index: -1;
+  top: -15rem;
+}
+
+@media (max-width: 576px) {
+  .Megat {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .Megat .row {
+    justify-content: center;
+  }
+  .Megat__clip {
+    position: static;
+    background: url(../../../../images/bubbles.png) repeat center bottom/cover;
+    background-attachment: fixed;
+    mask-position: top center;
+    height: 45rem;
+    mask-size: 40rem;
+    margin-left: -20rem;
+    background-size: 100%;
+  }
+  .Megat__blue-stroke {
+    position: absolute;
+    width: 30rem;
+    height: 30rem;
+    z-index: -1;
+    top: 5rem;
+  }
+  .Megat__info {
+    font-size: 1.6rem;
+  }
+  .Megat__logo {
+    width: 20rem;
+  }
+}

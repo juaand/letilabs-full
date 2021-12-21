@@ -1,0 +1,61 @@
+.Bottom {
+  padding: 20rem 0 10rem 0;
+  position: relative;
+}
+
+.Bottom__desc {
+  margin-bottom: 3rem;
+}
+
+.Bottom__clip {
+  position: absolute;
+  top: -20rem;
+  left: -30rem;
+  height: 90rem;
+  width: 90rem;
+  background: url(../../../../images/red-bubbles.png) no-repeat center/cover;
+  background-attachment: fixed;
+  mask-image: url(../../../../images/mask.svg);
+  mask-size: 90rem;
+  mask-repeat: no-repeat;
+  mask-position: top left;
+}
+
+.Bottom__blue-stroke {
+  background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
+  position: absolute;
+  width: 60rem;
+  height: 60rem;
+  z-index: -1;
+  top: -15rem;
+}
+
+@media (max-width: 576px) {
+  .Bottom {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  .Bottom .row {
+    justify-content: center;
+  }
+  .Bottom__clip {
+    position: static;
+    background: url(../../../../images/bubbles.png) repeat center bottom/cover;
+    background-attachment: fixed;
+    mask-position: top center;
+    height: 45rem;
+    mask-size: 40rem;
+    margin-left: -20rem;
+    background-size: 100%;
+  }
+  .Bottom__blue-stroke {
+    position: absolute;
+    width: 30rem;
+    height: 30rem;
+    z-index: -1;
+    top: 5rem;
+  }
+  .Bottom__info {
+    font-size: 1.6rem;
+  }
+}
