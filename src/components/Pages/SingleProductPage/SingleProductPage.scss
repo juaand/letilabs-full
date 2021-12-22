@@ -6,12 +6,12 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   &__back {
     color: $leti-blue;
     font-size: 2rem;
     display: inherit;
-    margin: 8rem auto 12rem auto;
+    margin: 8rem auto;
 
     &:before {
       content: '';
@@ -35,6 +35,7 @@
   }
 
   &__info {
+      font-size: 1.8rem;
     h2 {
       margin-bottom: 3rem;
     }
@@ -93,6 +94,11 @@
       display: block;
       width: 100%;
     }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .slick-next,
@@ -122,5 +128,68 @@
   .slick-prev {
     background: url(../../../images/prev-arrow.svg) no-repeat center center /
       contain;
+  }
+}
+
+@media (max-width: 576px) {
+  .SingleProductPage {
+    &__pic {
+      margin-bottom: 6rem;
+    }
+
+    &__product {
+      padding-bottom: 0rem;
+      margin-bottom: 3rem;
+    }
+
+    &__back {
+      margin: 4rem auto 6rem auto;
+    }
+
+    &__info {
+      padding: 2rem;
+      font-size: 1.8rem;
+    }
+
+    &__posology {
+      padding: 0 2rem;
+      ul {
+        li {
+          font-size: 1.8rem;
+        }
+      }
+    }
+
+    &__another {
+      margin-bottom: 0;
+
+      h1 {
+        margin: 5rem 0 3rem 0;
+        padding: 0 2rem;
+      }
+
+      &__img {
+        padding-bottom: 6rem;
+      }
+
+      &__block {
+        display: block;
+        margin-bottom: 6rem;
+        padding: 2rem;
+      }
+    }
+
+    .slick-next,
+    .slick-prev {
+      top: 3%;
+    }
+
+    .slick-next {
+      right: 2rem;
+    }
+
+    .slick-prev {
+      left: 2rem;
+    }
   }
 }

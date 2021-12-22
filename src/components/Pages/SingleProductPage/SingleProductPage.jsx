@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {getProduct} from '../../../services/ApiClient'
 import Slider from "react-slick"
 import {Link} from 'react-router-dom'
+import {Fade} from 'react-awesome-reveal'
 
 function SingleProductPage(props) {
 
@@ -45,36 +46,38 @@ function SingleProductPage(props) {
                     <p>Regresar al listado de productos</p>
                 </div>
                 {product.length > 1 ?
-                    <Slider {...settings}>
-                        {product[0].map(el =>
-                            <>
-                                <div className="col-12 SingleProductPage__product">
-                                    <div className="row">
-                                        <div className="col-12 col-sm-6 SingleProductPage__pic">SKU</div>
-                                        <div className="col-12 col-sm-6 SingleProductPage__info">
-                                            <h1>{el?.name}</h1>
-                                            <h2>{el?.active_principle}</h2>
-                                            {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span>{el}</span>) : <span>{el?.therapeutic_group}</span>}
-                                            <p><strong>Composición</strong> {el?.composition}</p>
-                                            <p><strong>Indicación</strong> {el?.indication}
-                                            </p>
-                                            <p><strong>Presentación</strong> {el?.presentation}</p>
-                                            <p><strong>Resgitro sanitario</strong> {el?.health_register}</p>
+                    <Fade triggerOnce cascade direction="up">
+                        <Slider {...settings}>
+                            {product[0].map(el =>
+                                <>
+                                    <div className="col-12 SingleProductPage__product">
+                                        <div className="row">
+                                            <div className="col-12 col-sm-6 SingleProductPage__pic">SKU</div>
+                                            <div className="col-12 col-sm-6 SingleProductPage__info">
+                                                <h1>{el?.name}</h1>
+                                                <h2>{el?.active_principle}</h2>
+                                                {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span>{el}</span>) : <span>{el?.therapeutic_group}</span>}
+                                                <p><strong>Composición</strong> {el?.composition}</p>
+                                                <p><strong>Indicación</strong> {el?.indication}
+                                                </p>
+                                                <p><strong>Presentación</strong> {el?.presentation}</p>
+                                                <p><strong>Resgitro sanitario</strong> {el?.health_register}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-12 SingleProductPage__posology">
-                                    <p>
-                                        <h2>Posología</h2>
-                                        <ul>
-                                            <li dangerouslySetInnerHTML={{__html: el?.posology}}>
-                                            </li>
-                                        </ul>
-                                    </p>
-                                </div>
-                            </>
-                        )}
-                    </Slider>
+                                    <div className="col-12 SingleProductPage__posology">
+                                        <p>
+                                            <h2>Posología</h2>
+                                            <ul>
+                                                <li dangerouslySetInnerHTML={{__html: el?.posology}}>
+                                                </li>
+                                            </ul>
+                                        </p>
+                                    </div>
+                                </>
+                            )}
+                        </Slider>
+                    </Fade>
                     :
                     <>
                         <div className="col-12 SingleProductPage__product">
@@ -105,11 +108,12 @@ function SingleProductPage(props) {
                         </div>
                     </>
                 }
+
                 <div className="col-12 SingleProductPage__another">
                     <h1>Otros productos del portafolio</h1>
                     <div className="row justify-content-between">
                         {product[1]?.map(el =>
-                            <div className="col-12 col-sm-3 d-flex flex-direction-column">
+                            <div className="col-12 col-sm-3 SingleProductPage__another__block">
                                 <img src={el?.image} alt={el?.name} className="SingleProductPage__another__img" />
                                 <h2>{el?.name}</h2>
                                 <p className="SingleProductPage__another__principle">{el?.active_principle}</p>
