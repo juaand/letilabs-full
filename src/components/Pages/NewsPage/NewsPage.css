@@ -1,0 +1,17 @@
+.NewsPage__hero {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 45rem;
+  text-decoration: none;
+}
+
+.NewsPage__container {
+  color: #fff;
+  text-shadow: 0 0 3.2rem black;
+}
+
+.NewsPage__lastest {
+  padding: 10rem 0;
+}
