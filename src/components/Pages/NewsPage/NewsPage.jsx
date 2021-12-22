@@ -47,17 +47,25 @@ function NewsPage() {
                             <>
                                 <img src={el?.urlToPic} className="card-img-top" alt={el?.title} />
                                 <div className="card-body">
-                                <span className="card-time">{drawTime(el?.publishDate)}</span>
+                                    <span className="card-time">{drawTime(el?.publishDate)}</span>
                                     <p className="card-title">{el?.title}</p>
                                     <h5 className="card-subtitle">{el?.subTitle}</h5>
                                 </div>
                                 <div className="card-footer">
-                                    <Link className="leti-btn"></Link>
+                                    <Link to={{
+                                        pathname: `/noticia`,
+                                        state: {
+                                            data: el
+                                        }
+                                    }} className="leti-btn"></Link>
                                 </div>
                             </>
                         )}
                     </Fade>
                 </div>
+            </div>
+            <div className="container NewsPage__lastest">
+                <h1>Lo más leído</h1>
             </div>
         </>
     )
