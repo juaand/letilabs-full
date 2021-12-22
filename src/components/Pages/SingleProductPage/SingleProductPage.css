@@ -1,3 +1,9 @@
+.SingleProductPage__pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .SingleProductPage__back {
   color: #055aa5;
   font-size: 2rem;
@@ -47,6 +53,11 @@
   color: #4a4a4a;
 }
 
+.SingleProductPage__posology strong {
+  font-family: 'TripletaBold';
+  font-size: 2.1rem;
+}
+
 .SingleProductPage__posology ul {
   padding: 0;
   list-style: none;
@@ -56,8 +67,26 @@
   font-size: 2rem;
 }
 
+.SingleProductPage__another {
+  margin-bottom: 10rem;
+}
+
 .SingleProductPage__another h1 {
   margin: 10rem 0 6rem 0;
+}
+
+.SingleProductPage__another__principle {
+  font-size: 2rem;
+  color: #737b7f;
+}
+
+.SingleProductPage__another__img {
+  border-bottom: solid 0.1rem rgba(115, 123, 127, 0.4);
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  height: 3rem;
+  display: block;
+  width: 100%;
 }
 
 .SingleProductPage .slick-next,

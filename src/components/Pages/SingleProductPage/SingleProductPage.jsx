@@ -2,6 +2,7 @@ import './SingleProductPage.css'
 import React, {useState, useEffect} from 'react'
 import {getProduct} from '../../../services/ApiClient'
 import Slider from "react-slick"
+import {Link} from 'react-router-dom'
 
 function SingleProductPage(props) {
 
@@ -28,9 +29,11 @@ function SingleProductPage(props) {
     const [product, setProduct] = useState([])
 
     useEffect(() => {
+        window.scrollTo(0, 0)
         const fetchData = async () => {
             const getProductData = await getProduct(buscar)
             setProduct(getProductData)
+            console.log(getProductData)
         }
         fetchData()
     }, [buscar])
@@ -43,11 +46,11 @@ function SingleProductPage(props) {
                 </div>
                 {product.length > 1 ?
                     <Slider {...settings}>
-                        {product.map(el =>
+                        {product[0].map(el =>
                             <>
                                 <div className="col-12 SingleProductPage__product">
                                     <div className="row">
-                                        <div className="col-12 col-sm-6 SingleProductPage__pic">algo</div>
+                                        <div className="col-12 col-sm-6 SingleProductPage__pic">SKU</div>
                                         <div className="col-12 col-sm-6 SingleProductPage__info">
                                             <h1>{el?.name}</h1>
                                             <h2>{el?.active_principle}</h2>
@@ -76,7 +79,7 @@ function SingleProductPage(props) {
                     <>
                         <div className="col-12 SingleProductPage__product">
                             <div className="row">
-                                <div className="col-12 col-sm-6 SingleProductPage__pic"></div>
+                                <div className="col-12 col-sm-6 SingleProductPage__pic">SKU</div>
                                 <div className="col-12 col-sm-6 SingleProductPage__info">
                                     <>
                                         <h1>{product[0]?.name}</h1>
@@ -104,6 +107,21 @@ function SingleProductPage(props) {
                 }
                 <div className="col-12 SingleProductPage__another">
                     <h1>Otros productos del portafolio</h1>
+                    <div className="row justify-content-between">
+                        {product[1]?.map(el =>
+                            <div className="col-12 col-sm-3 d-flex flex-direction-column">
+                                <img src={el?.image} alt={el?.name} className="SingleProductPage__another__img" />
+                                <h2>{el?.name}</h2>
+                                <p className="SingleProductPage__another__principle">{el?.active_principle}</p>
+                                <Link to={{
+                                    pathname: '/producto',
+                                    state: {
+                                        buscar: el?.name
+                                    }
+                                }} className="leti-btn">Ver producto</Link>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
         </section>

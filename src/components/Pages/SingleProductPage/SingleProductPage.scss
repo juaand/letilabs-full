@@ -1,6 +1,12 @@
 @import '../../../stylesheets/variables';
 
 .SingleProductPage {
+  &__pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
   &__back {
     color: $leti-blue;
     font-size: 2rem;
@@ -54,6 +60,10 @@
   }
 
   &__posology {
+    strong {
+      font-family: 'TripletaBold';
+      font-size: 2.1rem;
+    }
     ul {
       padding: 0;
       list-style: none;
@@ -65,8 +75,23 @@
   }
 
   &__another {
+    margin-bottom: 10rem;
     h1 {
       margin: 10rem 0 6rem 0;
+    }
+
+    &__principle {
+      font-size: 2rem;
+      color: $leti-nav;
+    }
+
+    &__img {
+      border-bottom: solid 0.1rem rgba($leti-nav, 0.4);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      height: 3rem;
+      display: block;
+      width: 100%;
     }
   }
 
@@ -81,14 +106,14 @@
     top: 28%;
 
     &:before {
-        display: none;
+      display: none;
     }
 
     &:hover {
       opacity: 1;
     }
   }
-  
+
   .slick-next {
     background: url(../../../images/next-arrow.svg) no-repeat center center /
       contain;
