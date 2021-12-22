@@ -56,9 +56,7 @@ export const updateMegatData = ({title, description, url, buttonTitle, id}) => h
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
-
 export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
-
 export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
 
 //content routes
@@ -69,3 +67,6 @@ export const searchContent = (search) => http.get(`/search/${search}`)
 
 //product routes
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
+
+//news routes
+export const getNews = () => http.get("/newsdata")

@@ -34,7 +34,6 @@ function SingleProductPage(props) {
         const fetchData = async () => {
             const getProductData = await getProduct(buscar)
             setProduct(getProductData)
-            console.log(getProductData)
         }
         fetchData()
     }, [buscar])
