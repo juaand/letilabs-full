@@ -22,6 +22,10 @@
     border-bottom: solid 0.1rem rgba($leti-nav, 0.4);
     padding-bottom: 6rem;
     margin-bottom: 6rem;
+
+    .row {
+      display: flex !important;
+    }
   }
 
   &__info {
@@ -55,7 +59,7 @@
       list-style: none;
 
       li {
-          font-size: 2rem;
+        font-size: 2rem;
       }
     }
   }
@@ -64,5 +68,33 @@
     h1 {
       margin: 10rem 0 6rem 0;
     }
+  }
+
+  .slick-next,
+  .slick-prev {
+    width: 4rem;
+    height: 4rem;
+    z-index: 4;
+    opacity: 0.4;
+    transition: all 200ms ease-in-out;
+    position: absolute;
+
+    &:before {
+        display: none;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+  
+  .slick-next {
+    background: url(../../../images/next-arrow.svg) no-repeat center center /
+      contain;
+  }
+
+  .slick-prev {
+    background: url(../../../images/prev-arrow.svg) no-repeat center center /
+      contain;
   }
 }

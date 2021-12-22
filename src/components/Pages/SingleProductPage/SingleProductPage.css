@@ -20,6 +20,10 @@
   margin-bottom: 6rem;
 }
 
+.SingleProductPage__product .row {
+  display: flex !important;
+}
+
 .SingleProductPage__info h2 {
   margin-bottom: 3rem;
 }
@@ -54,4 +58,32 @@
 
 .SingleProductPage__another h1 {
   margin: 10rem 0 6rem 0;
+}
+
+.SingleProductPage .slick-next,
+.SingleProductPage .slick-prev {
+  width: 4rem;
+  height: 4rem;
+  z-index: 4;
+  opacity: 0.4;
+  transition: all 200ms ease-in-out;
+  position: absolute;
+}
+
+.SingleProductPage .slick-next:before,
+.SingleProductPage .slick-prev:before {
+  display: none;
+}
+
+.SingleProductPage .slick-next:hover,
+.SingleProductPage .slick-prev:hover {
+  opacity: 1;
+}
+
+.SingleProductPage .slick-next {
+  background: url(../../../images/next-arrow.svg) no-repeat center center/contain;
+}
+
+.SingleProductPage .slick-prev {
+  background: url(../../../images/prev-arrow.svg) no-repeat center center/contain;
 }
