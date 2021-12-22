@@ -13,9 +13,52 @@
   &__container {
     color: $leti-white;
     text-shadow: 0 0 3.2rem rgba($leti-black, 1);
+
+    span {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
   }
 
   &__lastest {
     padding: 10rem 0;
+
+    h1 {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__card {
+    border: 0;
+
+    .card-time {
+      font-size: 1.6rem;
+      color: $leti-nav;
+    }
+
+    .card-title {
+      font-family: 'TripletaBold';
+      margin-bottom: 3rem;
+      font-size: 2.6rem;
+    }
+
+    .card-subtitle {
+      font-size: 1.8rem;
+    }
+
+    .card-footer {
+      background: none;
+      border: 0;
+
+      .leti-btn {
+        background: url(../../../images/plus.svg) no-repeat center / 2.4rem;
+        height: 5rem;
+
+        &:hover {
+          background: $leti-blue url(../../../images/plus-white.svg) no-repeat center / 2.4rem;
+        }
+      }
+    }
   }
 }
