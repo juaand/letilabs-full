@@ -27,11 +27,12 @@
 .SingleProductPage__info span {
   background: #055aa5;
   color: #fff;
-  padding: 0.8rem 2.4rem;
+  padding: 0.4rem 2rem;
   display: inline-block;
   margin-bottom: 3rem;
   text-transform: capitalize;
   margin-right: 2rem;
+  font-size: 1.8rem;
 }
 
 .SingleProductPage__info p {
@@ -45,6 +46,10 @@
 .SingleProductPage__posology ul {
   padding: 0;
   list-style: none;
+}
+
+.SingleProductPage__posology ul li {
+  font-size: 2rem;
 }
 
 .SingleProductPage__another h1 {

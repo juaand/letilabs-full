@@ -32,11 +32,12 @@
     span {
       background: $leti-blue;
       color: $leti-white;
-      padding: 0.8rem 2.4rem;
+      padding: 0.4rem 2rem;
       display: inline-block;
       margin-bottom: 3rem;
       text-transform: capitalize;
       margin-right: 2rem;
+      font-size: 1.8rem;
     }
 
     p {
@@ -52,6 +53,10 @@
     ul {
       padding: 0;
       list-style: none;
+
+      li {
+          font-size: 2rem;
+      }
     }
   }
 
