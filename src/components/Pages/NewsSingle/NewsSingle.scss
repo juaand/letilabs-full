@@ -26,7 +26,7 @@
     position: relative;
 
     &-desc {
-        position: relative;
+      position: relative;
     }
   }
 
@@ -70,6 +70,78 @@
       .linkedin {
         display: inline-block;
         margin-right: 2rem;
+      }
+    }
+  }
+
+  &__related {
+    margin-bottom: 10rem;
+    h1 {
+      margin-bottom: 6rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .NewsSingle {
+    &__content {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+    }
+
+    &__related {
+      margin-bottom: 0rem;
+      h1 {
+        margin-bottom: 6rem;
+        padding: 0 2rem;
+      }
+
+      .card-body {
+        padding: 2rem;
+      }
+
+      .card-footer {
+        padding: 0 2rem;
+
+        .leti-btn {
+          margin-bottom: 4rem;
+        }
+      }
+    }
+
+    &__rrss {
+      position: absolute;
+      top: -5.2rem;
+      left: unset;
+      right: 2rem;
+      display: flex;
+
+      &:before {
+          content: 'Comparte:';
+          color: $leti-blue;
+          margin-right: 2rem;
+          font-weight: 600;
+          top: 0;
+      }
+
+      .facebook,
+      .instagram,
+      .linkedin {
+        display: inline-block;
+        margin-right: 1.6rem;
+      }
+
+      &-bottom {
+        bottom: -12rem;
+        right: 0;
+        top: unset;
+        left: unset;
+
+        .facebook,
+        .instagram,
+        .linkedin {
+          margin-right: 1.6rem;
+        }
       }
     }
   }

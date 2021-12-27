@@ -1,10 +1,24 @@
 import './NewsSingle.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {drawTime} from '../../../helpers/globals'
+import {Link} from 'react-router-dom'
+import {getRandomNews} from '../../../services/ApiClient'
 
 function NewsSingle(props) {
     const noticia = props?.location?.state?.data
+
+    const [getRandom, setGetRandom] = useState([])
+
+    useEffect(() => {
+        window.scrollTo(0,0)
+        const fetchData = async () => {
+            const getRandomData = await getRandomNews()
+            setGetRandom(getRandomData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>
@@ -41,12 +55,13 @@ function NewsSingle(props) {
                 </section>
             </Fade>
             <Fade triggerOnce direction="up">
-                <section className="container">
-                    <div className="col-12">
-                        <h1>Noticias relacionadas</h1>
-                    </div>
-                    <Fade cascade direction="up" triggerOnce className="card NewsPage__card col-12 col-sm-5">
-                            {getSearch.map(el =>
+                <section className="container NewsSingle__related">
+                    <div className="row justify-content-around">
+                        <div className="col-12">
+                            <h1>Noticias relacionadas</h1>
+                        </div>
+                        <Fade cascade direction="up" triggerOnce className="card NewsPage__card col-12 col-sm-5 p-0">
+                            {getRandom.map(el =>
                                 <>
                                     <img src={el?.urlToPic} className="card-img-top" alt={el?.title} />
                                     <div className="card-body">
@@ -65,6 +80,7 @@ function NewsSingle(props) {
                                 </>
                             )}
                         </Fade>
+                    </div>
                 </section>
             </Fade>
         </>
