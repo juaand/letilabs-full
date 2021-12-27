@@ -1,32 +1,6 @@
 @import '../../../stylesheets/variables';
 
 .NewsPage {
-
-  &__most {
-    h1 {
-      margin: 10rem 0 6rem 0;
-    }
-
-    &-hero {
-      .card-body,
-      .card-footer {
-        padding-left: 30%;
-      }
-    }
-
-    &-resume {
-      .card {
-        border-bottom: solid 0.1rem rgba($leti-text, 0.1);
-        padding-bottom: 3rem;
-        margin-bottom: 3rem;
-
-        &:last-child {
-          border-bottom: none;
-        }
-      }
-    }
-  }
-
   &__card {
     border: 0;
 
