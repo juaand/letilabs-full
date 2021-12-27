@@ -4,6 +4,7 @@ import {drawTime} from '../../../helpers/globals'
 import {getNews} from '../../../services/ApiClient'
 import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+import Banner from './Banner/Banner'
 
 function NewsPage() {
 
@@ -19,25 +20,8 @@ function NewsPage() {
     }, [])
 
     return (
-        <>
-            {newsData?.filter(el => el?.outstanding === true).map(el =>
-                <Link to={{
-                    pathname: `/noticia`,
-                    state: {
-                        data: el
-                    }
-                }} className="container-fluid p-0 NewsPage__hero" style={{
-                    background: `url(${el?.urlToPic}) no-repeat center center / cover`,
-                }}>
-                    <div className="NewsPage__container container">
-                        <Fade triggerOnce direction="left" cascade>
-                            <span>{drawTime(el?.publishDate)}</span>
-                            <h1>{el?.title}</h1>
-                            <h3>{el?.subTitle}</h3>
-                        </Fade>
-                    </div>
-                </Link>
-            )}
+        <main>
+            <Banner newsData={newsData?.filter(el => el?.outstanding === true)}/>
             <div className="container NewsPage__lastest">
                 <h1>Lo último</h1>
                 <div className="row justify-content-between">
@@ -113,7 +97,7 @@ function NewsPage() {
                     </div>
                 </div>
             </div>
-        </>
+        </main>
     )
 }
 

@@ -1,0 +1,23 @@
+@import '../../../../stylesheets/variables';
+
+.NewsPage {
+  &__hero {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 45rem;
+    text-decoration: none;
+  }
+
+  &__container {
+    color: $leti-white;
+    text-shadow: 0 0 3.2rem rgba($leti-black, 1);
+
+    span {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+    }
+  }
+}
