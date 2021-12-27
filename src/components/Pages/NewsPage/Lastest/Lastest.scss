@@ -1,0 +1,11 @@
+@import '../../../../stylesheets/variables';
+
+.NewsPage {
+  &__lastest {
+    padding: 10rem 0 0 0;
+
+    h1 {
+      margin-bottom: 6rem;
+    }
+  }
+}
