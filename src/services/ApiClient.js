@@ -64,6 +64,7 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 
 //search routes
 export const searchContent = (search) => http.get(`/search/${search}`)
+export const searchNews = (search) => http.post(`/buscarnoticia`, {search})
 
 //product routes
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
