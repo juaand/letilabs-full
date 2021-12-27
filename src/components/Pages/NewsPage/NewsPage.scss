@@ -29,11 +29,36 @@
     }
   }
 
+  &__most {
+    h1 {
+      margin: 10rem 0 6rem 0;
+    }
+
+    &-hero {
+      .card-body,
+      .card-footer {
+        padding-left: 30%;
+      }
+    }
+
+    &-resume {
+      .card {
+        border-bottom: solid 0.1rem rgba($leti-text, 0.1);
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
   &__card {
     border: 0;
 
     .card-time {
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       color: $leti-nav;
     }
 
@@ -41,6 +66,7 @@
       font-family: 'TripletaBold';
       margin-bottom: 3rem;
       font-size: 2.6rem;
+      padding-right: 10rem;
     }
 
     .card-subtitle {
@@ -56,7 +82,8 @@
         height: 5rem;
 
         &:hover {
-          background: $leti-blue url(../../../images/plus-white.svg) no-repeat center / 2.4rem;
+          background: $leti-blue url(../../../images/plus-white.svg) no-repeat
+            center / 2.4rem;
         }
       }
     }

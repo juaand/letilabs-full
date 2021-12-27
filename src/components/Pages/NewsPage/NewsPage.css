@@ -26,12 +26,31 @@
   margin-bottom: 6rem;
 }
 
+.NewsPage__most h1 {
+  margin: 10rem 0 6rem 0;
+}
+
+.NewsPage__most-hero .card-body,
+.NewsPage__most-hero .card-footer {
+  padding-left: 30%;
+}
+
+.NewsPage__most-resume .card {
+  border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+}
+
+.NewsPage__most-resume .card:last-child {
+  border-bottom: none;
+}
+
 .NewsPage__card {
   border: 0;
 }
 
 .NewsPage__card .card-time {
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: #737b7f;
 }
 
@@ -39,6 +58,7 @@
   font-family: 'TripletaBold';
   margin-bottom: 3rem;
   font-size: 2.6rem;
+  padding-right: 10rem;
 }
 
 .NewsPage__card .card-subtitle {
