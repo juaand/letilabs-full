@@ -16,3 +16,32 @@
 .NewsPage__most-resume .card:last-child {
   border-bottom: none;
 }
+
+@media (max-width: 576px) {
+  .NewsPage__most .container {
+    padding: 0;
+  }
+  .NewsPage__most h1 {
+    margin: 3rem 2rem;
+  }
+  .NewsPage__most-hero {
+    border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
+  }
+  .NewsPage__most-hero .card-body,
+  .NewsPage__most-hero .card-footer {
+    padding: 0 2rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .NewsPage__most-resume {
+    padding: 0 2rem;
+  }
+  .NewsPage__most-resume .card {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .NewsPage__most-resume .card:last-child {
+    border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
+    margin-bottom: 3rem;
+  }
+}

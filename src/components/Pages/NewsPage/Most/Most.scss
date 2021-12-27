@@ -26,3 +26,39 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .NewsPage {
+    &__most {
+      .container {
+        padding: 0;
+      }
+      h1 {
+        margin: 3rem 2rem;
+      }
+      &-hero {
+        border-bottom: solid 0.1rem rgba($leti-text, 0.1);
+        .card-body,
+        .card-footer {
+          padding: 0 2rem;
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      &-resume {
+        padding: 0 2rem;
+
+        .card {
+          padding-bottom: 1rem;
+          margin-bottom: 1rem;
+
+          &:last-child {
+            border-bottom: solid 0.1rem rgba($leti-text, 0.1);
+            margin-bottom: 3rem;
+          }
+        }
+      }
+    }
+  }
+}

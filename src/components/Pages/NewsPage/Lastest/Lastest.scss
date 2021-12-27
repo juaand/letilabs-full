@@ -9,3 +9,25 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .NewsPage {
+    &__lastest {
+    padding: 5rem 0 0 0;
+
+
+      h1 {
+        padding: 2rem;
+        margin: 0;
+      }
+      .card-body{
+        padding:2rem;
+      }
+
+      .card-footer {
+        padding: 0 2rem;
+      margin-bottom: 3rem;
+      }
+    }
+  }
+}

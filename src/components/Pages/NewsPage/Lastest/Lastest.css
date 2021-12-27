@@ -5,3 +5,20 @@
 .NewsPage__lastest h1 {
   margin-bottom: 6rem;
 }
+
+@media (max-width: 576px) {
+  .NewsPage__lastest {
+    padding: 5rem 0 0 0;
+  }
+  .NewsPage__lastest h1 {
+    padding: 2rem;
+    margin: 0;
+  }
+  .NewsPage__lastest .card-body {
+    padding: 2rem;
+  }
+  .NewsPage__lastest .card-footer {
+    padding: 0 2rem;
+    margin-bottom: 3rem;
+  }
+}

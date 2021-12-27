@@ -26,6 +26,7 @@
 .NewsPage__card .card-footer .leti-btn {
   background: url(../../../images/plus.svg) no-repeat center/2.4rem;
   height: 5rem;
+  width: 5rem;
 }
 
 .NewsPage__card .card-footer .leti-btn:hover {

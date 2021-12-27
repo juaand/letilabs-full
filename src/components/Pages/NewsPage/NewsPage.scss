@@ -27,6 +27,7 @@
       .leti-btn {
         background: url(../../../images/plus.svg) no-repeat center / 2.4rem;
         height: 5rem;
+        width: 5rem;
 
         &:hover {
           background: $leti-blue url(../../../images/plus-white.svg) no-repeat
@@ -36,3 +37,4 @@
     }
   }
 }
+
