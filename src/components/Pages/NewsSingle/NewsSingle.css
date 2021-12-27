@@ -1,0 +1,69 @@
+.NewsSingle__Banner {
+  color: #fff;
+  height: 45rem;
+  display: flex;
+  align-items: center;
+}
+
+.NewsSingle__Banner__container {
+  color: #fff;
+  text-shadow: 0 0 3.2rem black;
+}
+
+.NewsSingle__Banner__container span {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.NewsSingle__content {
+  margin: 10rem auto 16rem auto;
+  color: #737b7f;
+  line-height: 3.6rem;
+  position: relative;
+}
+
+.NewsSingle__content-desc {
+  position: relative;
+}
+
+.NewsSingle__rrss {
+  position: absolute;
+  top: 0.8rem;
+  left: 4rem;
+}
+
+.NewsSingle__rrss .facebook,
+.NewsSingle__rrss .instagram,
+.NewsSingle__rrss .linkedin {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.NewsSingle__rrss .facebook {
+  background: url(../../../images/facebook-single.svg) no-repeat center/cover;
+}
+
+.NewsSingle__rrss .instagram {
+  background: url(../../../images/instagram-single.svg) no-repeat center/cover;
+}
+
+.NewsSingle__rrss .linkedin {
+  background: url(../../../images/linkedin-single.svg) no-repeat center/cover;
+}
+
+.NewsSingle__rrss-bottom {
+  bottom: -12rem;
+  right: 0;
+  top: unset;
+  left: unset;
+}
+
+.NewsSingle__rrss-bottom .facebook,
+.NewsSingle__rrss-bottom .instagram,
+.NewsSingle__rrss-bottom .linkedin {
+  display: inline-block;
+  margin-right: 2rem;
+}

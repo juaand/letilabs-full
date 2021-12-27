@@ -71,3 +71,4 @@ export const getProduct = (buscar) => http.post("/producstdata", {buscar})
 
 //news routes
 export const getNews = () => http.get("/newsdata")
+export const getRandomNews = (category) => http.post("/getrandomnews", {category})

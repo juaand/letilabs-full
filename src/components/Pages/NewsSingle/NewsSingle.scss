@@ -1,0 +1,76 @@
+@import '../../../stylesheets/variables';
+
+.NewsSingle {
+  &__Banner {
+    color: $leti-white;
+    height: 45rem;
+    display: flex;
+    align-items: center;
+
+    &__container {
+      color: $leti-white;
+      text-shadow: 0 0 3.2rem rgba($leti-black, 1);
+
+      span {
+        font-size: 1.6rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+
+  &__content {
+    margin: 10rem auto 16rem auto;
+    color: $leti-nav;
+    line-height: 3.6rem;
+    position: relative;
+
+    &-desc {
+        position: relative;
+    }
+  }
+
+  &__rrss {
+    position: absolute;
+    top: 0.8rem;
+    left: 4rem;
+
+    .facebook,
+    .instagram,
+    .linkedin {
+      display: block;
+      width: 3rem;
+      height: 3rem;
+      margin-bottom: 2rem;
+    }
+
+    .facebook {
+      background: url(../../../images/facebook-single.svg) no-repeat center /
+        cover;
+    }
+
+    .instagram {
+      background: url(../../../images/instagram-single.svg) no-repeat center /
+        cover;
+    }
+
+    .linkedin {
+      background: url(../../../images/linkedin-single.svg) no-repeat center /
+        cover;
+    }
+
+    &-bottom {
+      bottom: -12rem;
+      right: 0;
+      top: unset;
+      left: unset;
+
+      .facebook,
+      .instagram,
+      .linkedin {
+        display: inline-block;
+        margin-right: 2rem;
+      }
+    }
+  }
+}

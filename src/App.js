@@ -27,6 +27,7 @@ import OurPhilosophyPage from './components/Pages/OurPhilosophyPage/OurPhilosoph
 import ProductsPage from './components/Pages/ProductsPage/ProductsPage'
 import SingleProductPage from './components/Pages/SingleProductPage/SingleProductPage'
 import NewsPage from './components/Pages/NewsPage/NewsPage'
+import NewsSingle from './components/Pages/NewsSingle/NewsSingle'
 
 
 
@@ -57,6 +58,7 @@ function App() {
         <Route exact path="/productos" render={(props) => <ProductsPage {...props} />} />
         <Route exact path="/producto" render={(props) => <SingleProductPage {...props} />} />
         <Route exact path="/noticias" render={(props) => <NewsPage {...props} />} />
+        <Route exact path="/noticia" render={(props) => <NewsSingle {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
