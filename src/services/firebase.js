@@ -4,11 +4,11 @@ import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
 
 export const app = firebase.initializeApp({
-    apiKey: "AIzaSyCESeGiwdmN9yAPK151D-jD8uJ1yH2qsTw",
-    authDomain: "moliver-6a572.firebaseapp.com",
-    projectId: "moliver-6a572",
-    storageBucket: "moliver-6a572.appspot.com",
-    messagingSenderId: "794630574596",
-    appId: "1:794630574596:web:f7b0a5cacdf23731409b51",
-    measurementId: "G-VHLPL6RREN"
+    apiKey: "AIzaSyCLqD8ooQY6FNF3oiAy7i7r0QdbpFNYkI8",
+    authDomain: "grupo-leti-fd84e.firebaseapp.com",
+    projectId: "grupo-leti-fd84e",
+    storageBucket: "grupo-leti-fd84e.appspot.com",
+    messagingSenderId: "688564448697",
+    appId: "1:688564448697:web:e25673406163cb40365a68",
+    measurementId: "G-9NS559N5MM"
 })
