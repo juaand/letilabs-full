@@ -75,7 +75,7 @@ function EditCarousel() {
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {carouselData?.length > 0 &&
                 <section className="container-fluid EditContent">
-                    <h2>Elminar elemento del carrusel</h2>
+                    <h2>Editar elemento del carrusel</h2>
                     <div className="row justify-content-around">
                         {carouselData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
