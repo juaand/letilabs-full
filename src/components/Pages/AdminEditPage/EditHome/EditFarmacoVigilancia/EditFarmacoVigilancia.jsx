@@ -57,7 +57,7 @@ function EditFarmacoVigilancia() {
 
 
     useEffect(() => {
-        
+
         const fetchData = async () => {
             const getFarmacoData = await getFarmaco()
             setFarmacoData(getFarmacoData)
@@ -70,7 +70,7 @@ function EditFarmacoVigilancia() {
         <section className="container-fluid EditContent">
             <h2>Farmaco vigilancia</h2>
             <form className="AdminEdit__form" onSubmit={updateFarmaco}>
-            <div className="row">
+                <div className="row">
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Título
@@ -88,6 +88,7 @@ function EditFarmacoVigilancia() {
                             Subtítulo
                         </p>
                         <Editor
+                            initialValue={farmacoData?.subTitle}
                             onChange={handleFarmacoSubTitle}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -101,10 +102,9 @@ function EditFarmacoVigilancia() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: farmacoData?.subTitle
                             }}
                         />
-                         <p className="AdminEdit__form__label">
+                        <p className="AdminEdit__form__label">
                             Título del botón
                         </p>
                         <InputWithLabel

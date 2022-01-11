@@ -58,7 +58,7 @@ function EditUsInfo() {
 
 
     useEffect(() => {
-        
+
         const fetchData = async () => {
             const getUsInfoData = await getUsInfo()
             setUsInfoData(getUsInfoData)
@@ -77,6 +77,7 @@ function EditUsInfo() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={usInfoData?.description}
                             onChange={handleUsInfoDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -90,7 +91,6 @@ function EditUsInfo() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: usInfoData?.description
                             }}
                         />
                     </div>

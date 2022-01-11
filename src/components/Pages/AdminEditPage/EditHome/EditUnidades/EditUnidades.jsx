@@ -124,6 +124,7 @@ function EditUnidades() {
                                 description
                             </p>
                             <Editor
+                                initialValue={unidadesData?.desc}
                                 onChange={handleUnidadesDescription}
                                 apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                 init={{
@@ -137,7 +138,6 @@ function EditUnidades() {
                                     ],
                                     toolbar:
                                         'bold',
-                                    placeholder: unidadesData?.desc
                                 }}
                             />
                         </div>

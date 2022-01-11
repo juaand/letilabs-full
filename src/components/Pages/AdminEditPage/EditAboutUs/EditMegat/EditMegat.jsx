@@ -13,7 +13,7 @@ function EditMegat() {
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
-                id: '',                
+                id: '',
                 title: megatData?.title,
                 description: megatData?.description,
                 url: megatData?.url,
@@ -61,7 +61,7 @@ function EditMegat() {
 
 
     useEffect(() => {
-        
+
         const fetchData = async () => {
             const getMegatData = await getMegat()
             setMegatData(getMegatData)
@@ -74,24 +74,25 @@ function EditMegat() {
         <section className="container-fluid EditContent">
             <h2>Megat</h2>
             <form className="AdminEdit__form" onSubmit={updateMegat}>
-                    <div className="row">
-                        <p className="AdminEdit__form__label">
-                            Título
-                        </p>
-                        <InputWithLabel
-                            value={data?.title}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="title"
-                            type="text"
-                            className={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                            placeholder={megatData?.title}
-                        />
+                <div className="row">
+                    <p className="AdminEdit__form__label">
+                        Título
+                    </p>
+                    <InputWithLabel
+                        value={data?.title}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        name="title"
+                        type="text"
+                        className={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                        placeholder={megatData?.title}
+                    />
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Descripción
                         </p>
                         <Editor
+                            initialValue={megatData?.description}
                             onChange={handleMegatDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -105,7 +106,6 @@ function EditMegat() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: megatData?.description
                             }}
                         />
                     </div>

@@ -74,6 +74,7 @@ function EditMarcandoPauta() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={marcandoPautaData?.description}
                             onChange={handleMarcandoPautaDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -87,7 +88,6 @@ function EditMarcandoPauta() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: marcandoPautaData?.description
                             }}
                         />
                     </div>

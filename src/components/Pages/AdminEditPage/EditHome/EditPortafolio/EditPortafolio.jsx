@@ -55,7 +55,7 @@ function EditPortafolio() {
     }
 
     useEffect(() => {
-        
+
         const fetchData = async () => {
             const getPortfolioData = await getPortfolio()
             setPortfolioData(getPortfolioData)
@@ -68,7 +68,7 @@ function EditPortafolio() {
         <section className="container-fluid EditContent">
             <h2>Portafolio</h2>
             <form className="AdminEdit__form" onSubmit={updatePortfolioInfo}>
-            <div className="row">
+                <div className="row">
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             title
@@ -86,6 +86,7 @@ function EditPortafolio() {
                             description
                         </p>
                         <Editor
+                            initialValue={portfolioData?.description}
                             onChange={handlePortfolioDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -99,7 +100,6 @@ function EditPortafolio() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: portfolioData?.description
                             }}
                         />
                     </div>
