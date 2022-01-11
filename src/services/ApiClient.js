@@ -53,6 +53,20 @@ export const updateBannerData = ({description, imgURL, id}) => http.patch("/upda
 export const updateMarcandoPautaData = ({description, imgURL, id}) => http.patch("/updatemarcandopautadata", {description, imgURL, id})
 export const updateMegatData = ({title, description, url, buttonTitle, id}) => http.patch("/updatemegatdata", {title, description, url, buttonTitle, id})
 
+//admin edit routes our companies
+
+export const getBannerOC = () => http.get("/bannerdataoc")
+export const updateBannerDataOC = ({description, imgURL, id}) => http.patch("/updatebannerdataoc", {description, imgURL, id})
+export const getOurCompaniesOC = () => http.get("/ourcompaniesoc")
+export const updateOurCompaniesOC = ({name, logo, info, url, id}) => http.get("/updateourcompaniesoc", {name, logo, info, url, id})
+export const getBannerProductsOC = () => http.get("/bannerproductsoc")
+export const updateBannerProductsOC = ({description, description2, imgURL, img2URL, img3URL, id}) => http.get("/updatebannerproductsoc", {description, description2, imgURL, img2URL, img3URL, id})
+export const getInnovationOC = () => http.get("/innovationoc")
+export const updateInnovationOC = ({description, imgURL, id}) => http.patch("/updateinnovationoc", {description, imgURL, id})
+export const getCareOC = () => http.get("/careoc")
+export const updateCareOC = ({description, imgURL, id}) => http.patch("/updatecareoc", {description, imgURL, id})
+export const getBottomOC = () => http.get("/bottomoc")
+export const updateBottomOC = ({title, url, button, img, id}) => http.patch("/updatebottomoc", {title, url, button, img, id})
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
