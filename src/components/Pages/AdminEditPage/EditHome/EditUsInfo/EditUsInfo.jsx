@@ -91,6 +91,7 @@ function EditUsInfo() {
                                 ],
                                 toolbar:
                                     'bold',
+
                             }}
                         />
                     </div>

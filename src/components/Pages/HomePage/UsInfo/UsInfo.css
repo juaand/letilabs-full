@@ -12,6 +12,10 @@
   line-height: 3.8rem;
 }
 
+.Nosotros__valor strong {
+  color: #055aa5;
+}
+
 .Nosotros .leti-btn {
   background: #fff;
 }
