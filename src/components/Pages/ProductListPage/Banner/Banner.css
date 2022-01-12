@@ -1,0 +1,89 @@
+.Banner__ProductsList {
+  position: relative;
+}
+
+.Banner__ProductsList .leti-btn {
+  margin-right: 2rem;
+  margin-top: 3rem;
+}
+
+.Banner__ProductsList .leti-btn:last-child {
+  margin-right: 0;
+}
+
+.Banner__ProductsList__btns {
+  position: absolute;
+  bottom: 4rem;
+}
+
+.Banner__ProductsList-logo {
+  margin-top: 6rem;
+  display: block;
+}
+
+.Banner__ProductsList__title {
+  height: 70rem;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Banner__ProductsList__title h3 {
+  font-size: 3rem;
+  font-family: 'Mulish', sans-serif;
+  font-weight: 500;
+  margin: 1rem auto;
+}
+
+.Banner__ProductsList__bg {
+  position: absolute;
+  width: 54rem;
+  height: 54rem;
+  background: url(../../../../images/listado-bg.png) no-repeat center/contain;
+  right: -6rem;
+  top: -10rem;
+  transform: rotate(0deg);
+}
+
+.Banner__ProductsList__blue {
+  position: absolute;
+  width: 44rem;
+  height: 44rem;
+  background: url(../../../../images/leti-blue-banner.png) no-repeat center/contain;
+  right: -6rem;
+  top: 12rem;
+  transform: rotate(0deg);
+}
+
+@media (max-width: 576px) {
+  .Banner__ProductsList__btns {
+    display: none;
+  }
+  .Banner__ProductsList-logo {
+    width: 28rem;
+    margin-top: 5rem;
+  }
+  .Banner__ProductsList__title {
+    height: 85rem;
+    justify-content: flex-start;
+    margin-top: 6rem;
+  }
+  .Banner__ProductsList__title h3 {
+    font-size: 2rem;
+    margin: 0rem auto 8rem auto;
+    line-height: 2.8rem;
+  }
+  .Banner__ProductsList__bg {
+    width: 38rem;
+    height: 38rem;
+    right: -6rem;
+    top: 40rem;
+  }
+  .Banner__ProductsList__blue {
+    width: 30rem;
+    height: 30rem;
+    right: -6rem;
+    top: 56rem;
+  }
+}

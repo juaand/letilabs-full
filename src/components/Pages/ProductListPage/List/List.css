@@ -1,0 +1,15 @@
+.List .link.active {
+  color: #cd202f;
+  text-decoration: underline;
+  pointer-events: none;
+}
+
+.List .link:hover {
+  color: #cd202f;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.List__products {
+  margin: 6rem auto 12rem auto;
+}

@@ -66,9 +66,9 @@ function EditCompaniesInfo() {
                     <div className="row justify-content-around">
                         {ourCompaniesOCData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el.logo.toLowerCase() + ".svg"} alt={el.logo} />
-                                <p>{el.url}</p>
-                                <p>{el.info}</p>
+                                <img className="EditCarousel__img" src={"./images/" + el?.logo?.toLowerCase() + ".svg"} alt={el?.logo} />
+                                <p>{el?.url}</p>
+                                <p>{el?.info}</p>
                             </div>
                         )}
                     </div>

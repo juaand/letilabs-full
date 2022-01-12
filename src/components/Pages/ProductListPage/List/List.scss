@@ -1,0 +1,21 @@
+@import '../../../../stylesheets/variables';
+
+.List {
+  .link {
+    &.active {
+      color: $leti-red;
+      text-decoration: underline;
+      pointer-events: none;
+    }
+
+    &:hover {
+      color: $leti-red;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+
+  &__products {
+      margin: 6rem auto 12rem auto;
+  }
+}
