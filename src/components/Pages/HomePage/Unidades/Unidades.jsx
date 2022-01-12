@@ -4,16 +4,26 @@ import unidadesNegocio from '../../../../data/unidadesNegocio'
 import {Link} from 'react-router-dom'
 import {seoURL} from '../../../../hooks/seoURL'
 import {Fade} from "react-awesome-reveal"
+import {getUnidades} from '../../../../services/ApiClient'
 
 
 function Unidades() {
 
     const [bool, setBool] = useState(true)
+    const [getData, setGetData] = useState([])
 
     useEffect(() => {
         if (window.screen.width <= 576) {
             setBool(false)
         }
+
+
+        const fetchData = async () => {
+            const data = await getUnidades()
+            setGetData(data)
+            console.log(data)
+        }
+        fetchData()
     }, [])
 
 
@@ -27,7 +37,7 @@ function Unidades() {
                 </Fade>
             </div>
             <div className="container-fluid Unidades__logos">
-                {unidadesNegocio.map((el, i) =>
+                {getData.map((el, i) =>
                     <>
                         {bool && i % 2 !== 0 ?
                             <Fade delay={600} triggerOnce>
