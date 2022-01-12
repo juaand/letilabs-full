@@ -1,6 +1,5 @@
 import './Unidades.css'
 import React, {useState, useEffect} from 'react'
-import unidadesNegocio from '../../../../data/unidadesNegocio'
 import {Link} from 'react-router-dom'
 import {seoURL} from '../../../../hooks/seoURL'
 import {Fade} from "react-awesome-reveal"
@@ -21,7 +20,6 @@ function Unidades() {
         const fetchData = async () => {
             const data = await getUnidades()
             setGetData(data)
-            console.log(data)
         }
         fetchData()
     }, [])

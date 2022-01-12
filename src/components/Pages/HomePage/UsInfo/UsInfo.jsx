@@ -24,7 +24,6 @@ function UsInfo() {
         const fetchData = async () => {
             const data = await getUsInfo()
             setGetData(data)
-            console.log(data)
         }
         fetchData()
     }, [])
