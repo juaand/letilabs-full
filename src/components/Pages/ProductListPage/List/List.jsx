@@ -1,6 +1,5 @@
 import './List.css'
 import React, {useState} from 'react'
-// import vadevecum from '../../../../data/vadevecum'
 
 function List() {
 
@@ -8,12 +7,15 @@ function List() {
 
     const [currentLetter, setCurrentLetter] = useState('A')
 
-    // const titlesInitial = [...new Set(vadevecum.map(el => el.name).map(el => el.charAt(0)))].sort()
-
     const loadVadevecumInfo = (letter) => {
         setCurrentLetter(letter)
 
-        
+        const checkActive = document.querySelectorAll('.active')
+        if (checkActive) {
+            checkActive.forEach(el => el.classList.remove('active'))
+            document.querySelector(`.${letter}`).classList.add('active')
+        }
+
     }
 
     return (
@@ -21,7 +23,7 @@ function List() {
             <section className="container List">
                 <div className="row">
                     {alphabet.map((el, key) =>
-                        <div className={`col link ${key === 0 && 'active'}`} onClick={() => loadVadevecumInfo(el)}>{el}</div>
+                        <div className={`col ${el} link ${key === 0 && 'active'}`} onClick={() => loadVadevecumInfo(el)}>{el}</div>
                     )}
                 </div>
             </section>
