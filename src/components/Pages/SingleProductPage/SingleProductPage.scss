@@ -12,6 +12,17 @@
     font-size: 2rem;
     display: inherit;
     margin: 8rem auto;
+    transition: all 0.3s ease-in-out;
+    margin-left: 0;
+
+    a {
+      color: $leti-blue;
+      text-decoration: none;
+    }
+
+    &:hover {
+      margin-left: -1rem;
+    }
 
     &:before {
       content: '';
@@ -35,7 +46,7 @@
   }
 
   &__info {
-      font-size: 1.8rem;
+    font-size: 1.8rem;
     h2 {
       margin-bottom: 3rem;
     }

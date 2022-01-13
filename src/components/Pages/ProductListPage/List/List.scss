@@ -16,6 +16,17 @@
   }
 
   &__products {
-      margin: 6rem auto 12rem auto;
+    margin: 6rem auto 12rem auto;
+  }
+
+  &__bullet {
+    display: inline-block;
+    margin-right: 1rem;
+  }
+
+  &__card {
+    border-bottom: solid 0.1rem $leti-subnav;
+    font-size: 1.8rem;
+    padding-bottom: 3rem;
   }
 }

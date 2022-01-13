@@ -1,11 +1,14 @@
 import './List.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import {getProductList} from '../../../../services/ApiClient'
+import {Link} from 'react-router-dom'
 
 function List() {
 
     const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
     const [currentLetter, setCurrentLetter] = useState('A')
+    const [vadevecumData, setVadevecumData] = useState([])
 
     const loadVadevecumInfo = (letter) => {
         setCurrentLetter(letter)
@@ -17,6 +20,14 @@ function List() {
         }
 
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getProductList()
+            setVadevecumData(data)
+        }
+        fetchData()
+    }, [])
 
     return (
         <>
@@ -32,6 +43,22 @@ function List() {
                     <div className="col-12">
                         <h1>{currentLetter}</h1>
                     </div>
+                </div>
+                <div className="row">
+
+                    {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
+                        <div className="col-12 col-sm-4 List__card">
+                            <p><strong>Nombre</strong> {el.name}</p>
+                            <p><strong>Categoría</strong> {el.therapeutic_group.map(el => <span className="List__bullet">{el}</span>)}</p>
+                            <p><strong>Descripción</strong> {el.name}</p>
+                            <Link to={{
+                                pathname: `/producto`,
+                                state: {
+                                    buscar: el.name
+                                }
+                            }} className="leti-btn">Ver ficha</Link>
+                        </div>
+                    )}
                 </div>
             </section>
         </>

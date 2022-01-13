@@ -9,6 +9,17 @@
   font-size: 2rem;
   display: inherit;
   margin: 8rem auto;
+  transition: all 0.3s ease-in-out;
+  margin-left: 0;
+}
+
+.SingleProductPage__back a {
+  color: #055aa5;
+  text-decoration: none;
+}
+
+.SingleProductPage__back:hover {
+  margin-left: -1rem;
 }
 
 .SingleProductPage__back:before {

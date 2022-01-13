@@ -42,7 +42,7 @@ function SingleProductPage(props) {
         <section className="container SingleProductPage">
             <div className="row">
                 <div className="col-12 SingleProductPage__back">
-                    <p>Regresar al listado de productos</p>
+                    <Link className="SingleProductPage__link" to="/listado-de-productos">Regresar al listado de productos</Link>
                 </div>
                 {product.length > 1 ?
                     <Fade triggerOnce cascade direction="up">

@@ -13,3 +13,14 @@
 .List__products {
   margin: 6rem auto 12rem auto;
 }
+
+.List__bullet {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.List__card {
+  border-bottom: solid 0.1rem #e9eaee;
+  font-size: 1.8rem;
+  padding-bottom: 3rem;
+}

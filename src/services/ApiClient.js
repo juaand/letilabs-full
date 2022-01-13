@@ -82,6 +82,7 @@ export const searchNews = (search) => http.post(`/buscarnoticia`, {search})
 
 //product routes
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
+export const getProductList = () => http.get("/listado-productos")
 
 //news routes
 export const getNews = () => http.get("/newsdata")
