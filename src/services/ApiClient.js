@@ -1,7 +1,8 @@
 import axios from "axios"
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+    //baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+    baseURL: "https://grupoleti-api.herokuapp.com/",
     withCredentials: true,
 })
 
@@ -82,6 +83,7 @@ export const searchNews = (search) => http.post(`/buscarnoticia`, {search})
 
 //product routes
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
+export const getProductList = () => http.get("/listado-productos")
 
 //news routes
 export const getNews = () => http.get("/newsdata")

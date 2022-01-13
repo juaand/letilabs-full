@@ -19,7 +19,7 @@ function Banner() {
                     </div>
                     <Fade delay={300} direction="down" triggerOnce className="col-12 Banner__Products__btns">
                         <div className="row">
-                            <Link to="/" className="col-12 col-sm-3 col-lg-3 leti-btn">Conoce todos los productos</Link>
+                            <Link to="/listado-de-productos" className="col-12 col-sm-3 col-lg-3 leti-btn">Conoce todos los productos</Link>
                             <Link to="/" className="col-12 col-sm-3 col-lg-3  leti-btn">Descubre nuestras áreas terapéuticas</Link>
                         </div>
                     </Fade>

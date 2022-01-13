@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .CompaniesInfo {
-  background: #ECEDF0;
+  background: #ecedf0;
   display: flex;
   align-items: center;
   padding: 4rem 0 7rem 8rem;
@@ -109,7 +109,7 @@
 
 @media (max-width: 576px) {
   .CompaniesInfoResp {
-    background: #ECEDF0;
+    background: #ecedf0;
     padding: 4rem 0rem;
     height: 30rem;
     border-left: 0;
@@ -175,11 +175,11 @@
     content: '•';
     text-align: center;
     opacity: 0.3;
-    color: #ABADB2;
+    color: #abadb2;
     border-radius: 2rem;
   }
   .CompaniesInfoResp .slick-dots li.slick-active button:before {
     opacity: 1;
-    border: solid 0.1rem #ABADB2;
+    border: solid 0.1rem #abadb2;
   }
 }
