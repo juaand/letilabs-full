@@ -48,9 +48,14 @@ function List() {
 
                     {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
                         <div className="col-12 col-sm-4 List__card">
+                            <div className="List__sku">SKU</div>
                             <p><strong>Nombre</strong> {el.name}</p>
-                            <p><strong>Categoría</strong> {el.therapeutic_group.map(el => <span className="List__bullet">{el}</span>)}</p>
-                            <p><strong>Descripción</strong> {el.name}</p>
+                            <p><strong>Categoría</strong>
+                                <ul className="List__list">
+                                    {el.therapeutic_group.map(el => <li>{el}</li>)}
+                                </ul>
+                            </p>
+                            <p><strong>Composición</strong> {el.composition}</p>
                             <Link to={{
                                 pathname: `/producto`,
                                 state: {

@@ -1,6 +1,15 @@
 @import '../../../../stylesheets/variables';
 
 .List {
+  &__sku {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $leti-subnav;
+    padding: 4.8rem;
+    margin-bottom: 2rem;
+  }
+
   .link {
     &.active {
       color: $leti-red;
@@ -17,16 +26,28 @@
 
   &__products {
     margin: 6rem auto 12rem auto;
+
+    h1 {
+      margin-bottom: 6rem;
+    }
   }
 
-  &__bullet {
-    display: inline-block;
-    margin-right: 1rem;
+  &__list {
+    padding: 0;
+    list-style: none;
+    li {
+      list-style: none;
+    }
   }
 
   &__card {
     border-bottom: solid 0.1rem $leti-subnav;
     font-size: 1.8rem;
     padding-bottom: 3rem;
+    margin-bottom: 3rem;
+
+    .leti-btn {
+      margin-top: 2rem;
+    }
   }
 }
