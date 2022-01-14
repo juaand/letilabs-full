@@ -69,6 +69,18 @@ export const updateCareOC = ({description, imgURL, id}) => http.patch("/updateca
 export const getBottomOC = () => http.get("/bottomoc")
 export const updateBottomOC = ({title, url, button, img, id}) => http.patch("/updatebottomoc", {title, url, button, img, id})
 
+//admin edit routes our companies Leti
+
+export const getBannerOCLeti = () => http.get("/bannerdataocleti")
+export const updateBannerDataOCLeti = ({description, imgURL, id}) => http.patch("/updatebannerdataocleti", {description, imgURL, id})
+export const getOurCompaniesInfoCardsLeti = () => http.get("/ourcompaniesinforcardsleti")
+export const updateOurCompaniesInfoCardsLeti = ({title, info, id}) => http.get("/updateourcompaniesinfocardsleti", {title, info, id})
+export const getTimeLineLeti = () => http.get("/octimelineleti")
+export const addTimeLineLetiData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelineleti", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const getEquipoLetiOC = () => http.get("/ocequipoleti")
+export const updateEquipoLetiOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipoleti", {description, person, imgURL, buttonTitle, buttonLink, id})
+
+
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
 export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
