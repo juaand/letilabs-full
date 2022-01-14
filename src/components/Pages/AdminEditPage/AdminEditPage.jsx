@@ -5,6 +5,7 @@ import Nav from './Nav/Nav'
 import EditHome from './EditHome/EditHome'
 import EditAboutUs from './EditAboutUs/EditAboutUs'
 import EditOurCompanies from './EditOurCompanies/EditOurCompanies'
+import EditOurCompaniesLeti from './EditOurCompaniesLeti/EditOurCompaniesLeti'
 import EditIAndD from './EditIAndD/EditIAndD'
 import EditPurpose from './EditPurpose/EditPurpose'
 import EditOurPeople from './EditOurPeople/EditOurPeople'
@@ -34,6 +35,7 @@ function AdminEditPage() {
                         {initNavValue === 'inicio' && <EditHome />}
                         {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
                         {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
+                        {initNavValue === 'nuestras-empresas-leti' && <EditOurCompaniesLeti />}
                         {initNavValue === 'investigacion-y-desarrollo' && <EditIAndD />}
                         {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
                         {initNavValue === 'nuestra-gente' && <EditOurPeople />}

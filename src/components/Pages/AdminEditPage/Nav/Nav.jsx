@@ -7,7 +7,7 @@ import {seoURL} from '../../../../hooks/seoURL'
 
 function Nav({getActiveItem}) {
 
-    const adminNav = ['Inicio', 'Sobre nosotros', 'Nuestras empresas', 'Investigación y desarrollo', 'Propósito y responsabilidad social', 'Nuestra gente', 'Productos', 'Noticias']
+    const adminNav = ['Inicio', 'Sobre nosotros', 'Nuestras empresas', 'Nuestras Empresas Leti', 'Investigación y desarrollo', 'Propósito y responsabilidad social', 'Nuestra gente', 'Productos', 'Noticias']
 
     let history = useHistory()
 

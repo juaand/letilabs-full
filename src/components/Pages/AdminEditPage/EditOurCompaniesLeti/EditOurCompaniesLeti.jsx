@@ -9,7 +9,7 @@ function EditOurCompaniesLeti() {
     return (
 
         <main>
-            <h2 className="EditContent EditContent__title">Editar página nuestras empresas</h2>
+            <h2 className="EditContent EditContent__title">Editar página nuestras empresas Leti</h2>
             <EditBannerOCLeti />
             <EditCompaniesInfoCardsLeti />
             <EditTimelineLeti />
