@@ -34,7 +34,12 @@ function List() {
             <section className="container List">
                 <div className="row">
                     {alphabet.map((el, key) =>
-                        <div className={`col ${el} link ${key === 0 && 'active'}`} onClick={() => loadVadevecumInfo(el)}>{el}</div>
+                        <>
+                            {[...new Set(vadevecumData.map(el => el.name.charAt(0)))].includes(el) ?
+                                <div className={`col ${el} link ${key === 0 && 'active'}`} onClick={() => loadVadevecumInfo(el)}>{el}</div>
+                                :
+                                <div className={`col inactive`}>{el}</div>}
+                        </>
                     )}
                 </div>
             </section>
@@ -64,6 +69,7 @@ function List() {
                             }} className="leti-btn">Ver ficha</Link>
                         </div>
                     )}
+                    {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).length === 0 && <div className="col-12 ">No hay productos</div>}
                 </div>
             </section>
         </>

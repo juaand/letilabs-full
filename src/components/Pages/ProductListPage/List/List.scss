@@ -10,6 +10,10 @@
     margin-bottom: 2rem;
   }
 
+  .inactive {
+    opacity: 0.3;
+  }
+
   .link {
     &.active {
       color: $leti-red;
