@@ -28,14 +28,6 @@ function List() {
         }
         fetchData()
 
-        document.onscroll = () => {
-            const depth = window.scrollY
-            if (depth > 800) {
-                document.querySelector('.List__to-top').classList.add('show')
-            } else {
-                document.querySelector('.List__to-top').classList.remove('show')
-            }
-        }
     }, [])
 
     return (

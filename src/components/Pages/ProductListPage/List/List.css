@@ -6,14 +6,9 @@
   height: 8rem;
   width: 8rem;
   background: url(../../../../images/to-top.png) no-repeat center center/contain;
-  position: fixed;
+  position: absolute;
   right: -1rem;
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.List__to-top.show {
-  opacity: 1;
+  bottom: 3rem;
 }
 
 .List__to-top:hover {
