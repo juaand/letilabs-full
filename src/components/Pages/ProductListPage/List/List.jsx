@@ -27,50 +27,62 @@ function List() {
             setVadevecumData(data)
         }
         fetchData()
+
+        document.onscroll = () => {
+            const depth = window.scrollY
+            if (depth > 800) {
+                document.querySelector('.List__to-top').classList.add('show')
+            } else {
+                document.querySelector('.List__to-top').classList.remove('show')
+            }
+        }
     }, [])
 
     return (
         <>
-            <section className="container List">
-                <div className="row">
-                    {alphabet.map((el, key) =>
-                        <>
-                            {[...new Set(vadevecumData.map(el => el.name.charAt(0)))].includes(el) ?
-                                <div className={`col ${el} link ${key === 0 && 'active'}`} onClick={() => loadVadevecumInfo(el)}>{el}</div>
-                                :
-                                <div className={`col inactive`}>{el}</div>}
-                        </>
-                    )}
-                </div>
-            </section>
-            <section className="container List__products">
-                <div className="row">
-                    <div className="col-12">
-                        <h1>{currentLetter}</h1>
+            <section className="container-fluid List">
+                <section className="container">
+                    <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
+                    <div className="row">
+                        {alphabet.map((el, key) =>
+                            <>
+                                {[...new Set(vadevecumData.map(el => el.name.charAt(0)))].includes(el) ?
+                                    <div className={`col ${el} link ${key === 0 && 'active'}`} onClick={() => loadVadevecumInfo(el)}>{el}</div>
+                                    :
+                                    <div className={`col inactive`}>{el}</div>}
+                            </>
+                        )}
                     </div>
-                </div>
-                <div className="row">
-
-                    {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
-                        <div className="col-12 col-sm-4 List__card">
-                            <div className="List__sku">SKU</div>
-                            <p><strong>Nombre</strong> {el.name}</p>
-                            <p><strong>Categoría</strong>
-                                <ul className="List__list">
-                                    {el.therapeutic_group.map(el => <li>{el}</li>)}
-                                </ul>
-                            </p>
-                            <p><strong>Composición</strong> {el.composition}</p>
-                            <Link to={{
-                                pathname: `/producto`,
-                                state: {
-                                    buscar: el.name
-                                }
-                            }} className="leti-btn">Ver ficha</Link>
+                </section>
+                <section className="container List__products">
+                    <div className="row">
+                        <div className="col-12">
+                            <h1>{currentLetter}</h1>
                         </div>
-                    )}
-                    {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).length === 0 && <div className="col-12 ">No hay productos</div>}
-                </div>
+                    </div>
+                    <div className="row">
+
+                        {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
+                            <div className="col-12 col-sm-4 List__card">
+                                <div className="List__sku">SKU</div>
+                                <p><strong>Nombre</strong> {el.name}</p>
+                                <p><strong>Categoría</strong>
+                                    <ul className="List__list">
+                                        {el.therapeutic_group.map(el => <li>{el}</li>)}
+                                    </ul>
+                                </p>
+                                <p><strong>Composición</strong> {el.composition}</p>
+                                <Link to={{
+                                    pathname: `/producto`,
+                                    state: {
+                                        buscar: el.name
+                                    }
+                                }} className="leti-btn">Ver ficha</Link>
+                            </div>
+                        )}
+                        {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).length === 0 && <div className="col-12 ">No hay productos</div>}
+                    </div>
+                </section>
             </section>
         </>
     )

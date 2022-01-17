@@ -1,6 +1,27 @@
 @import '../../../../stylesheets/variables';
 
 .List {
+  position: relative;
+
+  &__to-top {
+    height: 8rem;
+    width: 8rem;
+    background: url(../../../../images/to-top.png) no-repeat center center /
+      contain;
+    position: fixed;
+    right: -1rem;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.show {
+      opacity: 1;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   &__sku {
     display: flex;
     align-items: center;
