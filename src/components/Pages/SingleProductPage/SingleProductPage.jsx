@@ -88,7 +88,9 @@ function SingleProductPage(props) {
                                         <h2>{product[0]?.active_principle}</h2>
                                         {product[0]?.therapeutic_group?.length > 1 ? product[0]?.therapeutic_group.map(el => <span>{el}</span>) : <span>{product[0]?.therapeutic_group}</span>}
                                         <p><strong>Composición</strong> {product[0]?.composition}</p>
-                                        <p><strong>Indicación</strong> {product[0]?.indication}
+                                        <p><strong>Indicación</strong>
+                                            <span dangerouslySetInnerHTML={{__html: product[0]?.indication}}>
+                                            </span>
                                         </p>
                                         <p><strong>Presentación</strong> {product[0]?.presentation}</p>
                                         <p><strong>Resgitro sanitario</strong> {product[0]?.health_register}</p>

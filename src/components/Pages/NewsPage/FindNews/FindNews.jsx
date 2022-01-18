@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
 import {Fade} from 'react-awesome-reveal'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+import CheckBoxWithLabel from '../../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 import {searchNews} from '../../../../services/ApiClient'
 import {Link} from 'react-router-dom'
 import {drawTime} from '../../../../helpers/globals'
@@ -16,14 +17,17 @@ function FindNews() {
         {
             data: {
                 search: "",
+                tag: [],
             },
             error: {
                 search: true,
+                tag: true,
             },
             touch: {},
         },
         {
             search: v => v.length,
+            tag: v => v.length,
         }
     )
 
@@ -31,17 +35,27 @@ function FindNews() {
 
     const searchSubmit = async (event) => {
         event.preventDefault()
-        console.log(data.search)
-        const getNews = await searchNews(data.search)
-        if (getNews.length > 0) {
-            setGetSearch(getNews)
-            setBool(false)
-        } else {
-            setBool(!bool)
-        }
-        console.log(getNews)
+
+        console.log(data)
+
+        // const getNews = await searchNews(data)
+        // if (getNews.length > 0) {
+        //     setGetSearch(getNews)
+        //     setBool(false)
+        // } else {
+        //     setBool(!bool)
+        // }
     }
 
+    const setTag = (e) => {
+        if (!data.tag.includes(e.target.value)) {
+            data.tag.push(e.target.value)
+        } else {
+            data.tag = (data.tag.filter(el => el !== e.target.value))
+        }
+    }
+
+    // handleChange = ({target: { name, checked }}) => this.setState({[name]: checked});
     return (
         <>
             <Fade direction="up" triggerOnce>
@@ -50,21 +64,23 @@ function FindNews() {
                         <div className="row FindNews__row">
                             <div className="col-12">
                                 <h1>Artículos</h1>
-                                <form className="FindNews__form" onSubmit={searchSubmit}>
-                                    <div className="input-group">
-                                        <div className="col-12 p-0 FindNews__label">
-                                            <InputWithLabel
-                                                value={data.search}
-                                                onBlur={onBlur}
-                                                onChange={onChange}
-                                                name="search"
-                                                type="text"
-                                                className="FindNews__form-input"
-                                                placeholder="¿Qué buscas?"
-                                            />
-                                        </div>
-                                        <div onClick={searchSubmit} className="col-12 p-0 col-sm-1 leti-btn">
-                                        </div>
+                            </div>
+                            <div className="col-12">
+                                <form className="FindNews__form row" onSubmit={searchSubmit}>
+                                    <div className="col-12 p-0 FindNews__label">
+                                        <InputWithLabel
+                                            value={data.search}
+                                            onBlur={onBlur}
+                                            onChange={onChange}
+                                            name="search"
+                                            type="text"
+                                            className="FindNews__form-input"
+                                            placeholder="¿Qué buscas?"
+                                        />
+                                    </div>
+                                    <div onClick={searchSubmit} className="col-12 p-0 col-sm-1 leti-btn" />
+                                    <div className="col-12 FindNews__checkboxes">
+                                        <CheckBoxWithLabel data={["Grupo Leti", "Educación", "Innovación", "Nuestra gente", "Investigación", "Salud y bienestar"]} name="themes" tabIndex="2" onChange={setTag} />
                                     </div>
                                 </form>
                             </div>

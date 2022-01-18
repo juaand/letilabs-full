@@ -3,7 +3,7 @@
 .FindNews {
   display: flex;
   align-items: center;
-  margin: 6rem auto 4rem auto;
+  margin: 6rem auto 10rem auto;
 
   .card {
     margin-bottom: 6rem;
@@ -57,6 +57,21 @@
     p {
       &:first-child {
         margin-bottom: 3rem;
+      }
+    }
+  }
+
+  &__checkboxes {
+    border: solid 0.1rem $leti-text;
+    border-top: 0;
+
+    .col {
+      border-right: solid 0.1rem $leti-text;
+      display: flex;
+      align-items: center;
+
+      &:last-child {
+        border-right: 0;
       }
     }
   }

@@ -1,7 +1,7 @@
 .FindNews {
   display: flex;
   align-items: center;
-  margin: 6rem auto 4rem auto;
+  margin: 6rem auto 10rem auto;
 }
 
 .FindNews .card {
@@ -56,6 +56,21 @@
 
 .FindNews__noResults p:first-child {
   margin-bottom: 3rem;
+}
+
+.FindNews__checkboxes {
+  border: solid 0.1rem #4a4a4a;
+  border-top: 0;
+}
+
+.FindNews__checkboxes .col {
+  border-right: solid 0.1rem #4a4a4a;
+  display: flex;
+  align-items: center;
+}
+
+.FindNews__checkboxes .col:last-child {
+  border-right: 0;
 }
 
 @media (max-width: 576px) {

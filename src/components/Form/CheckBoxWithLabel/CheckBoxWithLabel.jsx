@@ -5,12 +5,12 @@ const CheckBoxWithLabel = ({data, name, onChange, label}) => {
 
     return (
         <div className="CheckBoxWithLabel">
-            <p>{label}</p>
+            {label && <p>{label}</p>}
             <div className="CheckBoxWithLabel row">
                 {
-                    data?.sort().map(el =>
-                        <div className="form-check d-flex col-12 col-sm-3">
-                            <input className="form-check-input" type="checkbox" name={name} id={el} value={el} onChange={onChange} />
+                    data?.map(el =>
+                        <div className="form-check col">
+                            <input className="form-check-input" type="checkbox" name={el} id={el} value={el} onChange={onChange} />
                             <label className="form-check-label" htmlFor={el}>
                                 {el}</label>
                         </div>
