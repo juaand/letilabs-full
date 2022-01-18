@@ -80,6 +80,19 @@ export const addTimeLineLetiData = ({description, person, imgURL, buttonTitle, b
 export const getEquipoLetiOC = () => http.get("/ocequipoleti")
 export const updateEquipoLetiOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipoleti", {description, person, imgURL, buttonTitle, buttonLink, id})
 
+//admin edit routes our companies Biocontrolled
+
+export const getBannerOCBiocontrolled = () => http.get("/bannerdataocbiocontrolled")
+export const updateBannerDataOCBiocontrolled = ({description, imgURL, id}) => http.patch("/updatebannerdataocbiocontrolled", {description, imgURL, id})
+export const getOurCompaniesInfoCardsBiocontrolled = () => http.get("/ourcompaniesinforcardsbiocontrolled")
+export const updateOurCompaniesInfoCardsBiocontrolled = ({title, info, id}) => http.get("/updateourcompaniesinfocardsbiocontrolled", {title, info, id})
+export const getTimeLineBiocontrolled = () => http.get("/octimelinebiocontrolled")
+export const addTimeLineBiocontrolledData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelinebiocontrolled", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const getCarrouselBiocontrolled = () => http.get("/occarrouselbiocontrolled")
+export const addCarrouselBiocontrolledData = ({info, id}) => http.get("/addoccarrouselbiocontrolled", {info, id})
+export const getEquipoBiocontrolledOC = () => http.get("/ocequipobiocontrolled")
+export const updateEquipoBiocontrolledOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipobiocontrolled", {description, person, imgURL, buttonTitle, buttonLink, id})
+
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
