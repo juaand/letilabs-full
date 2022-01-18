@@ -1,33 +1,33 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getTimeLineLeti, addTimeLineLetiData} from '../../../../../services/ApiClient'
+import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import DeleteItemModal from '../../EditHome/EditCarousel/DeleteItemModal/DeleteItemModal'
 
-function EditTimelineLeti() {
+function EditTimelineBiocontrolled() {
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 imgURL: '',
                 desc: '',
-                button: '',
-                url: '',
+                buttonTitle: '',
+                buttonLink: '',
             },
             error: {
                 imgURL: false,
                 desc: false,
-                button: false,
-                url: false,
+                buttonTitle: false,
+                buttonLink: false,
             },
             touch: {},
         },
         {
             imgURL: v => v.length,
             desc: v => v.length,
-            button: v => v.length,
-            url: v => v.length,
+            buttonTitle: v => v.length,
+            buttonLink: v => v.length,
         }
     )
 
@@ -46,7 +46,7 @@ function EditTimelineLeti() {
         event.preventDefault()
 
         try {
-            await addTimeLineLetiData(data)
+            await addTimeLineBiocontrolledData(data)
                 .then(timeline => {
                     setTimeLineData(timeline)
                 })
@@ -65,7 +65,7 @@ function EditTimelineLeti() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getTimeLineData = await getTimeLineLeti()
+            const getTimeLineData = await getTimeLineBiocontrolled()
             setTimeLineData(getTimeLineData)
         }
         fetchData()
@@ -81,32 +81,18 @@ function EditTimelineLeti() {
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el?.imgURL} alt={el?.imgURL} />
+                                <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
                                 <p>{el?.desc}</p>
-                                <p>{el?.button}</p>
-                                <p>{el?.url}</p>
+                                <p>{el?.buttonTitle}</p>
+                                <p>{el?.buttonLink}</p>
                             </div>
                         )}
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo producto al timeline</h2>
+                <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Año
-                            </p>
-                            <InputWithLabel
-                                value={data?.year}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="year"
-                                type="text"
-                                className={`form-control ${touch.year && error.year ? "is-invalid" : ""}`}
-                                placeholder="Ingresa año"
-                            />
-                        </div>
                         <div className="col-12 col-sm-4">
                             <p className="AdminEdit__form__label">
                                 Imagen
@@ -135,8 +121,36 @@ function EditTimelineLeti() {
                                 placeholder="Ingresa descripción"
                             />
                         </div>
+                        <div className="col-12 col-sm-4">
+                            <p className="AdminEdit__form__label">
+                                Título botón
+                            </p>
+                            <InputWithLabel
+                                value={data?.buttonTitle}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="buttonTitle"
+                                type="text"
+                                className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                                placeholder="Ingresa Título botón"
+                            />
+                        </div>
+                        <div className="col-12 col-sm-4">
+                            <p className="AdminEdit__form__label">
+                                Url Botón
+                            </p>
+                            <InputWithLabel
+                                value={data?.buttonLink}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="buttonLink"
+                                type="text"
+                                className={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
+                                placeholder="Ingresa Url Botón"
+                            />
+                        </div>
                         <div className="col-12">
-                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo año</Button>
+                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
                         </div>
 
                     </div>
@@ -147,4 +161,4 @@ function EditTimelineLeti() {
     )
 }
 
-export default EditTimelineLeti
+export default EditTimelineBiocontrolled

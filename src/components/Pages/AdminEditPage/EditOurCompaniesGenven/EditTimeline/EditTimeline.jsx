@@ -81,10 +81,10 @@ function EditTimelineLeti() {
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el?.imgURL} alt={el?.imgURL} />
-                                <p>{el?.desc}</p>
-                                <p>{el?.button}</p>
-                                <p>{el?.url}</p>
+                                <img className="EditCarousel__img" src={"./images/" + el.imgURL} alt={el.imgURL} />
+                                <p>{el.desc}</p>
+                                <p>{el.button}</p>
+                                <p>{el.url}</p>
                             </div>
                         )}
                     </div>

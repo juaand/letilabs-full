@@ -11,6 +11,8 @@ import EditPurpose from './EditPurpose/EditPurpose'
 import EditOurPeople from './EditOurPeople/EditOurPeople'
 import EditProducts from './EditProducts/EditProducts'
 import EditNews from './EditNews/EditNews'
+import EditOurCompaniesGenven from './EditOurCompaniesGenven/EditOurCompaniesGenven'
+import EditOurCompaniesBiocontrolled from './EditOurCompaniesBiocontrolled/EditOurCompaniesBiocontrolled'
 
 function AdminEditPage() {
 
@@ -36,6 +38,8 @@ function AdminEditPage() {
                         {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
                         {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
                         {initNavValue === 'nuestras-empresas-leti' && <EditOurCompaniesLeti />}
+                        {initNavValue === 'nuestras-empresas-genven' && <EditOurCompaniesGenven />}
+                        {initNavValue === 'nuestras-empresas-biocontrolled' && <EditOurCompaniesBiocontrolled />}
                         {initNavValue === 'investigacion-y-desarrollo' && <EditIAndD />}
                         {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
                         {initNavValue === 'nuestra-gente' && <EditOurPeople />}
