@@ -36,15 +36,13 @@ function FindNews() {
     const searchSubmit = async (event) => {
         event.preventDefault()
 
-        console.log(data)
-
-        // const getNews = await searchNews(data)
-        // if (getNews.length > 0) {
-        //     setGetSearch(getNews)
-        //     setBool(false)
-        // } else {
-        //     setBool(!bool)
-        // }
+        const getNews = await searchNews(data)
+        if (getNews.length > 0) {
+            setGetSearch(getNews)
+            setBool(false)
+        } else {
+            setBool(!bool)
+        }
     }
 
     const setTag = (e) => {
@@ -54,8 +52,6 @@ function FindNews() {
             data.tag = (data.tag.filter(el => el !== e.target.value))
         }
     }
-
-    // handleChange = ({target: { name, checked }}) => this.setState({[name]: checked});
     return (
         <>
             <Fade direction="up" triggerOnce>
@@ -99,6 +95,7 @@ function FindNews() {
                                     <div className="card-body">
                                         <span className="card-time">{drawTime(el?.publishDate)}</span>
                                         <p className="card-title">{el?.title}</p>
+                                        {el.tag.map(el => <small className="FindNews__tag">{el}</small>)}
                                         <h5 className="card-subtitle">{el?.subTitle}</h5>
                                     </div>
                                     <div className="card-footer">

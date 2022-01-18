@@ -73,6 +73,14 @@
   border-right: 0;
 }
 
+.FindNews__tag {
+  font-size: 1.2rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #055aa5;
+  font-family: 'TripletaBold';
+}
+
 @media (max-width: 576px) {
   .FindNews {
     justify-content: flex-start;
