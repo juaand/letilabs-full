@@ -53,7 +53,7 @@ function List() {
                         </div>
                     </div>
                     <div className="row">
-
+                        {console.log(vadevecumData)}
                         {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
                             <div className="col-12 col-sm-4 List__card">
                                 <div className="List__sku">SKU</div>
@@ -72,7 +72,6 @@ function List() {
                                 }} className="leti-btn">Ver ficha</Link>
                             </div>
                         )}
-                        {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).length === 0 && <div className="col-12 ">No hay productos</div>}
                     </div>
                 </section>
             </section>
