@@ -1,12 +1,15 @@
 import './Carousel.css'
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import homeCarousel from '../../../../data/homeCarousel'
 import {Fade} from "react-awesome-reveal"
 import {seoURL} from '../../../../helpers/globals'
-
+import {getVadevecumData} from '../../../../services/ApiClient'
 
 function Carousel() {
+
+    const [getData, setGetData] = useState([])
+
     let settings = {
         className: "center",
         centerMode: true,
@@ -37,6 +40,12 @@ function Carousel() {
         getPrevArrow.style.left = `${(getSlickDots.x / 10) - 27}rem`
 
         document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
+
+        const fetchData = async () => {
+            const data = await getVadevecumData()
+            setGetData(data)
+        }
+        fetchData()
 
     }, [])
 

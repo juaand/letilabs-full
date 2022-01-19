@@ -11,7 +11,6 @@ function Portafolio() {
         const fetchData = async () => {
             const data = await getPortfolio()
             setGetData(data)
-            console.log(data)
         }
         fetchData()
     }, [])
