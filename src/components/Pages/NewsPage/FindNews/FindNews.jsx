@@ -94,8 +94,8 @@ function FindNews() {
                                     <img src={el?.urlToPic} className="card-img-top" alt={el?.title} />
                                     <div className="card-body">
                                         <span className="card-time">{drawTime(el?.publishDate)}</span>
-                                        <p className="card-title">{el?.title}</p>
                                         {el.tag.map(el => <small className="FindNews__tag">{el}</small>)}
+                                        <p className="card-title">{el?.title}</p>
                                         <h5 className="card-subtitle">{el?.subTitle}</h5>
                                     </div>
                                     <div className="card-footer">
