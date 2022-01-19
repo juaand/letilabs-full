@@ -71,16 +71,7 @@ const dataNav = [
         desc: 'Nuestro talento humano especializado tiene años trabajando por la salud de los venezolanos',
         nav_cta: 'Conoce a los expertos',
         nav_path: 'nuestra-gente',
-        sub_nav: [
-            {
-                sub_text: 'Equípo directivo',
-                subNav_path: 'equipo-directivo'
-            },
-            {
-                sub_text: 'Carreras',
-                subNav_path: 'carreras'
-            }
-        ]
+        sub_nav: []
     },
     {
         id: 6,
