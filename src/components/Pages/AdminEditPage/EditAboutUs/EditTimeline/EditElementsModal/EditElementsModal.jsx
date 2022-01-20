@@ -79,7 +79,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                 <div className="row justify-content-center">
                     <div className="col-11 col-sm-5 EditElementsModal__container">
                         <span className="EditElementsModal__close" onClick={hideModal}></span>
-
                         <div className="col-sm-12">
                             <p className="EditElementsModal__ask">Editar elemento {element.year}</p>
                             <div className="card">
@@ -90,7 +89,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                         </div>
                                         <div className="col-sm-12">
                                             <InputWithLabel
-                                                value={element?.year}
                                                 onChange={onChange}
                                                 name="year"
                                                 type="text"
