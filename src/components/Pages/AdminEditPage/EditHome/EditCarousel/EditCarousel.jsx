@@ -87,7 +87,6 @@ function EditCarousel() {
         const fileUrl = await filePath.getDownloadURL()
         data.picPath = fileUrl
         console.log(fileUrl)
-
     }
 
     useEffect(() => {

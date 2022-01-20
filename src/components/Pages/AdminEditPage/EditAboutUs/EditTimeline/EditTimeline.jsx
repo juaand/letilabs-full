@@ -3,7 +3,9 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getTimeLine, addTimeLineData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditHome/EditCarousel/DeleteItemModal/DeleteItemModal'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
+import EditElementsModal from './EditElementsModal/EditElementsModal'
 
 function EditTimeline() {
 
@@ -33,6 +35,7 @@ function EditTimeline() {
     const [modalData, setModalData] = useState()
     const [timelineData, setTimeLineData] = useState()
     const [bool, setBool] = useState(false)
+    const [disabled, setDisabled] = useState(true)
 
     const showModal = (data) => {
         setModalData(data)
@@ -60,6 +63,30 @@ function EditTimeline() {
         setBool(!bool)
     }
 
+    const onFileSelected = async (e) => {
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                console.log('Uploaded')
+                //Se habilita el botón para subir el blog
+                setDisabled(!disabled)
+            })
+            .catch(err => {console.log(err)})
+
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.imgURL = fileUrl
+        console.log(fileUrl)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const getTimeLineData = await getTimeLine()
@@ -71,10 +98,10 @@ function EditTimeline() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent">
-                    <h2>Elminar elemento del TimeLine</h2>
+                    <h2>Editar elemento del TimeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
@@ -106,14 +133,14 @@ function EditTimeline() {
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
-                            <InputWithLabel
+                            <InputFile
                                 value={data?.imgURL}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="imgURL"
-                                type="text"
-                                className={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                                placeholder=""
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="picpath"
+                                type="file"
+                                className="form-control"
+                                placeholder="Selecciona una imagen"
                             />
                         </div>
                         <div className="col-12 col-sm-4">

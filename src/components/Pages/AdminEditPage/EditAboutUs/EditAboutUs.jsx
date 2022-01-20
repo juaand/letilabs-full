@@ -20,4 +20,3 @@ function EditAboutUs() {
 }
 
 export default EditAboutUs
-
