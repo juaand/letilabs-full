@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getMarcandoPauta, updateMarcandoPautaData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
 
 function EditMarcandoPauta() {
 
     const [marcandoPautaData, setMarcandoPautaData] = useState()
+    const [disabled, setDisabled] = useState(true)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -50,10 +52,34 @@ function EditMarcandoPauta() {
             setRegisterError(err.response?.data?.message)
         }
     }
+    
     const handleMarcandoPautaDescription = (e) => {
         data.description = e.target.getContent()
     }
 
+    const onFileSelected = async (e) => {
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                console.log('Uploaded')
+                //Se habilita el botón para subir el blog
+                setDisabled(!disabled)
+            })
+            .catch(err => {console.log(err)})
+
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.imgURL = fileUrl
+        console.log(fileUrl)
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -95,18 +121,18 @@ function EditMarcandoPauta() {
                         <p className="AdminEdit__form__label">
                             Imagen
                         </p>
-                        <InputWithLabel
+                        <InputFile
                             value={data?.imgURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="imgURL"
-                            type="text"
-                            className={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
+                            onChange={onFileSelected}
+                            id="fileButton"
+                            name="picpath"
+                            type="file"
+                            className="form-control"
                             placeholder={marcandoPautaData?.imgURL}
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button className="leti-btn mt-5 AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
 
                 </div>

@@ -5,7 +5,8 @@ import {getGallery, addGalleryData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import DeleteItemModal from '../../EditHome/EditCarousel/DeleteItemModal/DeleteItemModal'
-
+import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
 
 function EditGallery() {
 
@@ -35,6 +36,7 @@ function EditGallery() {
     const [modalData, setModalData] = useState()
     const [galleryData, setGalleryData] = useState()
     const [bool, setBool] = useState(false)
+    const [disabled, setDisabled] = useState(true)
 
     const showModal = (data) => {
         setModalData(data)
@@ -60,6 +62,30 @@ function EditGallery() {
     const deleteItem = (data) => {
         setGalleryData(data)
         setBool(!bool)
+    }
+
+    const onFileSelected = async (e) => {
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                console.log('Uploaded')
+                //Se habilita el botón para subir el blog
+                setDisabled(!disabled)
+            })
+            .catch(err => {console.log(err)})
+
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.imgPath = fileUrl
+        console.log(fileUrl)
     }
 
     useEffect(() => {
@@ -122,14 +148,13 @@ function EditGallery() {
                             <p className="AdminEdit__form__label">
                                 Imagen del producto
                             </p>
-                            <InputWithLabel
-                                value={data?.img}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="img"
-                                type="text"
-                                className={`form-control ${touch.img && error.img ? "is-invalid" : ""}`}
-                                placeholder=""
+                            <InputFile
+                                value={data?.imgPath}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="picpath"
+                                type="file"
+                                className="form-control"
                             />
                         </div>
                         <div className="col-12">
