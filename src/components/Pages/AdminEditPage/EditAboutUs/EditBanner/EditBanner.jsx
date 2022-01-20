@@ -11,7 +11,7 @@ function EditBanner() {
     const [bannerData, setBannerData] = useState()
     const [disabled, setDisabled] = useState(true)
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: '',
@@ -52,6 +52,7 @@ function EditBanner() {
             setRegisterError(err.response?.data?.message)
         }
     }
+
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
     }

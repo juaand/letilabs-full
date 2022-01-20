@@ -1,4 +1,4 @@
-import './DeleteItemModal.css'
+import './EditElementsModal.css'
 import React, {useState} from 'react'
 import {deleteCarItem} from '../../../../../../services/ApiClient'
 import InputFile from '../../../../../Form/InputFile/InputFile'
@@ -7,7 +7,7 @@ import {useFormState} from '../../../../../../hooks/useFormState'
 import {Editor} from '@tinymce/tinymce-react'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 
-function DeleteItemModal({deleteItem, element, hideModal}) {
+function EditElementsModal({deleteItem, element, hideModal}) {
 
     const {state, onChange} = useFormState(
         {
@@ -74,19 +74,19 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     }
 
     return (
-        <div className="DeleteItemModal">
+        <div className="EditElementsModal">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-11 col-sm-5 DeleteItemModal__container">
-                        <span className="DeleteItemModal__close" onClick={hideModal}></span>
+                    <div className="col-11 col-sm-5 EditElementsModal__container">
+                        <span className="EditElementsModal__close" onClick={hideModal}></span>
 
                         <div className="col-sm-12">
-                            <p className="DeleteItemModal__ask">Editar elemento {element.year}</p>
+                            <p className="EditElementsModal__ask">Editar elemento {element.year}</p>
                             <div className="card">
-                                <div className="card-body DeleteItemModal__body">
+                                <div className="card-body EditElementsModal__body">
                                     <div className="row align-items-center">
                                         <div className="col-sm-12">
-                                            <p className="DeleteItemModal__text"><strong>Editar año</strong></p>
+                                            <p className="EditElementsModal__text"><strong>Editar año</strong></p>
                                         </div>
                                         <div className="col-sm-12">
                                             <InputWithLabel
@@ -99,9 +99,9 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                             />
                                         </div>
                                         <div className="col-12">
-                                            <p className="DeleteItemModal__text"><strong>Editar imagen</strong></p>
+                                            <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
                                         </div>
-                                        <div className="col-12 DeleteItemModal__img">
+                                        <div className="col-12 EditElementsModal__img">
                                             <img src={"./images/" + element.imgURL} alt={element.name} />
                                             <InputFile
                                                 value={element?.imgURL}
@@ -113,7 +113,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                             />
                                         </div>
                                         <div className="col-12">
-                                            <p className="DeleteItemModal__text"><strong>Editar descripción</strong></p>
+                                            <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
                                             <Editor
                                                 initialValue={data?.desc}
                                                 onChange={handleBannerDescription}
@@ -149,4 +149,4 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     )
 }
 
-export default DeleteItemModal
+export default EditElementsModal

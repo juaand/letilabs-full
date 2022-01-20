@@ -99,7 +99,7 @@ function EditGallery() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {galleryData?.length > 0 &&
                 <section className="container-fluid EditContent">
                     <h2>Editar elemento de la galería</h2>
