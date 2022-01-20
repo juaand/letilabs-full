@@ -101,7 +101,7 @@ function EditTimeline() {
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent">
-                    <h2>Elminar elemento del TimeLine</h2>
+                    <h2>Editar elemento del TimeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>

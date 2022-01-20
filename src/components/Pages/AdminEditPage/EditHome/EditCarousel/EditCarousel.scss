@@ -19,11 +19,11 @@
       display: block;
       position: absolute;
       top: 0;
-      right: 1rem;
+      right: -1rem;
       width: 2rem;
       height: 2rem;
-      background: url(../../../../../images/trash.svg) no-repeat center center /
-        contain;
+      background: url(../../../../../images/edit.svg) no-repeat center center /
+        1.6rem;
     }
 
     &:hover {

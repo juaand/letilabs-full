@@ -102,7 +102,7 @@ function EditGallery() {
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {galleryData?.length > 0 &&
                 <section className="container-fluid EditContent">
-                    <h2>Elminar elemento de la galería</h2>
+                    <h2>Editar elemento de la galería</h2>
                     <div className="row justify-content-around">
                         {galleryData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
@@ -113,7 +113,7 @@ function EditGallery() {
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nueva a la Galería</h2>
+                <h2>Añadir nuevo elemento a la Galería</h2>
                 <form className="AdminEdit__form" onSubmit={addGalleryItem}>
                     <div className="row">
                         <div className="col-12 col-sm-4">
