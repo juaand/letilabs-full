@@ -155,7 +155,6 @@ function EditCarousel() {
                                 id="fileButton"
                                 name="picpath"
                                 type="file"
-                                className="form-control"
                                 placeholder="Ingresa imagen de portada del paciente"
                             />
                         </div>

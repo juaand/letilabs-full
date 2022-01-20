@@ -8,7 +8,7 @@ export default function InputFile({onChange, name, type, className}) {
                 onChange={onChange}
                 name={name}
                 type={type}
-                className="custom-file-input"
+                className={`custom-file-input ${className}`}
             />
         </div>
     )

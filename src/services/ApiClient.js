@@ -41,6 +41,7 @@ export const updatePortfolioData = ({title, description, id}) => http.patch("/up
 export const updateFarmacoData = ({title, subTitle, buttonTitle, id}) => http.patch("/updatefarmacoiniciodata", {title, subTitle, buttonTitle, id})
 export const deleteCarItem = (id) => http.get(`/deletecaritem/${id}`)
 export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
+export const updateVideoData = (videoUrl) => http.patch("/updatevideodata", {videoUrl})
 
 //admin edit routes about us
 

@@ -127,7 +127,6 @@ function EditBanner() {
                             id="fileButton"
                             name="picpath"
                             type="file"
-                            className="form-control"
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
