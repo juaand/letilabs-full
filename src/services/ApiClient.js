@@ -74,7 +74,7 @@ export const updateBottomOC = ({title, url, button, img, id}) => http.patch("/up
 
 export const getBannerOCLeti = () => http.get("/bannerdataocleti")
 export const updateBannerDataOCLeti = ({description, imgURL, id}) => http.patch("/updatebannerdataocleti", {description, imgURL, id})
-export const getOurCompaniesInfoCardsLeti = () => http.get("/ourcompaniesinforcardsleti")
+export const getOurCompaniesInfoCardsLeti = () => http.get("/ourcompaniesinfocardsleti")
 export const updateOurCompaniesInfoCardsLeti = ({title, info, id}) => http.get("/updateourcompaniesinfocardsleti", {title, info, id})
 export const getTimeLineLeti = () => http.get("/octimelineleti")
 export const addTimeLineLetiData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelineleti", {description, person, imgURL, buttonTitle, buttonLink, id})
@@ -85,7 +85,7 @@ export const updateEquipoLetiOC = ({description, person, imgURL, buttonTitle, bu
 
 export const getBannerOCBiocontrolled = () => http.get("/bannerdataocbiocontrolled")
 export const updateBannerDataOCBiocontrolled = ({description, imgURL, id}) => http.patch("/updatebannerdataocbiocontrolled", {description, imgURL, id})
-export const getOurCompaniesInfoCardsBiocontrolled = () => http.get("/ourcompaniesinforcardsbiocontrolled")
+export const getOurCompaniesInfoCardsBiocontrolled = () => http.get("/ourcompaniesinfocardsbiocontrolled")
 export const updateOurCompaniesInfoCardsBiocontrolled = ({title, info, id}) => http.get("/updateourcompaniesinfocardsbiocontrolled", {title, info, id})
 export const getTimeLineBiocontrolled = () => http.get("/octimelinebiocontrolled")
 export const addTimeLineBiocontrolledData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelinebiocontrolled", {description, person, imgURL, buttonTitle, buttonLink, id})
@@ -94,6 +94,18 @@ export const addCarrouselBiocontrolledData = ({info, id}) => http.get("/addoccar
 export const getEquipoBiocontrolledOC = () => http.get("/ocequipobiocontrolled")
 export const updateEquipoBiocontrolledOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipobiocontrolled", {description, person, imgURL, buttonTitle, buttonLink, id})
 
+//admin edit routes our companies Genven
+
+export const getBannerOCGenven = () => http.get("/bannerdataocgenven")
+export const updateBannerDataOCGenven = ({description, imgURL, id}) => http.patch("/updatebannerdataocgenven", {description, imgURL, id})
+export const getOurCompaniesVideoGenven = () => http.get("/ourcompaniesvideogenven")
+export const updateOurCompaniesVideoGenven = ({videoURL, id}) => http.get("/updateourcompaniesvideogenven", {videoURL, id})
+export const getTimeLineGenven = () => http.get("/octimelinegenven")
+export const addTimeLineGenvenData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelinegenven", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const getProductosGenvenOC = () => http.get("/ocproductosgenven")
+export const updateProductosGenvenOC = ({info, id}) => http.get("/addocproductosgenven", {info, id})
+export const getEquipoGenvenOC = () => http.get("/ocequipogenven")
+export const updateEquipoGenvenOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipogenven", {description, person, imgURL, buttonTitle, buttonLink, id})
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")

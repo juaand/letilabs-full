@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getEquipoLetiOC, updateEquipoLetiOC} from '../../../../../services/ApiClient'
+import {getEquipoGenvenOC, updateEquipoGenvenOC} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
 
-function EditEquipoLetiPage() {
+function EditEquipoGenvenPage() {
     const [bannerData, setBannerData] = useState()
 
     const {state, onBlur, onChange} = useFormState(
@@ -48,7 +48,7 @@ function EditEquipoLetiPage() {
         data.id = bannerData._id
 
         try {
-            await updateEquipoLetiOC(data)
+            await updateEquipoGenvenOC(data)
                 .then(banner => {
                     setBannerData(banner[0])
                 })
@@ -69,7 +69,7 @@ function EditEquipoLetiPage() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getBannerData = await getEquipoLetiOC()
+            const getBannerData = await getEquipoGenvenOC()
             setBannerData(getBannerData)
         }
         fetchData()
@@ -78,7 +78,7 @@ function EditEquipoLetiPage() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Equipo Leti</h2>
+            <h2>Equipo Genven</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -105,7 +105,7 @@ function EditEquipoLetiPage() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Descripción 2
+                            Persona del equipo y cargo
                         </p>
                         <Editor
                             onChange={handleBannerPerson}
@@ -168,7 +168,7 @@ function EditEquipoLetiPage() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Productos</Button>
                     </div>
 
                 </div>
@@ -178,4 +178,4 @@ function EditEquipoLetiPage() {
     )
 }
 
-export default EditEquipoLetiPage
+export default EditEquipoGenvenPage
