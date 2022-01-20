@@ -4,9 +4,9 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getGallery, addGalleryData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditHome/EditCarousel/DeleteItemModal/DeleteItemModal'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
+import EditElementsModal from './EditElementsModal/EditElementsModal'
 
 function EditGallery() {
 
@@ -99,7 +99,7 @@ function EditGallery() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {galleryData?.length > 0 &&
                 <section className="container-fluid EditContent">
                     <h2>Editar elemento de la galería</h2>

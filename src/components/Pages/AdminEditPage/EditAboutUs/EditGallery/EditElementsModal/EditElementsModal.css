@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.EditElementsModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.EditElementsModal__img {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1rem;
+  margin: 2rem 0;
+}
+
+.EditElementsModal__img img {
+  width: 20%;
+  margin-right: 2rem;
+}
+
+.EditElementsModal__text {
+  margin: 0;
+}
+
+.EditElementsModal__text strong {
+  color: #055aa5;
+}
+
+.EditElementsModal__body {
+  font-size: 1.6rem;
+}
+
+.EditElementsModal .card {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border: 0;
+  border-top: solid 0.1rem #e9eaee;
+}
+
+.EditElementsModal .card .leti-btn {
+  margin-top: 4rem;
+  padding: 0.8rem 1.6rem;
+}
+
+.EditElementsModal .card .leti-btn.delete {
+  border-color: #cd202f;
+  color: #fff;
+  background: #cd202f;
+  position: relative;
+}
+
+.EditElementsModal .card .leti-btn.delete:hover:before {
+  content: '¿Estás seguro?';
+  position: absolute;
+  background: #cd202f;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.EditElementsModal__ask {
+  margin-bottom: 2rem;
+}
+
+.EditElementsModal__container {
+  background: #fff;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+  position: relative;
+  overflow: scroll;
+  height: auto;
+  padding-top: 4rem;
+}
+
+.EditElementsModal__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #000;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border: solid 0.1rem #055aa5;
+  background: url("../../../../../../images/close.svg") no-repeat center/contain;
+  background-size: 50%;
+}
+
+.EditElementsModal__close:hover {
+  border: solid 0.3rem #055aa5;
+}
