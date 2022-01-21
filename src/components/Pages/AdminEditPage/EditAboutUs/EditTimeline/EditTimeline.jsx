@@ -140,7 +140,6 @@ function EditTimeline() {
                                 id="fileButton"
                                 name="picpath"
                                 type="file"
-                                className="form-control"
                                 placeholder="Selecciona una imagen"
                             />
                         </div>

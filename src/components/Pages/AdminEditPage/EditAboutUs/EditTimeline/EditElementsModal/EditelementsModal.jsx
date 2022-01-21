@@ -108,7 +108,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 id="fileButton"
                                                 name="picpath"
                                                 type="file"
-                                                className="form-control"
                                             />
                                         </div>
                                         <div className="col-12">

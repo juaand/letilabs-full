@@ -1,3 +1,4 @@
+@charset "UTF-8";
 input {
   overflow: hidden;
 }
@@ -31,4 +32,8 @@ input {
   color: #fff;
   margin-right: 1rem;
   padding-top: 1rem;
+}
+
+.custom-file-input.video:before {
+  content: 'Subir nuevo vídeo';
 }
