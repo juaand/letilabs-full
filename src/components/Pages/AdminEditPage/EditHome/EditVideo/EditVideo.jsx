@@ -12,35 +12,8 @@ function EditVideo() {
     const [videoInfo, setVideoInfo] = useState([])
     const [videoId, setVideoId] = useState('')
 
-    // const onFileSelected = async (e) => {
-
-    //     // Get file
-    //     const file = e.target.files[0]
-
-    //     // Create storage ref
-    //     const storageRef = app.storage().ref()
-    //     const filePath = storageRef.child('videos/' + file.name)
-
-    //     // Upload file
-    //     setMessage('Espere unos segundos, subiendo vídeo...')
-    //     await filePath.put(file)
-    //         .then(() => {
-    //             setMessage('El vídeo ha sido editado correctamente.')
-    //         })
-    //         .catch(err => {console.log(err)})
-
-    //     // Get file url
-    //     const fileUrl = await filePath.getDownloadURL()
-    //     .then((data) => {
-    //         setVideoData(data)
-    //         updateVideoPath()
-    //     })
-    //     .catch(err => {console.log(err)})
-
-
-    // }
-
     const onFileSelected = async (e) => {
+
         // Get file
         const file = e.target.files[0]
 
@@ -49,28 +22,56 @@ function EditVideo() {
         const filePath = storageRef.child('videos/' + file.name)
 
         // Upload file
-        setMessage('Espere unos segundos, subiendo archivo...')
+        setMessage('Espere unos segundos, subiendo vídeo...')
         await filePath.put(file)
             .then(() => {
-                setMessage('El archivo ha subido correctamente')
+                setMessage('El vídeo ha sido editado correctamente.')
             })
             .catch(err => {console.log(err)})
 
-
         // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        setVideoData(fileUrl)
-        console.log(fileUrl)
-        updateVideoPath()
+        await filePath.getDownloadURL()
+        .then((vdata) => {
+            setVideoData(vdata)
+            console.log(vdata)
+            updateVideoPath(vdata)
+        })
+        .catch(err => {console.log(err)})
+
+
     }
 
-    const updateVideoPath = async () => {
-        setMessage('')
-        console.log(videoId, videoData)
+    // const onFileSelected = async (e) => {
+    //     // Get file
+    //     const file = e.target.files[0]
 
+    //     // Create storage ref
+    //     const storageRef = app.storage().ref()
+    //     const filePath = storageRef.child('videos/' + file.name)
+
+    //     // Upload file
+    //     setMessage('Espere unos segundos, subiendo archivo...')
+    //     await filePath.put(file)
+    //         .then(() => {
+    //             setMessage('El archivo ha subido correctamente')
+    //         })
+    //         .catch(err => {console.log(err)})
+
+
+    //     // Get file url
+    //     const fileUrl = await filePath.getDownloadURL()
+    //     setVideoData(fileUrl)
+    //     console.log(fileUrl)
+    //     updateVideoPath()
+    // }
+
+    const updateVideoPath = async (vdata) => {
+        setMessage('')
+        console.log(videoId)
+        console.log(vdata)
 
         //Upload video url to API
-        await updateVideoData(videoData, videoId)
+        await updateVideoData(vdata, videoId)
             .then((data) => {
                 console.log(data)
                 setMessage('')
