@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOCLeti, updateBannerDataOCLeti} from '../../../../../services/ApiClient'
+import {getBannerOCGenven, updateBannerDataOCGenven} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-function EditBannerOCLeti() {
+function EditBannerOCGenven() {
 
     const [bannerData, setBannerData] = useState()
 
@@ -39,7 +39,7 @@ function EditBannerOCLeti() {
         data.id = bannerData._id
 
         try {
-            await updateBannerDataOCLeti(data)
+            await updateBannerDataOCGenven(data)
                 .then(banner => {
                     setBannerData(banner[0])
                 })
@@ -57,7 +57,7 @@ function EditBannerOCLeti() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getBannerData = await getBannerOCLeti()
+            const getBannerData = await getBannerOCGenven()
             setBannerData(getBannerData)
         }
         fetchData()
@@ -66,7 +66,7 @@ function EditBannerOCLeti() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Banner Leti</h2>
+            <h2>Banner Genven</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -116,4 +116,4 @@ function EditBannerOCLeti() {
     )
 }
 
-export default EditBannerOCLeti
+export default EditBannerOCGenven

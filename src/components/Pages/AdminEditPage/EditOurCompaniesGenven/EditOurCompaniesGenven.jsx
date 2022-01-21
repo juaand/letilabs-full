@@ -1,8 +1,9 @@
 import React from 'react'
 import EditBannerOCGenven from './EditBannerOCGenven/EditBannerOCGenven'
-import EditCompaniesInfoCardsGenven from './EditCompaniesInfoCardsGenven/EditCompaniesInfoCardsGenven'
-import EditProdutcsBanner from './EditEquipoGenvenPage/EditEquipoGenvenPage'
-import EditTimelineGenven from './EditTimeline/EditTimeline'
+import EditCompaniesVideoGenven from './EditCompaniesVideoGenven/EditCompaniesVideoGenven'
+import EditEquipoGenvenPage from './EditEquipoGenvenPage/EditEquipoGenvenPage'
+import EditProductosGenvenPage from './EditProductosGenvenPage/EditProductosGenvenPage'
+import EditTimelineGenven from './EditTimelineGenven/EditTimelineGenven'
 
 
 function EditOurCompaniesGenven() {
@@ -11,9 +12,10 @@ function EditOurCompaniesGenven() {
         <main>
             <h2 className="EditContent EditContent__title">Editar página nuestras empresas Genven</h2>
             <EditBannerOCGenven />
-            <EditCompaniesInfoCardsGenven />
+            <EditCompaniesVideoGenven />
+            <EditProductosGenvenPage />
             <EditTimelineGenven />
-            <EditProdutcsBanner />
+            <EditEquipoGenvenPage />
         </main>
     )
 }

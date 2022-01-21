@@ -105,7 +105,7 @@ function EditEquipoLetiPage() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Descripción 2
+                            Persona del equipo y cargo
                         </p>
                         <Editor
                             onChange={handleBannerPerson}

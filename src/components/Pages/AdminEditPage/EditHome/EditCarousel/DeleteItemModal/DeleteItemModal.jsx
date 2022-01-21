@@ -1,6 +1,6 @@
 import './DeleteItemModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem} from '../../../../../../services/ApiClient'
+import {deleteCarItem, updateTimelineAboutUs} from '../../../../../../services/ApiClient'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
@@ -41,8 +41,8 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const editCarrouselItem = async (id) => {
         console.log('editar contenido')
-        // const updateData = await editCarItem(id)
-        // deleteItem(updateData)
+        const updateData = await updateTimelineAboutUs(data, id)
+        deleteItem(updateData)
     }
 
     const handleBannerDescription = (e) => {
