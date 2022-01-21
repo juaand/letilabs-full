@@ -1,3 +1,4 @@
+@charset "UTF-8";
 input {
   overflow: hidden;
 }
@@ -34,5 +35,5 @@ input {
 }
 
 .custom-file-input.video:before {
-  content: 'Selecciona un video';
+  content: 'Subir nuevo vídeo';
 }
