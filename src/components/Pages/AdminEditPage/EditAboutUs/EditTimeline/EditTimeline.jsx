@@ -5,7 +5,8 @@ import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
-import EditElementsModal from './EditElementsModal/EditElementsModal'
+import EditElementsModal from './EditElementsModal/EditelementsModal'
+
 
 function EditTimeline() {
 

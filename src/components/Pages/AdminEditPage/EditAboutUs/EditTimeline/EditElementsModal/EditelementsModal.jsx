@@ -1,6 +1,6 @@
-import './EditElementsModal.css'
+import './DeleteItemModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem} from '../../../../../../services/ApiClient'
+import {deleteCarItem, updateTimelineAboutUs} from '../../../../../../services/ApiClient'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
@@ -39,10 +39,10 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
-    const editCarrouselItem = async (id) => {
-        console.log('editar contenido')
-        // const updateData = await editCarItem(id)
-        // deleteItem(updateData)
+    const editCarrouselItem = async () => {
+        console.log(element._id)
+        const updateData = await updateTimelineAboutUs(data.year, data.desc, data.imgURL, element._id)
+        deleteItem(updateData)
     }
 
     const handleBannerDescription = (e) => {
@@ -74,18 +74,19 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     return (
-        <div className="EditElementsModal">
+        <div className="DeleteItemModal">
             <div className="container">
                 <div className="row justify-content-center">
-                    <div className="col-11 col-sm-5 EditElementsModal__container">
-                        <span className="EditElementsModal__close" onClick={hideModal}></span>
+                    <div className="col-11 col-sm-5 DeleteItemModal__container">
+                        <span className="DeleteItemModal__close" onClick={hideModal}></span>
+
                         <div className="col-sm-12">
-                            <p className="EditElementsModal__ask">Editar elemento {element.year}</p>
+                            <p className="DeleteItemModal__ask">Editar elemento {element.year}</p>
                             <div className="card">
-                                <div className="card-body EditElementsModal__body">
+                                <div className="card-body DeleteItemModal__body">
                                     <div className="row align-items-center">
                                         <div className="col-sm-12">
-                                            <p className="EditElementsModal__text"><strong>Editar año</strong></p>
+                                            <p className="DeleteItemModal__text"><strong>Editar año</strong></p>
                                         </div>
                                         <div className="col-sm-12">
                                             <InputWithLabel
@@ -97,9 +98,9 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                             />
                                         </div>
                                         <div className="col-12">
-                                            <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
+                                            <p className="DeleteItemModal__text"><strong>Editar imagen</strong></p>
                                         </div>
-                                        <div className="col-12 EditElementsModal__img">
+                                        <div className="col-12 DeleteItemModal__img">
                                             <img src={"./images/" + element.imgURL} alt={element.name} />
                                             <InputFile
                                                 value={element?.imgURL}
@@ -111,7 +112,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                             />
                                         </div>
                                         <div className="col-12">
-                                            <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
+                                            <p className="DeleteItemModal__text"><strong>Editar descripción</strong></p>
                                             <Editor
                                                 initialValue={data?.desc}
                                                 onChange={handleBannerDescription}

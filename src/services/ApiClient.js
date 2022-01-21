@@ -52,6 +52,7 @@ export const getGallery = () => http.get("/galleryaboutusdata")
 export const addTimeLineData = ({year, imgURL, desc, id}) => http.get("/addtimelineaboutusdata", {year, imgURL, desc, id})
 export const addGalleryData = ({mainTitle, title, imgPath, id}) => http.get("/addgalleryaboutusdata", {mainTitle, title, imgPath, id})
 export const updateBannerData = ({description, imgURL, id}) => http.patch("/updatebannerdata", {description, imgURL, id})
+export const updateTimelineAboutUs = (year, desc, imgURL, id) => http.patch(`/updatetimelineaboutus/${id}`, {year, desc, imgURL, id}, console.log(id))
 export const updateMarcandoPautaData = ({description, imgURL, id}) => http.patch("/updatemarcandopautadata", {description, imgURL, id})
 export const updateMegatData = ({title, description, url, buttonTitle, id}) => http.patch("/updatemegatdata", {title, description, url, buttonTitle, id})
 

@@ -3,7 +3,7 @@ import EditBannerOCGenven from './EditBannerOCGenven/EditBannerOCGenven'
 import EditCompaniesVideoGenven from './EditCompaniesVideoGenven/EditCompaniesVideoGenven'
 import EditEquipoGenvenPage from './EditEquipoGenvenPage/EditEquipoGenvenPage'
 import EditProductosGenvenPage from './EditProductosGenvenPage/EditProductosGenvenPage'
-import EditTimelineGenven from './EditTimeline/EditTimeline'
+import EditTimelineGenven from './EditTimelineGenven/EditTimelineGenven'
 
 
 function EditOurCompaniesGenven() {
