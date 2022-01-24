@@ -31,49 +31,21 @@ function EditVideo() {
 
         // Get file url
         await filePath.getDownloadURL()
-        .then((vdata) => {
-            setVideoData(vdata)
-            console.log(vdata)
-            updateVideoPath(vdata)
-        })
-        .catch(err => {console.log(err)})
+            .then((vdata) => {
+                setVideoData(vdata)
+                updateVideoPath(vdata)
+            })
+            .catch(err => {console.log(err)})
 
 
     }
 
-    // const onFileSelected = async (e) => {
-    //     // Get file
-    //     const file = e.target.files[0]
-
-    //     // Create storage ref
-    //     const storageRef = app.storage().ref()
-    //     const filePath = storageRef.child('videos/' + file.name)
-
-    //     // Upload file
-    //     setMessage('Espere unos segundos, subiendo archivo...')
-    //     await filePath.put(file)
-    //         .then(() => {
-    //             setMessage('El archivo ha subido correctamente')
-    //         })
-    //         .catch(err => {console.log(err)})
-
-
-    //     // Get file url
-    //     const fileUrl = await filePath.getDownloadURL()
-    //     setVideoData(fileUrl)
-    //     console.log(fileUrl)
-    //     updateVideoPath()
-    // }
-
     const updateVideoPath = async (vdata) => {
         setMessage('')
-        console.log(videoId)
-        console.log(vdata)
 
         //Upload video url to API
         await updateVideoData(vdata, videoId)
             .then((data) => {
-                console.log(data)
                 setMessage('')
                 setVideoInfo(data.url)
             })
