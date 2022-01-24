@@ -1,0 +1,21 @@
+@import '../../../stylesheets/variables';
+
+.AdminProductPage {
+  background: url(../../../images/cuidar-right-bg.svg) no-repeat right top;
+
+  &__bg {
+    height: 23rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__search {
+    padding-left: 7rem;
+    height: 6.4rem;
+    font-size: 1.6rem;
+    border-radius: 0;
+    background: $leti-white url(../../../images/input-search.svg) no-repeat 2rem
+      center / 3.2rem;
+  }
+}
