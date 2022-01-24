@@ -36,8 +36,6 @@ function EditVideo() {
                 updateVideoPath(vdata)
             })
             .catch(err => {console.log(err)})
-
-
     }
 
     const updateVideoPath = async (vdata) => {
