@@ -69,7 +69,7 @@ function EditVideo() {
             {message ? <p className="is-message">{message}</p> :
                 <div className="row">
                     <div className="col-12">
-                        <a href={videoInfo} target="_blank" rel="noopener noreferrer">Ver vídeo actual</a>
+                        <a className="video-link" href={videoInfo} target="_blank" rel="noopener noreferrer">Ver vídeo actual</a>
                         <InputFile
                             value={videoData}
                             onChange={onFileSelected}

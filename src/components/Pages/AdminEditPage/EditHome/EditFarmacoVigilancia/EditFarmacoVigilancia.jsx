@@ -85,7 +85,21 @@ function EditFarmacoVigilancia() {
                             placeholder={farmacoData?.title}
                         />
                         <p className="AdminEdit__form__label">
-                            Subtítulo
+                            Título del botón
+                        </p>
+                        <InputWithLabel
+                            value={data?.buttonTitle}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="buttonTitle"
+                            type="text"
+                            className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            placeholder={farmacoData?.buttonTitle}
+                        />
+                    </div>
+                    <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            Descripción
                         </p>
                         <Editor
                             initialValue={farmacoData?.subTitle}
@@ -103,20 +117,7 @@ function EditFarmacoVigilancia() {
                                 toolbar:
                                     'bold',
                             }}
-                        />
-                        <p className="AdminEdit__form__label">
-                            Título del botón
-                        </p>
-                        <InputWithLabel
-                            value={data?.buttonTitle}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="buttonTitle"
-                            type="text"
-                            className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
-                            placeholder={farmacoData?.buttonTitle}
-                        />
-                    </div>
+                        /></div>
                     <div className="col-12">
                         <Button className="leti-btn AdminEdit__form-leti-btn" >Editar Farmaco Vigilancia</Button>
                     </div>

@@ -2,3 +2,23 @@
   color: #055aa5;
   font-size: 1.8rem;
 }
+
+.EditVideo .video-link {
+  color: #cd202f;
+  text-decoration: none;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+}
+
+.EditVideo .video-link:after {
+  content: '';
+  background: url(../../../../../images/triangulo-rojo.svg) no-repeat center/1.6rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: inline-flex;
+  margin-left: 1rem;
+  transform: rotate(180deg);
+  border: solid 0.2rem #cd202f;
+  border-radius: 3rem;
+}
