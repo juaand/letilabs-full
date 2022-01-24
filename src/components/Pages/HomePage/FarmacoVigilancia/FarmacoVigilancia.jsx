@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import ModalFarmacoVigilancia from '../ModalFarmacoVigilancia/ModalFarmacoVigilancia'
 import {Fade} from 'react-awesome-reveal'
 import {getFarmaco, getHomeBottom} from '../../../../services/ApiClient'
+import {Link} from 'react-router-dom'
 
 function FarmacoVigilancia() {
 
@@ -24,7 +25,6 @@ function FarmacoVigilancia() {
         const fetchHomeBottom = async () => {
             const getHomeBottomData = await getHomeBottom()
             setHomeBottom(getHomeBottomData)
-            console.log(getHomeBottomData)
         }
         fetchHomeBottom()
 
@@ -41,8 +41,13 @@ function FarmacoVigilancia() {
                                 background: `url("./images/${el?.img}")`,
                             }} />
                             <div className="FarmacoVigilancia__title">
-                                <Fade {...key > 1 && `delay={300}`} direction="up" triggerOnce>
+                                <Fade {...key > 1 && `delay=${300}`} direction="up" triggerOnce>
                                     <h2>{el?.title}</h2>
+                                    {el?.url?.includes('http') ?
+                                        <a href={el?.url} target="_blank" className="leti-btn" rel="noopener noreferrer">{el?.button}</a>
+                                        :
+                                        <Link to={el?.url} className="leti-btn">{el?.button}</Link>
+                                    }
                                 </Fade>
                             </div>
                         </div>)}
