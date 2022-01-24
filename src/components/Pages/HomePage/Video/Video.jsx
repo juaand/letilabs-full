@@ -10,7 +10,6 @@ function Video() {
         const fetchData = async () => {
             const getVideoData = await getApiVideo()
             setVideoData(getVideoData[0]?.url)
-            console.log(getVideoData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps

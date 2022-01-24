@@ -43,6 +43,7 @@ export const deleteCarItem = (id) => http.get(`/deletecaritem/${id}`)
 export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
 export const getApiVideo = () => http.get("/videoiniciodata")
 export const updateVideoData = (url, id) => http.patch("/updatevideodata", {url, id})
+export const getHomeBottom = () => http.get("/homebottomdata")
 
 //admin edit routes about us
 

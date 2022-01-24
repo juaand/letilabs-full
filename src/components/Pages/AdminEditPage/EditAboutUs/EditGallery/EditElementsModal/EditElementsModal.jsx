@@ -78,11 +78,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         console.log(fileUrl)
     }
 
-    // desc: "Contamos con 75.000mts2 de capacidad instalada de producción, 6 plantas con  tecnología de punta en la industria farmacéutica global, para poder elaborar hasta 120 millones de unidades al año, en 70 líneas de producción abarcando más de 22 formas galénicas"
-    // imgPath: "planta-produccion.jpg"
-    // mainTitle: "Hoy contamos con lo mejor"
-    // title: "Planta"
-
     return (
         <div className="EditElementsModal">
             <div className="container">
