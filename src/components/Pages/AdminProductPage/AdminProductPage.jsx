@@ -82,7 +82,7 @@ function AdminProductPage() {
                                             <div className="card-body">
                                                 <h5 dangerouslySetInnerHTML={{__html: el?.line}}>
                                                 </h5>
-                                                <p className="card-text">{el?.name}</p>
+                                                <p className="card-text" dangerouslySetInnerHTML={{__html: el?.name}} />
                                             </div>
                                             <ul className="list-group list-group-flush">
                                                 <li className="list-group-item AdminProductPage__check"><div className="form-check">
@@ -98,8 +98,11 @@ function AdminProductPage() {
                                                 <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.presentation}} />
                                                 <span className="card-title">Registro sanitario</span>
                                                 <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.health_register}} />
-                                                <span className="card-title">Trademarks</span>
-                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.trademarks}} />
+                                                {el?.trademarks &&
+                                                    <>
+                                                        <span className="card-title">Trademarks</span>
+                                                        <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.trademarks}} />
+                                                    </>}
                                             </ul>
                                             <div className="card-footer">
                                                 <div onClick={() => showModal(el)} className="leti-btn">Editar producto</div>

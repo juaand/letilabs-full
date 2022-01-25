@@ -21,7 +21,7 @@
 
   &__card {
     margin-bottom: 3rem;
-    border-radius: 0;
+    border-radius: 0.5rem;
     border: solid 0.1rem $leti-blue;
     font-size: 1.6rem;
   }
@@ -38,8 +38,8 @@
     width: fit-content;
     display: block;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.8rem;
+    right: 0.8rem;
   }
 
   &__check {
@@ -49,7 +49,7 @@
   .card-title {
     font-family: 'TripletaBold';
     font-size: 1.2rem;
-    color: $leti-red;
+    color: rgba($leti-blue, 0.6);
     padding-left: 1rem;
     margin-bottom: 0;
   }
@@ -87,5 +87,11 @@
     font-size: 1.6rem;
     text-align: center;
     margin-left: -25%;
+  }
+
+  .card-text {
+    font-weight: 600;
+    color: $leti-black;
+    font-size: 1.8rem;
   }
 }
