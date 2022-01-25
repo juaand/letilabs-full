@@ -127,6 +127,7 @@ export const searchNews = (data) => http.post(`/buscarnoticia`, {data})
 //product routes
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
 export const getProductList = () => http.get("/listado-productos")
+export const deleteProduct = (id) => http.get(`/producto/${id}/delete`)
 
 //news routes
 export const getNews = () => http.get("/newsdata")

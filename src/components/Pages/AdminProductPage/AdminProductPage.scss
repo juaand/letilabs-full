@@ -27,8 +27,27 @@
   }
 
   &__img-top {
-    background: $leti-subnav;
-    height: 24rem;
+    height: 18rem;
+    width: fit-content;
+    display: block;
+    margin: auto;
+  }
+
+  &__img-bottom {
+    height: 6rem;
+    width: fit-content;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .card-title {
+    font-family: 'TripletaBold';
+    font-size: 1.2rem;
+    color: $leti-red;
+    padding-left: 1rem;
+    margin-bottom: 0;
   }
 
   .card-footer {
@@ -38,6 +57,25 @@
     .leti-btn {
       width: 100%;
       border: 0;
+      font-size: 1.6rem;
+      padding: 1rem;
     }
+  }
+
+  .card-body {
+    position: relative;
+  }
+
+  .alert-danger {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: auto;
+    margin-top: -3rem;
+    z-index: 1;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-left: -25%;
   }
 }

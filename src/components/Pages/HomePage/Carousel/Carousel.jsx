@@ -31,19 +31,21 @@ function Carousel() {
     }
 
     useEffect(() => {
-        const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
-
-        const getNextArrow = document.querySelector('.slick-next')
-        const getPrevArrow = document.querySelector('.slick-prev')
-
-        getNextArrow.style.left = `${((getSlickDots.left + getSlickDots.width) / 10) - 16}rem`
-        getPrevArrow.style.left = `${(getSlickDots.x / 10) - 27}rem`
-
-        document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
 
         const fetchData = async () => {
             const data = await getVadevecumData()
-            setGetData(data)
+            const dataFiltered = data.filter(el => el.show_in_home === true)
+            setGetData(dataFiltered)
+
+            const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
+
+            const getNextArrow = document.querySelector('.slick-next')
+            const getPrevArrow = document.querySelector('.slick-prev')
+
+            getNextArrow.style.left = `${((getSlickDots.left + getSlickDots.width) / 10) - 16}rem`
+            getPrevArrow.style.left = `${(getSlickDots.x / 10) - 27}rem`
+
+            document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
         }
         fetchData()
 
@@ -57,7 +59,7 @@ function Carousel() {
                 </div>
                 <div className="container-fluid p-0">
                     <Slider {...settings}>
-                        {homeCarousel.map(el =>
+                        {getData && getData?.map(el =>
                             <div>
                                 <div className="Carousel__product">
                                     <div className="Carousel__image" style={{

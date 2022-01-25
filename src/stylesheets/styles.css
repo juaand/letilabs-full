@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600&display=swap");
 @font-face {
   font-family: 'Tripleta';
@@ -69,12 +70,36 @@ body {
   align-items: center;
   padding: 2rem 2.4rem;
   transition: all 200ms ease-in-out;
+  background: transparent;
 }
 
 .leti-btn:hover {
   cursor: pointer;
   background: #055aa5;
   color: #fff;
+}
+
+.leti-btn.delete {
+  border-color: #cd202f;
+  color: #fff;
+  background: #cd202f;
+  position: relative;
+  transition: all 200ms ease-in-out;
+}
+
+.leti-btn.delete:hover {
+  background: #cd202f !important;
+}
+
+.leti-btn.delete:hover:before {
+  content: '¿Estás seguro?';
+  position: absolute;
+  background: #cd202f;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* --- SMOOTHER YAY! --- */

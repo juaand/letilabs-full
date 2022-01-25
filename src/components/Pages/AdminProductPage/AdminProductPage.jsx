@@ -2,13 +2,15 @@ import './AdminProductPage.css'
 import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 import {addHomeScreen, getVadevecumData} from '../../../services/ApiClient'
-import {Link} from 'react-router-dom'
+import ShowEditModal from './ShowEditModal/ShowEditModal'
 
 function AdminProductPage() {
 
     const [search, setSearch] = useState('')
     const [products, setProducts] = useState([])
     const [message, setMessage] = useState('')
+    const [bool, setBool] = useState(false)
+    const [editProduct, setEditProduct] = useState({})
 
     const handleChange = (e) => {
         setSearch(e.target.value)
@@ -21,13 +23,25 @@ function AdminProductPage() {
     })
 
     const showAtHome = async (e, id) => {
-        console.log(e.target.checked, id)
-        if (products.filter(el => el?.show_in_home === true).length >= 18  && e.target.checked === true) {
-            setMessage('Ya se han alcanzado el máximo de productos para mostrar en la página principal.')
+        if (products.filter(el => el?.show_in_home === true).length >= 18 && e.target.checked === true) {
+            setMessage('Ya se han alcanzado el máximo de productos para mostrar en la página principal. Por favor, desmarque alguno para continuar.')
         } else {
-            setMessage('add to home')
+            setMessage('')
             const res = await addHomeScreen(e.target.checked, id)
             setProducts(res)
+        }
+    }
+
+    const showModal = (product) => {
+        setBool(!bool)
+        setEditProduct(product)
+    }
+
+    const hideModal = (data) => {
+        setBool(!bool)
+
+        if (data) {
+            setProducts(data)
         }
     }
 
@@ -43,11 +57,12 @@ function AdminProductPage() {
 
     return (
         <>
+            {bool && <ShowEditModal product={editProduct} hideModal={(data) => hideModal(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
             </Helmet>
-            {message && <div className="alert alert-danger" role="alert">{message}</div>}
             <main className="container-fluid AdminProductPage">
+                {message && <div className="alert alert-danger" role="alert">{message}</div>}
                 <div className="row">
                     <div className="col-12 AdminProductPage__bg">
                         <div className="container">
@@ -60,11 +75,14 @@ function AdminProductPage() {
                                 {filteredProducts.map(el =>
                                     <div className="col-sm-4 col-12">
                                         <div className="card AdminProductPage__card">
-                                            <img src={el?.picPath} className="AdminProductPage__img-top" alt={el?.name} />
                                             <div className="card-body">
-                                                <h5 dangerouslySetInnerHTML={{__html: el?.name}}>
+                                                <img src={el?.picPath} className="AdminProductPage__img-top" alt={el?.name} />
+                                                <img src={el?.QRpath} className="AdminProductPage__img-bottom" alt={el?.name} />
+                                            </div>
+                                            <div className="card-body">
+                                                <h5 dangerouslySetInnerHTML={{__html: el?.line}}>
                                                 </h5>
-                                                <p className="card-text">{el?.line}</p>
+                                                <p className="card-text">{el?.name}</p>
                                             </div>
                                             <ul className="list-group list-group-flush">
                                                 <li className="list-group-item"><div className="form-check">
@@ -73,11 +91,18 @@ function AdminProductPage() {
                                                         mostrar en carrusel del home
                                                     </label>
                                                 </div></li>
-                                                <li className="list-group-item">A second item</li>
-                                                <li className="list-group-item">A third item</li>
+                                                <span className="card-title">Composición</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.composition}} />
+                                                <span className="card-title">Principio activo</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.active_principle}} />
+                                                <span className="card-title">Posología</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.posology}} />
+                                                <span className="card-title">Presentación</span>
+                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.presentation}} />
+                                                <span className="card-title">Registro sanitario</span>
+                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.health_register}} />
+                                                <span className="card-title">Trademarks</span>
+                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.trademarks}} />
                                             </ul>
                                             <div className="card-footer">
-                                                <Link to="#" className="leti-btn">Editar producto</Link>
+                                                <div onClick={() => showModal(el)} className="leti-btn">Editar producto</div>
                                             </div>
                                         </div>
                                     </div>

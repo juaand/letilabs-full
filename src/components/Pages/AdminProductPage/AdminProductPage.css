@@ -25,8 +25,27 @@
 }
 
 .AdminProductPage__img-top {
-  background: #e9eaee;
-  height: 24rem;
+  height: 18rem;
+  width: fit-content;
+  display: block;
+  margin: auto;
+}
+
+.AdminProductPage__img-bottom {
+  height: 6rem;
+  width: fit-content;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.AdminProductPage .card-title {
+  font-family: 'TripletaBold';
+  font-size: 1.2rem;
+  color: #cd202f;
+  padding-left: 1rem;
+  margin-bottom: 0;
 }
 
 .AdminProductPage .card-footer {
@@ -37,4 +56,23 @@
 .AdminProductPage .card-footer .leti-btn {
   width: 100%;
   border: 0;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+.AdminProductPage .card-body {
+  position: relative;
+}
+
+.AdminProductPage .alert-danger {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin-top: -3rem;
+  z-index: 1;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-left: -25%;
 }
