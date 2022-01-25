@@ -40,6 +40,10 @@
   right: 0;
 }
 
+.AdminProductPage__check {
+  background: rgba(233, 234, 238, 0.8);
+}
+
 .AdminProductPage .card-title {
   font-family: 'TripletaBold';
   font-size: 1.2rem;
@@ -58,6 +62,12 @@
   border: 0;
   font-size: 1.6rem;
   padding: 1rem;
+  background: #055aa5;
+  color: #fff;
+}
+
+.AdminProductPage .card-footer .leti-btn:hover {
+  background: rgba(5, 90, 165, 0.8);
 }
 
 .AdminProductPage .card-body {

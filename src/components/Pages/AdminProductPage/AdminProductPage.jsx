@@ -85,7 +85,7 @@ function AdminProductPage() {
                                                 <p className="card-text">{el?.name}</p>
                                             </div>
                                             <ul className="list-group list-group-flush">
-                                                <li className="list-group-item"><div className="form-check">
+                                                <li className="list-group-item AdminProductPage__check"><div className="form-check">
                                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.show_in_home} onChange={(e) => showAtHome(e, el._id)} />
                                                     <label className="form-check-label" for="flexCheckChecked">
                                                         mostrar en carrusel del home
