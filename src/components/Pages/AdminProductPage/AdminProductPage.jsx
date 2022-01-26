@@ -456,7 +456,10 @@ function AdminProductPage() {
                                                     <>
                                                         <span className="card-title">Trademarks</span>
                                                         <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.trademarks}} />
-                                                    </>}
+                                                    </>
+                                                }
+                                                <span className="card-title">Indicaciones</span>
+                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.indication}} />
                                             </ul>
                                             <div className="card-footer">
                                                 <div onClick={() => showModal(el)} className="leti-btn">Editar producto</div>

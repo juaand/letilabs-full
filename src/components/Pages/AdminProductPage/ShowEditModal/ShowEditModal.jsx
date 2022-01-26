@@ -23,6 +23,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                 active_principle: product.active_principle,
                 posology: product.posology,
                 presentation: product.presentation,
+                indication: product.indication,
             },
             error: {
                 name: true,
@@ -34,6 +35,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                 active_principle: true,
                 posology: true,
                 presentation: true,
+                indication: true,
             },
             touch: {},
         },
@@ -47,6 +49,7 @@ function ShowEditModal({product, hideModal, updateData}) {
             active_principle: v => v.length,
             posology: v => v.length,
             presentation: v => v.length,
+            indication: v => v.length,
         }
     )
 
@@ -66,6 +69,10 @@ function ShowEditModal({product, hideModal, updateData}) {
 
     const handlePresentation = (e) => {
         data.presentation = e.target.getContent()
+    }
+
+    const handleIndication = (e) => {
+        data.indication = e.target.getContent()
     }
 
     const updateThisProduct = async (event) => {
@@ -108,7 +115,7 @@ function ShowEditModal({product, hideModal, updateData}) {
         <main className="modal ShowEditModal">
             <div className="container">
                 <div className="row justify-content-center">
-                    <Fade direction="down" className="col-11 ShowEditModal__container">
+                    <Fade direction="down" className="col-12 ShowEditModal__container">
                         <>
                             <span className="ShowEditModal__close" onClick={hideModal}></span>
                             <form className="AdminEdit__form" onSubmit={updateThisProduct}>
@@ -168,85 +175,107 @@ function ShowEditModal({product, hideModal, updateData}) {
                                             type="file"
                                         />
                                     </div>
-                                    <div className="col-12 col-sm-3">
-                                        <p className="label"><strong>Composición</strong></p>
-                                        <Editor
-                                            initialValue={data?.composition}
-                                            onChange={handleComposition}
-                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                            init={{
-                                                height: 200,
-                                                menubar: false,
-                                                plugins: [
-                                                    'advlist autolink lists link image',
-                                                    'charmap print preview anchor help',
-                                                    'searchreplace visualblocks code',
-                                                    'insertdatetime media table paste wordcount'
-                                                ],
-                                                toolbar:
-                                                    'bold',
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-3">
-                                        <p className="label"><strong>Principio activo</strong></p>
-                                        <Editor
-                                            initialValue={data?.active_principle}
-                                            onChange={handleActivePrinciple}
-                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                            init={{
-                                                height: 200,
-                                                menubar: false,
-                                                plugins: [
-                                                    'advlist autolink lists link image',
-                                                    'charmap print preview anchor help',
-                                                    'searchreplace visualblocks code',
-                                                    'insertdatetime media table paste wordcount'
-                                                ],
-                                                toolbar:
-                                                    'bold',
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-3">
-                                        <p className="label"><strong>Posología</strong></p>
-                                        <Editor
-                                            initialValue={data?.posology}
-                                            onChange={handlePosology}
-                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                            init={{
-                                                height: 200,
-                                                menubar: false,
-                                                plugins: [
-                                                    'advlist autolink lists link image',
-                                                    'charmap print preview anchor help',
-                                                    'searchreplace visualblocks code',
-                                                    'insertdatetime media table paste wordcount'
-                                                ],
-                                                toolbar:
-                                                    'bold',
-                                            }}
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-3">
-                                        <p className="label"><strong>Presentación</strong></p>
-                                        <Editor
-                                            initialValue={data?.presentation}
-                                            onChange={handlePresentation}
-                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                            init={{
-                                                height: 200,
-                                                menubar: false,
-                                                plugins: [
-                                                    'advlist autolink lists link image',
-                                                    'charmap print preview anchor help',
-                                                    'searchreplace visualblocks code',
-                                                    'insertdatetime media table paste wordcount'
-                                                ],
-                                                toolbar:
-                                                    'bold',
-                                            }}
-                                        />
+                                    <div className="row">
+                                        <div className="col">
+                                            <p className="label"><strong>Composición</strong></p>
+                                            <Editor
+                                                initialValue={data?.composition}
+                                                onChange={handleComposition}
+                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                init={{
+                                                    height: 200,
+                                                    menubar: false,
+                                                    plugins: [
+                                                        'advlist autolink lists link image',
+                                                        'charmap print preview anchor help',
+                                                        'searchreplace visualblocks code',
+                                                        'insertdatetime media table paste wordcount'
+                                                    ],
+                                                    toolbar:
+                                                        'bold',
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="col">
+                                            <p className="label"><strong>Principio activo</strong></p>
+                                            <Editor
+                                                initialValue={data?.active_principle}
+                                                onChange={handleActivePrinciple}
+                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                init={{
+                                                    height: 200,
+                                                    menubar: false,
+                                                    plugins: [
+                                                        'advlist autolink lists link image',
+                                                        'charmap print preview anchor help',
+                                                        'searchreplace visualblocks code',
+                                                        'insertdatetime media table paste wordcount'
+                                                    ],
+                                                    toolbar:
+                                                        'bold',
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="col">
+                                            <p className="label"><strong>Posología</strong></p>
+                                            <Editor
+                                                initialValue={data?.posology}
+                                                onChange={handlePosology}
+                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                init={{
+                                                    height: 200,
+                                                    menubar: false,
+                                                    plugins: [
+                                                        'advlist autolink lists link image',
+                                                        'charmap print preview anchor help',
+                                                        'searchreplace visualblocks code',
+                                                        'insertdatetime media table paste wordcount'
+                                                    ],
+                                                    toolbar:
+                                                        'bold',
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="col">
+                                            <p className="label"><strong>Presentación</strong></p>
+                                            <Editor
+                                                initialValue={data?.presentation}
+                                                onChange={handlePresentation}
+                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                init={{
+                                                    height: 200,
+                                                    menubar: false,
+                                                    plugins: [
+                                                        'advlist autolink lists link image',
+                                                        'charmap print preview anchor help',
+                                                        'searchreplace visualblocks code',
+                                                        'insertdatetime media table paste wordcount'
+                                                    ],
+                                                    toolbar:
+                                                        'bold',
+                                                }}
+                                            />
+                                        </div>
+                                        <div className="col">
+                                            <p className="label"><strong>Indicaciones</strong></p>
+                                            <Editor
+                                                initialValue={data?.indication}
+                                                onChange={handleIndication}
+                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                init={{
+                                                    height: 200,
+                                                    menubar: false,
+                                                    plugins: [
+                                                        'advlist autolink lists link image',
+                                                        'charmap print preview anchor help',
+                                                        'searchreplace visualblocks code',
+                                                        'insertdatetime media table paste wordcount'
+                                                    ],
+                                                    toolbar:
+                                                        'bold',
+                                                }}
+                                            />
+                                        </div>
                                     </div>
                                     <div className="col-12 col-sm-6 mt-5">
                                         <div onClick={() => deleteSelectedProduct(product?._id)} className="leti-btn delete">Eliminar producto</div>
