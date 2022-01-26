@@ -93,6 +93,13 @@
   margin-bottom: 6rem;
 }
 
+.AdminProductPage small {
+  color: #cd202f;
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
+  display: block;
+}
+
 .AdminProductPage .label {
   font-size: 1.6rem;
 }
