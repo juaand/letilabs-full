@@ -2,6 +2,38 @@
   background: url(../../../images/cuidar-right-bg.svg) no-repeat right top;
 }
 
+.AdminProductPage__add {
+  border: 0;
+  background: transparent;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  color: #055aa5;
+  padding: 1.5rem;
+  border: solid 0.2rem #055aa5;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  margin: -4rem auto 6rem auto;
+}
+
+.AdminProductPage__add:hover {
+  background: #055aa5;
+  color: white;
+}
+
+.AdminProductPage__add:hover:before {
+  background: url(../../../images/add-white.svg) no-repeat center center/contain;
+}
+
+.AdminProductPage__add:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  background: url(../../../images/add.svg) no-repeat center center/contain;
+  margin-right: 1rem;
+}
+
 .AdminProductPage__bg {
   height: 23rem;
   display: flex;
@@ -42,6 +74,31 @@
 
 .AdminProductPage__check {
   background: rgba(233, 234, 238, 0.8);
+}
+
+.AdminProductPage__create {
+  display: block;
+  transition: all 0.3s ease-in-out;
+  height: 0;
+  padding: 0;
+  border: 0;
+  background: #fff;
+}
+
+.AdminProductPage__create.show {
+  height: auto;
+  padding: 3rem 0;
+  border-top: solid 0.1rem #e9eaee;
+  border-bottom: solid 0.1rem #e9eaee;
+  margin-bottom: 6rem;
+}
+
+.AdminProductPage .label {
+  font-size: 1.6rem;
+}
+
+.AdminProductPage .form-control {
+  margin-bottom: 1rem !important;
 }
 
 .AdminProductPage .card-title {
