@@ -7,9 +7,9 @@ import InputFile from '../../../Form/InputFile/InputFile'
 import {app} from '../../../../services/firebase'
 import {Editor} from '@tinymce/tinymce-react'
 import Button from '../../../Form/FormButton/FormButton'
-import {deleteProduct} from '../../../../services/ApiClient'
+import {deleteProduct, updateProduct} from '../../../../services/ApiClient'
 
-function ShowEditModal({product, hideModal}) {
+function ShowEditModal({product, hideModal, updateData}) {
 
     const {state, onChange} = useFormState(
         {
@@ -22,6 +22,7 @@ function ShowEditModal({product, hideModal}) {
                 health_register: product.health_register,
                 active_principle: product.active_principle,
                 posology: product.posology,
+                presentation: product.presentation,
             },
             error: {
                 name: true,
@@ -32,6 +33,7 @@ function ShowEditModal({product, hideModal}) {
                 health_register: true,
                 active_principle: true,
                 posology: true,
+                presentation: true,
             },
             touch: {},
         },
@@ -44,6 +46,7 @@ function ShowEditModal({product, hideModal}) {
             health_register: v => v.length,
             active_principle: v => v.length,
             posology: v => v.length,
+            presentation: v => v.length,
         }
     )
 
@@ -61,14 +64,21 @@ function ShowEditModal({product, hideModal}) {
         data.posology = e.target.getContent()
     }
 
-    const updateProduct = async (event) => {
+    const handlePresentation = (e) => {
+        data.presentation = e.target.getContent()
+    }
+
+    const updateThisProduct = async (event) => {
         event.preventDefault()
-        console.log(data)
+        data.id = product._id
+
+        const updatedProductsData = await updateProduct(data)
+        updateData(updatedProductsData)
     }
 
     const deleteSelectedProduct = async (id) => {
-        const updateData = await deleteProduct(id)
-        hideModal(updateData)
+        const updatedProductsData = await deleteProduct(id)
+        updateData(updatedProductsData)
     }
 
     const onFileSelected = async (e) => {
@@ -85,8 +95,7 @@ function ShowEditModal({product, hideModal}) {
             .then(() => {
                 console.log('Uploaded')
             })
-            .catch(err => {console.log(err)}
-            )
+            .catch(err => {console.log(err)})
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
@@ -102,7 +111,7 @@ function ShowEditModal({product, hideModal}) {
                     <Fade direction="down" className="col-11 ShowEditModal__container">
                         <>
                             <span className="ShowEditModal__close" onClick={hideModal}></span>
-                            <form className="AdminEdit__form" onSubmit={updateProduct}>
+                            <form className="AdminEdit__form" onSubmit={updateThisProduct}>
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <p className="DeleteItemModal__ask">Editar {product.name}</p>
@@ -159,7 +168,7 @@ function ShowEditModal({product, hideModal}) {
                                             type="file"
                                         />
                                     </div>
-                                    <div className="col-12 col-sm-4">
+                                    <div className="col-12 col-sm-3">
                                         <p className="label"><strong>Composición</strong></p>
                                         <Editor
                                             initialValue={data?.composition}
@@ -179,7 +188,7 @@ function ShowEditModal({product, hideModal}) {
                                             }}
                                         />
                                     </div>
-                                    <div className="col-12 col-sm-4">
+                                    <div className="col-12 col-sm-3">
                                         <p className="label"><strong>Principio activo</strong></p>
                                         <Editor
                                             initialValue={data?.active_principle}
@@ -199,11 +208,31 @@ function ShowEditModal({product, hideModal}) {
                                             }}
                                         />
                                     </div>
-                                    <div className="col-12 col-sm-4">
+                                    <div className="col-12 col-sm-3">
                                         <p className="label"><strong>Posología</strong></p>
                                         <Editor
                                             initialValue={data?.posology}
                                             onChange={handlePosology}
+                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                            init={{
+                                                height: 200,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image',
+                                                    'charmap print preview anchor help',
+                                                    'searchreplace visualblocks code',
+                                                    'insertdatetime media table paste wordcount'
+                                                ],
+                                                toolbar:
+                                                    'bold',
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="col-12 col-sm-3">
+                                        <p className="label"><strong>Presentación</strong></p>
+                                        <Editor
+                                            initialValue={data?.presentation}
+                                            onChange={handlePresentation}
                                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                             init={{
                                                 height: 200,

@@ -37,12 +37,13 @@ function AdminProductPage() {
         setEditProduct(product)
     }
 
-    const hideModal = (data) => {
+    const hideModal = () => {
         setBool(!bool)
+    }
 
-        if (data) {
-            setProducts(data)
-        }
+    const updateData = (data) => {
+        setBool(!bool)
+        setProducts(data)
     }
 
     useEffect(() => {
@@ -57,7 +58,7 @@ function AdminProductPage() {
 
     return (
         <>
-            {bool && <ShowEditModal product={editProduct} hideModal={(data) => hideModal(data)} />}
+            {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
             </Helmet>
