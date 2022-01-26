@@ -1,17 +1,102 @@
 import './AdminProductPage.css'
 import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import {addHomeScreen, getVadevecumData} from '../../../services/ApiClient'
+import {addHomeScreen, getVadevecumData, addProductApi} from '../../../services/ApiClient'
 import ShowEditModal from './ShowEditModal/ShowEditModal'
 import Loader from '../../Loader/Loader'
+import {Reveal} from "react-awesome-reveal"
+import {keyframes} from "@emotion/react"
+import {useFormState} from '../../../hooks/useFormState'
+import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import InputFile from '../../Form/InputFile/InputFile'
+import {Editor} from '@tinymce/tinymce-react'
+import {app} from '../../../services/firebase'
+import Button from '../../Form/FormButton/FormButton'
 
 function AdminProductPage() {
 
+    const {state, onBlur, onChange} = useFormState(
+        {
+            data: {
+                name: "",
+                line: "",
+                health_register: "",
+                picPath: "",
+                QRpath: "",
+                active_principle: "",
+                posology: "",
+                presentation: "",
+                composition: "",
+                indication: "",
+            },
+            error: {
+                name: true,
+                line: true,
+                health_register: true,
+                picPath: true,
+                QRpath: true,
+                posology: true,
+                active_principle: true,
+                presentation: true,
+                composition: true,
+                indication: true,
+            },
+            touch: {},
+        },
+        {
+            name: v => v.length,
+            line: v => v.length,
+            health_register: v => v.length,
+            picPath: v => v.length,
+            QRpath: v => v.length,
+            active_principle: v => v.length,
+            posology: v => v.length,
+            presentation: v => v.length,
+            composition: v => v.length,
+            indication: v => v.length,
+        }
+    )
+
+    const {data, error, touch} = state
+    const [registerError, setRegisterError] = useState(null)
     const [search, setSearch] = useState('')
     const [products, setProducts] = useState([])
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
-    const [editProduct, setEditProduct] = useState({})
+    const [editProduct, setEditProduct] = useState('')
+    const [createProduct, setCreateProduct] = useState(false)
+    const [productMessage, setProductMessage] = useState('')
+
+    const createNewProduct = async (event) => {
+        event.preventDefault()
+
+        try {
+            setProductMessage('Cargando producto...')
+            const newProduct = await addProductApi(data)
+            document.querySelector('form').reset()
+            setProducts(newProduct)
+            setMessage('Producto creado con éxito')
+            setCreateProduct(!createProduct)
+            setTimeout(() => {
+                setMessage('')
+            }, 2000)
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
+    }
+
+    const isError = Object.values(error).some(err => err)
+
+    const customAnimation = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0rem, -5rem, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }`
 
     const handleChange = (e) => {
         setSearch(e.target.value)
@@ -47,6 +132,57 @@ function AdminProductPage() {
         setProducts(data)
     }
 
+    const showAddNewForm = () => {
+        setCreateProduct(!createProduct)
+    }
+
+    const onFileSelected = async (e) => {
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                console.log('Uploaded')
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data[e.target.name] = fileUrl
+        error[e.target.name] = false
+    }
+
+    const handleComposition = (e) => {
+        data.composition = e.target.getContent()
+        error.composition = false
+    }
+
+    const handleActivePrinciple = (e) => {
+        data.active_principle = e.target.getContent()
+        error.active_principle = false
+    }
+
+    const handlePosology = (e) => {
+        data.posology = e.target.getContent()
+        error.posology = false
+    }
+
+    const handlePresentation = (e) => {
+        data.presentation = e.target.getContent()
+        error.presentation = false
+    }
+
+    const handleIndication = (e) => {
+        data.indication = e.target.getContent()
+        error.indication = false
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const allProducts = await getVadevecumData()
@@ -59,7 +195,7 @@ function AdminProductPage() {
 
     return (
         <>
-            {!filteredProducts.length && <Loader />}
+
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
@@ -74,6 +210,201 @@ function AdminProductPage() {
                     </div>
                     <div className="col-12">
                         <div className="container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <button className="AdminProductPage__add" onClick={showAddNewForm}>Añadir nuevo producto</button>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12">
+                                    {!filteredProducts.length && <p className="mb-5">El producto que busca no se encuentra.</p>}
+                                </div>
+                            </div>
+                            {createProduct &&
+                                <Reveal triggerOnce keyframes={customAnimation} duration={600} className="row">
+                                    <>
+                                        <div className={`col-12 AdminProductPage__create ${createProduct && 'show'}`}>
+                                            <h1>Crear producto</h1>
+                                            {productMessage && <div className="product-message">{productMessage}</div>
+                                            }
+                                            {!productMessage &&
+                                                <>
+                                                    <small>* Todos los campos son obligatorios</small>
+                                                    <form className="AdminEdit__form" onSubmit={createNewProduct}>
+                                                        <div className="row">
+                                                            <div className="col-12 col-sm-6">
+                                                                <InputFile
+                                                                    label="Imagen producto"
+                                                                    value={data.picPath}
+                                                                    onChange={onFileSelected}
+                                                                    id="fileButton"
+                                                                    name="picPath"
+                                                                    type="file"
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-6">
+                                                                <InputFile
+                                                                    label="QR producto"
+                                                                    value={data.QRpath}
+                                                                    onChange={onFileSelected}
+                                                                    id="fileButton"
+                                                                    name="QRpath"
+                                                                    type="file"
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    label="Nombre"
+                                                                    value={data.name}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="name"
+                                                                    type="text"
+                                                                    placeholder="Ingresa nombre del producto"
+                                                                    className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    label="Línea"
+                                                                    value={data.line}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="line"
+                                                                    type="text"
+                                                                    className={`form-control ${touch.line && error.line ? "is-invalid" : ""}`}
+                                                                    placeholder="Ingresa línea del producto"
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    label="Registro sanitario"
+                                                                    value={data.health_register}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="health_register"
+                                                                    type="text"
+                                                                    className={`form-control ${touch.health_register && error.health_register ? "is-invalid" : ""}`}
+                                                                    placeholder="Registro sanitario"
+                                                                />
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col">
+                                                                    <p className="label">Composición</p>
+                                                                    <Editor
+                                                                        onChange={handleComposition}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa composición del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Principio activo</p>
+                                                                    <Editor
+                                                                        onChange={handleActivePrinciple}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa principio(s) activo(s) del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Posología</p>
+                                                                    <Editor
+                                                                        onChange={handlePosology}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa posología del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Presentación</p>
+                                                                    <Editor
+                                                                        onChange={handlePresentation}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa presentación del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Indicaciones</p>
+                                                                    <Editor
+                                                                        onChange={handleIndication}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa indicaciones del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div className="col-12 mt-5">
+                                                                <Button type="submit" className={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
+                                                            </div>
+                                                        </div>
+
+                                                        {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                                    </form>
+                                                </>
+                                            }
+                                        </div>
+                                    </>
+                                </Reveal>
+                            }
                             <div className="row">
                                 {filteredProducts.map(el =>
                                     <div className="col-sm-4 col-12">
