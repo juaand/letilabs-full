@@ -88,6 +88,7 @@ function Nav({initSearch}) {
                                     </div>
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-editar-contenido">Editar contenido</NavLink>
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
+                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-productos">Productos</NavLink>
                                 </>
                             }
                         </div>

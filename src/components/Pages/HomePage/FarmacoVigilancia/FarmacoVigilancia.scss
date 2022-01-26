@@ -63,12 +63,15 @@
   }
 
   &__especialistas {
-    background: url(../../../../images/especialistas.png) no-repeat center /
-      cover;
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
   }
 
   &__espacio {
-    background: url(../../../../images/espacio.jpg) no-repeat left top / cover;
+    background-position: left top !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
   }
 
   &__info {

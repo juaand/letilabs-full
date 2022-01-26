@@ -1,0 +1,94 @@
+.AdminProductPage {
+  background: url(../../../images/cuidar-right-bg.svg) no-repeat right top;
+}
+
+.AdminProductPage__bg {
+  height: 23rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AdminProductPage__search {
+  padding-left: 7rem;
+  height: 6.4rem;
+  font-size: 1.6rem;
+  border-radius: 0;
+  background: #fff url(../../../images/input-search.svg) no-repeat 2rem center/3.2rem;
+}
+
+.AdminProductPage__card {
+  margin-bottom: 3rem;
+  border-radius: 0.5rem;
+  border: solid 0.1rem #055aa5;
+  font-size: 1.6rem;
+}
+
+.AdminProductPage__img-top {
+  height: 18rem;
+  width: fit-content;
+  display: block;
+  margin: auto;
+}
+
+.AdminProductPage__img-bottom {
+  height: 6rem;
+  width: fit-content;
+  display: block;
+  position: absolute;
+  top: 0.8rem;
+  right: 0.8rem;
+}
+
+.AdminProductPage__check {
+  background: rgba(233, 234, 238, 0.8);
+}
+
+.AdminProductPage .card-title {
+  font-family: 'TripletaBold';
+  font-size: 1.2rem;
+  color: rgba(5, 90, 165, 0.6);
+  padding-left: 1rem;
+  margin-bottom: 0;
+}
+
+.AdminProductPage .card-footer {
+  padding: 0;
+  background: transparent;
+}
+
+.AdminProductPage .card-footer .leti-btn {
+  width: 100%;
+  border: 0;
+  font-size: 1.6rem;
+  padding: 1rem;
+  background: #055aa5;
+  color: #fff;
+}
+
+.AdminProductPage .card-footer .leti-btn:hover {
+  background: rgba(5, 90, 165, 0.8);
+}
+
+.AdminProductPage .card-body {
+  position: relative;
+}
+
+.AdminProductPage .alert-danger {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: auto;
+  margin-top: -3rem;
+  z-index: 1;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-left: -25%;
+}
+
+.AdminProductPage .card-text {
+  font-weight: 600;
+  color: #000;
+  font-size: 1.8rem;
+}

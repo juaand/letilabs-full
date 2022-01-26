@@ -43,6 +43,8 @@ export const deleteCarItem = (id) => http.get(`/deletecaritem/${id}`)
 export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
 export const getApiVideo = () => http.get("/videoiniciodata")
 export const updateVideoData = (url, id) => http.patch("/updatevideodata", {url, id})
+export const getHomeBottom = () => http.get("/homebottomdata")
+export const addHomeScreen = (show_in_home, id) => http.post(`/addprodtohomescreen/${id}`, {show_in_home, id})
 
 //admin edit routes about us
 
@@ -125,6 +127,8 @@ export const searchNews = (data) => http.post(`/buscarnoticia`, {data})
 //product routes
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
 export const getProductList = () => http.get("/listado-productos")
+export const deleteProduct = (id) => http.get(`/producto/${id}/delete`)
+export const updateProduct = ({id, name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation}) => http.patch(`/producto/${id}/update`, {name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation})
 
 //news routes
 export const getNews = () => http.get("/newsdata")

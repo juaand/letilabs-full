@@ -82,6 +82,8 @@ function EditPortafolio() {
                             className={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
                             placeholder={portfolioData?.title}
                         />
+                    </div>
+                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             description
                         </p>
@@ -101,8 +103,7 @@ function EditPortafolio() {
                                 toolbar:
                                     'bold',
                             }}
-                        />
-                    </div>
+                        /></div>
                     <div className="col-12">
                         <Button className="leti-btn AdminEdit__form-leti-btn" >Editar Portfolio</Button>
                     </div>

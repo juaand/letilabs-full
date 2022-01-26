@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .EditElementsModal {
   position: fixed;
   top: 0;
@@ -47,24 +46,6 @@
 .EditElementsModal .card .leti-btn {
   margin-top: 4rem;
   padding: 0.8rem 1.6rem;
-}
-
-.EditElementsModal .card .leti-btn.delete {
-  border-color: #cd202f;
-  color: #fff;
-  background: #cd202f;
-  position: relative;
-}
-
-.EditElementsModal .card .leti-btn.delete:hover:before {
-  content: '¿Estás seguro?';
-  position: absolute;
-  background: #cd202f;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .EditElementsModal__ask {

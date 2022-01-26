@@ -1,0 +1,49 @@
+.ShowEditModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ShowEditModal .label {
+  font-size: 1.6rem;
+  color: #737b7f;
+}
+
+.ShowEditModal .leti-btn:hover {
+  background: #055aa5;
+}
+
+.ShowEditModal__container {
+  background: #fff;
+  padding: 2rem 4rem;
+  font-size: 2rem;
+  position: relative;
+  overflow: scroll;
+  height: auto;
+  padding-top: 4rem;
+}
+
+.ShowEditModal__close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+  color: #000;
+  cursor: pointer;
+  width: 3rem;
+  height: 3rem;
+  border: solid 0.1rem #055aa5;
+  background: url("../../../../images/close.svg") no-repeat center/contain;
+  background-size: 50%;
+}
+
+.ShowEditModal__close:hover {
+  border: solid 0.3rem #055aa5;
+}
