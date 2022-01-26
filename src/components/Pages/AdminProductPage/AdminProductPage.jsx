@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 import {addHomeScreen, getVadevecumData} from '../../../services/ApiClient'
 import ShowEditModal from './ShowEditModal/ShowEditModal'
+import Loader from '../../Loader/Loader'
 
 function AdminProductPage() {
 
@@ -58,6 +59,7 @@ function AdminProductPage() {
 
     return (
         <>
+            {!filteredProducts.length && <Loader />}
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
