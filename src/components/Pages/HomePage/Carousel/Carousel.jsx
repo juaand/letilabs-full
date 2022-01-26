@@ -31,47 +31,53 @@ function Carousel() {
     }
 
     useEffect(() => {
-
         const fetchData = async () => {
             const data = await getVadevecumData()
-            const dataFiltered = data.filter(el => el.show_in_home === true)
+            const dataFiltered = data?.filter(el => el?.show_in_home === true)
             setGetData(dataFiltered)
 
-            const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
+            if (dataFiltered.length >= 4) {
+                const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
 
-            const getNextArrow = document.querySelector('.slick-next')
-            const getPrevArrow = document.querySelector('.slick-prev')
+                const getNextArrow = document.querySelector('.slick-next')
+                const getPrevArrow = document.querySelector('.slick-prev')
 
-            getNextArrow.style.left = `${((getSlickDots.left + getSlickDots.width) / 10) - 16}rem`
-            getPrevArrow.style.left = `${(getSlickDots.x / 10) - 27}rem`
+                getNextArrow.style.left = `${((getSlickDots.left + getSlickDots.width) / 10) - 16}rem`
+                getPrevArrow.style.left = `${(getSlickDots.x / 10) - 27}rem`
 
-            document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
+                document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
+            }
         }
         fetchData()
 
     }, [])
 
     return (
-        <Fade delay={800} triggerOnce>
-            <section className="Carousel">
-                <div className="container">
-                    <h1>Nuestros <br />productos</h1>
-                </div>
-                <div className="container-fluid p-0">
-                    <Slider {...settings}>
-                        {getData && getData?.map(el =>
-                            <div>
-                                <div className="Carousel__product">
-                                    <div className="Carousel__image" style={{
-                                        background: `url("./images/${seoURL(el.name)}.png") no-repeat center center / contain`
-                                    }}></div>
-                                </div>
-                            </div>
-                        )}
-                    </Slider>
-                </div>
-            </section>
-        </Fade>
+        <>
+            {console.log(getData.length)}
+            {getData.length >= 4 &&
+                <Fade delay={800} triggerOnce>
+                    <section className="Carousel">
+                        <div className="container">
+                            <h1>Nuestros <br />productos</h1>
+                        </div>
+                        <div className="container-fluid p-0">
+                            <Slider {...settings}>
+                                {getData?.map(el =>
+                                    <div>
+                                        <div className="Carousel__product">
+                                            <div className="Carousel__image" style={{
+                                                background: `url("./images/${seoURL(el?.name)}.png") no-repeat center center / contain`
+                                            }}></div>
+                                        </div>
+                                    </div>
+                                )}
+                            </Slider>
+                        </div>
+                    </section>
+                </Fade>
+            }
+        </>
     )
 }
 

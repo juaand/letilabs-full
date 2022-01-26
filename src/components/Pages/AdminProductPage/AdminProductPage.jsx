@@ -66,6 +66,7 @@ function AdminProductPage() {
     const [editProduct, setEditProduct] = useState('')
     const [createProduct, setCreateProduct] = useState(false)
     const [productMessage, setProductMessage] = useState('')
+    const [filter, setFilter] = useState([])
 
     const createNewProduct = async (event) => {
         event.preventDefault()
@@ -183,10 +184,18 @@ function AdminProductPage() {
         error.indication = false
     }
 
+    const carouselHomeProducts = async (e) => {
+        e.target.checked ?
+            setProducts(products.filter(el => el?.show_in_home === true))
+            :
+            setProducts(filter)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const allProducts = await getVadevecumData()
             setProducts(allProducts)
+            setFilter(allProducts)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -213,6 +222,17 @@ function AdminProductPage() {
                             <div className="row">
                                 <div className="col-12">
                                     <button className="AdminProductPage__add" onClick={showAddNewForm}>Añadir nuevo producto</button>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-12 AdminProductPage__showproducts">
+                                    <div className="form-check">
+                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                            onChange={carouselHomeProducts} />
+                                        <label className="form-check-label" htmlFor="flexCheckDefault">
+                                            Mostrar sólo los productos del carrusel del home.
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <div className="row">

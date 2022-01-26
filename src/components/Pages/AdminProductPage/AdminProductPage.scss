@@ -3,6 +3,11 @@
 .AdminProductPage {
   background: url(../../../images/cuidar-right-bg.svg) no-repeat right top;
 
+  &__showproducts {
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+  }
+
   &__add {
     border: 0;
     background: transparent;
