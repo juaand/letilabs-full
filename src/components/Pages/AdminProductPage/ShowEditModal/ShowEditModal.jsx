@@ -249,10 +249,10 @@ function ShowEditModal({product, hideModal, updateData}) {
                                         />
                                     </div>
                                     <div className="col-12 col-sm-6 mt-5">
-                                        <Button type="submit" className="leti-btn">Guardar cambios</Button>
+                                        <div onClick={() => deleteSelectedProduct(product?._id)} className="leti-btn delete">Eliminar producto</div>
                                     </div>
                                     <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
-                                        <div onClick={() => deleteSelectedProduct(product?._id)} className="leti-btn delete">Eliminar producto</div>
+                                        <Button type="submit" className="leti-btn">Guardar cambios</Button>
                                     </div>
                                 </div>
                             </form>
