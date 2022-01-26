@@ -114,7 +114,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                             <form className="AdminEdit__form" onSubmit={updateThisProduct}>
                                 <div className="row">
                                     <div className="col-sm-12">
-                                        <p className="DeleteItemModal__ask">Editar {product.name}</p>
+                                        <h1 className="DeleteItemModal__ask">Editar {product.name}</h1>
                                     </div>
                                     <div className="col-12 col-sm-4">
                                         <InputWithLabel
