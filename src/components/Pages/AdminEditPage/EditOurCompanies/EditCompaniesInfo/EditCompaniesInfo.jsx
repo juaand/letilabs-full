@@ -3,7 +3,7 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getOurCompaniesOC, updateOurCompaniesOC} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditHome/EditCarousel/DeleteItemModal/DeleteItemModal'
+import DeleteItemModal from '../../EditOurCompanies/EditCompaniesInfo/DeleteItemModal/DeleteItemModal'
 
 function EditCompaniesInfo() {
 
