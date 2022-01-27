@@ -3,7 +3,7 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getCarrouselBiocontrolled, addCarrouselBiocontrolledData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditHome/EditCarousel/DeleteItemModal/DeleteItemModal'
+import DeleteItemModal from '../../EditOurCompaniesBiocontrolled/EditCarrousel/DeleteItemModal/DeleteItemModal'
 
 function EditCarrouselBiocontrolled() {
 
