@@ -32,7 +32,7 @@
         border-width: 0.3rem;
       }
 
-      .BottomCta__equipo,
+      .BottomCta__proposito,
       .BottomCta__novedades {
         transform: scale(1.2);
 
@@ -44,7 +44,7 @@
     }
   }
 
-  &__equipo,
+  &__proposito,
   &__novedades {
     width: auto;
     height: 50rem;
@@ -61,7 +61,7 @@
     }
   }
 
-  &__equipo {
+  &__proposito {
     background: url(../../../../images/iyd-equipo.jpg)
       no-repeat center / cover;
   }
@@ -87,7 +87,7 @@
       }
     }
 
-    &__equipo,
+    &__proposito,
     &__novedades {
       height: 30rem;
     }

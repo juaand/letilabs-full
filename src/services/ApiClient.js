@@ -119,6 +119,7 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 
 //admin I+D alliances routes
 export const getLogoCarouselData = () => http.get("/alliancelogos")
+export const getInfoCardsData = () => http.get("/allianceinfocards")
 
 //search routes
 export const searchContent = (search) => http.get(`/search/${search}`)

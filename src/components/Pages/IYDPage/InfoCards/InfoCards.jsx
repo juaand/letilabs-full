@@ -1,21 +1,36 @@
 import './InfoCards.css'
-import React from 'react'
-import dataIyd from '../../../../data/dataIyd'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
-
+import {getInfoCardsData} from '../../../../services/ApiClient'
 
 function InfoCards() {
+
+    const [getData, setGetData] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getInfoCardsData()
+            setGetData(data)
+        }
+        fetchData()
+
+    }, [])
+
+
     return (
         <>
             <section className="container InfoCards">
                 <div className="row justify-content-around">
-                    <Fade className="col InfoCards__Leti__cards" cascade delay={300} direction="up" triggerOnce>
-                        {dataIyd.map(el =>
+                    <Fade className="col InfoCards__cards" cascade delay={300} direction="up" triggerOnce>
+                        {getData.map(el =>
                             <>
-                                <h4>{el.title}</h4>
-                                <p>{el.info}</p>
-                                <Link to={el.btn} className="leti-btn InfoGoals__btn" />
+                                <div className="InfoCards__image" style={{
+                                    background: `url("${el?.picPath}") no-repeat center center / cover`
+                                }} />
+                                <h4>{el?.title}</h4>
+                                <p>{el?.info}</p>
+                                <Link to={el?.btn} className="leti-btn InfoGoals__btn" />
                             </>
                         )}
                     </Fade>

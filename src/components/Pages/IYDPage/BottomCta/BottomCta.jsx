@@ -8,7 +8,7 @@ function BottomCta() {
         <section className="container-fluid BottomCta">
             <div className="row">
                 <div className="col-12 col-sm-6 p-0 BottomCta__img">
-                    <div className="BottomCta__equipo" />
+                    <div className="BottomCta__proposito" />
                     <div className="BottomCta__title">
                         <Fade direction="up" triggerOnce>
                             <h2>Impulsados por el propósito y compromiso</h2>
