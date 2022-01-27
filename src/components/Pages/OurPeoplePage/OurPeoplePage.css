@@ -1,1 +1,3 @@
-/* No CSS */
+.OurPeoplePage {
+  background: url(../../../images/our-people-right.svg) no-repeat center right/630px auto, url(../../../images/our-people-left.svg) no-repeat center left/630px auto;
+}

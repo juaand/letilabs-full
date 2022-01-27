@@ -13,6 +13,11 @@ const dataOurPeople = [
     id: 3,
     title: 'Equipo de investigación y desarrollo',
     info: 'Son innovadores e investigadores que buscan y desarrollan nuevos productos. '
+  },
+  {
+    id: 4,
+    title: 'Equipo corporativo',
+    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   }
 ]
 

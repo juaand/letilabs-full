@@ -7,6 +7,7 @@ import Banner from './Banner/Banner'
 import InfoCards from './InfoCards/InfoCards'
 import Director from './Director/Director'
 import BottomCta from './BottomCta/BottomCta'
+import Careers from './Careers/Careers'
 
 function OurPeoplePage() {
 
@@ -46,9 +47,10 @@ function OurPeoplePage() {
                 <meta name="description" content="Contamos con un talento humano especializado que tienen años trabajando en el campo, y más importante, trabajando con nosotros." />
                 <meta name="keywords" content="Grupo Leti,  Nuestra gente" />
             </Helmet>
-            <main>
+            <main className="OurPeoplePage">
                 <Banner />
                 <InfoCards />
+                <Careers />
                 <Director />
                 <BottomCta />
             </main>

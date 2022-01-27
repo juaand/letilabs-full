@@ -10,15 +10,20 @@ function InfoCards() {
             <Fade triggerOnce>
                 <h1>Somos tres equipos trabajando en constante sinergia</h1>
             </Fade>
-            <div className="container InfoCards">
-                <div className="row justify-content-around">
-                    <Fade className="col InfoCards__OurPeople__cards" cascade delay={300} direction="up" triggerOnce>
-                        {dataOurPeople.map(el =>
-                            <>
-                                <h4>{el.title}</h4>
-                                <p>{el.info}</p>
-                            </>)}
-                    </Fade>
+            <div className="container-fluid InfoCards">
+                <div className="row justify-content-center">
+                    <div className="col-10">
+                        <div className="row justify-content-around">
+                            <Fade className="col InfoCards__OurPeople__cards" cascade delay={300} direction="up" triggerOnce>
+                                {dataOurPeople.map(el =>
+                                    <>
+                                        <h4>{el.title}</h4>
+                                        <p>{el.info}</p>
+                                    </>)}
+                            </Fade>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </section>
