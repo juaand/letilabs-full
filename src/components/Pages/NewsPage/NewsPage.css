@@ -16,6 +16,7 @@
 
 .NewsPage__card .card-subtitle {
   font-size: 1.6rem;
+  margin-top: 1rem;
 }
 
 .NewsPage__card .card-footer {

@@ -6,6 +6,7 @@ import Banner from './Banner/Banner'
 import Lastest from './Lastest/Lastest'
 import Most from './Most/Most'
 import FindNews from './FindNews/FindNews'
+import LetiNews from './LetiNews/LetiNews'
 
 function NewsPage() {
 
@@ -29,6 +30,7 @@ function NewsPage() {
             </Helmet>
             <main>
                 <Banner newsData={newsData?.filter(el => el?.outstanding === true)} />
+                <LetiNews newsData={newsData}/>
                 <Lastest newsData={newsData?.filter(el => el?.outstanding !== true).slice(0, 3)} />
                 <Most newsData={newsData} />
                 <FindNews />

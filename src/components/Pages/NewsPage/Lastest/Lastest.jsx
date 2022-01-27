@@ -10,7 +10,7 @@ function Lastest({newsData}) {
             <h1>Lo último</h1>
             <div className="row justify-content-between">
                 <Fade cascade delay={300} direction="up" triggerOnce className="card NewsPage__card col-12 col-sm-3">
-                    {newsData?.map(el =>
+                    {newsData?.filter(el => el.tag[0] !== 'Grupo Leri').map(el =>
                         <>
                             <img src={el?.urlToPic} className="card-img-top" alt={el?.title} />
                             <div className="card-body">
