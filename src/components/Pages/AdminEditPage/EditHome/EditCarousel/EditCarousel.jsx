@@ -114,7 +114,7 @@ function EditCarousel() {
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo producto al carrusel</h2>
+                <h2>Añadir o eliminar producto del carrusel</h2>
                 <form className="AdminEdit__form" onSubmit={addCarouselItem}>
                     <div className="row">
                         <div className="col-12 col-sm-4">

@@ -67,6 +67,7 @@ function AdminProductPage() {
     const [createProduct, setCreateProduct] = useState(false)
     const [productMessage, setProductMessage] = useState('')
     const [filter, setFilter] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const createNewProduct = async (event) => {
         event.preventDefault()
@@ -196,6 +197,7 @@ function AdminProductPage() {
             const allProducts = await getVadevecumData()
             setProducts(allProducts)
             setFilter(allProducts)
+            setLoading(false)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -204,7 +206,7 @@ function AdminProductPage() {
 
     return (
         <>
-
+            {loading && <Loader />}
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
@@ -224,22 +226,26 @@ function AdminProductPage() {
                                     <button className="AdminProductPage__add" onClick={showAddNewForm}>Añadir nuevo producto</button>
                                 </div>
                             </div>
-                            <div className="row">
-                                <div className="col-12 AdminProductPage__showproducts">
-                                    <div className="form-check">
-                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                            onChange={carouselHomeProducts} />
-                                        <label className="form-check-label" htmlFor="flexCheckDefault">
-                                            Mostrar sólo los productos del carrusel del home.
-                                        </label>
+                            {filteredProducts.length > 0 &&
+                                <div className="row">
+                                    <div className="col-12 AdminProductPage__showproducts">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                                onChange={carouselHomeProducts} />
+                                            <label className="form-check-label" htmlFor="flexCheckDefault">
+                                                Mostrar sólo los productos del carrusel del home.
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-12">
-                                    {!filteredProducts.length && <p className="mb-5">El producto que busca no se encuentra.</p>}
+                            }
+                            {!filteredProducts.length &&
+                                <div className="row">
+                                    <div className="col-12">
+                                        <p className="mb-5">El producto que busca no se encuentra.</p>
+                                    </div>
                                 </div>
-                            </div>
+                            }
                             {createProduct &&
                                 <Reveal triggerOnce keyframes={customAnimation} duration={600} className="row">
                                     <>
