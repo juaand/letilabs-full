@@ -5,6 +5,11 @@
   align-items: center;
 }
 
+.FindProduct.no-back {
+  background: none;
+  background: url(../../../../images/our-people-right.svg) no-repeat center right/auto 40rem, url(../../../../images/our-people-left.svg) no-repeat center left/auto 40rem;
+}
+
 .FindProduct form {
   padding: 0;
 }
@@ -43,7 +48,7 @@
 }
 
 .FindProduct__form .leti-btn {
-  background: url(../../../../images/search.svg) no-repeat center/4rem;
+  background: #fff url(../../../../images/search.svg) no-repeat center/4rem;
   height: 7.6rem;
   transition: all 0.1s ease-in-out;
 }

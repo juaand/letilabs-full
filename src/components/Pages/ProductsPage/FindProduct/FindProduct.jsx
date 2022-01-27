@@ -44,10 +44,10 @@ function FindProduct() {
     }
     return (
         <Slide direction="up" triggerOnce>
-            <section className="container-fluid FindProduct">
+            <section className="container-fluid FindProduct no-back">
                 <div className="container">
                     <div className="row FindProduct__row">
-                        <div className="col-12 col-sm-10">
+                        <div className="col-12">
                             <h1>Buscas un medicamento en específico?<br />¡Encuéntralo aquí!</h1>
                             <form className="FindProduct__form">
                                 <div className="input-group">
