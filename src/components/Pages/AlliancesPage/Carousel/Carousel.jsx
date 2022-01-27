@@ -1,10 +1,8 @@
 import './Carousel.css'
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
-import homeCarousel from '../../../../data/homeCarousel'
 import {Fade} from "react-awesome-reveal"
-import {seoURL} from '../../../../helpers/globals'
-import {getVadevecumData} from '../../../../services/ApiClient'
+import {getLogoCarouselData} from '../../../../services/ApiClient'
 
 function Carousel() {
 
@@ -32,9 +30,9 @@ function Carousel() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getVadevecumData()
-            const dataFiltered = data?.filter(el => el?.show_in_home === true)
-            setGetData(dataFiltered)
+            const data = await getLogoCarouselData()
+            console.log(data)
+            setGetData(data)
         }
         fetchData()
 

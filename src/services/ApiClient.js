@@ -120,6 +120,9 @@ export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
 //content routes
 export const createContent = ({content, url, name}) => http.post("/update-content", {content, url, name})
 
+//admin I+D alliances routes
+export const getLogoCarouselData = () => http.get("/alliancelogos")
+
 //search routes
 export const searchContent = (search) => http.get(`/search/${search}`)
 export const searchNews = (data) => http.post(`/buscarnoticia`, {data})
