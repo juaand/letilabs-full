@@ -8,16 +8,19 @@
   }
 
   &__img {
-    background: $leti-back;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20rem;
+    padding: 0rem;
     position: absolute;
     left: 0;
-    width: 40%;
-    height: 55rem;
+    width: 45%;
+    height: 45rem;
     text-align: center;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   &__info {
@@ -26,6 +29,10 @@
     justify-content: center;
     flex-direction: column;
     margin-bottom: 6rem;
+  }
+
+  &__slide {
+    height: 45rem;
   }
 }
 

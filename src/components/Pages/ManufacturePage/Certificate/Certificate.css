@@ -7,16 +7,19 @@
 }
 
 .Certificate__img {
-  background: #f5f5f5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 20rem;
+  padding: 0rem;
   position: absolute;
   left: 0;
-  width: 40%;
-  height: 55rem;
+  width: 45%;
+  height: 45rem;
   text-align: center;
+  overflow: hidden;
+}
+
+.Certificate__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .Certificate__info {
@@ -25,6 +28,10 @@
   justify-content: center;
   flex-direction: column;
   margin-bottom: 6rem;
+}
+
+.Certificate__slide {
+  height: 45rem;
 }
 
 @media (max-width: 576px) {

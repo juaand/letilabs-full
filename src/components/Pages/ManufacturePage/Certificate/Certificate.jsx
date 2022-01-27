@@ -8,7 +8,7 @@ function Certificate() {
     let settings = {
         slidesToShow: 1,
         speed: 500,
-        dots: true,
+        dots: false,
         arrows: false,
         slidesToScroll: 1,
         autoplay: true,
@@ -26,11 +26,11 @@ function Certificate() {
 
     return (
         <section className="container-fluid Certificate">
-            <div className="Certificate">(Certificado, sello o documento que avale el cumplimiento)
+            <div className="Certificate__img">
                 <Slider {...settings}>
                     {certificados.map(el =>
                         <>
-                            <p>{el?.desc}</p>
+                            <img src={`./images/${el.picPath}`} alt={el?.title} />
                         </>
                     )}
                 </Slider>
