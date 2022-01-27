@@ -27,15 +27,12 @@ export const login = ({email, password}) =>
 export const logOut = () => http.post("/logout")
 
 //admin edit routes inicio
-
 export const getUsInfo = () => http.get("/usinfodata")
-export const getCarousel = () => http.get("/carouseliniciodata")
 export const getUnidades = () => http.get("/unidadesiniciodata")
 export const getPortfolio = () => http.get("/portfolioiniciodata")
 export const getFarmaco = () => http.get("/farmacoiniciodata")
 export const getVadevecumData = () => http.get("/vadevecumdata")
 export const updateUsInfoData = ({description, url, buttonTitle, id}) => http.patch("/updateusinfodata", {description, url, buttonTitle, id})
-export const addCarouselData = ({desc, img, name}) => http.get("/addcarouseliniciodata", {desc, img, name})
 export const updateUnidadesData = ({logo, desc, url, id}) => http.patch("/updateunidadesiniciodata", {logo, desc, url, id})
 export const updatePortfolioData = ({title, description, id}) => http.patch("/updateportfolioiniciodata", {title, description, id})
 export const updateFarmacoData = ({title, subTitle, buttonTitle, id}) => http.patch("/updatefarmacoiniciodata", {title, subTitle, buttonTitle, id})

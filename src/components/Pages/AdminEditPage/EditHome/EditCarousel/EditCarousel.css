@@ -1,28 +1,7 @@
-.EditCarousel__img {
-  width: 100%;
-  height: 100%;
+.EditCarousel {
+  font-size: 1.6rem;
 }
 
-.EditCarousel__trash {
-  position: relative;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 1.4rem;
-}
-
-.EditCarousel__trash:before {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0;
-  right: -1rem;
-  width: 2rem;
-  height: 2rem;
-  background: url(../../../../../images/edit.svg) no-repeat center center/1.6rem;
-}
-
-.EditCarousel__trash:hover {
-  cursor: pointer;
+.EditCarousel a {
+  color: #055aa5;
 }

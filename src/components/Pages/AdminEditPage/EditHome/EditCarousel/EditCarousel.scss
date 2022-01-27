@@ -1,33 +1,9 @@
 @import '../../../../../stylesheets/variables';
 
 .EditCarousel {
-  &__img {
-    width: 100%;
-    height: 100%;
-  }
+  font-size: 1.6rem;
 
-  &__trash {
-    position: relative;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.4rem;
-
-    &:before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      right: -1rem;
-      width: 2rem;
-      height: 2rem;
-      background: url(../../../../../images/edit.svg) no-repeat center center /
-        1.6rem;
-    }
-
-    &:hover {
-      cursor: pointer;
-    }
+  a {
+    color: $leti-blue;
   }
 }
