@@ -1,0 +1,96 @@
+.SeccionesTimeline {
+  position: relative;
+  padding: 8rem 0;
+}
+
+.SeccionesTimeline__image {
+  height: 40rem;
+  padding: 0;
+}
+
+.SeccionesTimeline__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.SeccionesTimeline__title {
+  font-family: 'TripletaBold';
+  font-size: 3rem;
+  color: #cd202f;
+  display: block;
+  margin-top: 12rem;
+}
+
+.SeccionesTimeline__desc {
+  padding: 2rem 20rem 2rem 4rem;
+  font-size: 2rem;
+  line-height: 3rem;
+  margin-bottom: 5rem;
+  background: #e9eaee;
+  font-size: 1.8rem;
+  color: #4a4a4a;
+  font-weight: 400;
+  height: 20rem;
+}
+
+.SeccionesTimeline .slick-slider {
+  position: relative;
+  display: block;
+}
+
+.SeccionesTimeline .slick-slider .slick-next,
+.SeccionesTimeline .slick-slider .slick-prev {
+  width: 4rem;
+  height: 4rem;
+  z-index: 4;
+  opacity: 0.4;
+  transition: all 200ms ease-in-out;
+  position: absolute;
+}
+
+.SeccionesTimeline .slick-slider .slick-next:hover,
+.SeccionesTimeline .slick-slider .slick-prev:hover {
+  opacity: 1;
+}
+
+.SeccionesTimeline .slick-slider .slick-next:before,
+.SeccionesTimeline .slick-slider .slick-prev:before {
+  content: '';
+}
+
+.SeccionesTimeline .slick-slider .slick-next {
+  background: url(../../../../images/next-arrow.svg) no-repeat center center/contain;
+  transform: rotate(90deg);
+}
+
+.SeccionesTimeline .slick-slider .slick-prev {
+  background: url(../../../../images/prev-arrow.svg) no-repeat center center/contain;
+  transform: rotate(90deg);
+}
+
+@media (max-width: 576px) {
+  .SeccionesTimeline__image {
+    height: 38rem;
+  }
+  .SeccionesTimeline__year {
+    font-size: 7rem;
+    margin-left: 2rem;
+    margin-top: 7rem;
+  }
+  .SeccionesTimeline__desc {
+    padding: 2rem 4rem 0 4rem;
+    font-size: 1.6rem;
+    line-height: 3rem;
+    margin-top: 8rem;
+  }
+  .SeccionesTimeline .slick-next {
+    transform: translate(-24rem, 8rem) !important;
+  }
+  .SeccionesTimeline .slick-prev {
+    transform: translate(6rem, 8rem) !important;
+  }
+  .SeccionesTimeline__info:after {
+    content: unset;
+  }
+}
