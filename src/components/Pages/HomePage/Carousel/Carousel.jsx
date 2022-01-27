@@ -1,7 +1,6 @@
 import './Carousel.css'
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
-import homeCarousel from '../../../../data/homeCarousel'
 import {Fade} from "react-awesome-reveal"
 import {seoURL} from '../../../../helpers/globals'
 import {getVadevecumData} from '../../../../services/ApiClient'
@@ -67,7 +66,7 @@ function Carousel() {
                                     <div>
                                         <div className="Carousel__product">
                                             <div className="Carousel__image" style={{
-                                                background: `url("./images/${seoURL(el?.name)}.png") no-repeat center center / contain`
+                                                background: `url("${el?.picPath}") no-repeat center center / contain`
                                             }}></div>
                                         </div>
                                     </div>
