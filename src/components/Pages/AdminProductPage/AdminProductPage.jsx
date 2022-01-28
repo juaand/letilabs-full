@@ -242,7 +242,7 @@ function AdminProductPage() {
                             {!filteredProducts.length &&
                                 <div className="row">
                                     <div className="col-12">
-                                        <p className="mb-5">El producto que busca no se encuentra.</p>
+                                        <h1 className="mb-5">El producto que busca no se encuentra.</h1>
                                     </div>
                                 </div>
                             }

@@ -14,6 +14,7 @@ function AdminFarVigPage() {
     const [search, setSearch] = useState('')
     const [bool, setBool] = useState(false)
     const [card, setCard] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const filteredCards = farVig.filter(card => {
         return (
@@ -61,6 +62,7 @@ function AdminFarVigPage() {
         const fetchData = async () => {
             const allFarmVig = await getFarmVigData()
             setFarVig(allFarmVig)
+            setLoading(false)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -68,7 +70,7 @@ function AdminFarVigPage() {
 
     return (
         <>
-            {!filteredCards.length && <Loader />}
+            {loading && <Loader />}
             <Helmet>
                 <title>Grupo Leti | Administrador FarmacoVigilancia</title>
             </Helmet>
