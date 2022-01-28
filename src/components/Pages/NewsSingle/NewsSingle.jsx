@@ -25,7 +25,6 @@ function NewsSingle(props) {
             <section className="container-fluid NewsSingle__Banner" style={{
                 background: `url(${noticia?.urlToPic}) no-repeat center center / cover`,
             }}>
-                <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
                 <div className="container NewsSingle__Banner__container">
                     <div className="row">
                         <div className="col-12">
@@ -36,25 +35,28 @@ function NewsSingle(props) {
                     </div>
                 </div>
             </section>
-            <Fade triggerOnce direction="up">
-                <section className="container NewsSingle__content">
-                    <div className="NewsSingle__rrss">
-                        <div className="facebook" />
-                        <div className="whatsapp" />
-                        <div className="linkedin" />
-                    </div>
-                    <div className="row justify-content-center">
-                        <div className="col-10 NewsSingle__content-desc">
-                            <div className="NewsSingle__rrss NewsSingle__rrss-bottom">
-                                <div className="facebook" />
-                                <div className="whatsapp" />
-                                <div className="linkedin" />
-                            </div>
-                            {noticia.content}
+            <div className="container-fluid position-relative">
+                <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
+                <Fade triggerOnce direction="up">
+                    <section className="container NewsSingle__content">
+                        <div className="NewsSingle__rrss">
+                            <div className="facebook" />
+                            <div className="whatsapp" />
+                            <div className="linkedin" />
                         </div>
-                    </div>
-                </section>
-            </Fade>
+                        <div className="row justify-content-center">
+                            <div className="col-10 NewsSingle__content-desc">
+                                <div className="NewsSingle__rrss NewsSingle__rrss-bottom">
+                                    <div className="facebook" />
+                                    <div className="whatsapp" />
+                                    <div className="linkedin" />
+                                </div>
+                                {noticia.content}
+                            </div>
+                        </div>
+                    </section>
+                </Fade>
+            </div>
             <Fade triggerOnce direction="up">
                 <section className="container NewsSingle__related">
                     <div className="row justify-content-around">

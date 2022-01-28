@@ -9,6 +9,7 @@
   position: absolute;
   right: -1rem;
   bottom: 3rem;
+  z-index: 1;
 }
 
 .List__to-top:hover {
