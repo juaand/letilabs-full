@@ -1,7 +1,7 @@
 import './DropdownWithLabel.css'
 import React from 'react'
 
-function DropdownWithLabel({label, placeholder, name, onChange, onBlur, className, data, list}) {
+function DropdownWithLabel({label, placeholder, name, onChange, onBlur, className, data, list, tabIndex}) {
 
     return (
         <div className="form-group mt-5 DropdownWithLabel">
@@ -13,7 +13,8 @@ function DropdownWithLabel({label, placeholder, name, onChange, onBlur, classNam
                 id={name}
                 onBlur={onBlur}
                 onChange={onChange}
-                className={className} />
+                className={className}
+                tabIndex={tabIndex} />
             <datalist id={list}>
                 {data.map(item => <option value={item} />)}
             </datalist>

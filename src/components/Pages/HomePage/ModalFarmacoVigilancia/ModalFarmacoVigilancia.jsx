@@ -21,7 +21,8 @@ function ModalFarmacoVigilancia({hideModal}) {
                 medicine: "",
                 date: new Date(),
                 effects: "",
-                prescribed: ""
+                prescribed: "",
+                email: ""
             },
             error: {
                 name: true,
@@ -30,7 +31,8 @@ function ModalFarmacoVigilancia({hideModal}) {
                 medicine: true,
                 date: true,
                 prescribed: true,
-                effects: true
+                effects: true,
+                email: true
             },
             touch: {},
         },
@@ -41,7 +43,8 @@ function ModalFarmacoVigilancia({hideModal}) {
             medicine: v => v.length,
             date: v => v.length,
             effects: v => v.length,
-            prescribed: v => v.length
+            prescribed: v => v.length,
+            email: v => v.length
         }
     )
 
@@ -59,6 +62,7 @@ function ModalFarmacoVigilancia({hideModal}) {
         data.effects = effects
 
         try {
+            console.log(data)
             const newVigilancia = await vigilanciaForm(data)
             document.querySelector('form').reset()
             document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
@@ -122,19 +126,47 @@ function ModalFarmacoVigilancia({hideModal}) {
                                     <div className="col-12">
                                         <form onSubmit={handleSubmit} className="ModalFarmacoVigilancia__form">
                                             <div className="row justify-content-between">
+                                                <div className="col-12">
+                                                    <div className="row">
+                                                        <div className="col-12 col-sm-4">
+                                                            <InputWithLabel
+                                                                value={data.name}
+                                                                onBlur={onBlur}
+                                                                onChange={onChange}
+                                                                name="name"
+                                                                type="text"
+                                                                label="Nombre del paciente"
+                                                                className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                tabIndex="1"
+                                                            />
+                                                        </div>
+                                                        <div className="col-12 col-sm-4">
+                                                            <InputWithLabel
+                                                                value={data.lastname}
+                                                                onBlur={onBlur}
+                                                                onChange={onChange}
+                                                                name="lastname"
+                                                                type="text"
+                                                                label="Apellido del paciente"
+                                                                className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                                tabIndex="2"
+                                                            />
+                                                        </div>
+                                                        <div className="col-12 col-sm-4">
+                                                            <InputWithLabel
+                                                                value={data.email}
+                                                                onBlur={onBlur}
+                                                                onChange={onChange}
+                                                                name="email"
+                                                                type="email"
+                                                                label="Correo electrónico del paciente"
+                                                                className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                                                                tabIndex="3"
+                                                            />
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div className="col-12 col-sm-5">
-
-                                                    <InputWithLabel
-                                                        value={data.name}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="name"
-                                                        type="text"
-                                                        label="Nombre del paciente"
-                                                        className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                        tabIndex="1"
-                                                    />
-
                                                     <div className="form-group ModalFarmacoVigilancia__date" tabIndex="3">
                                                         <label className="label" htmlFor="date">
                                                             Fecha de nacimiento
@@ -153,24 +185,13 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         name="medicine"
                                                         onChange={onChange}
                                                         className={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
-                                                        tabIndex="5"
+                                                        tabIndex="6"
                                                         list="medicines"
                                                         data={dataList}
                                                     />
 
                                                 </div>
                                                 <div className="col-12 col-sm-5">
-
-                                                    <InputWithLabel
-                                                        value={data.lastname}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="lastname"
-                                                        type="text"
-                                                        label="Apellido del paciente"
-                                                        className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
-                                                        tabIndex="2"
-                                                    />
 
                                                     <RadioButtonWithLabel data={['F', 'M']} name="sex"
                                                         value={data.genero}
@@ -185,7 +206,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         onBlur={onBlur}
                                                         onChange={onChange}
                                                         label="¿El medicamento fue prescrito?"
-                                                        tabIndex="6"
+                                                        tabIndex="7"
                                                     />
 
                                                 </div>

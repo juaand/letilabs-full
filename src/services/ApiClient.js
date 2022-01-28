@@ -111,7 +111,7 @@ export const updateEquipoGenvenOC = ({description, person, imgURL, buttonTitle, 
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
-export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed})
+export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed, email}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed, email})
 export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
 
 //content routes
