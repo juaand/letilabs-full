@@ -82,6 +82,12 @@
   font-size: 2rem;
 }
 
+.SingleProductPage__posology.wborder {
+  margin-top: 5rem;
+  padding-top: 5rem;
+  border-top: solid 0.1rem rgba(115, 123, 127, 0.4);
+}
+
 .SingleProductPage__another {
   margin-bottom: 10rem;
 }
@@ -104,9 +110,27 @@
   width: 100%;
 }
 
+.SingleProductPage__another__img-txt {
+  padding-bottom: 1rem;
+  display: block;
+  height: auto;
+  font-size: 3rem !important;
+  font-style: italic;
+  color: #055aa5;
+}
+
+.SingleProductPage__another__img-txt sup {
+  font-family: 'Mulish', sans-serif;
+  font-size: 2rem;
+}
+
 .SingleProductPage__another__block {
   display: flex;
   flex-direction: column;
+}
+
+.SingleProductPage__another__block h2 {
+  font-size: 2.4rem;
 }
 
 .SingleProductPage .slick-next,
@@ -138,16 +162,25 @@
   background: url(../../../images/prev-arrow.svg) no-repeat center center/contain;
 }
 
+.SingleProductPage__cpe {
+  opacity: 0.7;
+}
+
+.SingleProductPage__cb {
+  width: 40%;
+}
+
 @media (max-width: 576px) {
   .SingleProductPage__pic {
-    margin-bottom: 6rem;
+    margin-bottom: 0;
+    height: 20rem;
   }
   .SingleProductPage__product {
     padding-bottom: 0rem;
     margin-bottom: 3rem;
   }
   .SingleProductPage__back {
-    margin: 4rem auto 6rem auto;
+    margin: 2rem auto 2rem auto;
   }
   .SingleProductPage__info {
     padding: 2rem;
@@ -157,7 +190,17 @@
     padding: 0 2rem;
   }
   .SingleProductPage__posology ul li {
+    font-size: 1.6rem;
+  }
+  .SingleProductPage__posology strong {
+    font-size: 1.6rem;
+  }
+  .SingleProductPage__posology h2 {
     font-size: 1.8rem;
+  }
+  .SingleProductPage__posology.wborder {
+    margin-top: 2rem;
+    padding-top: 2rem;
   }
   .SingleProductPage__another {
     margin-bottom: 0;
@@ -169,9 +212,12 @@
   .SingleProductPage__another__img {
     padding-bottom: 6rem;
   }
+  .SingleProductPage__another__img-txt {
+    padding-bottom: 2rem;
+  }
   .SingleProductPage__another__block {
     display: block;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     padding: 2rem;
   }
   .SingleProductPage .slick-next,
@@ -183,5 +229,8 @@
   }
   .SingleProductPage .slick-prev {
     left: 2rem;
+  }
+  .SingleProductPage__cb {
+    width: 80%;
   }
 }

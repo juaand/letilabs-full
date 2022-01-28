@@ -84,6 +84,12 @@
         font-size: 2rem;
       }
     }
+
+    &.wborder {
+      margin-top: 5rem;
+      padding-top: 5rem;
+      border-top: solid 0.1rem rgba($leti-nav, 0.4)
+    }
   }
 
   &__another {
@@ -104,11 +110,29 @@
       height: 3rem;
       display: block;
       width: 100%;
+
+      &-txt {
+        padding-bottom: 1rem;
+        display: block;
+        height: auto;
+        font-size: 3rem !important;
+        font-style: italic;
+        color: $leti-blue;
+        
+        sup {
+          font-family: 'Mulish', sans-serif;
+          font-size: 2rem;
+        }
+      }
     }
 
     &__block {
       display: flex;
       flex-direction: column;
+
+      h2 {
+        font-size: 2.4rem;
+      }
     }
   }
 
@@ -140,12 +164,21 @@
     background: url(../../../images/prev-arrow.svg) no-repeat center center /
       contain;
   }
+
+  &__cpe {
+    opacity: 0.7;
+  }
+
+  &__cb {
+    width: 40%;
+  }
 }
 
 @media (max-width: 576px) {
   .SingleProductPage {
     &__pic {
-      margin-bottom: 6rem;
+      margin-bottom: 0;
+      height: 20rem;
     }
 
     &__product {
@@ -154,7 +187,7 @@
     }
 
     &__back {
-      margin: 4rem auto 6rem auto;
+      margin: 2rem auto 2rem auto;
     }
 
     &__info {
@@ -166,8 +199,21 @@
       padding: 0 2rem;
       ul {
         li {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
         }
+      }
+
+      strong {
+        font-size: 1.6rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+
+      &.wborder {
+        margin-top: 2rem;
+        padding-top: 2rem;
       }
     }
 
@@ -181,11 +227,15 @@
 
       &__img {
         padding-bottom: 6rem;
+
+        &-txt {
+          padding-bottom: 2rem;
+        }
       }
 
       &__block {
         display: block;
-        margin-bottom: 6rem;
+        margin-bottom: 3rem;
         padding: 2rem;
       }
     }
@@ -201,6 +251,10 @@
 
     .slick-prev {
       left: 2rem;
+    }
+
+    &__cb {
+      width: 80%;
     }
   }
 }
