@@ -36,7 +36,7 @@
     left: 4rem;
 
     .facebook,
-    .instagram,
+    .whatsapp,
     .linkedin {
       display: block;
       width: 3rem;
@@ -49,8 +49,8 @@
         cover;
     }
 
-    .instagram {
-      background: url(../../../images/instagram-single.svg) no-repeat center /
+    .whatsapp {
+      background: url(../../../images/whatsapp-single.svg) no-repeat center /
         cover;
     }
 
@@ -66,7 +66,7 @@
       left: unset;
 
       .facebook,
-      .instagram,
+      .whatsapp,
       .linkedin {
         display: inline-block;
         margin-right: 2rem;
@@ -125,7 +125,7 @@
       }
 
       .facebook,
-      .instagram,
+      .whatsapp,
       .linkedin {
         display: inline-block;
         margin-right: 1.6rem;
@@ -138,7 +138,7 @@
         left: unset;
 
         .facebook,
-        .instagram,
+        .whatsapp,
         .linkedin {
           margin-right: 1.6rem;
         }

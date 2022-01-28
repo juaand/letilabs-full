@@ -34,7 +34,7 @@
 }
 
 .NewsSingle__rrss .facebook,
-.NewsSingle__rrss .instagram,
+.NewsSingle__rrss .whatsapp,
 .NewsSingle__rrss .linkedin {
   display: block;
   width: 3rem;
@@ -46,8 +46,8 @@
   background: url(../../../images/facebook-single.svg) no-repeat center/cover;
 }
 
-.NewsSingle__rrss .instagram {
-  background: url(../../../images/instagram-single.svg) no-repeat center/cover;
+.NewsSingle__rrss .whatsapp {
+  background: url(../../../images/whatsapp-single.svg) no-repeat center/cover;
 }
 
 .NewsSingle__rrss .linkedin {
@@ -62,7 +62,7 @@
 }
 
 .NewsSingle__rrss-bottom .facebook,
-.NewsSingle__rrss-bottom .instagram,
+.NewsSingle__rrss-bottom .whatsapp,
 .NewsSingle__rrss-bottom .linkedin {
   display: inline-block;
   margin-right: 2rem;
@@ -112,7 +112,7 @@
     top: 0;
   }
   .NewsSingle__rrss .facebook,
-  .NewsSingle__rrss .instagram,
+  .NewsSingle__rrss .whatsapp,
   .NewsSingle__rrss .linkedin {
     display: inline-block;
     margin-right: 1.6rem;
@@ -124,7 +124,7 @@
     left: unset;
   }
   .NewsSingle__rrss-bottom .facebook,
-  .NewsSingle__rrss-bottom .instagram,
+  .NewsSingle__rrss-bottom .whatsapp,
   .NewsSingle__rrss-bottom .linkedin {
     margin-right: 1.6rem;
   }

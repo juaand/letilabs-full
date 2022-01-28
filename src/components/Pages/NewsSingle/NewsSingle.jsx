@@ -11,7 +11,7 @@ function NewsSingle(props) {
     const [getRandom, setGetRandom] = useState([])
 
     useEffect(() => {
-        window.scrollTo(0,0)
+        window.scrollTo(0, 0)
         const fetchData = async () => {
             const getRandomData = await getRandomNews()
             setGetRandom(getRandomData)
@@ -25,7 +25,7 @@ function NewsSingle(props) {
             <section className="container-fluid NewsSingle__Banner" style={{
                 background: `url(${noticia?.urlToPic}) no-repeat center center / cover`,
             }}>
-            <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
+                <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
                 <div className="container NewsSingle__Banner__container">
                     <div className="row">
                         <div className="col-12">
@@ -40,14 +40,14 @@ function NewsSingle(props) {
                 <section className="container NewsSingle__content">
                     <div className="NewsSingle__rrss">
                         <div className="facebook" />
-                        <div className="instagram" />
+                        <div className="whatsapp" />
                         <div className="linkedin" />
                     </div>
                     <div className="row justify-content-center">
                         <div className="col-10 NewsSingle__content-desc">
                             <div className="NewsSingle__rrss NewsSingle__rrss-bottom">
                                 <div className="facebook" />
-                                <div className="instagram" />
+                                <div className="whatsapp" />
                                 <div className="linkedin" />
                             </div>
                             {noticia.content}
