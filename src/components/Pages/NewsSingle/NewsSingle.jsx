@@ -25,6 +25,7 @@ function NewsSingle(props) {
             <section className="container-fluid NewsSingle__Banner" style={{
                 background: `url(${noticia?.urlToPic}) no-repeat center center / cover`,
             }}>
+            <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
                 <div className="container NewsSingle__Banner__container">
                     <div className="row">
                         <div className="col-12">
