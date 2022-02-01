@@ -7,7 +7,7 @@ import Banner from './Banner/Banner'
 import Video from './Video/Video'
 import Map from './Map/Map'
 import BottomCta from './BottomCta/BottomCta'
-import Timeline from './Timeline/Timeline'
+import VerticalCarousel from './VerticalCarousel/VerticalCarousel'
 
 function TechPage() {
     const {user} = useAuthContext()
@@ -52,7 +52,7 @@ function TechPage() {
             <main className="Tech">
                 <Banner />
                 <Video />
-                <Timeline/>
+                <VerticalCarousel />
                 <Map />
                 <BottomCta />
             </main>

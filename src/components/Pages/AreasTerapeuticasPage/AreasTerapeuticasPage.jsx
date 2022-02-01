@@ -4,8 +4,8 @@ import {useAuthContext} from '../../../contexts/AuthContext'
 import {createContent} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
-import Timeline from './Timeline/Timeline'
 import BottomCta from './BottomCta/BottomCta'
+import VerticalCarousel from './VerticalCarousel/VerticalCarousel'
 
 function AreasTerapeuticasPage() {
     const {user} = useAuthContext()
@@ -51,7 +51,7 @@ function AreasTerapeuticasPage() {
             </Helmet>
             <main>
                 <Banner />
-                <Timeline />
+                <VerticalCarousel />
                 <BottomCta />
             </main>
         </>

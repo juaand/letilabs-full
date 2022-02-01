@@ -1,0 +1,160 @@
+@import '../../../../stylesheets/variables';
+
+.VerticalCarousel {
+  padding: 0;
+
+  h1 {
+    margin-bottom: 2rem;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .outer-container {
+    display: flex;
+    padding: 14rem 0;
+
+    background: $leti-back;
+
+    .carousel-wrapper {
+      background: $leti-back;
+      display: flex;
+      flex-direction: column;
+
+      p {
+        font-weight: 700;
+        font-size: 2rem;
+        color: $leti-text;
+        line-height: 1.3rem;
+      }
+    }
+
+    .content {
+      background: $leti-subnav;
+      font-size: 1.8rem;
+
+      &-img {
+        width: 100%;
+        height: 40rem;
+        margin-bottom: 2rem;
+      }
+
+      p {
+        padding: 2rem 20rem 2rem 4rem;
+      }
+    }
+  }
+
+  .carousel-item {
+    font-weight: 700;
+    font-size: 2rem;
+    color: $leti-text;
+    line-height: 1.3rem;
+    position: absolute;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    opacity: 0;
+    top: 12rem;
+    right: 10rem;
+    display: block;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+    text-align: right;
+
+    &.visible {
+      opacity: 1;
+    }
+
+    &.active {
+      color: $leti-red;
+      font-family: 'TripletaBold';
+      font-size: 3rem;
+    }
+  }
+
+  .leading-text {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin-right: 0.6rem;
+  }
+
+  .carousel {
+    height: 100%;
+    display: flex;
+    flex: 5;
+    align-items: center;
+    color: $leti-white;
+  }
+
+  .carousel-button {
+    display: flex;
+    align-self: center;
+    padding: 1rem;
+    max-width: 5rem;
+    border: 0;
+    background: transparent;
+    margin-left: 30rem;
+
+    svg {
+      height: 3rem;
+      width: 3rem;
+    }
+
+    path {
+      fill: rgba($leti-text, 0.4);
+    }
+
+    &.prev {
+      transform: rotate(90deg);
+    }
+
+    &.next {
+      transform: rotate(90deg);
+    }
+  }
+
+  .slides {
+    align-self: flex-start;
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .carousel-inner {
+    position: relative;
+    max-height: 25rem;
+    height: 25rem;
+    margin-top: calc(50% - 25rem);
+
+    &:before,
+    &:after {
+      content: '';
+      z-index: 1;
+      position: absolute;
+      width: 100%;
+      height: 11rem;
+      pointer-events: none;
+    }
+
+    &:before {
+      top: 0;
+      background: linear-gradient(
+        0deg,
+        hsla(0, 0%, 100%, 0) 0%,
+        hsla(0, 0%, 96%, 1) 100%
+      );
+    }
+
+    &:after {
+      bottom: 0;
+      background: linear-gradient(
+        0deg,
+        hsla(0, 0%, 96%, 1) 0%,
+        hsla(0, 0%, 100%, 0) 100%
+      );
+    }
+  }
+}
