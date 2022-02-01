@@ -4,7 +4,7 @@ import {ReactComponent as Next} from "../../../../images/next-arrow.svg"
 import {ReactComponent as Prev} from "../../../../images/prev-arrow.svg"
 import "./VerticalCarousel.css"
 import areasTeraData from "../../../../data/areasTeraData"
-
+import {Fade} from "react-awesome-reveal"
 
 const VerticalCarousel = () => {
     const [activeIndex, setActiveIndex] = useState(0)
@@ -63,62 +63,64 @@ const VerticalCarousel = () => {
     }
 
     return (
-        <div className="container-fluid VerticalCarousel">
-            <section className="outer-container container-fluid">
-                <div className="row">
-                <div className="col-8 offset-4">
-                    <h1>Secciones relevantes</h1>
-                </div>
-                    <div className="carousel-wrapper col-4">
-                        <button
-                            type="button"
-                            className="carousel-button prev"
-                            onClick={() => handleClick("prev")}
-                        >
-                            <Prev />
-                        </button>
+        <Fade triggerOnce direction="up">
+            <div className="container-fluid VerticalCarousel">
+                <section className="outer-container container-fluid">
+                    <div className="row">
+                        <div className="col-8 offset-4">
+                            <h1>Secciones relevantes</h1>
+                        </div>
+                        <div className="carousel-wrapper col-4">
+                            <button
+                                type="button"
+                                className="carousel-button prev"
+                                onClick={() => handleClick("prev")}
+                            >
+                                <Prev />
+                            </button>
 
-                        <div className="carousel">
-                            <div className="slides">
-                                <div className="carousel-inner">
-                                    {areasTeraData.map((item, i) => (
-                                        <button
-                                            type="button"
-                                            onClick={() => setActiveIndex(i)}
-                                            className={cn("carousel-item", {
-                                                active: activeIndex === i,
-                                                visible:
-                                                    Math.abs(determinePlacement(i)) <= visibleStyleThreshold
-                                            })}
-                                            key={item.id}
-                                            style={{
-                                                transform: `translateY(${determinePlacement(i)}px)`
-                                            }}
-                                        >
-                                            {item.title}
-                                        </button>
-                                    ))}
+                            <div className="carousel">
+                                <div className="slides">
+                                    <div className="carousel-inner">
+                                        {areasTeraData.map((item, i) => (
+                                            <button
+                                                type="button"
+                                                onClick={() => setActiveIndex(i)}
+                                                className={cn("carousel-item", {
+                                                    active: activeIndex === i,
+                                                    visible:
+                                                        Math.abs(determinePlacement(i)) <= visibleStyleThreshold
+                                                })}
+                                                key={item.id}
+                                                style={{
+                                                    transform: `translateY(${determinePlacement(i)}px)`
+                                                }}
+                                            >
+                                                {item.title}
+                                            </button>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <button
-                            type="button"
-                            className="carousel-button next"
-                            onClick={() => handleClick("next")}
-                        >
-                            <Next />
-                        </button>
+                            <button
+                                type="button"
+                                className="carousel-button next"
+                                onClick={() => handleClick("next")}
+                            >
+                                <Next />
+                            </button>
+                        </div>
+                        <div className="content col-8 p-0">
+                            <div className="content-img" style={{
+                                background: `url(./images/${areasTeraData[activeIndex].imgURL}) no-repeat center center / cover`
+                            }} />
+                            <p>{areasTeraData[activeIndex].desc}</p>
+                        </div>
                     </div>
-                    <div className="content col-8 p-0">
-                        <div className="content-img" style={{
-                            background: `url(./images/${areasTeraData[activeIndex].imgURL}) no-repeat center center / cover`
-                        }} />
-                        <p>{areasTeraData[activeIndex].desc}</p>
-                    </div>
-                </div>
-            </section>
-        </div>
+                </section>
+            </div>
+        </Fade>
     )
 }
 
