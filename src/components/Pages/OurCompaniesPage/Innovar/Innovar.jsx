@@ -1,9 +1,12 @@
 import './Innovar.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Reveal} from "react-awesome-reveal"
 import {keyframes} from "@emotion/react"
+import {getInnovationOC} from '../../../../services/ApiClient'
 
 function Innovar() {
+
+    const [bannerData, setBannerData] = useState()
 
     const customAnimation = keyframes`
   from {
@@ -15,6 +18,15 @@ function Innovar() {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }`
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getBannerData = await getInnovationOC()
+            setBannerData(getBannerData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <section className="container-fluid Innovar">
@@ -69,7 +81,7 @@ function Innovar() {
                 <div className="row">
                     <div className="col-12 col-sm-6 Innovar__title">
                         <Reveal keyframes={customAnimation}>
-                            <h1>Innovar en el mercado farmacéutico</h1>
+                            <h1>{bannerData?.description}</h1>
                         </Reveal>
                     </div>
                 </div>
