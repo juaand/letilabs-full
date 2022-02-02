@@ -1,11 +1,14 @@
 import './CompaniesInfo.css'
-import React from 'react'
-import unidadesNegocio from '../../../../data/unidadesNegocio'
+import React, {useState, useEffect} from 'react'
+import {getOurCompaniesOC} from '../../../../services/ApiClient'
 import {Link} from 'react-router-dom'
 import Slider from 'react-slick'
 import {seoURL} from '../../../../hooks/seoURL'
 
 function CompaniesInfo() {
+
+    const [unidadesNegocio, setUnidadesNegocio] = useState([])
+
     let settings = {
         responsive: [
             {
@@ -24,6 +27,15 @@ function CompaniesInfo() {
             }
         ]
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getOurCompaniesOCData = await getOurCompaniesOC()
+            setUnidadesNegocio(getOurCompaniesOCData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     return (
