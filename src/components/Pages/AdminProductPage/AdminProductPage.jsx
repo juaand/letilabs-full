@@ -287,7 +287,7 @@ function AdminProductPage() {
                                                                     name="name"
                                                                     type="text"
                                                                     placeholder="Ingresa nombre del producto"
-                                                                    className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                    cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                                 />
                                                             </div>
                                                             <div className="col-12 col-sm-4">
@@ -298,7 +298,7 @@ function AdminProductPage() {
                                                                     onChange={onChange}
                                                                     name="line"
                                                                     type="text"
-                                                                    className={`form-control ${touch.line && error.line ? "is-invalid" : ""}`}
+                                                                    cssStyle={`form-control ${touch.line && error.line ? "is-invalid" : ""}`}
                                                                     placeholder="Ingresa línea del producto"
                                                                 />
                                                             </div>
@@ -310,7 +310,7 @@ function AdminProductPage() {
                                                                     onChange={onChange}
                                                                     name="health_register"
                                                                     type="text"
-                                                                    className={`form-control ${touch.health_register && error.health_register ? "is-invalid" : ""}`}
+                                                                    cssStyle={`form-control ${touch.health_register && error.health_register ? "is-invalid" : ""}`}
                                                                     placeholder="Registro sanitario"
                                                                 />
                                                             </div>

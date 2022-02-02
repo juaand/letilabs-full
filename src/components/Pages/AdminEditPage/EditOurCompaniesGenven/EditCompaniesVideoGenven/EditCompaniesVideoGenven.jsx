@@ -73,12 +73,12 @@ function EditCompaniesVideoGenven() {
                             onChange={onChange}
                             name="videoURL"
                             type="text"
-                            className={`form-control ${touch.videoURL && error.videoURL ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.videoURL && error.videoURL ? "is-invalid" : ""}`}
                             placeholder={videoData?.videoURL}
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Video</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Video</Button>
                     </div>
 
                 </div>

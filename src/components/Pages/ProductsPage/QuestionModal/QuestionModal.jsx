@@ -122,7 +122,7 @@ function QuestionModal({hideModal}) {
                                                         name="name"
                                                         type="text"
                                                         label="Nombre del paciente"
-                                                        className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                         tabIndex="1"
                                                     />
                                                 </div>
@@ -134,7 +134,7 @@ function QuestionModal({hideModal}) {
                                                         name="lastname"
                                                         type="text"
                                                         label="Apellido del paciente"
-                                                        className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
                                                         tabIndex="2"
                                                     />
                                                 </div>
@@ -146,7 +146,7 @@ function QuestionModal({hideModal}) {
                                                         name="mail"
                                                         type="email"
                                                         label="Correo electrónico"
-                                                        className={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
                                                         tabIndex="3"
                                                     />
                                                 </div>
@@ -158,7 +158,7 @@ function QuestionModal({hideModal}) {
                                                         name="work"
                                                         type="text"
                                                         label="Institución donde ejerce"
-                                                        className={`form-control ${touch.work && error.work ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.work && error.work ? "is-invalid" : ""}`}
                                                         tabIndex="4"
                                                     />
                                                 </div>
@@ -170,7 +170,7 @@ function QuestionModal({hideModal}) {
                                                         name="years"
                                                         type="text"
                                                         label="Años de servicio"
-                                                        className={`form-control ${touch.years && error.years ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.years && error.years ? "is-invalid" : ""}`}
                                                         tabIndex="5"
                                                     />
                                                 </div>
@@ -182,7 +182,7 @@ function QuestionModal({hideModal}) {
                                                         name="speciality"
                                                         type="text"
                                                         label="Especialidad"
-                                                        className={`form-control ${touch.speciality && error.speciality ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.speciality && error.speciality ? "is-invalid" : ""}`}
                                                         tabIndex="6"
                                                     />
                                                 </div>
@@ -194,7 +194,7 @@ function QuestionModal({hideModal}) {
                                                         name="license"
                                                         type="text"
                                                         label="Número de licencia"
-                                                        className={`form-control ${touch.license && error.license ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.license && error.license ? "is-invalid" : ""}`}
                                                         tabIndex="7"
                                                     />
                                                 </div>
@@ -206,7 +206,7 @@ function QuestionModal({hideModal}) {
                                                         onChange={handleChange}
                                                         name="info"
                                                         rows="4"
-                                                        className="form-control textarea"
+                                                        cssStyle="form-control textarea"
                                                         placeholder=""
                                                         tabIndex="8"
                                                     />

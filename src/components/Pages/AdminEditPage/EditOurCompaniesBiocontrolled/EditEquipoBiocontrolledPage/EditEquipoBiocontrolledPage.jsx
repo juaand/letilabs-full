@@ -135,7 +135,7 @@ function EditEquipoBiocontrolledPage() {
                             onChange={onChange}
                             name="imgURL"
                             type="text"
-                            className={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
@@ -149,7 +149,7 @@ function EditEquipoBiocontrolledPage() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={bannerData?.buttonTitle}
                         />
                     </div>
@@ -163,12 +163,12 @@ function EditEquipoBiocontrolledPage() {
                             onChange={onChange}
                             name="buttonLink"
                             type="text"
-                            className={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
                             placeholder={bannerData?.buttonLink}
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
 
                 </div>

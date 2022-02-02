@@ -81,7 +81,7 @@ function EditFarmacoVigilancia() {
                             onChange={onChange}
                             name="title"
                             type="text"
-                            className={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
                             placeholder={farmacoData?.title}
                         />
                         <p className="AdminEdit__form__label">
@@ -93,7 +93,7 @@ function EditFarmacoVigilancia() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={farmacoData?.buttonTitle}
                         />
                     </div>
@@ -119,7 +119,7 @@ function EditFarmacoVigilancia() {
                             }}
                         /></div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Editar Farmaco Vigilancia</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar Farmaco Vigilancia</Button>
                     </div>
 
                 </div>

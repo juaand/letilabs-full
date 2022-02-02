@@ -126,7 +126,7 @@ function EditGallery() {
                                 onChange={onChange}
                                 name="name"
                                 type="text"
-                                className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
@@ -140,7 +140,7 @@ function EditGallery() {
                                 onChange={onChange}
                                 name="desc"
                                 type="text"
-                                className={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
@@ -157,7 +157,7 @@ function EditGallery() {
                             />
                         </div>
                         <div className="col-12">
-                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo producto</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo producto</Button>
                         </div>
 
                     </div>

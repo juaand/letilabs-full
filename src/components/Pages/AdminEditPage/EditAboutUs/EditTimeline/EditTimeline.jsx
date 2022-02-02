@@ -126,7 +126,7 @@ function EditTimeline() {
                                 onChange={onChange}
                                 name="year"
                                 type="text"
-                                className={`form-control ${touch.year && error.year ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.year && error.year ? "is-invalid" : ""}`}
                                 placeholder="Ingresa año"
                             />
                         </div>
@@ -153,12 +153,12 @@ function EditTimeline() {
                                 onChange={onChange}
                                 name="desc"
                                 type="text"
-                                className={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción"
                             />
                         </div>
                         <div className="col-12">
-                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo año</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo año</Button>
                         </div>
 
                     </div>

@@ -72,7 +72,7 @@ const LoginPage = () => {
                                     name="email"
                                     type="text"
                                     label="Correo electrónico"
-                                    className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                                    cssStyle={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
                                     placeholder="Enter email"
 
                                 />
@@ -84,7 +84,7 @@ const LoginPage = () => {
                                     name="password"
                                     type="password"
                                     label="Contraseña"
-                                    className={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
+                                    cssStyle={`form-control ${touch.password && error.password ? "is-invalid" : ""}`}
                                     placeholder="Enter password"
                                 />
 

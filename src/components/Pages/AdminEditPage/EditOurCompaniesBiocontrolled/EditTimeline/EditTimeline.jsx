@@ -89,7 +89,7 @@ function EditTimelineBiocontrolled() {
                         )}
                     </div>
                 </section>}
-                {console.log(timelineData)}
+            {console.log(timelineData)}
             <section className="container-fluid EditContent">
                 <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
@@ -104,7 +104,7 @@ function EditTimelineBiocontrolled() {
                                 onChange={onChange}
                                 name="imgURL"
                                 type="text"
-                                className={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                                 placeholder=""
                             />
                         </div>
@@ -118,7 +118,7 @@ function EditTimelineBiocontrolled() {
                                 onChange={onChange}
                                 name="desc"
                                 type="text"
-                                className={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción"
                             />
                         </div>
@@ -132,7 +132,7 @@ function EditTimelineBiocontrolled() {
                                 onChange={onChange}
                                 name="buttonTitle"
                                 type="text"
-                                className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                                 placeholder="Ingresa Título botón"
                             />
                         </div>
@@ -146,12 +146,12 @@ function EditTimelineBiocontrolled() {
                                 onChange={onChange}
                                 name="buttonLink"
                                 type="text"
-                                className={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
                                 placeholder="Ingresa Url Botón"
                             />
                         </div>
                         <div className="col-12">
-                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
                         </div>
 
                     </div>

@@ -130,7 +130,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                             onChange={onChange}
                                             name="name"
                                             type="text"
-                                            className="form-control"
+                                            cssStyle="form-control"
                                         />
                                     </div>
                                     <div className="col-12 col-sm-4">
@@ -140,7 +140,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                             onChange={onChange}
                                             name="line"
                                             type="text"
-                                            className="form-control"
+                                            cssStyle="form-control"
                                             placeholder="Ingresa línea del producto"
                                         />
                                     </div>
@@ -151,7 +151,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                             onChange={onChange}
                                             name="health_register"
                                             type="text"
-                                            className="form-control"
+                                            cssStyle="form-control"
                                             placeholder="Registro sanitario"
                                         />
                                     </div>

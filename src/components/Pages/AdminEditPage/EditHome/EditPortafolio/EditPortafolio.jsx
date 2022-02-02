@@ -79,7 +79,7 @@ function EditPortafolio() {
                             onChange={onChange}
                             name="title"
                             type="text"
-                            className={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
                             placeholder={portfolioData?.title}
                         />
                     </div>
@@ -105,7 +105,7 @@ function EditPortafolio() {
                             }}
                         /></div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Editar Portfolio</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar Portfolio</Button>
                     </div>
 
                 </div>

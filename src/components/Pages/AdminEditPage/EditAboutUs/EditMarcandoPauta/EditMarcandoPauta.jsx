@@ -131,7 +131,7 @@ function EditMarcandoPauta() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn mt-5 AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn mt-5 AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
 
                 </div>

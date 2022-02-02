@@ -103,7 +103,7 @@ function EditUnidades() {
                                 onChange={onChange}
                                 name="logo"
                                 type="text"
-                                className={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
                                 placeholder={unidadesData?.logo}
                             />
                             <p className="AdminEdit__form__label">
@@ -115,7 +115,7 @@ function EditUnidades() {
                                 onChange={onChange}
                                 name="url"
                                 type="text"
-                                className={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
                                 placeholder={unidadesData?.url}
                             />
                         </div>
@@ -142,7 +142,7 @@ function EditUnidades() {
                             />
                         </div>
                         <div className="col-12">
-                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir unidad de negocio</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir unidad de negocio</Button>
                         </div>
 
                     </div>

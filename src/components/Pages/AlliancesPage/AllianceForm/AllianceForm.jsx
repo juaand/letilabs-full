@@ -115,7 +115,7 @@ function AllianceForm() {
                                                         name="name"
                                                         type="text"
                                                         label="Nombre"
-                                                        className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                         tabIndex="1"
                                                     />
 
@@ -128,7 +128,7 @@ function AllianceForm() {
                                                         name="lastname"
                                                         type="text"
                                                         label="Apellido"
-                                                        className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
                                                         tabIndex="2"
                                                     />
                                                 </div>
@@ -140,7 +140,7 @@ function AllianceForm() {
                                                         name="mail"
                                                         type="email"
                                                         label="Email"
-                                                        className={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
                                                         tabIndex="3"
                                                     />
 
@@ -153,7 +153,7 @@ function AllianceForm() {
                                                         name="phone"
                                                         type="text"
                                                         label="Teléfono"
-                                                        className={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
                                                         tabIndex="4"
                                                     />
 
@@ -166,7 +166,7 @@ function AllianceForm() {
                                                         label="País"
                                                         name="country"
                                                         onChange={onChange}
-                                                        className={`form-control AllianceForm__dropdown ${touch.country && error.country ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control AllianceForm__dropdown ${touch.country && error.country ? "is-invalid" : ""}`}
                                                         tabIndex="5"
                                                         list="countries"
                                                         data={dataCountry}
@@ -182,7 +182,7 @@ function AllianceForm() {
                                                         name="company"
                                                         type="text"
                                                         label="Empresa/Institución"
-                                                        className={`form-control ${touch.company && error.company ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.company && error.company ? "is-invalid" : ""}`}
                                                         tabIndex="6"
                                                     />
 
@@ -195,7 +195,7 @@ function AllianceForm() {
                                                         onChange={handleChange}
                                                         name="effects"
                                                         rows="4"
-                                                        className="form-control textarea"
+                                                        cssStyle="form-control textarea"
                                                         placeholder=""
                                                         tabIndex="7"
                                                     />

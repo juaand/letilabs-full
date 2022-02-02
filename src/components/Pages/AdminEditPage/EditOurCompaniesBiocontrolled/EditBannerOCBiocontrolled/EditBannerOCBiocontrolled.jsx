@@ -104,7 +104,7 @@ function EditBannerOCBiocontrolled() {
                             onChange={onChange}
                             name="imgURL"
                             type="text"
-                            className={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
@@ -118,12 +118,12 @@ function EditBannerOCBiocontrolled() {
                             onChange={onChange}
                             name="logo"
                             type="text"
-                            className={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
                             placeholder={bannerData?.logo}
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
 
                 </div>

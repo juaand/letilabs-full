@@ -135,7 +135,7 @@ function EditProdutcsBanner() {
                             onChange={onChange}
                             name="imgURL"
                             type="text"
-                            className={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
@@ -149,7 +149,7 @@ function EditProdutcsBanner() {
                             onChange={onChange}
                             name="img2URL"
                             type="text"
-                            className={`form-control ${touch.img2URL && error.img2URL ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.img2URL && error.img2URL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.img2URL}
                         />
                     </div>
@@ -163,12 +163,12 @@ function EditProdutcsBanner() {
                             onChange={onChange}
                             name="img3URL"
                             type="text"
-                            className={`form-control ${touch.img3URL && error.img3URL ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.img3URL && error.img3URL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.img3URL}
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
 
                 </div>

@@ -72,7 +72,7 @@ function FindProduct() {
                                             label=""
                                             name="search"
                                             onChange={onChange}
-                                            className={`product form-control ${touch.search && error.search ? "is-invalid" : ""}`}
+                                            cssStyle={`product form-control ${touch.search && error.search ? "is-invalid" : ""}`}
                                             list="searchs"
                                             data={[...new Set(vadevecum.map(v => v.name))].sort()}
                                         />
@@ -84,7 +84,7 @@ function FindProduct() {
                                             label=""
                                             name="especialidad"
                                             onChange={onChange}
-                                            className={`category form-control ${touch.especialidad && error.especialidad ? "is-invalid" : ""}`}
+                                            cssStyle={`category form-control ${touch.especialidad && error.especialidad ? "is-invalid" : ""}`}
                                             list="especialidades"
                                             data={dataSpecialities}
                                         />

@@ -93,7 +93,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 onChange={onChange}
                                                 name="year"
                                                 type="text"
-                                                className="form-control"
+                                                cssStyle="form-control"
                                                 placeholder="Ingresa año"
                                             />
                                         </div>

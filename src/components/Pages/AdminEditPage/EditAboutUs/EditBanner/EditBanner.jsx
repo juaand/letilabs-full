@@ -130,7 +130,7 @@ function EditBanner() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn mt-5 AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        <Button cssStyle="leti-btn mt-5 AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
                 </div>
                 {registerError && <div className="alert alert-danger">{registerError}</div>}

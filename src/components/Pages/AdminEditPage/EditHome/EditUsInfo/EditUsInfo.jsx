@@ -105,7 +105,7 @@ function EditUsInfo() {
                             onChange={onChange}
                             name="url"
                             type="text"
-                            className={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
                             placeholder={usInfoData?.url}
                         />
                         <p className="AdminEdit__form__label">
@@ -117,12 +117,12 @@ function EditUsInfo() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            className={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={usInfoData?.buttonTitle}
                         />
                     </div>
                     <div className="col-12">
-                        <Button className="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Sobre Nosotros</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Sobre Nosotros</Button>
                     </div>
 
                 </div>

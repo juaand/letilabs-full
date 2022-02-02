@@ -1,11 +1,11 @@
 import './FormButton.css'
 import React from 'react'
 
-export default function Button({type, className, disabled, children}) {
+export default function Button({type, cssStyle, disabled, children}) {
     return (
         <button
             type={type}
-            className={className}
+            className={cssStyle}
             disabled={disabled}
         >
             {children}

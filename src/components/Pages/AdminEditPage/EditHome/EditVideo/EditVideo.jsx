@@ -74,7 +74,7 @@ function EditVideo() {
                             id="fileButton"
                             name="picpath"
                             type="file"
-                            className="video"
+                            classStyle="video"
                         />
                     </div>
                 </div>}

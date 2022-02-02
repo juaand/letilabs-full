@@ -84,7 +84,7 @@ function SearchPage(props) {
                             onChange={onChange}
                             name="search"
                             type="text"
-                            className="Search__form-input SearchPage__form-input"
+                            cssStyle="Search__form-input SearchPage__form-input"
                             placeholder="Buscar..."
                         />
                     </form>

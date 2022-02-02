@@ -135,7 +135,7 @@ function Form() {
                                                                 name="name"
                                                                 type="text"
                                                                 label="Nombre del paciente"
-                                                                className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                                 tabIndex="1"
                                                             />
                                                         </div>
@@ -147,7 +147,7 @@ function Form() {
                                                                 name="lastname"
                                                                 type="text"
                                                                 label="Apellido del paciente"
-                                                                className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                                cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
                                                                 tabIndex="2"
                                                             />
                                                         </div>
@@ -159,7 +159,7 @@ function Form() {
                                                                 name="email"
                                                                 type="email"
                                                                 label="Correo electrónico del paciente"
-                                                                className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                                                                cssStyle={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
                                                                 tabIndex="3"
                                                             />
                                                         </div>
@@ -183,7 +183,7 @@ function Form() {
                                                         label="Medicamento que tomó"
                                                         name="medicine"
                                                         onChange={onChange}
-                                                        className={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
                                                         tabIndex="6"
                                                         list="medicines"
                                                         data={dataList}
@@ -216,7 +216,7 @@ function Form() {
                                                         onChange={handleChange}
                                                         name="effects"
                                                         rows="4"
-                                                        className="form-control textarea"
+                                                        cssStyle="form-control textarea"
                                                         placeholder=""
                                                         tabIndex="7"
                                                     />

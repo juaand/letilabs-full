@@ -70,7 +70,7 @@ function FindNews() {
                                             onChange={onChange}
                                             name="search"
                                             type="text"
-                                            className="FindNews__form-input"
+                                            cssStyle="FindNews__form-input"
                                             placeholder="¿Qué buscas?"
                                         />
                                     </div>

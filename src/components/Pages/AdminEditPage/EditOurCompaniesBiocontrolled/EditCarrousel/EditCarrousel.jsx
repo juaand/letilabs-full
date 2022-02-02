@@ -91,12 +91,12 @@ function EditCarrouselBiocontrolled() {
                                 onChange={onChange}
                                 name="info"
                                 type="text"
-                                className={`form-control ${touch.info && error.info ? "is-invalid" : ""}`}
+                                cssStyle={`form-control ${touch.info && error.info ? "is-invalid" : ""}`}
                                 placeholder="Ingresa información"
                             />
                         </div>
                         <div className="col-12">
-                            <Button className="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
                         </div>
 
                     </div>

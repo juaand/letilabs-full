@@ -45,7 +45,7 @@ function Search({bool}) {
                             onChange={onChange}
                             name="search"
                             type="text"
-                            className="Search__form-input"
+                            cssStyle="Search__form-input"
                             placeholder="Buscar..."
                         />
                     </div>

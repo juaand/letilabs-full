@@ -1,7 +1,7 @@
 import './InputWithLabel.css'
 import React from 'react'
 
-export default function InputWithLabel({value, name, onChange, onBlur, type, className, placeholder, label, tabIndex}) {
+export default function InputWithLabel({value, name, onChange, onBlur, type, cssStyle, placeholder, label, tabIndex}) {
 
 
 
@@ -15,7 +15,7 @@ export default function InputWithLabel({value, name, onChange, onBlur, type, cla
                 value={value}
                 onBlur={onBlur}
                 onChange={onChange}
-                className={className}
+                className={cssStyle}
                 name={name}
                 type={type}
                 placeholder={placeholder}

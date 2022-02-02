@@ -147,7 +147,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                                 name="name"
                                                                 type="text"
                                                                 label="Nombre del paciente"
-                                                                className={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                                 tabIndex="1"
                                                             />
                                                         </div>
@@ -159,7 +159,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                                 name="lastname"
                                                                 type="text"
                                                                 label="Apellido del paciente"
-                                                                className={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                                cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
                                                                 tabIndex="2"
                                                             />
                                                         </div>
@@ -171,7 +171,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                                 name="email"
                                                                 type="email"
                                                                 label="Correo electrónico del paciente"
-                                                                className={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                                                                cssStyle={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
                                                                 tabIndex="3"
                                                             />
                                                         </div>
@@ -195,7 +195,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         label="Medicamento que tomó"
                                                         name="medicine"
                                                         onChange={onChange}
-                                                        className={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
                                                         tabIndex="6"
                                                         list="medicines"
                                                         data={dataList}
@@ -228,7 +228,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         onChange={handleChange}
                                                         name="effects"
                                                         rows="4"
-                                                        className="form-control textarea"
+                                                        cssStyle="form-control textarea"
                                                         placeholder=""
                                                         tabIndex="7"
                                                     />
@@ -236,7 +236,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                 <div className="col-12 d-flex justify-content-end">
                                                     <Button
                                                         type="submit"
-                                                        className={`leti-btn ${isError && "disabled"}`}
+                                                        cssStyle={`leti-btn ${isError && "disabled"}`}
                                                     >
                                                         Enviar
                                                     </Button>
