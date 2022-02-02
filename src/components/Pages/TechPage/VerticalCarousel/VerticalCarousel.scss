@@ -158,3 +158,52 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .VerticalCarousel {
+    margin-bottom: 6rem;
+
+    h1 {
+      text-align: center;
+
+      &.w-margin {
+        margin-top: 4rem;
+        padding: 2rem 4rem;
+      }
+    }
+
+    &__card {
+      width: 100%;
+
+      &-img {
+        width: auto;
+        height: 36rem;
+      }
+
+      &-body {
+        background: $leti-back;
+        font-size: 1.6rem;
+        line-height: 2.4rem;
+        padding: 2rem;
+        color: $leti-text;
+
+        h3 {
+          font-family: 'TripletaBold';
+          font-size: 2.4rem;
+          color: $leti-red;
+          text-align: center;
+          margin: 2rem auto;
+        }
+      }
+    }
+
+    .slick-dots li.slick-active button:before {
+      border: solid 0.1rem $leti-nav;
+      border-radius: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $leti-nav;
+    }
+  }
+}
