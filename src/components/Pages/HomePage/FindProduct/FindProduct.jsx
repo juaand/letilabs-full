@@ -1,10 +1,10 @@
 import './FindProduct.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 import dataSpecialities from '../../../../data/dataSpecialities'
 import {Slide} from 'react-awesome-reveal'
-import vadevecum from '../../../../data/vadevecum'
+import {getVadevecumData} from '../../../../services/ApiClient'
 import {useHistory} from 'react-router'
 
 
@@ -28,6 +28,8 @@ function FindProduct() {
         }
     )
 
+    const [vadevecum, setVadevecum] = useState([])
+
     const {data, error, touch} = state
 
     let history = useHistory()
@@ -43,6 +45,17 @@ function FindProduct() {
             }
         })
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getVadevecumData()
+            setVadevecum(data)
+        }
+        fetchData()
+
+    }, [])
+
+
     return (
         <Slide direction="up" triggerOnce>
             <section className="container-fluid FindProduct">
