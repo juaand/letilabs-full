@@ -10,9 +10,7 @@ function Gallery() {
     const [backImage, setBackImage] = useState('')
     const [itemDesc, setItemDesc] = useState('')
 
-
     const setSelectedBg = (e, img, desc) => {
-
         document.querySelectorAll('.active').forEach(el => {
             el.classList.remove('active')
         })

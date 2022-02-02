@@ -13,13 +13,13 @@
 
 .Gallery__desc {
   position: absolute;
-  color: #fff;
-  background: rgba(5, 90, 165, 0.98);
+  color: #4a4a4a;
+  background: #e9eaee;
   font-size: 1.8rem;
-  padding: 2rem 0rem 2.6rem 7rem;
+  padding: 4rem 0rem 4.6rem 7rem;
   bottom: -10rem;
-  left: -4rem;
-  right: 10%;
+  left: 0.7rem;
+  right: 0;
 }
 
 .Gallery__nav {
