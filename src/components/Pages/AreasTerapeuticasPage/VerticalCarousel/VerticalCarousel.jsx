@@ -114,7 +114,7 @@ const VerticalCarousel = () => {
                         </div>
                         <div className="content col-8 p-0">
                             <div className="content-img" style={{
-                                background: `url(./images/${areasTeraData[activeIndex].imgURL}) no-repeat center center / cover`
+                                background: `url(./images/${areasTeraData[activeIndex].imgURL}) no-repeat center / cover`
                             }} />
                             <p>{areasTeraData[activeIndex].desc}</p>
                         </div>
