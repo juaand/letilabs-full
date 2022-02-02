@@ -31,7 +31,6 @@ function Carousel() {
     useEffect(() => {
         const fetchData = async () => {
             const data = await getLogoCarouselData()
-            console.log(data)
             setGetData(data)
         }
         fetchData()

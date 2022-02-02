@@ -14,13 +14,13 @@
 
   &__desc {
     position: absolute;
-    color: $leti-white;
-    background: rgba($leti-blue, 0.98);
+    color: $leti-text;
+    background: $leti-subnav;
     font-size: 1.8rem;
-    padding: 2rem 0rem 2.6rem 7rem;
+    padding: 4rem 0rem 4.6rem 7rem;
     bottom: -10rem;
-    left: -4rem;
-    right: 10%;
+    left: 0.7rem;
+    right: 0;
   }
 
   &__nav {

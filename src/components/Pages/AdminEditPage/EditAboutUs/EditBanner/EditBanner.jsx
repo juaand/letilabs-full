@@ -78,7 +78,6 @@ function EditBanner() {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
-        console.log(fileUrl)
     }
 
     useEffect(() => {

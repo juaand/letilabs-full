@@ -10,10 +10,6 @@
   line-height: 4.4rem;
 }
 
-.MarcandoPauta__bg {
-  background: url(../../../../images/marcando-pauta.png) no-repeat right bottom/contain;
-}
-
 @media (max-width: 576px) {
   .MarcandoPauta__text {
     margin-top: 3rem;

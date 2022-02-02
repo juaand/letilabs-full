@@ -1,15 +1,16 @@
 import './Gallery.css'
-import React, {useState} from 'react'
-import dataGallery from '../../../../data/dataGallery'
+import React, {useState, useEffect} from 'react'
+import {getGallery} from '../../../../services/ApiClient'
 import {Fade} from "react-awesome-reveal"
 
 function Gallery() {
 
-    const [backImage, setBackImage] = useState(dataGallery[0].imgPath)
-    const [itemDesc, setItemDesc] = useState(dataGallery[0].desc)
+
+    const [dataGallery, setDataGallery] = useState([])
+    const [backImage, setBackImage] = useState('')
+    const [itemDesc, setItemDesc] = useState('')
 
     const setSelectedBg = (e, img, desc) => {
-
         document.querySelectorAll('.active').forEach(el => {
             el.classList.remove('active')
         })
@@ -17,6 +18,17 @@ function Gallery() {
         setBackImage(img)
         setItemDesc(desc)
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getGalleryData = await getGallery()
+            setDataGallery(getGalleryData)
+            setBackImage(getGalleryData[0].imgPath)
+            setItemDesc(getGalleryData[0].desc)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>

@@ -1,5 +1,5 @@
 import './ModalFarmacoVigilancia.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import RadioButtonWithLabel from '../../../Form/RadioButtonWithLabel/RadioButtonWithLabel'
@@ -7,7 +7,7 @@ import Button from '../../../Form/FormButton/FormButton'
 import DateTimePicker from "react-datetime-picker"
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import {vigilanciaForm} from '../../../../services/ApiClient'
-import vadevecum from '../../../../data/vadevecum'
+import {getVadevecumData} from '../../../../services/ApiClient'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 
 function ModalFarmacoVigilancia({hideModal}) {
@@ -54,6 +54,7 @@ function ModalFarmacoVigilancia({hideModal}) {
     const [effects, setEffects] = useState(state.data.effects)
     const [formResponse, setFormResponse] = useState([])
     const [message, setMessage] = useState(false)
+    const [vadevecum, setVadevecum] = useState([])
 
     const {data, error, touch} = state
 
@@ -95,6 +96,16 @@ function ModalFarmacoVigilancia({hideModal}) {
 
     const getVadevecumNames = vadevecum.map(el => el.name)
     const dataList = [...new Set(getVadevecumNames)].sort()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const data = await getVadevecumData()
+            const dataFiltered = data?.filter(el => el?.show_in_home === true)
+            setVadevecum(dataFiltered)
+        }
+        fetchData()
+
+    }, [])
 
     return (
         <section className="ModalFarmacoVigilancia" onClick={clickedOutside}>
