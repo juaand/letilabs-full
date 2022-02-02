@@ -11,7 +11,6 @@ function Banner() {
         const fetchData = async () => {
             const getBannerData = await getBanner()
             setBannerData(getBannerData)
-            console.log(getBannerData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
