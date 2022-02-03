@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOCGenven, updateBannerDataOCGenven} from '../../../../../services/ApiClient'
+import {getBannerPurpose, updateBannerDataPurpose} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-function EditBannerOCGenven() {
+function EditBannerPurpose() {
 
     const [bannerData, setBannerData] = useState()
 
@@ -15,19 +15,16 @@ function EditBannerOCGenven() {
                 id: '',
                 description: bannerData?.description,
                 imgURL: bannerData?.imgURL,
-                logoURL: bannerData?.logoURL,
             },
             error: {
                 description: true,
                 imgURL: false,
-                logoURL: false,
             },
             touch: {},
         },
         {
             description: v => v.length,
             imgURL: v => v.length,
-            logoURL: v => v.length,
         }
     )
 
@@ -42,7 +39,7 @@ function EditBannerOCGenven() {
         data.id = bannerData._id
 
         try {
-            await updateBannerDataOCGenven(data)
+            await updateBannerDataPurpose(data)
                 .then(banner => {
                     setBannerData(banner[0])
                 })
@@ -60,7 +57,7 @@ function EditBannerOCGenven() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getBannerData = await getBannerOCGenven()
+            const getBannerData = await getBannerPurpose()
             setBannerData(getBannerData)
         }
         fetchData()
@@ -108,20 +105,6 @@ function EditBannerOCGenven() {
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Logo
-                        </p>
-                        <InputWithLabel
-                            value={data?.logoURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="logoURL"
-                            type="text"
-                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.logoURL}
-                        />
-                    </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
@@ -133,4 +116,4 @@ function EditBannerOCGenven() {
     )
 }
 
-export default EditBannerOCGenven
+export default EditBannerPurpose

@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOCGenven, updateBannerDataOCGenven} from '../../../../../services/ApiClient'
+import {getBannerOurPeople, updateBannerOurPeople} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-function EditBannerOCGenven() {
+function EditBannerOurPeople() {
 
     const [bannerData, setBannerData] = useState()
 
@@ -15,19 +15,19 @@ function EditBannerOCGenven() {
                 id: '',
                 description: bannerData?.description,
                 imgURL: bannerData?.imgURL,
-                logoURL: bannerData?.logoURL,
+                title: bannerData?.title,
             },
             error: {
                 description: true,
                 imgURL: false,
-                logoURL: false,
+                title: false,
             },
             touch: {},
         },
         {
             description: v => v.length,
             imgURL: v => v.length,
-            logoURL: v => v.length,
+            title: v => v.length,
         }
     )
 
@@ -42,7 +42,7 @@ function EditBannerOCGenven() {
         data.id = bannerData._id
 
         try {
-            await updateBannerDataOCGenven(data)
+            await updateBannerOurPeople(data)
                 .then(banner => {
                     setBannerData(banner[0])
                 })
@@ -60,7 +60,7 @@ function EditBannerOCGenven() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getBannerData = await getBannerOCGenven()
+            const getBannerData = await getBannerOurPeople()
             setBannerData(getBannerData)
         }
         fetchData()
@@ -69,7 +69,7 @@ function EditBannerOCGenven() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Banner Genven</h2>
+            <h2>Banner Leti</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -110,16 +110,16 @@ function EditBannerOCGenven() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Logo
+                            title
                         </p>
                         <InputWithLabel
-                            value={data?.logoURL}
+                            value={data?.title}
                             onBlur={onBlur}
                             onChange={onChange}
-                            name="logoURL"
+                            name="title"
                             type="text"
-                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.logoURL}
+                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            placeholder={bannerData?.title}
                         />
                     </div>
                     <div className="col-12">
@@ -133,4 +133,4 @@ function EditBannerOCGenven() {
     )
 }
 
-export default EditBannerOCGenven
+export default EditBannerOurPeople

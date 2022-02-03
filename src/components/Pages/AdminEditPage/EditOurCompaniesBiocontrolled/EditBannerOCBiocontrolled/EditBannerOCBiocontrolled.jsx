@@ -15,19 +15,19 @@ function EditBannerOCBiocontrolled() {
                 id: '',
                 description: bannerData?.description,
                 imgURL: bannerData?.imgURL,
-                logo: bannerData?.logo,
+                logoURL: bannerData?.logoURL,
             },
             error: {
                 description: true,
                 imgURL: false,
-                logo: false,
+                logoURL: false,
             },
             touch: {},
         },
         {
             description: v => v.length,
             imgURL: v => v.length,
-            logo: v => v.length,
+            logoURL: v => v.length,
         }
     )
 
@@ -110,16 +110,16 @@ function EditBannerOCBiocontrolled() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Logo
+                            logoURL
                         </p>
                         <InputWithLabel
-                            value={data?.logo}
+                            value={data?.logoURL}
                             onBlur={onBlur}
                             onChange={onChange}
-                            name="logo"
+                            name="logoURL"
                             type="text"
-                            cssStyle={`form-control ${touch.logo && error.logo ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.logo}
+                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
+                            placeholder={bannerData?.logoURL}
                         />
                     </div>
                     <div className="col-12">
