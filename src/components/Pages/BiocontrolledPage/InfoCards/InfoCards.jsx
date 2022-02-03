@@ -1,10 +1,21 @@
 import './InfoCards.css'
-import React from 'react'
-import dataBiocontrolled from '../../../../data/dataBiocontrolled'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
-
+import {getOurCompaniesInfoCardsBiocontrolled} from '../../../../services/ApiClient'
 
 function InfoCards() {
+
+    const [dataBiocontrolled, setDataBiocontrolled] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getOurCompaniesOCData = await getOurCompaniesInfoCardsBiocontrolled()
+            setDataBiocontrolled(getOurCompaniesOCData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className="container InfoCards">
             <div className="row justify-content-around">
