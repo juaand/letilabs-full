@@ -38,7 +38,7 @@ function FarmacoVigilancia() {
                     {homeBottom?.map((el, key) =>
                         <div className="col-12 col-sm-6 p-0 FarmacoVigilancia__img">
                             <div className="FarmacoVigilancia__espacio" style={{
-                                background: `url("./images/${el?.img}")`,
+                                background: `url(${el?.img})`,
                             }} />
                             <div className="FarmacoVigilancia__title">
                                 <Fade {...key > 1 && `delay=${300}`} direction="up" triggerOnce>
