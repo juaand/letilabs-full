@@ -93,7 +93,7 @@ const LoginPage = () => {
 
                                 <Button
                                     type="submit"
-                                    className="leti-btn"
+                                    cssStyle="leti-btn"
                                     disabled={isError}
                                 >Ingresa</Button>
                             </form>
