@@ -23,7 +23,7 @@ function Goals() {
     useEffect(() => {
         const fetchData = async () => {
             const getGoalsData = await getGoalsIdData()
-            setDataGoals(getGoalsData[0])
+            setDataGoals(getGoalsData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -56,11 +56,11 @@ function Goals() {
                 <div className="row">
                     <div className="col-12 col-sm-6 Goals__title">
                         <Reveal keyframes={customAnimation} triggerOnce>
-                            <h1>{dataGoals?.title}</h1>
+                            <h1>{dataGoals[0]?.title}</h1>
                         </Reveal>
                     </div>
                     <div className="col-12 col-sm-6 Goals__goals">
-                        {dataGoals?.goals?.map((el, key) =>
+                        {dataGoals?.map((el, key) =>
                             <Fade triggerOnce cascade direction="up">
                                 <p className="Goals__number">{key + 1}</p>
                                 <div className="Goals__info">
