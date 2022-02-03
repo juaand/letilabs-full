@@ -2,7 +2,7 @@ import './InfoCards.css'
 import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
-import {getInfoCardsData} from '../../../../services/ApiClient'
+import {getInfoCardsIdData} from '../../../../services/ApiClient'
 
 function InfoCards() {
 
@@ -10,7 +10,7 @@ function InfoCards() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const data = await getInfoCardsData()
+            const data = await getInfoCardsIdData()
             setGetData(data)
         }
         fetchData()

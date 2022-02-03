@@ -1,10 +1,13 @@
 import './Goals.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Reveal, Fade} from "react-awesome-reveal"
 import {keyframes} from "@emotion/react"
-import dataGoals from '../../../../data/dataGoals'
+import {getGoalsIdData} from '../../../../services/ApiClient'
+
 
 function Goals() {
+
+    const [dataGoals, setDataGoals] = useState([])
 
     const customAnimation = keyframes`
     from {
@@ -16,6 +19,15 @@ function Goals() {
         opacity: 1;
         transform: translate3d(0, 0, 0);
     }`
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getGoalsData = await getGoalsIdData()
+            setDataGoals(getGoalsData[0])
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <section className="container-fluid Goals">
@@ -44,15 +56,15 @@ function Goals() {
                 <div className="row">
                     <div className="col-12 col-sm-6 Goals__title">
                         <Reveal keyframes={customAnimation} triggerOnce>
-                            <h1>Qué queremos lograr</h1>
+                            <h1>{dataGoals?.title}</h1>
                         </Reveal>
                     </div>
                     <div className="col-12 col-sm-6 Goals__goals">
-                        {dataGoals.map((el, key) =>
+                        {dataGoals?.goals?.map((el, key) =>
                             <Fade triggerOnce cascade direction="up">
                                 <p className="Goals__number">{key + 1}</p>
                                 <div className="Goals__info">
-                                    <p className="Goals__subtitle">{el.title}</p>
+                                    <p className="Goals__subtitle">{el.name}</p>
                                     <p className="Goals__desc">{el.desc}</p>
                                 </div>
                             </Fade>
