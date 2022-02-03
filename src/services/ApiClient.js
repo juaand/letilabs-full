@@ -126,6 +126,31 @@ export const getBottomIdData = () => http.get("/idbottom")
 //admin I+D alliances routes
 export const getLogoCarouselData = () => http.get("/alliancelogos")
 
+//admin edit routes purpose and responsability
+
+export const getBannerPurpose = () => http.get("/bannerdatapurpose")
+export const updateBannerDataPurpose = ({description, imgURL, id}) => http.patch("/updatebannerdatapurpose", {description, imgURL, id})
+export const getPurposeVideo = () => http.get("/purposevideo")
+export const updatePurposeVideo = ({videoURL, id}) => http.get("/updatepurposevideo", {videoURL, id})
+export const getTimeLinePurpose = () => http.get("/timelinepurpose")
+export const addTimeLinePurposeData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addtimelinepurpose", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const getTitleFarmPurpose = () => http.get("/titlefarmdatapurpose")
+export const updateTitleFarmDataPurpose = ({title, id}) => http.patch("/updatetitlefarmdatapurpose", {title, id})
+
+//admin edit routes our people
+
+export const getBannerOurPeople = () => http.get("/bannerdataourpeople")
+export const updateBannerOurPeople = ({description, imgURL, title, id}) => http.patch("/updatebannerdataourpeople", {description, imgURL, title, id})
+export const getInfoCardsOurPeople = () => http.get("/ourpeopleinfocards")
+export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) => http.get("/updateourpeopleinfocards", {mainTitle, imgURL, title, info, id})
+export const getEquipoOurPeople = () => http.get("/equipoourpeople")
+export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
+export const getBottomOurPeople = () => http.get("/bottomourpeople")
+export const updateBottomOurPeople = ({title, url, button, img, id}) => http.patch("/updatebottomourpeople", {title, url, button, img, id})
+export const getCarreras = () => http.get("/carrerasdata")
+export const updateCarrerasData = ({title, description, url, buttonTitle, id}) => http.patch("/updatecarrerasdata", {title, description, url, buttonTitle, id})
+
+
 //search routes
 export const searchContent = (search) => http.get(`/search/${search}`)
 export const searchNews = (data) => http.post(`/buscarnoticia`, {data})

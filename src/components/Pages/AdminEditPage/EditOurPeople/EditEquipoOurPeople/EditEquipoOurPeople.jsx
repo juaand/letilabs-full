@@ -1,33 +1,42 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOCGenven, updateBannerDataOCGenven} from '../../../../../services/ApiClient'
+import {getEquipoOurPeople, updateEquipoOurPeople} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-function EditBannerOCGenven() {
 
+function EditEquipoOurPeople() {
     const [bannerData, setBannerData] = useState()
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 id: '',
+                title: bannerData?.title,
                 description: bannerData?.description,
+                person: bannerData?.person,
                 imgURL: bannerData?.imgURL,
-                logoURL: bannerData?.logoURL,
+                buttonTitle: bannerData?.buttonTitle,
+                buttonLink: bannerData?.buttonLink,
             },
             error: {
+                title: true,
                 description: true,
+                person: true,
                 imgURL: false,
-                logoURL: false,
+                buttonTitle: false,
+                buttonLink: false,
             },
             touch: {},
         },
         {
+            title: v => v.length,
             description: v => v.length,
+            person: v => v.length,
             imgURL: v => v.length,
-            logoURL: v => v.length,
+            buttonTitle: v => v.length,
+            buttonLink: v => v.length,
         }
     )
 
@@ -42,7 +51,7 @@ function EditBannerOCGenven() {
         data.id = bannerData._id
 
         try {
-            await updateBannerDataOCGenven(data)
+            await updateEquipoOurPeople(data)
                 .then(banner => {
                     setBannerData(banner[0])
                 })
@@ -53,14 +62,20 @@ function EditBannerOCGenven() {
             setRegisterError(err.response?.data?.message)
         }
     }
+    const handleBannerTitle = (e) => {
+        data.title = e.target.getContent()
+    }
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+    }
+    const handleBannerPerson = (e) => {
+        data.person = e.target.getContent()
     }
 
 
     useEffect(() => {
         const fetchData = async () => {
-            const getBannerData = await getBannerOCGenven()
+            const getBannerData = await getEquipoOurPeople()
             setBannerData(getBannerData)
         }
         fetchData()
@@ -69,9 +84,31 @@ function EditBannerOCGenven() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Banner Genven</h2>
+            <h2>Equipo Leti</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
+                <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            Título
+                        </p>
+                        <Editor
+                            onChange={handleBannerTitle}
+                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                            init={{
+                                height: 200,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image',
+                                    'charmap print preview anchor help',
+                                    'searchreplace visualblocks code',
+                                    'insertdatetime media table paste wordcount'
+                                ],
+                                toolbar:
+                                    'bold',
+                                placeholder: bannerData?.title
+                            }}
+                        />
+                    </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Descripción
@@ -96,6 +133,28 @@ function EditBannerOCGenven() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
+                            Persona del equipo y cargo
+                        </p>
+                        <Editor
+                            onChange={handleBannerPerson}
+                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                            init={{
+                                height: 200,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image',
+                                    'charmap print preview anchor help',
+                                    'searchreplace visualblocks code',
+                                    'insertdatetime media table paste wordcount'
+                                ],
+                                toolbar:
+                                    'bold',
+                                placeholder: bannerData?.person
+                            }}
+                        />
+                    </div>
+                    <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
                             Imagen
                         </p>
                         <InputWithLabel
@@ -110,16 +169,30 @@ function EditBannerOCGenven() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Logo
+                            Imagen 2
                         </p>
                         <InputWithLabel
-                            value={data?.logoURL}
+                            value={data?.buttonTitle}
                             onBlur={onBlur}
                             onChange={onChange}
-                            name="logoURL"
+                            name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.logoURL}
+                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            placeholder={bannerData?.buttonTitle}
+                        />
+                    </div>
+                    <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            Imagen 3
+                        </p>
+                        <InputWithLabel
+                            value={data?.buttonLink}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="buttonLink"
+                            type="text"
+                            cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
+                            placeholder={bannerData?.buttonLink}
                         />
                     </div>
                     <div className="col-12">
@@ -133,4 +206,4 @@ function EditBannerOCGenven() {
     )
 }
 
-export default EditBannerOCGenven
+export default EditEquipoOurPeople

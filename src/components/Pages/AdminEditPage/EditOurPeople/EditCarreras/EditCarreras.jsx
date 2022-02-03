@@ -1,50 +1,52 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOCGenven, updateBannerDataOCGenven} from '../../../../../services/ApiClient'
+import {getCarreras, updateCarrerasData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-function EditBannerOCGenven() {
 
-    const [bannerData, setBannerData] = useState()
+function EditCarreras() {
+
+    const [carrerasData, setCarrerasData] = useState()
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 id: '',
-                description: bannerData?.description,
-                imgURL: bannerData?.imgURL,
-                logoURL: bannerData?.logoURL,
+                title: carrerasData?.title,
+                description: carrerasData?.description,
+                buttonLink: carrerasData?.buttonLink,
+                buttonTitle: carrerasData?.buttonTitle,
             },
             error: {
+                title: true,
                 description: true,
-                imgURL: false,
-                logoURL: false,
+                buttonLink: false,
+                buttonTitle: false,
             },
             touch: {},
         },
         {
+            dtitle: v => v.length,
             description: v => v.length,
-            imgURL: v => v.length,
-            logoURL: v => v.length,
+            buttonLink: v => v.length,
+            buttonTitle: v => v.length,
         }
     )
-
-
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
 
-    const updateBanner = async (event) => {
+    const updateCarreras = async (event) => {
         event.preventDefault()
-        data.id = bannerData._id
+        data.id = carrerasData._id
 
         try {
-            await updateBannerDataOCGenven(data)
-                .then(banner => {
-                    setBannerData(banner[0])
+            await updateCarrerasData(data)
+                .then(carreras => {
+                    setCarrerasData(carreras[0])
                 })
                 .catch(error => {
                     setRegisterError(error)
@@ -53,15 +55,16 @@ function EditBannerOCGenven() {
             setRegisterError(err.response?.data?.message)
         }
     }
-    const handleBannerDescription = (e) => {
+    const handleCarrerasDescription = (e) => {
         data.description = e.target.getContent()
     }
 
 
     useEffect(() => {
+
         const fetchData = async () => {
-            const getBannerData = await getBannerOCGenven()
-            setBannerData(getBannerData)
+            const getCarrerasData = await getCarreras()
+            setCarrerasData(getCarrerasData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -69,15 +72,28 @@ function EditBannerOCGenven() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Banner Genven</h2>
-            <form className="AdminEdit__form" onSubmit={updateBanner}>
+            <h2>Carreras</h2>
+            <form className="AdminEdit__form" onSubmit={updateCarreras}>
                 <div className="row">
+                    <p className="AdminEdit__form__label">
+                        Título
+                    </p>
+                    <InputWithLabel
+                        value={data?.title}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        name="title"
+                        type="text"
+                        cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                        placeholder={carrerasData?.title}
+                    />
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Descripción
                         </p>
                         <Editor
-                            onChange={handleBannerDescription}
+                            initialValue={carrerasData?.description}
+                            onChange={handleCarrerasDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
                                 height: 200,
@@ -90,40 +106,38 @@ function EditBannerOCGenven() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description
                             }}
                         />
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Imagen
+                            buttonLink del botón
                         </p>
                         <InputWithLabel
-                            value={data?.imgURL}
+                            value={data?.buttonLink}
                             onBlur={onBlur}
                             onChange={onChange}
-                            name="imgURL"
+                            name="buttonLink"
                             type="text"
-                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.imgURL}
+                            cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
+                            placeholder={carrerasData?.buttonLink}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Logo
+                            Título del botón
                         </p>
                         <InputWithLabel
-                            value={data?.logoURL}
+                            value={data?.buttonTitle}
                             onBlur={onBlur}
                             onChange={onChange}
-                            name="logoURL"
+                            name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.logoURL}
+                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            placeholder={carrerasData?.buttonTitle}
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - MegatY mejor!
+                        </Button>
                     </div>
 
                 </div>
@@ -133,4 +147,4 @@ function EditBannerOCGenven() {
     )
 }
 
-export default EditBannerOCGenven
+export default EditCarreras

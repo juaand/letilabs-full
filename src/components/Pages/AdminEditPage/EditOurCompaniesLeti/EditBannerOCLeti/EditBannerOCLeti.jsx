@@ -15,16 +15,19 @@ function EditBannerOCLeti() {
                 id: '',
                 description: bannerData?.description,
                 imgURL: bannerData?.imgURL,
+                logoURL: bannerData?.logoURL,
             },
             error: {
                 description: true,
                 imgURL: false,
+                logoURL: false,
             },
             touch: {},
         },
         {
             description: v => v.length,
             imgURL: v => v.length,
+            logoURL: v => v.length,
         }
     )
 
@@ -103,6 +106,20 @@ function EditBannerOCLeti() {
                             type="text"
                             cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
+                        />
+                    </div>
+                    <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            logoURL
+                        </p>
+                        <InputWithLabel
+                            value={data?.logoURL}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="logoURL"
+                            type="text"
+                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
+                            placeholder={bannerData?.logoURL}
                         />
                     </div>
                     <div className="col-12">
