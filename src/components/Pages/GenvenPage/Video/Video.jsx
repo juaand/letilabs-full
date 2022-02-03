@@ -1,6 +1,5 @@
 import './Video.css'
 import React, {useState, useEffect} from 'react'
-import {getApiVideo} from '../../../../services/ApiClient'
 import {getOurCompaniesVideoGenven} from '../../../../services/ApiClient'
 
 function Video() {
@@ -9,8 +8,8 @@ function Video() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getVideoData = await getApiVideo()
-            setVideoData(getVideoData[0]?.url)
+            const getVideoData = await getOurCompaniesVideoGenven()
+            setVideoData(getVideoData[0]?.videoURL)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
