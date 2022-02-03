@@ -1,9 +1,23 @@
 import './Equipo.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+import {getEquipoGenvenOC} from '../../../../services/ApiClient'
 
 function Equipo() {
+
+    const [bannerData, setBannerData] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getBannerData = await getEquipoGenvenOC()
+            setBannerData(getBannerData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     return (
         <section className="container-fluid Equipo">
             <div className="row">
@@ -11,16 +25,18 @@ function Equipo() {
                     <div className="Equipo__red-stroke parallax-rotate" data-speed="0.1" />
                 </Fade>
                 <Fade triggerOnce>
-                    <div className="col-12 col-sm-6 Equipo__clip" />
+                    <div className="col-12 col-sm-6 Equipo__clip" style={{
+                        background: `url(${bannerData?.imgURL}) repeat left center / cover`,
+                    }} />
                 </Fade>
                 <div className="col-11 col-sm-5 offset-sm-6 Equipo__info">
                     <Fade triggerOnce direction="up" delay={200}>
-                        <p className="Equipo__desc">El laboratorio más grande y más importante por la cantidad de ventas que tenía, cantidad de productos, cantidad de categoríasdonde participaba.</p>
+                        <p className="Equipo__desc">{bannerData?.description}</p>
 
-                        <p className="blue-text">Ramón, director de unidad</p>
+                        <p className="blue-text">{bannerData?.person}</p>
                     </Fade>
                     <Fade triggerOnce direction="up" delay={200}>
-                        <Link to="/nuestra-filosofia" className="leti-btn">Conoce nuestra filosofía</Link>
+                        <Link to={bannerData?.buttonLink} className="leti-btn">{bannerData?.buttonTitle}</Link>
                     </Fade>
                 </div>
             </div>
