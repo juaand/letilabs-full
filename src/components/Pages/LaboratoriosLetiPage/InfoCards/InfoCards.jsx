@@ -1,10 +1,21 @@
 import './InfoCards.css'
-import React from 'react'
-import dataLeti from '../../../../data/dataLeti'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
-
+import {getOurCompaniesInfoCardsLeti} from '../../../../services/ApiClient'
 
 function InfoCards() {
+
+    const [dataLeti, setDataLeti] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getOurCompaniesOCData = await getOurCompaniesInfoCardsLeti()
+            setDataLeti(getOurCompaniesOCData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className="container InfoCards__Leti">
             <div className="row justify-content-around">
