@@ -120,6 +120,8 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 //admin I+D routes
 export const getBannerID = () => http.get("/bannerdataid")
 export const getInfoCardsIdData = () => http.get("/idinfocards")
+export const getGoalsIdData = () => http.get("/idgoals")
+export const getBottomIdData = () => http.get("/idbottom")
 
 //admin I+D alliances routes
 export const getLogoCarouselData = () => http.get("/alliancelogos")
