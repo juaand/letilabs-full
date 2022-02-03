@@ -18,7 +18,7 @@ function Banner() {
                             </h3>
                         </Fade>
                     </div>
-                    <Fade cascade delay={300} triggerOnce>
+                    <Fade cascade delay={1500} triggerOnce>
                         <div className="Banner__OurPhilosophy__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__OurPhilosophy__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>

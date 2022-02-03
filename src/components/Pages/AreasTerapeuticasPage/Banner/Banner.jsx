@@ -14,7 +14,7 @@ function Banner() {
                             <h3>Atendemos una variedad de áreas terapéuticas para cubrir con las necesidades de salud de los venezolanos y asegurar el bienestar del país</h3>
                         </Fade>
                     </div>
-                    <Fade cascade delay={300} triggerOnce>
+                    <Fade cascade delay={1500} triggerOnce>
                         <div className="Banner__AreasTerapeuticas__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__AreasTerapeuticas__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>

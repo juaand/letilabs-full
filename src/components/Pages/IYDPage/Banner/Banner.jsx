@@ -26,7 +26,7 @@ function Banner() {
                             <h3 delay={1000} dangerouslySetInnerHTML={{__html: getData?.description}} />
                         </Fade>
                     </div>
-                    <Fade cascade delay={300} triggerOnce>
+                    <Fade cascade delay={1500} triggerOnce>
                         <div className="Banner__IYD__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__IYD__bg parallax" data-speed="-.1" data-axis="vertical" style={{
                             background: `url("${getData?.imgURL}") no-repeat center center / cover`

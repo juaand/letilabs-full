@@ -23,7 +23,7 @@ function Banner() {
                             <Link to="/areas-terapeuticas" className="col-12 col-sm-3 col-lg-3  leti-btn">Descubre nuestras áreas terapéuticas</Link>
                         </div>
                     </Fade>
-                    <Fade cascade delay={300} triggerOnce>
+                    <Fade cascade delay={1500} triggerOnce>
                         <div className="Banner__Products__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__Products__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>

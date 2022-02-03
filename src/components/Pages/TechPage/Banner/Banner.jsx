@@ -14,7 +14,7 @@ function Banner() {
                             <h3>Nuestra planta está ubicada en Guarenas, estado Miranda, y es la planta producción de fármacos más grande a nivel nacional.<br /><br />Cuenta con la única planta de cefalosporínicos existentes en Venezuela y una de las pocas penicilínicos, siendo modelo de Latinoamérica.</h3>
                         </Fade>
                     </div>
-                    <Fade cascade delay={300} triggerOnce>
+                    <Fade cascade delay={1500} triggerOnce>
                         <div className="Banner__Tech__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                         <div className="Banner__Tech__bg parallax" data-speed="-.1" data-axis="vertical"></div>
                     </Fade>
