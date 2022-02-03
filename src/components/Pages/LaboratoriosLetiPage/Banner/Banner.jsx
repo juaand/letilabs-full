@@ -25,7 +25,7 @@ function Banner() {
                             <img className="Banner__Leti-logo" src={bannerData?.logoURL} alt="Leti" />
                         </Fade>
                         <Fade delay={1300} direction="left" triggerOnce>
-                            <h3>{bannerData?.description}</h3>
+                        <h3 dangerouslySetInnerHTML={{__html: bannerData?.description}} />
                         </Fade>
                     </div>
                     <Fade cascade delay={300} triggerOnce>

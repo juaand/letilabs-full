@@ -1,12 +1,14 @@
 
 import './Carousel.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
-import biocontrolledCarousel from '../../../../data/biocontrolledCarousel'
 import {Fade} from 'react-awesome-reveal'
-
+import {getCarrouselBiocontrolled} from '../../../../services/ApiClient'
 
 function Carousel() {
+
+    const [biocontrolledCarousel, setBiocontrolledCarousel] = useState([])
+
     let settings = {
         infinite: true,
         centerPadding: "40px",
@@ -27,7 +29,14 @@ function Carousel() {
         ]
     }
 
-
+    useEffect(() => {
+        const fetchData = async () => {
+            const getCarrouselData = await getCarrouselBiocontrolled()
+            setBiocontrolledCarousel(getCarrouselData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <section className="Carousel__Biocontrolled">
