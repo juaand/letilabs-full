@@ -123,6 +123,13 @@ export const getInfoCardsIdData = () => http.get("/idinfocards")
 export const getGoalsIdData = () => http.get("/idgoals")
 export const getBottomIdData = () => http.get("/idbottom")
 
+//admin I+D tech routes
+export const getBannerTech = () => http.get("/bannertech")
+export const getVideoTech = () => http.get("/videotech")
+export const getCarouselTech = () => http.get("/carrouseltech")
+export const getMapTech = () => http.get("/maptech")
+export const getBottomTech = () => http.get("/bottomtech")
+
 //admin I+D alliances routes
 export const getLogoCarouselData = () => http.get("/alliancelogos")
 
