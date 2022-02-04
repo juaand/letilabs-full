@@ -14,6 +14,7 @@
   height: 45rem;
   text-align: center;
   overflow: hidden;
+  z-index: 0;
 }
 
 .Certificate__img img {

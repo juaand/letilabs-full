@@ -130,11 +130,16 @@ export const getCarouselTech = () => http.get("/carrouseltech")
 export const getMapTech = () => http.get("/maptech")
 export const getBottomTech = () => http.get("/bottomtech")
 
+//admin I+D manufacture routes
+export const getBannerManufacture = () => http.get("/bannermanufacture")
+export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
+export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
+export const getBottomManufactureData = () => http.get("/bottommanufacture")
+
 //admin I+D alliances routes
 export const getLogoCarouselData = () => http.get("/alliancelogos")
 
 //admin edit routes purpose and responsability
-
 export const getBannerPurpose = () => http.get("/bannerdatapurpose")
 export const updateBannerDataPurpose = ({description, imgURL, id}) => http.patch("/updatebannerdatapurpose", {description, imgURL, id})
 export const getPurposeVideo = () => http.get("/purposevideo")
