@@ -133,6 +133,8 @@ export const getBottomTech = () => http.get("/bottomtech")
 //admin I+D manufacture routes
 export const getBannerManufacture = () => http.get("/bannermanufacture")
 export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
+export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
+export const getBottomManufactureData = () => http.get("/bottommanufacture")
 
 //admin I+D alliances routes
 export const getLogoCarouselData = () => http.get("/alliancelogos")

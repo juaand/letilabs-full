@@ -1,9 +1,12 @@
 import './Certificate.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from 'react-slick'
-import certificados from '../../../../data/certificados'
+import {getCertificatesManufacture} from '../../../../services/ApiClient'
+import {Fade} from 'react-awesome-reveal'
 
 function Certificate() {
+
+    const [certificados, setCertificados] = useState([])
 
     let settings = {
         slidesToShow: 1,
@@ -24,27 +27,37 @@ function Certificate() {
         ]
     }
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const getCertificates = await getCertificatesManufacture([])
+            setCertificados(getCertificates)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
-        <section className="container-fluid Certificate">
-            <div className="Certificate__img">
-                <Slider {...settings}>
-                    {certificados.map(el =>
-                        <>
-                            <img src={`./images/${el.picPath}`} alt={el?.title} />
-                        </>
-                    )}
-                </Slider>
-            </div>
-            <main className="container Certificate__visible">
-                <div className="row">
-                    <div className="col-12 offset-sm-6 col-sm-6 Certificate__info">
-                        <h1>Cumplimos con todas las regulaciones</h1>
-                        <p>Para producir medicamentos en Venezuela, primero
-                            hay que cumplir con varias exigencias para asegurar que el producto sea seguro y de calidad.</p>
-                    </div>
+        <Fade triggerOnce direction="up">
+            <section className="container-fluid Certificate">
+                <div className="Certificate__img">
+                    <Slider {...settings}>
+                        {certificados?.map(el =>
+                            <>
+                                <img src={el?.imgURL} alt={el?.title} />
+                            </>
+                        )}
+                    </Slider>
                 </div>
-            </main>
-        </section>
+                <main className="container Certificate__visible">
+                    <div className="row">
+                        <div className="col-12 offset-sm-6 col-sm-6 Certificate__info">
+                            <h1>{certificados[0]?.title}</h1>
+                            <p dangerouslySetInnerHTML={{__html: certificados[0]?.desc}} />
+                        </div>
+                    </div>
+                </main>
+            </section>
+        </Fade>
     )
 }
 
