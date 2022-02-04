@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {getVideoTech} from '../../../../services/ApiClient'
 
-
 function Video() {
 
     const [videoData, setVideoData] = useState()
