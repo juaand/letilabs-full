@@ -89,7 +89,6 @@ const VerticalCarousel = () => {
         const fetchData = async () => {
             const getCarouselData = await getCarouselTech()
             setAreasTeraData(getCarouselData)
-            console.log(getCarouselData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
