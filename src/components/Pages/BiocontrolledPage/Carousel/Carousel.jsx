@@ -42,10 +42,10 @@ function Carousel() {
         <section className="Carousel__Biocontrolled">
             <div className="container">
                 <Fade direction="down" triggerOnce>
-                    <h1>Logros <br /> hasta ahora</h1>
+                    <h1 dangerouslySetInnerHTML={{__html: biocontrolledCarousel[0]?.title}} />
                 </Fade>
             </div>
-            <Fade triggerOnce>
+            <Fade triggerOnce direction="up">
                 <div className="container-fluid p-0">
                     <Slider {...settings}>
                         {biocontrolledCarousel.map(el =>
