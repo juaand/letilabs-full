@@ -1,7 +1,7 @@
 import './Form.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
-import {vigilanciaForm} from '../../../../services/ApiClient'
+import {getTitleFarmPurpose, vigilanciaForm} from '../../../../services/ApiClient'
 import Button from '../../../Form/FormButton/FormButton'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
@@ -54,6 +54,7 @@ function Form() {
     const [effects, setEffects] = useState(state.data.effects)
     const [formResponse, setFormResponse] = useState([])
     const [message, setMessage] = useState(false)
+    const [titleFarm, setTitleFarm] = useState([])
 
     const {data, error, touch} = state
 
@@ -94,6 +95,15 @@ function Form() {
     const getVadevecumNames = vadevecum.map(el => el.name)
     const dataList = [...new Set(getVadevecumNames)].sort()
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const getTitleFarm = await getTitleFarmPurpose()
+            setTitleFarm(getTitleFarm)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className="PurposeForm">
             <div className="container">
@@ -114,11 +124,11 @@ function Form() {
                             <>
                                 <div className="row">
                                     <div className="col-12">
-                                        <h1>Estamos para cuidarte</h1></div>
+                                        <h1>{titleFarm?.title}</h1>
+                                    </div>
                                     <div className="col-12 col-sm-5">
-                                        <p><strong>Farmacovigilancia</strong></p>
-                                        <p>Conscientes de la responsabilidad por ofrecer medicamentos de alta calidad, facilitamos la recolección, evaluación e investigación de la información sobre posibles reacciones adversas de nuestros medicamentos, para realizar correctivos y establecer la máxima seguridad terapéutica de los mismos.</p>
-                                        <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarle.</p>
+                                        <p><strong>{titleFarm?.subtitle}</strong></p>
+                                        <p dangerouslySetInnerHTML={{__html: titleFarm?.desc}} />
                                     </div>
                                 </div>
                                 <div className="row">
@@ -224,7 +234,7 @@ function Form() {
                                                 <div className="col-12 d-flex justify-content-end">
                                                     <Button
                                                         type="submit"
-                                                        className={`leti-btn ${isError && "disabled"}`}
+                                                        cssStyle={`leti-btn ${isError && "disabled"}`}
                                                     >
                                                         Enviar
                                                     </Button>

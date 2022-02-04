@@ -1,10 +1,12 @@
 import './Timeline.css'
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
-import purposeTimeline from '../../../../data/purposeTimeline'
 import {Fade} from 'react-awesome-reveal'
+import {getTimeLinePurpose} from '../../../../services/ApiClient'
 
 function Timeline() {
+
+    const [purposeTimeline, setPurposeTimeline] = useState([])
 
     let settings = {
         slidesToShow: 1,
@@ -24,29 +26,35 @@ function Timeline() {
     }
 
     useEffect(() => {
-        const getAllDesc = Array.from(new Set(document.querySelectorAll('.Timeline__leti__desc')))
+        const fetchData = async () => {
+            const getPurposeTimeline = await getTimeLinePurpose()
+            setPurposeTimeline(getPurposeTimeline)
 
-        const getDescX = getAllDesc[0].getBoundingClientRect().x
+            const getAllDesc = Array.from(new Set(document.querySelectorAll('.Timeline__leti__desc')))
 
-        const getDescsMaxHeight = Math.max(...getAllDesc.map(item => item.offsetHeight))
+            const getDescX = getAllDesc[0].getBoundingClientRect().x
 
-        const getTimelineHeight = document.querySelector('.Timeline__leti__info').offsetHeight
+            const getDescsMaxHeight = Math.max(...getAllDesc.map(item => item.offsetHeight))
 
-        const PrevArrow = document.querySelector('.Timeline__leti .slick-prev')
-        const NextArrow = document.querySelector('.Timeline__leti .slick-next')
+            const getTimelineHeight = document.querySelector('.Timeline__leti__info').offsetHeight
 
-        if (purposeTimeline.length > 1 && window.screen.width > 576) {
-            //Arrows top position
-            PrevArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
-            NextArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
+            const PrevArrow = document.querySelector('.Timeline__leti .slick-prev')
+            const NextArrow = document.querySelector('.Timeline__leti .slick-next')
 
-            //Prev arrows left position
-            PrevArrow.style.left = `${(-getDescX / 10) + 4}rem`
-            //Next arrows right position
-            NextArrow.style.left = `${(-getDescX / 10) + 14}rem`
+            if (purposeTimeline?.length > 1 && window.screen.width > 576) {
+                //Arrows top position
+                PrevArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
+                NextArrow.style.top = `${((getTimelineHeight - getDescsMaxHeight) / 10) - 12}rem`
+
+                //Prev arrows left position
+                PrevArrow.style.left = `${(-getDescX / 10) + 4}rem`
+                //Next arrows right position
+                NextArrow.style.left = `${(-getDescX / 10) + 14}rem`
+            }
         }
+        fetchData()
 
-    }, [])
+    }, [purposeTimeline?.length])
 
     return (
         <Fade direction="up" triggerOnce>
@@ -56,12 +64,11 @@ function Timeline() {
                         <>
                             <div className="Timeline__leti__product row">
                                 <div className="Timeline__leti__image col-12 col-sm-6" style={{
-                                    background: `url("./images/${el.imgURL}") no-repeat left center / cover`
+                                    background: `url(${el.imgURL}) no-repeat left center / cover`
                                 }}></div>
                                 <div className="col-12 col-sm-6 Timeline__leti__info">
                                     <div className="row">
-                                        <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}}>
-                                        </p>
+                                        <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}} />
                                     </div>
                                 </div>
                             </div>
