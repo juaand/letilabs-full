@@ -153,7 +153,6 @@ export const getTitleFarmPurpose = () => http.get("/titlefarmdatapurpose")
 export const updateTitleFarmDataPurpose = ({title, id}) => http.patch("/updatetitlefarmdatapurpose", {title, id})
 
 //admin edit routes our people
-
 export const getBannerOurPeople = () => http.get("/bannerdataourpeople")
 export const updateBannerOurPeople = ({description, imgURL, title, id}) => http.patch("/updatebannerdataourpeople", {description, imgURL, title, id})
 export const getInfoCardsOurPeople = () => http.get("/ourpeopleinfocards")
