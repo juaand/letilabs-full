@@ -140,6 +140,7 @@ export const getBottomManufactureData = () => http.get("/bottommanufacture")
 export const getBannerAlliances = () => http.get("/banneralliances")
 export const getLogoCarouselData = () => http.get("/alliancelogos")
 export const getFormAlliances = () => http.get("/allianceform")
+export const getBottomAlliancesData = () => http.get("/bottomalliances")
 
 //admin edit routes purpose and responsability
 export const getBannerPurpose = () => http.get("/bannerdatapurpose")
