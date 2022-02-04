@@ -301,6 +301,10 @@
   opacity: 0.7;
 }
 
+.Carousel__Alliances__alone img {
+  max-height: 10rem;
+}
+
 @media (max-width: 576px) {
   .Carousel__Alliances {
     margin: 0;

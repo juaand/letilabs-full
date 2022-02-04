@@ -82,6 +82,12 @@
         }
       }
     }
+
+    &__alone {
+      img {
+        max-height: 10rem;
+      }
+    }
   }
 }
 

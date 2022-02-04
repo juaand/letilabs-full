@@ -39,14 +39,14 @@ function Carousel() {
 
     return (
         <>
-            {
-                getData.length >= 4 &&
-                <Fade delay={800} triggerOnce>
-                    <section className="Carousel__Alliances">
-                        <div className="container">
-                            <h1>Nuestros aliados en el tiempo</h1>
-                        </div>
-                        <div className="container-fluid p-0">
+
+            <Fade delay={800} triggerOnce>
+                <section className="Carousel__Alliances">
+                    <div className="container">
+                        <h1>{getData[0]?.title}</h1>
+                    </div>
+                    <div className="container-fluid p-0">
+                        {getData.length >= 4 ?
                             <Slider {...settings}>
                                 {getData.map(el =>
                                     <div>
@@ -58,10 +58,21 @@ function Carousel() {
                                     </div>
                                 )}
                             </Slider>
-                        </div>
-                    </section>
-                </Fade>
-            }
+                            :
+                            <div className="container">
+                                <div className="row justify-content-center align-items-center Carousel__Alliances__alone">
+                                {getData.map(el =>
+                                    <div className="col-4 d-flex justify-content-center">
+                                        <img src={el.picPath} alt=""/>
+                                    </div>
+                                )}
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </section>
+            </Fade>
+
         </>
     )
 }
