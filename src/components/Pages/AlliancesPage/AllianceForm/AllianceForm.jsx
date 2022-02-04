@@ -1,7 +1,7 @@
 import './AllianceForm.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
-import {vigilanciaForm} from '../../../../services/ApiClient'
+import {getFormAlliances, vigilanciaForm} from '../../../../services/ApiClient'
 import Button from '../../../Form/FormButton/FormButton'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
@@ -9,6 +9,7 @@ import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel
 import dataCountry from '../../../../data/dataCountry'
 
 function AllianceForm() {
+
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -48,6 +49,7 @@ function AllianceForm() {
     const [init, setInit] = useState(state.data.desc)
     const [formResponse, setFormResponse] = useState([])
     const [message, setMessage] = useState(false)
+    const [formData, setFormData] = useState([])
 
     const {data, error, touch} = state
 
@@ -75,6 +77,15 @@ function AllianceForm() {
 
     const isError = Object.values(error).some(err => err)
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const getFormAlliancesData = await getFormAlliances()
+            setFormData(getFormAlliancesData[0])
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className="AllianceForm">
             <div className="container">
@@ -92,14 +103,13 @@ function AllianceForm() {
                             <>
                                 <div className="row">
                                     <div className="col-12">
-                                        <h1>¡Tu contribución cuenta!</h1>
+                                        <h1>{formData?.title}</h1>
                                     </div>
                                     <div className="col-12 col-sm-5">
-                                        <p>¿Quieres aliarte con nosotros?
-                                            Compártenos tu iniciativa aquí o contáctanos.</p>
+                                        <p dangerouslySetInnerHTML={{__html: formData?.desc}} />
                                         <div className="AllianceForm__links">
-                                            <a href="tel:+582123602511"
-                                            >+582123602511</a>                                     <a href="mailto:comunicaciones.leti@leti.com">comunicaciones.leti@leti.com.ve</a></div>
+                                            <a href={`tel:${formData?.phone}`}
+                                            >{formData?.phone}</a>                                     <a href={`mailto:${formData?.email}`}>{formData?.email}</a></div>
                                     </div>
                                 </div>
                                 <div className="row">
@@ -204,7 +214,7 @@ function AllianceForm() {
 
                                                     <Button
                                                         type="submit"
-                                                        className={`leti-btn ${isError && "disabled"}`}
+                                                        cssStyle={`leti-btn ${isError && "disabled"}`}
                                                     >
                                                         Enviar
                                                     </Button>
