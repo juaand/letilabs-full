@@ -1,33 +1,49 @@
 import './BottomCta.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
+import {getBottomOurPeople} from '../../../../services/ApiClient'
 
 function BottomCta() {
-    return (
-        <section className="container-fluid BottomCta">
-            <div className="row">
+
+    const [data, setData] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getBottomData = await getBottomOurPeople()
+            setData(getBottomData)
+
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
+
+    return (<section className="container-fluid BottomCta">
+        <div className="row">
+            {data?.map((el, key) =>
                 <div className="col-12 col-sm-6 p-0 BottomCta__img">
-                    <div className="BottomCta__instalaciones" />
+                    {key === 0 ? <div className="BottomCta__instalaciones" style={{
+                        background: `url("${el?.img}") no-repeat center center / cover`
+                    }} /> :
+                        <div className="BottomCta__empresas" style={{
+                            background: `url("${el?.img}") no-repeat center center / cover`
+                        }} />}
                     <div className="BottomCta__title">
-                        <Fade direction="up" triggerOnce>
-                            <h2>Conoce donde trabajamos</h2>
-                            <Link to="/" className="leti-btn">Nuestras instalaciones</Link>
+                        <Fade {...key > 1 && `delay=${300}`} direction="up" triggerOnce>
+                            <h2>{el?.title}</h2>
+                            {el?.url?.includes('http') ?
+                                <a href={el?.buttonLink} target="_blank" className="leti-btn" rel="noopener noreferrer">{el?.buttonTitle}</a>
+                                :
+                                <Link to={el?.buttonLink} className="leti-btn">{el?.buttonTitle}</Link>
+                            }
                         </Fade>
                     </div>
                 </div>
-                <div className="col-12 col-sm-6 p-0 BottomCta__img">
-                    <div className="BottomCta__empresas" />
-                    <div className="BottomCta__title">
-                        <Fade cascade delay={300} direction="up" triggerOnce>
-                            <h2>Conoce las unidades que forman parte del grupo
-                            </h2>
-                            <Link to="/" className="leti-btn">Nuestras empresas</Link>
-                        </Fade>
-                    </div>
-                </div>
-            </div>
-        </section>
+            )}
+        </div>
+    </section>
     )
 }
 
