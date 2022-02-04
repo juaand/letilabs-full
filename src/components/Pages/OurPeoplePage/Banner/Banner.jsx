@@ -1,21 +1,35 @@
 import './Banner.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Fade} from "react-awesome-reveal"
+import {getBannerOurPeople} from '../../../../services/ApiClient'
+
 
 function Banner() {
+
+    const [data, setData] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getBannerData = await getBannerOurPeople()
+            setData(getBannerData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className="container-fluid Banner__OurPeople">
             <div className="container">
                 <div className="row d-flex">
                     <div className="col-12 col-sm-6 Banner__OurPeople__title">
                         <Fade direction="left" duration={600} triggerOnce>
-                            <h1>Contamos con un talento humano especializado que tienen años trabajando en el campo, y más importante, trabajando con nosotros</h1>
-                            <p>Gracias a nuestro talento es posible desarrollar nuestro amplio y diverso portafolio, que cuidan de <span className="blue-text">la salud de todo el país.</span></p>
+                            <h1 dangerouslySetInnerHTML={{__html: data?.title}} />
+                            <p dangerouslySetInnerHTML={{__html: data?.description}} />
                         </Fade>
                     </div>
                     <div className="col-12 col-sm-6 Banner__OurPeople__bg">
-                        <Fade delay={300} duration={600} triggerOnce>
-                            <img src="/images/our-people-bg.png" alt="Propósito y responsabilidad social banner" />
+                        <Fade delay={1000} duration={600} triggerOnce>
+                            <img src={data?.imgURL} alt="Grupo Leti Nuestra gente" />
                         </Fade>
                     </div>
                 </div>

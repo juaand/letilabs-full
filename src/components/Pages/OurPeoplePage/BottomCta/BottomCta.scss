@@ -60,16 +60,6 @@
       opacity: 1;
     }
   }
-
-  &__instalaciones {
-    background: url(../../../../images/nuestra-gente-instalaciones.jpg)
-      no-repeat center / cover;
-  }
-
-  &__empresas {
-    background: url(../../../../images/nuestra-gente-empresas.jpg) no-repeat
-      center center / cover;
-  }
 }
 
 @media (max-width: 576px) {

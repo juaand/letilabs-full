@@ -1,15 +1,28 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {getCarreras} from '../../../../services/ApiClient'
 
 function Careers() {
+
+    const [data, setData] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getCarrerasData = await getCarreras()
+            setData(getCarrerasData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <section className="container Careers">
             <div className="row justify-content-center">
                 <div className="col-12 col-sm-4">
-                    <h1>Carreras</h1>
-                    <p>Entérate de las posiciones que tenemos abiertas en el grupo</p>
+                    <h1>{data?.title}</h1>
+                    <p>{data?.description}</p>
                 </div>
                 <div className="col-12 col-sm-4 d-flex align-items-center">
-                    <a href="https://www.linkedin.com/company/laboratorios-leti-s-a-v-/jobs/" target="_blank" className="leti-btn" rel="noopener noreferrer">Trabaja con nosotros</a>
+                    <a href={data?.buttonLink} target="_blank" className="leti-btn" rel="noopener noreferrer">{data?.buttonTitle}</a>
                 </div>
             </div>
         </section>

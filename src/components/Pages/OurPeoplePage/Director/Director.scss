@@ -6,8 +6,6 @@
   position: relative;
 
   &__image {
-    background: url(../../../../images/director-image.jpg) no-repeat center
-      center / cover;
     height: 61rem;
     padding: 0;
     position: absolute;
@@ -17,7 +15,7 @@
 
   &__info {
     font-size: 2.4rem;
-    padding: 10rem 0;
+    padding: 8rem 0 10rem 0;
     position: relative;
 
     h1 {
@@ -27,10 +25,29 @@
       top: -20rem;
     }
 
-    p {
-      width: 30rem;
+    p, small {
       padding-left: 3rem;
+    }
+
+    p {
+      margin-bottom: 0rem;
+      position: relative;
+
+      &:before, &:after {
+        content: '"';
+        font-size: 3rem;
+      }
+    }
+
+    small {
       margin-bottom: 3rem;
+      display: block;
+      font-size: 1.6rem;
+      font-style: italic;
+
+      &:before {
+        content: '- ';
+      }
     }
 
     .leti-btn {

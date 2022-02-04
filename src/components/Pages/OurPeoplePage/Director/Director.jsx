@@ -1,20 +1,38 @@
 import './Director.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+import {getEquipoOurPeople} from '../../../../services/ApiClient'
+
 
 function Director() {
+
+    const [dataDirector, setDataDirector] = useState([])
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getEquipoData = await getEquipoOurPeople()
+            setDataDirector(getEquipoData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     return (
         <section className="container-fluid Director">
             <div className="container">
                 <div className="row">
-                    <div className="col-12 col-sm-6 Director__image" />
+                    <div className="col-12 col-sm-6 Director__image" style={{
+                        background: `url(${dataDirector?.imgURL}) no-repeat center center / cover`,
+                    }}/>
 
                     <div className="col-12 col-sm-6 offset-sm-6 Director__info">
-                        <h1>Liderados por profesionales de trayectoria</h1>
+                        <h1>{dataDirector?.title}</h1>
                         <Fade triggerOnce direction="up" duration={1600}>
-                            <p>(Cita director de Laboratorios Leti)</p>
-                            <Link to="/nuestra-filosofia" className="leti-btn">Concoce nuestra filosofía</Link>
+                            <p>{dataDirector?.description}</p>
+                            <small>{dataDirector?.person}</small>
+                            <Link to={dataDirector?.buttonLink} className="leti-btn">{dataDirector?.buttonTitle}</Link>
                         </Fade>
                     </div>
                 </div>
