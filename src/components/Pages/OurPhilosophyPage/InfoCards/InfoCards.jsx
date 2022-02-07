@@ -1,11 +1,14 @@
 import './InfoCards.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
-import dataOurPhilosophy from '../../../../data/dataOurPhilosophy'
 import Slider from 'react-slick'
+import {getInfoCardsOurPhilosophy} from '../../../../services/ApiClient'
 
 
 function InfoCards() {
+
+    const [dataOurPhilosophy, setDataOurPhilosophy] = useState()
+
     let settings = {
         responsive: [
             {
@@ -24,16 +27,26 @@ function InfoCards() {
             }
         ]
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getInfoCardsData = await getInfoCardsOurPhilosophy()
+            setDataOurPhilosophy(getInfoCardsData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <>
             <section className="container InfoCards d-none d-sm-block">
                 <div className="row justify-content-around">
                     <Fade className="col" cascade delay={300} direction="up" triggerOnce>
-                        {dataOurPhilosophy.map(el =>
+                        {dataOurPhilosophy?.map(el =>
                             <div className="InfoCards__OurPhilosophy__cards" style={{
-                                background: `url(./images/${el.picPath}) no-repeat center center / cover`,
+                                background: `url(${el?.picPath}) no-repeat center center / cover`,
                             }}>
-                                <h4>{el.title}</h4>
+                                <h4>{el?.title}</h4>
                             </div>
                         )}
                     </Fade>
@@ -44,11 +57,12 @@ function InfoCards() {
             <section className="container-fluid InfoCards__OurPhilosophy d-block d-sm-none">
                 <div className="row justify-content-center">
                     <Slider {...settings}>
-                        {dataOurPhilosophy.map(el =>
+                        {dataOurPhilosophy?.map(el =>
                             <>
                                 <div className="InfoCards__OurPhilosophy__cards" style={{
-                                    background: `url(./images/${el.picPath}) no-repeat center center / cover`,
+                                    background: `url(${el?.picPath}) no-repeat center center / cover`,
                                 }}>
+                                    <h4>{el?.title}</h4>
                                 </div>
                             </>
                         )}
