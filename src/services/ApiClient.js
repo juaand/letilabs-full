@@ -197,6 +197,7 @@ export const addProductApi = ({name, line, health_register, picPath, QRpath, act
 export const getBannerOurPhilosophy = () => http.get("/bannerourphilosophy")
 export const getInfoCardsOurPhilosophy = () => http.get("/ourphilosophyinfocards")
 export const getLetterOurPhilosophy = () => http.get("/ourphilosophyletter")
+export const getBottomOurPhilosophy = () => http.get("/bottomourphilosophy")
 
 //news routes
 export const getNews = () => http.get("/newsdata")
