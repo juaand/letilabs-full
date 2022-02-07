@@ -214,7 +214,7 @@ function QuestionModal({hideModal}) {
                                                 <div className="col-12 d-flex justify-content-end">
                                                     <Button
                                                         type="submit"
-                                                        className={`leti-btn ${isError && "disabled"}`}
+                                                        cssStyle={`leti-btn ${isError && "disabled"}`}
                                                     >
                                                         Enviar
                                                     </Button>

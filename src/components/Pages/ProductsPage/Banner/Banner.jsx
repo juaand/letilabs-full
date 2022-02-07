@@ -1,9 +1,22 @@
 import './Banner.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
+import {getProductBanner} from '../../../../services/ApiClient'
 
 function Banner() {
+
+    const [data, setData] = useState()
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getBannerData = await getProductBanner()
+            setData(getBannerData[0])
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
 
     return (
         <section className="container-fluid Banner__Products">
@@ -11,21 +24,21 @@ function Banner() {
                 <div className="row">
                     <div className="col-12 col-sm-9 Banner__Products__title">
                         <Fade delay={300} direction="left" triggerOnce>
-                            <h1>Trabajamos cada día para poner nuestros conocimientos y habilidades al servicio de las personas:</h1>
-                            <h3>
-                                Desarrollando y poniendo a su disposición productos que abarquen una amplia gama de necesidades.
-                            </h3>
+                            <h1 dangerouslySetInnerHTML={{__html: data?.title}} />
+                            <h3 dangerouslySetInnerHTML={{__html: data?.description}} />
                         </Fade>
                     </div>
                     <Fade delay={300} direction="down" triggerOnce className="col-12 Banner__Products__btns">
                         <div className="row">
-                            <Link to="/listado-de-productos" className="col-12 col-sm-3 col-lg-3 leti-btn">Conoce todos los productos</Link>
-                            <Link to="/areas-terapeuticas" className="col-12 col-sm-3 col-lg-3  leti-btn">Descubre nuestras áreas terapéuticas</Link>
+                            <Link to={data?.button1Link} className="col-12 col-sm-3 col-lg-3 leti-btn">{data?.button1Title}</Link>
+                            <Link to={data?.button2Link} className="col-12 col-sm-3 col-lg-3  leti-btn">{data?.button2Title}</Link>
                         </div>
                     </Fade>
                     <Fade cascade delay={1500} triggerOnce>
                         <div className="Banner__Products__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
-                        <div className="Banner__Products__bg parallax" data-speed="-.1" data-axis="vertical"></div>
+                        <div className="Banner__Products__bg parallax" data-speed="-.1" data-axis="vertical" style={{
+                            background: `url("${data?.imgURL}") no-repeat center / contain`
+                        }}></div>
                     </Fade>
                 </div>
             </div>

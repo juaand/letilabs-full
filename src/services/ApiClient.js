@@ -192,6 +192,9 @@ export const getProductList = () => http.get("/listado-productos")
 export const deleteProduct = (id) => http.get(`/producto/${id}/delete`)
 export const updateProduct = ({id, name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation, indication}) => http.patch(`/producto/${id}/update`, {name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation, indication})
 export const addProductApi = ({name, line, health_register, picPath, QRpath, active_principle, posology, presentation, composition, indication}) => http.post("/crear-producto", {name, line, health_register, picPath, QRpath, active_principle, posology, presentation, composition, indication})
+export const getProductBanner = () => http.get("/bannerproduct")
+export const getProductBottom = () => http.get("/bottomproduct")
+export const getProductListBanner = () => http.get("/listadoproductosbanner")
 
 // our philosophy page
 export const getBannerOurPhilosophy = () => http.get("/bannerourphilosophy")

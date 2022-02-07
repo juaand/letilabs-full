@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent} from '../../../services/ApiClient'
+import {createContent, getProductBottom} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import FindProduct from './FindProduct/FindProduct'
@@ -14,6 +14,8 @@ function ProductsPage() {
         url: '/productos',
         name: 'Productos',
     }
+
+    const [bottomData, setBottomData] = useState()
 
     useEffect(() => {
         if (user) {
@@ -38,8 +40,17 @@ function ProductsPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+
+        const fetchData = async () => {
+            const getBottomData = await getProductBottom()
+            setBottomData(getBottomData[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
+
     return (
         <>
             <Helmet>
@@ -49,9 +60,9 @@ function ProductsPage() {
             </Helmet>
             <main>
                 <Banner />
-                <FindProduct />
-                <Bottom />
-                <FarmacoVigilancia />
+                <FindProduct info={bottomData} />
+                <Bottom info={bottomData} />
+                <FarmacoVigilancia info={bottomData} />
             </main>
         </>
     )

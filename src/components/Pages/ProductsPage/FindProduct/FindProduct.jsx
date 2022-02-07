@@ -1,13 +1,15 @@
 import './FindProduct.css'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../hooks/useFormState'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 import dataSpecialities from '../../../../data/dataSpecialities'
 import {Slide} from 'react-awesome-reveal'
-import vadevecum from '../../../../data/vadevecum'
 import {useHistory} from 'react-router'
+import {getVadevecumData} from '../../../../services/ApiClient'
 
-function FindProduct() {
+function FindProduct({info}) {
+
+    const [vadevecum, setVadevecum] = useState([])
 
     const {state, onChange} = useFormState(
         {
@@ -37,40 +39,51 @@ function FindProduct() {
         history.push({
             pathname: '/producto',
             state: {
-                buscar: data.search,
-                especialidad: data.especialidad
+                buscar: data?.search,
+                especialidad: data?.especialidad
             }
         })
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getData = await getVadevecumData()
+            setVadevecum(getData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+
     return (
         <Slide direction="up" triggerOnce>
             <section className="container-fluid FindProduct no-back">
                 <div className="container">
                     <div className="row FindProduct__row">
                         <div className="col-12">
-                            <h1>Buscas un medicamento en específico?<br />¡Encuéntralo aquí!</h1>
+                            <h1 dangerouslySetInnerHTML={{__html: info?.findProductsTitle}}></h1>
                             <form className="FindProduct__form">
                                 <div className="input-group">
                                     <div className="col-12 p-0 col-sm-7 FindProduct__label">
                                         <DropdownWithLabel
                                             placeholder="Escribe nombre o condición"
-                                            value={data.search}
+                                            value={data?.search}
                                             label=""
                                             name="search"
                                             onChange={onChange}
-                                            cssStyle={`product form-control ${touch.search && error.search ? "is-invalid" : ""}`}
+                                            cssStyle={`product form-control ${touch?.search && error?.search ? "is-invalid" : ""}`}
                                             list="searchs"
-                                            data={[...new Set(vadevecum.map(v => v.name))].sort()}
+                                            data={[...new Set(vadevecum?.map(v => v.name))].sort()}
                                         />
                                     </div>
                                     <div className="col-12 p-0 col-sm-4">
                                         <DropdownWithLabel
                                             placeholder="Especialidad médica"
-                                            value={data.especialidad}
+                                            value={data?.especialidad}
                                             label=""
                                             name="especialidad"
                                             onChange={onChange}
-                                            cssStyle={`category form-control ${touch.especialidad && error.especialidad ? "is-invalid" : ""}`}
+                                            cssStyle={`category form-control ${touch?.especialidad && error?.especialidad ? "is-invalid" : ""}`}
                                             list="especialidades"
                                             data={dataSpecialities}
                                         />
