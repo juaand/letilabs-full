@@ -193,6 +193,9 @@ export const deleteProduct = (id) => http.get(`/producto/${id}/delete`)
 export const updateProduct = ({id, name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation, indication}) => http.patch(`/producto/${id}/update`, {name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation, indication})
 export const addProductApi = ({name, line, health_register, picPath, QRpath, active_principle, posology, presentation, composition, indication}) => http.post("/crear-producto", {name, line, health_register, picPath, QRpath, active_principle, posology, presentation, composition, indication})
 
+// our philosophy page
+export const getBannerOurPhilosophy = () => http.get("/bannerourphilosophy")
+
 //news routes
 export const getNews = () => http.get("/newsdata")
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})
