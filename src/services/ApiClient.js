@@ -119,28 +119,45 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 
 //admin I+D routes
 export const getBannerID = () => http.get("/bannerdataid")
+export const updateBannerID = ({title, description, imgURL, id}) => http.get("/updatebannerdataid", {title, description, imgURL, id})
 export const getInfoCardsIdData = () => http.get("/idinfocards")
+export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.get("/updateidinfocards", {title, picPath, info, btn, id})
 export const getGoalsIdData = () => http.get("/idgoals")
+export const updateGoalsIdData = ({name, title, desc, id}) => http.get("/updateidgoals", {name, title, desc, id})
 export const getBottomIdData = () => http.get("/idbottom")
+export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updateidbottom", {title, img, url, btn, id})
+
 
 //admin I+D tech routes
 export const getBannerTech = () => http.get("/bannertech")
+export const updateBannerTech = ({title, description, imgURL, id}) => http.get("/updatebannerdatatech", {title, description, imgURL, id})
 export const getVideoTech = () => http.get("/videotech")
 export const getCarouselTech = () => http.get("/carrouseltech")
 export const getMapTech = () => http.get("/maptech")
 export const getBottomTech = () => http.get("/bottomtech")
+export const updateBottomTechData = ({title, img, url, btn, id}) => http.get("/updatebottomtech", {title, img, url, btn, id})
 
 //admin I+D manufacture routes
 export const getBannerManufacture = () => http.get("/bannermanufacture")
+export const updateBannerManufacture = ({title, description, imgURL, id}) => http.get("/updatebannerdatamanufacture", {title, description, imgURL, id})
 export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
+export const updateCarouselManufacture = ({title, info, id}) => http.get("/updatecarrouselmanufacture", {title, info, id})
 export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
+export const updateCertificatesManufactureData = ({title, imgURL, desc, id}) => http.get("/updatecertificatesmanufacture", {title, imgURL, desc, id})
 export const getBottomManufactureData = () => http.get("/bottommanufacture")
+export const updateBottomManufactureData = ({title, img, url, btn, id}) => http.get("/updatebottommanufacture", {title, img, url, btn, id})
+
 
 //admin I+D alliances routes
 export const getBannerAlliances = () => http.get("/banneralliances")
+export const updateBannerAlliances = ({title, description, imgURL, id}) => http.get("/updatebannerdataid", {title, description, imgURL, id})
 export const getLogoCarouselData = () => http.get("/alliancelogos")
+export const updateLogoCarouselDataAlliances = ({title, picPath, id}) => http.get("/updatealliancelogos", {title, picPath, id})
 export const getFormAlliances = () => http.get("/allianceform")
+export const updateFormAlliances = ({title, desc, phone, email, id}) => http.get("/updateallianceform", {title, desc, phone, email, id})
 export const getBottomAlliancesData = () => http.get("/bottomalliances")
+export const updateBottomAlliancesData = ({title, img, url, btn, id}) => http.get("/bottomalliances", {title, img, url, btn, id})
+
 
 //admin edit routes purpose and responsability
 export const getBannerPurpose = () => http.get("/bannerdatapurpose")

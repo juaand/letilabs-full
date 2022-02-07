@@ -1,10 +1,18 @@
 import React from 'react'
+import EditBannerID from './EditBannerIAD/EditBannerIAD'
+import EditBottomID from './EditBottomID/EditBottomID'
+import EditGoalsInfo from './EditGoalsInfo/EditGoalsInfo'
+import EditInfoCardsID from './EditInfoCardsID/EditInfoCardsID'
 
 function EditIAndD() {
     return (
-        <main>
-            <h2 className="EditContent EditContent__title">Editar página investigación y desarrollo</h2>
-        </main>
+        <div>
+            <h1>Editar Investigación y Desarrollo</h1>
+            <EditBannerID />
+            <EditGoalsInfo />
+            <EditInfoCardsID />
+            <EditBottomID />
+        </div>
     )
 }
 
