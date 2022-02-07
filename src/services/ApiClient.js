@@ -199,6 +199,10 @@ export const getInfoCardsOurPhilosophy = () => http.get("/ourphilosophyinfocards
 export const getLetterOurPhilosophy = () => http.get("/ourphilosophyletter")
 export const getBottomOurPhilosophy = () => http.get("/bottomourphilosophy")
 
+//therapeutic areas page
+export const getBannerTA = () => http.get("/bannerta")
+export const getCarrouselTA = () => http.get("/carrouselta")
+
 //news routes
 export const getNews = () => http.get("/newsdata")
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})
