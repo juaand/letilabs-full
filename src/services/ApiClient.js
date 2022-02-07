@@ -202,6 +202,7 @@ export const getBottomOurPhilosophy = () => http.get("/bottomourphilosophy")
 //therapeutic areas page
 export const getBannerTA = () => http.get("/bannerta")
 export const getCarrouselTA = () => http.get("/carrouselta")
+export const getBottomTA = () => http.get("/bottomta")
 
 //news routes
 export const getNews = () => http.get("/newsdata")
