@@ -1,0 +1,146 @@
+@import '../../../../stylesheets/variables';
+
+.FarmacoVigilancia {
+  margin-bottom: 10rem;
+
+  &__title {
+    color: $leti-white;
+    position: absolute;
+    display: block;
+    width: 60%;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-left: -30%;
+    margin-top: -5rem;
+    z-index: 2;
+
+    .leti-btn {
+      background: transparent;
+      color: $leti-white;
+      border-color: $leti-white;
+      margin-top: 1rem;
+      opacity: 0.5;
+    }
+  }
+
+  &__img {
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+      .leti-btn {
+        opacity: 1;
+        border-width: 0.3rem;
+      }
+
+      .FarmacoVigilancia__especialistas,
+      .FarmacoVigilancia__espacio {
+        transform: scale(1.2);
+
+        &:before {
+          background: rgba($leti-blue, 0.8);
+        }
+      }
+    }
+  }
+
+  &__especialistas,
+  &__espacio {
+    width: auto;
+    height: 50rem;
+    transition: all 0.2s ease-in-out;
+
+    &:before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: rgba($leti-blue, 0.4);
+      transition: all 0.2s ease-in-out;
+      opacity: 1;
+    }
+  }
+
+  &__especialistas {
+    background-position: center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  &__espacio {
+    background-position: left top !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    padding: 6rem 0;
+  }
+
+  &__texto {
+    font-size: 2rem;
+    color: #737b7f;
+    text-align: right;
+
+    strong {
+      color: $leti-text;
+    }
+  }
+
+  &__form {
+    margin-bottom: 10rem;
+
+    .leti-btn {
+      margin-top: 1rem;
+      margin-left: 3rem;
+    }
+
+    &-purpose {
+      margin-top: 6rem;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .FarmacoVigilancia {
+    margin: 0;
+
+    &__title {
+      width: 86%;
+      margin-left: -44%;
+
+      h2 {
+        font-size: 2.2rem;
+      }
+
+      .leti-btn {
+        opacity: 1;
+      }
+    }
+
+    &__especialistas,
+    &__espacio {
+      height: 30rem;
+
+      &:before {
+        display: none;
+      }
+    }
+
+    &__texto {
+      margin: 2rem 0;
+      text-align: left;
+    }
+
+    &__form {
+      margin-bottom: 5rem;
+
+      .leti-btn {
+        margin-left: 0;
+      }
+    }
+  }
+}

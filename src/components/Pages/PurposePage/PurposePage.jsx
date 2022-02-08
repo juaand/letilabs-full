@@ -6,7 +6,7 @@ import {createContent} from '../../../services/ApiClient'
 import Banner from './Banner/Banner'
 import Video from './Video/Video'
 import Timeline from './Timeline/Timeline'
-import Form from './Form/Form'
+import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 
 function PurposePage() {
 
@@ -50,7 +50,7 @@ function PurposePage() {
                 <Banner />
                 <Video />
                 <Timeline />
-                <Form />
+                <FarmacoVigilancia />
             </main>
         </>
     )
