@@ -4,10 +4,10 @@ import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
 import {drawTime} from '../../../../helpers/globals'
 
-function Lastest({newsData}) {
+function Lastest({newsData, title}) {
     return (
         <div className="container NewsPage__lastest">
-            <h1>Lo último</h1>
+            <h1>{title?.lastestTitle}</h1>
             <div className="row justify-content-between">
                 <Fade cascade delay={300} direction="up" triggerOnce className="card NewsPage__card col-12 col-sm-3">
                     {newsData?.filter(el => el.tag[0] !== 'Grupo Leri').map(el =>

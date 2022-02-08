@@ -8,7 +8,7 @@ import {searchNews} from '../../../../services/ApiClient'
 import {Link} from 'react-router-dom'
 import {drawTime} from '../../../../helpers/globals'
 
-function FindNews() {
+function FindNews({title}) {
 
     const [getSearch, setGetSearch] = useState([])
     const [bool, setBool] = useState(false)
@@ -59,7 +59,7 @@ function FindNews() {
                     <div className="container">
                         <div className="row FindNews__row">
                             <div className="col-12">
-                                <h1>Artículos</h1>
+                                <h1>{title?.searchTitle}</h1>
                             </div>
                             <div className="col-12">
                                 <form className="FindNews__form row" onSubmit={searchSubmit}>

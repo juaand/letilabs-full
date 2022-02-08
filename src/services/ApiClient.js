@@ -189,7 +189,7 @@ export const updateCarrerasData = ({title, description, url, buttonTitle, id}) =
 export const searchContent = (search) => http.get(`/search/${search}`)
 export const searchNews = (data) => http.post(`/buscarnoticia`, {data})
 
-//product routes
+//product routes    
 export const getProduct = (buscar) => http.post("/producstdata", {buscar})
 export const getProductList = () => http.get("/listado-productos")
 export const deleteProduct = (id) => http.get(`/producto/${id}/delete`)
@@ -214,4 +214,5 @@ export const getBottomTA = () => http.get("/bottomta")
 
 //news routes
 export const getNews = () => http.get("/newsdata")
+export const getNewsTitles = () => http.get("/newstitles")
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})

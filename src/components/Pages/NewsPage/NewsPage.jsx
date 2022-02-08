@@ -1,6 +1,6 @@
 import './NewsPage.css'
 import React, {useState, useEffect} from 'react'
-import {getNews} from '../../../services/ApiClient'
+import {getNews, getNewsTitles} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import Lastest from './Lastest/Lastest'
@@ -11,11 +11,14 @@ import LetiNews from './LetiNews/LetiNews'
 function NewsPage() {
 
     const [newsData, setNewsData] = useState([])
+    const [titlesData, setTitlesData] = useState([])
 
     useEffect(() => {
         const fetchData = async () => {
             const getNewsData = await getNews()
+            const getTitlesData = await getNewsTitles()
             setNewsData(getNewsData)
+            setTitlesData(getTitlesData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -31,9 +34,9 @@ function NewsPage() {
             <main>
                 <Banner newsData={newsData?.filter(el => el?.outstanding === true)} />
                 <LetiNews newsData={newsData}/>
-                <Lastest newsData={newsData?.filter(el => el?.outstanding !== true).slice(0, 3)} />
-                <Most newsData={newsData} />
-                <FindNews />
+                <Lastest title={titlesData} newsData={newsData?.filter(el => el?.outstanding !== true).slice(0, 3)} />
+                <Most title={titlesData} newsData={newsData} />
+                <FindNews title={titlesData} />
             </main>
         </>
     )
