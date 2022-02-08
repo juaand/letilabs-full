@@ -3,13 +3,11 @@ import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import {Fade} from 'react-awesome-reveal'
 import {getTimeLinePurpose} from '../../../../services/ApiClient'
-import Loader from '../../../Loader/Loader'
 
 
 function Timeline() {
 
     const [purposeTimeline, setPurposeTimeline] = useState([])
-    const [loading, setLoading] = useState(true)
 
     let settings = {
         slidesToShow: 1,
@@ -56,35 +54,31 @@ function Timeline() {
             }
         }
         fetchData()
-        setLoading(!loading)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [purposeTimeline?.length])
 
     return (
-        <>
-            {loading && <Loader />}
-            <Fade direction="up" triggerOnce>
-                <section className="container-fluid Timeline__leti">
-                    <Slider {...settings}>
-                        {purposeTimeline.map(el =>
-                            <>
-                                <div className="Timeline__leti__product row">
-                                    <div className="Timeline__leti__image col-12 col-sm-6" style={{
-                                        background: `url(${el.imgURL}) no-repeat left center / cover`
-                                    }}></div>
-                                    <div className="col-12 col-sm-6 Timeline__leti__info">
-                                        <div className="row">
-                                            <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}} />
-                                        </div>
+        <Fade direction="up" triggerOnce>
+            <section className="container-fluid Timeline__leti">
+                <Slider {...settings}>
+                    {purposeTimeline.map(el =>
+                        <>
+                            <div className="Timeline__leti__product row">
+                                <div className="Timeline__leti__image col-12 col-sm-6" style={{
+                                    background: `url(${el.imgURL}) no-repeat left center / cover`
+                                }}></div>
+                                <div className="col-12 col-sm-6 Timeline__leti__info">
+                                    <div className="row">
+                                        <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}} />
                                     </div>
                                 </div>
-                            </>
-                        )}
-                    </Slider>
-                </section>
-            </Fade>
-        </>
+                            </div>
+                        </>
+                    )}
+                </Slider>
+            </section>
+        </Fade>
     )
 }
 

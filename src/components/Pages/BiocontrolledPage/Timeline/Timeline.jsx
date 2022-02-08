@@ -4,12 +4,10 @@ import Slider from "react-slick"
 import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
 import {getTimeLineBiocontrolled} from '../../../../services/ApiClient'
-import Loader from '../../../Loader/Loader'
 
 function Timeline() {
 
     const [biocontrolledTimeline, setBiocontrolledTimeline] = useState()
-    const [loading, setLoading] = useState(true)
 
     let settings = {
         slidesToShow: 1,
@@ -58,43 +56,39 @@ function Timeline() {
             }
         }
         fetchData()
-        setLoading(!loading)
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [biocontrolledTimeline?.length])
 
     return (
-        <>
-            {loading && <Loader />}
-            <Fade direction="up" triggerOnce>
-                <section className="container-fluid Timeline__leti">
-                    <Slider {...settings}>
-                        {biocontrolledTimeline?.map(el =>
-                            <>
-                                <div className="Timeline__leti__product row">
-                                    <div className="Timeline__leti__image col-12 col-sm-6" style={{
-                                        background: `url(${el?.imgURL}) no-repeat left center / cover`
-                                    }}></div>
-                                    <div className="col-12 col-sm-6 Timeline__leti__info">
-                                        <div className="row">
-                                            <p className="col-12 col-sm-5 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el?.desc}}>
-                                            </p>
-                                        </div>
-                                        {el?.buttonTitle &&
-                                            <div className="row Timeline__leti__btn">
-                                                <div className="col-11 col-sm-5">
-                                                    <Link to={el?.buttonLink} className="leti-btn">{el?.buttonTitle}</Link>
-                                                </div>
-                                            </div>
-                                        }
+        <Fade direction="up" triggerOnce>
+            <section className="container-fluid Timeline__leti">
+                <Slider {...settings}>
+                    {biocontrolledTimeline?.map(el =>
+                        <>
+                            <div className="Timeline__leti__product row">
+                                <div className="Timeline__leti__image col-12 col-sm-6" style={{
+                                    background: `url(${el?.imgURL}) no-repeat left center / cover`
+                                }}></div>
+                                <div className="col-12 col-sm-6 Timeline__leti__info">
+                                    <div className="row">
+                                        <p className="col-12 col-sm-5 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el?.desc}}>
+                                        </p>
                                     </div>
+                                    {el?.buttonTitle &&
+                                        <div className="row Timeline__leti__btn">
+                                            <div className="col-11 col-sm-5">
+                                                <Link to={el?.buttonLink} className="leti-btn">{el?.buttonTitle}</Link>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
-                            </>
-                        )}
-                    </Slider>
-                </section>
-            </Fade>
-        </>
+                            </div>
+                        </>
+                    )}
+                </Slider>
+            </section>
+        </Fade>
     )
 }
 
