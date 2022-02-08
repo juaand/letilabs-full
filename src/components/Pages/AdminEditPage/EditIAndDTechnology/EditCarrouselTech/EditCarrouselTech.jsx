@@ -1,40 +1,40 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getInfoCardsIdData, updateInfoCardsIdData} from '../../../../../services/ApiClient'
+import {getCarouselTech, updateCarouselTech} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
-function EditInfoCardsID() {
+function EditCarrouselTech() {
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
+                mainTitle: '',
+                imgURL: '',
                 title: '',
-                picPath: '',
-                btn: '',
-                info: '',
+                description: '',
             },
             error: {
+                mainTitle: false,
+                imgURL: false,
                 title: false,
-                picPath: false,
-                btn: false,
-                info: false,
+                description: false,
             },
             touch: {},
         },
         {
+            mainTitle: v => v.length,
+            imgURL: v => v.length,
             title: v => v.length,
-            picPath: v => v.length,
-            btn: v => v.length,
-            info: v => v.length,
+            description: v => v.length,
         }
     )
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
-    const [ourCompaniesOCData, setOurCompaniesOCData] = useState()
+    const [ourGoalsOCData, setOurGoalsOCData] = useState()
     const [bool, setBool] = useState(false)
 
     const showModal = (data) => {
@@ -43,14 +43,14 @@ function EditInfoCardsID() {
     }
 
     const deleteItem = (data) => {
-        setOurCompaniesOCData(data)
+        setOurGoalsOCData(data)
         setBool(!bool)
     }
 
     useEffect(() => {
         const fetchData = async () => {
-            const getInfoCardsIdDataData = await getInfoCardsIdData()
-            setOurCompaniesOCData(getInfoCardsIdDataData)
+            const getOurGoalsOCData = await getCarouselTech()
+            setOurGoalsOCData(getOurGoalsOCData)
 
         }
         fetchData()
@@ -60,15 +60,16 @@ function EditInfoCardsID() {
     return (
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
-            {ourCompaniesOCData?.length > 0 &&
+            {ourGoalsOCData?.length > 0 &&
                 <section className="container-fluid EditContent">
-                    <h2>Editar infocards</h2>
+                    <h2>Editar Carousel</h2>
                     <div className="row justify-content-around">
-                        {ourCompaniesOCData?.map(el =>
+                        {ourGoalsOCData?.map(el =>
                             <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el?.picPath?.toLowerCase() + ".svg"} alt={el?.picPath} />
-                                <p>{el?.btn}</p>
-                                <p>{el?.info}</p>
+                                <p>{el?.mainTitle}</p>
+                                <p>{el?.imgURL}</p>
+                                <p>{el?.title}</p>
+                                <p>{el?.description}</p>
                             </div>
                         )}
                     </div>
@@ -77,4 +78,4 @@ function EditInfoCardsID() {
     )
 }
 
-export default EditInfoCardsID
+export default EditCarrouselTech

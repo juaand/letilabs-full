@@ -132,8 +132,11 @@ export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updatei
 export const getBannerTech = () => http.get("/bannertech")
 export const updateBannerTech = ({title, description, imgURL, id}) => http.get("/updatebannerdatatech", {title, description, imgURL, id})
 export const getVideoTech = () => http.get("/videotech")
+export const updateVideoTech = ({title, videoURL, id}) => http.get("/updatevideodatatech", {title, videoURL, id})
 export const getCarouselTech = () => http.get("/carrouseltech")
+export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.get("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
 export const getMapTech = () => http.get("/maptech")
+export const updateMapTech = ({description, mapURL, id}) => http.get("/updatemapdatatech", {description, mapURL, id})
 export const getBottomTech = () => http.get("/bottomtech")
 export const updateBottomTechData = ({title, img, url, btn, id}) => http.get("/updatebottomtech", {title, img, url, btn, id})
 
@@ -193,7 +196,9 @@ export const deleteProduct = (id) => http.get(`/producto/${id}/delete`)
 export const updateProduct = ({id, name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation, indication}) => http.patch(`/producto/${id}/update`, {name, picPath, QRpath, line, composition, health_register, active_principle, posology, presentation, indication})
 export const addProductApi = ({name, line, health_register, picPath, QRpath, active_principle, posology, presentation, composition, indication}) => http.post("/crear-producto", {name, line, health_register, picPath, QRpath, active_principle, posology, presentation, composition, indication})
 export const getProductBanner = () => http.get("/bannerproduct")
+export const updateProductBanner = ({description, imgURL, title, button1Title, button1Link, button2Title, button2Link, id}) => http.patch("/updatebannerproducts", {description, imgURL, title, button1Title, button1Link, button2Title, button2Link, id})
 export const getProductBottom = () => http.get("/bottomproduct")
+export const updateProductBottom = ({findProductsTitle, imgURL, title, buttonTitle, farmacoTitle, farmacoBtn, farmacoDesc, id}) => http.patch("/updateproductbottom", {findProductsTitle, imgURL, title, buttonTitle, farmacoTitle, farmacoBtn, farmacoDesc, id})
 export const getProductListBanner = () => http.get("/listadoproductosbanner")
 
 // our philosophy page
