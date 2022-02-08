@@ -103,6 +103,9 @@ function AdminFarVigPage() {
                                             <p className="AdminFarVigPage__medicine">{farmVig.medicine}</p>
                                             <p className="AdminFarVigPage__patient">
                                                 {farmVig.name} {farmVig.lastname}</p>
+                                                <a href={`mailto:${farmVig.email}`} className="AdminFarVigPage__patient-email">
+                                                    {(farmVig.email).toLocaleLowerCase()}
+                                                </a>
                                             <p className="AdminFarVigPage__desc">paciente {getSex(farmVig.sex)} de {new Date().getFullYear() - new Date(farmVig.date).getFullYear()} años de edad con medicamento {getPrescribed(farmVig.prescribed)} prescrito presenta los siguientes efectos:</p>
                                             <p className="AdminFarVigPage__effects">{farmVig.effects}</p>
                                         </div>

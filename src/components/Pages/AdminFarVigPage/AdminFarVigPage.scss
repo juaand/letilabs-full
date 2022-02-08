@@ -102,6 +102,13 @@
     font-weight: 600;
     font-size: 1.8rem;
     text-transform: capitalize;
+    margin-bottom: 0;
+
+    &-email {
+      font-size: 1.2rem;
+      color: $leti-blue;
+      margin-bottom: 0.5rem;
+    }
   }
 
   &__desc {
