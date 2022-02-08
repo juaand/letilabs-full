@@ -31,7 +31,7 @@ function Unidades() {
             <div className="small-gray-triangle"></div>
             <div className="container">
                 <Fade triggerOnce>
-                    <h1>Consolidados <br />en 3 unidades<br /> de negocio</h1>
+                    <h1 dangerouslySetInnerHTML={{__html: getData[0]?.mainTitle}} />
                 </Fade>
             </div>
             <div className="container-fluid Unidades__logos">
