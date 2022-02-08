@@ -4,12 +4,14 @@ import ModalFarmacoVigilancia from '../ModalFarmacoVigilancia/ModalFarmacoVigila
 import {Fade} from 'react-awesome-reveal'
 import {getFarmaco, getHomeBottom} from '../../../../services/ApiClient'
 import {Link} from 'react-router-dom'
+import Loader from '../../../Loader/Loader'
 
 function FarmacoVigilancia() {
 
     const [bool, setBool] = useState(false)
     const [farmaco, setFarmaco] = useState()
     const [homeBottom, setHomeBottom] = useState()
+    const [loading, setLoading] = useState(true)
 
     const showModal = () => {
         setBool(!bool)
@@ -27,12 +29,14 @@ function FarmacoVigilancia() {
             setHomeBottom(getHomeBottomData)
         }
         fetchHomeBottom()
+        setLoading(!loading)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <section className="container-fluid FarmacoVigilancia">
                 <div className="row">
                     {homeBottom?.map((el, key) =>
