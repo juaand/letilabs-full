@@ -6,6 +6,7 @@ import Banner from './Banner/Banner'
 import FindProduct from './FindProduct/FindProduct'
 import Bottom from './Bottom/Bottom'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
+import Loader from '../../Loader/Loader'
 
 function ProductsPage() {
     const {user} = useAuthContext()
@@ -16,6 +17,7 @@ function ProductsPage() {
     }
 
     const [bottomData, setBottomData] = useState()
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         if (user) {
@@ -28,6 +30,7 @@ function ProductsPage() {
                 await createContent(data)
             }
             fetchData()
+            setLoading(!loading)
         }
 
         const isMenuOpen = document.querySelector('.show')
@@ -46,6 +49,7 @@ function ProductsPage() {
             setBottomData(getBottomData[0])
         }
         fetchData()
+        setLoading(!loading)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -53,6 +57,7 @@ function ProductsPage() {
 
     return (
         <>
+            {loading && <Loader />}
             <Helmet>
                 <title>Grupo Leti | Productos</title>
                 <meta name="description" content="Trabajamos cada día para poner nuestros conocimientos y habilidades al servicio de las personas: Desarrollando y poniendo a su disposición productos que abarquen una amplia gama de necesidades." />

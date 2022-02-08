@@ -75,7 +75,6 @@ function EditGallery() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
             })
@@ -85,7 +84,7 @@ function EditGallery() {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgPath = fileUrl
-        console.log(fileUrl)
+        // console.log(fileUrl)
     }
 
     useEffect(() => {

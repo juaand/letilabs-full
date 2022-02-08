@@ -7,6 +7,7 @@ import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 import dataCountry from '../../../../data/dataCountry'
+import Loader from '../../../Loader/Loader'
 
 function AllianceForm() {
 
@@ -50,6 +51,7 @@ function AllianceForm() {
     const [formResponse, setFormResponse] = useState([])
     const [message, setMessage] = useState(false)
     const [formData, setFormData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const {data, error, touch} = state
 
@@ -83,154 +85,158 @@ function AllianceForm() {
             setFormData(getFormAlliancesData[0])
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <section className="AllianceForm">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-11 col-sm-12 AllianceForm__container">
-                        {message &&
-                            <>
-                                <h1>Gracias {formResponse.name},</h1>
-                                <p>Tu comentario ha sido enviado exitosamente.</p>
-                                <div className="leti-blue-triangle"></div>
-                                <div className="leti-red-triangle"></div>
-                            </>
-                        }
-                        {!message &&
-                            <>
-                                <div className="row">
-                                    <div className="col-12">
-                                        <h1>{formData?.title}</h1>
+        <>
+            {loading && <Loader />}
+            <section className="AllianceForm">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-11 col-sm-12 AllianceForm__container">
+                            {message &&
+                                <>
+                                    <h1>Gracias {formResponse.name},</h1>
+                                    <p>Tu comentario ha sido enviado exitosamente.</p>
+                                    <div className="leti-blue-triangle"></div>
+                                    <div className="leti-red-triangle"></div>
+                                </>
+                            }
+                            {!message &&
+                                <>
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <h1>{formData?.title}</h1>
+                                        </div>
+                                        <div className="col-12 col-sm-5">
+                                            <p dangerouslySetInnerHTML={{__html: formData?.desc}} />
+                                            <div className="AllianceForm__links">
+                                                <a href={`tel:${formData?.phone}`}
+                                                >{formData?.phone}</a>                                     <a href={`mailto:${formData?.email}`}>{formData?.email}</a></div>
+                                        </div>
                                     </div>
-                                    <div className="col-12 col-sm-5">
-                                        <p dangerouslySetInnerHTML={{__html: formData?.desc}} />
-                                        <div className="AllianceForm__links">
-                                            <a href={`tel:${formData?.phone}`}
-                                            >{formData?.phone}</a>                                     <a href={`mailto:${formData?.email}`}>{formData?.email}</a></div>
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <form onSubmit={handleSubmit} className="AllianceForm__form">
+                                                <div className="row justify-content-between">
+                                                    <div className="col-12 col-sm-6">
+
+                                                        <InputWithLabel
+                                                            value={data.name}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="name"
+                                                            type="text"
+                                                            label="Nombre"
+                                                            cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                            tabIndex="1"
+                                                        />
+
+                                                    </div>
+                                                    <div className="col-12 col-sm-6">
+                                                        <InputWithLabel
+                                                            value={data.lastname}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="lastname"
+                                                            type="text"
+                                                            label="Apellido"
+                                                            cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                            tabIndex="2"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-6">
+                                                        <InputWithLabel
+                                                            value={data.mail}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="mail"
+                                                            type="email"
+                                                            label="Email"
+                                                            cssStyle={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
+                                                            tabIndex="3"
+                                                        />
+
+                                                    </div>
+                                                    <div className="col-12 col-sm-6">
+                                                        <InputWithLabel
+                                                            value={data.phone}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="phone"
+                                                            type="text"
+                                                            label="Teléfono"
+                                                            cssStyle={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
+                                                            tabIndex="4"
+                                                        />
+
+                                                    </div>
+
+                                                    <div className="col-12 col-sm-6">
+
+                                                        <DropdownWithLabel
+                                                            value={data.country}
+                                                            label="País"
+                                                            name="country"
+                                                            onChange={onChange}
+                                                            cssStyle={`form-control AllianceForm__dropdown ${touch.country && error.country ? "is-invalid" : ""}`}
+                                                            tabIndex="5"
+                                                            list="countries"
+                                                            data={dataCountry}
+                                                        />
+
+                                                    </div>
+
+                                                    <div className="col-12 col-sm-6">
+                                                        <InputWithLabel
+                                                            value={data.company}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="company"
+                                                            type="text"
+                                                            label="Empresa/Institución"
+                                                            cssStyle={`form-control ${touch.company && error.company ? "is-invalid" : ""}`}
+                                                            tabIndex="6"
+                                                        />
+
+                                                    </div>
+                                                    <div className="col-12">
+
+                                                        <TextAreaWithLabel
+                                                            label="Cuéntanos sobre tu iniciativa"
+                                                            value={init}
+                                                            onChange={handleChange}
+                                                            name="effects"
+                                                            rows="4"
+                                                            cssStyle="form-control textarea"
+                                                            placeholder=""
+                                                            tabIndex="7"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 d-flex justify-content-end">
+
+                                                        <Button
+                                                            type="submit"
+                                                            cssStyle={`leti-btn ${isError && "disabled"}`}
+                                                        >
+                                                            Enviar
+                                                        </Button>
+                                                    </div>
+                                                </div>
+
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-12">
-                                        <form onSubmit={handleSubmit} className="AllianceForm__form">
-                                            <div className="row justify-content-between">
-                                                <div className="col-12 col-sm-6">
-
-                                                    <InputWithLabel
-                                                        value={data.name}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="name"
-                                                        type="text"
-                                                        label="Nombre"
-                                                        cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                        tabIndex="1"
-                                                    />
-
-                                                </div>
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.lastname}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="lastname"
-                                                        type="text"
-                                                        label="Apellido"
-                                                        cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
-                                                        tabIndex="2"
-                                                    />
-                                                </div>
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.mail}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="mail"
-                                                        type="email"
-                                                        label="Email"
-                                                        cssStyle={`form-control ${touch.mail && error.mail ? "is-invalid" : ""}`}
-                                                        tabIndex="3"
-                                                    />
-
-                                                </div>
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.phone}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="phone"
-                                                        type="text"
-                                                        label="Teléfono"
-                                                        cssStyle={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
-                                                        tabIndex="4"
-                                                    />
-
-                                                </div>
-
-                                                <div className="col-12 col-sm-6">
-
-                                                    <DropdownWithLabel
-                                                        value={data.country}
-                                                        label="País"
-                                                        name="country"
-                                                        onChange={onChange}
-                                                        cssStyle={`form-control AllianceForm__dropdown ${touch.country && error.country ? "is-invalid" : ""}`}
-                                                        tabIndex="5"
-                                                        list="countries"
-                                                        data={dataCountry}
-                                                    />
-
-                                                </div>
-
-                                                <div className="col-12 col-sm-6">
-                                                    <InputWithLabel
-                                                        value={data.company}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        name="company"
-                                                        type="text"
-                                                        label="Empresa/Institución"
-                                                        cssStyle={`form-control ${touch.company && error.company ? "is-invalid" : ""}`}
-                                                        tabIndex="6"
-                                                    />
-
-                                                </div>
-                                                <div className="col-12">
-
-                                                    <TextAreaWithLabel
-                                                        label="Cuéntanos sobre tu iniciativa"
-                                                        value={init}
-                                                        onChange={handleChange}
-                                                        name="effects"
-                                                        rows="4"
-                                                        cssStyle="form-control textarea"
-                                                        placeholder=""
-                                                        tabIndex="7"
-                                                    />
-                                                </div>
-                                                <div className="col-12 d-flex justify-content-end">
-
-                                                    <Button
-                                                        type="submit"
-                                                        cssStyle={`leti-btn ${isError && "disabled"}`}
-                                                    >
-                                                        Enviar
-                                                    </Button>
-                                                </div>
-                                            </div>
-
-                                            {registerError && <div className="alert alert-danger">{registerError}</div>}
-                                        </form>
-                                    </div>
-                                </div>
-                            </>
-                        }
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 
 }

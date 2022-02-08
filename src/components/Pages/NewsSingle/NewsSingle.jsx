@@ -4,11 +4,13 @@ import {Fade} from 'react-awesome-reveal'
 import {drawTime} from '../../../helpers/globals'
 import {Link} from 'react-router-dom'
 import {getRandomNews} from '../../../services/ApiClient'
+import Loader from '../../Loader/Loader'
 
 function NewsSingle(props) {
     const noticia = props?.location?.state?.data
 
     const [getRandom, setGetRandom] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -17,11 +19,13 @@ function NewsSingle(props) {
             setGetRandom(getRandomData)
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <section className="container-fluid NewsSingle__Banner" style={{
                 background: `url(${noticia?.urlToPic}) no-repeat center center / cover`,
             }}>

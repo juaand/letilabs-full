@@ -4,10 +4,12 @@ import {getOurCompaniesOC} from '../../../../services/ApiClient'
 import {Link} from 'react-router-dom'
 import Slider from 'react-slick'
 import {seoURL} from '../../../../hooks/seoURL'
+import Loader from '../../../Loader/Loader'
 
 function CompaniesInfo() {
 
     const [unidadesNegocio, setUnidadesNegocio] = useState([])
+    const [loading, setLoading] = useState(true)
 
     let settings = {
         responsive: [
@@ -34,12 +36,14 @@ function CompaniesInfo() {
             setUnidadesNegocio(getOurCompaniesOCData)
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     return (
         <>
+            {loading && <Loader />}
             <section className="container-fluid CompaniesInfo d-none d-sm-block">
                 <div className="CompaniesInfo__absolute">
                     <div className="row justify-content-around">

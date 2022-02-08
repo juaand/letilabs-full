@@ -3,11 +3,13 @@ import React, {useState, useEffect} from 'react'
 import ModalFarmacoVigilancia from '../ModalFarmacoVigilancia/ModalFarmacoVigilancia'
 import {Fade} from 'react-awesome-reveal'
 import {getFarmaco} from '../../../../services/ApiClient'
+import Loader from '../../../Loader/Loader'
 
 function FarmacoVigilancia() {
 
     const [bool, setBool] = useState(false)
     const [farmaco, setFarmaco] = useState()
+    const [loading, setLoading] = useState(true)
 
     const showModal = () => {
         setBool(!bool)
@@ -19,12 +21,14 @@ function FarmacoVigilancia() {
             setFarmaco(getFarmacoData)
         }
         fetchData()
+        setLoading(!loading)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <Fade direction="up" triggerOnce>
                 <section className="container FarmacoVigilancia__form FarmacoVigilancia__form-purpose">
                     <div className="row justify-content-center">

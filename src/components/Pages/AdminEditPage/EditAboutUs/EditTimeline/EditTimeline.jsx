@@ -75,7 +75,7 @@ function EditTimeline() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
+                // console.log('Uploaded')
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
             })
@@ -85,7 +85,7 @@ function EditTimeline() {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
-        console.log(fileUrl)
+        // console.log(fileUrl)
     }
 
     useEffect(() => {

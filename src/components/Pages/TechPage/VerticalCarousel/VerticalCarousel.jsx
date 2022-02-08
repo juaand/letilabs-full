@@ -6,7 +6,7 @@ import "./VerticalCarousel.css"
 import {Fade} from "react-awesome-reveal"
 import Slider from 'react-slick'
 import {getCarouselTech} from "../../../../services/ApiClient"
-
+import Loader from "../../../Loader/Loader"
 
 const VerticalCarousel = () => {
 
@@ -31,6 +31,7 @@ const VerticalCarousel = () => {
 
     const [areasTeraData, setAreasTeraData] = useState([])
     const [activeIndex, setActiveIndex] = useState(0)
+    const [loading, setLoading] = useState(true)
 
     // Used to determine which items appear above the active item
     const halfwayIndex = Math.ceil(areasTeraData?.length / 2)
@@ -91,11 +92,13 @@ const VerticalCarousel = () => {
             setAreasTeraData(getCarouselData)
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <Fade className="d-none d-sm-block" triggerOnce direction="up">
                 <div className="container-fluid VerticalCarousel">
                     <section className="outer-container container-fluid">

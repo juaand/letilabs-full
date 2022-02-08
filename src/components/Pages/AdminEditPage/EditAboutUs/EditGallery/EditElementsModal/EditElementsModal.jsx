@@ -9,8 +9,6 @@ import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 
 function EditElementsModal({deleteItem, element, hideModal}) {
 
-    console.log(element)
-
     const {state, onChange} = useFormState(
         {
             data: {
@@ -65,7 +63,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
             })
@@ -75,7 +72,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgPath = fileUrl
-        console.log(fileUrl)
     }
 
     return (

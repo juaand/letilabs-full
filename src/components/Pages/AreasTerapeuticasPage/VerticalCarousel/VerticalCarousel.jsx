@@ -6,10 +6,12 @@ import {ReactComponent as Prev} from "../../../../images/prev-arrow.svg"
 import {Fade} from "react-awesome-reveal"
 import Slider from 'react-slick'
 import {getCarrouselTA} from "../../../../services/ApiClient"
+import Loader from "../../../Loader/Loader"
 
 const VerticalCarousel = () => {
 
     const [areasTeraData, setAreasTeraData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     let settings = {
         responsive: [
@@ -91,11 +93,13 @@ const VerticalCarousel = () => {
             setAreasTeraData(getCarrouselData)
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <Fade className="d-none d-sm-block" triggerOnce direction="up">
                 <div className="container-fluid VerticalCarousel">
                     <section className="outer-container container-fluid">

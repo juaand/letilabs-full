@@ -68,7 +68,6 @@ function EditBanner() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
             })

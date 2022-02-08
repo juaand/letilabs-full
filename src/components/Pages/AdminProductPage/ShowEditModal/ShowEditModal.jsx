@@ -100,7 +100,7 @@ function ShowEditModal({product, hideModal, updateData}) {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
+                // console.log('Uploaded')
             })
             .catch(err => {console.log(err)})
 

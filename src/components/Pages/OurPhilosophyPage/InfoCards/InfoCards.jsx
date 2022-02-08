@@ -3,11 +3,12 @@ import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import Slider from 'react-slick'
 import {getInfoCardsOurPhilosophy} from '../../../../services/ApiClient'
-
+import Loader from '../../../Loader/Loader'
 
 function InfoCards() {
 
     const [dataOurPhilosophy, setDataOurPhilosophy] = useState()
+    const [loading, setLoading] = useState(true)
 
     let settings = {
         responsive: [
@@ -34,11 +35,13 @@ function InfoCards() {
             setDataOurPhilosophy(getInfoCardsData)
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <section className="container InfoCards d-none d-sm-block">
                 <div className="row justify-content-around">
                     <Fade className="col" cascade delay={300} direction="up" triggerOnce>

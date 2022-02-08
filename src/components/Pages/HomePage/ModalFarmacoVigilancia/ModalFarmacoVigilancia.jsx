@@ -63,7 +63,6 @@ function ModalFarmacoVigilancia({hideModal}) {
         data.effects = effects
 
         try {
-            console.log(data)
             const newVigilancia = await vigilanciaForm(data)
             document.querySelector('form').reset()
             document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')

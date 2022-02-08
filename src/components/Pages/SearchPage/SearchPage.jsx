@@ -5,6 +5,7 @@ import {searchContent} from '../../../services/ApiClient'
 import {Link} from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import Loader from '../../Loader/Loader'
 
 function SearchPage(props) {
 
@@ -12,6 +13,7 @@ function SearchPage(props) {
 
     const [matches, setMatches] = useState([])
     const [newSearch, setNewSearch] = useState(searchSentence)
+    const [loading, setLoading] = useState(true)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -57,16 +59,17 @@ function SearchPage(props) {
         //Busqueda de contenido en la API
         const fetchData = async () => {
             const contentData = await searchContent(data.search)
-            console.log(contentData)
             setMatches(contentData)
         }
         fetchData()
+        setLoading(!loading)
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <Helmet>
                 <title>Grupo Leti | Buscar</title>
                 <meta name="description" content="Resultados de búsqueda" />

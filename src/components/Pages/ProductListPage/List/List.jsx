@@ -2,6 +2,7 @@ import './List.css'
 import React, {useState, useEffect} from 'react'
 import {getProductList} from '../../../../services/ApiClient'
 import {Link} from 'react-router-dom'
+import Loader from '../../../Loader/Loader'
 
 function List() {
 
@@ -9,6 +10,7 @@ function List() {
 
     const [currentLetter, setCurrentLetter] = useState('A')
     const [vadevecumData, setVadevecumData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const loadVadevecumInfo = (letter) => {
         setCurrentLetter(letter)
@@ -27,11 +29,14 @@ function List() {
             setVadevecumData(data)
         }
         fetchData()
+        setLoading(!loading)
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <section className="container-fluid List">
                 <section className="container">
                     <div className="List__to-top" onClick={() => window.scrollTo(0, 0)}></div>
@@ -53,7 +58,6 @@ function List() {
                         </div>
                     </div>
                     <div className="row">
-                        {console.log(vadevecumData)}
                         {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
                             <div className="col-12 col-sm-4 List__card">
                                 <div className="List__sku">SKU</div>

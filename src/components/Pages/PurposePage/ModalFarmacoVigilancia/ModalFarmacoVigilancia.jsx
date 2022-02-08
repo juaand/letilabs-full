@@ -8,6 +8,7 @@ import DateTimePicker from "react-datetime-picker"
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import {vigilanciaForm, getVadevecumData} from '../../../../services/ApiClient'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
+import Loader from '../../../Loader/Loader'
 
 function ModalFarmacoVigilancia({hideModal}) {
 
@@ -54,6 +55,7 @@ function ModalFarmacoVigilancia({hideModal}) {
     const [formResponse, setFormResponse] = useState([])
     const [message, setMessage] = useState(false)
     const [vadevecum, setVadevecum] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const {data, error, touch} = state
 
@@ -62,7 +64,6 @@ function ModalFarmacoVigilancia({hideModal}) {
         data.effects = effects
 
         try {
-            console.log(data)
             const newVigilancia = await vigilanciaForm(data)
             document.querySelector('form').reset()
             document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
@@ -103,155 +104,160 @@ function ModalFarmacoVigilancia({hideModal}) {
             setVadevecum(dataFiltered)
         }
         fetchData()
+        setLoading(!loading)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <section className="ModalFarmacoVigilancia" onClick={clickedOutside}>
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-11 col-sm-12 ModalFarmacoVigilancia__container">
-                        {message &&
-                            <>
-                                <h1>Gracias {formResponse.name},</h1>
-                                <p>Tu comentario ha sido enviado exitosamente.</p>
-                                <div className="leti-blue-triangle"></div>
-                                <div className="leti-red-triangle"></div>
-                                <div className="leti-btn" onClick={hideModal}>Cerrar</div>
-                            </>
-                        }
-                        {!message &&
-                            <>
-                                <span className="ModalFarmacoVigilancia__close" onClick={hideModal}></span>
-                                <div className="row">
-                                    <div className="col-12">
-                                        <h1>Estamos para cuidarte</h1></div>
-                                    <div className="col-12 col-sm-5">
-                                        <p><strong>Farmacovigilancia</strong></p>
-                                        <p>Conscientes de la responsabilidad por ofrecer medicamentos de alta calidad, facilitamos la recolección, evaluación e investigación de la información sobre posibles reacciones adversas de nuestros medicamentos, para realizar correctivos y establecer la máxima seguridad terapéutica de los mismos.</p>
-                                        <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarle.</p>
+        <>
+            {loading && <Loader />}
+            <section className="ModalFarmacoVigilancia" onClick={clickedOutside}>
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-11 col-sm-12 ModalFarmacoVigilancia__container">
+                            {message &&
+                                <>
+                                    <h1>Gracias {formResponse.name},</h1>
+                                    <p>Tu comentario ha sido enviado exitosamente.</p>
+                                    <div className="leti-blue-triangle"></div>
+                                    <div className="leti-red-triangle"></div>
+                                    <div className="leti-btn" onClick={hideModal}>Cerrar</div>
+                                </>
+                            }
+                            {!message &&
+                                <>
+                                    <span className="ModalFarmacoVigilancia__close" onClick={hideModal}></span>
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <h1>Estamos para cuidarte</h1></div>
+                                        <div className="col-12 col-sm-5">
+                                            <p><strong>Farmacovigilancia</strong></p>
+                                            <p>Conscientes de la responsabilidad por ofrecer medicamentos de alta calidad, facilitamos la recolección, evaluación e investigación de la información sobre posibles reacciones adversas de nuestros medicamentos, para realizar correctivos y establecer la máxima seguridad terapéutica de los mismos.</p>
+                                            <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarle.</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-12">
-                                        <form onSubmit={handleSubmit} className="ModalFarmacoVigilancia__form">
-                                            <div className="row justify-content-between">
-                                                <div className="col-12">
-                                                    <div className="row">
-                                                        <div className="col-12 col-sm-4">
-                                                            <InputWithLabel
-                                                                value={data.name}
-                                                                onBlur={onBlur}
-                                                                onChange={onChange}
-                                                                name="name"
-                                                                type="text"
-                                                                label="Nombre del paciente"
-                                                                cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                                tabIndex="1"
-                                                            />
-                                                        </div>
-                                                        <div className="col-12 col-sm-4">
-                                                            <InputWithLabel
-                                                                value={data.lastname}
-                                                                onBlur={onBlur}
-                                                                onChange={onChange}
-                                                                name="lastname"
-                                                                type="text"
-                                                                label="Apellido del paciente"
-                                                                cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
-                                                                tabIndex="2"
-                                                            />
-                                                        </div>
-                                                        <div className="col-12 col-sm-4">
-                                                            <InputWithLabel
-                                                                value={data.email}
-                                                                onBlur={onBlur}
-                                                                onChange={onChange}
-                                                                name="email"
-                                                                type="email"
-                                                                label="Correo electrónico del paciente"
-                                                                cssStyle={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
-                                                                tabIndex="3"
-                                                            />
+                                    <div className="row">
+                                        <div className="col-12">
+                                            <form onSubmit={handleSubmit} className="ModalFarmacoVigilancia__form">
+                                                <div className="row justify-content-between">
+                                                    <div className="col-12">
+                                                        <div className="row">
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    value={data.name}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="name"
+                                                                    type="text"
+                                                                    label="Nombre del paciente"
+                                                                    cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                    tabIndex="1"
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    value={data.lastname}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="lastname"
+                                                                    type="text"
+                                                                    label="Apellido del paciente"
+                                                                    cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
+                                                                    tabIndex="2"
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    value={data.email}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="email"
+                                                                    type="email"
+                                                                    label="Correo electrónico del paciente"
+                                                                    cssStyle={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                                                                    tabIndex="3"
+                                                                />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div className="col-12 col-sm-5">
-                                                    <div className="form-group ModalFarmacoVigilancia__date" tabIndex="3">
-                                                        <label className="label" htmlFor="date">
-                                                            Fecha de nacimiento
-                                                        </label>
-                                                        <DateTimePicker
-                                                            onChange={setTime}
-                                                            value={data.date}
-                                                            locale="es-ES"
-                                                            format="dd-MM-y"
+                                                    <div className="col-12 col-sm-5">
+                                                        <div className="form-group ModalFarmacoVigilancia__date" tabIndex="3">
+                                                            <label className="label" htmlFor="date">
+                                                                Fecha de nacimiento
+                                                            </label>
+                                                            <DateTimePicker
+                                                                onChange={setTime}
+                                                                value={data.date}
+                                                                locale="es-ES"
+                                                                format="dd-MM-y"
+                                                            />
+                                                        </div>
+
+                                                        <DropdownWithLabel
+                                                            value={data.medicine}
+                                                            label="Medicamento que tomó"
+                                                            name="medicine"
+                                                            onChange={onChange}
+                                                            cssStyle={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
+                                                            tabIndex="6"
+                                                            list="medicines"
+                                                            data={dataList}
+                                                        />
+
+                                                    </div>
+                                                    <div className="col-12 col-sm-5">
+
+                                                        <RadioButtonWithLabel data={['F', 'M']} name="sex"
+                                                            value={data.genero}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            label="Género"
+                                                            tabIndex="4"
+                                                        />
+
+                                                        <RadioButtonWithLabel data={['Si', 'No']} name="prescribed"
+                                                            value={data.prescribed}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            label="¿El medicamento fue prescrito?"
+                                                            tabIndex="7"
+                                                        />
+
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <TextAreaWithLabel
+                                                            label="Describa detalladamente el/los efectos presentados"
+                                                            value={effects}
+                                                            onChange={handleChange}
+                                                            name="effects"
+                                                            rows="4"
+                                                            cssStyle="form-control textarea"
+                                                            placeholder=""
+                                                            tabIndex="7"
                                                         />
                                                     </div>
-
-                                                    <DropdownWithLabel
-                                                        value={data.medicine}
-                                                        label="Medicamento que tomó"
-                                                        name="medicine"
-                                                        onChange={onChange}
-                                                        cssStyle={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
-                                                        tabIndex="6"
-                                                        list="medicines"
-                                                        data={dataList}
-                                                    />
-
+                                                    <div className="col-12 d-flex justify-content-end">
+                                                        <Button
+                                                            type="submit"
+                                                            cssStyle={`leti-btn ${isError && "disabled"}`}
+                                                        >
+                                                            Enviar
+                                                        </Button>
+                                                    </div>
                                                 </div>
-                                                <div className="col-12 col-sm-5">
 
-                                                    <RadioButtonWithLabel data={['F', 'M']} name="sex"
-                                                        value={data.genero}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        label="Género"
-                                                        tabIndex="4"
-                                                    />
-
-                                                    <RadioButtonWithLabel data={['Si', 'No']} name="prescribed"
-                                                        value={data.prescribed}
-                                                        onBlur={onBlur}
-                                                        onChange={onChange}
-                                                        label="¿El medicamento fue prescrito?"
-                                                        tabIndex="7"
-                                                    />
-
-                                                </div>
-                                                <div className="col-12">
-                                                    <TextAreaWithLabel
-                                                        label="Describa detalladamente el/los efectos presentados"
-                                                        value={effects}
-                                                        onChange={handleChange}
-                                                        name="effects"
-                                                        rows="4"
-                                                        cssStyle="form-control textarea"
-                                                        placeholder=""
-                                                        tabIndex="7"
-                                                    />
-                                                </div>
-                                                <div className="col-12 d-flex justify-content-end">
-                                                    <Button
-                                                        type="submit"
-                                                        cssStyle={`leti-btn ${isError && "disabled"}`}
-                                                    >
-                                                        Enviar
-                                                    </Button>
-                                                </div>
-                                            </div>
-
-                                            {registerError && <div className="alert alert-danger">{registerError}</div>}
-                                        </form>
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </>
-                        }
+                                </>
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 

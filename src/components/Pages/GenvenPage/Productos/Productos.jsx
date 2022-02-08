@@ -4,10 +4,12 @@ import {Link} from 'react-router-dom'
 import {Fade, Reveal} from "react-awesome-reveal"
 import {keyframes} from "@emotion/react"
 import {getProductosGenvenOC} from '../../../../services/ApiClient'
+import Loader from '../../../Loader/Loader'
 
 function Productos() {
 
     const [bannerData, setBannerData] = useState()
+    const [loading, setLoading] = useState(true)
 
     const customAnimation = keyframes`
     from {
@@ -26,32 +28,36 @@ function Productos() {
             setBannerData(getBannerData[0])
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
     return (
-        <section className="container Productos">
-            <div className="Productos__genven-001 parallax" data-axis="horizontal" data-speed="0.2" style={{
-                background: `url(${bannerData?.img1URL}) no-repeat right center /contain`,
-            }} />
-            <div className="Productos__genven-002 parallax" data-axis="horizontal" data-speed="0.17" style={{
-                background: `url(${bannerData?.img2URL}) no-repeat center / contain`
-            }} />
-            <div className="Productos__genven-003 parallax" data-axis="horizontal" data-speed="0.1" style={{
-                background: `url(${bannerData?.img3URL}) no-repeat center / contain`
-            }} />
-            <div className="row">
-                <div className="col-9 col-sm-5 offset-sm-1 Productos__info">
-                    <Fade direction="up" triggerOnce>
-                        <h1 className="Productos__desc">{bannerData?.description}</h1>
-                    </Fade>
-                    <Reveal delay={200} keyframes={customAnimation} triggerOnce>
-                        <Link to={bannerData?.buttonLink} className="leti-btn">{bannerData?.buttonTitle}</Link>
-                    </Reveal>
+        <>
+            {loading && <Loader />}
+            <section className="container Productos">
+                <div className="Productos__genven-001 parallax" data-axis="horizontal" data-speed="0.2" style={{
+                    background: `url(${bannerData?.img1URL}) no-repeat right center /contain`,
+                }} />
+                <div className="Productos__genven-002 parallax" data-axis="horizontal" data-speed="0.17" style={{
+                    background: `url(${bannerData?.img2URL}) no-repeat center / contain`
+                }} />
+                <div className="Productos__genven-003 parallax" data-axis="horizontal" data-speed="0.1" style={{
+                    background: `url(${bannerData?.img3URL}) no-repeat center / contain`
+                }} />
+                <div className="row">
+                    <div className="col-9 col-sm-5 offset-sm-1 Productos__info">
+                        <Fade direction="up" triggerOnce>
+                            <h1 className="Productos__desc">{bannerData?.description}</h1>
+                        </Fade>
+                        <Reveal delay={200} keyframes={customAnimation} triggerOnce>
+                            <Link to={bannerData?.buttonLink} className="leti-btn">{bannerData?.buttonTitle}</Link>
+                        </Reveal>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 

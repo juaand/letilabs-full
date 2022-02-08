@@ -89,7 +89,6 @@ function EditTimelineBiocontrolled() {
                         )}
                     </div>
                 </section>}
-            {console.log(timelineData)}
             <section className="container-fluid EditContent">
                 <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>

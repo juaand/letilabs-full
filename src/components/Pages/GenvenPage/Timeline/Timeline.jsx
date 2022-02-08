@@ -4,10 +4,12 @@ import Slider from "react-slick"
 import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
 import {getTimeLineGenven} from '../../../../services/ApiClient'
+import Loader from '../../../Loader/Loader'
 
 function Timeline() {
 
     const [genvenTimeline, setGenvenTimeline] = useState()
+    const [loading, setLoading] = useState(true)
 
     let settings = {
         slidesToShow: 1,
@@ -55,38 +57,43 @@ function Timeline() {
             }
         }
         fetchData()
+        setLoading(!loading)
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [genvenTimeline?.length])
 
     return (
-        <Fade direction="up" triggerOnce>
-            <section className="container-fluid Timeline__leti">
-                <Slider {...settings}>
-                    {genvenTimeline?.map(el =>
-                        <>
-                            <div className="Timeline__leti__product row">
-                                <div className="Timeline__leti__image col-12 col-sm-6" style={{
-                                    background: `url(${el?.imgURL}) no-repeat left center / cover`
-                                }}></div>
-                                <div className="col-12 col-sm-6 Timeline__leti__info">
-                                    <div className="row">
-                                        <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el?.desc}}>
-                                        </p>
-                                    </div>
-                                    {el?.buttonText &&
-                                        <div className="row Timeline__leti__btn">
-                                            <div className="col-11 col-sm-8">
-                                                <Link to="/" className="leti-btn">Conoce sobre esta iniciativa</Link>
-                                            </div>
+        <>
+            {loading && <Loader />}
+            <Fade direction="up" triggerOnce>
+                <section className="container-fluid Timeline__leti">
+                    <Slider {...settings}>
+                        {genvenTimeline?.map(el =>
+                            <>
+                                <div className="Timeline__leti__product row">
+                                    <div className="Timeline__leti__image col-12 col-sm-6" style={{
+                                        background: `url(${el?.imgURL}) no-repeat left center / cover`
+                                    }}></div>
+                                    <div className="col-12 col-sm-6 Timeline__leti__info">
+                                        <div className="row">
+                                            <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el?.desc}}>
+                                            </p>
                                         </div>
-                                    }
+                                        {el?.buttonText &&
+                                            <div className="row Timeline__leti__btn">
+                                                <div className="col-11 col-sm-8">
+                                                    <Link to="/" className="leti-btn">Conoce sobre esta iniciativa</Link>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
                                 </div>
-                            </div>
-                        </>
-                    )}
-                </Slider>
-            </section>
-        </Fade>
+                            </>
+                        )}
+                    </Slider>
+                </section>
+            </Fade>
+        </>
     )
 }
 

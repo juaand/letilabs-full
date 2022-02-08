@@ -4,6 +4,7 @@ import {getProduct} from '../../../services/ApiClient'
 import Slider from "react-slick"
 import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+import Loader from '../../Loader/Loader'
 
 function SingleProductPage(props) {
 
@@ -28,6 +29,7 @@ function SingleProductPage(props) {
     const buscar = props?.location?.state?.buscar
 
     const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -36,169 +38,174 @@ function SingleProductPage(props) {
             setProduct(getProductData)
         }
         fetchData()
+        setLoading(!loading)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [buscar])
 
     return (
-        <section className="container SingleProductPage">
-            <div className="row">
-                <div className="col-12 SingleProductPage__back">
-                    <Link className="SingleProductPage__link" to="/listado-de-productos">Regresar al listado de productos</Link>
-                </div>
-                {product.length > 1 ?
-                    <Fade triggerOnce cascade direction="up">
-                        <Slider {...settings}>
-                            {product[0].map(el =>
-                                <>
-                                    <div className="col-12 SingleProductPage__product">
-                                        <div className="row">
-                                            <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
-                                                background: `url(${el?.picPath}) no-repeat center / 60%`,
-                                            }} />
-                                            <div className="col-12 col-sm-6 SingleProductPage__info">
-                                                <h1>{el?.name}</h1>
-                                                <h2>{el?.active_principle}</h2>
-                                                {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span>{el}</span>) : <span>{el?.therapeutic_group}</span>}
-                                                <p><strong>Composición</strong> {el?.composition}</p>
-                                                <p><strong>Indicación</strong> {el?.indication}
-                                                </p>
-                                                <p><strong>Presentación</strong> {el?.presentation}</p>
-                                                <p><strong>Registro sanitario</strong> {el?.health_register}</p>
-                                                <p><strong>Vida útil</strong> {el?.util_life}</p>
-                                                <p className="SingleProductPage__cpe">{el?.CPE}</p>
-                                                <img src={el?.QRpath} alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
+        <>
+            {loading && <Loader />}
+            <section className="container SingleProductPage">
+                <div className="row">
+                    <div className="col-12 SingleProductPage__back">
+                        <Link className="SingleProductPage__link" to="/listado-de-productos">Regresar al listado de productos</Link>
+                    </div>
+                    {product.length > 1 ?
+                        <Fade triggerOnce cascade direction="up">
+                            <Slider {...settings}>
+                                {product[0].map(el =>
+                                    <>
+                                        <div className="col-12 SingleProductPage__product">
+                                            <div className="row">
+                                                <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
+                                                    background: `url(${el?.picPath}) no-repeat center / 60%`,
+                                                }} />
+                                                <div className="col-12 col-sm-6 SingleProductPage__info">
+                                                    <h1>{el?.name}</h1>
+                                                    <h2>{el?.active_principle}</h2>
+                                                    {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span>{el}</span>) : <span>{el?.therapeutic_group}</span>}
+                                                    <p><strong>Composición</strong> {el?.composition}</p>
+                                                    <p><strong>Indicación</strong> {el?.indication}
+                                                    </p>
+                                                    <p><strong>Presentación</strong> {el?.presentation}</p>
+                                                    <p><strong>Registro sanitario</strong> {el?.health_register}</p>
+                                                    <p><strong>Vida útil</strong> {el?.util_life}</p>
+                                                    <p className="SingleProductPage__cpe">{el?.CPE}</p>
+                                                    <img src={el?.QRpath} alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="row justify-content-between">
-                                        <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                        <div className="row justify-content-between">
+                                            <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                                <p>
+                                                    <h2>Reacciones adversas</h2>
+                                                    <ul>
+                                                        <li dangerouslySetInnerHTML={{__html: el?.adverse_reactions}}>
+                                                        </li>
+                                                    </ul>
+                                                </p>
+                                            </div>
+                                            <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                                <p>
+                                                    <h2>Modo de empleo</h2>
+                                                    <ul>
+                                                        <li dangerouslySetInnerHTML={{__html: el?.how_to_use}}>
+                                                        </li>
+                                                    </ul>
+                                                </p>
+                                            </div>
+                                            <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                                <p>
+                                                    <h2>Contraindicaciones</h2>
+                                                    <ul>
+                                                        <li dangerouslySetInnerHTML={{__html: el?.contraindications}}>
+                                                        </li>
+                                                    </ul>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div className="col-12 SingleProductPage__posology wborder">
                                             <p>
-                                                <h2>Reacciones adversas</h2>
+                                                <h2>Posología</h2>
                                                 <ul>
-                                                    <li dangerouslySetInnerHTML={{__html: el?.adverse_reactions}}>
+                                                    <li dangerouslySetInnerHTML={{__html: el?.posology}}>
                                                     </li>
                                                 </ul>
                                             </p>
                                         </div>
-                                        <div className="col-sm-3 col-12 SingleProductPage__posology">
-                                            <p>
-                                                <h2>Modo de empleo</h2>
-                                                <ul>
-                                                    <li dangerouslySetInnerHTML={{__html: el?.how_to_use}}>
-                                                    </li>
-                                                </ul>
-                                            </p>
-                                        </div>
-                                        <div className="col-sm-3 col-12 SingleProductPage__posology">
-                                            <p>
-                                                <h2>Contraindicaciones</h2>
-                                                <ul>
-                                                    <li dangerouslySetInnerHTML={{__html: el?.contraindications}}>
-                                                    </li>
-                                                </ul>
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="col-12 SingleProductPage__posology wborder">
-                                        <p>
-                                            <h2>Posología</h2>
-                                            <ul>
-                                                <li dangerouslySetInnerHTML={{__html: el?.posology}}>
-                                                </li>
-                                            </ul>
-                                        </p>
-                                    </div>
-                                </>
-                            )}
-                        </Slider>
-                    </Fade>
-                    :
-                    <>
-                        <div className="col-12 SingleProductPage__product">
-                            <div className="row">
-                                <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
-                                    background: `url(${product[0]?.picPath}) no-repeat center / 60%`,
-                                }} />
-                                <div className="col-12 col-sm-6 SingleProductPage__info">
-                                    <>
-                                        <h1>{product[0]?.name}</h1>
-                                        <h2>{product[0]?.active_principle}</h2>
-                                        {product[0]?.therapeutic_group?.length > 1 ? product[0]?.therapeutic_group.map(el => <span>{el}</span>) : <span>{product[0]?.therapeutic_group}</span>}
-                                        <p><strong>Composición</strong> {product[0]?.composition}</p>
-                                        <p><strong>Indicación</strong>
-                                            <span dangerouslySetInnerHTML={{__html: product[0]?.indication}}>
-                                            </span>
-                                        </p>
-                                        <p><strong>Presentación</strong> {product[0]?.presentation}</p>
-                                        <p><strong>Registro sanitario</strong> {product[0]?.health_register}</p>
-                                        <p><strong>Vida útil</strong> {product[0]?.util_life}</p>
-                                        <p className="SingleProductPage__cpe">{product[0]?.CPE}</p>
-                                        <img src={product[0]?.QRpath} alt={product[0]?.name + ' código de barras'} className="SingleProductPage__cb" />
                                     </>
+                                )}
+                            </Slider>
+                        </Fade>
+                        :
+                        <>
+                            <div className="col-12 SingleProductPage__product">
+                                <div className="row">
+                                    <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
+                                        background: `url(${product[0]?.picPath}) no-repeat center / 60%`,
+                                    }} />
+                                    <div className="col-12 col-sm-6 SingleProductPage__info">
+                                        <>
+                                            <h1>{product[0]?.name}</h1>
+                                            <h2>{product[0]?.active_principle}</h2>
+                                            {product[0]?.therapeutic_group?.length > 1 ? product[0]?.therapeutic_group.map(el => <span>{el}</span>) : <span>{product[0]?.therapeutic_group}</span>}
+                                            <p><strong>Composición</strong> {product[0]?.composition}</p>
+                                            <p><strong>Indicación</strong>
+                                                <span dangerouslySetInnerHTML={{__html: product[0]?.indication}}>
+                                                </span>
+                                            </p>
+                                            <p><strong>Presentación</strong> {product[0]?.presentation}</p>
+                                            <p><strong>Registro sanitario</strong> {product[0]?.health_register}</p>
+                                            <p><strong>Vida útil</strong> {product[0]?.util_life}</p>
+                                            <p className="SingleProductPage__cpe">{product[0]?.CPE}</p>
+                                            <img src={product[0]?.QRpath} alt={product[0]?.name + ' código de barras'} className="SingleProductPage__cb" />
+                                        </>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="row justify-content-between">
-                            <div className="col-sm-3 col-12 SingleProductPage__posology">
+                            <div className="row justify-content-between">
+                                <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                    <p>
+                                        <h2>Reacciones adversas</h2>
+                                        <ul>
+                                            <li dangerouslySetInnerHTML={{__html: product[0]?.adverse_reactions}}>
+                                            </li>
+                                        </ul>
+                                    </p>
+                                </div>
+                                <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                    <p>
+                                        <h2>Modo de empleo</h2>
+                                        <ul>
+                                            <li dangerouslySetInnerHTML={{__html: product[0]?.how_to_use}}>
+                                            </li>
+                                        </ul>
+                                    </p>
+                                </div>
+                                <div className="col-sm-3 col-12 SingleProductPage__posology">
+                                    <p>
+                                        <h2>Contraindicaciones</h2>
+                                        <ul>
+                                            <li dangerouslySetInnerHTML={{__html: product[0]?.contraindications}}>
+                                            </li>
+                                        </ul>
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="col-12 SingleProductPage__posology">
                                 <p>
-                                    <h2>Reacciones adversas</h2>
+                                    <h2>Posología</h2>
                                     <ul>
-                                        <li dangerouslySetInnerHTML={{__html: product[0]?.adverse_reactions}}>
+                                        <li dangerouslySetInnerHTML={{__html: product[0]?.posology}}>
                                         </li>
                                     </ul>
                                 </p>
                             </div>
-                            <div className="col-sm-3 col-12 SingleProductPage__posology">
-                                <p>
-                                    <h2>Modo de empleo</h2>
-                                    <ul>
-                                        <li dangerouslySetInnerHTML={{__html: product[0]?.how_to_use}}>
-                                        </li>
-                                    </ul>
-                                </p>
-                            </div>
-                            <div className="col-sm-3 col-12 SingleProductPage__posology">
-                                <p>
-                                    <h2>Contraindicaciones</h2>
-                                    <ul>
-                                        <li dangerouslySetInnerHTML={{__html: product[0]?.contraindications}}>
-                                        </li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
-                        <div className="col-12 SingleProductPage__posology">
-                            <p>
-                                <h2>Posología</h2>
-                                <ul>
-                                    <li dangerouslySetInnerHTML={{__html: product[0]?.posology}}>
-                                    </li>
-                                </ul>
-                            </p>
-                        </div>
-                    </>
-                }
+                        </>
+                    }
 
-                <div className="col-12 SingleProductPage__another">
-                    <h1>Otros productos del portafolio</h1>
-                    <div className="row justify-content-between">
-                        {product[1]?.map(el =>
-                            <div className="col-12 col-sm-3 SingleProductPage__another__block">
-                                {/* <img src={el?.picPath} alt={el?.name} className="SingleProductPage__another__img" /> */}
-                                <h2 className="SingleProductPage__another__img SingleProductPage__another__img-txt">{el?.name}<sup>&reg;</sup></h2>
-                                <h2>{el?.name}</h2>
-                                <p className="SingleProductPage__another__principle">{el?.active_principle}</p>
-                                <Link to={{
-                                    pathname: '/producto',
-                                    state: {
-                                        buscar: el?.name
-                                    }
-                                }} className="leti-btn">Ver producto</Link>
-                            </div>
-                        )}
+                    <div className="col-12 SingleProductPage__another">
+                        <h1>Otros productos del portafolio</h1>
+                        <div className="row justify-content-between">
+                            {product[1]?.map(el =>
+                                <div className="col-12 col-sm-3 SingleProductPage__another__block">
+                                    {/* <img src={el?.picPath} alt={el?.name} className="SingleProductPage__another__img" /> */}
+                                    <h2 className="SingleProductPage__another__img SingleProductPage__another__img-txt">{el?.name}<sup>&reg;</sup></h2>
+                                    <h2>{el?.name}</h2>
+                                    <p className="SingleProductPage__another__principle">{el?.active_principle}</p>
+                                    <Link to={{
+                                        pathname: '/producto',
+                                        state: {
+                                            buscar: el?.name
+                                        }
+                                    }} className="leti-btn">Ver producto</Link>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </>
     )
 }
 

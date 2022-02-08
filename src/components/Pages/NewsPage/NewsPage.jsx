@@ -7,11 +7,13 @@ import Lastest from './Lastest/Lastest'
 import Most from './Most/Most'
 import FindNews from './FindNews/FindNews'
 import LetiNews from './LetiNews/LetiNews'
+import Loader from '../../Loader/Loader'
 
 function NewsPage() {
 
     const [newsData, setNewsData] = useState([])
     const [titlesData, setTitlesData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,11 +23,13 @@ function NewsPage() {
             setTitlesData(getTitlesData)
         }
         fetchData()
+        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
+            {loading && <Loader />}
             <Helmet>
                 <title>Grupo Leti | Noticias</title>
                 <meta name="description" content="Para nosotros siempre ha sido prioridad contar con la tecnología e infraestructura que nos permita desarrollar los mejores productos, y además en las cantidades necesarias para cuidar de la salud de todo el país." />
@@ -33,7 +37,7 @@ function NewsPage() {
             </Helmet>
             <main>
                 <Banner newsData={newsData?.filter(el => el?.outstanding === true)} />
-                <LetiNews title={titlesData} newsData={newsData}/>
+                <LetiNews title={titlesData} newsData={newsData} />
                 <Lastest title={titlesData} newsData={newsData?.filter(el => el?.outstanding !== true).slice(0, 3)} />
                 <Most title={titlesData} newsData={newsData} />
                 <FindNews title={titlesData} />
