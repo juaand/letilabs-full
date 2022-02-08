@@ -3,12 +3,10 @@ import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import {Fade} from "react-awesome-reveal"
 import {getLogoCarouselData} from '../../../../services/ApiClient'
-import Loader from '../../../Loader/Loader'
 
 function Carousel() {
 
     const [getData, setGetData] = useState([])
-    const [loading, setLoading] = useState(true)
 
     let settings = {
         className: "center",
@@ -36,14 +34,12 @@ function Carousel() {
             setGetData(data)
         }
         fetchData()
-        setLoading(!loading)
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
-            {loading && <Loader />}
             <Fade delay={800} triggerOnce>
                 <section className="Carousel__Alliances">
                     <div className="container">
