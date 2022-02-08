@@ -33,7 +33,7 @@ function NewsPage() {
             </Helmet>
             <main>
                 <Banner newsData={newsData?.filter(el => el?.outstanding === true)} />
-                <LetiNews newsData={newsData}/>
+                <LetiNews title={titlesData} newsData={newsData}/>
                 <Lastest title={titlesData} newsData={newsData?.filter(el => el?.outstanding !== true).slice(0, 3)} />
                 <Most title={titlesData} newsData={newsData} />
                 <FindNews title={titlesData} />

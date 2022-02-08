@@ -4,7 +4,7 @@ import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
 import {drawTime} from '../../../../helpers/globals'
 
-function LetiNews({newsData}) {
+function LetiNews({newsData, title}) {
     return (
         <div className="container-fluid p-0 NewsPage__leti">
             <div className="row">
@@ -35,7 +35,7 @@ function LetiNews({newsData}) {
                 </div>
                 <div className="col-12 col-sm-5 NewsPage__leti-hero">
                     <Fade cascade delay={300} direction="up" triggerOnce className="card NewsPage__leti__card col-12">
-                        <img src="./images/leti-news-img.jpg" className="card-img-top" alt="Noticias destacadas Grupo Leti" />
+                        <img src={title?.picPath} className="card-img-top" alt="Noticias destacadas Grupo Leti" />
                     </Fade>
                 </div>
             </div>
