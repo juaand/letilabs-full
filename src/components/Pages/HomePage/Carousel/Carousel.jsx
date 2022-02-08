@@ -40,15 +40,15 @@ function Carousel() {
                 const getNextArrow = document.querySelector('.slick-next')
                 const getPrevArrow = document.querySelector('.slick-prev')
 
-                getNextArrow.style.left = `${((getSlickDots.x + getSlickDots.width) / 10) + 6}rem`
-                getPrevArrow.style.left = `${(getSlickDots.x / 10) - 9}rem`
+                getNextArrow.style.left = `${((getSlickDots?.x + getSlickDots?.width) / 10) + 4}rem`
+                getPrevArrow.style.left = `${(getSlickDots?.x / 10) - 8}rem`
 
-                // document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots.width) / 2) / 10}rem`
+                document.querySelector('.slick-dots').style.marginLeft = `-${((getSlickDots?.width) / 2) / 10}rem`
             }
         }
         fetchData()
 
-    }, [])
+    }, [getData?.length])
 
     return (
         <>
