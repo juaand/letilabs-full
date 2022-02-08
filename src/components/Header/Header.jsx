@@ -46,7 +46,7 @@ function Header() {
                                     Hola, <span className="Header__welcome-span">{user.name}</span>
                                 </div>
                             }
-                            <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin" : "/"}`} />
+                            <NavLink onClick={() => setBool(false)} className="navbar-brand" to={`${user ? "/admin-editar-contenido" : "/"}`} />
                             {!user && <div onClick={showSearch} className={`Header__search ${bool && 'Header__search-close'} ${isSearchPage && 'd-none'}`}></div>}
                             {user && <div onClick={logoutUser} className="Header__logout d-none d-sm-flex"></div>}
                         </div>

@@ -24,7 +24,7 @@ function Footer() {
                 <div className="container">
                     <div className="row">
                         <div className="col-6 col-sm-4">
-                            <Link to={`${user ? "/admin" : "/"}`}>
+                            <Link to={`${user ? "/admin-editar-contenido" : "/"}`}>
                                 <div className="Footer__logo"></div>
                             </Link>
                             <div className="Footer__info">
