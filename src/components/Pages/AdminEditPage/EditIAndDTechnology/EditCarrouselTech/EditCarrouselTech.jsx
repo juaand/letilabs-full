@@ -1,38 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getCarouselTech, updateCarouselTech} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getCarouselTech} from '../../../../../services/ApiClient'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditCarrouselTech() {
-
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                mainTitle: '',
-                imgURL: '',
-                title: '',
-                description: '',
-            },
-            error: {
-                mainTitle: false,
-                imgURL: false,
-                title: false,
-                description: false,
-            },
-            touch: {},
-        },
-        {
-            mainTitle: v => v.length,
-            imgURL: v => v.length,
-            title: v => v.length,
-            description: v => v.length,
-        }
-    )
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourGoalsOCData, setOurGoalsOCData] = useState()
     const [bool, setBool] = useState(false)
@@ -65,9 +35,9 @@ function EditCarrouselTech() {
                     <h2>Editar Carousel</h2>
                     <div className="row justify-content-around">
                         {ourGoalsOCData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-4 EditCarousel__trash" onClick={() => showModal(el)}>
+                                <img src={el?.imgURL} alt={el?.name} style={{width:100,}} />
                                 <p>{el?.mainTitle}</p>
-                                <p>{el?.imgURL}</p>
                                 <p>{el?.title}</p>
                                 <p>{el?.description}</p>
                             </div>
