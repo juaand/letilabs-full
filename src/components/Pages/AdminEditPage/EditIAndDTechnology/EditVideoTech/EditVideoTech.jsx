@@ -3,7 +3,6 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getVideoTech, updateVideoTech} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
 
 function EditVideoTech() {
 
@@ -50,10 +49,6 @@ function EditVideoTech() {
             setRegisterError(err.response?.data?.message)
         }
     }
-    const handleVideoDescription = (e) => {
-        data.description = e.target.getContent()
-    }
-
 
     useEffect(() => {
         const fetchData = async () => {
