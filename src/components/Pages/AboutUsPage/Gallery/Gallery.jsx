@@ -1,7 +1,8 @@
-import './Gallery.css'
 import React, {useState, useEffect} from 'react'
-import {getGallery} from '../../../../services/ApiClient'
 import {Fade} from "react-awesome-reveal"
+
+import './Gallery.css'
+import {getGallery} from '../../../../services/ApiClient'
 
 function Gallery() {
 

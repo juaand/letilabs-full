@@ -1,6 +1,7 @@
-import './Banner.css'
 import React, {useState, useEffect} from 'react'
 import {Fade} from "react-awesome-reveal"
+
+import './Banner.css'
 import {getBanner} from '../../../../services/ApiClient'
 
 function Banner() {

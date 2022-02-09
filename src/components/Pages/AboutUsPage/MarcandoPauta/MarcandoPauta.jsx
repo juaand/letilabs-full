@@ -1,7 +1,8 @@
-import './MarcandoPauta.css'
 import React, {useState, useEffect} from 'react'
-import {getMarcandoPauta} from '../../../../services/ApiClient'
 import {Fade} from "react-awesome-reveal"
+
+import './MarcandoPauta.css'
+import {getMarcandoPauta} from '../../../../services/ApiClient'
 
 function MarcandoPauta() {
 

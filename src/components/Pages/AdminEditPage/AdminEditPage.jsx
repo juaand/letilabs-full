@@ -1,6 +1,7 @@
 import './AdminEditPage.css'
 import React, {useState} from 'react'
 import {Helmet} from 'react-helmet'
+
 import Nav from './Nav/Nav'
 import EditHome from './EditHome/EditHome'
 import EditAboutUs from './EditAboutUs/EditAboutUs'
@@ -28,7 +29,6 @@ function AdminEditPage() {
 
     return (
         <>
-
             <Helmet>
                 <title>Grupo Leti | Administrador de contenidos</title>
             </Helmet>

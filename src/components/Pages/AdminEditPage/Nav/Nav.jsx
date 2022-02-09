@@ -13,13 +13,13 @@ function Nav({getActiveItem}) {
 
     const clearInitActive = () => {
         const initActive = document.querySelector('.currentActive')
-        const isActive = document.querySelector('.active')
+        const isActive = document.querySelectorAll('.active')
 
         if (initActive) {
             initActive.classList.remove('currentActive')
         }
 
-        isActive.classList.remove('active')
+        isActive.forEach(el => el.classList.remove('active'))
     }
 
     function handleClick() {
@@ -46,8 +46,8 @@ function Nav({getActiveItem}) {
         <ul className="AdminEditPage__Nav">
             {adminNav.map((el, i) =>
                 <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""}`} onClick={(e) => {
-                    getActiveItem(seoURL(el))
                     clearInitActive()
+                    getActiveItem(seoURL(el))
                     e.target.classList.add("active")
                 }}>
                     {el}

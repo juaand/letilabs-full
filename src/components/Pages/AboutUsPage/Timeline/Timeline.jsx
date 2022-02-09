@@ -1,7 +1,8 @@
-import './Timeline.css'
 import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import {Fade} from "react-awesome-reveal"
+
+import './Timeline.css'
 import {getTimeLine} from '../../../../services/ApiClient'
 
 function Timeline() {

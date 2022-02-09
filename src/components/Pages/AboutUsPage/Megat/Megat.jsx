@@ -1,6 +1,7 @@
-import './Megat.css'
 import React, {useState, useEffect} from 'react'
 import {Fade} from "react-awesome-reveal"
+
+import './Megat.css'
 import {getMegat} from '../../../../services/ApiClient'
 
 function Megat() {

@@ -1,8 +1,9 @@
-import './AboutUs.css'
 import React, {useEffect} from 'react'
+import {Helmet} from 'react-helmet'
+
+import './AboutUs.css'
 import {createContent} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 import Timeline from './Timeline/Timeline'

@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getMarcandoPauta, updateMarcandoPautaData} from '../../../../../services/ApiClient'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
 
