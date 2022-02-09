@@ -16,6 +16,7 @@ import EditProducts from './EditProducts/EditProducts'
 import EditNews from './EditNews/EditNews'
 import EditOurCompaniesGenven from './EditOurCompaniesGenven/EditOurCompaniesGenven'
 import EditOurCompaniesBiocontrolled from './EditOurCompaniesBiocontrolled/EditOurCompaniesBiocontrolled'
+import EditTherapeuticalAreas from './EditTherapeuticalAreas/EditTherapeuticalAreas'
 
 function AdminEditPage() {
 
@@ -39,6 +40,7 @@ function AdminEditPage() {
                     <div className="col-10 AdminEditPage__Content">
                         {initNavValue === 'inicio' && <EditHome />}
                         {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
+                        {initNavValue === 'areas-terapeuticas' && <EditTherapeuticalAreas />}
                         {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
                         {initNavValue === 'nuestras-empresas-leti' && <EditOurCompaniesLeti />}
                         {initNavValue === 'nuestras-empresas-genven' && <EditOurCompaniesGenven />}
