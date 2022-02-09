@@ -1,7 +1,6 @@
 import './DeleteItemModal.css'
 import React from 'react'
 import {deleteUnitItem} from '../../../../../../services/ApiClient'
-import {seoURL} from '../../../../../../hooks/seoURL'
 
 function DeleteItemModal({deleteItem, data, hideModal}) {
 
@@ -21,9 +20,6 @@ function DeleteItemModal({deleteItem, data, hideModal}) {
                             <div className="card">
                                 <div className="card-body DeleteItemModal__body">
                                     <div className="row align-items-center">
-                                        <div className="col-12 DeleteItemModal__img-small">
-                                            <img src={"./images/" + seoURL(data.name) + ".svg"} alt={data.name} />
-                                        </div>
                                         <div className="col-12">
                                             <p className="DeleteItemModal__text"><strong>unidad</strong> {data.name}</p>
                                             <p className="DeleteItemModal__text"><strong>descripción</strong> {data.desc}</p>

@@ -1,32 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getCarouselManufacture, updateCarouselManufacture} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getCarouselManufacture} from '../../../../../services/ApiClient'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditCarouselManufacture() {
-
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                title: '',
-                info: '',
-            },
-            error: {
-                title: false,
-                info: false,
-            },
-            touch: {},
-        },
-        {
-            title: v => v.length,
-            info: v => v.length,
-        }
-    )
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
+    
     const [modalData, setModalData] = useState()
     const [ourCarouselManufactureData, setOurCarouselManufactureData] = useState()
     const [bool, setBool] = useState(false)
