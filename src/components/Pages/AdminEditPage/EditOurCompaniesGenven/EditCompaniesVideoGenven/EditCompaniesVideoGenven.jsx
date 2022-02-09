@@ -3,7 +3,6 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getOurCompaniesVideoGenven, updateOurCompaniesVideoGenven} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
 
 function EditCompaniesVideoGenven() {
 
