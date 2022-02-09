@@ -26,14 +26,14 @@ function Banner() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-sm-7 Banner__Biocontrolled__title">
-                            <Fade delay={1000} triggerOnce>
+                            <Fade duration={600} triggerOnce>
                                 <img className="Banner__Biocontrolled-logo" src={bannerData?.logoURL} alt="Biocontrolled logo" />
                             </Fade>
-                            <Fade delay={1300} direction="left" triggerOnce>
+                            <Fade duration={600} direction="left" triggerOnce>
                                 <h3 dangerouslySetInnerHTML={{__html: bannerData?.description}} />
                             </Fade>
                         </div>
-                        <Fade cascade delay={1500} triggerOnce>
+                        <Fade cascade delay={600} triggerOnce>
                             <div className="Banner__Biocontrolled__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                             <div className="Banner__Biocontrolled__bg parallax" data-speed="-.1" data-axis="vertical" style={{
                                 background: `url(${bannerData?.imgURL}) no-repeat center / contain`,

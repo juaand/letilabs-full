@@ -26,12 +26,12 @@ function Banner() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-sm-7 Banner__AreasTerapeuticas__title">
-                            <Fade delay={300} direction="left" triggerOnce>
+                            <Fade duration={600} direction="left" triggerOnce>
                                 <h1 dangerouslySetInnerHTML={{__html: data?.title}} />
                                 <h3 dangerouslySetInnerHTML={{__html: data?.description}} />
                             </Fade>
                         </div>
-                        <Fade cascade delay={1500} triggerOnce>
+                        <Fade cascade delay={600} triggerOnce>
                             <div className="Banner__AreasTerapeuticas__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                             <div className="Banner__AreasTerapeuticas__bg parallax" data-speed="-.1" data-axis="vertical" style={{
                                 background: `url("${data?.imgURL}") no-repeat center center / contain`

@@ -28,18 +28,18 @@ function Banner() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-sm-9 Banner__Products__title">
-                            <Fade delay={300} direction="left" triggerOnce>
+                            <Fade duration={600} direction="left" triggerOnce>
                                 <h1 dangerouslySetInnerHTML={{__html: data?.title}} />
                                 <h3 dangerouslySetInnerHTML={{__html: data?.description}} />
                             </Fade>
                         </div>
-                        <Fade delay={300} direction="down" triggerOnce className="col-12 Banner__Products__btns">
+                        <Fade duration={600} direction="down" triggerOnce className="col-12 Banner__Products__btns">
                             <div className="row">
                                 <Link to={data?.button1Link} className="col-12 col-sm-3 col-lg-3 leti-btn">{data?.button1Title}</Link>
                                 <Link to={data?.button2Link} className="col-12 col-sm-3 col-lg-3  leti-btn">{data?.button2Title}</Link>
                             </div>
                         </Fade>
-                        <Fade cascade delay={1500} triggerOnce>
+                        <Fade cascade delay={600} triggerOnce>
                             <div className="Banner__Products__blue parallax" data-speed="-0.08" data-axis="vertical"></div>
                             <div className="Banner__Products__bg parallax" data-speed="-.1" data-axis="vertical" style={{
                                 background: `url("${data?.imgURL}") no-repeat center / contain`

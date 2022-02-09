@@ -12,7 +12,7 @@ function EditMarcandoPauta() {
     const [marcandoPautaData, setMarcandoPautaData] = useState()
     const [disabled, setDisabled] = useState(true)
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: '',
@@ -33,7 +33,7 @@ function EditMarcandoPauta() {
 
 
 
-    const {data, error, touch} = state
+    const {data} = state
     const [registerError, setRegisterError] = useState(null)
 
 
