@@ -86,6 +86,7 @@ function EditProdutcsBanner() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.description}
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -99,7 +100,6 @@ function EditProdutcsBanner() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description
                             }}
                         />
                     </div>
@@ -108,6 +108,7 @@ function EditProdutcsBanner() {
                             Descripción 2
                         </p>
                         <Editor
+                            initialValue={bannerData?.descriptio2}
                             onChange={handleBannerDescription2}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -121,7 +122,6 @@ function EditProdutcsBanner() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description2
                             }}
                         />
                     </div>

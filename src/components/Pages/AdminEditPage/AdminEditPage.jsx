@@ -18,6 +18,7 @@ import EditNews from './EditNews/EditNews'
 import EditOurCompaniesGenven from './EditOurCompaniesGenven/EditOurCompaniesGenven'
 import EditOurCompaniesBiocontrolled from './EditOurCompaniesBiocontrolled/EditOurCompaniesBiocontrolled'
 import EditTherapeuticalAreas from './EditTherapeuticalAreas/EditTherapeuticalAreas'
+import EditOurPhilosophy from './EditOurPhilosophy/EditOurPhilosophy'
 
 function AdminEditPage() {
 
@@ -51,6 +52,7 @@ function AdminEditPage() {
                         {initNavValue === 'investigacion-y-desarrollo-alianzas' && <EditIAndDAlliances />}
                         {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
                         {initNavValue === 'nuestra-gente' && <EditOurPeople />}
+                        {initNavValue === 'nuestra-filosofia' && <EditOurPhilosophy />}
                         {initNavValue === 'productos' && <EditProducts />}
                         {initNavValue === 'noticias' && <EditNews />}
                     </div>

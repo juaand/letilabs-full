@@ -205,9 +205,14 @@ export const updateProductListBanner = ({description, imgURL, title, id}) => htt
 
 // our philosophy page
 export const getBannerOurPhilosophy = () => http.get("/bannerourphilosophy")
+export const updateBannerOurPhilosophy = ({description, imgURL, title, id}) => http.patch("/updatebannerourphilosophy", {description, imgURL, title, id})
 export const getInfoCardsOurPhilosophy = () => http.get("/ourphilosophyinfocards")
+export const updateInfoCardsOurPhilosophy = ({picPath, title, id}) => http.patch("/updateourphilosophyinfocards", {picPath, title, id})
 export const getLetterOurPhilosophy = () => http.get("/ourphilosophyletter")
+export const updateLetterOurPhilosophy = ({body, imgURL, mainTitle, id}) => http.patch("/updateourphilosophyletter", {body, imgURL, mainTitle, id})
 export const getBottomOurPhilosophy = () => http.get("/bottomourphilosophy")
+export const updateBottomOurPhilosophy = ({title, imgURL, description, buttonLink, buttonTitle, id}) => http.patch("/updatebottomourphilosophy", {title, imgURL, description, buttonLink, buttonTitle, id})
+
 
 //therapeutic areas page
 export const getBannerTA = () => http.get("/bannerta")

@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getInnovationOC, updateInnovationOC} from '../../../../../services/ApiClient'
+import {getBannerOurPhilosophy, updateBannerOurPhilosophy} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-function EditInnovate() {
+function EditBannerOurPhilosophy() {
+
     const [bannerData, setBannerData] = useState()
 
     const {state, onBlur, onChange} = useFormState(
@@ -14,16 +15,19 @@ function EditInnovate() {
                 id: '',
                 description: bannerData?.description,
                 imgURL: bannerData?.imgURL,
+                title: bannerData?.title,
             },
             error: {
                 description: true,
                 imgURL: false,
+                title: false,
             },
             touch: {},
         },
         {
             description: v => v.length,
             imgURL: v => v.length,
+            title: v => v.length,
         }
     )
 
@@ -38,7 +42,7 @@ function EditInnovate() {
         data.id = bannerData._id
 
         try {
-            await updateInnovationOC(data)
+            await updateBannerOurPhilosophy(data)
                 .then(banner => {
                     setBannerData(banner[0])
                 })
@@ -56,7 +60,7 @@ function EditInnovate() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getBannerData = await getInnovationOC()
+            const getBannerData = await getBannerOurPhilosophy()
             setBannerData(getBannerData)
         }
         fetchData()
@@ -65,7 +69,7 @@ function EditInnovate() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Innovar Banner</h2>
+            <h2>Banner Leti</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -104,6 +108,20 @@ function EditInnovate() {
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
+                    <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            title
+                        </p>
+                        <InputWithLabel
+                            value={data?.title}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="title"
+                            type="text"
+                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            placeholder={bannerData?.title}
+                        />
+                    </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
                     </div>
@@ -115,4 +133,4 @@ function EditInnovate() {
     )
 }
 
-export default EditInnovate
+export default EditBannerOurPhilosophy
