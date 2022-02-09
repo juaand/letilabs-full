@@ -1,50 +1,20 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getBottomIdData, updateBottomID} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getBottomIdData} from '../../../../../services/ApiClient'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
-
-
 function EditBottomID() {
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                title: '',
-                img: '',
-                url: '',
-                button: '',
-            },
-            error: {
-                title: false,
-                img: false,
-                url: false,
-                button: false,
-            },
-            touch: {},
-        },
-        {
-            title: v => v.length,
-            img: v => v.length,
-            url: v => v.length,
-            button: v => v.length,
-        }
-    )
 
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [IDData, setIDData] = useState()
     const [bool, setBool] = useState(false)
 
-    const showModal = (data) => {
-        setModalData(data)
+    const showModal = (info) => {
+        setModalData(info)
         setBool(!bool)
     }
 
-    const deleteItem = (data) => {
-        setIDData(data)
+    const deleteItem = (info) => {
+        setIDData(info)
         setBool(!bool)
     }
 
