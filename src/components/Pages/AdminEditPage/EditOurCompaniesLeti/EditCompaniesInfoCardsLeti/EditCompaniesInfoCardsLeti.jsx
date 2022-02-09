@@ -1,32 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getOurCompaniesInfoCardsLeti, updateOurCompaniesInfoCardsLeti} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getOurCompaniesInfoCardsLeti} from '../../../../../services/ApiClient'
 import DeleteItemModal from '../../EditOurCompaniesLeti/EditCompaniesInfoCardsLeti/DeleteItemModal/DeleteItemModal'
 
 function EditCompaniesInfoCardsLeti() {
-
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                title: '',
-                info: '',
-            },
-            error: {
-                title: false,
-                info: false,
-            },
-            touch: {},
-        },
-        {
-            title: v => v.length,
-            info: v => v.length,
-        }
-    )
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourCompaniesOCData, setOurCompaniesOCData] = useState()
     const [bool, setBool] = useState(false)
