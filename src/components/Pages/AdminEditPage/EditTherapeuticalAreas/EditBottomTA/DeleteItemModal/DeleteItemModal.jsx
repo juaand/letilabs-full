@@ -10,6 +10,7 @@ function DeleteItemModal({deleteItem, data, hideModal}) {
         deleteItem(updateData)
     }
 
+
     return (
         <div className="DeleteItemModal">
             <div className="container">
@@ -21,12 +22,10 @@ function DeleteItemModal({deleteItem, data, hideModal}) {
                             <div className="card">
                                 <div className="card-body DeleteItemModal__body">
                                     <div className="row align-items-center">
-                                        <div className="col-12 DeleteItemModal__img-small">
-                                            <img src={"./images/" + seoURL(data.name) + ".svg"} alt={data.name} />
-                                        </div>
                                         <div className="col-12">
-                                            <p className="DeleteItemModal__text"><strong>unidad</strong> {data.name}</p>
-                                            <p className="DeleteItemModal__text"><strong>descripción</strong> {data.desc}</p>
+                                            <p className="DeleteItemModal__text"><strong>Título</strong> {data.title}</p>
+                                            <p className="DeleteItemModal__text"><strong>Texto botón</strong> {data.buttonTitle}</p>
+                                            <p className="DeleteItemModal__text"><strong>URL botón</strong> {data.buttonLink}</p>
                                         </div>
                                         <div className="col-12">
                                             <div onClick={() => deleteUnidadItem(data._id)} className="leti-btn small">Eliminar</div>

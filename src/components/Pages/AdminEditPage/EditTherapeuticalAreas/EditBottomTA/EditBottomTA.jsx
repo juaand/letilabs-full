@@ -1,38 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getBottomTA, updateBottomTA} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getBottomTA,} from '../../../../../services/ApiClient'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 
 function EditBottomTA() {
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                title: '',
-                img: '',
-                buttonLink: '',
-                buttonTitle: '',
-            },
-            error: {
-                title: false,
-                img: false,
-                buttonLink: false,
-                buttonTitle: false,
-            },
-            touch: {},
-        },
-        {
-            title: v => v.length,
-            img: v => v.length,
-            buttonLink: v => v.length,
-            buttonTitle: v => v.length,
-        }
-    )
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourPeopleData, setOurPeopleData] = useState()
     const [bool, setBool] = useState(false)
