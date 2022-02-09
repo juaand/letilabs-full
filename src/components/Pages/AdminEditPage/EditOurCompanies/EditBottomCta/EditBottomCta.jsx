@@ -1,39 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getBottomOC, updateBottomOC} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getBottomOC} from '../../../../../services/ApiClient'
 import DeleteItemModal from '../../EditOurCompanies/EditBottomCta/DeleteItemModal/DeleteItemModal'
 
 
 
 function EditBottomCta() {
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                title: '',
-                img: '',
-                url: '',
-                button: '',
-            },
-            error: {
-                title: false,
-                img: false,
-                url: false,
-                button: false,
-            },
-            touch: {},
-        },
-        {
-            title: v => v.length,
-            img: v => v.length,
-            url: v => v.length,
-            button: v => v.length,
-        }
-    )
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourCompaniesOCData, setOurCompaniesOCData] = useState()
     const [bool, setBool] = useState(false)
