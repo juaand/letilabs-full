@@ -3,7 +3,6 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getMapTech, updateMapTech} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
 
 function EditMapTech() {
 
@@ -50,10 +49,6 @@ function EditMapTech() {
             setRegisterError(err.response?.data?.message)
         }
     }
-    const handleMapDescription = (e) => {
-        data.description = e.target.getContent()
-    }
-
 
     useEffect(() => {
         const fetchData = async () => {
