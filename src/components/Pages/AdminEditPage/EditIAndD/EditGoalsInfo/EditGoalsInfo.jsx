@@ -1,35 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getGoalsIdData, updateGoalsIdData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import {getGoalsIdData} from '../../../../../services/ApiClient'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditGoalsInfo() {
 
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                name: '',
-                title: '',
-                desc: '',
-            },
-            error: {
-                name: false,
-                title: false,
-                desc: false,
-            },
-            touch: {},
-        },
-        {
-            name: v => v.length,
-            title: v => v.length,
-            desc: v => v.length,
-        }
-    )
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourGoalsOCData, setOurGoalsOCData] = useState()
     const [bool, setBool] = useState(false)
