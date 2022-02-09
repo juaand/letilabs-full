@@ -200,6 +200,8 @@ export const updateProductBanner = ({description, imgURL, title, button1Title, b
 export const getProductBottom = () => http.get("/bottomproduct")
 export const updateProductBottom = ({findProductsTitle, imgURL, title, buttonTitle, farmacoTitle, farmacoBtn, farmacoDesc, id}) => http.patch("/updateproductbottom", {findProductsTitle, imgURL, title, buttonTitle, farmacoTitle, farmacoBtn, farmacoDesc, id})
 export const getProductListBanner = () => http.get("/listadoproductosbanner")
+export const updateProductListBanner = ({description, imgURL, title, id}) => http.patch("/updatelistadoproductosbanner", {description, imgURL, title, id})
+
 
 // our philosophy page
 export const getBannerOurPhilosophy = () => http.get("/bannerourphilosophy")
@@ -209,10 +211,14 @@ export const getBottomOurPhilosophy = () => http.get("/bottomourphilosophy")
 
 //therapeutic areas page
 export const getBannerTA = () => http.get("/bannerta")
+export const updateBannerTA = ({title, description, imgURL, id}) => http.patch("/updatebannerta", {title, description, imgURL, id})
 export const getCarrouselTA = () => http.get("/carrouselta")
+export const updateCarrouselTA = ({title, mainTitle, desc, imgURL, id}) => http.patch("/updatecarrouselta", {title, mainTitle, desc, imgURL, id})
 export const getBottomTA = () => http.get("/bottomta")
+export const updateBottomTA = ({title, buttonLink, buttonTitle, img, id}) => http.patch("/updatebottomta", {title, buttonLink, buttonTitle, img, id})
 
 //news routes
 export const getNews = () => http.get("/newsdata")
 export const getNewsTitles = () => http.get("/newstitles")
+export const updateNewsTitles = ({lastestTitle, mostTitle, searchTitle, picPath, id}) => http.patch("/updatenewstitles", {lastestTitle, mostTitle, searchTitle, picPath, id})
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})
