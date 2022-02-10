@@ -116,8 +116,6 @@ function EditProductosGenvenPage() {
                             cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={bannerData?.buttonTitle}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Link botón
                         </p>

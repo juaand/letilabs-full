@@ -76,15 +76,13 @@ function EditTimelinePurpose() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Elminar elemento del TimeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
-                                <p>{el?.desc}</p>
-                                <p>{el?.buttonTitle}</p>
-                                <p>{el?.buttonLink}</p>
+                                <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
                     </div>
@@ -93,7 +91,7 @@ function EditTimelinePurpose() {
                 <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
@@ -107,7 +105,7 @@ function EditTimelinePurpose() {
                                 placeholder=""
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
@@ -121,7 +119,7 @@ function EditTimelinePurpose() {
                                 placeholder="Ingresa descripción"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Título botón
                             </p>
@@ -135,7 +133,7 @@ function EditTimelinePurpose() {
                                 placeholder="Ingresa Título botón"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Url Botón
                             </p>

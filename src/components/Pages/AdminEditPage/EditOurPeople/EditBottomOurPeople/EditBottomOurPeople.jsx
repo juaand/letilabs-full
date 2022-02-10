@@ -32,11 +32,11 @@ function EditBottomOurPeople() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourPeopleData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar compañía</h2>
                     <div className="row justify-content-around">
                         {ourPeopleData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el.img.toLowerCase()} alt={el.img} />
                                 <p>{el.title}</p>
                                 <p>{el.button}</p>

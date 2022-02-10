@@ -62,7 +62,7 @@ function EditCompaniesVideoGenven() {
             <h2>Video Genven</h2>
             <form className="AdminEdit__form" onSubmit={updateVideo}>
                 <div className="row">
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12">
                         <p className="AdminEdit__form__label">
                             Video
                         </p>

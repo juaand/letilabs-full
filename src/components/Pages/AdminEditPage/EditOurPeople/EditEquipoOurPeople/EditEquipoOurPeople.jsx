@@ -84,10 +84,10 @@ function EditEquipoOurPeople() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Equipo Leti</h2>
+            <h2>Equipo</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
-                <div className="col-12 col-sm-6">
+                <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Título
                         </p>
@@ -109,7 +109,7 @@ function EditEquipoOurPeople() {
                             }}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Descripción
                         </p>
@@ -131,7 +131,7 @@ function EditEquipoOurPeople() {
                             }}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Persona del equipo y cargo
                         </p>
@@ -153,7 +153,7 @@ function EditEquipoOurPeople() {
                             }}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen
                         </p>
@@ -167,7 +167,7 @@ function EditEquipoOurPeople() {
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen 2
                         </p>
@@ -181,7 +181,7 @@ function EditEquipoOurPeople() {
                             placeholder={bannerData?.buttonTitle}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen 3
                         </p>

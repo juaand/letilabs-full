@@ -125,7 +125,7 @@ function EditEquipoBiocontrolledPage() {
                             }}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen
                         </p>
@@ -139,7 +139,7 @@ function EditEquipoBiocontrolledPage() {
                             placeholder={bannerData?.imgURL}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen 2
                         </p>
@@ -153,7 +153,7 @@ function EditEquipoBiocontrolledPage() {
                             placeholder={bannerData?.buttonTitle}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen 3
                         </p>

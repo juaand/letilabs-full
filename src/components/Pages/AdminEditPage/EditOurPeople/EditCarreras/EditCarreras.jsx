@@ -55,6 +55,7 @@ function EditCarreras() {
             setRegisterError(err.response?.data?.message)
         }
     }
+    
     const handleCarrerasDescription = (e) => {
         data.description = e.target.getContent()
     }

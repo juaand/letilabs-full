@@ -160,7 +160,7 @@ function EditCarrouselTA() {
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12">
                             <p className="AdminEdit__form__label">
                                 Imagen Área
                             </p>

@@ -91,7 +91,7 @@ function EditTimelineBiocontrolled() {
                 <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
@@ -105,7 +105,7 @@ function EditTimelineBiocontrolled() {
                                 placeholder=""
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
@@ -119,7 +119,7 @@ function EditTimelineBiocontrolled() {
                                 placeholder="Ingresa descripción"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Título botón
                             </p>
@@ -133,7 +133,7 @@ function EditTimelineBiocontrolled() {
                                 placeholder="Ingresa Título botón"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Url Botón
                             </p>
