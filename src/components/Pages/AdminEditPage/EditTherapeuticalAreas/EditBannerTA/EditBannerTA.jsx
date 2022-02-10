@@ -77,6 +77,7 @@ function EditBannerTA() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.description}
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -90,7 +91,6 @@ function EditBannerTA() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description
                             }}
                         />
                     </div>

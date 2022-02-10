@@ -92,6 +92,7 @@ function EditEquipoOurPeople() {
                             Título
                         </p>
                         <Editor
+                            initialValue={bannerData?.title}                        
                             onChange={handleBannerTitle}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -105,7 +106,6 @@ function EditEquipoOurPeople() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.title
                             }}
                         />
                     </div>
@@ -114,6 +114,7 @@ function EditEquipoOurPeople() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.description}
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -127,7 +128,6 @@ function EditEquipoOurPeople() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description
                             }}
                         />
                     </div>
@@ -136,6 +136,7 @@ function EditEquipoOurPeople() {
                             Persona del equipo y cargo
                         </p>
                         <Editor
+                            initialValue={bannerData?.person}
                             onChange={handleBannerPerson}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -149,7 +150,6 @@ function EditEquipoOurPeople() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.person
                             }}
                         />
                     </div>

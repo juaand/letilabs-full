@@ -53,7 +53,7 @@ function EditVideoTech() {
     useEffect(() => {
         const fetchData = async () => {
             const getVideoData = await getVideoTech()
-            setVideoData(getVideoData)
+            setVideoData(getVideoData[0])
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps

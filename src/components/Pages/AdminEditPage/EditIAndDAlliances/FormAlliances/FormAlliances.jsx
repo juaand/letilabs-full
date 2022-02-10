@@ -65,7 +65,7 @@ function EditFormAlliances() {
     useEffect(() => {
         const fetchData = async () => {
             const getBannerData = await getFormAlliances()
-            setBannerData(getBannerData)
+            setBannerData(getBannerData[0])
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,6 +81,7 @@ function EditFormAlliances() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.desc}
                             onChange={handleBannerDesc}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -94,7 +95,6 @@ function EditFormAlliances() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.desc
                             }}
                         />
                     </div>

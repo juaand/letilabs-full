@@ -73,7 +73,7 @@ function EditProductBanner() {
     useEffect(() => {
         const fetchData = async () => {
             const getBannerData = await getProductBanner()
-            setBannerData(getBannerData)
+            setBannerData(getBannerData[0])
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps

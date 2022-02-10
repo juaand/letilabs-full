@@ -73,10 +73,14 @@ function EditProductBottom() {
         data.findProductsTitle = e.target.getContent()
     }
 
+    const handleProductsListTitle = (e) => {
+        data.findProductsTitle = e.target.getContent()
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const getBannerData = await getProductBottom()
-            setBannerData(getBannerData)
+            setBannerData(getBannerData[0])
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -89,9 +93,10 @@ function EditProductBottom() {
                 <div className="row">
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Descripción
+                            Título
                         </p>
                         <Editor
+                            initialValue={bannerData?.title}
                             onChange={handleBannerfindProductsTitle}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -105,7 +110,6 @@ function EditProductBottom() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.findProductsTitle
                             }}
                         />
                     </div>
@@ -115,6 +119,7 @@ function EditProductBottom() {
                             Farmaco Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.farmacoDesc}
                             onChange={handleProductsFarmacoDesc}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -128,7 +133,6 @@ function EditProductBottom() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.findProductsTitle
                             }}
                         />
                     </div>
@@ -148,16 +152,24 @@ function EditProductBottom() {
                         </div>
                         <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
-                            title
+                            findProductsTitle
                         </p>
-                        <InputWithLabel
-                            value={data?.title}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="title"
-                            type="text"
-                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.title}
+                        <Editor
+                            initialValue={bannerData?.findProductsTitle}
+                            onChange={handleProductsListTitle}
+                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                            init={{
+                                height: 200,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image',
+                                    'charmap print preview anchor help',
+                                    'searchreplace visualblocks code',
+                                    'insertdatetime media table paste wordcount'
+                                ],
+                                toolbar:
+                                    'bold',
+                            }}
                         />
                     </div>
                     <div className="col-12 col-sm-4">
