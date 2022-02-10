@@ -4,6 +4,12 @@
 
 .CheckBoxWithLabel label {
   margin-left: 1rem;
+  font-size: 1.6rem;
+  color: #737b7f;
+}
+
+.CheckBoxWithLabel .label-title {
+  margin-left: 0;
 }
 
 .CheckBoxWithLabel .form-check {

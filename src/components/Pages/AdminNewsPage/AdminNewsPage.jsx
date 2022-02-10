@@ -1,84 +1,72 @@
-import './AdminNewsPage.css'
 import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import {addHomeScreen, getVadevecumData, addProductApi} from '../../../services/ApiClient'
+import {keyframes} from "@emotion/react"
+import {Reveal} from "react-awesome-reveal"
+import {Editor} from '@tinymce/tinymce-react'
+
+import './AdminNewsPage.css'
+import {addHomeScreen, getNews, addProductApi, getTags} from '../../../services/ApiClient'
+import {useFormState} from '../../../hooks/useFormState'
+import {app} from '../../../services/firebase'
 import ShowEditModal from './ShowEditModal/ShowEditModal'
 import Loader from '../../Loader/Loader'
-import {Reveal} from "react-awesome-reveal"
-import {keyframes} from "@emotion/react"
-import {useFormState} from '../../../hooks/useFormState'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../Form/InputFile/InputFile'
-import {Editor} from '@tinymce/tinymce-react'
-import {app} from '../../../services/firebase'
 import Button from '../../Form/FormButton/FormButton'
+import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 
-function AdminProductPage() {
+function AdminNewsPage() {
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
-                name: "",
-                line: "",
-                health_register: "",
-                picPath: "",
-                QRpath: "",
-                active_principle: "",
-                posology: "",
-                presentation: "",
-                composition: "",
-                indication: "",
+                title: "",
+                subTitle: "",
+                urlToPic: "",
+                tag: [],
+                content: "",
             },
             error: {
-                name: true,
-                line: true,
-                health_register: true,
-                picPath: true,
-                QRpath: true,
-                posology: true,
-                active_principle: true,
-                presentation: true,
-                composition: true,
-                indication: true,
+                title: true,
+                subTitle: true,
+                urlToPic: true,
+                tag: true,
+                content: true,
             },
             touch: {},
         },
         {
-            name: v => v.length,
-            line: v => v.length,
-            health_register: v => v.length,
-            picPath: v => v.length,
-            QRpath: v => v.length,
-            active_principle: v => v.length,
-            posology: v => v.length,
-            presentation: v => v.length,
-            composition: v => v.length,
-            indication: v => v.length,
+            title: v => v.length,
+            subTitle: v => v.length,
+            urlToPic: v => v.length,
+            tag: v => v.length,
+            content: v => v.length,
         }
     )
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
     const [search, setSearch] = useState('')
-    const [products, setProducts] = useState([])
+    const [newsData, setNewsData] = useState([])
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
-    const [editProduct, setEditProduct] = useState('')
-    const [createProduct, setCreateProduct] = useState(false)
-    const [productMessage, setProductMessage] = useState('')
+    const [editNews, setEditNews] = useState('')
+    const [createNews, setCreateNews] = useState(false)
+    const [newsMessage, setNewsMessage] = useState('')
     const [filter, setFilter] = useState([])
     const [loading, setLoading] = useState(true)
+    const [allTagsData, setAllTagsData] = useState([])
 
-    const createNewProduct = async (event) => {
+    const createNewNews = async (event) => {
         event.preventDefault()
 
         try {
-            setProductMessage('Cargando producto...')
+            setNewsMessage('Cargando producto...')
             const newProduct = await addProductApi(data)
             document.querySelector('form').reset()
-            setProducts(newProduct)
+            setNewsData(newProduct)
             setMessage('Producto creado con éxito')
-            setCreateProduct(!createProduct)
+            setCreateNews(!createNews)
             setTimeout(() => {
                 setMessage('')
             }, 2000)
@@ -104,25 +92,25 @@ function AdminProductPage() {
         setSearch(e.target.value)
     }
 
-    const filteredProducts = products.filter(el => {
+    const filteredNews = newsData.filter(el => {
         return (
-            el.name.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1
+            el.title.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1 || el.tag.map(tag => tag.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1).includes(true)
         )
     })
 
     const showAtHome = async (e, id) => {
-        if (products.filter(el => el?.show_in_home === true).length >= 18 && e.target.checked === true) {
+        if (newsData.filter(el => el?.show_in_home === true).length >= 18 && e.target.checked === true) {
             setMessage('Ya se han alcanzado el máximo de productos para mostrar en la página principal. Por favor, desmarque alguno para continuar.')
         } else {
             setMessage('')
             const res = await addHomeScreen(e.target.checked, id)
-            setProducts(res)
+            setNewsData(res)
         }
     }
 
     const showModal = (product) => {
         setBool(!bool)
-        setEditProduct(product)
+        setEditNews(product)
     }
 
     const hideModal = () => {
@@ -131,11 +119,11 @@ function AdminProductPage() {
 
     const updateData = (data) => {
         setBool(!bool)
-        setProducts(data)
+        setNewsData(data)
     }
 
     const showAddNewForm = () => {
-        setCreateProduct(!createProduct)
+        setCreateNews(!createNews)
     }
 
     const onFileSelected = async (e) => {
@@ -160,43 +148,33 @@ function AdminProductPage() {
         error[e.target.name] = false
     }
 
-    const handleComposition = (e) => {
-        data.composition = e.target.getContent()
-        error.composition = false
-    }
-
-    const handleActivePrinciple = (e) => {
-        data.active_principle = e.target.getContent()
-        error.active_principle = false
-    }
-
-    const handlePosology = (e) => {
-        data.posology = e.target.getContent()
-        error.posology = false
-    }
-
-    const handlePresentation = (e) => {
-        data.presentation = e.target.getContent()
-        error.presentation = false
-    }
-
-    const handleIndication = (e) => {
-        data.indication = e.target.getContent()
-        error.indication = false
+    const handleContent = (e) => {
+        data.content = e.target.getContent()
+        error.content = false
     }
 
     const carouselHomeProducts = async (e) => {
         e.target.checked ?
-            setProducts(products.filter(el => el?.show_in_home === true))
+            setNewsData(newsData.filter(el => el?.show_in_home === true))
             :
-            setProducts(filter)
+            setNewsData(filter)
+    }
+
+    const setTag = (e) => {
+        if (!data.tag.includes(e.target.value)) {
+            data.tag.push(e.target.value)
+        } else {
+            data.tag = (data.tag.filter(el => el !== e.target.value))
+        }
     }
 
     useEffect(() => {
         const fetchData = async () => {
-            const allProducts = await getVadevecumData()
-            setProducts(allProducts)
-            setFilter(allProducts)
+            const allNews = await getNews()
+            const allTags = await getTags()
+            setNewsData(allNews)
+            setFilter(allNews)
+            setAllTagsData(allTags)
             setLoading(false)
         }
         fetchData()
@@ -207,219 +185,126 @@ function AdminProductPage() {
     return (
         <>
             {loading && <Loader />}
-            {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
+            {bool && <ShowEditModal product={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
             </Helmet>
-            <main className="container-fluid AdminProductPage">
+            <main className="container-fluid AdminNewsPage">
                 {message && <div className="alert alert-danger" role="alert">{message}</div>}
                 <div className="row">
-                    <div className="col-12 AdminProductPage__bg">
+                    <div className="col-12 AdminNewsPage__bg">
                         <div className="container">
-                            <input type="text" className="form-control AdminProductPage__search" placeholder="Filtrar por producto" onChange={handleChange} value={search} />
+                            <input type="text" className="form-control AdminNewsPage__search" placeholder="Filtrar por título o etiqueta." onChange={handleChange} value={search} />
                         </div>
                     </div>
                     <div className="col-12">
                         <div className="container">
                             <div className="row">
                                 <div className="col-12">
-                                    <button className="AdminProductPage__add" onClick={showAddNewForm}>Añadir nuevo producto</button>
+                                    <button className="AdminNewsPage__add" onClick={showAddNewForm}>Añadir nueva noticia</button>
                                 </div>
                             </div>
-                            {filteredProducts.length > 0 &&
+                            {filteredNews.length > 0 &&
                                 <div className="row">
-                                    <div className="col-12 AdminProductPage__showproducts">
+                                    <div className="col-12 AdminNewsPage__shownews">
                                         <div className="form-check">
                                             <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                                 onChange={carouselHomeProducts} />
                                             <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                Mostrar sólo los productos del carrusel del home.
+                                                Mostrar sólo la noticia destacada
                                             </label>
                                         </div>
                                     </div>
                                 </div>
                             }
-                            {!filteredProducts.length &&
+                            {!filteredNews.length &&
                                 <div className="row">
                                     <div className="col-12">
                                         <h1 className="mb-5">El producto que busca no se encuentra.</h1>
                                     </div>
                                 </div>
                             }
-                            {createProduct &&
+                            {createNews &&
                                 <Reveal triggerOnce keyframes={customAnimation} duration={600} className="row">
                                     <>
-                                        <div className={`col-12 AdminProductPage__create ${createProduct && 'show'}`}>
-                                            <h1>Crear producto</h1>
-                                            {productMessage && <div className="product-message">{productMessage}</div>
+                                        <div className={`col-12 AdminNewsPage__create ${createNews && 'show'}`}>
+                                            <h1>Nueva noticia</h1>
+                                            {newsMessage && <div className="product-message">{newsMessage}</div>
                                             }
-                                            {!productMessage &&
+                                            {!newsMessage &&
                                                 <>
                                                     <small>* Todos los campos son obligatorios</small>
-                                                    <form className="AdminEdit__form" onSubmit={createNewProduct}>
+                                                    <form className="AdminEdit__form" onSubmit={createNewNews}>
                                                         <div className="row">
-                                                            <div className="col-12 col-sm-6">
+                                                            <div className="col-12 col-sm-4">
                                                                 <InputFile
-                                                                    label="Imagen producto"
-                                                                    value={data.picPath}
+                                                                    label="Imagen noticia"
+                                                                    value={data.urlToPic}
                                                                     onChange={onFileSelected}
                                                                     id="fileButton"
-                                                                    name="picPath"
-                                                                    type="file"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-6">
-                                                                <InputFile
-                                                                    label="QR producto"
-                                                                    value={data.QRpath}
-                                                                    onChange={onFileSelected}
-                                                                    id="fileButton"
-                                                                    name="QRpath"
+                                                                    name="urlToPic"
                                                                     type="file"
                                                                 />
                                                             </div>
                                                             <div className="col-12 col-sm-4">
                                                                 <InputWithLabel
-                                                                    label="Nombre"
-                                                                    value={data.name}
+                                                                    label="Título"
+                                                                    value={data.title}
                                                                     onBlur={onBlur}
                                                                     onChange={onChange}
                                                                     name="name"
                                                                     type="text"
-                                                                    placeholder="Ingresa nombre del producto"
-                                                                    cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                                    placeholder="Ingresa título de la noticia"
+                                                                    cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
                                                                 />
                                                             </div>
                                                             <div className="col-12 col-sm-4">
                                                                 <InputWithLabel
-                                                                    label="Línea"
-                                                                    value={data.line}
+                                                                    label="Subtítulo"
+                                                                    value={data.subTitle}
                                                                     onBlur={onBlur}
                                                                     onChange={onChange}
-                                                                    name="line"
+                                                                    name="subTitle"
                                                                     type="text"
-                                                                    cssStyle={`form-control ${touch.line && error.line ? "is-invalid" : ""}`}
-                                                                    placeholder="Ingresa línea del producto"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <InputWithLabel
-                                                                    label="Registro sanitario"
-                                                                    value={data.health_register}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="health_register"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.health_register && error.health_register ? "is-invalid" : ""}`}
-                                                                    placeholder="Registro sanitario"
+                                                                    cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
+                                                                    placeholder="Ingresa subtítulo de la noticia"
                                                                 />
                                                             </div>
                                                             <div className="row">
-                                                                <div className="col">
-                                                                    <p className="label">Composición</p>
-                                                                    <Editor
-                                                                        onChange={handleComposition}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            placeholder: "Ingresa composición del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
+                                                                <div className="col-12">
+                                                                    <CheckBoxWithLabel
+                                                                        data={allTagsData?.map(el => el.tag)}
+                                                                        name="themes"
+                                                                        label="Etiquetas"
+                                                                        tabIndex="2"
+                                                                        onChange={setTag} />
                                                                 </div>
-                                                                <div className="col">
-                                                                    <p className="label">Principio activo</p>
-                                                                    <Editor
-                                                                        onChange={handleActivePrinciple}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            placeholder: "Ingresa principio(s) activo(s) del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Posología</p>
-                                                                    <Editor
-                                                                        onChange={handlePosology}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            placeholder: "Ingresa posología del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Presentación</p>
-                                                                    <Editor
-                                                                        onChange={handlePresentation}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            placeholder: "Ingresa presentación del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Indicaciones</p>
-                                                                    <Editor
-                                                                        onChange={handleIndication}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            placeholder: "Ingresa indicaciones del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-
                                                             </div>
-
+                                                            <div className="row">
+                                                                <div className="col">
+                                                                    <p className="label">Contenido</p>
+                                                                    <Editor
+                                                                        onChange={handleContent}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa texto de la noticia",
+                                                                            height: 500,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image charmap print preview anchor',
+                                                                                'searchreplace visualblocks code fullscreen',
+                                                                                'insertdatetime media table paste code help wordcount'
+                                                                            ],
+                                                                            toolbar: 'undo redo | formatselect | ' +
+                                                                                'bold italic | alignleft aligncenter ' +
+                                                                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                                                'table image | help',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            </div>
                                                             <div className="col-12 mt-5">
-                                                                <Button type="submit" className={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
+                                                                <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Publicar noticia</Button>
                                                             </div>
                                                         </div>
 
@@ -432,43 +317,29 @@ function AdminProductPage() {
                                 </Reveal>
                             }
                             <div className="row">
-                                {filteredProducts.map(el =>
+                                {filteredNews.map(el =>
                                     <div className="col-sm-4 col-12">
-                                        <div className="card AdminProductPage__card">
-                                            <div className="card-body">
-                                                <img src={el?.picPath} className="AdminProductPage__img-top" alt={el?.name} />
-                                                <img src={el?.QRpath} className="AdminProductPage__img-bottom" alt={el?.name} />
-                                            </div>
-                                            <div className="card-body">
-                                                <h5 dangerouslySetInnerHTML={{__html: el?.line}}>
-                                                </h5>
-                                                <p className="card-text" dangerouslySetInnerHTML={{__html: el?.name}} />
+                                        <div className="card AdminNewsPage__card">
+                                            <div className="card-body card-body-img">
+                                                <img src={el?.urlToPic} className="AdminNewsPage__img-top" alt={el?.title} />
+                                                <p className="AdminNewsPage__img-title" dangerouslySetInnerHTML={{__html: el?.title}} />
+                                                <div className="AdminNewsPage__img-alltags">
+                                                    {el?.tag.map(tag => <span className="AdminNewsPage__img-tag" dangerouslySetInnerHTML={{__html: tag}} />)}
+                                                </div>
                                             </div>
                                             <ul className="list-group list-group-flush">
-                                                <li className="list-group-item AdminProductPage__check"><div className="form-check">
-                                                    <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.show_in_home} onChange={(e) => showAtHome(e, el._id)} />
-                                                    <label className="form-check-label" for="flexCheckChecked">
-                                                        mostrar en carrusel del home
-                                                    </label>
-                                                </div></li>
-                                                <span className="card-title">Composición</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.composition}} />
-                                                <span className="card-title">Principio activo</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.active_principle}} />
-                                                <span className="card-title">Posología</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.posology}} />
-                                                <span className="card-title">Presentación</span>
-                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.presentation}} />
-                                                <span className="card-title">Registro sanitario</span>
-                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.health_register}} />
-                                                {el?.trademarks &&
-                                                    <>
-                                                        <span className="card-title">Trademarks</span>
-                                                        <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.trademarks}} />
-                                                    </>
-                                                }
-                                                <span className="card-title">Indicaciones</span>
-                                                <li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.indication}} />
+                                                <li className="list-group-item AdminNewsPage__check">
+                                                    <div className="form-check">
+                                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.show_in_home} onChange={(e) => showAtHome(e, el._id)} />
+                                                        <label className="form-check-label" for="flexCheckChecked">
+                                                            Seleccionar como noticia destacada.
+                                                        </label>
+                                                    </div>
+                                                </li>
+
                                             </ul>
                                             <div className="card-footer">
-                                                <div onClick={() => showModal(el)} className="leti-btn">Editar producto</div>
+                                                <div onClick={() => showModal(el)} className="leti-btn">Editar noticia</div>
                                             </div>
                                         </div>
                                     </div>
@@ -482,6 +353,6 @@ function AdminProductPage() {
     )
 }
 
-export default AdminProductPage
+export default AdminNewsPage
 
 

@@ -1,11 +1,12 @@
-import './FindNews.css'
 import React, {useState} from 'react'
-import {useFormState} from '../../../../hooks/useFormState'
+import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+
+import './FindNews.css'
+import {useFormState} from '../../../../hooks/useFormState'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import CheckBoxWithLabel from '../../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 import {searchNews} from '../../../../services/ApiClient'
-import {Link} from 'react-router-dom'
 import {drawTime} from '../../../../helpers/globals'
 
 function FindNews({title}) {
@@ -52,6 +53,7 @@ function FindNews({title}) {
             data.tag = (data.tag.filter(el => el !== e.target.value))
         }
     }
+    
     return (
         <>
             <Fade direction="up" triggerOnce>
