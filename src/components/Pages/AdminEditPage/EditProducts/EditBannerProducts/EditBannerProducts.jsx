@@ -119,8 +119,6 @@ function EditProductBanner() {
                             cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             title
                         </p>
@@ -134,7 +132,7 @@ function EditProductBanner() {
                             placeholder={bannerData?.title}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-3">
                         <p className="AdminEdit__form__label">
                             button1Title
                         </p>
@@ -148,7 +146,7 @@ function EditProductBanner() {
                             placeholder={bannerData?.button1Title}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-3">
                         <p className="AdminEdit__form__label">
                             button1Link
                         </p>
@@ -162,7 +160,7 @@ function EditProductBanner() {
                             placeholder={bannerData?.button1Link}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-3">
                         <p className="AdminEdit__form__label">
                             button2Title
                         </p>
@@ -176,7 +174,7 @@ function EditProductBanner() {
                             placeholder={bannerData?.button2Title}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-3">
                         <p className="AdminEdit__form__label">
                             button2Link
                         </p>

@@ -109,7 +109,30 @@ function EditProductBottom() {
                             }}
                         />
                     </div>
+
                     <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            Farmaco Descripción
+                        </p>
+                        <Editor
+                            onChange={handleProductsFarmacoDesc}
+                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                            init={{
+                                height: 200,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image',
+                                    'charmap print preview anchor help',
+                                    'searchreplace visualblocks code',
+                                    'insertdatetime media table paste wordcount'
+                                ],
+                                toolbar:
+                                    'bold',
+                                placeholder: bannerData?.findProductsTitle
+                            }}
+                        />
+                    </div>
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             Imagen
                         </p>
@@ -122,8 +145,8 @@ function EditProductBottom() {
                             cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
+                        </div>
+                        <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             title
                         </p>
@@ -137,7 +160,7 @@ function EditProductBottom() {
                             placeholder={bannerData?.title}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
                             buttonTitle
                         </p>
@@ -177,28 +200,6 @@ function EditProductBottom() {
                             type="text"
                             cssStyle={`form-control ${touch.farmacoBtn && error.farmacoBtn ? "is-invalid" : ""}`}
                             placeholder={bannerData?.farmacoBtn}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Farmaco Descripción
-                        </p>
-                        <Editor
-                            onChange={handleProductsFarmacoDesc}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                                placeholder: bannerData?.findProductsTitle
-                            }}
                         />
                     </div>
                     <div className="col-12">
