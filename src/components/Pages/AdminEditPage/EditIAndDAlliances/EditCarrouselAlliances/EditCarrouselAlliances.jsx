@@ -31,11 +31,11 @@ function EditCarrouselAlliances() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourCompaniesOCData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar Carrousel logos</h2>
                     <div className="row justify-content-around">
                         {ourCompaniesOCData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.picPath} alt={el?.picPath} />
                             </div>
                         )}

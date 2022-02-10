@@ -111,8 +111,6 @@ function EditFormAlliances() {
                             cssStyle={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
                             placeholder={bannerData?.phone}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             title
                         </p>
