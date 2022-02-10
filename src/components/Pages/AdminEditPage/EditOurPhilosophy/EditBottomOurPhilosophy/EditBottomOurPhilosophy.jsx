@@ -78,18 +78,6 @@ function EditBottomOurPhilosophy() {
             <h2>BottomOurPhilosophy</h2>
             <form className="AdminEdit__form" onSubmit={updateBottomOurPhilosophy}>
                 <div className="row">
-                    <p className="AdminEdit__form__label">
-                        Título
-                    </p>
-                    <InputWithLabel
-                        value={data?.title}
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        name="title"
-                        type="text"
-                        cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                        placeholder={bottomOurPhilosophyData?.title}
-                    />
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Descripción
@@ -114,6 +102,18 @@ function EditBottomOurPhilosophy() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
+                            Título
+                        </p>
+                        <InputWithLabel
+                            value={data?.title}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="title"
+                            type="text"
+                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            placeholder={bottomOurPhilosophyData?.title}
+                        />
+                        <p className="AdminEdit__form__label">
                             buttonLink del botón
                         </p>
                         <InputWithLabel
@@ -125,6 +125,8 @@ function EditBottomOurPhilosophy() {
                             cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
                             placeholder={bottomOurPhilosophyData?.buttonLink}
                         />
+                    </div>
+                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Título del botón
                         </p>
@@ -137,6 +139,8 @@ function EditBottomOurPhilosophy() {
                             cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={bottomOurPhilosophyData?.buttonTitle}
                         />
+                    </div>
+                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Imagen
                         </p>

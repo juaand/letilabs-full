@@ -107,8 +107,6 @@ function EditLetterOurPhilosophy() {
                             cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={letterData?.imgURL}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             mainTitle
                         </p>

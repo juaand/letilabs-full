@@ -31,12 +31,12 @@ function EditInfoCardsOurPhilosophy() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourOCData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar InfoCard</h2>
                     <div className="row justify-content-around">
                         {ourOCData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <p>{el?.picPath}</p>
+                            <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <img src={el?.picPath} alt={el?.title} />
                                 <p>{el?.title}</p>
                             </div>
                         )}
