@@ -1,0 +1,167 @@
+@import '../../../stylesheets/variables';
+
+.AdminNewsPage {
+  background: url(../../../images/cuidar-right-bg.svg) no-repeat right top;
+
+  &__showproducts {
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+  }
+
+  &__add {
+    border: 0;
+    background: transparent;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    color: $leti-blue;
+    padding: 1.5rem;
+    border: solid 0.2rem $leti-blue;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    margin: -4rem auto 6rem auto;
+
+    &:hover {
+      background: $leti-blue;
+      color: white;
+
+      &:before {
+        background: url(../../../images/add-white.svg) no-repeat center center /
+          contain;
+      }
+    }
+
+    &:before {
+      content: '';
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      background: url(../../../images/add.svg) no-repeat center center / contain;
+      margin-right: 1rem;
+    }
+  }
+
+  &__bg {
+    height: 23rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__search {
+    padding-left: 7rem;
+    height: 6.4rem;
+    font-size: 1.6rem;
+    border-radius: 0;
+    background: $leti-white url(../../../images/input-search.svg) no-repeat 2rem
+      center / 3.2rem;
+  }
+
+  &__card {
+    margin-bottom: 3rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem $leti-blue;
+    font-size: 1.6rem;
+  }
+
+  &__img-top {
+    height: 18rem;
+    width: fit-content;
+    display: block;
+    margin: auto;
+  }
+
+  &__img-bottom {
+    height: 6rem;
+    width: fit-content;
+    display: block;
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+
+  &__check {
+    background: rgba($leti-subnav, 0.8);
+  }
+
+  &__create {
+    display: block;
+    transition: all 0.3s ease-in-out;
+    height: 0;
+    padding: 0;
+    border: 0;
+    background: $leti-white;
+
+    &.show {
+      height: auto;
+      padding: 3rem 0;
+      border-top: solid 0.1rem $leti-subnav;
+      border-bottom: solid 0.1rem $leti-subnav;
+      margin-bottom: 6rem;
+    }
+  }
+
+  small {
+    color: $leti-red;
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    display: block;
+  }
+
+  .label {
+    font-size: 1.6rem;
+  }
+
+  .form-control {
+    margin-bottom: 1rem !important;
+  }
+
+  .card-title {
+    font-family: 'TripletaBold';
+    font-size: 1.2rem;
+    color: rgba($leti-blue, 0.6);
+    padding-left: 1rem;
+    margin-bottom: 0;
+  }
+
+  .card-footer {
+    padding: 0;
+    background: transparent;
+
+    .leti-btn {
+      width: 100%;
+      border: 0;
+      font-size: 1.6rem;
+      padding: 1rem;
+      background: $leti-blue;
+      color: $leti-white;
+
+      &:hover {
+        background: rgba($leti-blue, 0.8);
+      }
+    }
+  }
+
+  .card-body {
+    position: relative;
+  }
+
+  .alert-danger {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: auto;
+    margin-top: -3rem;
+    z-index: 1;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-left: -25%;
+  }
+
+  .card-text {
+    font-weight: 600;
+    color: $leti-black;
+    font-size: 1.8rem;
+  }
+}

@@ -30,6 +30,7 @@ import ProductListPage from './components/Pages/ProductListPage/ProductListPage'
 import NewsPage from './components/Pages/NewsPage/NewsPage'
 import NewsSingle from './components/Pages/NewsSingle/NewsSingle'
 import AdminProductPage from './components/Pages/AdminProductPage/AdminProductPage'
+import AdminNewsPage from './components/Pages/AdminNewsPage/AdminNewsPage'
 
 
 
@@ -67,6 +68,7 @@ function App() {
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-farmacovigilancia" render={(props) => <AdminFarVigPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-productos" render={(props) => <AdminProductPage {...props} user={user} />} />
+        <AuthenticatedRoute exact path="/admin-noticias" render={(props) => <AdminNewsPage {...props} user={user} />} />
         <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
         <Route path="*" render={() => <NotFoundPage />} />
         {!user && <Redirect to='/' />}
