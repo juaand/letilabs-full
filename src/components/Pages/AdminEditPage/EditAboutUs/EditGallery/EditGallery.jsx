@@ -100,11 +100,11 @@ function EditGallery() {
         <>
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {galleryData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar elemento de la galería</h2>
                     <div className="row justify-content-around">
                         {galleryData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={"./images/" + el.imgPath} alt={el.imgPath} />
                                 <p>{el.title}</p>
                             </div>
