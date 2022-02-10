@@ -76,15 +76,13 @@ function EditTimelineBiocontrolled() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Elminar elemento del TimeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-5 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
-                                <p>{el?.desc}</p>
-                                <p>{el?.buttonTitle}</p>
-                                <p>{el?.buttonLink}</p>
+                                <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
                     </div>

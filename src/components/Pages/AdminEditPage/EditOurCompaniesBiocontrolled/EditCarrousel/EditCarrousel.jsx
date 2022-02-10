@@ -67,21 +67,21 @@ function EditCarrouselBiocontrolled() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {carrouselData?.length > 0 &&
-                <section className="container-fluid EditContent">
-                    <h2>Elminar elemento del Carrousel</h2>
+                <section className="container-fluid EditContent EditContent-timeline">
+                    <h2>Editar logros</h2>
                     <div className="row justify-content-around">
                         {carrouselData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-4 EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <p>{el?.info}</p>
                             </div>
                         )}
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo elemento al Carrousel</h2>
+                <h2>Añadir nuevo logro</h2>
                 <form className="AdminEdit__form" onSubmit={addCarrouselItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12">
                             <p className="AdminEdit__form__label">
                                 información
                             </p>

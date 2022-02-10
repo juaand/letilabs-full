@@ -32,12 +32,12 @@ function EditCompaniesInfoCardsBiocontrolled() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourCompaniesOCData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid Letilabs EditContent EditContent-timeline">
                     <h2>Editar InfoCard</h2>
                     <div className="row justify-content-around">
                         {ourCompaniesOCData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <p>{el?.title}</p>
+                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <h4>{el?.title}</h4>
                                 <p>{el?.info}</p>
                             </div>
                         )}

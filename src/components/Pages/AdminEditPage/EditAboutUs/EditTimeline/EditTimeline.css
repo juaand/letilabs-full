@@ -30,5 +30,16 @@
 
 .EditCarousel__edit:hover {
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
+}
+
+.EditCarousel__edit.logros {
+  border: solid 0.1rem #e9eaee;
+  margin: 0 0.5rem 2rem 0.5rem;
+}
+
+.EditCarousel__edit.logros:before {
+  right: 1rem;
+  top: -2rem;
+  background: #fff url(../../../../../images/edit.svg) no-repeat center center/2rem;
 }
