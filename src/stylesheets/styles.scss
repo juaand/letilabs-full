@@ -48,11 +48,40 @@ body {
   }
 }
 
-/* --- SMOOTHER YAY! --- */
+.alert {
+  animation: alerta 3s ease-in-out forwards;
+  display: block;
+  opacity: 0;
+  position: absolute;
+  top: -2.6rem;
+  right: 2rem;
+  font-size: 1.6rem;
+  color: $leti-blue;
+  background: $leti-white;
+  border: solid 0.1rem $leti-blue;
+  border-radius: 0;
+}
 
 .parallax {
   transition: transform 10s cubic-bezier(0, 1, 0.5, 1);
   transform: rotate(-150deg);
+}
+
+@keyframes alerta {
+  0% {
+    display: block;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    display: none;
+    opacity: 0;
+  }
 }
 
 @media (max-width: 576px) {

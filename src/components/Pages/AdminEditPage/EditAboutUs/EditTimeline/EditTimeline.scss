@@ -1,0 +1,38 @@
+.EditContent {
+  &-timeline {
+      padding-top: 6rem;
+    img {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+
+    p {
+      margin-top: 1rem;
+      font-size: 1.6rem;
+    }
+  }
+}
+
+.EditCarousel {
+  &__edit {
+    position: relative;
+
+    &:before {
+      content: '';
+      width: 3rem;
+      height: 3rem;
+      display: block;
+      background: url(../../../../../images/edit.svg) no-repeat center center /
+        2rem;
+      position: absolute;
+      right: -3rem;
+      top: -2rem;
+    }
+
+    &:hover {
+        cursor: pointer;
+        opacity: .8;
+    }
+  }
+}

@@ -9,6 +9,8 @@ import {Editor} from '@tinymce/tinymce-react'
 function EditUsInfo() {
 
     const [usInfoData, setUsInfoData] = useState()
+    const [message, setMessage] = useState('')
+    const [registerError, setRegisterError] = useState(null)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -33,8 +35,6 @@ function EditUsInfo() {
     )
 
     const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-
 
     const updateUsInfo = async (event) => {
         event.preventDefault()
@@ -44,6 +44,7 @@ function EditUsInfo() {
             await updateUsInfoData(data)
                 .then(usInfo => {
                     setUsInfoData(usInfo[0])
+                    setMessage('Cambios realizados con exito')
                 })
                 .catch(error => {
                     setRegisterError(error)
@@ -52,6 +53,8 @@ function EditUsInfo() {
             setRegisterError(err.response?.data?.message)
         }
     }
+
+
     const handleUsInfoDescription = (e) => {
         data.description = e.target.getContent()
     }
@@ -70,6 +73,7 @@ function EditUsInfo() {
     return (
         <section className="container-fluid EditContent">
             <h2>Sobre nosotros</h2>
+            {message && <div className="alert alert-info">{message}</div>}
             <form className="AdminEdit__form" onSubmit={updateUsInfo}>
                 <div className="row">
                     <div className="col-12 col-sm-6">

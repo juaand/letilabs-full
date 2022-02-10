@@ -1,3 +1,4 @@
+import './EditTimeline.css'
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getTimeLine, addTimeLineData} from '../../../../../services/ApiClient'
@@ -101,11 +102,11 @@ function EditTimeline() {
         <>
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
-                <section className="container-fluid EditContent">
-                    <h2>Editar elemento del TimeLine</h2>
+                <section className="container-fluid EditContent EditContent-timeline">
+                    <h2>Editar elemento del timeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={"./images/" + el.imgURL} alt={el.year} />
                                 <p>{el.year}</p>
                             </div>
