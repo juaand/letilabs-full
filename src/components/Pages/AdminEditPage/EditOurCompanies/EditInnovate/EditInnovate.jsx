@@ -7,23 +7,21 @@ import {Editor} from '@tinymce/tinymce-react'
 
 function EditInnovate() {
     const [bannerData, setBannerData] = useState()
+    console.log(bannerData)
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 id: '',
                 description: bannerData?.description,
-                imgURL: bannerData?.imgURL,
             },
             error: {
                 description: true,
-                imgURL: false,
             },
             touch: {},
         },
         {
             description: v => v.length,
-            imgURL: v => v.length,
         }
     )
 
@@ -88,20 +86,6 @@ function EditInnovate() {
                                 toolbar:
                                     'bold',
                             }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Imagen
-                        </p>
-                        <InputWithLabel
-                            value={data?.imgURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="imgURL"
-                            type="text"
-                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.imgURL}
                         />
                     </div>
                     <div className="col-12">

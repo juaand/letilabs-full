@@ -8,6 +8,7 @@ import {Editor} from '@tinymce/tinymce-react'
 function EditBannerTech() {
 
     const [bannerData, setBannerData] = useState()
+    console.log(bannerData)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -61,7 +62,7 @@ function EditBannerTech() {
     useEffect(() => {
         const fetchData = async () => {
             const getBannerData = await getBannerTech()
-            setBannerData(getBannerData)
+            setBannerData(getBannerData[0])
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -77,6 +78,7 @@ function EditBannerTech() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.description}
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -90,7 +92,6 @@ function EditBannerTech() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description
                             }}
                         />
                     </div>

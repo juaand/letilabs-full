@@ -4,29 +4,34 @@ import {getPortfolio, updatePortfolioData} from '../../../../../services/ApiClie
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
+
 
 function EditPortafolio() {
 
     const [portfolioData, setPortfolioData] = useState()
-
+    const [modalData, setModalData] = useState()
+    const [bool, setBool] = useState(false)
+    console.log(portfolioData)
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 id: '',
+                superiorTitle: portfolioData?.superiorTitle,
                 title: portfolioData?.title,
                 description: portfolioData?.description,
             },
             error: {
+                superiorTitle: false,
                 title: false,
                 description: false,
-                img: false,
             },
             touch: {},
         },
         {
+            superiorTitle: v => v.length,
             title: v => v.length,
             description: v => v.length,
-            img: v => v.length,
         }
     )
 
@@ -54,6 +59,16 @@ function EditPortafolio() {
         data.description = e.target.getContent()
     }
 
+    const showModal = (data) => {
+        setModalData(data)
+        setBool(!bool)
+    }
+
+    const deleteItem = (data) => {
+        setPortfolioData(data)
+        setBool(!bool)
+    }
+
     useEffect(() => {
 
         const fetchData = async () => {
@@ -65,13 +80,40 @@ function EditPortafolio() {
     }, [])
 
     return (
+        <>
+        {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
         <section className="container-fluid EditContent">
-            <h2>Portafolio</h2>
+            <h2>Editar Portfolio</h2>
+            <div className="row justify-content-around">
+                {portfolioData?.map(el =>
+                    <div className="col-2 EditUnidades__trash" onClick={() => showModal(el)}>
+                        <h4 className="mt-3 mb-3">{el?.title}</h4>
+                        <p>{el?.description}</p>                    
+                    </div>
+                )}
+            </div>
+        </section>
+        <section className="container-fluid EditContent">
+            <h2>Añadir Portafolio</h2>
             <form className="AdminEdit__form" onSubmit={updatePortfolioInfo}>
                 <div className="row">
+                <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            título sección
+                        </p>
+                        <InputWithLabel
+                            value={data?.superiorTitle}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="superiorTitle"
+                            type="text"
+                            cssStyle={`form-control ${touch.superiorTitle && error.superiorTitle ? "is-invalid" : ""}`}
+                            placeholder={portfolioData?.superiorTitle}
+                        />
+                    </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            title
+                            titulo
                         </p>
                         <InputWithLabel
                             value={data?.title}
@@ -112,6 +154,7 @@ function EditPortafolio() {
                 {registerError && <div className="alert alert-danger">{registerError}</div>}
             </form>
         </section>
+        </>
     )
 }
 

@@ -86,6 +86,7 @@ function EditEquipoLetiPage() {
                             Descripción
                         </p>
                         <Editor
+                            initialValue={bannerData?.description}
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -99,7 +100,6 @@ function EditEquipoLetiPage() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.description
                             }}
                         />
                     </div>
@@ -108,6 +108,7 @@ function EditEquipoLetiPage() {
                             Persona del equipo y cargo
                         </p>
                         <Editor
+                            initialValue={bannerData?.person}
                             onChange={handleBannerPerson}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
@@ -121,7 +122,6 @@ function EditEquipoLetiPage() {
                                 ],
                                 toolbar:
                                     'bold',
-                                placeholder: bannerData?.person
                             }}
                         />
                     </div>

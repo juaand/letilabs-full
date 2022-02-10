@@ -53,7 +53,7 @@ function EditMapTech() {
     useEffect(() => {
         const fetchData = async () => {
             const getMapData = await getMapTech()
-            setMapData(getMapData)
+            setMapData(getMapData[0])
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps

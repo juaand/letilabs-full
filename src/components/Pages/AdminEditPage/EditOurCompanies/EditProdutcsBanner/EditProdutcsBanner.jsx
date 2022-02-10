@@ -8,6 +8,7 @@ import {Editor} from '@tinymce/tinymce-react'
 
 function EditProdutcsBanner() {
     const [bannerData, setBannerData] = useState()
+    console.log(bannerData)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -108,7 +109,7 @@ function EditProdutcsBanner() {
                             Descripción 2
                         </p>
                         <Editor
-                            initialValue={bannerData?.descriptio2}
+                            initialValue={bannerData?.description2}
                             onChange={handleBannerDescription2}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
