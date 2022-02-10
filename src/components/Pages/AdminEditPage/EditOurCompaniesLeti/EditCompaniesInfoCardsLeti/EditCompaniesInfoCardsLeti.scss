@@ -1,0 +1,15 @@
+@import '../../../../../stylesheets/variables';
+
+.Letilabs {
+  .EditCarousel {
+    &__edit {
+      background: $leti-back;
+      padding: 2rem;
+
+      h4 {
+        font-family: 'TripletaBold';
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
