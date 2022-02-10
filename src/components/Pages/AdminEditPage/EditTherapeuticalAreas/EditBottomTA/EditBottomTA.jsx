@@ -32,15 +32,13 @@ function EditBottomTA() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourPeopleData?.length > 0 &&
-                <section className="container-fluid EditContent">
-                    <h2>Editar compañía</h2>
+                <section className="container-fluid EditContent EditContent-timeline">
+                    <h2>Editar elementos CTA</h2>
                     <div className="row justify-content-around">
                         {ourPeopleData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el.img.toLowerCase()} alt={el.img} />
+                            <div className="col-5 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <img className="EditCarousel__img" src={el.img} alt={el.img} />
                                 <p>{el.title}</p>
-                                <p>{el.buttonTitle}</p>
-                                <p>{el.buttonLink}</p>
                             </div>
                         )}
                     </div>

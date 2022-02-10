@@ -103,12 +103,12 @@ function EditCarrouselTA() {
         <>
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {carrouselTAData?.length > 0 &&
-                <section className="container-fluid EditContent">
-                    <h2>Editar elemento de la galería</h2>
+                <section className="container-fluid EditContent EditContent-timeline">
+                    <h2>Editar elemento del carrusel</h2>
                     <div className="row justify-content-around">
                         {carrouselTAData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el.imgURL} alt={el.imgURL} />
+                            <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <img className="EditCarousel__img" src={el.imgURL} alt={el.imgURL} />
                                 <p>{el.title}</p>
                             </div>
                         )}

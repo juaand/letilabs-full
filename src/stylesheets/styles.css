@@ -116,6 +116,10 @@ body {
   border-radius: 0;
 }
 
+.tox {
+  margin-bottom: 3rem;
+}
+
 .parallax {
   transition: transform 10s cubic-bezier(0, 1, 0.5, 1);
   transform: rotate(-150deg);

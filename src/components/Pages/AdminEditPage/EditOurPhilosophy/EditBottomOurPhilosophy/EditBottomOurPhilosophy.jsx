@@ -151,7 +151,7 @@ function EditBottomOurPhilosophy() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - MegatY mejor!
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Megat
                         </Button>
                     </div>
 

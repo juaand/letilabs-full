@@ -103,9 +103,9 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                             <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
                                         </div>
                                         <div className="col-12 EditElementsModal__img">
-                                            <img src={"./images/" + element.imgPath} alt={element.name} />
+                                            <img src={element.imgURL} alt={element.name} />
                                             <InputFile
-                                                value={element?.imgPath}
+                                                value={element?.imgURL}
                                                 onChange={onFileSelected}
                                                 id="fileButton"
                                                 name="picpath"

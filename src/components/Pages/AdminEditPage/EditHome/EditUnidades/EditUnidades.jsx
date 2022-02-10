@@ -84,7 +84,7 @@ function EditUnidades() {
                 <div className="row justify-content-around">
                     {unidadesData?.map(el =>
                         <div className="col-2 EditUnidades__trash" onClick={() => showModal(el)}>
-                            <img className="EditUnidades__img" src={"./images/" + seoURL(el.name) + ".svg"} alt={el.name} />
+                            <img className="EditUnidades__img" src={el.logo} alt={el.name} />
                         </div>
                     )}
                 </div>
