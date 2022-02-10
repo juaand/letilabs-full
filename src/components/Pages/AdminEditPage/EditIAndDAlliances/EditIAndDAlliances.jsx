@@ -7,7 +7,7 @@ import EditFormAlliances from './FormAlliances/FormAlliances'
 function EditIAndDAlliances() {
     return (
         <div>
-            <h1>Editar Investigación y Desarrollo Alianzas</h1>
+            <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo Alianzas</h2>
             <EditBannerAlliances />
             <EditCarrouselAlliances />
             <EditFormAlliances />

@@ -32,12 +32,11 @@ function EditCarouselManufacture() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourCarouselManufactureData?.length > 0 &&
-                <section className="container-fluid EditContent">
-                    <h2>Editar objetivos</h2>
+                <section className="container-fluid  EditContent EditContent-timeline">
+                    <h2>Editar procesos</h2>
                     <div className="row justify-content-around">
                         {ourCarouselManufactureData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <p>{el?.title}</p>
+                            <div className="col-3 EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <p>{el?.info}</p>
                             </div>
                         )}

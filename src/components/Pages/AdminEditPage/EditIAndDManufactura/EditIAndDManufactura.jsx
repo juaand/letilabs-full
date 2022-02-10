@@ -7,7 +7,7 @@ import EditCertificatesManufacture from './EditCertificatesManufacture/EditCerti
 function EditIAndDManufactura() {
     return (
         <div>
-            <h1>Editar Investigación y Desarrollo Manufactura</h1>
+            <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo Manufactura</h2>
             <EditBannerManufacture />
             <EditCarouselManufacture />
             <EditCertificatesManufacture />

@@ -101,38 +101,23 @@ function EditCertificatesManufacture() {
         <>
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {certificatesManufactureData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar elemento del CertificatesManufacture</h2>
                     <div className="row justify-content-around">
                         {certificatesManufactureData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el.imgURL} alt={el.title} />
-                                <p>{el.title}</p>
+                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <img className="EditCarousel__img" src={el.imgURL} alt={el.title} />
                             </div>
                         )}
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo producto al CertificatesManufacture</h2>
+                <h2>Añadir nuevo certificado</h2>
                 <form className="AdminEdit__form" onSubmit={updateCertificatesManufactureItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12">
                             <p className="AdminEdit__form__label">
-                                Título
-                            </p>
-                            <InputWithLabel
-                                value={data?.title}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="title"
-                                type="text"
-                                cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                                placeholder="Ingresa año"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Imagen
+                                Certificado
                             </p>
                             <InputFile
                                 value={data?.imgURL}
@@ -141,20 +126,6 @@ function EditCertificatesManufacture() {
                                 name="picpath"
                                 type="file"
                                 placeholder="Selecciona una imagen"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Descripción
-                            </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción"
                             />
                         </div>
                         <div className="col-12">

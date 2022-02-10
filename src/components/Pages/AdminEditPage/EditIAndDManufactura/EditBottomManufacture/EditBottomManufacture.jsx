@@ -33,11 +33,11 @@ function EditBottomManufacture() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {IDData?.length > 0 &&
-                <section className="container-fluid EditContent">
-                    <h2>Editar bottom</h2>
+                <section className="container-fluid EditContent EditContent-timeline">
+                    <h2>Editar CTA</h2>
                     <div className="row justify-content-around">
                         {IDData?.map(el =>
-                            <div className="col-1 EditCarousel__trash" onClick={() => showModal(el)}>
+                            <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.img} alt={el?.img} />
                                 <p>{el?.title}</p>
                                 <p>{el?.button}</p>
