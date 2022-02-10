@@ -36,10 +36,20 @@
 .EditCarousel__edit.logros {
   border: solid 0.1rem #e9eaee;
   margin: 0 0.5rem 2rem 0.5rem;
+  background: transparent;
 }
 
 .EditCarousel__edit.logros:before {
   right: 1rem;
   top: -2rem;
   background: #fff url(../../../../../images/edit.svg) no-repeat center center/2rem;
+  z-index: 1;
+}
+
+.EditCarousel__edit.logros img {
+  margin-top: 2rem;
+}
+
+.EditCarousel__edit.logros h4 {
+  font-family: 'TripletaBold';
 }

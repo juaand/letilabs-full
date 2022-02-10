@@ -7,7 +7,7 @@ import EditInfoCardsID from './EditInfoCardsID/EditInfoCardsID'
 function EditIAndD() {
     return (
         <div>
-            <h1>Editar Investigación y Desarrollo</h1>
+            <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo</h2>
             <EditBannerID />
             <EditGoalsInfo />
             <EditInfoCardsID />

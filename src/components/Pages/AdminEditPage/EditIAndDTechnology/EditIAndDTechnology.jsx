@@ -8,7 +8,7 @@ import EditVideoTech from './EditVideoTech/EditVideoTech'
 function EditIAndDTechnology() {
     return (
         <div>
-            <h1>Editar Investigación y Desarrollo Tecnologia</h1>
+            <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo Tecnologia</h2>
             <EditBannerTech />
             <EditCarrouselTech />
             <EditVideoTech />

@@ -107,8 +107,6 @@ function EditBannerID() {
                             cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
                             placeholder={bannerData?.imgURL}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             title
                         </p>

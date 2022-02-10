@@ -31,15 +31,13 @@ function EditCarrouselTech() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourGoalsOCData?.length > 0 &&
-                <section className="container-fluid EditContent">
+                <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar Carousel</h2>
                     <div className="row justify-content-around">
                         {ourGoalsOCData?.map(el =>
-                            <div className="col-4 EditCarousel__trash" onClick={() => showModal(el)}>
-                                <img src={el?.imgURL} alt={el?.name} style={{width:100,}} />
-                                <p>{el?.mainTitle}</p>
-                                <p>{el?.title}</p>
-                                <p>{el?.description}</p>
+                            <div className="col-3 EditCarousel__edit logros" onClick={() => showModal(el)}>
+                                <img src={el?.imgURL} alt={el?.name}  />
+                                <h4 className="mt-5">{el?.title}</h4>
                             </div>
                         )}
                     </div>

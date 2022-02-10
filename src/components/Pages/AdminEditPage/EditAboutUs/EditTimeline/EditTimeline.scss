@@ -38,15 +38,25 @@
     }
 
     &.logros {
-        border: solid 0.1rem $leti-subnav;
-        margin: 0 0.5rem 2rem 0.5rem;
+      border: solid 0.1rem $leti-subnav;
+      margin: 0 0.5rem 2rem 0.5rem;
+      background: transparent;
 
-        &:before {
-            right: 1rem;
-            top: -2rem;
-            background: $leti-white url(../../../../../images/edit.svg) no-repeat center center /
-        2rem;
-          }
+      &:before {
+        right: 1rem;
+        top: -2rem;
+        background: $leti-white url(../../../../../images/edit.svg) no-repeat
+          center center / 2rem;
+        z-index: 1;
+      }
+
+      img {
+        margin-top: 2rem;
+      }
+
+      h4 {
+        font-family: 'TripletaBold';
+      }
     }
   }
 }
