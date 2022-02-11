@@ -5,7 +5,7 @@ import {Reveal} from "react-awesome-reveal"
 import {Editor} from '@tinymce/tinymce-react'
 
 import './AdminNewsPage.css'
-import {addHomeScreen, getNews, addProductApi, getTags} from '../../../services/ApiClient'
+import {addHomeScreen, getNews, addNewsApi, getTags} from '../../../services/ApiClient'
 import {useFormState} from '../../../hooks/useFormState'
 import {app} from '../../../services/firebase'
 import ShowEditModal from './ShowEditModal/ShowEditModal'
@@ -25,6 +25,8 @@ function AdminNewsPage() {
                 urlToPic: "",
                 tag: [],
                 content: "",
+                outstanding: false,
+                publishDate: new Date(),
             },
             error: {
                 title: true,
@@ -56,16 +58,19 @@ function AdminNewsPage() {
     const [filter, setFilter] = useState([])
     const [loading, setLoading] = useState(true)
     const [allTagsData, setAllTagsData] = useState([])
+    const [imgUploaded, setImgUploaded] = useState(false)
 
     const createNewNews = async (event) => {
         event.preventDefault()
+        console.log(data)
+        console.log(Object.values(error).some(err => err))
 
         try {
-            setNewsMessage('Cargando producto...')
-            const newProduct = await addProductApi(data)
+            setNewsMessage('Subiendo noticia...')
+            const newNews = await addNewsApi(data)
             document.querySelector('form').reset()
-            setNewsData(newProduct)
-            setMessage('Producto creado con éxito')
+            setNewsData(newNews)
+            setMessage('Noticia publicada con éxito')
             setCreateNews(!createNews)
             setTimeout(() => {
                 setMessage('')
@@ -75,7 +80,6 @@ function AdminNewsPage() {
         }
     }
 
-    const isError = Object.values(error).some(err => err)
 
     const customAnimation = keyframes`
   from {
@@ -87,6 +91,8 @@ function AdminNewsPage() {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }`
+
+    const isError = Object.values(error).some(err => err)
 
     const handleChange = (e) => {
         setSearch(e.target.value)
@@ -144,8 +150,9 @@ function AdminNewsPage() {
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data[e.target.name] = fileUrl
-        error[e.target.name] = false
+        data.urlToPic = fileUrl
+        error.urlToPic = false
+        setImgUploaded(!imgUploaded)
     }
 
     const handleContent = (e) => {
@@ -161,6 +168,7 @@ function AdminNewsPage() {
     }
 
     const setTag = (e) => {
+        error.tag = false
         if (!data.tag.includes(e.target.value)) {
             data.tag.push(e.target.value)
         } else {
@@ -246,63 +254,67 @@ function AdminNewsPage() {
                                                                     type="file"
                                                                 />
                                                             </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <InputWithLabel
-                                                                    label="Título"
-                                                                    value={data.title}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="name"
-                                                                    type="text"
-                                                                    placeholder="Ingresa título de la noticia"
-                                                                    cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <InputWithLabel
-                                                                    label="Subtítulo"
-                                                                    value={data.subTitle}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="subTitle"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
-                                                                    placeholder="Ingresa subtítulo de la noticia"
-                                                                />
-                                                            </div>
-                                                            <div className="row">
-                                                                <div className="col-12">
-                                                                    <CheckBoxWithLabel
-                                                                        data={allTagsData?.map(el => el.tag)}
-                                                                        name="themes"
-                                                                        label="Etiquetas"
-                                                                        tabIndex="2"
-                                                                        onChange={setTag} />
-                                                                </div>
-                                                            </div>
-                                                            <div className="row">
-                                                                <div className="col">
-                                                                    <p className="label">Contenido</p>
-                                                                    <Editor
-                                                                        onChange={handleContent}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            placeholder: "Ingresa texto de la noticia",
-                                                                            height: 500,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image charmap print preview anchor',
-                                                                                'searchreplace visualblocks code fullscreen',
-                                                                                'insertdatetime media table paste code help wordcount'
-                                                                            ],
-                                                                            toolbar: 'undo redo | formatselect | ' +
-                                                                                'bold italic | alignleft aligncenter ' +
-                                                                                'alignright alignjustify | bullist numlist outdent indent | ' +
-                                                                                'table image | help',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                            </div>
+                                                            {imgUploaded &&
+                                                                <>
+                                                                    <div className="col-12 col-sm-4">
+                                                                        <InputWithLabel
+                                                                            label="Título"
+                                                                            value={data.title}
+                                                                            onBlur={onBlur}
+                                                                            onChange={onChange}
+                                                                            name="title"
+                                                                            type="text"
+                                                                            placeholder="Ingresa título de la noticia"
+                                                                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                                                        />
+                                                                    </div>
+                                                                    <div className="col-12 col-sm-4">
+                                                                        <InputWithLabel
+                                                                            label="Subtítulo"
+                                                                            value={data.subTitle}
+                                                                            onBlur={onBlur}
+                                                                            onChange={onChange}
+                                                                            name="subTitle"
+                                                                            type="text"
+                                                                            cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
+                                                                            placeholder="Ingresa subtítulo de la noticia"
+                                                                        />
+                                                                    </div>
+                                                                    <div className="row">
+                                                                        <div className="col-12">
+                                                                            <CheckBoxWithLabel
+                                                                                data={allTagsData?.map(el => el.tag)}
+                                                                                name="themes"
+                                                                                label="Etiquetas"
+                                                                                tabIndex="2"
+                                                                                onChange={setTag} />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div className="row">
+                                                                        <div className="col">
+                                                                            <p className="label">Contenido</p>
+                                                                            <Editor
+                                                                                onChange={handleContent}
+                                                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                                init={{
+                                                                                    placeholder: "Ingresa texto de la noticia",
+                                                                                    height: 500,
+                                                                                    menubar: false,
+                                                                                    plugins: [
+                                                                                        'advlist autolink lists link image charmap print preview anchor',
+                                                                                        'searchreplace visualblocks code fullscreen',
+                                                                                        'insertdatetime media table paste code help wordcount'
+                                                                                    ],
+                                                                                    toolbar: 'undo redo | formatselect | ' +
+                                                                                        'bold italic | alignleft aligncenter ' +
+                                                                                        'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                                                        'table image | help',
+                                                                                }}
+                                                                            />
+                                                                        </div>
+                                                                    </div>
+                                                                </>
+                                                            }
                                                             <div className="col-12 mt-5">
                                                                 <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Publicar noticia</Button>
                                                             </div>
