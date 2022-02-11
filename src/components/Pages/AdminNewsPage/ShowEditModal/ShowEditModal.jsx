@@ -1,5 +1,5 @@
 import './ShowEditModal.css'
-import React from 'react'
+import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../hooks/useFormState'
@@ -10,6 +10,8 @@ import Button from '../../../Form/FormButton/FormButton'
 import {deleteNews, updateNews} from '../../../../services/ApiClient'
 
 function ShowEditModal({news, hideModal, updateData}) {
+
+    const [imageSuccess, setImageSuccess] = useState('')
 
     const {state, onChange} = useFormState(
         {
@@ -50,9 +52,9 @@ function ShowEditModal({news, hideModal, updateData}) {
         data.content = e.target.getContent()
     }
 
-    const updateThisProduct = async (event) => {
+    const updateThisNews = async (event) => {
         event.preventDefault()
-        data.id = news._id
+        data.id = news.id
 
         const updateNewsData = await updateNews(data)
         updateData(updateNewsData)
@@ -82,6 +84,7 @@ function ShowEditModal({news, hideModal, updateData}) {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.urlToPic = fileUrl
+        setImageSuccess("Imagen subida correctamente")
     }
 
 
@@ -93,7 +96,7 @@ function ShowEditModal({news, hideModal, updateData}) {
                     <Fade direction="down" className="col-12 ShowEditModal__container">
                         <>
                             <span className="ShowEditModal__close" onClick={hideModal}></span>
-                            <form className="AdminEdit__form" onSubmit={updateThisProduct}>
+                            <form className="AdminEdit__form" onSubmit={updateThisNews}>
                                 <div className="row">
                                     <div className="col-sm-12">
                                         <h1 className="DeleteItemModal__ask">Editar {news.title}</h1>
@@ -107,6 +110,7 @@ function ShowEditModal({news, hideModal, updateData}) {
                                             name="urlToPic"
                                             type="file"
                                         />
+                                        {imageSuccess && <small>{imageSuccess}</small>}
                                     </div>
                                     <div className="col-12 col-sm-4">
                                         <InputWithLabel

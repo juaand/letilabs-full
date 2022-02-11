@@ -27,6 +27,20 @@
   position: relative;
 }
 
+.NewsSingle__content-desc strong {
+  color: #055aa5;
+  font-weight: 400;
+}
+
+.NewsSingle__content-desc img {
+  width: 100%;
+  height: auto;
+}
+
+.NewsSingle__content-desc table {
+  border: 0;
+}
+
 .NewsSingle__rrss {
   position: absolute;
   top: 0.8rem;

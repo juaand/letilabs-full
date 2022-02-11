@@ -106,7 +106,7 @@ function AdminNewsPage() {
 
     const outstandingNews = async (e, id) => {
         if (newsData.filter(el => el?.outstanding === true).length >= 1 && e.target.checked === true) {
-            setMessage('Sólo puede mostar una noticia destacada')
+            setMessage('Sólo puede mostrar una noticia destacada: deseleccione la noticia destacada actual para poder publicar una nueva')
         } else {
             setMessage('')
             const res = await addOutstandingNews(e.target.checked, id)
@@ -163,7 +163,7 @@ function AdminNewsPage() {
 
     const carouselHomeProducts = async (e) => {
         e.target.checked ?
-            setNewsData(newsData.filter(el => el?.show_in_home === true))
+            setNewsData(newsData.filter(el => el?.outstanding === true))
             :
             setNewsData(filter)
     }
