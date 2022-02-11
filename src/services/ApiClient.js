@@ -225,6 +225,8 @@ export const updateBottomTA = ({title, buttonLink, buttonTitle, img, id}) => htt
 //news routes
 export const getNews = () => http.get("/newsdata")
 export const getTags = () => http.get("/tagsdata")
+export const deleteTag = (id) => http.get(`/tag/${id}/delete`)
+export const createTag = (tag) => http.post("/createtag", {tag})
 export const getNewsTitles = () => http.get("/newstitles")
 export const updateNewsTitles = ({lastestTitle, mostTitle, searchTitle, picPath, id}) => http.patch("/updatenewstitles", {lastestTitle, mostTitle, searchTitle, picPath, id})
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})

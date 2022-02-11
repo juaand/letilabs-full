@@ -46,6 +46,11 @@ body {
       }
     }
   }
+
+  &.hidden-label {
+    margin-top: 4rem;
+    height: 5.5rem;
+  }
 }
 
 .alert {
