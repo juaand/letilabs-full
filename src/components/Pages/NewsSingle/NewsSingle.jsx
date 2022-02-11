@@ -55,7 +55,7 @@ function NewsSingle(props) {
                                     <div className="whatsapp" />
                                     <div className="linkedin" />
                                 </div>
-                                {noticia.content}
+                                <p dangerouslySetInnerHTML={{__html: noticia?.content}} />
                             </div>
                         </div>
                     </section>

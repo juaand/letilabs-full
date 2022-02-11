@@ -33,3 +33,7 @@
   background: #cd202f;
   border-right: solid 0.3rem #cd202f;
 }
+
+.AdminEditPage__Nav-link-subnav {
+  padding-left: 4rem;
+}

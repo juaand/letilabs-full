@@ -1,0 +1,21 @@
+@import '../../../../../stylesheets/variables';
+
+.EditNewsTags {
+  &-delete {
+    &-tags {
+      font-size: 1.6rem;
+
+      &:before {
+        content: 'x';
+        font-size: 1.6rem;
+        color: $leti-red;
+        margin-right: 0.5rem;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $leti-red;
+      }
+    }
+  }
+}

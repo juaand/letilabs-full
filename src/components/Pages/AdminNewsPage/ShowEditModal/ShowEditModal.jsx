@@ -1,94 +1,76 @@
-import './ShowEditModal.css'
-import React from 'react'
+import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
+import {Editor} from '@tinymce/tinymce-react'
+
+import './ShowEditModal.css'
+import {deleteNews, updateNews} from '../../../../services/ApiClient'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../hooks/useFormState'
 import InputFile from '../../../Form/InputFile/InputFile'
 import {app} from '../../../../services/firebase'
-import {Editor} from '@tinymce/tinymce-react'
 import Button from '../../../Form/FormButton/FormButton'
-import {deleteProduct, updateProduct} from '../../../../services/ApiClient'
+import Loader from '../../../Loader/Loader'
 
-function ShowEditModal({product, hideModal, updateData}) {
+
+function ShowEditModal({news, hideModal, updateData}) {
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onChange} = useFormState(
         {
             data: {
-                name: product.name,
-                picPath: product.picPath,
-                QRpath: product.QRpath,
-                line: product.line,
-                composition: product.composition,
-                health_register: product.health_register,
-                active_principle: product.active_principle,
-                posology: product.posology,
-                presentation: product.presentation,
-                indication: product.indication,
+                title: news.title,
+                subTitle: news.subTitle,
+                urlToPic: news.urlToPic,
+                tag: news.tag,
+                content: news.content,
+                outstanding: news.outstanding,
+                publishDate: news.publishDate,
             },
             error: {
-                name: true,
-                picPath: true,
-                QRpath: true,
-                line: true,
-                composition: true,
-                health_register: true,
-                active_principle: true,
-                posology: true,
-                presentation: true,
-                indication: true,
+                title: true,
+                subTitle: true,
+                urlToPic: true,
+                tag: true,
+                content: true,
+                outstanding: true,
+                publishDate: true,
             },
             touch: {},
         },
         {
-            name: v => v.length,
-            picPath: v => v.length,
-            QRpath: v => v.length,
-            line: v => v.length,
-            composition: v => v.length,
-            health_register: v => v.length,
-            active_principle: v => v.length,
-            posology: v => v.length,
-            presentation: v => v.length,
-            indication: v => v.length,
+            title: v => v.length,
+            subTitle: v => v.length,
+            urlToPic: v => v.length,
+            tag: v => v.length,
+            content: v => v.length,
+            outstanding: v => v.length,
+            publishDate: v => v.length,
         }
     )
 
     const {data} = state
 
-    const handleComposition = (e) => {
-        data.composition = e.target.getContent()
+    const handleContent = (e) => {
+        data.content = e.target.getContent()
     }
 
-    const handleActivePrinciple = (e) => {
-        data.active_principle = e.target.getContent()
-    }
-
-    const handlePosology = (e) => {
-        data.posology = e.target.getContent()
-    }
-
-    const handlePresentation = (e) => {
-        data.presentation = e.target.getContent()
-    }
-
-    const handleIndication = (e) => {
-        data.indication = e.target.getContent()
-    }
-
-    const updateThisProduct = async (event) => {
+    const updateThisNews = async (event) => {
         event.preventDefault()
-        data.id = product._id
+        data.id = news.id
 
-        const updatedProductsData = await updateProduct(data)
-        updateData(updatedProductsData)
+        const updateNewsData = await updateNews(data)
+        updateData(updateNewsData)
     }
 
-    const deleteSelectedProduct = async (id) => {
-        const updatedProductsData = await deleteProduct(id)
-        updateData(updatedProductsData)
+    const deleteSelectedNews = async (id) => {
+        const updateDeletedNews = await deleteNews(id)
+        updateData(updateDeletedNews)
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
@@ -106,191 +88,97 @@ function ShowEditModal({product, hideModal, updateData}) {
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data[e.target.name] = fileUrl
+        data.urlToPic = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
 
     return (
-
-        <main className="modal ShowEditModal">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <Fade direction="down" className="col-12 ShowEditModal__container">
-                        <>
-                            <span className="ShowEditModal__close" onClick={hideModal}></span>
-                            <form className="AdminEdit__form" onSubmit={updateThisProduct}>
-                                <div className="row">
-                                    <div className="col-sm-12">
-                                        <h1 className="DeleteItemModal__ask">Editar {product.name}</h1>
-                                    </div>
-                                    <div className="col-12 col-sm-4">
-                                        <InputWithLabel
-                                            label="Nombre"
-                                            value={data?.name}
-                                            onChange={onChange}
-                                            name="name"
-                                            type="text"
-                                            cssStyle="form-control"
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-4">
-                                        <InputWithLabel
-                                            label="Línea"
-                                            value={data?.line}
-                                            onChange={onChange}
-                                            name="line"
-                                            type="text"
-                                            cssStyle="form-control"
-                                            placeholder="Ingresa línea del producto"
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-4">
-                                        <InputWithLabel
-                                            label="Registro sanitario"
-                                            value={data?.health_register}
-                                            onChange={onChange}
-                                            name="health_register"
-                                            type="text"
-                                            cssStyle="form-control"
-                                            placeholder="Registro sanitario"
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-6">
-                                        <InputFile
-                                            label="Imagen producto"
-                                            value={data?.picPath}
-                                            onChange={onFileSelected}
-                                            id="fileButton"
-                                            name="picPath"
-                                            type="file"
-                                        />
-                                    </div>
-                                    <div className="col-12 col-sm-6">
-                                        <InputFile
-                                            label="QR producto"
-                                            value={data?.QRpath}
-                                            onChange={onFileSelected}
-                                            id="fileButton"
-                                            name="QRpath"
-                                            type="file"
-                                        />
-                                    </div>
+        <>
+            {isDisabled && <Loader message="Cargando imagen..."/>}
+            <main className="modal ShowEditModal">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <Fade direction="down" className="col-12 ShowEditModal__container">
+                            <>
+                                <span className="ShowEditModal__close" onClick={hideModal}></span>
+                                <form className="AdminEdit__form" onSubmit={updateThisNews}>
                                     <div className="row">
-                                        <div className="col">
-                                            <p className="label"><strong>Composición</strong></p>
-                                            <Editor
-                                                initialValue={data?.composition}
-                                                onChange={handleComposition}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
+                                        <div className="col-sm-12">
+                                            <h1 className="DeleteItemModal__ask">Editar {news.title}</h1>
+                                        </div>
+                                        <div className="col-12 col-sm-4">
+                                            <InputFile
+                                                label="Imagen noticia"
+                                                value={data?.urlToPic}
+                                                onChange={onFileSelected}
+                                                id="fileButton"
+                                                name="urlToPic"
+                                                type="file"
+                                            />
+                                            {imageSuccess && <small className="img-success">{imageSuccess}</small>}
+                                        </div>
+                                        <div className="col-12 col-sm-4">
+                                            <InputWithLabel
+                                                label="Título"
+                                                value={data?.title}
+                                                onChange={onChange}
+                                                name="title"
+                                                type="text"
+                                                cssStyle="form-control"
+                                                placeholder="Ingresa el título de la noticia"
                                             />
                                         </div>
-                                        <div className="col">
-                                            <p className="label"><strong>Principio activo</strong></p>
-                                            <Editor
-                                                initialValue={data?.active_principle}
-                                                onChange={handleActivePrinciple}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
+                                        <div className="col-12 col-sm-4">
+                                            <InputWithLabel
+                                                label="Subtítulo"
+                                                value={data?.subTitle}
+                                                onChange={onChange}
+                                                name="subTitle"
+                                                type="text"
+                                                cssStyle="form-control"
+                                                placeholder="Ingresa el subtítulo de la noticia"
                                             />
                                         </div>
-                                        <div className="col">
-                                            <p className="label"><strong>Posología</strong></p>
-                                            <Editor
-                                                initialValue={data?.posology}
-                                                onChange={handlePosology}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
-                                            />
+                                        <div className="row">
+                                            <div className="col-12">
+                                                <p className="label"><strong>Contenido de la noticia</strong></p>
+                                                <Editor
+                                                    initialValue={data?.content}
+                                                    onChange={handleContent}
+                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                    init={{
+                                                        placeholder: "Ingresa texto de la noticia",
+                                                        height: 500,
+                                                        menubar: false,
+                                                        plugins: [
+                                                            'advlist autolink lists link image charmap print preview anchor',
+                                                            'searchreplace visualblocks code fullscreen',
+                                                            'insertdatetime media table paste code help wordcount'
+                                                        ],
+                                                        toolbar: 'undo redo | formatselect | ' +
+                                                            'bold italic | alignleft aligncenter ' +
+                                                            'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                            'table image | help',
+                                                    }}
+                                                />
+                                            </div>
                                         </div>
-                                        <div className="col">
-                                            <p className="label"><strong>Presentación</strong></p>
-                                            <Editor
-                                                initialValue={data?.presentation}
-                                                onChange={handlePresentation}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
-                                            />
+                                        <div className="col-12 col-sm-6 mt-5">
+                                            <div onClick={() => deleteSelectedNews(news?.id)} className="leti-btn delete">Eliminar noticia</div>
                                         </div>
-                                        <div className="col">
-                                            <p className="label"><strong>Indicaciones</strong></p>
-                                            <Editor
-                                                initialValue={data?.indication}
-                                                onChange={handleIndication}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
-                                            />
+                                        <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
+                                            <Button type="submit" cssStyle={`leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
                                         </div>
                                     </div>
-                                    <div className="col-12 col-sm-6 mt-5">
-                                        <div onClick={() => deleteSelectedProduct(product?._id)} className="leti-btn delete">Eliminar producto</div>
-                                    </div>
-                                    <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
-                                        <Button type="submit" className="leti-btn">Guardar cambios</Button>
-                                    </div>
-                                </div>
-                            </form>
-                        </>
-                    </Fade>
+                                </form>
+                            </>
+                        </Fade>
+                    </div>
                 </div>
-            </div>
-        </main>
-
+            </main>
+        </>
     )
 }
 

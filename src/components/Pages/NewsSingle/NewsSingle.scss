@@ -27,6 +27,20 @@
 
     &-desc {
       position: relative;
+
+      strong {
+        color: $leti-blue;
+        font-weight: 400;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      table {
+        border: 0;
+      }
     }
   }
 

@@ -102,6 +102,11 @@ body {
   align-items: center;
 }
 
+.leti-btn.hidden-label {
+  margin-top: 4rem;
+  height: 5.5rem;
+}
+
 .alert {
   animation: alerta 3s ease-in-out forwards;
   display: block;

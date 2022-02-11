@@ -224,6 +224,13 @@ export const updateBottomTA = ({title, buttonLink, buttonTitle, img, id}) => htt
 
 //news routes
 export const getNews = () => http.get("/newsdata")
+export const getTags = () => http.get("/tagsdata")
+export const deleteTag = (id) => http.get(`/tag/${id}/delete`)
+export const createTag = (tag) => http.post("/createtag", {tag})
 export const getNewsTitles = () => http.get("/newstitles")
 export const updateNewsTitles = ({lastestTitle, mostTitle, searchTitle, picPath, id}) => http.patch("/updatenewstitles", {lastestTitle, mostTitle, searchTitle, picPath, id})
+export const addNewsApi = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate}) => http.post("/createnews", {title, subTitle, urlToPic, tag, content, outstanding, publishDate})
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})
+export const addOutstandingNews = (outstanding, id) => http.post(`/addoutstandingnews/${id}`, {outstanding, id})
+export const deleteNews = (id) => http.get(`/news/${id}/delete`)
+export const updateNews = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate, id}) => http.patch(`/updatenews/${id}`, {title, subTitle, urlToPic, tag, content, outstanding, publishDate, id})

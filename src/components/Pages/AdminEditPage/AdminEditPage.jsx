@@ -19,6 +19,7 @@ import EditOurCompaniesGenven from './EditOurCompaniesGenven/EditOurCompaniesGen
 import EditOurCompaniesBiocontrolled from './EditOurCompaniesBiocontrolled/EditOurCompaniesBiocontrolled'
 import EditTherapeuticalAreas from './EditTherapeuticalAreas/EditTherapeuticalAreas'
 import EditOurPhilosophy from './EditOurPhilosophy/EditOurPhilosophy'
+import EditTags from './EditTags/EditTags'
 
 function AdminEditPage() {
 
@@ -55,6 +56,7 @@ function AdminEditPage() {
                         {initNavValue === 'nuestra-filosofia' && <EditOurPhilosophy />}
                         {initNavValue === 'productos' && <EditProducts />}
                         {initNavValue === 'noticias' && <EditNews />}
+                        {initNavValue === 'etiquetas' && <EditTags />}
                     </div>
                 </div>
             </main>

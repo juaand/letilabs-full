@@ -1,17 +1,20 @@
-import './FindNews.css'
-import React, {useState} from 'react'
-import {useFormState} from '../../../../hooks/useFormState'
+import React, {useState, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+
+import './FindNews.css'
+import {useFormState} from '../../../../hooks/useFormState'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import CheckBoxWithLabel from '../../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
-import {searchNews} from '../../../../services/ApiClient'
-import {Link} from 'react-router-dom'
+import {searchNews, getTags} from '../../../../services/ApiClient'
 import {drawTime} from '../../../../helpers/globals'
+
 
 function FindNews({title}) {
 
     const [getSearch, setGetSearch] = useState([])
     const [bool, setBool] = useState(false)
+    const [allTagsData, setAllTagsData] = useState([])
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -52,6 +55,16 @@ function FindNews({title}) {
             data.tag = (data.tag.filter(el => el !== e.target.value))
         }
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const allTags = await getTags()
+            setAllTagsData(allTags)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
         <>
             <Fade direction="up" triggerOnce>
@@ -76,7 +89,7 @@ function FindNews({title}) {
                                     </div>
                                     <div onClick={searchSubmit} className="col-12 p-0 col-sm-1 leti-btn" />
                                     <div className="col-12 FindNews__checkboxes">
-                                        <CheckBoxWithLabel data={["Grupo Leti", "Educación", "Innovación", "Nuestra gente", "Investigación", "Salud y bienestar"]} name="themes" tabIndex="2" onChange={setTag} />
+                                        <CheckBoxWithLabel data={allTagsData?.map(el => el.tag)} name="themes" tabIndex="2" onChange={setTag} />
                                     </div>
                                 </form>
                             </div>

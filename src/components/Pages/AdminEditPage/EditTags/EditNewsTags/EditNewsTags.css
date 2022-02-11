@@ -1,0 +1,15 @@
+.EditNewsTags-delete-tags {
+  font-size: 1.6rem;
+}
+
+.EditNewsTags-delete-tags:before {
+  content: 'x';
+  font-size: 1.6rem;
+  color: #cd202f;
+  margin-right: 0.5rem;
+}
+
+.EditNewsTags-delete-tags:hover {
+  cursor: pointer;
+  color: #cd202f;
+}

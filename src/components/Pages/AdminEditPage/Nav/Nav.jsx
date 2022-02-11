@@ -3,11 +3,11 @@ import React from 'react'
 import {useHistory} from 'react-router'
 import {seoURL} from '../../../../hooks/seoURL'
 
-
-
 function Nav({getActiveItem}) {
 
-    const adminNav = ['Inicio', 'Sobre nosotros', 'Áreas Terapéuticas', 'Nuestras empresas', 'Nuestras Empresas Leti', 'Nuestras Empresas Genven', 'Nuestras Empresas Biocontrolled', 'Investigación y desarrollo', 'Investigación y desarrollo Tecnologia', 'Investigación y desarrollo Manufactura', 'Investigación y desarrollo Alianzas', 'Propósito y responsabilidad social', 'Nuestra gente', 'Nuestra filosofía', 'Productos', 'Noticias']
+    const adminNav = ['Inicio', 'Sobre nosotros', 'Áreas Terapéuticas', 'Nuestras empresas', 'Leti', 'Genven', 'Biocontrolled', 'Investigación y desarrollo', 'Tecnología', 'Manufactura', 'Alianzas', 'Propósito y responsabilidad social', 'Nuestra gente', 'Nuestra filosofía', 'Productos', 'Noticias', 'Etiquetas']
+
+    const subAdminNav = ['Áreas Terapéuticas', 'Leti', 'Genven', 'Biocontrolled', 'Tecnología', 'Manufactura', 'Alianzas', 'Etiquetas']
 
     let history = useHistory()
 
@@ -41,11 +41,21 @@ function Nav({getActiveItem}) {
         setTimeout(() => {history.push("/admin-editar-contenido")}, 1)
     }
 
+    const checkSubNav = (tag) => {
+        for (let i = 0; i < adminNav.length; i++) {
+            for (let j = 0; j < subAdminNav.length; j++) {
+                if (adminNav[i] === tag && subAdminNav[j] === tag) {
+                    return 'AdminEditPage__Nav-link-subnav'
+                }
+            }
+        }
+    }
+
     return (
 
         <ul className="AdminEditPage__Nav">
             {adminNav.map((el, i) =>
-                <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""}`} onClick={(e) => {
+                <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""} ${checkSubNav(el)}`} onClick={(e) => {
                     clearInitActive()
                     getActiveItem(seoURL(el))
                     e.target.classList.add("active")

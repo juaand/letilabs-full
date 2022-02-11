@@ -7,6 +7,14 @@
 
   label {
     margin-left: 1rem;
+    font-size: 1.6rem;
+    color: $leti-nav;
+  }
+
+  .label {
+    &-title {
+      margin-left: 0;
+    }
   }
 
   .form-check {
@@ -18,6 +26,4 @@
   .CheckBoxWithLabel {
     padding: 0 1.5rem;
   }
-
-  
 }

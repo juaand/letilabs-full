@@ -17,6 +17,12 @@
     justify-content: center;
     align-items: center;
     padding: 4rem 0;
+
+    &__content {
+      background: $leti-white;
+      padding: 2rem 4rem;
+      font-size: 1.6rem;
+    }
   }
 
   &__stroke {
