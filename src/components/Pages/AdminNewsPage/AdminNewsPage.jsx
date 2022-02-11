@@ -114,9 +114,9 @@ function AdminNewsPage() {
         }
     }
 
-    const showModal = (product) => {
+    const showModal = (info) => {
         setBool(!bool)
-        setEditNews(product)
+        setEditNews(info)
     }
 
     const hideModal = () => {
@@ -125,6 +125,7 @@ function AdminNewsPage() {
 
     const updateData = (data) => {
         setBool(!bool)
+        console.log(data)
         setNewsData(data)
     }
 
@@ -193,7 +194,7 @@ function AdminNewsPage() {
     return (
         <>
             {loading && <Loader />}
-            {bool && <ShowEditModal product={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
+            {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
             </Helmet>

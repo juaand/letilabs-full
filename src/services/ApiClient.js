@@ -232,3 +232,5 @@ export const updateNewsTitles = ({lastestTitle, mostTitle, searchTitle, picPath,
 export const addNewsApi = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate}) => http.post("/createnews", {title, subTitle, urlToPic, tag, content, outstanding, publishDate})
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})
 export const addOutstandingNews = (outstanding, id) => http.post(`/addoutstandingnews/${id}`, {outstanding, id})
+export const deleteNews = (id) => http.get(`/news/${id}/delete`)
+export const updateNews = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate, id}) => http.patch(`/updatenews/${id}`, {title, subTitle, urlToPic, tag, content, outstanding, publishDate, id})
