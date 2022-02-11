@@ -5,7 +5,7 @@ import {Reveal} from "react-awesome-reveal"
 import {Editor} from '@tinymce/tinymce-react'
 
 import './AdminNewsPage.css'
-import {addHomeScreen, getNews, addNewsApi, getTags} from '../../../services/ApiClient'
+import {addOutstandingNews, getNews, addNewsApi, getTags} from '../../../services/ApiClient'
 import {useFormState} from '../../../hooks/useFormState'
 import {app} from '../../../services/firebase'
 import ShowEditModal from './ShowEditModal/ShowEditModal'
@@ -104,12 +104,12 @@ function AdminNewsPage() {
         )
     })
 
-    const showAtHome = async (e, id) => {
-        if (newsData.filter(el => el?.show_in_home === true).length >= 18 && e.target.checked === true) {
-            setMessage('Ya se han alcanzado el máximo de productos para mostrar en la página principal. Por favor, desmarque alguno para continuar.')
+    const outstandingNews = async (e, id) => {
+        if (newsData.filter(el => el?.outstanding === true).length >= 1 && e.target.checked === true) {
+            setMessage('Sólo puede mostar una noticia destacada')
         } else {
             setMessage('')
-            const res = await addHomeScreen(e.target.checked, id)
+            const res = await addOutstandingNews(e.target.checked, id)
             setNewsData(res)
         }
     }
@@ -342,7 +342,7 @@ function AdminNewsPage() {
                                             <ul className="list-group list-group-flush">
                                                 <li className="list-group-item AdminNewsPage__check">
                                                     <div className="form-check">
-                                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.show_in_home} onChange={(e) => showAtHome(e, el._id)} />
+                                                        <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.outstanding} onChange={(e) => outstandingNews(e, el.id)} />
                                                         <label className="form-check-label" for="flexCheckChecked">
                                                             Seleccionar como noticia destacada.
                                                         </label>
