@@ -44,13 +44,13 @@ function AdminEditPage() {
                         {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
                         {initNavValue === 'areas-terapeuticas' && <EditTherapeuticalAreas />}
                         {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
-                        {initNavValue === 'nuestras-empresas-leti' && <EditOurCompaniesLeti />}
-                        {initNavValue === 'nuestras-empresas-genven' && <EditOurCompaniesGenven />}
-                        {initNavValue === 'nuestras-empresas-biocontrolled' && <EditOurCompaniesBiocontrolled />}
+                        {initNavValue === 'leti' && <EditOurCompaniesLeti />}
+                        {initNavValue === 'genven' && <EditOurCompaniesGenven />}
+                        {initNavValue === 'biocontrolled' && <EditOurCompaniesBiocontrolled />}
                         {initNavValue === 'investigacion-y-desarrollo' && <EditIAndD />}
-                        {initNavValue === 'investigacion-y-desarrollo-tecnologia' && <EditIAndDTechnology />}
-                        {initNavValue === 'investigacion-y-desarrollo-manufactura' && <EditIAndDManufactura />}
-                        {initNavValue === 'investigacion-y-desarrollo-alianzas' && <EditIAndDAlliances />}
+                        {initNavValue === 'tecnologia' && <EditIAndDTechnology />}
+                        {initNavValue === 'manufactura' && <EditIAndDManufactura />}
+                        {initNavValue === 'alianzas' && <EditIAndDAlliances />}
                         {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
                         {initNavValue === 'nuestra-gente' && <EditOurPeople />}
                         {initNavValue === 'nuestra-filosofia' && <EditOurPhilosophy />}
