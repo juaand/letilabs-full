@@ -58,7 +58,8 @@ function AdminNewsPage() {
     const [filter, setFilter] = useState([])
     const [loading, setLoading] = useState(true)
     const [allTagsData, setAllTagsData] = useState([])
-    const [imgUploaded, setImgUploaded] = useState(false)
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const createNewNews = async (event) => {
         event.preventDefault()
@@ -91,8 +92,6 @@ function AdminNewsPage() {
     opacity: 1;
     transform: translate3d(0, 0, 0);
   }`
-
-    const isError = Object.values(error).some(err => err)
 
     const handleChange = (e) => {
         setSearch(e.target.value)
@@ -134,6 +133,7 @@ function AdminNewsPage() {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
@@ -153,7 +153,8 @@ function AdminNewsPage() {
         const fileUrl = await filePath.getDownloadURL()
         data.urlToPic = fileUrl
         error.urlToPic = false
-        setImgUploaded(!imgUploaded)
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
     const handleContent = (e) => {
@@ -194,6 +195,7 @@ function AdminNewsPage() {
     return (
         <>
             {loading && <Loader />}
+            {isDisabled && <Loader message="Cargando imagen..."/>}
             {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
@@ -254,70 +256,67 @@ function AdminNewsPage() {
                                                                     name="urlToPic"
                                                                     type="file"
                                                                 />
+                                                                {imageSuccess && <small className="img-success">{imageSuccess}</small>}
                                                             </div>
-                                                            {imgUploaded &&
-                                                                <>
-                                                                    <div className="col-12 col-sm-4">
-                                                                        <InputWithLabel
-                                                                            label="Título"
-                                                                            value={data.title}
-                                                                            onBlur={onBlur}
-                                                                            onChange={onChange}
-                                                                            name="title"
-                                                                            type="text"
-                                                                            placeholder="Ingresa título de la noticia"
-                                                                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                                                                        />
-                                                                    </div>
-                                                                    <div className="col-12 col-sm-4">
-                                                                        <InputWithLabel
-                                                                            label="Subtítulo"
-                                                                            value={data.subTitle}
-                                                                            onBlur={onBlur}
-                                                                            onChange={onChange}
-                                                                            name="subTitle"
-                                                                            type="text"
-                                                                            cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
-                                                                            placeholder="Ingresa subtítulo de la noticia"
-                                                                        />
-                                                                    </div>
-                                                                    <div className="row">
-                                                                        <div className="col-12">
-                                                                            <CheckBoxWithLabel
-                                                                                data={allTagsData?.map(el => el.tag)}
-                                                                                name="themes"
-                                                                                label="Etiquetas"
-                                                                                tabIndex="2"
-                                                                                onChange={setTag} />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="row">
-                                                                        <div className="col">
-                                                                            <p className="label">Contenido</p>
-                                                                            <Editor
-                                                                                onChange={handleContent}
-                                                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                                init={{
-                                                                                    placeholder: "Ingresa texto de la noticia",
-                                                                                    height: 500,
-                                                                                    menubar: false,
-                                                                                    plugins: [
-                                                                                        'advlist autolink lists link image charmap print preview anchor',
-                                                                                        'searchreplace visualblocks code fullscreen',
-                                                                                        'insertdatetime media table paste code help wordcount'
-                                                                                    ],
-                                                                                    toolbar: 'undo redo | formatselect | ' +
-                                                                                        'bold italic | alignleft aligncenter ' +
-                                                                                        'alignright alignjustify | bullist numlist outdent indent | ' +
-                                                                                        'table image | help',
-                                                                                }}
-                                                                            />
-                                                                        </div>
-                                                                    </div>
-                                                                </>
-                                                            }
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    label="Título"
+                                                                    value={data.title}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="title"
+                                                                    type="text"
+                                                                    placeholder="Ingresa título de la noticia"
+                                                                    cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <InputWithLabel
+                                                                    label="Subtítulo"
+                                                                    value={data.subTitle}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="subTitle"
+                                                                    type="text"
+                                                                    cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
+                                                                    placeholder="Ingresa subtítulo de la noticia"
+                                                                />
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col-12">
+                                                                    <CheckBoxWithLabel
+                                                                        data={allTagsData?.map(el => el.tag)}
+                                                                        name="themes"
+                                                                        label="Etiquetas"
+                                                                        tabIndex="2"
+                                                                        onChange={setTag} />
+                                                                </div>
+                                                            </div>
+                                                            <div className="row">
+                                                                <div className="col">
+                                                                    <p className="label">Contenido</p>
+                                                                    <Editor
+                                                                        onChange={handleContent}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            placeholder: "Ingresa texto de la noticia",
+                                                                            height: 500,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image charmap print preview anchor',
+                                                                                'searchreplace visualblocks code fullscreen',
+                                                                                'insertdatetime media table paste code help wordcount'
+                                                                            ],
+                                                                            toolbar: 'undo redo | formatselect | ' +
+                                                                                'bold italic | alignleft aligncenter ' +
+                                                                                'alignright alignjustify | bullist numlist outdent indent | ' +
+                                                                                'table image | help',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                            </div>
                                                             <div className="col-12 mt-5">
-                                                                <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Publicar noticia</Button>
+                                                                <Button type="submit" cssStyle={`leti-btn ${isDisabled && "disabled"}`}>Publicar noticia</Button>
                                                             </div>
                                                         </div>
 

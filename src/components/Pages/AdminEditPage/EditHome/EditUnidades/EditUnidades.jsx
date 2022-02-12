@@ -5,7 +5,6 @@ import {getUnidades, updateUnidadesData} from '../../../../../services/ApiClient
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
-import {seoURL} from '../../../../../hooks/seoURL'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditUnidades() {
