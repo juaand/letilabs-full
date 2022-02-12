@@ -195,7 +195,7 @@ function AdminNewsPage() {
     return (
         <>
             {loading && <Loader />}
-            {isDisabled && <Loader message="Cargando imagen..."/>}
+            {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
@@ -239,6 +239,7 @@ function AdminNewsPage() {
                                 <Reveal triggerOnce keyframes={customAnimation} duration={600} className="row">
                                     <>
                                         <div className={`col-12 AdminNewsPage__create ${createNews && 'show'}`}>
+                                            <div className="AdminNewsPage__close" onClick={() => setCreateNews(!createNews)} />
                                             <h1>Nueva noticia</h1>
                                             {newsMessage && <div className="product-message">{newsMessage}</div>
                                             }

@@ -105,8 +105,11 @@ function ShowEditModal({news, hideModal, updateData}) {
                                 <span className="ShowEditModal__close" onClick={hideModal}></span>
                                 <form className="AdminEdit__form" onSubmit={updateThisNews}>
                                     <div className="row">
-                                        <div className="col-sm-12">
-                                            <h1 className="DeleteItemModal__ask">Editar {news.title}</h1>
+                                        <div className="col-sm-12 ShowEditModal__thumbnail">
+                                        <div className="ShowEditModal__thumbnail-img" style={{
+                                            background: `url(${data?.urlToPic}) no-repeat center center / cover`,
+                                        }}></div>
+                                            <h1 className="DeleteItemModal__ask">Editar noticia <span className="ShowEditModal__news-title">{news.title}</span></h1>
                                         </div>
                                         <div className="col-12 col-sm-4">
                                             <InputFile
