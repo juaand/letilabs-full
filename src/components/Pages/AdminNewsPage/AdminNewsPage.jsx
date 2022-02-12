@@ -63,8 +63,6 @@ function AdminNewsPage() {
 
     const createNewNews = async (event) => {
         event.preventDefault()
-        console.log(data)
-        console.log(Object.values(error).some(err => err))
 
         try {
             setNewsMessage('Subiendo noticia...')
@@ -124,7 +122,6 @@ function AdminNewsPage() {
 
     const updateData = (data) => {
         setBool(!bool)
-        console.log(data)
         setNewsData(data)
     }
 
@@ -145,7 +142,7 @@ function AdminNewsPage() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
+                //console.log('Uploaded')
             })
             .catch(err => {console.log(err)})
 
@@ -344,7 +341,7 @@ function AdminNewsPage() {
                                                 <li className="list-group-item AdminNewsPage__check">
                                                     <div className="form-check">
                                                         <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.outstanding} onChange={(e) => outstandingNews(e, el.id)} />
-                                                        <label className="form-check-label" for="flexCheckChecked">
+                                                        <label className="form-check-label" htmlFor="flexCheckChecked">
                                                             Seleccionar como noticia destacada.
                                                         </label>
                                                     </div>

@@ -150,7 +150,7 @@ function AdminProductPage() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                console.log('Uploaded')
+                //console.log('Uploaded')
             })
             .catch(err => {console.log(err)})
 
@@ -447,7 +447,7 @@ function AdminProductPage() {
                                             <ul className="list-group list-group-flush">
                                                 <li className="list-group-item AdminProductPage__check"><div className="form-check">
                                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.show_in_home} onChange={(e) => showAtHome(e, el._id)} />
-                                                    <label className="form-check-label" for="flexCheckChecked">
+                                                    <label className="form-check-label" htmlFor="flexCheckChecked">
                                                         mostrar en carrusel del home
                                                     </label>
                                                 </div></li>

@@ -21,7 +21,6 @@ function EditCompaniesInfo() {
         const fetchData = async () => {
             const getOurCompaniesOCData = await getOurCompaniesOC()
             setOurCompaniesOCData(getOurCompaniesOCData)
-            console.log(getOurCompaniesOCData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
