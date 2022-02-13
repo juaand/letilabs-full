@@ -6,6 +6,7 @@ import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 import {seoURL} from '../../../../../hooks/seoURL'
+import {app} from '../../../../../services/firebase'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditUnidades() {
@@ -36,6 +37,8 @@ function EditUnidades() {
     const [unidadesData, setUnidadesData] = useState()
     const [modalData, setModalData] = useState()
     const [bool, setBool] = useState(false)
+    const [disabled, setDisabled] = useState(true)
+
 
 
     const updateUnidadesInfo = async (event) => {
@@ -63,6 +66,7 @@ function EditUnidades() {
     }
 
     const deleteItem = (data) => {
+        console.log(data)
         setUnidadesData(data)
         setBool(!bool)
     }
@@ -78,7 +82,7 @@ function EditUnidades() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} event deleteItem={(updateData) => deleteItem(updateData)} />}
             <section className="container-fluid EditContent">
                 <h2>Eliminar unidad de negocio</h2>
                 <div className="row justify-content-around">
