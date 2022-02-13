@@ -12,7 +12,7 @@ function EditPortafolio() {
     const [portfolioData, setPortfolioData] = useState()
     const [modalData, setModalData] = useState()
     const [bool, setBool] = useState(false)
-    console.log(portfolioData)
+
     const {state, onBlur, onChange} = useFormState(
         {
             data: {

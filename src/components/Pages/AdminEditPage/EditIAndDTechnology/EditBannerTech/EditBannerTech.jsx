@@ -8,7 +8,6 @@ import {Editor} from '@tinymce/tinymce-react'
 function EditBannerTech() {
 
     const [bannerData, setBannerData] = useState()
-    console.log(bannerData)
 
     const {state, onBlur, onChange} = useFormState(
         {

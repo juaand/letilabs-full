@@ -1,7 +1,6 @@
 import './DeleteItemModal.css'
 import React from 'react'
 import {deleteUnitItem} from '../../../../../../services/ApiClient'
-import {seoURL} from '../../../../../../hooks/seoURL'
 
 function DeleteItemModal({deleteItem, data, hideModal}) {
 

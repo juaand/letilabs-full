@@ -57,4 +57,23 @@
     margin-top: -2rem;
     color: $leti-blue;
   }
+
+  &__news-title {
+    color: $leti-blue;
+    display: block;
+    font-size: 3rem;
+  }
+
+  &__thumbnail{
+    position: relative;
+    padding-left: 14rem;
+
+    &-img {
+      width: 10rem;
+      height: 10rem;
+      position: absolute;
+      top: 0;
+      left: 1rem;
+    }
+  }
 }

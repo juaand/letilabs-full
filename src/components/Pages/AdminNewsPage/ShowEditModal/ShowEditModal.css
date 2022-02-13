@@ -54,3 +54,22 @@
   margin-top: -2rem;
   color: #055aa5;
 }
+
+.ShowEditModal__news-title {
+  color: #055aa5;
+  display: block;
+  font-size: 3rem;
+}
+
+.ShowEditModal__thumbnail {
+  position: relative;
+  padding-left: 14rem;
+}
+
+.ShowEditModal__thumbnail-img {
+  width: 10rem;
+  height: 10rem;
+  position: absolute;
+  top: 0;
+  left: 1rem;
+}

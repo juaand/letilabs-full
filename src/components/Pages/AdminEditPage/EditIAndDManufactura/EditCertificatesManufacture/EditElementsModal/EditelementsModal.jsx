@@ -40,7 +40,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async () => {
-        console.log(element._id)
         const updateData = await updateTimelineAboutUs(data.year, data.desc, data.imgURL, element._id)
         deleteItem(updateData)
     }

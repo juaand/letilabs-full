@@ -7,7 +7,6 @@ import {Editor} from '@tinymce/tinymce-react'
 
 function EditInnovate() {
     const [bannerData, setBannerData] = useState()
-    console.log(bannerData)
 
     const {state, onBlur, onChange} = useFormState(
         {
