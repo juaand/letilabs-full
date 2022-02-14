@@ -5,8 +5,6 @@ import {getUnidades, updateUnidadesData} from '../../../../../services/ApiClient
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
-import {seoURL} from '../../../../../hooks/seoURL'
-import {app} from '../../../../../services/firebase'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditUnidades() {
@@ -37,7 +35,6 @@ function EditUnidades() {
     const [unidadesData, setUnidadesData] = useState()
     const [modalData, setModalData] = useState()
     const [bool, setBool] = useState(false)
-    const [disabled, setDisabled] = useState(true)
 
 
 
@@ -66,7 +63,6 @@ function EditUnidades() {
     }
 
     const deleteItem = (data) => {
-        console.log(data)
         setUnidadesData(data)
         setBool(!bool)
     }

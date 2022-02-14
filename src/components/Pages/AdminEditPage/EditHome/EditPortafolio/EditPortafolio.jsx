@@ -70,7 +70,6 @@ function EditPortafolio() {
     }
 
     useEffect(() => {
-
         const fetchData = async () => {
             const getPortfolioData = await getPortfolio()
             setPortfolioData(getPortfolioData)
