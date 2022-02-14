@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
-import {useHistory} from 'react-router-dom'
 
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getProductBottom, updateProductBottom} from '../../../../../services/ApiClient'
@@ -16,8 +15,6 @@ function EditProductBottom() {
     const [titleMessage, setTitleMessage] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
-
-    const history = useHistory()
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -67,9 +64,9 @@ function EditProductBottom() {
             try {
                 await updateProductBottom(data)
                     .then(banner => {
-                        setBannerData(banner[0])
+                        setBannerData(banner)
                         setTitleMessage('Título atualizado exitosamente')
-                        history.go(0)
+                        console.log(banner)
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -84,6 +81,7 @@ function EditProductBottom() {
     }
 
     const updateCTABanner = async (event) => {
+        setMessage('')
         event.preventDefault()
         data.id = bannerData._id
 
@@ -91,9 +89,8 @@ function EditProductBottom() {
             try {
                 await updateProductBottom(data)
                     .then(banner => {
-                        setBannerData(banner[0])
+                        setBannerData(banner)
                         setMessage('Data atualizada exitosamente')
-                        history.go(0)
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -155,8 +152,8 @@ function EditProductBottom() {
     }, [])
 
     return (
-        <> 
-        {isDisabled && <Loader message="Cargando imagen..." />}
+        <>
+            {isDisabled && <Loader message="Cargando imagen..." />}
             <section className="container-fluid EditContent">
                 <h2>Título buscador de productos</h2>
                 <form className="AdminEdit__form" onSubmit={updateTitle}>
@@ -206,7 +203,7 @@ function EditProductBottom() {
                                 onChange={onFileSelected}
                                 id="fileButton"
                                 name="urlToPic"
-                                type="file" 
+                                type="file"
                             />
                         </div>
                         <div className="col-12 col-sm-4">
@@ -301,7 +298,7 @@ function EditProductBottom() {
                             />
                         </div>
                         <div className="col-12">
-                        <Button cssStyle={`leti-btn AdminEdit__form-leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
+                            <Button cssStyle={`leti-btn AdminEdit__form-leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
                             {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
