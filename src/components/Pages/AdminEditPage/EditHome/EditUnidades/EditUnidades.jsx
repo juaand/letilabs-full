@@ -36,8 +36,6 @@ function EditUnidades() {
     const [modalData, setModalData] = useState()
     const [bool, setBool] = useState(false)
 
-
-
     const updateUnidadesInfo = async (event) => {
         event.preventDefault()
 
