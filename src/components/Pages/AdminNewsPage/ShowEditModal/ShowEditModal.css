@@ -48,13 +48,6 @@
   border: solid 0.3rem #055aa5;
 }
 
-.ShowEditModal .img-success {
-  font-size: 1.4rem;
-  position: absolute;
-  margin-top: -2rem;
-  color: #055aa5;
-}
-
 .ShowEditModal__news-title {
   color: #055aa5;
   display: block;
