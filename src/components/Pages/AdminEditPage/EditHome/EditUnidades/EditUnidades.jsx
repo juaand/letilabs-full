@@ -83,11 +83,11 @@ function EditUnidades() {
     return (
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} event deleteItem={(updateData) => deleteItem(updateData)} />}
-            <section className="container-fluid EditContent">
+            <section className="container-fluid EditContent EditContent-timeline">
                 <h2>Eliminar unidad de negocio</h2>
                 <div className="row justify-content-around">
                     {unidadesData?.map(el =>
-                        <div className="col-2 EditUnidades__trash" onClick={() => showModal(el)}>
+                        <div className="col-2 EditCarousel__edit" onClick={() => showModal(el)}>
                             <img className="EditUnidades__img" src={el.logo} alt={el.name} />
                         </div>
                     )}

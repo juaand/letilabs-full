@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
+import {useHistory} from 'react-router-dom'
+
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getProductBottom, updateProductBottom} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
@@ -15,6 +17,8 @@ function EditProductBottom() {
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
+    const history = useHistory()
+
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
@@ -23,7 +27,7 @@ function EditProductBottom() {
                 imgURL: bannerData?.imgURL,
                 title: bannerData?.title,
                 buttonTitle: bannerData?.buttonTitle,
-                farmacoTitle: bannerData?.farmacoTitle,
+                farmacoTitle: '',
                 farmacoBtn: bannerData?.farmacoBtn,
                 farmacoDesc: bannerData?.farmacoDesc,
             },
@@ -56,6 +60,7 @@ function EditProductBottom() {
 
     const updateTitle = async (event) => {
         event.preventDefault()
+        event.target.reset()
         data.id = bannerData._id
 
         if (Object.values(error).map(el => el).includes(false)) {
@@ -64,6 +69,7 @@ function EditProductBottom() {
                     .then(banner => {
                         setBannerData(banner[0])
                         setTitleMessage('Título atualizado exitosamente')
+                        history.go(0)
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -77,7 +83,7 @@ function EditProductBottom() {
 
     }
 
-    const updateBanner = async (event) => {
+    const updateCTABanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
 
@@ -86,6 +92,8 @@ function EditProductBottom() {
                 await updateProductBottom(data)
                     .then(banner => {
                         setBannerData(banner[0])
+                        setMessage('Data atualizada exitosamente')
+                        history.go(0)
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -184,7 +192,7 @@ function EditProductBottom() {
             </section>
             <section className="container-fluid EditContent">
                 <h2>CTA productos</h2>
-                <form className="AdminEdit__form" onSubmit={updateBanner}>
+                <form className="AdminEdit__form" onSubmit={updateCTABanner}>
                     <div className="row">
                         <div className="col-12">
                             <h3><strong>Banner</strong></h3>

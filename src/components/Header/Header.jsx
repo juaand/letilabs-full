@@ -1,10 +1,9 @@
 import './Header.css'
 import React, {useState} from 'react'
+import {NavLink, useLocation, useHistory} from 'react-router-dom'
 import Nav from '../Nav/Nav'
-import {NavLink, useLocation} from 'react-router-dom'
 import Search from '../Form/Search/Search'
 import {useAuthContext} from '../../contexts/AuthContext'
-import {useHistory} from 'react-router-dom'
 
 function Header() {
 
