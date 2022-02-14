@@ -53,3 +53,8 @@
 .EditCarousel__edit.logros h4 {
   font-family: 'TripletaBold';
 }
+
+.EditCarousel__edit-force:before {
+  right: 0rem;
+  z-index: 1;
+}

@@ -20,6 +20,7 @@ import EditOurCompaniesBiocontrolled from './EditOurCompaniesBiocontrolled/EditO
 import EditTherapeuticalAreas from './EditTherapeuticalAreas/EditTherapeuticalAreas'
 import EditOurPhilosophy from './EditOurPhilosophy/EditOurPhilosophy'
 import EditTags from './EditTags/EditTags'
+import EditProductList from './EditProductsList/EditProductsList'
 
 function AdminEditPage() {
 
@@ -55,6 +56,7 @@ function AdminEditPage() {
                         {initNavValue === 'nuestra-gente' && <EditOurPeople />}
                         {initNavValue === 'nuestra-filosofia' && <EditOurPhilosophy />}
                         {initNavValue === 'productos' && <EditProducts />}
+                        {initNavValue === 'listado-de-productos' && <EditProductList />}
                         {initNavValue === 'noticias' && <EditNews />}
                         {initNavValue === 'etiquetas' && <EditTags />}
                     </div>

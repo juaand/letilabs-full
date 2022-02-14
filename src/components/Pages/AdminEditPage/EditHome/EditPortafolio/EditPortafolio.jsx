@@ -81,79 +81,77 @@ function EditPortafolio() {
 
     return (
         <>
-        {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
-        <section className="container-fluid EditContent">
-            <h2>Editar Portfolio</h2>
-            <div className="row justify-content-around">
-                {portfolioData?.map(el =>
-                    <div className="col-2 EditUnidades__trash" onClick={() => showModal(el)}>
-                        <h4 className="mt-3 mb-3">{el?.title}</h4>
-                        <p>{el?.description}</p>                    
-                    </div>
-                )}
-            </div>
-        </section>
-        <section className="container-fluid EditContent">
-            <h2>Añadir Portafolio</h2>
-            <form className="AdminEdit__form" onSubmit={updatePortfolioInfo}>
-                <div className="row">
-                <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            título sección
-                        </p>
-                        <InputWithLabel
-                            value={data?.superiorTitle}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="superiorTitle"
-                            type="text"
-                            cssStyle={`form-control ${touch.superiorTitle && error.superiorTitle ? "is-invalid" : ""}`}
-                            placeholder={portfolioData?.superiorTitle}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            titulo
-                        </p>
-                        <InputWithLabel
-                            value={data?.title}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="title"
-                            type="text"
-                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                            placeholder={portfolioData?.title}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            description
-                        </p>
-                        <Editor
-                            initialValue={portfolioData?.description}
-                            onChange={handlePortfolioDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        /></div>
-                    <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar Portfolio</Button>
-                    </div>
-
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            <section className="container-fluid Letilabs EditContent EditContent-timeline">
+                <h2>Editar Portfolio</h2>
+                <div className="row justify-content-around">
+                    {portfolioData?.map(el =>
+                        <div className="col-3 EditCarousel__edit EditCarousel__edit-force" onClick={() => showModal(el)}>
+                            <h4 className="mt-3 mb-3">{el?.title}</h4>
+                            <p>{el?.description}</p>
+                        </div>
+                    )}
                 </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+            </section>
+            <section className="container-fluid EditContent">
+                <h2>Añadir Portafolio</h2>
+                <form className="AdminEdit__form" onSubmit={updatePortfolioInfo}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                título sección
+                            </p>
+                            <InputWithLabel
+                                value={data?.superiorTitle}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="superiorTitle"
+                                type="text"
+                                cssStyle={`form-control ${touch.superiorTitle && error.superiorTitle ? "is-invalid" : ""}`}
+                                placeholder={portfolioData?.superiorTitle}
+                            />
+                            <p className="AdminEdit__form__label">
+                                titulo
+                            </p>
+                            <InputWithLabel
+                                value={data?.title}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="title"
+                                type="text"
+                                cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                placeholder={portfolioData?.title}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                description
+                            </p>
+                            <Editor
+                                initialValue={portfolioData?.description}
+                                onChange={handlePortfolioDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            /></div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar Portfolio</Button>
+                        </div>
+
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
         </>
     )
 }

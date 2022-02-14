@@ -61,6 +61,11 @@
 
 .AdminEdit {
   &__form {
+    h3 {
+      color: $leti-blue;
+      font-family: 'Tripleta', sans-serif;
+    }
+
     &__title {
       font-size: 1.6rem;
       font-weight: 600;

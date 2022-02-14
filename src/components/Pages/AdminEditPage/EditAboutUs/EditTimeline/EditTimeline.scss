@@ -58,5 +58,12 @@
         font-family: 'TripletaBold';
       }
     }
+
+    &-force {
+      &:before {
+        right: 0rem;
+        z-index: 1;
+      }
+    }
   }
 }
