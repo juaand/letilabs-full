@@ -67,7 +67,7 @@ function EditNewsTags() {
                                 onChange={onChange}
                                 name="newTag"
                                 type="text"
-                                cssStyle={`form-control ${touch.newTag && error.newTag ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.newTag && error.newTag ? "is-invalid" : ""}`}
                                 placeholder="Ingresa nueva etiqueta"
                             />
                         </div>

@@ -39,7 +39,7 @@ function Timeline() {
 
             const getDescsMaxHeight = Math.max(...getAllDesc?.map(item => item?.offsetHeight))
 
-            const getTimelineHeight = document.querySelector('.Timeline__info').offsetHeight
+            const getTimelineHeight = document.querySelector('.Timeline__info')?.offsetHeight
 
             const PrevArrow = document.querySelector('.slick-prev')
             const NextArrow = document.querySelector('.slick-next')

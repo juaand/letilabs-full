@@ -52,19 +52,20 @@ function Nav({getActiveItem}) {
     }
 
     return (
-
-        <ul className="AdminEditPage__Nav">
-            {adminNav.map((el, i) =>
-                <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""} ${checkSubNav(el)}`} onClick={(e) => {
-                    clearInitActive()
-                    getActiveItem(seoURL(el))
-                    e.target.classList.add("active")
-                }}>
-                    {el}
-                </li>
-            )}
-            <li className="AdminEditPage__Nav-link api" onClick={handleClick}>Subir contenido a la API</li>
-        </ul>
+        <>
+            <ul className="AdminEditPage__Nav">
+                {adminNav.map((el, i) =>
+                    <li className={`AdminEditPage__Nav-link ${i === 0 ? "currentActive" : ""} ${checkSubNav(el)}`} onClick={(e) => {
+                        clearInitActive()
+                        getActiveItem(seoURL(el))
+                        e.target.classList.add("active")
+                    }}>
+                        {el}
+                    </li>
+                )}
+                <li className="AdminEditPage__Nav-link api" onClick={handleClick}>Subir contenido a la API</li>
+            </ul>
+        </>
     )
 }
 

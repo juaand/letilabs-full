@@ -33,11 +33,11 @@ function Timeline() {
 
             const getAllDesc = Array.from(new Set(document.querySelectorAll('.Timeline__leti__desc')))
 
-            const getDescX = getAllDesc[0].getBoundingClientRect().x
+            const getDescX = getAllDesc[0]?.getBoundingClientRect()?.x
 
-            const getDescsMaxHeight = Math.max(...getAllDesc.map(item => item.offsetHeight))
+            const getDescsMaxHeight = Math.max(...getAllDesc?.map(item => item?.offsetHeight))
 
-            const getTimelineHeight = document.querySelector('.Timeline__leti__info').offsetHeight
+            const getTimelineHeight = document.querySelector('.Timeline__leti__info')?.offsetHeight
 
             const PrevArrow = document.querySelector('.Timeline__leti .slick-prev')
             const NextArrow = document.querySelector('.Timeline__leti .slick-next')

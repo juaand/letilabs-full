@@ -1,5 +1,10 @@
 .EditNewsTags-delete-tags {
   font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+.EditNewsTags-delete-tags:nth-child(n+6) {
+  margin-bottom: 0;
 }
 
 .EditNewsTags-delete-tags:before {
