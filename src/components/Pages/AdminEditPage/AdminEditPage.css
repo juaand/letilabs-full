@@ -56,6 +56,11 @@
   font-size: 2rem;
 }
 
+.AdminEdit__form h3 {
+  color: #055aa5;
+  font-family: 'Tripleta', sans-serif;
+}
+
 .AdminEdit__form__title {
   font-size: 1.6rem;
   font-weight: 600;

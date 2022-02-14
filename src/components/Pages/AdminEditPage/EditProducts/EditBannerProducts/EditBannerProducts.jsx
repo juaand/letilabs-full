@@ -62,7 +62,6 @@ function EditProductBanner() {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
-                console.log(data)
                 await updateProductBanner(data)
                     .then(banner => {
                         setBannerData(banner)
@@ -121,7 +120,7 @@ function EditProductBanner() {
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
             <section className="container-fluid EditContent">
-                <h2>Banner Productos Page</h2>
+                <h2>Banner productos</h2>
                 <form className="AdminEdit__form" onSubmit={updateBanner}>
                     <div className="row">
                         <div className="col-12 col-sm-6">
@@ -137,7 +136,7 @@ function EditProductBanner() {
                                 cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
                                 placeholder={bannerData?.title}
                             />
-                            <p className="AdminEdit__form__label">
+                            <p className="AdminEdit__form__label mt-5">
                                 Imagen
                             </p>
 
