@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 38 38">
+  <g id="Group_8" data-name="Group 8" transform="translate(49.5 37.5) rotate(-180)">
+    <circle id="Oval" cx="18.5" cy="18.5" r="18.5" transform="translate(12 0)" fill="none" stroke="#055aa5" stroke-miterlimit="10" stroke-width="1"/>
+    <g id="noun_Arrow_1528875" transform="translate(0 7)">
+      <path id="Path" d="M15,6.439v-.1h0a.079.079,0,0,0-.024-.051c0-.026-.024-.026-.024-.051s-.024-.026-.024-.051a.025.025,0,0,1-.024-.026L9.552.149a.468.468,0,0,0-.684,0,.505.505,0,0,0-.145.358.505.505,0,0,0,.145.358l4.5,5.063H.472a.513.513,0,0,0,0,1.023h13l-4.6,5.063a.542.542,0,0,0,.024.716.425.425,0,0,0,.66,0l5.33-5.881c0-.026,0-.026.024-.051a.025.025,0,0,0,.024-.026c0-.026.024-.026.024-.051h.024V6.669A.079.079,0,0,0,15,6.618V6.439Z" transform="translate(23 5)" fill="#055aa5"/>
+    </g>
+  </g>
+</svg>

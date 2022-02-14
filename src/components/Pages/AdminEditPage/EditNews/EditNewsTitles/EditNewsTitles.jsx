@@ -39,8 +39,6 @@ function EditNewsTitles() {
         }
     )
 
-
-
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
@@ -55,7 +53,6 @@ function EditNewsTitles() {
                     .then(titles => {
                         setTitlesData(titles)
                         setMessage('Títulos atualizados exitosamente')
-                        document.querySelector('form').reset()
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -89,6 +86,7 @@ function EditNewsTitles() {
         const fileUrl = await filePath.getDownloadURL()
         data.picPath = fileUrl
         setIsDisabled(false)
+        error.picPath = false
     }
 
     useEffect(() => {
