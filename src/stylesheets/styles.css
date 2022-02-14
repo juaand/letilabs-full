@@ -130,9 +130,15 @@ body {
   transform: rotate(-150deg);
 }
 
+.img-success {
+  font-size: 1.4rem;
+  position: absolute;
+  margin-top: -2rem;
+  color: #055aa5;
+}
+
 @keyframes alerta {
   0% {
-    display: block;
     opacity: 0;
   }
   5% {
@@ -142,7 +148,6 @@ body {
     opacity: 1;
   }
   100% {
-    display: none;
     opacity: 0;
   }
 }

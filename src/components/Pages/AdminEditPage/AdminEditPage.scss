@@ -71,6 +71,10 @@
       font-size: 1.4rem;
       margin-bottom: 1rem;
       font-weight: 600;
+
+      strong {
+        color: $leti-blue;
+      }
     }
 
     &-leti-btn {
@@ -96,5 +100,12 @@
         margin-bottom: 5rem;
       }
     }
+  }
+
+  &__message {
+    display: inline-block;
+    margin-left: 2rem;
+    font-size: 1.4rem;
+    color: $leti-blue;
   }
 }

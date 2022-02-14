@@ -68,6 +68,10 @@
   font-weight: 600;
 }
 
+.AdminEdit__form__label strong {
+  color: #055aa5;
+}
+
 .AdminEdit__form-leti-btn {
   background: transparent;
   padding: 1.4rem 3.2rem;
@@ -90,4 +94,11 @@
   border-radius: 0;
   border-color: #737b7f;
   margin-bottom: 5rem;
+}
+
+.AdminEdit__message {
+  display: inline-block;
+  margin-left: 2rem;
+  font-size: 1.4rem;
+  color: #055aa5;
 }
