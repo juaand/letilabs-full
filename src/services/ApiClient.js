@@ -209,6 +209,7 @@ export const updateBannerOurPhilosophy = ({description, imgURL, title, id}) => h
 export const getInfoCardsOurPhilosophy = () => http.get("/ourphilosophyinfocards")
 export const updateOPPillar = ({picPath, title, id}) => http.patch("/updateourphilosophyinfocards", {picPath, title, id})
 export const deleteOPPillar = (id) => http.get(`/ourphilosophyinfocards/${id}/delete`)
+export const createPillar = ({picPath, title}) => http.post("/createpillar", {picPath, title})
 export const getLetterOurPhilosophy = () => http.get("/ourphilosophyletter")
 export const updateLetterOurPhilosophy = ({body, imgURL, mainTitle, id}) => http.patch("/updateourphilosophyletter", {body, imgURL, mainTitle, id})
 export const getBottomOurPhilosophy = () => http.get("/bottomourphilosophy")
