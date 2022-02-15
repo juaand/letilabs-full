@@ -176,7 +176,7 @@ export const updateTitleFarmDataPurpose = ({title, id}) => http.patch("/updateti
 export const getBannerOurPeople = () => http.get("/bannerdataourpeople")
 export const updateBannerOurPeople = ({description, imgURL, title, id}) => http.patch("/updatebannerdataourpeople", {description, imgURL, title, id})
 export const getInfoCardsOurPeople = () => http.get("/ourpeopleinfocards")
-export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) => http.get("/updateourpeopleinfocards", {mainTitle, imgURL, title, info, id})
+export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) => http.patch("/updateourpeopleinfocards", {mainTitle, imgURL, title, info, id})
 export const getEquipoOurPeople = () => http.get("/equipoourpeople")
 export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
 export const getBottomOurPeople = () => http.get("/bottomourpeople")
