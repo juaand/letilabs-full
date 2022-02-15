@@ -132,6 +132,7 @@ function EditInfoCardsOurPhilosophy() {
                                     name="picPath"
                                     type="file"
                                 />
+                                {imageSuccess && <small className="img-success">{imageSuccess}</small>}
                             </div>
                             <div className="col-12 col-sm-6">
                                 <p className="AdminEdit__form__label">

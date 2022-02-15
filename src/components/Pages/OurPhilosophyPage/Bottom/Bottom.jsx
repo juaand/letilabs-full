@@ -1,7 +1,6 @@
 import './Bottom.css'
 import React, {useState, useEffect} from 'react'
 import {Fade} from "react-awesome-reveal"
-import {Link} from 'react-router-dom'
 import {getBottomOurPhilosophy} from '../../../../services/ApiClient'
 import Loader from '../../../Loader/Loader'
 

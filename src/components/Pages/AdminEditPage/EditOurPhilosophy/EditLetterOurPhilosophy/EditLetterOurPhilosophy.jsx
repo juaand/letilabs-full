@@ -3,7 +3,6 @@ import {Editor} from '@tinymce/tinymce-react'
 
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getLetterOurPhilosophy, updateLetterOurPhilosophy} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../services/firebase'
@@ -15,7 +14,7 @@ function EditBannerOurPhilosophy() {
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: bannerData?._id,
@@ -37,9 +36,7 @@ function EditBannerOurPhilosophy() {
         }
     )
 
-
-
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
