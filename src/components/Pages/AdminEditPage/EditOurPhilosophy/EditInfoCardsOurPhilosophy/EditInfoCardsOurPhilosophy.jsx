@@ -12,6 +12,12 @@ function EditInfoCardsOurPhilosophy() {
         setBool(!bool)
     }
 
+    const hideModal = (data) => {
+        console.log(data)
+        setOurOCData(data)
+        setBool(!bool)
+    }
+
     const deleteItem = (data) => {
         setOurOCData(data)
         setBool(!bool)
@@ -21,7 +27,6 @@ function EditInfoCardsOurPhilosophy() {
         const fetchData = async () => {
             const getOurOCData = await getInfoCardsOurPhilosophy()
             setOurOCData(getOurOCData)
-
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -29,10 +34,10 @@ function EditInfoCardsOurPhilosophy() {
 
     return (
         <>
-            {bool && <EditItemModal hideModal={() => setBool(!bool)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={(data) => hideModal(data)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourOCData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar InfoCard</h2>
+                    <h2>Editar pilares</h2>
                     <div className="row justify-content-around">
                         {ourOCData?.map(el =>
                             <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
@@ -41,7 +46,17 @@ function EditInfoCardsOurPhilosophy() {
                             </div>
                         )}
                     </div>
-                </section>}
+                </section>
+            }
+            <section className="container-fluid EditContent EditContent-timeline">
+                <h2>Añadir nuevo pilar</h2>
+                <div className="row justify-content-around">
+                    <div className="col-1 EditCarousel__edit" >
+                        <img src="" alt="" />
+                        <p>Título</p>
+                    </div>
+                </div>
+            </section>
         </>
     )
 }
