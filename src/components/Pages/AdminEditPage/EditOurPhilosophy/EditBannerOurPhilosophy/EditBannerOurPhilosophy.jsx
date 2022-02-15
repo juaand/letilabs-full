@@ -37,8 +37,6 @@ function EditBannerOurPhilosophy() {
         }
     )
 
-
-
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
