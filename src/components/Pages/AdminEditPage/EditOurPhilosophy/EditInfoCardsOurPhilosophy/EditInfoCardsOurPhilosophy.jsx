@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {getInfoCardsOurPhilosophy, updateInfoCardsOurPhilosophy} from '../../../../../services/ApiClient'
-import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
 
 function EditInfoCardsOurPhilosophy() {
     const [modalData, setModalData] = useState()
@@ -29,7 +29,7 @@ function EditInfoCardsOurPhilosophy() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={() => setBool(!bool)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourOCData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar InfoCard</h2>

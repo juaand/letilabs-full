@@ -1,0 +1,148 @@
+import React, {useState} from 'react'
+import {Fade} from 'react-awesome-reveal'
+
+import './EditItemModal.css'
+import {deleteIcOpItem, updateInfoCardsOurPhilosophy} from '../../../../../../services/ApiClient'
+import InputFile from '../../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../../services/firebase'
+import {useFormState} from '../../../../../../hooks/useFormState'
+import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import Button from '../../../../../Form/FormButton/FormButton'
+
+function EditItemModal({deleteItem, infodata, hideModal}) {
+
+    console.log(infodata)
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [infocardsData, setInfoCardsData] = useState(infodata)
+    const [message, setMessage] = useState('')
+
+    const {state, onChange} = useFormState(
+        {
+            data: {
+                id: infocardsData._id,
+                title: infocardsData.title,
+                picPath: infocardsData.picPath,
+            },
+            error: {
+                title: true,
+                picPath: true,
+            },
+            touch: {},
+        },
+        {
+            title: v => v.length,
+            picPath: v => v.length,
+        }
+    )
+
+    const {data, error} = state
+    const [registerError, setRegisterError] = useState(null)
+
+    const updateThisNews = async (event) => {
+        event.preventDefault()
+
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateInfoCardsOurPhilosophy(data)
+                    .then(banner => {
+                        setInfoCardsData(banner)
+                        setMessage('Data atualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor complete alguno de los campos')
+        }
+    }
+
+
+    const deleteSelected = async (id) => {
+        const updateData = await deleteIcOpItem(id)
+        deleteItem(updateData)
+    }
+
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                // console.log('Uploaded')
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.picPath = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
+    }
+
+    return (
+        <div className="EditItemModal">
+            <div className="container">
+                <div className="row justify-content-center">
+                    <Fade direction="down" className="col-11 col-sm-6 EditItemModal__container">
+                        <>
+                            <span className="EditItemModal__close" onClick={hideModal}></span>
+                            <form className="AdminEdit__form" onSubmit={updateThisNews}>
+                                <div className="row">
+                                    <div className="col-sm-12 ShowEditModal__thumbnail">
+                                        <div className="ShowEditModal__thumbnail-img" style={{
+                                            background: `url(${infocardsData?.picPath}) no-repeat center center / cover`,
+                                        }}></div>
+                                        <h1 className="DeleteItemModal__ask">Editar <span className="ShowEditModal__news-title">{infocardsData.title}</span></h1>
+                                    </div>
+                                    <div className="col-12">
+                                        <InputFile
+                                            label="Imagen noticia"
+                                            value={infocardsData?.picPath}
+                                            onChange={onFileSelected}
+                                            id="fileButton"
+                                            name="picPath"
+                                            type="file"
+                                        />
+                                        {imageSuccess && <small className="img-success">{imageSuccess}</small>}
+                                    </div>
+                                    <div className="col-12">
+                                        <InputWithLabel
+                                            label="Título"
+                                            value={infocardsData?.title}
+                                            onChange={onChange}
+                                            name="title"
+                                            type="text"
+                                            cssStyle="form-control"
+                                            placeholder="Ingresa el título de la noticia"
+                                        />
+                                    </div>
+                                    <div className="col-12 col-sm-6 mt-5">
+                                        <div onClick={() => deleteSelected(infocardsData?._id)} className="leti-btn delete">Eliminar {infocardsData?.title}</div>
+                                    </div>
+                                    <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
+                                        <Button type="submit" cssStyle={`leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
+                                    </div>
+                                </div>
+                            </form>
+                        </>
+                    </Fade>
+                </div>
+            </div>
+
+        </div>
+    )
+}
+
+export default EditItemModal

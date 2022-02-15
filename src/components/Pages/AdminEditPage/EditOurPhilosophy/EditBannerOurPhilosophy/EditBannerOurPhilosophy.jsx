@@ -61,7 +61,7 @@ function EditBannerOurPhilosophy() {
                 setRegisterError(err.response?.data?.message)
             }
         } else {
-            setMessage('Por favor complete alguno de los campos')
+            setMessage('Por favor edite alguno de los campos')
         }
     }
 

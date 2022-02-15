@@ -1,4 +1,4 @@
-.DeleteItemModal {
+.EditItemModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,50 +11,50 @@
   align-items: center;
 }
 
-.DeleteItemModal__img-small {
+.EditItemModal__img-small {
   overflow: hidden;
   display: flex;
   align-items: center;
 }
 
-.DeleteItemModal__img-small img {
+.EditItemModal__img-small img {
   width: 30%;
   margin-bottom: 2rem;
 }
 
-.DeleteItemModal__text {
+.EditItemModal__text {
   margin: 0;
 }
 
-.DeleteItemModal__text strong {
+.EditItemModal__text strong {
   color: #055aa5;
 }
 
-.DeleteItemModal__body {
+.EditItemModal__body {
   font-size: 1.6rem;
 }
 
-.DeleteItemModal .card {
+.EditItemModal .card {
   margin-bottom: 0;
   padding-bottom: 0;
   border: 0;
   border-top: solid 0.1rem #e9eaee;
 }
 
-.DeleteItemModal .card .leti-btn {
+.EditItemModal .card .leti-btn {
   margin-top: 0;
   padding: 0.8rem 1.6rem;
 }
 
-.DeleteItemModal .card .leti-btn.small {
+.EditItemModal .card .leti-btn.small {
   margin-top: 2rem;
 }
 
-.DeleteItemModal__ask {
+.EditItemModal__ask {
   margin-bottom: 2rem;
 }
 
-.DeleteItemModal__container {
+.EditItemModal__container {
   background: #fff;
   padding: 2rem 4rem;
   font-size: 2rem;
@@ -64,7 +64,7 @@
   padding-top: 4rem;
 }
 
-.DeleteItemModal__close {
+.EditItemModal__close {
   position: absolute;
   top: 2rem;
   right: 2rem;
@@ -78,6 +78,6 @@
   background-size: 50%;
 }
 
-.DeleteItemModal__close:hover {
+.EditItemModal__close:hover {
   border: solid 0.3rem #055aa5;
 }
