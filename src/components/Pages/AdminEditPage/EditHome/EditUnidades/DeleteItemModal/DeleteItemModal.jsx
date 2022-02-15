@@ -6,8 +6,13 @@ import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import {Editor} from '@tinymce/tinymce-react'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import Loader from '../../../../../Loader/Loader'
+
 
 function DeleteItemModal({deleteItem, element, hideModal}) {
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onChange} = useFormState(
         {
@@ -58,6 +63,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
         // Get file
         const file = e.target.files[0]
 
@@ -77,9 +83,13 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.logo = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..."/>}
         <div className="EditElementsModal">
             <div className="container">
                 <div className="row justify-content-center">
@@ -108,7 +118,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                             <p className="EditElementsModal__text"><strong>Editar logo</strong></p>
                                         </div>
                                         <div className="col-12 EditElementsModal__img">
-                                            <img src={element.logo} alt={element.name} />
+                                            <img src={element.logo} alt={element.logo} />
                                             <InputFile
                                                 value={element?.logo}
                                                 onChange={onFileSelected}
@@ -152,6 +162,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
             </div>
 
         </div>
+        </>
     )
 }
 

@@ -6,12 +6,18 @@ import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import {Editor} from '@tinymce/tinymce-react'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import Loader from '../../../../../Loader/Loader'
+
 
 function EditElementsModal({deleteItem, element, hideModal}) {
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onChange} = useFormState(
         {
             data: {
+                id: element.id,
                 year: element.year,
                 desc: element.desc,
                 imgURL: element.imgURL,
@@ -31,6 +37,8 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     )
 
     const {data} = state
+    const [registerError, setRegisterError] = useState(null)
+
 
     const [disabled, setDisabled] = useState(true)
 
@@ -39,9 +47,16 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
-    const editCarrouselItem = async () => {
-        const updateData = await updateTimelineAboutUs(data.year, data.desc, data.imgURL, element._id)
-        deleteItem(updateData)
+    const editCarrouselItem = async (id) => {
+        console.log(id)
+        try {
+            await updateTimelineAboutUs(data, id)
+            .then(updateData => {
+                deleteItem(updateData)
+            })
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
     }
 
     const handleBannerDescription = (e) => {
@@ -49,6 +64,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
         // Get file
         const file = e.target.files[0]
 
@@ -59,7 +75,6 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                // console.log('Uploaded')
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
             })
@@ -70,9 +85,13 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
         // console.log(fileUrl)
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
     return (
+        <>
+                {isDisabled && <Loader message="Cargando imagen..."/>}
         <div className="DeleteItemModal">
             <div className="container">
                 <div className="row justify-content-center">
@@ -100,13 +119,14 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                             <p className="DeleteItemModal__text"><strong>Editar imagen</strong></p>
                                         </div>
                                         <div className="col-12 DeleteItemModal__img">
-                                            <img src={"./images/" + element.imgURL} alt={element.name} />
+                                            <img src={element.imgURL} alt={element.imgURL} />
                                             <InputFile
-                                                value={element?.imgURL}
+                                                value={data?.imgURL}
                                                 onChange={onFileSelected}
                                                 id="fileButton"
-                                                name="picpath"
+                                                name="imgURL"
                                                 type="file"
+                                                placeholder={element?.imgURL}
                                             />
                                         </div>
                                         <div className="col-12">
@@ -143,6 +163,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
             </div>
 
         </div>
+        </>
     )
 }
 

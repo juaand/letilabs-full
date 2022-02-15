@@ -1,17 +1,23 @@
 import './EditElementsModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem} from '../../../../../../services/ApiClient'
+import {deleteCarItem, updateGalleryData} from '../../../../../../services/ApiClient'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import {Editor} from '@tinymce/tinymce-react'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import Loader from '../../../../../Loader/Loader'
+
 
 function EditElementsModal({deleteItem, element, hideModal}) {
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onChange} = useFormState(
         {
             data: {
+                id: element.id,
                 mainTitle: element.mainTitle,
                 title: element.title,
                 desc: element.desc,
@@ -34,6 +40,8 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     )
 
     const {data} = state
+    const [registerError, setRegisterError] = useState(null)
+
 
     const [disabled, setDisabled] = useState(true)
 
@@ -43,9 +51,15 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async (id) => {
-        console.log('editar contenido')
-        // const updateData = await editCarItem(id)
-        // deleteItem(updateData)
+        console.log(id)
+        try {
+            await updateGalleryData(data, id)
+            .then(updateData => {
+                deleteItem(updateData)
+            })
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
     }
 
     const handleBannerDescription = (e) => {
@@ -53,6 +67,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
         // Get file
         const file = e.target.files[0]
 
@@ -72,9 +87,13 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgPath = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..."/>}
         <div className="EditElementsModal">
             <div className="container">
                 <div className="row justify-content-center">
@@ -91,19 +110,19 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                         </div>
                                         <div className="col-sm-12">
                                             <InputWithLabel
-                                                value={element?.title}
+                                                value={data?.title}
                                                 onChange={onChange}
-                                                name="mainTitle"
+                                                name="title"
                                                 type="text"
                                                 cssStyle="form-control"
-                                                placeholder="Ingresa año"
+                                                placeholder={element?.title}
                                             />
                                         </div>
                                         <div className="col-12">
                                             <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
                                         </div>
                                         <div className="col-12 EditElementsModal__img">
-                                            <img src={"./images/" + element.imgPath} alt={element.name} />
+                                            <img src={element.imgPath} alt={element.imgPath} />
                                             <InputFile
                                                 value={element?.imgPath}
                                                 onChange={onFileSelected}
@@ -146,6 +165,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
             </div>
 
         </div>
+        </>
     )
 }
 

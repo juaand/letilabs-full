@@ -105,7 +105,7 @@ function EditGallery() {
                     <div className="row justify-content-around">
                         {galleryData?.map(el =>
                             <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={"./images/" + el.imgPath} alt={el.imgPath} />
+                                <img className="EditCarousel__img" src={el.imgPath} alt={el.imgPath} />
                                 <p>{el.title}</p>
                             </div>
                         )}
