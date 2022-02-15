@@ -81,7 +81,6 @@ function EditProductBottom() {
     }
 
     const updateCTABanner = async (event) => {
-        setMessage('')
         event.preventDefault()
         data.id = bannerData._id
 
@@ -202,7 +201,7 @@ function EditProductBottom() {
                                 value={data?.imgURL}
                                 onChange={onFileSelected}
                                 id="fileButton"
-                                name="urlToPic"
+                                name="imgURL"
                                 type="file"
                             />
                         </div>
