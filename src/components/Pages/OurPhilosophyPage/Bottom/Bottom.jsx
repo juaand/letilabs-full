@@ -39,7 +39,7 @@ function Bottom() {
                             <h1>{data?.title}</h1>
                         </Fade>
                         <p className="Bottom__desc" dangerouslySetInnerHTML={{__html: data?.description}} />
-                        <Link to={data?.buttonLink} className="leti-btn">{data?.buttonTitle}</Link>
+                        <a href={data?.buttonLink} className="leti-btn" rel="noopener noreferrer" target="_blank">{data?.buttonTitle}</a>
                     </div>
                 </div>
             </section>
