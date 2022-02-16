@@ -182,7 +182,7 @@ export const updateEquipoOurPeople = ({title, description, person, imgURL, butto
 export const getBottomOurPeople = () => http.get("/bottomourpeople")
 export const updateBottomOurPeople = ({title, url, button, img, id}) => http.patch("/updatebottomourpeople", {title, url, button, img, id})
 export const getCarreras = () => http.get("/carrerasdata")
-export const updateCarrerasData = ({title, description, url, buttonTitle, id}) => http.patch("/updatecarrerasdata", {title, description, url, buttonTitle, id})
+export const updateCarrerasData = ({title, description, url, buttonTitle, buttonLink, id}) => http.patch("/updatecarrerasdata", {title, description, url, buttonTitle, buttonLink, id})
 export const deleteOPInfoCard = (id) => http.get(`/ourpeopleinfocard/${id}/delete`)
 export const createTeam = ({title, info}) => http.post("/createteam", {title, info})
 export const getBannerTeams = () => http.get("/bannerdatateams")

@@ -68,7 +68,7 @@ function EditBannerTeams() {
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateBannerTeams(data)
-                    .then(equipo => {
+                    .then(() => {
                         setMessage('Data atualizada exitosamente')
                     })
                     .catch(error => {

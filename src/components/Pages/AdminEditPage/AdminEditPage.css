@@ -56,6 +56,11 @@
   font-size: 2rem;
 }
 
+.EditContent h3 {
+  color: #cd202f;
+  font-size: 2rem;
+}
+
 .AdminEdit__form h3 {
   color: #cd202f;
   font-family: 'Tripleta', sans-serif;
