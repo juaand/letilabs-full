@@ -107,7 +107,7 @@ function EditEquipoOurPeople() {
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
             <section className="container-fluid EditContent">
-                <h2>Nuestra filosofía</h2>
+                <h2>Banner nuestra filosofía</h2>
                 <form className="AdminEdit__form" onSubmit={updateInfo}>
                     <div className="row">
                         <div className="col-12 col-sm-4">

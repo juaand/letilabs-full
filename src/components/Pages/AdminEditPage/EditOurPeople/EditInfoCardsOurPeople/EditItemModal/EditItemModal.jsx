@@ -37,6 +37,8 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const updateInfo = async (event) => {
         event.preventDefault()
 
+        console.log(data)
+
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateInfoCardsOurPeople(data)

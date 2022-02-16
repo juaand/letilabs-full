@@ -6,7 +6,9 @@
     img {
       width: 100%;
       height: auto;
+      max-height: 24rem;
       position: relative;
+      object-fit: cover;
     }
 
     p {

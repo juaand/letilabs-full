@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {getBottomOurPeople} from '../../../../../services/ApiClient'
-import DeleteItemModal from '../../EditOurPeople/EditBottomOurPeople/DeleteItemModal/DeleteItemModal'
+import EditItemModal from '../../EditOurPeople/EditBottomOurPeople/EditItemModal/EditItemModal'
 
 
 function EditBottomOurPeople() {
@@ -13,8 +13,9 @@ function EditBottomOurPeople() {
         setBool(!bool)
     }
 
-    const deleteItem = (data) => {
-        setOurPeopleData(data)
+    const hideModal = (info) => {
+        console.log(info)
+        setOurPeopleData(info)
         setBool(!bool)
     }
 
@@ -30,17 +31,15 @@ function EditBottomOurPeople() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} closeModal={() => setBool(!bool)} />}
             {ourPeopleData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar compañía</h2>
+                    <h2>Editar CTA</h2>
                     <div className="row justify-content-around">
                         {ourPeopleData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el.img.toLowerCase()} alt={el.img} />
-                                <p>{el.title}</p>
-                                <p>{el.button}</p>
-                                <p>{el.url}</p>
+                                <img className="EditCarousel__img" src={el.img} alt={el.img} />
+                                <h4 className="EditContent__boldtitle">{el.title}</h4>
                             </div>
                         )}
                     </div>
