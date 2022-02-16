@@ -178,7 +178,7 @@ export const updateBannerOurPeople = ({description, imgURL, title, id}) => http.
 export const getInfoCardsOurPeople = () => http.get("/ourpeopleinfocards")
 export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) => http.patch("/updateourpeopleinfocards", {mainTitle, imgURL, title, info, id})
 export const getEquipoOurPeople = () => http.get("/equipoourpeople")
-export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
+export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
 export const getBottomOurPeople = () => http.get("/bottomourpeople")
 export const updateBottomOurPeople = ({title, url, button, img, id}) => http.patch("/updatebottomourpeople", {title, url, button, img, id})
 export const getCarreras = () => http.get("/carrerasdata")

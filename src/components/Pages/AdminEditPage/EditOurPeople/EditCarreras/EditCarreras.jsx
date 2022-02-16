@@ -45,9 +45,6 @@ function EditCarreras() {
         event.preventDefault()
         data.id = carrerasData._id
 
-        console.log(data)
-        console.log(error)
-
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateCarrerasData(data)
