@@ -31,7 +31,7 @@ function BottomCta() {
                     {data?.map((el, key) =>
                         <div className="col-12 col-sm-6 p-0 BottomCta__img">
                             {key === 0 ? <div className="BottomCta__instalaciones" style={{
-                                background: `url("${el?.img}") no-repeat center center / cover`
+                                background: `url("${el?.img}") no-repeat center top / cover`
                             }} /> :
                                 <div className="BottomCta__empresas" style={{
                                     background: `url("${el?.img}") no-repeat center center / cover`

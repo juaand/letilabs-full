@@ -177,14 +177,17 @@ export const updateTitleFarmDataPurpose = ({title, id}) => http.patch("/updateti
 export const getBannerOurPeople = () => http.get("/bannerdataourpeople")
 export const updateBannerOurPeople = ({description, imgURL, title, id}) => http.patch("/updatebannerdataourpeople", {description, imgURL, title, id})
 export const getInfoCardsOurPeople = () => http.get("/ourpeopleinfocards")
-export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) => http.get("/updateourpeopleinfocards", {mainTitle, imgURL, title, info, id})
+export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) => http.patch("/updateourpeopleinfocards", {mainTitle, imgURL, title, info, id})
 export const getEquipoOurPeople = () => http.get("/equipoourpeople")
-export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
+export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
 export const getBottomOurPeople = () => http.get("/bottomourpeople")
-export const updateBottomOurPeople = ({title, url, button, img, id}) => http.patch("/updatebottomourpeople", {title, url, button, img, id})
+export const updateBottomOurPeople = ({title, buttoLink, buttonTitle, img, id}) => http.patch("/updatebottomourpeople", {title, buttoLink, buttonTitle, img, id})
 export const getCarreras = () => http.get("/carrerasdata")
-export const updateCarrerasData = ({title, description, url, buttonTitle, id}) => http.patch("/updatecarrerasdata", {title, description, url, buttonTitle, id})
-
+export const updateCarrerasData = ({title, description, url, buttonTitle, buttonLink, id}) => http.patch("/updatecarrerasdata", {title, description, url, buttonTitle, buttonLink, id})
+export const deleteOPInfoCard = (id) => http.get(`/ourpeopleinfocard/${id}/delete`)
+export const createTeam = ({title, info}) => http.post("/createteam", {title, info})
+export const getBannerTeams = () => http.get("/bannerdatateams")
+export const updateBannerTeams = ({mainTitle, imgURL, id}) => http.patch("/updatebannerdatateams", {mainTitle, imgURL, id})
 
 //search routes
 export const searchContent = (search) => http.get(`/search/${search}`)

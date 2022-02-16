@@ -1,36 +1,38 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getInfoCardsOurPeople} from '../../../../../services/ApiClient'
-import {app} from '../../../../../services/firebase'
-import InputFile from '../../../../Form/InputFile/InputFile'
+
+import {getInfoCardsOurPeople, createTeam} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
+import {useFormState} from '../../../../../hooks/useFormState'
+import Button from '../../../../Form/FormButton/FormButton'
+import EditItemModal from './EditItemModal/EditItemModal'
 
 function EditInfoCardsOurPeople() {
+
+    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourOCData, setOurOCData] = useState()
+    const [message, setMessage] = useState('')
+    const [newTeamMessage, setNewTeamMessage] = useState('')
     const [bool, setBool] = useState(false)
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state, onChange} = useFormState(
         {
             data: {
                 id: '',
-                mainTitle: ourOCData?.mainTitle,
-                imgURL: ourOCData?.imgURL,
+                info: ourOCData?.info,
+                title: ourOCData?.title,
             },
             error: {
+                info: true,
                 title: true,
-                imgURL: false,
             },
             touch: {},
         },
         {
+            info: v => v.length,
             title: v => v.length,
-            imgURL: v => v.length,
         }
     )
-
-
 
     const {data, error, touch} = state
 
@@ -39,35 +41,37 @@ function EditInfoCardsOurPeople() {
         setBool(!bool)
     }
 
+    const hideModal = (info) => {
+        setOurOCData(info)
+        setBool(!bool)
+    }
+
     const deleteItem = (info) => {
         setOurOCData(info)
         setBool(!bool)
     }
 
-    const onFileSelected = async (e) => {
-        // Get file
-        const file = e.target.files[0]
+    const createNewTeam = async (event) => {
+        event.preventDefault()
+        data.id = ourOCData[0]?._id
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
-
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                //Se habilita el botón para subir el blog
-                console.log('Uploaded')
-            })
-            .catch(err => {console.log(err)})
-
-
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-    }
-
-    const updateICOurPeople = () => {
-        console.log(data)
+        if (error.title === false && error.info === false) {
+            try {
+                await createTeam(data)
+                    .then(equipo => {
+                        console.log(equipo)
+                        setOurOCData(equipo)
+                        setNewTeamMessage('Data creada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setNewTeamMessage('Por favor rellene ambos campos')
+        }
     }
 
     useEffect(() => {
@@ -81,50 +85,58 @@ function EditInfoCardsOurPeople() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {ourOCData?.length > 0 &&
-                <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar InfoCard</h2>
-                    <form className="AdminEdit__form" onSubmit={updateICOurPeople}>
-                        <div className="row justify-content-around">
-                            <div className="col-12 col-sm-6">
-                                <p className="AdminEdit__form__label">
-                                    Título
-                                </p>
-                                <InputWithLabel
-                                    value={data?.mainTitle}
-                                    onBlur={onBlur}
-                                    onChange={onChange}
-                                    name="title"
-                                    type="text"
-                                    cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                                    placeholder={ourOCData[0]?.mainTitle}
-                                />
+                <section className="container-fluid EditContent EditContent-timeline pt-0">
+                    <h2>Equipos</h2>
+                    <div className="row justify-content-around mt-5">
+                        <h3 className="mb-5">Editar equipos</h3>
+                        {ourOCData?.map(el =>
+                            <div className="col-3 EditCarousel__edit logros" onClick={() => showModal(el)}>
+                                <h4 className="mt-3 mb-3">{el?.title}</h4>
+                                <p>{el?.info}</p>
                             </div>
-                            <div className="col-12 col-sm-6">
-                                <p className="AdminEdit__form__label">
-                                    Imagen
-                                </p>
-                                <InputFile
-                                    value={data?.imgURL}
-                                    onChange={onFileSelected}
-                                    id="fileButton"
-                                    name="picpath"
-                                    type="file"
-                                    placeholder={data?.imgURL}
-                                />
-                            </div>
-                        </div>
-                        <div className="row justify-content-around">
-                            {ourOCData?.map(el =>
-                                <div className="col-3 EditCarousel__edit logros" onClick={() => showModal(el)}>
-                                    <h4 className="mt-3 mb-3">{el?.title}</h4>
-                                    <p>{el?.info}</p>
+                        )}
+                    </div>
+                    <hr className="mt-5" />
+                    <div className="row justify-content-around mt-5">
+                        <h3 className="mb-5">Añadir nuevo equipo</h3>
+                        <div className="col-12">
+                            <form className="AdminEdit__form" onSubmit={createNewTeam}>
+                                <div className="row">
+                                    <div className="col-6">
+                                        <InputWithLabel
+                                            label="Título equipo"
+                                            onChange={onChange}
+                                            name="title"
+                                            type="text"
+                                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                            placeholder="Ingrese título del equipo"
+                                        />
+                                    </div>
+                                    <div className="col-6">
+                                        <InputWithLabel
+                                            label="Info equipo"
+                                            onChange={onChange}
+                                            name="info"
+                                            type="text"
+                                            cssStyle={`form-control ${touch.info && error.info ? "is-invalid" : ""}`}
+                                            placeholder="Ingrese info del equipo"
+                                        />
+                                    </div>
+                                    <div className="col-12">
+                                        <Button type="submit" cssStyle="leti-btn">Crear nuevo equipo</Button>
+                                        {newTeamMessage && <span className="AdminEdit__message">{newTeamMessage}</span>}
+                                    </div>
+
                                 </div>
-                            )}
+                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                            </form>
                         </div>
-                    </form>
-                </section>}
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </section>
+            }
         </>
     )
 }

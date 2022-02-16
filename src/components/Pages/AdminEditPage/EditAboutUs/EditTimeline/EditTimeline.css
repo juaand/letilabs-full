@@ -5,12 +5,15 @@
 .EditContent-timeline img {
   width: 100%;
   height: auto;
+  max-height: 24rem;
   position: relative;
+  object-fit: cover;
 }
 
 .EditContent-timeline p {
   margin-top: 1rem;
   font-size: 1.4rem;
+  color: #737b7f;
 }
 
 .EditCarousel__edit {
