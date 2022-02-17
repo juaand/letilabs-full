@@ -28,6 +28,11 @@
   text-align: center;
 }
 
+.EditContent__boldtitle p {
+  text-align: left;
+  line-height: 2.8rem;
+}
+
 .EditContent__title {
   font-size: 2.4rem;
   font-weight: 400;

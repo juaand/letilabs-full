@@ -14,7 +14,6 @@ function EditBottomOurPeople() {
     }
 
     const hideModal = (info) => {
-        console.log(info)
         setOurPeopleData(info)
         setBool(!bool)
     }

@@ -1,41 +1,71 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {getTimeLinePurpose, addTimeLinePurposeData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditOurCompaniesGenven/EditTimelineGenven/DeleteItemModal/DeleteItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditTimelinePurpose() {
 
-    const {state, onBlur, onChange} = useFormState(
+    const [registerError, setRegisterError] = useState(null)
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [timelineData, setTimeLineData] = useState()
+    const [modalData, setModalData] = useState()
+    const [message, setMessage] = useState('')
+    const [bool, setBool] = useState(false)
+
+    const {state} = useFormState(
         {
             data: {
-                imgURL: '',
-                desc: '',
-                buttonTitle: '',
-                buttonLink: '',
+                imgURL: timelineData?.imgURL,
+                desc: timelineData?.desc,
             },
             error: {
-                imgURL: false,
-                desc: false,
-                buttonTitle: false,
-                buttonLink: false,
+                imgURL: true,
+                desc: true,
             },
             touch: {},
         },
         {
             imgURL: v => v.length,
             desc: v => v.length,
-            buttonTitle: v => v.length,
-            buttonLink: v => v.length,
         }
     )
+    const {data, error} = state
 
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
-    const [timelineData, setTimeLineData] = useState()
-    const [bool, setBool] = useState(false)
+    const handleDesc = (e) => {
+        data.desc = e.target.getContent()
+        error.desc = false
+    }
+
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setImageSuccess("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.imgURL = fileUrl
+        setIsDisabled(false)
+        error.imgURL = false
+    }
 
     const showModal = (data) => {
         setModalData(data)
@@ -43,23 +73,33 @@ function EditTimelinePurpose() {
     }
 
     const addTimeLineItem = async (event) => {
+        setMessage('')
         event.preventDefault()
 
-        try {
-            await addTimeLinePurposeData(data)
-                .then(timeline => {
-                    setTimeLineData(timeline)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.imgURL === false && error.desc === false) {
+            try {
+                await addTimeLinePurposeData(data)
+                    .then(timeline => {
+                        setTimeLineData(timeline)
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor rellene ambos campos')
         }
     }
 
     const deleteItem = (data) => {
         setTimeLineData(data)
+        setBool(!bool)
+    }
+
+    const hideModal = (info) => {
+        setTimeLineData(info)
         setBool(!bool)
     }
 
@@ -74,15 +114,16 @@ function EditTimelinePurpose() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Elminar elemento del TimeLine</h2>
+                    <h2>Editar elemento del timeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
-                                <p dangerouslySetInnerHTML={{__html: el?.desc}} />
+                                <h4 className="EditContent__boldtitle" dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
                     </div>
@@ -91,64 +132,46 @@ function EditTimelinePurpose() {
                 <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
-                            <InputWithLabel
+                            <InputFile
+                                classStyle="mb-0"
                                 value={data?.imgURL}
-                                onBlur={onBlur}
-                                onChange={onChange}
+                                onChange={onFileSelected}
+                                id="fileButton"
                                 name="imgURL"
-                                type="text"
-                                cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                                placeholder=""
+                                type="file"
+                                placeholder={timelineData?.imgURL}
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Título botón
-                            </p>
-                            <InputWithLabel
-                                value={data?.buttonTitle}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="buttonTitle"
-                                type="text"
-                                cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
-                                placeholder="Ingresa Título botón"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Url Botón
-                            </p>
-                            <InputWithLabel
-                                value={data?.buttonLink}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="buttonLink"
-                                type="text"
-                                cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
-                                placeholder="Ingresa Url Botón"
+                            <Editor
+                                initialValue={data?.desc}
+                                onChange={handleDesc}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 120,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>

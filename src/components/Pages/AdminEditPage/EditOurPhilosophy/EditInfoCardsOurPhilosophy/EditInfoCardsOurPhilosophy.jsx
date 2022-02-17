@@ -103,7 +103,7 @@ function EditInfoCardsOurPhilosophy() {
     return (
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
-            {bool && <EditItemModal hideModal={(data) => hideModal(data)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={(data) => hideModal(data)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)}/>}
             {ourOCData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar pilares</h2>

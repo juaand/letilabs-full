@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {useFormState} from '../../../../../hooks/useFormState'
 import {getProductBottom, updateProductBottom} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../services/firebase'
-import InputFile from '../../../../Form/InputFile/InputFile'
 import Loader from '../../../../Loader/Loader'
 
 function EditProductBottom() {
