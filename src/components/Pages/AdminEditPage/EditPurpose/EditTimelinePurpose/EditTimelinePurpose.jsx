@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
+import {Editor} from '@tinymce/tinymce-react'
 
 import {getTimeLinePurpose, addTimeLinePurposeData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -19,7 +19,7 @@ function EditTimelinePurpose() {
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 imgURL: timelineData?.imgURL,
@@ -36,7 +36,12 @@ function EditTimelinePurpose() {
             desc: v => v.length,
         }
     )
-    const {data, error, touch} = state
+    const {data, error} = state
+
+    const handleDesc = (e) => {
+        data.desc = e.target.getContent()
+        error.desc = false
+    }
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
@@ -118,7 +123,7 @@ function EditTimelinePurpose() {
                         {timelineData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
-                                <p dangerouslySetInnerHTML={{__html: el?.desc}} />
+                                <h4 className="EditContent__boldtitle" dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
                     </div>
@@ -146,14 +151,22 @@ function EditTimelinePurpose() {
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción"
+                            <Editor
+                                initialValue={data?.desc}
+                                onChange={handleDesc}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 120,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
                         <div className="col-12">
