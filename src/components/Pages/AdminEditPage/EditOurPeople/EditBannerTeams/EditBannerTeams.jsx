@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {getBannerTeams, updateBannerTeams} from '../../../../../services/ApiClient'
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -11,10 +11,10 @@ import Loader from '../../../../Loader/Loader'
 function EditBannerTeams() {
 
     const [registerError, setRegisterError] = useState(null)
+    const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
     const [teamsBanner, setTeamsBanner] = useState([])
     const [message, setMessage] = useState('')
-    const [imageSuccess, setImageSuccess] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
