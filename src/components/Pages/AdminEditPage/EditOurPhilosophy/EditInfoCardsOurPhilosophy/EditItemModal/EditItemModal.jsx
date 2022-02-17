@@ -10,7 +10,7 @@ import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../../Form/FormButton/FormButton'
 import Loader from '../../../../../Loader/Loader'
 
-function EditItemModal({deleteItem, infodata, hideModal}) {
+function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
@@ -99,7 +99,7 @@ function EditItemModal({deleteItem, infodata, hideModal}) {
                     <div className="row justify-content-center">
                         <Fade direction="down" className="col-11 col-sm-6 EditItemModal__container">
                             <>
-                                <span className="EditItemModal__close" onClick={hideModal}></span>
+                                <span className="EditItemModal__close" onClick={closeModal}></span>
                                 <form className="AdminEdit__form" onSubmit={updatePillar}>
                                     <div className="row">
                                         <div className="col-sm-12 ShowEditModal__thumbnail">

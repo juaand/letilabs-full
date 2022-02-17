@@ -3,7 +3,7 @@ import {useFormState} from '../../../../../hooks/useFormState'
 import {getTimeLinePurpose, addTimeLinePurposeData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditOurCompaniesGenven/EditTimelineGenven/DeleteItemModal/DeleteItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
 
 function EditTimelinePurpose() {
 
@@ -63,6 +63,11 @@ function EditTimelinePurpose() {
         setBool(!bool)
     }
 
+    const hideModal = (info) => {
+        setTimeLineData(info)
+        setBool(!bool)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const getTimeLineData = await getTimeLinePurpose()
@@ -74,10 +79,10 @@ function EditTimelinePurpose() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)}/>}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Elminar elemento del TimeLine</h2>
+                    <h2>Editar elemento del timeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
