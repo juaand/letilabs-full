@@ -158,6 +158,7 @@ export const updateBannerAlliances = ({title, description, imgURL, id}) => http.
 export const getLogoCarouselData = () => http.get("/alliancelogos")
 export const updateTitleCarrouselAlliance = ({title}) => http.post("/updatealliancelogostitle", {title})
 export const deleteLogoCarouselAlliance = (id) => http.get(`/alliancelogos/${id}/delete`)
+export const createAlly = ({title, picPath}) => http.post("/createalliance", {title, picPath})
 export const getFormAlliances = () => http.get("/allianceform")
 export const updateFormAlliances = ({title, desc, phone, email, id}) => http.get("/updateallianceform", {title, desc, phone, email, id})
 export const getBottomAlliancesData = () => http.get("/bottomalliances")
