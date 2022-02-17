@@ -41,15 +41,13 @@ function EditBannerAlliances() {
 
 
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
-
-        console.log(data)
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -124,7 +122,7 @@ function EditBannerAlliances() {
                                 onChange={handleBannerDescription}
                                 apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                 init={{
-                                    height: 170,
+                                    height: 180,
                                     menubar: false,
                                     plugins: [
                                         'advlist autolink lists link image',
@@ -139,6 +137,18 @@ function EditBannerAlliances() {
                         </div>
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
+                                Título
+                            </p>
+                            <InputWithLabel
+                                value={data?.title}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="title"
+                                type="text"
+                                cssStyle="form-control mb-0"
+                                placeholder={bannerData?.title}
+                            />
+                            <p className="AdminEdit__form__label  mt-5">
                                 Imagen
                             </p>
                             <InputFile
@@ -147,20 +157,9 @@ function EditBannerAlliances() {
                                 id="fileButton"
                                 name="imgURL"
                                 type="file"
+                                classStyle="mb-0"
                             />
                             {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
-                            <p className="AdminEdit__form__label">
-                                title
-                            </p>
-                            <InputWithLabel
-                                value={data?.title}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="title"
-                                type="text"
-                                cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.title}
-                            />
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
