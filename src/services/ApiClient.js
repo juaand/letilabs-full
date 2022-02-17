@@ -154,7 +154,7 @@ export const updateBottomManufactureData = ({title, img, url, btn, id}) => http.
 
 //admin I+D alliances routes
 export const getBannerAlliances = () => http.get("/banneralliances")
-export const updateBannerAlliances = ({title, description, imgURL, id}) => http.get("/updatebannerdataid", {title, description, imgURL, id})
+export const updateBannerAlliances = ({title, description, imgURL, id}) => http.patch("/updatebanneralliances", {title, description, imgURL, id})
 export const getLogoCarouselData = () => http.get("/alliancelogos")
 export const updateLogoCarouselDataAlliances = ({title, picPath, id}) => http.get("/updatealliancelogos", {title, picPath, id})
 export const getFormAlliances = () => http.get("/allianceform")
