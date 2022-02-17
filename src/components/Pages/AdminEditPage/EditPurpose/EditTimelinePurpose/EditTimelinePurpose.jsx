@@ -1,41 +1,66 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+
 import {getTimeLinePurpose, addTimeLinePurposeData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
 import EditItemModal from './EditItemModal/EditItemModal'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditTimelinePurpose() {
+
+    const [registerError, setRegisterError] = useState(null)
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [timelineData, setTimeLineData] = useState()
+    const [modalData, setModalData] = useState()
+    const [message, setMessage] = useState('')
+    const [bool, setBool] = useState(false)
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
-                imgURL: '',
-                desc: '',
-                buttonTitle: '',
-                buttonLink: '',
+                imgURL: timelineData?.imgURL,
+                desc: timelineData?.desc,
             },
             error: {
-                imgURL: false,
-                desc: false,
-                buttonTitle: false,
-                buttonLink: false,
+                imgURL: true,
+                desc: true,
             },
             touch: {},
         },
         {
             imgURL: v => v.length,
             desc: v => v.length,
-            buttonTitle: v => v.length,
-            buttonLink: v => v.length,
         }
     )
-
     const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
-    const [timelineData, setTimeLineData] = useState()
-    const [bool, setBool] = useState(false)
+
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setImageSuccess("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.imgURL = fileUrl
+        setIsDisabled(false)
+        error.imgURL = false
+    }
 
     const showModal = (data) => {
         setModalData(data)
@@ -43,18 +68,23 @@ function EditTimelinePurpose() {
     }
 
     const addTimeLineItem = async (event) => {
+        setMessage('')
         event.preventDefault()
 
-        try {
-            await addTimeLinePurposeData(data)
-                .then(timeline => {
-                    setTimeLineData(timeline)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.imgURL === false && error.desc === false) {
+            try {
+                await addTimeLinePurposeData(data)
+                    .then(timeline => {
+                        setTimeLineData(timeline)
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor rellene ambos campos')
         }
     }
 
@@ -79,7 +109,8 @@ function EditTimelinePurpose() {
 
     return (
         <>
-            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)}/>}
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar elemento del timeLine</h2>
@@ -96,21 +127,22 @@ function EditTimelinePurpose() {
                 <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
-                            <InputWithLabel
+                            <InputFile
+                                classStyle="mb-0"
                                 value={data?.imgURL}
-                                onBlur={onBlur}
-                                onChange={onChange}
+                                onChange={onFileSelected}
+                                id="fileButton"
                                 name="imgURL"
-                                type="text"
-                                cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                                placeholder=""
+                                type="file"
+                                placeholder={timelineData?.imgURL}
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
@@ -124,36 +156,9 @@ function EditTimelinePurpose() {
                                 placeholder="Ingresa descripción"
                             />
                         </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Título botón
-                            </p>
-                            <InputWithLabel
-                                value={data?.buttonTitle}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="buttonTitle"
-                                type="text"
-                                cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
-                                placeholder="Ingresa Título botón"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Url Botón
-                            </p>
-                            <InputWithLabel
-                                value={data?.buttonLink}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="buttonLink"
-                                type="text"
-                                cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
-                                placeholder="Ingresa Url Botón"
-                            />
-                        </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>

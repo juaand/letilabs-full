@@ -3,7 +3,7 @@ import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
-import {deleteOPInfoCard, updateTimeLinePurpose} from '../../../../../../services/ApiClient'
+import {deleteTimelinePurpose, updateTimeLinePurpose} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import Button from '../../../../../Form/FormButton/FormButton'
@@ -94,8 +94,8 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     }
 
     const deleteSelected = async (id) => {
-        const updateData = await deleteOPInfoCard(id)
-        deleteItem(updateData)
+        const updatedData = await deleteTimelinePurpose(id)
+        deleteItem(updatedData)
     }
 
 
