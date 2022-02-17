@@ -1,8 +1,9 @@
-import './EditVideo.css'
 import React, {useState, useEffect} from 'react'
+
 import {updateVideoData, getApiVideo} from '../../../../../services/ApiClient'
-import {app} from '../../../../../services/firebase'
 import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
+import './EditVideo.css'
 
 
 function EditVideo() {
@@ -72,7 +73,7 @@ function EditVideo() {
                             value={videoData}
                             onChange={onFileSelected}
                             id="fileButton"
-                            name="picpath"
+                            name="url"
                             type="file"
                             classStyle="video"
                         />

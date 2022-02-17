@@ -1,88 +1,80 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
 import {getPurposeVideo, updatePurposeVideo} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
 
 function EditPurposeVideo() {
 
-    const [videoData, setVideoData] = useState()
+    const [videoData, setVideoData] = useState('')
+    const [message, setMessage] = useState('')
+    const [videoInfo, setVideoInfo] = useState([])
+    const [videoId, setVideoId] = useState('')
 
-    const {state, onBlur, onChange} = useFormState(
-        {
-            data: {
-                id: '',
-                videoURL: videoData?.videoURL,
-            },
-            error: {
-                videoURL: false,
-            },
-            touch: {},
-        },
-        {
-            videoURL: v => v.length,
-        }
-    )
+    const onFileSelected = async (e) => {
 
+        // Get file
+        const file = e.target.files[0]
 
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('videos/' + file.name)
 
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
+        // Upload file
+        setMessage('Espere unos segundos, subiendo vídeo...')
+        await filePath.put(file)
+            .then(() => {
+                setMessage('El vídeo ha sido editado correctamente.')
+            })
+            .catch(err => {console.log(err)})
 
-
-    const updateVideo = async (event) => {
-        event.preventDefault()
-        data.id = videoData._id
-
-        try {
-            await updatePurposeVideo(data)
-                .then(video => {
-                    setVideoData(video[0])
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
-        }
+        // Get file url
+        await filePath.getDownloadURL()
+            .then((vdata) => {
+                setVideoData(vdata)
+                updateVideoPath(vdata)
+            })
+            .catch(err => {console.log(err)})
     }
 
+    const updateVideoPath = async (vdata) => {
+        setMessage('')
+
+        //Upload video url to API
+        await updatePurposeVideo(vdata, videoId)
+            .then((data) => {
+                setMessage('')
+                setVideoInfo(data.videoURL)
+            })
+            .catch(err => {console.log(err)})
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             const getVideoData = await getPurposeVideo()
-            setVideoData(getVideoData[0])
+            setVideoInfo(getVideoData[0].videoURL)
+            setVideoId(getVideoData[0]._id)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
-        <section className="container-fluid EditContent">
-            <h2>Video </h2>
-            <form className="AdminEdit__form" onSubmit={updateVideo}>
+        <section className="container-fluid EditContent EditVideo">
+            <h2>Vídeo</h2>
+            {message ? <p className="is-message">{message}</p> :
                 <div className="row">
                     <div className="col-12">
-                        <p className="AdminEdit__form__label">
-                            Video
-                        </p>
-                        <InputWithLabel
-                            value={data?.videoURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
+                        <a className="video-link" href={videoInfo} target="_blank" rel="noopener noreferrer">Ver vídeo actual</a>
+                        <InputFile
+                            value={videoData}
+                            onChange={onFileSelected}
+                            id="fileButton"
                             name="videoURL"
-                            type="text"
-                            cssStyle={`form-control ${touch.videoURL && error.videoURL ? "is-invalid" : ""}`}
-                            placeholder={videoData?.videoURL}
+                            type="file"
+                            classStyle="video"
                         />
                     </div>
-                    <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Video</Button>
-                    </div>
-
-                </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
+                </div>}
         </section>
     )
 }

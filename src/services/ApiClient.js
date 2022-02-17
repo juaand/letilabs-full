@@ -167,7 +167,7 @@ export const updateBottomAlliancesData = ({title, img, url, btn, id}) => http.ge
 export const getBannerPurpose = () => http.get("/bannerdatapurpose")
 export const updateBannerDataPurpose = ({description, imgURL, id}) => http.patch("/updatebannerdatapurpose", {description, imgURL, id})
 export const getPurposeVideo = () => http.get("/purposevideo")
-export const updatePurposeVideo = ({videoURL, id}) => http.get("/updatepurposevideo", {videoURL, id})
+export const updatePurposeVideo = (videoURL, id) => http.patch("/updatepurposevideo", {videoURL, id})
 export const getTimeLinePurpose = () => http.get("/timelinepurpose")
 export const addTimeLinePurposeData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addtimelinepurpose", {description, person, imgURL, buttonTitle, buttonLink, id})
 export const getTitleFarmPurpose = () => http.get("/titlefarmdatapurpose")

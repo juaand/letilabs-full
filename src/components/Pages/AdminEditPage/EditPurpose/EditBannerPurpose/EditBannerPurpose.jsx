@@ -46,7 +46,6 @@ function EditBannerPurpose() {
             try {
                 await updateBannerDataPurpose(data)
                     .then(banner => {
-                        console.log(banner)
                         setBannerData(banner)
                         setMessage('Data atualizada exitosamente')
                     })
