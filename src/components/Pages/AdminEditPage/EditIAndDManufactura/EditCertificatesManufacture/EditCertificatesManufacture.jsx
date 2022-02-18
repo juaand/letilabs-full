@@ -68,8 +68,9 @@ function EditCertificatesManufacture() {
         event.preventDefault()
 
         if (error.title === false || error.desc === false) {
-        data.title ? data.title = data.title : data.title = certificatesManufactureData[0]?.title
-        data.desc ? data.desc = data.desc : data.desc = certificatesManufactureData[0]?.desc
+            /* eslint-disable no-self-assign */
+            data.title ? data.title = data.title : data.title = certificatesManufactureData[0]?.title
+            data.desc ? data.desc = data.desc : data.desc = certificatesManufactureData[0]?.desc
 
             try {
                 await updateCertificatesManufactureData(data)

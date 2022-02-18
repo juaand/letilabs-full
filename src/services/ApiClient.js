@@ -153,7 +153,7 @@ export const getCertificatesManufacture = () => http.get("/certificatesmanufactu
 export const updateCertificatesManufactureData = ({title, desc}) => http.post("/updatecertificatesmanufacture", {title, desc})
 export const createCertificate = ({title, imgURL, desc}) => http.post("/createcertificatesmanufacture", {title, imgURL, desc})
 export const getBottomManufactureData = () => http.get("/bottommanufacture")
-export const updateBottomManufactureData = ({title, img, url, btn, id}) => http.get("/updatebottommanufacture", {title, img, url, btn, id})
+export const updateBottomManufactureData = ({title, img, buttonLink, buttonTitle, id}) => http.patch("/updatebottommanufacture", {title, img, buttonLink, buttonTitle, id})
 
 
 //admin I+D alliances routes
