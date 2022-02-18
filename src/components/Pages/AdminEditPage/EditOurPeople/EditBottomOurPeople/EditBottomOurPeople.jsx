@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {getBottomOurPeople} from '../../../../../services/ApiClient'
-import EditItemModal from '../../EditOurPeople/EditBottomOurPeople/EditItemModal/EditItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
 
 
 function EditBottomOurPeople() {

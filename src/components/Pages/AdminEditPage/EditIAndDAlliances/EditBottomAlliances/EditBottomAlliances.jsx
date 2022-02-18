@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import {getBottomAlliancesData} from '../../../../../services/ApiClient'
-import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
-
-
+import EditItemModal from './EditItemModal/EditItemModal'
 
 function EditBottomAlliances() {
     const [modalData, setModalData] = useState()
-    const [IDData, setIDData] = useState()
+    const [iDData, setIdData] = useState()
     const [bool, setBool] = useState(false)
 
     const showModal = (data) => {
@@ -14,15 +12,15 @@ function EditBottomAlliances() {
         setBool(!bool)
     }
 
-    const deleteItem = (data) => {
-        setIDData(data)
+    const hideModal = (info) => {
+        setIdData(info)
         setBool(!bool)
     }
 
     useEffect(() => {
         const fetchData = async () => {
             const getIDData = await getBottomAlliancesData()
-            setIDData(getIDData)
+            setIdData(getIDData)
 
         }
         fetchData()
@@ -31,17 +29,15 @@ function EditBottomAlliances() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
-            {IDData?.length > 0 &&
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} closeModal={() => setBool(!bool)} />}
+            {iDData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar bottom</h2>
+                    <h2>Editar CTA</h2>
                     <div className="row justify-content-around">
-                        {IDData?.map(el =>
+                        {iDData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el.img} alt={el.img} />
-                                <p>{el.title}</p>
-                                <p>{el.button}</p>
-                                <p>{el.url}</p>
+                                <h4 className="EditContent__boldtitle">{el.title}</h4>
                             </div>
                         )}
                     </div>

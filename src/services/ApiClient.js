@@ -154,13 +154,15 @@ export const updateBottomManufactureData = ({title, img, url, btn, id}) => http.
 
 //admin I+D alliances routes
 export const getBannerAlliances = () => http.get("/banneralliances")
-export const updateBannerAlliances = ({title, description, imgURL, id}) => http.get("/updatebannerdataid", {title, description, imgURL, id})
+export const updateBannerAlliances = ({title, description, imgURL, id}) => http.patch("/updatebanneralliances", {title, description, imgURL, id})
 export const getLogoCarouselData = () => http.get("/alliancelogos")
-export const updateLogoCarouselDataAlliances = ({title, picPath, id}) => http.get("/updatealliancelogos", {title, picPath, id})
+export const updateTitleCarrouselAlliance = ({title}) => http.post("/updatealliancelogostitle", {title})
+export const deleteLogoCarouselAlliance = (id) => http.get(`/alliancelogos/${id}/delete`)
+export const createAlly = ({title, picPath}) => http.post("/createalliance", {title, picPath})
 export const getFormAlliances = () => http.get("/allianceform")
-export const updateFormAlliances = ({title, desc, phone, email, id}) => http.get("/updateallianceform", {title, desc, phone, email, id})
+export const updateFormAlliances = ({title, desc, phone, email, id}) => http.post("/updateallianceform", {title, desc, phone, email, id})
 export const getBottomAlliancesData = () => http.get("/bottomalliances")
-export const updateBottomAlliancesData = ({title, img, url, btn, id}) => http.get("/bottomalliances", {title, img, url, btn, id})
+export const updateBottomAlliancesData = ({title, img, buttonLink, buttonTitle, id}) => http.patch("/updatebottomalliances", {title, img, buttonLink, buttonTitle, id})
 
 
 //admin edit routes purpose and responsability

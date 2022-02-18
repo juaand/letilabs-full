@@ -1,14 +1,16 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {getFormAlliances, updateFormAlliances} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
 
 
 function EditFormAlliances() {
 
     const [bannerData, setBannerData] = useState()
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -21,9 +23,9 @@ function EditFormAlliances() {
             },
             error: {
                 desc: true,
-                phone: false,
-                title: false,
-                email: false,
+                phone: true,
+                title: true,
+                email: true,
             },
             touch: {},
         },
@@ -35,32 +37,37 @@ function EditFormAlliances() {
         }
     )
 
-
-
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
-
-    const updateBanner = async (event) => {
+    const updateFormHeader = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
 
-        try {
-            await updateFormAlliances(data)
-                .then(banner => {
-                    setBannerData(banner[0])
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        console.log(data)
+
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateFormAlliances(data)
+                    .then(banner => {
+                        setBannerData(banner)
+                        setMessage('Data atualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleBannerDesc = (e) => {
         data.desc = e.target.getContent()
+        error.desc = false
     }
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -72,9 +79,9 @@ function EditFormAlliances() {
     }, [])
 
     return (
-            <section className="container-fluid EditContent">
+        <section className="container-fluid EditContent">
             <h2>Formulario Alianzas</h2>
-            <form className="AdminEdit__form" onSubmit={updateBanner}>
+            <form className="AdminEdit__form" onSubmit={updateFormHeader}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
@@ -85,7 +92,7 @@ function EditFormAlliances() {
                             onChange={handleBannerDesc}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 305,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -100,19 +107,7 @@ function EditFormAlliances() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Telefono
-                        </p>
-                        <InputWithLabel
-                            value={data?.phone}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="phone"
-                            type="text"
-                            cssStyle={`form-control ${touch.phone && error.phone ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.phone}
-                        />
-                        <p className="AdminEdit__form__label">
-                            title
+                            Título
                         </p>
                         <InputWithLabel
                             value={data?.title}
@@ -120,13 +115,23 @@ function EditFormAlliances() {
                             onChange={onChange}
                             name="title"
                             type="text"
-                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            cssStyle="form-control mb-5"
                             placeholder={bannerData?.title}
                         />
-                    </div>
-                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            email
+                            Teléfono
+                        </p>
+                        <InputWithLabel
+                            value={data?.phone}
+                            onBlur={onBlur}
+                            onChange={onChange}
+                            name="phone"
+                            type="text"
+                            cssStyle="form-control mb-5"
+                            placeholder={bannerData?.phone}
+                        />
+                        <p className="AdminEdit__form__label">
+                            Email
                         </p>
                         <InputWithLabel
                             value={data?.email}
@@ -134,12 +139,13 @@ function EditFormAlliances() {
                             onChange={onChange}
                             name="email"
                             type="text"
-                            cssStyle={`form-control ${touch.email && error.email ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={bannerData?.email}
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
