@@ -143,7 +143,7 @@ export const updateBottomTechData = ({title, img, url, btn, id}) => http.get("/u
 
 //admin I+D manufacture routes
 export const getBannerManufacture = () => http.get("/bannermanufacture")
-export const updateBannerManufacture = ({title, description, imgURL, id}) => http.get("/updatebannerdatamanufacture", {title, description, imgURL, id})
+export const updateBannerManufacture = ({title, description, imgURL, id}) => http.patch("/updatebannermanufacture", {title, description, imgURL, id})
 export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
 export const updateCarouselManufacture = ({title, info, id}) => http.get("/updatecarrouselmanufacture", {title, info, id})
 export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
