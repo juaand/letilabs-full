@@ -17,30 +17,32 @@ function EditCarouselManufacture() {
         {
             data: {
                 title: '',
-                picPath: '',
             },
             error: {
                 title: true,
-                picPath: true,
             },
             touch: {},
         },
         {
             title: v => v.length,
-            picPath: v => v.length,
         }
     )
 
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
-    const showModal = (data) => {
-        setModalData(data)
+    const showModal = (info) => {
+        setModalData(info)
         setBool(!bool)
     }
 
-    const deleteItem = (data) => {
-        setCarouselManufactureData(data)
+    const hideModal = (info) => {
+        setCarouselManufactureData(info)
+        setBool(!bool)
+    }
+
+    const deleteItem = (info) => {
+        setCarouselManufactureData(info)
         setBool(!bool)
     }
 
@@ -77,7 +79,7 @@ function EditCarouselManufacture() {
 
     return (
         <>
-            {bool && <EditItemModal hideModal={() => setBool(!bool)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {carouselManufactureData?.length > 0 &&
 
                 <section className="container-fluid  EditContent EditContent-timeline pt-0">
@@ -103,8 +105,8 @@ function EditCarouselManufacture() {
                                 </div>
                             </div>
 
-                            <hr className="mt-5 mb-5"/>
-                            
+                            <hr className="mt-5 mb-5" />
+
                             {registerError && <div className="alert alert-danger">{registerError}</div>}
                         </form>
                         <h3 className="mb-5">Editar Procesos</h3>
