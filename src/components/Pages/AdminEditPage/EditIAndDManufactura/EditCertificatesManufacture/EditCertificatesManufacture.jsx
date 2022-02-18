@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getCertificatesManufacture, updateCertificatesManufactureData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
-import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
-import EditElementsModal from './EditElementsModal/EditelementsModal'
 
+import {getCertificatesManufacture, deleteCertificate, updateCertificatesManufactureData} from '../../../../../services/ApiClient'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
 
 function EditCertificatesManufacture() {
 
@@ -33,15 +31,9 @@ function EditCertificatesManufacture() {
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
     const [certificatesManufactureData, setCertificatesManufactureData] = useState()
-    const [bool, setBool] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
-    const showModal = (data) => {
-        setModalData(data)
-        setBool(!bool)
-    }
 
     const updateCertificatesManufactureItem = async (event) => {
         event.preventDefault()
@@ -59,9 +51,9 @@ function EditCertificatesManufacture() {
         }
     }
 
-    const deleteItem = (data) => {
-        setCertificatesManufactureData(data)
-        setBool(!bool)
+    const deleteItem = async (id) => {
+        const getUpdated = await deleteCertificate(id)
+        setCertificatesManufactureData(getUpdated)
     }
 
     const onFileSelected = async (e) => {
@@ -99,13 +91,12 @@ function EditCertificatesManufacture() {
 
     return (
         <>
-            {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {certificatesManufactureData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar elemento del CertificatesManufacture</h2>
+                    <h2>Eliminar certificado</h2>
                     <div className="row justify-content-around">
                         {certificatesManufactureData?.map(el =>
-                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
+                            <div className="col-3 EditUnidades__trash" onClick={() => deleteItem(el._id)}>
                                 <img className="EditCarousel__img" src={el.imgURL} alt={el.title} />
                             </div>
                         )}

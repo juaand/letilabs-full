@@ -148,6 +148,7 @@ export const updateTitleProccess = ({title}) => http.post("/updatetitleproccess"
 export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
 export const updateCarouselManufacture = ({title, info, id}) => http.patch("/updatecarrouselmanufacture", {title, info, id})
 export const deleteProccess = (id) => http.get(`/deleteproccess/${id}`)
+export const deleteCertificate = (id) => http.get(`/deletecertificate/${id}`)
 export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
 export const updateCertificatesManufactureData = ({title, imgURL, desc, id}) => http.get("/updatecertificatesmanufacture", {title, imgURL, desc, id})
 export const getBottomManufactureData = () => http.get("/bottommanufacture")
