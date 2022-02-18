@@ -13,6 +13,7 @@ function EditInfoCardsOurPeople() {
     const [ourOCData, setOurOCData] = useState()
     const [newTeamMessage, setNewTeamMessage] = useState('')
     const [bool, setBool] = useState(false)
+    
 
     const {state, onChange} = useFormState(
         {

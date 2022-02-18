@@ -5,7 +5,6 @@ import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 
-
 function EditCarreras() {
 
     const [carrerasData, setCarrerasData] = useState([])

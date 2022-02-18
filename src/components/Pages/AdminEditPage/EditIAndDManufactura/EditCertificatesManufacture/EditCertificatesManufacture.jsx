@@ -18,6 +18,7 @@ function EditCertificatesManufacture() {
     const [infoMessage, setInfoMessage] = useState('')
     const [disabled, setDisabled] = useState(true)
     const [message, setMessage] = useState('')
+    
 
     const {state, onChange} = useFormState(
         {
