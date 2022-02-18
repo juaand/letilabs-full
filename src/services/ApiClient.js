@@ -150,7 +150,8 @@ export const updateCarouselManufacture = ({title, info, id}) => http.patch("/upd
 export const deleteProccess = (id) => http.get(`/deleteproccess/${id}`)
 export const deleteCertificate = (id) => http.get(`/deletecertificate/${id}`)
 export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
-export const updateCertificatesManufactureData = ({title, imgURL, desc, id}) => http.get("/updatecertificatesmanufacture", {title, imgURL, desc, id})
+export const updateCertificatesManufactureData = ({title, desc}) => http.post("/updatecertificatesmanufacture", {title, desc})
+export const createCertificate = ({title, imgURL, desc}) => http.post("/createcertificatesmanufacture", {title, imgURL, desc})
 export const getBottomManufactureData = () => http.get("/bottommanufacture")
 export const updateBottomManufactureData = ({title, img, url, btn, id}) => http.get("/updatebottommanufacture", {title, img, url, btn, id})
 

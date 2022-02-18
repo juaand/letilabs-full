@@ -11,7 +11,6 @@ function EditInfoCardsOurPeople() {
     const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourOCData, setOurOCData] = useState()
-    const [message, setMessage] = useState('')
     const [newTeamMessage, setNewTeamMessage] = useState('')
     const [bool, setBool] = useState(false)
 
@@ -59,7 +58,6 @@ function EditInfoCardsOurPeople() {
             try {
                 await createTeam(data)
                     .then(equipo => {
-                        console.log(equipo)
                         setOurOCData(equipo)
                         setNewTeamMessage('Data creada exitosamente')
                     })

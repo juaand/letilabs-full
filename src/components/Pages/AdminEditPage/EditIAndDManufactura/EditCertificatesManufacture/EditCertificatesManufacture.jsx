@@ -1,24 +1,35 @@
 import React, {useState, useEffect} from 'react'
+import {Editor} from '@tinymce/tinymce-react'
 
-import {getCertificatesManufacture, deleteCertificate, updateCertificatesManufactureData} from '../../../../../services/ApiClient'
+import {getCertificatesManufacture, deleteCertificate, updateCertificatesManufactureData, createCertificate} from '../../../../../services/ApiClient'
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditCertificatesManufacture() {
 
-    const {state, onBlur, onChange} = useFormState(
+    const [certificatesManufactureData, setCertificatesManufactureData] = useState([])
+    const [registerError, setRegisterError] = useState(null)
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [infoMessage, setInfoMessage] = useState('')
+    const [disabled, setDisabled] = useState(true)
+    const [message, setMessage] = useState('')
+
+    const {state, onChange} = useFormState(
         {
             data: {
-                title: '',
+                title: certificatesManufactureData[0]?.title,
                 imgURL: '',
-                desc: '',
+                desc: certificatesManufactureData[0]?.desc,
             },
             error: {
-                title: false,
-                imgURL: false,
-                desc: false,
+                title: true,
+                imgURL: true,
+                desc: true,
             },
             touch: {},
         },
@@ -29,26 +40,57 @@ function EditCertificatesManufacture() {
         }
     )
 
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [certificatesManufactureData, setCertificatesManufactureData] = useState()
-    const [disabled, setDisabled] = useState(true)
+    const {data, error} = state
 
+    const createCertificatesManufactureItem = async (event) => {
+        event.preventDefault()
+        data.title = certificatesManufactureData[0]?.title
+        data.desc = certificatesManufactureData[0]?.desc
 
-    const updateCertificatesManufactureItem = async (event) => {
+        if (error.imgURL === false) {
+            try {
+                await createCertificate(data)
+                    .then(certificatesManufacture => {
+                        setCertificatesManufactureData(certificatesManufacture)
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor seleccione una imagen')
+        }
+    }
+
+    const updateCertificateInfo = async (event) => {
         event.preventDefault()
 
-        try {
-            await updateCertificatesManufactureData(data)
-                .then(certificatesManufacture => {
-                    setCertificatesManufactureData(certificatesManufacture)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.title === false || error.desc === false) {
+        data.title ? data.title = data.title : data.title = certificatesManufactureData[0]?.title
+        data.desc ? data.desc = data.desc : data.desc = certificatesManufactureData[0]?.desc
+
+            try {
+                await updateCertificatesManufactureData(data)
+                    .then(certificatesManufacture => {
+                        setCertificatesManufactureData(certificatesManufacture)
+                        setInfoMessage('Datos actualizados exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setInfoMessage('Por favor edite alguno de los campos')
         }
+    }
+
+    const handleCerificateDescChange = (e) => {
+        data.desc = e.target.getContent()
+        error.desc = false
     }
 
     const deleteItem = async (id) => {
@@ -57,6 +99,8 @@ function EditCertificatesManufacture() {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -67,8 +111,7 @@ function EditCertificatesManufacture() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                // console.log('Uploaded')
-                //Se habilita el botón para subir el blog
+                setImageSuccess("Imagen subida correctamente")
                 setDisabled(!disabled)
             })
             .catch(err => {console.log(err)})
@@ -77,7 +120,8 @@ function EditCertificatesManufacture() {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
-        // console.log(fileUrl)
+        setIsDisabled(false)
+        error.imgURL = false
     }
 
     useEffect(() => {
@@ -91,6 +135,55 @@ function EditCertificatesManufacture() {
 
     return (
         <>
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <section className="container-fluid EditContent">
+                <h2>Editar info certificados</h2>
+                <form className="AdminEdit__form" onSubmit={updateCertificateInfo}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Título
+                            </p>
+                            <InputWithLabel
+                                value={data?.title}
+                                onChange={onChange}
+                                name="title"
+                                type="text"
+                                cssStyle="form-control"
+                                placeholder={certificatesManufactureData[0]?.title}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={certificatesManufactureData[0]?.desc}
+                                onChange={handleCerificateDescChange}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar info</Button>
+                            {infoMessage && <span className="AdminEdit__message">{infoMessage}</span>}
+                        </div>
+
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
             {certificatesManufactureData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Eliminar certificado</h2>
@@ -101,10 +194,11 @@ function EditCertificatesManufacture() {
                             </div>
                         )}
                     </div>
-                </section>}
+                </section>
+            }
             <section className="container-fluid EditContent">
                 <h2>Añadir nuevo certificado</h2>
-                <form className="AdminEdit__form" onSubmit={updateCertificatesManufactureItem}>
+                <form className="AdminEdit__form" onSubmit={createCertificatesManufactureItem}>
                     <div className="row">
                         <div className="col-12">
                             <p className="AdminEdit__form__label">
@@ -118,9 +212,11 @@ function EditCertificatesManufacture() {
                                 type="file"
                                 placeholder="Selecciona una imagen"
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
                         <div className="col-12">
-                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo año</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo certificado</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>

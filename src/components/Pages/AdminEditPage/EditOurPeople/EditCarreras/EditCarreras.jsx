@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {Editor} from '@tinymce/tinymce-react'
 
 import {getCarreras, updateCarrerasData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
@@ -61,10 +60,6 @@ function EditCarreras() {
         } else {
             setMessage('Por favor edite alguno de los campos')
         }
-    }
-
-    const handleCarrerasDescription = (e) => {
-        data.description = e.target.getContent()
     }
 
 
