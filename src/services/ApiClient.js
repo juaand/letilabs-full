@@ -162,7 +162,7 @@ export const createAlly = ({title, picPath}) => http.post("/createalliance", {ti
 export const getFormAlliances = () => http.get("/allianceform")
 export const updateFormAlliances = ({title, desc, phone, email, id}) => http.post("/updateallianceform", {title, desc, phone, email, id})
 export const getBottomAlliancesData = () => http.get("/bottomalliances")
-export const updateBottomAlliancesData = ({title, img, url, btn, id}) => http.get("/bottomalliances", {title, img, url, btn, id})
+export const updateBottomAlliancesData = ({title, img, buttonLink, buttonTitle, id}) => http.patch("/updatebottomalliances", {title, img, buttonLink, buttonTitle, id})
 
 
 //admin edit routes purpose and responsability
