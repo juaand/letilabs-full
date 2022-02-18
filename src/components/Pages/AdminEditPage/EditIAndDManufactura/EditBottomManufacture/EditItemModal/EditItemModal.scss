@@ -1,6 +1,6 @@
 @import '../../../../../../stylesheets/variables';
 
-.DeleteItemModal {
+.EditItemModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,15 +13,15 @@
   align-items: center;
 
   &__img {
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    padding-bottom: 1rem;
-    margin: 2rem 0;
+    &-small {
+      overflow: hidden;
+      display: flex;
+      align-items: center;
 
-    img {
-      width: 20%;
-      margin-right: 2rem;
+      img {
+        width: 30%;
+        margin-bottom: 2rem;
+      }
     }
   }
 
@@ -44,13 +44,11 @@
     border-top: solid 0.1rem $leti-subnav;
 
     .leti-btn {
-      margin-top: 4rem;
+      margin-top: 0;
       padding: 0.8rem 1.6rem;
 
-      &.delete {
-        border-color: $leti-red;
-        color: $leti-white;
-        background: $leti-red;
+      &.small {
+        margin-top: 2rem;
       }
     }
   }
@@ -85,6 +83,14 @@
 
     &:hover {
       border: solid 0.3rem $leti-blue;
+    }
+  }
+
+  .AdminEdit__form {
+    .form-group {
+      .form-control {
+        margin-bottom: 2rem;
+      }
     }
   }
 }
