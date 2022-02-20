@@ -46,7 +46,7 @@ function EditMegat() {
         try {
             await updateMegatData(data)
                 .then(megat => {
-                    setMegatData(megat[0])
+                    setMegatData(megat)
                 })
                 .catch(error => {
                     setRegisterError(error)

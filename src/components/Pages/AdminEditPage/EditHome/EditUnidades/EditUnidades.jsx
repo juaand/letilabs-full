@@ -62,7 +62,6 @@ function EditUnidades() {
     }
 
     const deleteItem = (data) => {
-        console.log(data)
         setUnidadesData(data)
         setBool(!bool)
     }
