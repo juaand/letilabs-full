@@ -47,7 +47,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async (id) => {
-        console.log(id)
+
         try {
             await updateUnidadesData(data, id)
             .then(updateData => {
@@ -125,7 +125,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                                 id="fileButton"
                                                 name="logo"
                                                 type="file"
-                                                placeholder={element?.imgURL}
+                                                placeholder={element?.logo}
                                             />
                                         </div>
                                         <div className="col-12">

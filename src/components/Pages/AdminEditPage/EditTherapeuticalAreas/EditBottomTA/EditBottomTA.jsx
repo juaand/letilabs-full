@@ -4,6 +4,8 @@ import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 
 function EditBottomTA() {
+
+    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
     const [ourPeopleData, setOurPeopleData] = useState()
     const [bool, setBool] = useState(false)
@@ -30,7 +32,7 @@ function EditBottomTA() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourPeopleData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar elementos CTA</h2>

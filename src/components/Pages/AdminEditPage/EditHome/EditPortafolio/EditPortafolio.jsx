@@ -41,7 +41,6 @@ function EditPortafolio() {
 
     const updatePortfolioInfo = async (event) => {
         event.preventDefault()
-        data.id = portfolioData._id
 
         try {
             await updatePortfolioData(data)
@@ -81,7 +80,7 @@ function EditPortafolio() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             <section className="container-fluid Letilabs EditContent EditContent-timeline">
                 <h2>Editar Portfolio</h2>
                 <div className="row justify-content-around">

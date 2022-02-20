@@ -1,13 +1,17 @@
 import './EditElementsModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem} from '../../../../../../services/ApiClient'
+import {deleteCarItem, updateCarrouselTA} from '../../../../../../services/ApiClient'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import {Editor} from '@tinymce/tinymce-react'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import Loader from '../../../../../Loader/Loader'
 
 function EditElementsModal({deleteItem, element, hideModal}) {
+
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [imageSuccess, setImageSuccess] = useState('')
 
     const {state, onChange} = useFormState(
         {
@@ -36,6 +40,8 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     const {data} = state
 
     const [disabled, setDisabled] = useState(true)
+    const [registerError, setRegisterError] = useState(null)
+
 
     const deleteCarrouselItem = async (id) => {
         const updateData = await deleteCarItem(id)
@@ -43,16 +49,22 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async (id) => {
-        console.log('editar contenido')
-        // const updateData = await editCarItem(id)
-        // deleteItem(updateData)
+        console.log(id)
+        try {
+            await updateCarrouselTA(data, id)
+            .then(updateData => {
+                deleteItem(updateData)
+            })
+        } catch (err) {
+            setRegisterError(err.response?.data?.message)
+        }
     }
-
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
         // Get file
         const file = e.target.files[0]
 
@@ -72,9 +84,13 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgPath = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..."/>}
         <div className="EditElementsModal">
             <div className="container">
                 <div className="row justify-content-center">
@@ -91,12 +107,12 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                         </div>
                                         <div className="col-sm-12">
                                             <InputWithLabel
-                                                value={element?.title}
+                                                value={data?.title}
                                                 onChange={onChange}
-                                                name="mainTitle"
+                                                name="title"
                                                 type="text"
                                                 cssStyle="form-control"
-                                                placeholder="Ingresa año"
+                                                placeholder={element?.title}
                                             />
                                         </div>
                                         <div className="col-12">
@@ -108,7 +124,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 value={element?.imgURL}
                                                 onChange={onFileSelected}
                                                 id="fileButton"
-                                                name="picpath"
+                                                name="imgPath"
                                                 type="file"
                                             />
                                         </div>
@@ -144,8 +160,8 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                     </div>
                 </div>
             </div>
-
         </div>
+        </>
     )
 }
 

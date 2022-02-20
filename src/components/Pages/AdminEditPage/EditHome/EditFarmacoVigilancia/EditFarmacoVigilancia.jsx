@@ -42,7 +42,7 @@ function EditFarmacoVigilancia() {
         try {
             await updateFarmacoData(data)
                 .then(farmaco => {
-                    setFarmacoData(farmaco[0])
+                    setFarmacoData(farmaco)
                 })
                 .catch(error => {
                     setRegisterError(error)

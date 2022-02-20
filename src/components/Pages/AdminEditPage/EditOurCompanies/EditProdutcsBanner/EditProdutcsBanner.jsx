@@ -2,12 +2,17 @@ import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {getBannerProductsOC, updateBannerProductsOC} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
 
 function EditProdutcsBanner() {
     const [bannerData, setBannerData] = useState()
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [message, setMessage] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -41,7 +46,7 @@ function EditProdutcsBanner() {
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
-
+    const [disabled, setDisabled] = useState(true)
 
     const updateBanner = async (event) => {
         event.preventDefault()
@@ -50,7 +55,8 @@ function EditProdutcsBanner() {
         try {
             await updateBannerProductsOC(data)
                 .then(banner => {
-                    setBannerData(banner[0])
+                    setBannerData(banner)
+                    setMessage('Cambios realizados con exito')
                 })
                 .catch(error => {
                     setRegisterError(error)
@@ -66,6 +72,30 @@ function EditProdutcsBanner() {
         data.description2 = e.target.getContent()
     }
 
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                //Se habilita el botón para subir el blog
+                setDisabled(!disabled)
+            })
+            .catch(err => {console.log(err)})
+
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.logo = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -126,46 +156,43 @@ function EditProdutcsBanner() {
                         />
                     </div>
                     <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Imagen
-                        </p>
-                        <InputWithLabel
-                            value={data?.imgURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="imgURL"
-                            type="text"
-                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.imgURL}
-                        />
+                    <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.imgURL} alt={bannerData?.imgURL} />
+                            <InputFile
+                                value={bannerData?.imgURL}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="imgURL"
+                                type="file"
+                                placeholder={bannerData?.imgURL}
+                            />
+                        </div>
                     </div>
                     <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Imagen 2
-                        </p>
-                        <InputWithLabel
-                            value={data?.img2URL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="img2URL"
-                            type="text"
-                            cssStyle={`form-control ${touch.img2URL && error.img2URL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.img2URL}
-                        />
+                    <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.img2URL} alt={bannerData?.img2URL} />
+                            <InputFile
+                                value={bannerData?.img2URL}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="imgURL"
+                                type="file"
+                                placeholder={bannerData?.img2URL}
+                            />
+                        </div>
                     </div>
                     <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Imagen 3
-                        </p>
-                        <InputWithLabel
-                            value={data?.img3URL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="img3URL"
-                            type="text"
-                            cssStyle={`form-control ${touch.img3URL && error.img3URL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.img3URL}
-                        />
+                    <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.img3URL} alt={bannerData?.img3URL} />
+                            <InputFile
+                                value={bannerData?.img3URL}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="imgURL"
+                                type="file"
+                                placeholder={bannerData?.img3URL}
+                            />
+                        </div>
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>

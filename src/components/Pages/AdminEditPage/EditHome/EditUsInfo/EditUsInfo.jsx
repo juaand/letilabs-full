@@ -43,7 +43,7 @@ function EditUsInfo() {
         try {
             await updateUsInfoData(data)
                 .then(usInfo => {
-                    setUsInfoData(usInfo[0])
+                    setUsInfoData(usInfo)
                     setMessage('Cambios realizados con exito')
                 })
                 .catch(error => {
