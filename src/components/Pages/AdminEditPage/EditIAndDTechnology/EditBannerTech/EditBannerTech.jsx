@@ -107,7 +107,7 @@ function EditBannerTech() {
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
             <section className="container-fluid EditContent">
-                <h2>Banner I&D</h2>
+                <h2>Banner</h2>
                 <form className="AdminEdit__form" onSubmit={updateBanner}>
                     <div className="row">
                         <div className="col-12 col-sm-6">

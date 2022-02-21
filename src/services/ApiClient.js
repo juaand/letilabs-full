@@ -133,7 +133,7 @@ export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updatei
 export const getBannerTech = () => http.get("/bannertech")
 export const updateBannerTech = ({title, description, imgURL, id}) => http.patch("/updatebannertech", {title, description, imgURL, id})
 export const getVideoTech = () => http.get("/videotech")
-export const updateVideoTech = ({title, videoURL, id}) => http.get("/updatevideodatatech", {title, videoURL, id})
+export const updateVideoTech = ({title, videoURL, id}) => http.patch("/updatevideodatatech", {title, videoURL, id})
 export const getCarouselTech = () => http.get("/carrouseltech")
 export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.get("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
 export const getMapTech = () => http.get("/maptech")
