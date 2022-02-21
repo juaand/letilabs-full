@@ -65,7 +65,7 @@ function EditMapTech() {
     }, [])
 
     return (
-        <section className="container-fluid EditContent">
+        <section className="container-fluid EditContent mt-0">
             <h2>Mapa</h2>
             <form className="AdminEdit__form" onSubmit={updatemap}>
                 <div className="row">
