@@ -44,6 +44,10 @@
   padding: 2rem 20rem 2rem 4rem;
 }
 
+.VerticalCarousel .outer-container .content p p {
+  padding: 0;
+}
+
 .VerticalCarousel .carousel-item {
   font-weight: 700;
   font-size: 2rem;

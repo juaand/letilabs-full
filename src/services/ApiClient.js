@@ -135,6 +135,7 @@ export const updateBannerTech = ({title, description, imgURL, id}) => http.patch
 export const getVideoTech = () => http.get("/videotech")
 export const updateVideoTech = ({title, videoURL, id}) => http.patch("/updatevideodatatech", {title, videoURL, id})
 export const getCarouselTech = () => http.get("/carrouseltech")
+export const updateCarouselTitleTech = ({mainTitle}) => http.post("/updatetechcarrouseltit", {mainTitle})
 export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.patch("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
 export const deleteCarouselTech = (id) => http.get(`/carrouseltech/${id}/delete`)
 export const getMapTech = () => http.get("/maptech")

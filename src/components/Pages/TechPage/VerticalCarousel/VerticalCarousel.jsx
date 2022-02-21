@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from "react"
-import cn from "classnames"
-import {ReactComponent as Next} from "../../../../images/next-arrow.svg"
-import {ReactComponent as Prev} from "../../../../images/prev-arrow.svg"
-import "./VerticalCarousel.css"
 import {Fade} from "react-awesome-reveal"
 import Slider from 'react-slick'
+import cn from "classnames"
+
+import {ReactComponent as Next} from "../../../../images/next-arrow.svg"
+import {ReactComponent as Prev} from "../../../../images/prev-arrow.svg"
 import {getCarouselTech} from "../../../../services/ApiClient"
 import Loader from "../../../Loader/Loader"
+import "./VerticalCarousel.css"
 
 const VerticalCarousel = () => {
 
@@ -104,7 +105,7 @@ const VerticalCarousel = () => {
                     <section className="outer-container container-fluid">
                         <div className="row">
                             <div className="col-8 offset-4">
-                                <h1>Secciones relevantes</h1>
+                                <h1>{areasTeraData[0]?.mainTitle}</h1>
                             </div>
                             <div className="carousel-wrapper col-4">
                                 <button
@@ -151,7 +152,7 @@ const VerticalCarousel = () => {
                                 <div className="content-img" style={{
                                     background: `url(${areasTeraData[activeIndex]?.imgURL}) no-repeat center center / cover`
                                 }} />
-                                <p>{areasTeraData[activeIndex]?.description}</p>
+                                <p dangerouslySetInnerHTML={{__html: areasTeraData[activeIndex]?.description}} />
                             </div>
                         </div>
                     </section>
