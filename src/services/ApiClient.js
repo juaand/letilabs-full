@@ -78,11 +78,12 @@ export const updateBottomOC = ({title, url, button, img}, id) => http.patch("/up
 export const getBannerOCLeti = () => http.get("/bannerdataocleti")
 export const updateBannerDataOCLeti = ({description, imgURL, id}) => http.patch("/updatebannerdataocleti", {description, imgURL, id})
 export const getOurCompaniesInfoCardsLeti = () => http.get("/ourcompaniesinfocardsleti")
-export const updateOurCompaniesInfoCardsLeti = ({title, info, id}) => http.get("/updateourcompaniesinfocardsleti", {title, info, id})
+export const updateOurCompaniesInfoCardsLeti = ({title, info}, id) => http.patch("/updateourcompaniesinfocardsleti", {title, info, id})
 export const getTimeLineLeti = () => http.get("/octimelineleti")
-export const addTimeLineLetiData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelineleti", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const addTimeLineLetiData = ({desc, url, imgURL, button}) => http.post("/addoctimelineleti", {desc, url, imgURL, button})
+export const updateTimeLineLetiData = ({desc, url, imgURL, button}, id) => http.patch("/updateoctimelineleti", {desc, url, imgURL, button, id})
 export const getEquipoLetiOC = () => http.get("/ocequipoleti")
-export const updateEquipoLetiOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipoleti", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const updateEquipoLetiOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateocequipoleti", {description, person, imgURL, buttonTitle, buttonLink, id})
 
 //admin edit routes our companies Biocontrolled
 
@@ -106,9 +107,10 @@ export const updateOurCompaniesVideoGenven = ({videoURL, id}) => http.get("/upda
 export const getTimeLineGenven = () => http.get("/octimelinegenven")
 export const addTimeLineGenvenData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelinegenven", {description, person, imgURL, buttonTitle, buttonLink, id})
 export const getProductosGenvenOC = () => http.get("/ocproductosgenven")
-export const updateProductosGenvenOC = ({info, id}) => http.get("/addocproductosgenven", {info, id})
+export const updateProductosGenvenOC = ({description, buttonTitle, buttonLink, img1URL, img2URL, img3URL, id}) => http.patch("/updateocproductosgenven", {description, buttonTitle, buttonLink, img1URL, img2URL, img3URL, id})
+export const addProductosGenvenOC = ({description, buttonTitle, buttonLink, img1URL, img2URL, img3URL}) => http.post("/addocproductosgenven", {description, buttonTitle, buttonLink, img1URL, img2URL, img3URL})
 export const getEquipoGenvenOC = () => http.get("/ocequipogenven")
-export const updateEquipoGenvenOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/updateocequipogenven", {description, person, imgURL, buttonTitle, buttonLink, id})
+export const updateEquipoGenvenOC = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateocequipogenven", {description, person, imgURL, buttonTitle, buttonLink, id})
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
