@@ -120,7 +120,7 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 
 //admin I+D routes
 export const getBannerID = () => http.get("/bannerdataid")
-export const updateBannerID = ({title, description, imgURL, id}) => http.get("/updatebannerdataid", {title, description, imgURL, id})
+export const updateBannerID = ({title, description, imgURL, id}) => http.patch("/updatebannerdataid", {title, description, imgURL, id})
 export const getInfoCardsIdData = () => http.get("/idinfocards")
 export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.get("/updateidinfocards", {title, picPath, info, btn, id})
 export const getGoalsIdData = () => http.get("/idgoals")
@@ -149,6 +149,7 @@ export const updateBannerManufacture = ({title, description, imgURL, id}) => htt
 export const updateTitleProccess = ({title}) => http.post("/updatetitleproccess", {title})
 export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
 export const updateCarouselManufacture = ({title, info, id}) => http.patch("/updatecarrouselmanufacture", {title, info, id})
+export const createProccess = ({title, info}) => http.post("/createproccess", {title, info})
 export const deleteProccess = (id) => http.get(`/deleteproccess/${id}`)
 export const deleteCertificate = (id) => http.get(`/deletecertificate/${id}`)
 export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")
