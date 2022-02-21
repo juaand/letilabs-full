@@ -108,6 +108,7 @@ function EditCarrouselTech() {
                         </form>
                     <h2>Editar Carousel</h2>
                     <div className="row justify-content-around">
+                    <h3 className="mb-5">Editar elementos del carrusel</h3>
                         {ourGoalsOCData?.map(el =>
                             <div className="col EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <img src={el?.imgURL} alt={el?.name}  />

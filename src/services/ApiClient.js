@@ -139,7 +139,7 @@ export const updateCarouselTitleTech = ({mainTitle}) => http.post("/updatetechca
 export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.patch("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
 export const deleteCarouselTech = (id) => http.get(`/carrouseltech/${id}/delete`)
 export const getMapTech = () => http.get("/maptech")
-export const updateMapTech = ({description, mapURL, id}) => http.get("/updatemapdatatech", {description, mapURL, id})
+export const updateMapTech = ({description, mapURL, id}) => http.patch("/updatemapdatatech", {description, mapURL, id})
 export const getBottomTech = () => http.get("/bottomtech")
 export const updateBottomTechData = ({title, img, url, btn, id}) => http.get("/updatebottomtech", {title, img, url, btn, id})
 

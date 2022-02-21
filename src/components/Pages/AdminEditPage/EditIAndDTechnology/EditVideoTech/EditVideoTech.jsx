@@ -148,7 +148,7 @@ function EditVideoTech() {
                     </div>
                     <div className="col-6">
                         <div className="container-fluid EditContent EditVideo">
-                            <h2>Vídeo</h2>
+                            <h2>Video</h2>
                             {videoMessage ? <p className="is-message">{videoMessage}</p> :
                                 <div className="row">
                                     <div className="col-12">

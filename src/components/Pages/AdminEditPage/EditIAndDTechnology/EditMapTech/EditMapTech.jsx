@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+
 import {getMapTech, updateMapTech} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 
 function EditMapTech() {
 
-    const [mapData, setMapData] = useState()
+    const [mapData, setMapData] = useState([])
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -16,8 +18,8 @@ function EditMapTech() {
                 description: mapData?.description,
             },
             error: {
-                mapURL: false,
-                description: false,
+                mapURL: true,
+                description: true,
             },
             touch: {},
         },
@@ -27,8 +29,6 @@ function EditMapTech() {
         }
     )
 
-
-
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
@@ -37,16 +37,21 @@ function EditMapTech() {
         event.preventDefault()
         data.id = mapData._id
 
-        try {
-            await updateMapTech(data)
-                .then(map => {
-                    setMapData(map[0])
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateMapTech(data)
+                    .then(map => {
+                        setMapData(map)
+                        setMessage('Data atualizada exitosamente.')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos.')
         }
     }
 
@@ -61,7 +66,7 @@ function EditMapTech() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>map I&D</h2>
+            <h2>Mapa</h2>
             <form className="AdminEdit__form" onSubmit={updatemap}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -93,7 +98,8 @@ function EditMapTech() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - map</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
