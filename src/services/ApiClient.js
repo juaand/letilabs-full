@@ -131,15 +131,17 @@ export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updatei
 
 //admin I+D tech routes
 export const getBannerTech = () => http.get("/bannertech")
-export const updateBannerTech = ({title, description, imgURL, id}) => http.get("/updatebannerdatatech", {title, description, imgURL, id})
+export const updateBannerTech = ({title, description, imgURL, id}) => http.patch("/updatebannertech", {title, description, imgURL, id})
 export const getVideoTech = () => http.get("/videotech")
-export const updateVideoTech = ({title, videoURL, id}) => http.get("/updatevideodatatech", {title, videoURL, id})
+export const updateVideoTech = ({title, videoURL, id}) => http.patch("/updatevideodatatech", {title, videoURL, id})
 export const getCarouselTech = () => http.get("/carrouseltech")
-export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.get("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
+export const updateCarouselTitleTech = ({mainTitle}) => http.post("/updatetechcarrouseltit", {mainTitle})
+export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.patch("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
+export const deleteCarouselTech = (id) => http.get(`/carrouseltech/${id}/delete`)
 export const getMapTech = () => http.get("/maptech")
-export const updateMapTech = ({description, mapURL, id}) => http.get("/updatemapdatatech", {description, mapURL, id})
+export const updateMapTech = ({description, mapURL, id}) => http.patch("/updatemapdatatech", {description, mapURL, id})
 export const getBottomTech = () => http.get("/bottomtech")
-export const updateBottomTechData = ({title, img, url, btn, id}) => http.get("/updatebottomtech", {title, img, url, btn, id})
+export const updateBottomTechData = ({title, img, buttonLink, buttonTitle, id}) => http.patch("/updatebottomtech", {title, img, buttonLink, buttonTitle, id})
 
 //admin I+D manufacture routes
 export const getBannerManufacture = () => http.get("/bannermanufacture")

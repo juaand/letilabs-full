@@ -51,7 +51,6 @@ function EditProductBottom() {
     )
 
 
-
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
@@ -66,7 +65,6 @@ function EditProductBottom() {
                     .then(banner => {
                         setBannerData(banner)
                         setTitleMessage('Título atualizado exitosamente')
-                        console.log(banner)
                     })
                     .catch(error => {
                         setRegisterError(error)

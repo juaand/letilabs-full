@@ -128,7 +128,7 @@ function EditBannerTA() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.imgURL} alt={bannerData?.imgURL} />
+                            <img src={bannerData?.imgURL} alt={bannerData?.title} />
                             <InputFile
                                 value={bannerData?.imgURL}
                                 onChange={onFileSelected}
@@ -139,7 +139,7 @@ function EditBannerTA() {
                             />
                         </div>
                         <p className="AdminEdit__form__label">
-                            title
+                            Título
                         </p>
                         <InputWithLabel
                             value={data?.title}

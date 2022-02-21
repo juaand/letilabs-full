@@ -10,8 +10,8 @@ function EditIAndDTechnology() {
         <div>
             <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo Tecnologia</h2>
             <EditBannerTech />
-            <EditCarrouselTech />
             <EditVideoTech />
+            <EditCarrouselTech />
             <EditMapTech />
             <EditBottomTech />
         </div>
