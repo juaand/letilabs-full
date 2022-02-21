@@ -38,7 +38,6 @@ function EditBannerTech() {
     )
 
 
-
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
@@ -52,6 +51,7 @@ function EditBannerTech() {
                 await updateBannerTech(data)
                     .then(banner => {
                         setBannerData(banner[0])
+                        setMessage('Data atualizada exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)
