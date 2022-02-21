@@ -18,8 +18,7 @@ function EditCarrouselTech() {
     }
 
     const hideModal = (data) => {
-        console.log(data)
-        // ourGoalsOCData(data)
+        setOurGoalsOCData(data)
         setBool(!bool)
     }
 
