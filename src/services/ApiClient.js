@@ -141,7 +141,7 @@ export const deleteCarouselTech = (id) => http.get(`/carrouseltech/${id}/delete`
 export const getMapTech = () => http.get("/maptech")
 export const updateMapTech = ({description, mapURL, id}) => http.patch("/updatemapdatatech", {description, mapURL, id})
 export const getBottomTech = () => http.get("/bottomtech")
-export const updateBottomTechData = ({title, img, url, btn, id}) => http.get("/updatebottomtech", {title, img, url, btn, id})
+export const updateBottomTechData = ({title, img, buttonLink, buttonTitle, id}) => http.patch("/updatebottomtech", {title, img, buttonLink, buttonTitle, id})
 
 //admin I+D manufacture routes
 export const getBannerManufacture = () => http.get("/bannermanufacture")
