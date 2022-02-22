@@ -129,7 +129,7 @@ export const updateGoalsTitle = ({title}) => http.post("/updateidgoalstitle", {t
 export const deleteIDGoals = (id) => http.get(`/deleteidgoals/${id}`)
 export const createIDGoal = ({title, name, desc}) => http.post("/createidgoal", {title, name, desc})
 export const getBottomIdData = () => http.get("/idbottom")
-export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updateidbottom", {title, img, url, btn, id})
+export const updateBottomId = ({title, img, url, btn, id}) => http.patch("/updateidbottom", {title, img, url, btn, id})
 
 
 //admin I+D tech routes
