@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent, getProductBottom} from '../../../services/ApiClient'
+import {createContent, getProductBottom, getFarmaco} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
 import Banner from './Banner/Banner'
 import FindProduct from './FindProduct/FindProduct'
@@ -17,6 +17,7 @@ function ProductsPage() {
     }
 
     const [bottomData, setBottomData] = useState()
+    const [farmacoData, setFarmacoData] = useState()
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -47,6 +48,8 @@ function ProductsPage() {
         const fetchData = async () => {
             const getBottomData = await getProductBottom()
             setBottomData(getBottomData[0])
+            const getFarmacoData = await getFarmaco()
+            setFarmacoData(getFarmacoData)
         }
         fetchData()
         setLoading(!loading)
@@ -67,7 +70,7 @@ function ProductsPage() {
                 <Banner />
                 <FindProduct info={bottomData} />
                 <Bottom info={bottomData} />
-                <FarmacoVigilancia info={bottomData} />
+                <FarmacoVigilancia info={farmacoData} />
             </main>
         </>
     )
