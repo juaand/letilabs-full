@@ -112,7 +112,7 @@ function EditTimelineLeti() {
 
     return (
         <>
-        
+
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
@@ -120,7 +120,7 @@ function EditTimelineLeti() {
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
+                                <img className="EditCarousel__img" src={el?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
                                 <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
@@ -176,22 +176,22 @@ function EditTimelineLeti() {
                                 Descripción
                             </p>
                             <Editor
-                            initialValue={data?.desc}
-                            onChange={handleBannerDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
+                                initialValue={data?.desc}
+                                onChange={handleBannerDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            />
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo timeline</Button>

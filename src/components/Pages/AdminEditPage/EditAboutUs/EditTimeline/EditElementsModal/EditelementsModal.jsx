@@ -51,9 +51,9 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         console.log(id)
         try {
             await updateTimelineAboutUs(data, id)
-            .then(updateData => {
-                deleteItem(updateData)
-            })
+                .then(updateData => {
+                    deleteItem(updateData)
+                })
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
@@ -91,78 +91,78 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     return (
         <>
-                {isDisabled && <Loader message="Cargando imagen..."/>}
-        <div className="DeleteItemModal">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-11 col-sm-5 DeleteItemModal__container">
-                        <span className="DeleteItemModal__close" onClick={hideModal}></span>
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <div className="DeleteItemModal">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-11 col-sm-5 DeleteItemModal__container">
+                            <span className="DeleteItemModal__close" onClick={hideModal}></span>
 
-                        <div className="col-sm-12">
-                            <p className="DeleteItemModal__ask">Editar elemento {element.year}</p>
-                            <div className="card">
-                                <div className="card-body DeleteItemModal__body">
-                                    <div className="row align-items-center">
-                                        <div className="col-sm-12">
-                                            <p className="DeleteItemModal__text"><strong>Editar año</strong></p>
+                            <div className="col-sm-12">
+                                <p className="DeleteItemModal__ask">Editar elemento {element.year}</p>
+                                <div className="card">
+                                    <div className="card-body DeleteItemModal__body">
+                                        <div className="row align-items-center">
+                                            <div className="col-sm-12">
+                                                <p className="DeleteItemModal__text"><strong>Editar año</strong></p>
+                                            </div>
+                                            <div className="col-sm-12">
+                                                <InputWithLabel
+                                                    onChange={onChange}
+                                                    name="year"
+                                                    type="text"
+                                                    cssStyle="form-control"
+                                                    placeholder="Ingresa año"
+                                                />
+                                            </div>
+                                            <div className="col-12">
+                                                <p className="DeleteItemModal__text"><strong>Editar imagen</strong></p>
+                                            </div>
+                                            <div className="col-12 DeleteItemModal__img">
+                                                <img src={element.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={element.imgURL} />
+                                                <InputFile
+                                                    value={data?.imgURL}
+                                                    onChange={onFileSelected}
+                                                    id="fileButton"
+                                                    name="imgURL"
+                                                    type="file"
+                                                    placeholder={element?.imgURL}
+                                                />
+                                            </div>
+                                            <div className="col-12">
+                                                <p className="DeleteItemModal__text"><strong>Editar descripción</strong></p>
+                                                <Editor
+                                                    initialValue={data?.desc}
+                                                    onChange={handleBannerDescription}
+                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                    init={{
+                                                        height: 200,
+                                                        menubar: false,
+                                                        plugins: [
+                                                            'advlist autolink lists link image',
+                                                            'charmap print preview anchor help',
+                                                            'searchreplace visualblocks code',
+                                                            'insertdatetime media table paste wordcount'
+                                                        ],
+                                                        toolbar:
+                                                            'bold',
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="col-12 col-sm-6">
+                                                <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
+                                            </div>
+                                            <div className="col-12 col-sm-6">
+                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
                                         </div>
-                                        <div className="col-sm-12">
-                                            <InputWithLabel
-                                                onChange={onChange}
-                                                name="year"
-                                                type="text"
-                                                cssStyle="form-control"
-                                                placeholder="Ingresa año"
-                                            />
-                                        </div>
-                                        <div className="col-12">
-                                            <p className="DeleteItemModal__text"><strong>Editar imagen</strong></p>
-                                        </div>
-                                        <div className="col-12 DeleteItemModal__img">
-                                            <img src={element.imgURL} alt={element.imgURL} />
-                                            <InputFile
-                                                value={data?.imgURL}
-                                                onChange={onFileSelected}
-                                                id="fileButton"
-                                                name="imgURL"
-                                                type="file"
-                                                placeholder={element?.imgURL}
-                                            />
-                                        </div>
-                                        <div className="col-12">
-                                            <p className="DeleteItemModal__text"><strong>Editar descripción</strong></p>
-                                            <Editor
-                                                initialValue={data?.desc}
-                                                onChange={handleBannerDescription}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="col-12 col-sm-6">
-                                            <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
-                                        </div>
-                                        <div className="col-12 col-sm-6">
-                                            <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </>
     )
 }

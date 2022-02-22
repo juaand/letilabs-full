@@ -18,7 +18,7 @@ function EditCertificatesManufacture() {
     const [infoMessage, setInfoMessage] = useState('')
     const [disabled, setDisabled] = useState(true)
     const [message, setMessage] = useState('')
-    
+
 
     const {state, onChange} = useFormState(
         {
@@ -192,7 +192,7 @@ function EditCertificatesManufacture() {
                     <div className="row justify-content-around">
                         {certificatesManufactureData?.map(el =>
                             <div className="col-3 EditUnidades__trash" onClick={() => deleteItem(el._id)}>
-                                <img className="EditCarousel__img" src={el.imgURL} alt={el.title} />
+                                <img className="EditCarousel__img" src={el.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el.title} />
                             </div>
                         )}
                     </div>

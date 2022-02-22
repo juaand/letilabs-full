@@ -81,7 +81,7 @@ function EditTimelineGenven() {
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el?.imgURL} alt={el?.imgURL} />
+                                <img className="EditCarousel__img" src={el?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
                                 <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}

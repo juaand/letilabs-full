@@ -27,7 +27,7 @@ function Banner() {
                     <div className="row">
                         <div className="col-12 col-sm-7 Banner__Biocontrolled__title">
                             <Fade duration={600} triggerOnce>
-                                <img className="Banner__Biocontrolled-logo" src={bannerData?.logoURL} alt="Biocontrolled logo" />
+                                <img className="Banner__Biocontrolled-logo" src={bannerData?.logoURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="Biocontrolled logo" />
                             </Fade>
                             <Fade duration={600} direction="left" triggerOnce>
                                 <h3 dangerouslySetInnerHTML={{__html: bannerData?.description}} />

@@ -10,7 +10,7 @@ function LetiNews({newsData, title}) {
             <div className="row">
                 <div className="col-12 col-sm-5 offset-sm-2 NewsPage__leti-resume">
                     <div className="container">
-                        <img className="NewsPage__leti__logo" src="./images/grupo-leti.svg" alt="leti" />
+                        <img className="NewsPage__leti__logo" src="./images/grupo-leti.svg" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="leti" />
                     </div>
                     <Fade cascade direction="right" triggerOnce className="card NewsPage__card col-12">
                         {newsData?.filter(el => el?.tag[0] === 'Grupo Leti').slice(0, 2).map(el =>
@@ -35,7 +35,7 @@ function LetiNews({newsData, title}) {
                 </div>
                 <div className="col-12 col-sm-5 NewsPage__leti-hero">
                     <Fade cascade delay={300} direction="up" triggerOnce className="card NewsPage__leti__card col-12">
-                        <img src={title?.picPath} className="card-img-top" alt="Noticias destacadas Grupo Leti" />
+                        <img src={title?.picPath} className="card-img-top" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="Noticias destacadas Grupo Leti" />
                     </Fade>
                 </div>
             </div>

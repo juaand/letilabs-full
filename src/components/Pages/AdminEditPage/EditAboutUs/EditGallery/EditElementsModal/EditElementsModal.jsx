@@ -54,9 +54,9 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         console.log(id)
         try {
             await updateGalleryData(data, id)
-            .then(updateData => {
-                deleteItem(updateData)
-            })
+                .then(updateData => {
+                    deleteItem(updateData)
+                })
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
@@ -93,78 +93,78 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     return (
         <>
-        {isDisabled && <Loader message="Cargando imagen..."/>}
-        <div className="EditElementsModal">
-            <div className="container">
-                <div className="row justify-content-center">
-                    <div className="col-11 col-sm-5 EditElementsModal__container">
-                        <span className="EditElementsModal__close" onClick={hideModal}></span>
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <div className="EditElementsModal">
+                <div className="container">
+                    <div className="row justify-content-center">
+                        <div className="col-11 col-sm-5 EditElementsModal__container">
+                            <span className="EditElementsModal__close" onClick={hideModal}></span>
 
-                        <div className="col-sm-12">
-                            <p className="EditElementsModal__ask">Editar elemento {element.title}</p>
-                            <div className="card">
-                                <div className="card-body EditElementsModal__body">
-                                    <div className="row align-items-center">
-                                        <div className="col-sm-12">
-                                            <p className="EditElementsModal__text"><strong>Editar título</strong></p>
+                            <div className="col-sm-12">
+                                <p className="EditElementsModal__ask">Editar elemento {element.title}</p>
+                                <div className="card">
+                                    <div className="card-body EditElementsModal__body">
+                                        <div className="row align-items-center">
+                                            <div className="col-sm-12">
+                                                <p className="EditElementsModal__text"><strong>Editar título</strong></p>
+                                            </div>
+                                            <div className="col-sm-12">
+                                                <InputWithLabel
+                                                    value={data?.title}
+                                                    onChange={onChange}
+                                                    name="title"
+                                                    type="text"
+                                                    cssStyle="form-control"
+                                                    placeholder={element?.title}
+                                                />
+                                            </div>
+                                            <div className="col-12">
+                                                <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
+                                            </div>
+                                            <div className="col-12 EditElementsModal__img">
+                                                <img src={element.imgPath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={element.imgPath} />
+                                                <InputFile
+                                                    value={element?.imgPath}
+                                                    onChange={onFileSelected}
+                                                    id="fileButton"
+                                                    name="picpath"
+                                                    type="file"
+                                                />
+                                            </div>
+                                            <div className="col-12">
+                                                <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
+                                                <Editor
+                                                    initialValue={data?.desc}
+                                                    onChange={handleBannerDescription}
+                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                    init={{
+                                                        height: 200,
+                                                        menubar: false,
+                                                        plugins: [
+                                                            'advlist autolink lists link image',
+                                                            'charmap print preview anchor help',
+                                                            'searchreplace visualblocks code',
+                                                            'insertdatetime media table paste wordcount'
+                                                        ],
+                                                        toolbar:
+                                                            'bold',
+                                                    }}
+                                                />
+                                            </div>
+                                            <div className="col-12 col-sm-6">
+                                                <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
+                                            </div>
+                                            <div className="col-12 col-sm-6">
+                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
                                         </div>
-                                        <div className="col-sm-12">
-                                            <InputWithLabel
-                                                value={data?.title}
-                                                onChange={onChange}
-                                                name="title"
-                                                type="text"
-                                                cssStyle="form-control"
-                                                placeholder={element?.title}
-                                            />
-                                        </div>
-                                        <div className="col-12">
-                                            <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
-                                        </div>
-                                        <div className="col-12 EditElementsModal__img">
-                                            <img src={element.imgPath} alt={element.imgPath} />
-                                            <InputFile
-                                                value={element?.imgPath}
-                                                onChange={onFileSelected}
-                                                id="fileButton"
-                                                name="picpath"
-                                                type="file"
-                                            />
-                                        </div>
-                                        <div className="col-12">
-                                            <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
-                                            <Editor
-                                                initialValue={data?.desc}
-                                                onChange={handleBannerDescription}
-                                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                init={{
-                                                    height: 200,
-                                                    menubar: false,
-                                                    plugins: [
-                                                        'advlist autolink lists link image',
-                                                        'charmap print preview anchor help',
-                                                        'searchreplace visualblocks code',
-                                                        'insertdatetime media table paste wordcount'
-                                                    ],
-                                                    toolbar:
-                                                        'bold',
-                                                }}
-                                            />
-                                        </div>
-                                        <div className="col-12 col-sm-6">
-                                            <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
-                                        </div>
-                                        <div className="col-12 col-sm-6">
-                                            <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
+            </div>
         </>
     )
 }

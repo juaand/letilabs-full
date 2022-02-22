@@ -103,14 +103,14 @@ function EditInfoCardsOurPhilosophy() {
     return (
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
-            {bool && <EditItemModal hideModal={(data) => hideModal(data)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)}/>}
+            {bool && <EditItemModal hideModal={(data) => hideModal(data)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {ourOCData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar pilares</h2>
                     <div className="row justify-content-around">
                         {ourOCData?.map(el =>
                             <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img src={el?.picPath} alt={el?.title} />
+                                <img src={el?.picPath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.title} />
                                 <p>{el?.title}</p>
                             </div>
                         )}

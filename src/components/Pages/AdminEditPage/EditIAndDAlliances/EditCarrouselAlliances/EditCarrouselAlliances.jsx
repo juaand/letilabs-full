@@ -182,7 +182,7 @@ function EditCarrouselAlliances() {
                     <div className="row justify-content-around">
                         {logoAlliData?.map(el =>
                             <div className="col-1 EditUnidades__trash" onClick={() => deleteItem(el._id)}>
-                                <img className="EditCarousel__img" src={el?.picPath} alt="logo de aliado de grupo leti" />
+                                <img className="EditCarousel__img" src={el?.picPath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="logo de aliado de grupo leti" />
                             </div>
                         )}
                     </div>

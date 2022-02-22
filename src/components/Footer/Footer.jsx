@@ -48,10 +48,16 @@ function Footer() {
                                 {user && user.role === 'Admin' &&
                                     <>
                                         <li>
+                                            <NavLink activeClassName="active" className="nav-link" to="/admin-editar-contenido">Editar contenido</NavLink>
+                                        </li>
+                                        <li>
                                             <NavLink activeClassName="active" className="nav-link" to="/admin-farmacovigilancia">Farmaco vigilancia</NavLink>
                                         </li>
                                         <li>
-                                            <NavLink activeClassName="active" className="nav-link" to="/admin-editar-contenido">Editar contenido</NavLink>
+                                            <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-productos">Productos</NavLink>
+                                        </li>
+                                        <li>
+                                            <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-noticias">Noticias</NavLink>
                                         </li>
                                     </>
                                 }
@@ -67,7 +73,7 @@ function Footer() {
             </footer>
             <section className="container-fluid">
                 <div className="row">
-                    <div className="col-12 Footer__copy"> Copyright {new Date().getFullYear()} © by Grupo Leti</div>
+                    <div className="col-12 Footer__copy" translate="no"> Todos los derechos reservados {new Date().getFullYear()} © Grupo Leti</div>
                 </div>
             </section>
         </>

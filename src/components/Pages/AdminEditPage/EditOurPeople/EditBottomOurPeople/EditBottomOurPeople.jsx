@@ -37,7 +37,7 @@ function EditBottomOurPeople() {
                     <div className="row justify-content-around">
                         {ourPeopleData?.map(el =>
                             <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el.img} alt={el.img} />
+                                <img className="EditCarousel__img" src={el.img} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el.img} />
                                 <h4 className="EditContent__boldtitle">{el.title}</h4>
                             </div>
                         )}

@@ -156,8 +156,8 @@ function EditProdutcsBanner() {
                         />
                     </div>
                     <div className="col-12 col-sm-6">
-                    <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.imgURL} alt={bannerData?.imgURL} />
+                        <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
                             <InputFile
                                 value={bannerData?.imgURL}
                                 onChange={onFileSelected}
@@ -169,8 +169,8 @@ function EditProdutcsBanner() {
                         </div>
                     </div>
                     <div className="col-12 col-sm-6">
-                    <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.img2URL} alt={bannerData?.img2URL} />
+                        <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.img2URL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img2URL} />
                             <InputFile
                                 value={bannerData?.img2URL}
                                 onChange={onFileSelected}
@@ -182,8 +182,8 @@ function EditProdutcsBanner() {
                         </div>
                     </div>
                     <div className="col-12 col-sm-6">
-                    <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.img3URL} alt={bannerData?.img3URL} />
+                        <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.img3URL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img3URL} />
                             <InputFile
                                 value={bannerData?.img3URL}
                                 onChange={onFileSelected}

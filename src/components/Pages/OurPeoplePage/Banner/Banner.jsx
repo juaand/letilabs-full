@@ -33,7 +33,7 @@ function Banner() {
                         </div>
                         <div className="col-12 col-sm-6 Banner__OurPeople__bg">
                             <Fade delay={1000} duration={600} triggerOnce>
-                                <img src={data?.imgURL} alt="Grupo Leti Nuestra gente" />
+                                <img src={data?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="Grupo Leti Nuestra gente" />
                             </Fade>
                         </div>
                     </div>

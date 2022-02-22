@@ -104,7 +104,7 @@ function FindNews({title}) {
                         <Fade cascade direction="up" triggerOnce className="card NewsPage__card col-12 col-sm-5">
                             {getSearch.map(el =>
                                 <>
-                                    <img src={el?.urlToPic} className="card-img-top" alt={el?.title} />
+                                    <img src={el?.urlToPic} className="card-img-top" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.title} />
                                     <div className="card-body">
                                         <span className="card-time">{drawTime(el?.publishDate)}</span>
                                         {el.tag.map(el => <small className="FindNews__tag">{el}</small>)}

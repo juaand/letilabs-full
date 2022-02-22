@@ -181,7 +181,7 @@ function EditCarrouselTech() {
                         <h3 className="mb-5">Editar elementos del carrusel</h3>
                         {ourGoalsOCData?.map(el =>
                             <div className="col EditCarousel__edit logros" onClick={() => showModal(el)}>
-                                <img src={el?.imgURL} alt={el?.name} />
+                                <img src={el?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} />
                                 <h4 className="mt-5">{el?.title}</h4>
                             </div>
                         )}

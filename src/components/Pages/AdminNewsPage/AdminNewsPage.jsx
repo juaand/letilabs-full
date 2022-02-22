@@ -331,7 +331,7 @@ function AdminNewsPage() {
                                     <div className="col-sm-4 col-12">
                                         <div className="card AdminNewsPage__card">
                                             <div className="card-body card-body-img">
-                                                <img src={el?.urlToPic} className="AdminNewsPage__img-top" alt={el?.title} />
+                                                <img src={el?.urlToPic} className="AdminNewsPage__img-top" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.title} />
                                                 <p className="AdminNewsPage__img-title" dangerouslySetInnerHTML={{__html: el?.title}} />
                                                 <div className="AdminNewsPage__img-alltags">
                                                     {el?.tag.map(tag => <span className="AdminNewsPage__img-tag" dangerouslySetInnerHTML={{__html: tag}} />)}

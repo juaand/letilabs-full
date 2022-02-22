@@ -28,7 +28,7 @@ function Letter() {
                         <Fade triggerOnce cascade direction="up">
                             <h1 className="Letter__title" dangerouslySetInnerHTML={{__html: data?.mainTitle}} />
                             <p dangerouslySetInnerHTML={{__html: data?.body}} />
-                            <img className="Letter__img" src={data?.imgURL} alt="Firma" />
+                            <img className="Letter__img" src={data?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="Firma" />
                         </Fade>
                     </div>
                 </div>

@@ -436,8 +436,8 @@ function AdminProductPage() {
                                     <div className="col-sm-4 col-12">
                                         <div className="card AdminProductPage__card">
                                             <div className="card-body">
-                                                <img src={el?.picPath} className="AdminProductPage__img-top" alt={el?.name} />
-                                                <img src={el?.QRpath} className="AdminProductPage__img-bottom" alt={el?.name} />
+                                                <img src={el?.picPath} className="AdminProductPage__img-top" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} />
+                                                <img src={el?.QRpath} className="AdminProductPage__img-bottom" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} />
                                             </div>
                                             <div className="card-body">
                                                 <h5 dangerouslySetInnerHTML={{__html: el?.line}}>
