@@ -17,11 +17,11 @@ function FarmacoVigilancia({info}) {
                 <section className="container FarmacoVigilancia__form">
                     <div className="row justify-content-center">
                         <div className="col-11 col-sm-6 FarmacoVigilancia__texto">
-                            <strong>{info?.farmacoTitle}</strong>
-                            <p dangerouslySetInnerHTML={{__html: info?.farmacoDesc}} />
+                            <strong>{info?.title}</strong>
+                            <p dangerouslySetInnerHTML={{__html: info?.subTitle}} />
                         </div>
                         <div className="col-11 col-sm-6 d-flex align-items-center">
-                            <div className="leti-btn" onClick={showModal}>{info?.farmacoBtn}</div>
+                            <div className="leti-btn" onClick={showModal}>{info?.buttonTitle}</div>
                         </div>
                     </div>
                 </section>

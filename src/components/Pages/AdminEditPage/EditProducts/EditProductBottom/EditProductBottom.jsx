@@ -24,18 +24,12 @@ function EditProductBottom() {
                 imgURL: bannerData?.imgURL,
                 title: bannerData?.title,
                 buttonTitle: bannerData?.buttonTitle,
-                farmacoTitle: '',
-                farmacoBtn: bannerData?.farmacoBtn,
-                farmacoDesc: bannerData?.farmacoDesc,
             },
             error: {
                 findProductsTitle: true,
                 imgURL: true,
                 title: true,
                 buttonTitle: true,
-                farmacoTitle: true,
-                farmacoBtn: true,
-                farmacoDesc: true,
             },
             touch: {},
         },
@@ -44,9 +38,6 @@ function EditProductBottom() {
             imgURL: v => v.length,
             title: v => v.length,
             buttonTitle: v => v.length,
-            farmacoTitle: v => v.length,
-            farmacoBtn: v => v.length,
-            farmacoDesc: v => v.length,
         }
     )
 
@@ -103,11 +94,6 @@ function EditProductBottom() {
     const handleBannerfindProductsTitle = (e) => {
         data.title = e.target.getContent()
         error.title = false
-    }
-
-    const handleProductsFarmacoDesc = (e) => {
-        data.farmacoDesc = e.target.getContent()
-        error.farmacoDesc = false
     }
 
     const handleProductsListTitle = (e) => {
@@ -237,61 +223,6 @@ function EditProductBottom() {
                                 type="text"
                                 cssStyle={`form-control mb-0 ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                                 placeholder={bannerData?.buttonTitle}
-                            />
-                        </div>
-
-                        <div className="col-12">
-                            <h3><strong>Modal farmaco vigilancia</strong></h3>
-                        </div>
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Título
-                            </p>
-                            <InputWithLabel
-                                value={data?.farmacoTitle}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="farmacoTitle"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.farmacoTitle && error.farmacoTitle ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.farmacoTitle}
-                            />
-                        </div>
-
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Descripción
-                            </p>
-                            <Editor
-                                initialValue={bannerData?.farmacoDesc}
-                                onChange={handleProductsFarmacoDesc}
-                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                init={{
-                                    height: 200,
-                                    menubar: false,
-                                    plugins: [
-                                        'advlist autolink lists link image',
-                                        'charmap print preview anchor help',
-                                        'searchreplace visualblocks code',
-                                        'insertdatetime media table paste wordcount'
-                                    ],
-                                    toolbar:
-                                        'bold',
-                                }}
-                            />
-                        </div>
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Texto botón
-                            </p>
-                            <InputWithLabel
-                                value={data?.farmacoBtn}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="farmacoBtn"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.farmacoBtn && error.farmacoBtn ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.farmacoBtn}
                             />
                         </div>
                         <div className="col-12">
