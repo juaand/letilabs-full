@@ -122,13 +122,16 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 
 //admin I+D routes
 export const getBannerID = () => http.get("/bannerdataid")
-export const updateBannerID = ({title, description, imgURL, id}) => http.get("/updatebannerdataid", {title, description, imgURL, id})
+export const updateBannerID = ({title, description, imgURL, id}) => http.patch("/updatebannerdataid", {title, description, imgURL, id})
 export const getInfoCardsIdData = () => http.get("/idinfocards")
-export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.get("/updateidinfocards", {title, picPath, info, btn, id})
+export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.patch("/updateidinfocards", {title, picPath, info, btn, id})
 export const getGoalsIdData = () => http.get("/idgoals")
-export const updateGoalsIdData = ({name, title, desc, id}) => http.get("/updateidgoals", {name, title, desc, id})
+export const updateGoalsIdData = ({name, title, desc, id}) => http.patch("/updateidgoals", {name, title, desc, id})
+export const updateGoalsTitle = ({title}) => http.post("/updateidgoalstitle", {title})
+export const deleteIDGoals = (id) => http.get(`/deleteidgoals/${id}`)
+export const createIDGoal = ({title, name, desc}) => http.post("/createidgoal", {title, name, desc})
 export const getBottomIdData = () => http.get("/idbottom")
-export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updateidbottom", {title, img, url, btn, id})
+export const updateBottomId = ({title, img, url, btn, id}) => http.patch("/updateidbottom", {title, img, url, btn, id})
 
 
 //admin I+D tech routes
@@ -139,6 +142,7 @@ export const updateVideoTech = ({title, videoURL, id}) => http.patch("/updatevid
 export const getCarouselTech = () => http.get("/carrouseltech")
 export const updateCarouselTitleTech = ({mainTitle}) => http.post("/updatetechcarrouseltit", {mainTitle})
 export const updateCarouselTech = ({title, imgURL, description, mainTitle, id}) => http.patch("/updatecarrouseltech", {title, imgURL, description, mainTitle, id})
+export const createTechCarousel = ({title, imgURL, description, mainTitle}) => http.post("/createtechcarrousel", {title, imgURL, description, mainTitle})
 export const deleteCarouselTech = (id) => http.get(`/carrouseltech/${id}/delete`)
 export const getMapTech = () => http.get("/maptech")
 export const updateMapTech = ({description, mapURL, id}) => http.patch("/updatemapdatatech", {description, mapURL, id})
@@ -151,6 +155,7 @@ export const updateBannerManufacture = ({title, description, imgURL, id}) => htt
 export const updateTitleProccess = ({title}) => http.post("/updatetitleproccess", {title})
 export const getCarouselManufacture = () => http.get("/carrouselmanufacture")
 export const updateCarouselManufacture = ({title, info, id}) => http.patch("/updatecarrouselmanufacture", {title, info, id})
+export const createProccess = ({title, info}) => http.post("/createproccess", {title, info})
 export const deleteProccess = (id) => http.get(`/deleteproccess/${id}`)
 export const deleteCertificate = (id) => http.get(`/deletecertificate/${id}`)
 export const getCertificatesManufacture = () => http.get("/certificatesmanufacture")

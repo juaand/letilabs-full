@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {getBottomIdData} from '../../../../../services/ApiClient'
-import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
 
 function EditBottomID() {
 
@@ -13,7 +13,7 @@ function EditBottomID() {
         setBool(!bool)
     }
 
-    const deleteItem = (info) => {
+    const hideModal = (info) => {
         setIDData(info)
         setBool(!bool)
     }
@@ -30,17 +30,15 @@ function EditBottomID() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} closeModal={() => setBool(!bool)} />}
             {IDData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar CTA</h2>
                     <div className="row justify-content-around">
                         {IDData?.map(el =>
-                            <div className="col-5 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el.img.toLowerCase()} alt={el.img} />
-                                <p>{el.title}</p>
-                                <p>{el.button}</p>
-                                <p>{el.url}</p>
+                            <div className="col-4 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <img className="EditCarousel__img" src={el.img} alt={el.img} />
+                                <h4 className="EditContent__boldtitle">{el.title}</h4>
                             </div>
                         )}
                     </div>

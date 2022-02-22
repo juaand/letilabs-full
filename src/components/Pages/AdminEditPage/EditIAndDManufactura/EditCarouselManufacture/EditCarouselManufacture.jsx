@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import {getCarouselManufacture, updateTitleProccess} from '../../../../../services/ApiClient'
+import {getCarouselManufacture, updateTitleProccess, createProccess} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 import EditItemModal from './EditItemModal/EditItemModal'
@@ -17,14 +17,17 @@ function EditCarouselManufacture() {
         {
             data: {
                 title: '',
+                info: '',
             },
             error: {
                 title: true,
+                info: true,
             },
             touch: {},
         },
         {
             title: v => v.length,
+            info: v => v.length,
         }
     )
 
@@ -64,6 +67,28 @@ function EditCarouselManufacture() {
             }
         } else {
             setMessage('Por favor edite el campo')
+        }
+    }
+
+    const addProccess = async (event) => {
+        event.preventDefault()
+        data.title = carouselManufactureData[0]?.title
+
+        if (error.info === false) {
+            try {
+                await createProccess(data)
+                    .then(info => {
+                        setCarouselManufactureData(info)
+                        setMessage('Proceso añadido exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por añada un proceso.')
         }
     }
 
@@ -109,12 +134,33 @@ function EditCarouselManufacture() {
 
                             {registerError && <div className="alert alert-danger">{registerError}</div>}
                         </form>
-                        <h3 className="mb-5">Editar Procesos</h3>
+                        <h3 className="mb-5">Editar procesos</h3>
                         {carouselManufactureData?.map(el =>
                             <div className="col-3 EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <p>{el?.info}</p>
                             </div>
                         )}
+                        <hr className="mt-5 mb-5" />
+                        <h3>Añadir nuevo proceso</h3>
+                        <form className="AdminEdit__form" onSubmit={addProccess}>
+                            <div className="row">
+                                <div className="col-12">
+                                    <InputWithLabel
+                                        value={data.info}
+                                        label="Descripción del proceso"
+                                        onChange={onChange}
+                                        name="info"
+                                        type="text"
+                                        cssStyle="form-control mb-5"
+                                        placeholder="Añada descripción del proceso"
+                                    />
+                                </div>
+                                <div className="col-12 col-sm-6">
+                                    <Button type="submit" cssStyle="leti-btn">Editar título</Button>
+                                    {message && <span className="AdminEdit__message ">{message}</span>}
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </section>
             }

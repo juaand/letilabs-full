@@ -143,7 +143,7 @@ function EditBannerTech() {
                                 onChange={handleBannerDescription}
                                 apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                 init={{
-                                    height: 200,
+                                    height: 170,
                                     menubar: false,
                                     plugins: [
                                         'advlist autolink lists link image',

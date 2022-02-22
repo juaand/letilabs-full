@@ -11,8 +11,8 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerManufacture() {
 
-    const [bannerData, setBannerData] = useState([])
     const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState([])
     const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(

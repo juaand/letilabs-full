@@ -94,7 +94,6 @@ function EditCarreras() {
                         <p className="AdminEdit__form__label">
                             Descripción
                         </p>
-
                         <InputWithLabel
                             value={data?.description}
                             onBlur={onBlur}

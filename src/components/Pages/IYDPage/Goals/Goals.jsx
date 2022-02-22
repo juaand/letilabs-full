@@ -69,7 +69,7 @@ function Goals() {
                                     <p className="Goals__number">{key + 1}</p>
                                     <div className="Goals__info">
                                         <p className="Goals__subtitle">{el.name}</p>
-                                        <p className="Goals__desc">{el.desc}</p>
+                                        <p className="Goals__desc" dangerouslySetInnerHTML={{__html: el.desc}} />
                                     </div>
                                 </Fade>
                             )}
