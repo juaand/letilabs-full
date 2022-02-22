@@ -9,8 +9,8 @@ function EditIAndD() {
         <div>
             <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo</h2>
             <EditBannerID />
-            <EditGoalsInfo />
             <EditInfoCardsID />
+            <EditGoalsInfo />
             <EditBottomID />
         </div>
     )

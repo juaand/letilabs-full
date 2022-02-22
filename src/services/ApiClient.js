@@ -122,7 +122,7 @@ export const createContent = ({content, url, name}) => http.post("/update-conten
 export const getBannerID = () => http.get("/bannerdataid")
 export const updateBannerID = ({title, description, imgURL, id}) => http.patch("/updatebannerdataid", {title, description, imgURL, id})
 export const getInfoCardsIdData = () => http.get("/idinfocards")
-export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.get("/updateidinfocards", {title, picPath, info, btn, id})
+export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.patch("/updateidinfocards", {title, picPath, info, btn, id})
 export const getGoalsIdData = () => http.get("/idgoals")
 export const updateGoalsIdData = ({name, title, desc, id}) => http.get("/updateidgoals", {name, title, desc, id})
 export const getBottomIdData = () => http.get("/idbottom")
