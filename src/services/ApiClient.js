@@ -124,7 +124,8 @@ export const updateBannerID = ({title, description, imgURL, id}) => http.patch("
 export const getInfoCardsIdData = () => http.get("/idinfocards")
 export const updateInfoCardsIdData = ({title, picPath, info, btn, id}) => http.patch("/updateidinfocards", {title, picPath, info, btn, id})
 export const getGoalsIdData = () => http.get("/idgoals")
-export const updateGoalsIdData = ({name, title, desc, id}) => http.get("/updateidgoals", {name, title, desc, id})
+export const updateGoalsIdData = ({name, title, desc, id}) => http.patch("/updateidgoals", {name, title, desc, id})
+export const deleteIDGoals = (id) => http.get(`/deleteidgoals/${id}`)
 export const getBottomIdData = () => http.get("/idbottom")
 export const updateBottomId = ({title, img, url, btn, id}) => http.get("/updateidbottom", {title, img, url, btn, id})
 

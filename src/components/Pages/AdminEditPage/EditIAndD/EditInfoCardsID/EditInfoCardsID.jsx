@@ -38,7 +38,7 @@ function EditInfoCardsID() {
             {bool && <EditItemModal hideModal={(data) => hideModal(data)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {ianddData?.length > 0 &&
                 <section className="container-fluid Letilabs EditContent EditContent-timeline">
-                    <h2>Editar infocards</h2>
+                    <h2>Equipos I&D</h2>
                     <div className="row justify-content-around">
                         {ianddData?.map(el =>
                             <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
