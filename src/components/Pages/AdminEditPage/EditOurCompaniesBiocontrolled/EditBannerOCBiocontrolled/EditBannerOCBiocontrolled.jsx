@@ -1,13 +1,18 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
 import {getBannerOCBiocontrolled, updateBannerDataOCBiocontrolled} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditBannerOCBiocontrolled() {
 
-    const [bannerData, setBannerData] = useState()
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState([])
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -41,22 +46,51 @@ function EditBannerOCBiocontrolled() {
         event.preventDefault()
         data.id = bannerData._id
 
-        try {
-            await updateBannerDataOCBiocontrolled(data)
-                .then(banner => {
-                    setBannerData(banner[0])
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateBannerDataOCBiocontrolled(data)
+                    .then(banner => {
+                        setBannerData(banner)
+                        setMessage('Data atualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
     }
 
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setMessage("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.imgURL = fileUrl
+        setIsDisabled(false)
+        error.imgURL = false
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,6 +102,8 @@ function EditBannerOCBiocontrolled() {
     }, [])
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..." />}
         <section className="container-fluid EditContent">
             <h2>Banner Biocontrolled</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
@@ -95,30 +131,28 @@ function EditBannerOCBiocontrolled() {
                         />
                     </div>
                     <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Imagen
-                        </p>
-                        <InputWithLabel
-                            value={data?.imgURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="imgURL"
-                            type="text"
-                            cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.imgURL}
-                        />
-                        <p className="AdminEdit__form__label">
-                            logoURL
-                        </p>
-                        <InputWithLabel
-                            value={data?.logoURL}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="logoURL"
-                            type="text"
-                            cssStyle={`form-control ${touch.logoURL && error.logoURL ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.logoURL}
-                        />
+                    <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
+                            <InputFile
+                                value={bannerData?.imgURL}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="imgURL"
+                                type="file"
+                                placeholder={bannerData?.imgURL}
+                            />
+                        </div>
+                        <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.logoURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.logoURL} />
+                            <InputFile
+                                value={bannerData?.logoURL}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="logoURL"
+                                type="file"
+                                placeholder={bannerData?.logoURL}
+                            />
+                        </div>
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
@@ -128,6 +162,7 @@ function EditBannerOCBiocontrolled() {
                 {registerError && <div className="alert alert-danger">{registerError}</div>}
             </form>
         </section>
+        </>
     )
 }
 

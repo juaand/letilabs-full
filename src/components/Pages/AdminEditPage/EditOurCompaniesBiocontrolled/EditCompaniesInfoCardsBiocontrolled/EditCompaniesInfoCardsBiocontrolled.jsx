@@ -30,7 +30,7 @@ function EditCompaniesInfoCardsBiocontrolled() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {ourCompaniesOCData?.length > 0 &&
                 <section className="container-fluid Letilabs EditContent EditContent-timeline">
                     <h2>Editar InfoCard</h2>

@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData} from '../../../../../services/ApiClient'
+import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData, updateTimeLineBiocontrolledData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
 import DeleteItemModal from '../../EditOurCompaniesBiocontrolled/EditTimeline/DeleteItemModal/DeleteItemModal'
+import {Editor} from '@tinymce/tinymce-react'
+import Loader from '../../../../Loader/Loader'
 
 function EditTimelineBiocontrolled() {
 
@@ -36,6 +40,10 @@ function EditTimelineBiocontrolled() {
     const [modalData, setModalData] = useState()
     const [timelineData, setTimeLineData] = useState()
     const [bool, setBool] = useState(false)
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [message, setMessage] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(true)
 
     const showModal = (data) => {
         setModalData(data)
@@ -63,6 +71,35 @@ function EditTimelineBiocontrolled() {
         setBool(!bool)
     }
 
+    const handleBannerDescription = (e) => {
+        data.desc = e.target.getContent()
+    }
+
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                //Se habilita el botón para subir el blog
+                setDisabled(!disabled)
+            })
+            .catch(err => {console.log(err)})
+
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.logo = fileUrl
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const getTimeLineData = await getTimeLineBiocontrolled()
@@ -74,7 +111,7 @@ function EditTimelineBiocontrolled() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Elminar elemento del TimeLine</h2>
@@ -92,31 +129,38 @@ function EditTimelineBiocontrolled() {
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
                         <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
+                        <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
-                            <InputWithLabel
+                            <InputFile
                                 value={data?.imgURL}
-                                onBlur={onBlur}
-                                onChange={onChange}
+                                onChange={onFileSelected}
+                                id="fileButton"
                                 name="imgURL"
-                                type="text"
-                                cssStyle={`form-control ${touch.imgURL && error.imgURL ? "is-invalid" : ""}`}
-                                placeholder=""
+                                type="file"
+                                placeholder={data?.imgURL}
                             />
                         </div>
                         <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
+                        <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción"
+                            <Editor
+                                initialValue={data?.desc}
+                                onChange={handleBannerDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
                         <div className="col-12 col-sm-3">

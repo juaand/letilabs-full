@@ -55,7 +55,6 @@ function EditTimelineLeti() {
 
         try {
             await addTimeLineLetiData(data)
-            console.log(data)
                 .then(timeline => {
                     setTimeLineData(timeline)
                 })

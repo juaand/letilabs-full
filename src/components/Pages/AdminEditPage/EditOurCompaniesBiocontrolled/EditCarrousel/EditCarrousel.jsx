@@ -65,7 +65,7 @@ function EditCarrouselBiocontrolled() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} data={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {carrouselData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Editar logros</h2>
