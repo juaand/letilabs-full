@@ -118,7 +118,7 @@ function EditTimelineBiocontrolled() {
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-5 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
+                                <img className="EditCarousel__img" src={el?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
                                 <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
@@ -129,7 +129,7 @@ function EditTimelineBiocontrolled() {
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
                         <div className="col-12 col-sm-3">
-                        <p className="AdminEdit__form__label">
+                            <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
                             <InputFile
@@ -142,7 +142,7 @@ function EditTimelineBiocontrolled() {
                             />
                         </div>
                         <div className="col-12 col-sm-3">
-                        <p className="AdminEdit__form__label">
+                            <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
                             <Editor

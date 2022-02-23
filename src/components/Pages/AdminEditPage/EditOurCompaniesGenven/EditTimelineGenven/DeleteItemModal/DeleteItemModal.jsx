@@ -22,7 +22,7 @@ function DeleteItemModal({deleteItem, data, hideModal}) {
                                 <div className="card-body DeleteItemModal__body">
                                     <div className="row align-items-center">
                                         <div className="col-12 DeleteItemModal__img-small">
-                                            <img src={"./images/" + seoURL(data.name) + ".svg"} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={data.name} />
+                                            <img src={"./images/" + seoURL(data.name) + ".svg"} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={data.name} />
                                         </div>
                                         <div className="col-12">
                                             <p className="DeleteItemModal__text"><strong>unidad</strong> {data.name}</p>

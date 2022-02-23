@@ -1,14 +1,15 @@
-import './ModalFarmacoVigilancia.css'
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../hooks/useFormState'
-import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
-import RadioButtonWithLabel from '../../../Form/RadioButtonWithLabel/RadioButtonWithLabel'
-import Button from '../../../Form/FormButton/FormButton'
 import DateTimePicker from "react-datetime-picker"
+
+import RadioButtonWithLabel from '../../../Form/RadioButtonWithLabel/RadioButtonWithLabel'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
-import {vigilanciaForm} from '../../../../services/ApiClient'
-import {getVadevecumData} from '../../../../services/ApiClient'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
+import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+import {getVadevecumData, getModalFarmaco} from '../../../../services/ApiClient'
+import {vigilanciaForm} from '../../../../services/ApiClient'
+import {useFormState} from '../../../../hooks/useFormState'
+import Button from '../../../Form/FormButton/FormButton'
+import './ModalFarmacoVigilancia.css'
 
 function ModalFarmacoVigilancia({hideModal}) {
 
@@ -48,13 +49,15 @@ function ModalFarmacoVigilancia({hideModal}) {
         }
     )
 
+
+    const [modalFarmacoData, setModalFarmacoData] = useState()
+    const [effects, setEffects] = useState(state.data.effects)
+    const [registerError, setRegisterError] = useState(null)
+    const [formResponse, setFormResponse] = useState([])
+    const [vadevecum, setVadevecum] = useState([])
+    const [message, setMessage] = useState(false)
     // eslint-disable-next-line no-unused-vars
     const [date, setDate] = useState(new Date())
-    const [registerError, setRegisterError] = useState(null)
-    const [effects, setEffects] = useState(state.data.effects)
-    const [formResponse, setFormResponse] = useState([])
-    const [message, setMessage] = useState(false)
-    const [vadevecum, setVadevecum] = useState([])
 
     const {data, error, touch} = state
 
@@ -101,6 +104,8 @@ function ModalFarmacoVigilancia({hideModal}) {
             const data = await getVadevecumData()
             const dataFiltered = data?.filter(el => el?.show_in_home === true)
             setVadevecum(dataFiltered)
+            const getModalData = await getModalFarmaco()
+            setModalFarmacoData(getModalData)
         }
         fetchData()
 
@@ -125,11 +130,10 @@ function ModalFarmacoVigilancia({hideModal}) {
                                 <span className="ModalFarmacoVigilancia__close" onClick={hideModal}></span>
                                 <div className="row">
                                     <div className="col-12">
-                                        <h1>Estamos para cuidarte</h1></div>
+                                        <h1>{modalFarmacoData?.title}</h1></div>
                                     <div className="col-12 col-sm-5">
-                                        <p><strong>Farmacovigilancia</strong></p>
-                                        <p>Conscientes de la responsabilidad por ofrecer medicamentos de alta calidad, facilitamos la recolección, evaluación e investigación de la información sobre posibles reacciones adversas de nuestros medicamentos, para realizar correctivos y establecer la máxima seguridad terapéutica de los mismos.</p>
-                                        <p className="blue-text">Nos preocupa saber si alguno de nuestros productos le causó algún efecto adverso, así podemos trabajar para ayudarle.</p>
+                                        <p><strong>{modalFarmacoData?.subTitle}</strong></p>
+                                        <p className="ModalFarmacoVigilancia__desc" dangerouslySetInnerHTML={{__html: modalFarmacoData?.description}} />
                                     </div>
                                 </div>
                                 <div className="row">

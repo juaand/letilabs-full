@@ -71,7 +71,7 @@ function SingleProductPage(props) {
                                                     <p><strong>Registro sanitario</strong> {el?.health_register}</p>
                                                     <p><strong>Vida útil</strong> {el?.util_life}</p>
                                                     <p className="SingleProductPage__cpe">{el?.CPE}</p>
-                                                    <img src={el?.QRpath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
+                                                    <img src={el?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +138,7 @@ function SingleProductPage(props) {
                                             <p><strong>Registro sanitario</strong> {product[0]?.health_register}</p>
                                             <p><strong>Vida útil</strong> {product[0]?.util_life}</p>
                                             <p className="SingleProductPage__cpe">{product[0]?.CPE}</p>
-                                            <img src={product[0]?.QRpath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={product[0]?.name + ' código de barras'} className="SingleProductPage__cb" />
+                                            <img src={product[0]?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={product[0]?.name + ' código de barras'} className="SingleProductPage__cb" />
                                         </>
                                     </div>
                                 </div>
@@ -189,7 +189,7 @@ function SingleProductPage(props) {
                         <div className="row justify-content-between">
                             {product[1]?.map(el =>
                                 <div className="col-12 col-sm-3 SingleProductPage__another__block">
-                                    {/* <img src={el?.picPath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} className="SingleProductPage__another__img" /> */}
+                                    {/* <img src={el?.picPath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} className="SingleProductPage__another__img" /> */}
                                     <h2 className="SingleProductPage__another__img SingleProductPage__another__img-txt">{el?.name}<sup>&reg;</sup></h2>
                                     <h2>{el?.name}</h2>
                                     <p className="SingleProductPage__another__principle">{el?.active_principle}</p>

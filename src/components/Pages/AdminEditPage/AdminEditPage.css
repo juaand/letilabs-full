@@ -67,6 +67,12 @@
   font-size: 2rem;
 }
 
+.EditContent h2 small {
+  margin-left: 0.8rem;
+  color: #4a4a4a;
+  font-size: 1.4rem;
+}
+
 .EditContent h3 {
   color: #cd202f;
   font-size: 2rem;
