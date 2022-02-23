@@ -6,6 +6,7 @@ import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+import Loader from '../../../../Loader/Loader'
 
 
 function EditEquipoGenvenPage() {
@@ -52,20 +53,27 @@ function EditEquipoGenvenPage() {
         event.preventDefault()
         data.id = bannerData._id
 
-        try {
-            await updateEquipoGenvenOC(data)
-                .then(banner => {
-                    setBannerData(banner)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateEquipoGenvenOC(data)
+                    .then(banner => {
+                        setBannerData(banner)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
     const handleBannerPerson = (e) => {
         data.person = e.target.getContent()
@@ -73,6 +81,7 @@ function EditEquipoGenvenPage() {
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -83,17 +92,15 @@ function EditEquipoGenvenPage() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setMessage("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
-
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data.logo = fileUrl
-        setImageSuccess("Imagen subida correctamente")
+        data.imgURL = fileUrl
         setIsDisabled(false)
+        error.imgURL = false
     }
 
     useEffect(() => {
@@ -106,6 +113,8 @@ function EditEquipoGenvenPage() {
     }, [])
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..." />}
         <section className="container-fluid EditContent">
             <h2>Equipo Genven</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
@@ -198,12 +207,14 @@ function EditEquipoGenvenPage() {
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
                 {registerError && <div className="alert alert-danger">{registerError}</div>}
             </form>
         </section>
+        </>
     )
 }
 

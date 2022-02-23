@@ -6,6 +6,7 @@ import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+import Loader from '../../../../Loader/Loader'
 
 
 function EditProductosGenvenPage() {
@@ -55,24 +56,31 @@ function EditProductosGenvenPage() {
         event.preventDefault()
         data.id = bannerData._id
 
-        try {
-            await updateProductosGenvenOC(data)
-                .then(banner => {
-                    setBannerData(banner)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateProductosGenvenOC(data)
+                    .then(banner => {
+                        setBannerData(banner)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
     }
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -83,17 +91,63 @@ function EditProductosGenvenPage() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setMessage("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.img1URL = fileUrl
+        setIsDisabled(false)
+        error.img1URL = false
+    }
+
+    const onFileSelected2 = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setMessage("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data.logo = fileUrl
-        setImageSuccess("Imagen subida correctamente")
+        data.img2URL = fileUrl
         setIsDisabled(false)
+        error.img2URL = false
+    }
+
+    const onFileSelected3 = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setMessage("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.img3URL = fileUrl
+        setIsDisabled(false)
+        error.img3URL = false
     }
 
     useEffect(() => {
@@ -106,6 +160,8 @@ function EditProductosGenvenPage() {
     }, [])
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..." />}
         <section className="container-fluid EditContent">
             <h2>Productos Genven</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
@@ -176,7 +232,7 @@ function EditProductosGenvenPage() {
                             <img src={bannerData?.img2URL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img2URL} />
                             <InputFile
                                 value={bannerData?.img2URL}
-                                onChange={onFileSelected}
+                                onChange={onFileSelected2}
                                 id="fileButton"
                                 name="imgURL"
                                 type="file"
@@ -189,7 +245,7 @@ function EditProductosGenvenPage() {
                             <img src={bannerData?.img3URL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img3URL} />
                             <InputFile
                                 value={bannerData?.img3URL}
-                                onChange={onFileSelected}
+                                onChange={onFileSelected3}
                                 id="fileButton"
                                 name="imgURL"
                                 type="file"
@@ -199,12 +255,14 @@ function EditProductosGenvenPage() {
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
                 {registerError && <div className="alert alert-danger">{registerError}</div>}
             </form>
         </section>
+        </>
     )
 }
 

@@ -66,6 +66,7 @@ function EditBannerOCBiocontrolled() {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
 
     const onFileSelected = async (e) => {
@@ -90,6 +91,30 @@ function EditBannerOCBiocontrolled() {
         data.imgURL = fileUrl
         setIsDisabled(false)
         error.imgURL = false
+    }
+
+    const onFileSelected2 = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setMessage("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.logoURL = fileUrl
+        setIsDisabled(false)
+        error.logoURL = false
     }
 
     useEffect(() => {
@@ -146,7 +171,7 @@ function EditBannerOCBiocontrolled() {
                                 <img src={bannerData?.logoURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.logoURL} />
                                 <InputFile
                                     value={bannerData?.logoURL}
-                                    onChange={onFileSelected}
+                                    onChange={onFileSelected2}
                                     id="fileButton"
                                     name="logoURL"
                                     type="file"
@@ -156,6 +181,7 @@ function EditBannerOCBiocontrolled() {
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>
