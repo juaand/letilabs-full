@@ -228,6 +228,8 @@ export const updateProductBottom = ({findProductsTitle, imgURL, title, buttonTit
 export const getProductListBanner = () => http.get("/listadoproductosbanner")
 export const updateProductListBanner = ({description, imgURL, title, id}) => http.patch("/updatelistadoproductosbanner", {description, imgURL, title, id})
 export const productInfoForm = ({name, lastname, work, years, speciality, info, license, mail}) => http.post("/productinfoform", {name, lastname, work, years, speciality, info, license, mail})
+export const getProductInfoForm = () => http.get("/productinfoformdata")
+export const deleteProductInfoCard = (id) => http.get(`/productinfoform/${id}/delete`)
 
 
 // our philosophy page

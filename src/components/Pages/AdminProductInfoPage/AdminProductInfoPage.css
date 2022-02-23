@@ -1,0 +1,152 @@
+.AdminProductInfoPage__bg {
+  background: url(../../../images/farmvig-bg.jpg) no-repeat right top/contain;
+  height: 23rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AdminProductInfoPage .card {
+  border: 0;
+  border: solid 0.1rem #e9eaee;
+  border-radius: 0;
+  margin-bottom: 8rem;
+  padding-top: 2rem;
+  font-size: 1.6rem;
+  border-bottom: solid 0.3rem #055aa5;
+  min-height: 30rem;
+}
+
+.AdminProductInfoPage .card .card-body {
+  position: relative;
+  padding: 1rem 0 0 0;
+}
+
+.AdminProductInfoPage__download {
+  background: transparent;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  color: #055aa5;
+  padding: 1.5rem;
+  border: solid 0.2rem #055aa5;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  margin: -4rem auto 6rem auto;
+}
+
+.AdminProductInfoPage__download:hover {
+  background: #055aa5;
+  color: white;
+}
+
+.AdminProductInfoPage__download:hover:before {
+  background: url(../../../images/download_white.svg) no-repeat center center/contain;
+}
+
+.AdminProductInfoPage__download:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  background: url(../../../images/download.svg) no-repeat center center/contain;
+  margin-right: 1rem;
+}
+
+.AdminProductInfoPage__date {
+  font-size: 1.2rem;
+  color: #cd202f;
+  padding: 0 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -1.5rem;
+  left: 2rem;
+}
+
+.AdminProductInfoPage__delete {
+  position: absolute;
+  width: 6rem;
+  height: 1.8rem;
+  display: inline-block;
+  background: #fff url(../../../images/trash.svg) no-repeat center center/contain;
+  margin-left: 2rem;
+  top: -3rem;
+  right: 0;
+}
+
+.AdminProductInfoPage__delete:hover {
+  cursor: pointer;
+}
+
+.AdminProductInfoPage__medicine {
+  font-family: 'TripletaBold';
+  position: absolute;
+  background: #fff;
+  color: #055aa5;
+  top: -3.6rem;
+  left: 2rem;
+  padding: 0 0.8rem;
+}
+
+.AdminProductInfoPage__patient {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+.AdminProductInfoPage__patient-email {
+  font-size: 1.2rem;
+  color: #055aa5;
+  margin-bottom: 0.5rem;
+  padding: 0 2rem;
+}
+
+.AdminProductInfoPage__desc {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+  padding: 0 2rem;
+}
+
+.AdminProductInfoPage__effects {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #737b7f;
+  padding: 0 2rem;
+}
+
+.AdminProductInfoPage__search {
+  padding-left: 7rem;
+  height: 6.4rem;
+  font-size: 1.6rem;
+  border-radius: 0;
+  background: #fff url(../../../images/input-search.svg) no-repeat 2rem center/3.2rem;
+}
+
+.AdminProductInfoPage__datainfo {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.AdminProductInfoPage__datainfo strong {
+  color: #055aa5;
+}
+
+.AdminProductInfoPage__info {
+  background: rgba(245, 245, 245, 0.9);
+  padding: 1rem 2.4rem;
+  margin: 2rem 0 1rem 0;
+}
+
+@media (max-width: 576px) {
+  .AdminProductInfoPage__search {
+    padding-left: 4rem;
+    font-size: 1.4rem;
+    border-radius: 0;
+    background-size: 2.2rem;
+    background-position-x: 1rem;
+  }
+}

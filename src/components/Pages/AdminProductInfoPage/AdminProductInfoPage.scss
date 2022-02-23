@@ -1,0 +1,163 @@
+@import '../../../stylesheets/variables';
+
+.AdminProductInfoPage {
+  &__bg {
+    background: url(../../../images/farmvig-bg.jpg) no-repeat right top /
+      contain;
+    height: 23rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    border: 0;
+    border: solid 0.1rem $leti-subnav;
+    border-radius: 0;
+    margin-bottom: 8rem;
+    padding-top: 2rem;
+    font-size: 1.6rem;
+    border-bottom: solid 0.3rem $leti-blue;
+    min-height: 30rem;
+
+    .card-body {
+      position: relative;
+      padding: 1rem 0 0 0;
+    }
+  }
+
+  &__download {
+    background: transparent;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    color: $leti-blue;
+    padding: 1.5rem;
+    border: solid 0.2rem $leti-blue;
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+    margin: -4rem auto 6rem auto;
+
+    &:hover {
+      background: $leti-blue;
+      color: white;
+
+      &:before {
+        background: url(../../../images/download_white.svg) no-repeat center
+          center / contain;
+      }
+    }
+
+    &:before {
+      content: '';
+      width: 2rem;
+      height: 2rem;
+      display: inline-block;
+      background: url(../../../images/download.svg) no-repeat center center /
+        contain;
+      margin-right: 1rem;
+    }
+  }
+
+  &__date {
+    font-size: 1.2rem;
+    color: $leti-red;
+    padding: 0 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -1.5rem;
+    left: 2rem;
+  }
+
+  &__delete {
+    position: absolute;
+    width: 6rem;
+    height: 1.8rem;
+    display: inline-block;
+    background: $leti-white url(../../../images/trash.svg) no-repeat center
+      center / contain;
+    margin-left: 2rem;
+    top: -3rem;
+    right: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__medicine {
+    font-family: 'TripletaBold';
+    position: absolute;
+    background: $leti-white;
+    color: $leti-blue;
+    top: -3.6rem;
+    left: 2rem;
+    padding: 0 0.8rem;
+  }
+
+  &__patient {
+    font-weight: 600;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    margin-bottom: 0;
+
+    &-email {
+      font-size: 1.2rem;
+      color: $leti-blue;
+      margin-bottom: 0.5rem;
+      padding: 0 2rem;
+    }
+  }
+
+  &__desc {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    margin-top: 1.2rem;
+    padding: 0 2rem;
+  }
+
+  &__effects {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: $leti-nav;
+    padding: 0 2rem;
+  }
+
+  &__search {
+    padding-left: 7rem;
+    height: 6.4rem;
+    font-size: 1.6rem;
+    border-radius: 0;
+    background: $leti-white url(../../../images/input-search.svg) no-repeat 2rem
+      center / 3.2rem;
+  }
+
+  &__datainfo {
+    font-size: 1.4rem;
+    margin: 0;
+
+    strong {
+      color: $leti-blue;
+    }
+  }
+
+  &__info {
+    background: rgba($leti-back, 0.9);
+    padding: 1rem 2.4rem;
+    margin: 2rem 0 1rem 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .AdminProductInfoPage {
+    &__search {
+      padding-left: 4rem;
+      font-size: 1.4rem;
+      border-radius: 0;
+      background-size: 2.2rem;
+      background-position-x: 1rem;
+    }
+  }
+}
