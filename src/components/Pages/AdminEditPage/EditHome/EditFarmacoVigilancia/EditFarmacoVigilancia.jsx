@@ -33,7 +33,7 @@ function EditFarmacoVigilancia() {
         }
     )
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
@@ -76,8 +76,8 @@ function EditFarmacoVigilancia() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Farmaco vigilancia  
-            <small>(Edita los textos de farmacovigilancia de todo el site)</small></h2>
+            <h2>Farmaco vigilancia
+                <small>(Edita los textos de farmacovigilancia de todo el site)</small></h2>
             <form className="AdminEdit__form" onSubmit={updateFarmaco}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -90,7 +90,7 @@ function EditFarmacoVigilancia() {
                             onChange={onChange}
                             name="title"
                             type="text"
-                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={farmacoData?.title}
                         />
                         <p className="AdminEdit__form__label">
@@ -102,7 +102,7 @@ function EditFarmacoVigilancia() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={farmacoData?.buttonTitle}
                         />
                     </div>

@@ -38,7 +38,7 @@ function EditPortafolio() {
         }
     )
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
@@ -161,7 +161,7 @@ function EditPortafolio() {
                                 onChange={onChange}
                                 name="title"
                                 type="text"
-                                cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                cssStyle="form-control"
                                 placeholder={portfolioData?.title}
                             />
                         </div>
