@@ -9,8 +9,8 @@
     }
 
     &__logo {
-        width: 31rem;
-        margin-bottom: 3rem;
+      width: 31rem;
+      margin-bottom: 3rem;
     }
 
     &-hero {
@@ -51,12 +51,25 @@
 @media (max-width: 576px) {
   .NewsPage {
     &__leti {
+      margin: 0;
+
       .container {
         padding: 0;
       }
+
       h1 {
         margin: 3rem 2rem;
       }
+
+      &__logo {
+        width: 20rem;
+        margin-bottom: 3rem;
+      }
+
+      &__card {
+        display: none;
+      }
+
       &-hero {
         border-bottom: solid 0.1rem rgba($leti-text, 0.1);
         .card-body,
@@ -68,7 +81,7 @@
       }
 
       &-resume {
-        padding: 0 2rem;
+        padding: 6rem 0 2rem 2rem;
 
         .card {
           padding-bottom: 1rem;
@@ -80,6 +93,10 @@
           }
         }
       }
+    }
+
+    &__lastest {
+      padding-top: 0;
     }
   }
 }

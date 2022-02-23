@@ -43,11 +43,21 @@
 }
 
 @media (max-width: 576px) {
+  .NewsPage__leti {
+    margin: 0;
+  }
   .NewsPage__leti .container {
     padding: 0;
   }
   .NewsPage__leti h1 {
     margin: 3rem 2rem;
+  }
+  .NewsPage__leti__logo {
+    width: 20rem;
+    margin-bottom: 3rem;
+  }
+  .NewsPage__leti__card {
+    display: none;
   }
   .NewsPage__leti-hero {
     border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
@@ -59,7 +69,7 @@
     margin-bottom: 1rem;
   }
   .NewsPage__leti-resume {
-    padding: 0 2rem;
+    padding: 6rem 0 2rem 2rem;
   }
   .NewsPage__leti-resume .card {
     padding-bottom: 1rem;
@@ -68,5 +78,8 @@
   .NewsPage__leti-resume .card:last-child {
     border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
     margin-bottom: 3rem;
+  }
+  .NewsPage__lastest {
+    padding-top: 0;
   }
 }
