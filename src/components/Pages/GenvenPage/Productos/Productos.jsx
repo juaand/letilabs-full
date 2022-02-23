@@ -1,10 +1,11 @@
-import './Productos.css'
 import React, {useState, useEffect} from 'react'
-import {Link} from 'react-router-dom'
 import {Fade, Reveal} from "react-awesome-reveal"
 import {keyframes} from "@emotion/react"
+import {Link} from 'react-router-dom'
+
 import {getProductosGenvenOC} from '../../../../services/ApiClient'
 import Loader from '../../../Loader/Loader'
+import './Productos.css'
 
 function Productos() {
 
@@ -25,7 +26,7 @@ function Productos() {
     useEffect(() => {
         const fetchData = async () => {
             const getBannerData = await getProductosGenvenOC()
-            setBannerData(getBannerData[0])
+            setBannerData(getBannerData)
         }
         fetchData()
         setLoading(!loading)
