@@ -52,14 +52,14 @@ function List() {
                     </div>
                 </section>
                 <section className="container List__products">
-                    <div className="row">
-                        <div className="col-12">
+                    <div className="row List__align">
+                        <div className="col-11 col-sm-12">
                             <h1>{currentLetter}</h1>
                         </div>
                     </div>
-                    <div className="row">
+                    <div className="row List__align">
                         {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
-                            <div className="col-12 col-sm-4 List__card">
+                            <div className="col-11 col-sm-12 col-sm-4 List__card">
                                 <div className="List__sku">SKU</div>
                                 <p><strong>Nombre</strong> <span dangerouslySetInnerHTML={{__html: el?.name}}>
                                 </span></p>
