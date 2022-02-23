@@ -38,7 +38,7 @@ function EditCompaniesInfoCardsBiocontrolled() {
                         {ourCompaniesOCData?.map(el =>
                             <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <h4>{el?.title}</h4>
-                                <p>{el?.info}</p>
+                                <p dangerouslySetInnerHTML={{ __html: el?.info }} />
                             </div>
                         )}
                     </div>
