@@ -1,12 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import DateTimePicker from "react-datetime-picker"
 
+import {vigilanciaForm, getVadevecumData, getModalFarmaco} from '../../../../services/ApiClient'
 import RadioButtonWithLabel from '../../../Form/RadioButtonWithLabel/RadioButtonWithLabel'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
-import {getVadevecumData, getModalFarmaco} from '../../../../services/ApiClient'
-import {vigilanciaForm} from '../../../../services/ApiClient'
 import {useFormState} from '../../../../hooks/useFormState'
 import Button from '../../../Form/FormButton/FormButton'
 import './ModalFarmacoVigilancia.css'

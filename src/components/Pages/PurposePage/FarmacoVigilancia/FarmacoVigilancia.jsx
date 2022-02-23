@@ -1,8 +1,9 @@
 import './FarmacoVigilancia.css'
 import React, {useState, useEffect} from 'react'
-import ModalFarmacoVigilancia from '../ModalFarmacoVigilancia/ModalFarmacoVigilancia'
-import {Fade} from 'react-awesome-reveal'
+
+import ModalFarmacoVigilancia from '../../HomePage/ModalFarmacoVigilancia/ModalFarmacoVigilancia'
 import {getFarmaco} from '../../../../services/ApiClient'
+import {Fade} from 'react-awesome-reveal'
 import Loader from '../../../Loader/Loader'
 
 function FarmacoVigilancia() {

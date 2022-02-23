@@ -1,7 +1,9 @@
 import './FarmacoVigilancia.css'
 import React, {useState} from 'react'
-import ModalFarmacoVigilancia from '../ModalFarmacoVigilancia/ModalFarmacoVigilancia'
+
+import ModalFarmacoVigilancia from '../../HomePage/ModalFarmacoVigilancia/ModalFarmacoVigilancia'
 import {Fade} from 'react-awesome-reveal'
+
 
 function FarmacoVigilancia({info}) {
 

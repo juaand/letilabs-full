@@ -73,6 +73,7 @@ function EditFarmacoVigilanciaModal() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    
     return (
         <section className="container-fluid EditContent">
             <h2>Modal farmaco vigilancia <small>(Edita el modal de farmacovigilancia de todo el site)</small></h2>
