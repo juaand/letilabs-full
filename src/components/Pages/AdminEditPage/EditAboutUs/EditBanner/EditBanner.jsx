@@ -1,15 +1,20 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getBanner, updateBannerData} from '../../../../../services/ApiClient'
-import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+
+import {getBanner, updateBannerData} from '../../../../../services/ApiClient'
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditBanner() {
 
     const [bannerData, setBannerData] = useState()
     const [disabled, setDisabled] = useState(true)
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [message, setMessage] = useState('')
 
     const {state} = useFormState(
         {
@@ -32,7 +37,7 @@ function EditBanner() {
 
 
 
-    const {data} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
@@ -40,24 +45,27 @@ function EditBanner() {
         event.preventDefault()
         data.id = bannerData._id
 
-        try {
-            await updateBannerData(data)
-                .then(banner => {
-                    setBannerData(banner[0])
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateBannerData(data)
+                    .then(banner => {
+                        setBannerData(banner)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
 
-    const handleBannerDescription = (e) => {
-        data.description = e.target.getContent()
-    }
-
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -68,15 +76,20 @@ function EditBanner() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setMessage("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
-
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
+        setIsDisabled(false)
+        error.imgURL = false
+    }
+
+    const handleBannerDescription = (e) => {
+        data.description = e.target.getContent()
+        error.description = false
     }
 
     useEffect(() => {
@@ -89,6 +102,8 @@ function EditBanner() {
     }, [])
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..." />}
         <section className="container-fluid EditContent">
             <h2>Banner</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
@@ -116,25 +131,27 @@ function EditBanner() {
                         />
                     </div>
                     <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Imagen
-                        </p>
-                        <InputFile
-                            value={data?.imgURL}
-                            onChange={onFileSelected}
-                            id="fileButton"
-                            name="picpath"
-                            type="file"
-                            placeholder={bannerData?.imgURL}
-                        />
+                        <div className="col-12 EditElementsModal__img">
+                            <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
+                            <InputFile
+                                value={data?.imgURL}
+                                onChange={onFileSelected}
+                                id="fileButton"
+                                name="picpath"
+                                type="file"
+                                placeholder={bannerData?.imgURL}
+                            />
+                        </div>
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
                 </div>
                 {registerError && <div className="alert alert-danger">{registerError}</div>}
             </form>
         </section>
+        </>
     )
 }
 

@@ -37,10 +37,12 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         }
     )
 
-    const {data} = state
+    const {data, error} = state
 
     const [disabled, setDisabled] = useState(true)
     const [registerError, setRegisterError] = useState(null)
+    const [message, setMessage] = useState('')
+
 
 
     const deleteCarrouselItem = async (id) => {
@@ -49,22 +51,32 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async (id) => {
-        console.log(id)
+        if (Object.values(error).map(el => el).includes(false)) {
         try {
             await updateCarrouselTA(data, id)
                 .then(updateData => {
                     deleteItem(updateData)
+                    setMessage('Data actualizada exitosamente')
+                })
+                .catch(error => {
+                    setRegisterError(error)
                 })
         } catch (err) {
             setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        error.desc = false
     }
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -75,17 +87,15 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setMessage("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
-
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data.imgPath = fileUrl
-        setImageSuccess("Imagen subida correctamente")
+        data.imgURL = fileUrl
         setIsDisabled(false)
+        error.imgURL = false
     }
 
     return (

@@ -11,8 +11,8 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerID() {
 
-    const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState([])
+    const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
@@ -52,7 +52,7 @@ function EditBannerID() {
                 await updateBannerID(data)
                     .then(banner => {
                         setBannerData(banner)
-                        setMessage('Data atualizada exitosamente')
+                        setMessage('Data actualizada exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

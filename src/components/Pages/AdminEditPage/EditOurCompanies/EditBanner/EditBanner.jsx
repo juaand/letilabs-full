@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
 import {getBannerOC, updateBannerDataOC} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
+import Loader from '../../../../Loader/Loader'
 
 function EditBanner() {
 
@@ -35,7 +36,7 @@ function EditBanner() {
 
 
 
-    const {data} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
     const [disabled, setDisabled] = useState(true)
 
@@ -43,25 +44,31 @@ function EditBanner() {
         event.preventDefault()
         data.id = bannerData._id
 
-        try {
-            await updateBannerDataOC(data)
-                .then(banner => {
-                    setBannerData(banner)
-                    setMessage('Cambios realizados con exito')
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateBannerDataOC(data)
+                    .then(banner => {
+                        setBannerData(banner)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
     }
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -72,17 +79,15 @@ function EditBanner() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setMessage("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
-
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data.logo = fileUrl
-        setImageSuccess("Imagen subida correctamente")
+        data.imgURL = fileUrl
         setIsDisabled(false)
+        error.imgURL = false
     }
 
     useEffect(() => {
@@ -95,6 +100,8 @@ function EditBanner() {
     }, [])
 
     return (
+        <>
+        {isDisabled && <Loader message="Cargando imagen..." />}
         <section className="container-fluid EditContent">
             <h2>Banner</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
@@ -136,12 +143,14 @@ function EditBanner() {
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
                 {registerError && <div className="alert alert-danger">{registerError}</div>}
             </form>
         </section>
+        </>
     )
 }
 
