@@ -1,7 +1,7 @@
 import './InputWithLabel.css'
 import React from 'react'
 
-export default function InputWithLabel({value, name, onChange, onBlur, type, cssStyle, placeholder, label, tabIndex}) {
+export default function InputWithLabel({value, name, onChange, onBlur, type, cssStyle, placeholder, label, tabIndex, disabled}) {
 
 
 
@@ -20,6 +20,7 @@ export default function InputWithLabel({value, name, onChange, onBlur, type, css
                 type={type}
                 placeholder={placeholder}
                 tabIndex={tabIndex}
+                disabled = {disabled}
             />
 
             <div className="invalid-feedback">campo obligatorio</div>

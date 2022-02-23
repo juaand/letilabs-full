@@ -82,12 +82,12 @@ function EditPortafolio() {
         <>
             {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             <section className="container-fluid Letilabs EditContent EditContent-timeline">
-                <h2>Editar Portfolio</h2>
+                <h2>Editar portafolio</h2>
                 <div className="row justify-content-around">
                     {portfolioData?.map(el =>
                         <div className="col-3 EditCarousel__edit EditCarousel__edit-force" onClick={() => showModal(el)}>
                             <h4 className="mt-3 mb-3">{el?.title}</h4>
-                            <p>{el?.description}</p>
+                            <p dangerouslySetInnerHTML={{__html: el?.description}} />
                         </div>
                     )}
                 </div>

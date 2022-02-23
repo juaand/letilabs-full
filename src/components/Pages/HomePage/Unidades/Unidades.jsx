@@ -24,7 +24,7 @@ function Unidades() {
         }
         fetchData()
         setLoading(!loading)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 
@@ -46,11 +46,11 @@ function Unidades() {
                                 <Fade delay={600} triggerOnce>
                                     <div className="row Unidades__row justify-content-end">
                                         <div className="col-12 col-sm-4 Unidades__desc Unidades__desc__right">
-                                            <p>{el.desc}</p>
+                                            <p dangerouslySetInnerHTML={{__html: el.desc}} />
                                             <Link to={`/${seoURL(el.name).toLowerCase()}`} className="Unidades__square-btn"></Link>
                                         </div>
                                         <div className="col-12 col-sm-5 Unidades__logo" style={{
-                                            background: `#f5f5f5 url("./images/${el.name.toLowerCase()}.svg") no-repeat center center / contain`
+                                            background: `#f5f5f5 url("${el.logo}") no-repeat center center / contain`
                                         }}></div>
                                     </div>
                                 </Fade>
@@ -58,10 +58,10 @@ function Unidades() {
                                 <Fade delay={600} triggerOnce>
                                     <div className="row Unidades__row">
                                         <div className="col-12 col-sm-5 Unidades__logo" style={{
-                                            background: `#f5f5f5 url("./images/${seoURL(el.name).toLowerCase()}.svg") no-repeat center center / contain`
+                                            background: `#f5f5f5 url("${el.logo}") no-repeat center center / contain`
                                         }}></div>
                                         <div className="col-12 col-sm-4 Unidades__desc">
-                                            <p>{el.desc}</p>
+                                            <p dangerouslySetInnerHTML={{__html: el.desc}} />
                                             <Link to={`/${seoURL(el.name).toLowerCase()}`} className="Unidades__square-btn"></Link>
                                         </div>
                                     </div>

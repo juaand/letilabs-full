@@ -13,10 +13,10 @@ import Loader from '../../../../../Loader/Loader'
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
     const [ctaData, setCtaData] = useState(infodata)
     const [message, setMessage] = useState('')
-    const [isDisabled, setIsDisabled] = useState(false)
-    const [imageSuccess, setImageSuccess] = useState('')
 
     const {state, onChange} = useFormState(
         {

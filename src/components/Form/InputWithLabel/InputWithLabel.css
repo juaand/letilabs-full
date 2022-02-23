@@ -18,6 +18,11 @@
   padding-left: 2rem;
 }
 
+.form-group .form-control:disabled {
+  background: #f5f5f5;
+  opacity: 0.3 !important;
+}
+
 .invalid-feedback {
   color: #cd202f;
   font-size: 1.2rem;

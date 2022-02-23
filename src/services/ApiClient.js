@@ -36,7 +36,7 @@ export const updateUsInfoData = ({description, url, buttonTitle, id}) => http.pa
 export const updateUnidadesData = ({logo, desc, url}, id) => http.patch("/updateunidadesiniciodata", {logo, desc, url, id})
 export const updatePortfolioData = ({title, description}, id) => http.patch("/updateportfolioiniciodata", {title, description, id})
 export const updateFarmacoData = ({title, subTitle, buttonTitle, id}) => http.patch("/updatefarmacoiniciodata", {title, subTitle, buttonTitle, id})
-export const deleteCarItem = (id) => http.get(`/deletecaritem/${id}`)
+export const deleteCarItem = (id) => http.get(`/deleteportfolioitem/${id}`)
 export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
 export const getApiVideo = () => http.get("/videoiniciodata")
 export const updateVideoData = (url, id) => http.patch("/updatevideodata", {url, id})
