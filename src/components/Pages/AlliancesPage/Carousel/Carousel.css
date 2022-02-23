@@ -313,9 +313,13 @@
   }
   .Carousel__Alliances h1 {
     margin: 0rem;
+    margin-bottom: 3rem;
   }
   .Carousel__Alliances .slick-dots {
-    display: none !important;
+    margin-bottom: 2rem;
+  }
+  .Carousel__Alliances .slick-dots:before {
+    border: 0;
   }
   .Carousel__Alliances .slick-next {
     transform: translate(-5rem, 10rem);
