@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react'
+
 import {getCarreras} from '../../../../services/ApiClient'
 import Loader from '../../../Loader/Loader'
+import './Careers.css'
 
 function Careers() {
 

@@ -22,7 +22,7 @@ function Video() {
         <>
             {loading && <Loader />}
             <Fade triggerOnce direction="up" duration={600}>
-                <section >
+                <section className="container-fluid Video Video__purpose">
                     {videoData && (
                         <video poster="https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752" loop muted autoPlay playsInline>
                             <source src={videoData} type="video/mp4" />
