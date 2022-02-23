@@ -79,3 +79,9 @@
 .EditElementsModal__close:hover {
   border: solid 0.3rem #055aa5;
 }
+
+@media (max-width: 576px) {
+  .EditElementsModal__container {
+    padding: 2rem !important;
+  }
+}

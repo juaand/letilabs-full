@@ -106,7 +106,7 @@ function EditTimeline() {
                     <h2>Editar elemento del timeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
-                            <div className="col-1 EditCarousel__edit" onClick={() => showModal(el)}>
+                            <div className="col-12 col-sm-1 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el.year} />
                                 <p>{el.year}</p>
                             </div>

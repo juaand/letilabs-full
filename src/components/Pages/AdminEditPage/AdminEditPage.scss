@@ -138,3 +138,11 @@
     color: $leti-blue;
   }
 }
+
+@media (max-width: 576px) {
+  .EditContent {
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+}

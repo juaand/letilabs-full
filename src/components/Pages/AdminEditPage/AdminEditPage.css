@@ -131,3 +131,9 @@
   font-size: 1.4rem;
   color: #055aa5;
 }
+
+@media (max-width: 576px) {
+  .EditContent h2 {
+    font-size: 1.6rem;
+  }
+}

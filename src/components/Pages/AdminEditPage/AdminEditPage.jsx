@@ -37,10 +37,10 @@ function AdminEditPage() {
             </Helmet>
             <main className="container-fluid AdminEditPage">
                 <div className="row">
-                    <div className="col-2 p-0 AdminEditPage__NavContent">
+                    <div className="col-sm-2 p-0 AdminEditPage__NavContent">
                         <Nav getActiveItem={getActiveNav} />
                     </div>
-                    <div className="col-10 AdminEditPage__Content">
+                    <div className="col-sm-10 AdminEditPage__Content">
                         {initNavValue === 'inicio' && <EditHome />}
                         {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
                         {initNavValue === 'areas-terapeuticas' && <EditTherapeuticalAreas />}
