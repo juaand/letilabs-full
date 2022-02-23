@@ -94,15 +94,13 @@ function ModalFarmacoVigilancia({hideModal}) {
 
     const isError = Object.values(error).some(err => err)
 
-
-    const getVadevecumNames = vadevecum.map(el => el.name)
+    const getVadevecumNames = vadevecum?.map(el => el.name)
     const dataList = [...new Set(getVadevecumNames)].sort()
 
     useEffect(() => {
         const fetchData = async () => {
             const data = await getVadevecumData()
-            const dataFiltered = data?.filter(el => el?.show_in_home === true)
-            setVadevecum(dataFiltered)
+            setVadevecum(data)
             const getModalData = await getModalFarmaco()
             setModalFarmacoData(getModalData)
         }
