@@ -20,7 +20,9 @@ function AdminProductInfoPage() {
     const filteredCards = productInfo.filter(card => {
         return (
             card.name.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1 ||
-            card.lastname.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1
+            card.lastname.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1 ||
+            card.license.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1||
+            card.work.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1
         )
     })
 
@@ -64,7 +66,7 @@ function AdminProductInfoPage() {
                 <div className="row">
                     <div className="col-12 AdminProductInfoPage__bg">
                         <div className="container">
-                            <input type="text" className="form-control AdminProductInfoPage__search" placeholder="Filtrar por nombre del doctor(a)" onChange={handleChange} value={search} />
+                            <input type="text" className="form-control AdminProductInfoPage__search" placeholder="Filtrar por nombre, apellido, licencia o institución del doctor(a)" onChange={handleChange} value={search} />
                         </div>
                     </div>
                 </div>
