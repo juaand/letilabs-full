@@ -84,7 +84,7 @@ function EditMegat() {
                         onChange={onChange}
                         name="title"
                         type="text"
-                        cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                        cssStyle={`form-control mb-5 ${touch.title && error.title ? "is-invalid" : ""}`}
                         placeholder={megatData?.title}
                     />
                     <div className="col-12 col-sm-6">
@@ -96,7 +96,7 @@ function EditMegat() {
                             onChange={handleMegatDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 160,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -119,7 +119,7 @@ function EditMegat() {
                             onChange={onChange}
                             name="url"
                             type="text"
-                            cssStyle={`form-control ${touch.url && error.url ? "is-invalid" : ""}`}
+                            cssStyle={`form-control mb-3 ${touch.url && error.url ? "is-invalid" : ""}`}
                             placeholder={megatData?.url}
                         />
                         <p className="AdminEdit__form__label">
@@ -131,12 +131,12 @@ function EditMegat() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle={`form-control mb-0 ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={megatData?.buttonTitle}
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Megat
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-0" >Guardar cambios
                         </Button>
                     </div>
 

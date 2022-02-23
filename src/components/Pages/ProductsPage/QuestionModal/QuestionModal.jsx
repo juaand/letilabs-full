@@ -4,7 +4,7 @@ import {useFormState} from '../../../../hooks/useFormState'
 import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../Form/FormButton/FormButton'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
-import {vigilanciaForm} from '../../../../services/ApiClient'
+import {productInfoForm} from '../../../../services/ApiClient'
 import {Reveal} from "react-awesome-reveal"
 import {keyframes} from "@emotion/react"
 
@@ -69,12 +69,11 @@ function QuestionModal({hideModal}) {
         data.info = info
 
         try {
-            console.log(data)
-            // const newVigilancia = await vigilanciaForm(data)
-            // document.querySelector('form').reset()
-            // document.querySelector('.QuestionModal__container').classList.add('QuestionModal__container--success')
-            // setFormResponse(newVigilancia)
-            // setMessage(!message)
+            const newVigilancia = await productInfoForm(data)
+            document.querySelector('form').reset()
+            document.querySelector('.QuestionModal__container').classList.add('QuestionModal__container--success')
+            setFormResponse(newVigilancia)
+            setMessage(!message)
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
@@ -100,8 +99,9 @@ function QuestionModal({hideModal}) {
                     <div className="col-11 col-sm-12 QuestionModal__container">
                         {message &&
                             <>
-                                <h1>Gracias {formResponse.name},</h1>
+                                <h1>Gracias Dr/a. {formResponse.lastname},</h1>
                                 <p>Tu comentario ha sido enviado exitosamente.</p>
+                                <p>Nos pondremos en contacto a la brevedad posible.</p>
                                 <div className="leti-blue-triangle"></div>
                                 <div className="leti-red-triangle"></div>
                                 <div className="leti-btn" onClick={hideModal}>Cerrar</div>
@@ -121,7 +121,7 @@ function QuestionModal({hideModal}) {
                                                         onChange={onChange}
                                                         name="name"
                                                         type="text"
-                                                        label="Nombre del paciente"
+                                                        label="Nombre"
                                                         cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                         tabIndex="1"
                                                     />
@@ -133,7 +133,7 @@ function QuestionModal({hideModal}) {
                                                         onChange={onChange}
                                                         name="lastname"
                                                         type="text"
-                                                        label="Apellido del paciente"
+                                                        label="Apellidos"
                                                         cssStyle={`form-control ${touch.lastname && error.lastname ? "is-invalid" : ""}`}
                                                         tabIndex="2"
                                                     />

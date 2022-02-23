@@ -120,7 +120,7 @@ function EditEquipoBiocontrolledPage() {
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 120,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -142,7 +142,7 @@ function EditEquipoBiocontrolledPage() {
                             onChange={handleBannerPerson}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 120,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -156,7 +156,7 @@ function EditEquipoBiocontrolledPage() {
                         />
                     </div>
                     <div className="col-12 col-sm-4">
-                        <div className="col-12 EditElementsModal__img">
+                        <div className="col-12 EditElementsModal__img mt-0">
                             <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
                             <InputFile
                                 value={bannerData?.imgURL}
@@ -164,6 +164,7 @@ function EditEquipoBiocontrolledPage() {
                                 id="fileButton"
                                 name="imgURL"
                                 type="file"
+                                label="Imagen"
                                 placeholder={bannerData?.imgURL}
                             />
                         </div>
@@ -197,7 +198,7 @@ function EditEquipoBiocontrolledPage() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
 
                 </div>

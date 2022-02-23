@@ -113,7 +113,7 @@ function EditBannerTA() {
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 220,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -152,7 +152,7 @@ function EditBannerTA() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-0" >Guardar cambios</Button>
                     </div>
 
                 </div>

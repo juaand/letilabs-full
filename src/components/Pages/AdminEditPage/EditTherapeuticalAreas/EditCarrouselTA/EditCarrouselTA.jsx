@@ -118,7 +118,7 @@ function EditCarrouselTA() {
                 <h2>Añadir nuevo elemento a la Galería</h2>
                 <form className="AdminEdit__form" onSubmit={updateCarrouselTAItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Título Principal
                             </p>
@@ -128,11 +128,11 @@ function EditCarrouselTA() {
                                 onChange={onChange}
                                 name="mainTitle"
                                 type="text"
-                                cssStyle={`form-control ${touch.mainTitle && error.mainTitle ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.mainTitle && error.mainTitle ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Título
                             </p>
@@ -142,11 +142,11 @@ function EditCarrouselTA() {
                                 onChange={onChange}
                                 name="title"
                                 type="text"
-                                cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
                                 Descripción Área
                             </p>
@@ -156,11 +156,11 @@ function EditCarrouselTA() {
                                 onChange={onChange}
                                 name="desc"
                                 type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.desc && error.desc ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
-                        <div className="col-12">
+                        <div className="col-3">
                             <p className="AdminEdit__form__label">
                                 Imagen Área
                             </p>

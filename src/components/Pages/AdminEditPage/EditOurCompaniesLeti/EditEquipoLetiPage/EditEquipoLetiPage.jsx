@@ -154,8 +154,8 @@ function EditEquipoLetiPage() {
                             }}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
-                        <div className="col-12 EditElementsModal__img">
+                    <div className="col-12 col-sm-4">
+                        <div className="col-12 EditElementsModal__img m-0">
                             <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
                             <InputFile
                                 value={bannerData?.imgURL}
@@ -163,13 +163,14 @@ function EditEquipoLetiPage() {
                                 id="fileButton"
                                 name="imgURL"
                                 type="file"
+                                label="imagen"
                                 placeholder={bannerData?.imgURL}
                             />
                         </div>
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
-                            titulo boton
+                            Texto botón
                         </p>
                         <InputWithLabel
                             value={data?.buttonTitle}
@@ -177,13 +178,13 @@ function EditEquipoLetiPage() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle={`form-control mb-0 ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={bannerData?.buttonTitle}
                         />
                     </div>
-                    <div className="col-12 col-sm-6">
+                    <div className="col-12 col-sm-4">
                         <p className="AdminEdit__form__label">
-                            url boton
+                            URL botón
                         </p>
                         <InputWithLabel
                             value={data?.buttonLink}
@@ -191,12 +192,12 @@ function EditEquipoLetiPage() {
                             onChange={onChange}
                             name="buttonLink"
                             type="text"
-                            cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
+                            cssStyle={`form-control mb-0 ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
                             placeholder={bannerData?.buttonLink}
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - equipo</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
 
                 </div>

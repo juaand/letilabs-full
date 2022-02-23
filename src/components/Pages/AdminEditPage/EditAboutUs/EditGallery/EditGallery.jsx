@@ -125,7 +125,7 @@ function EditGallery() {
                                 onChange={onChange}
                                 name="name"
                                 type="text"
-                                cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.name && error.name ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
@@ -139,7 +139,7 @@ function EditGallery() {
                                 onChange={onChange}
                                 name="desc"
                                 type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.desc && error.desc ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>

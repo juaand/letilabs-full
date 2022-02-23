@@ -227,6 +227,7 @@ export const getProductBottom = () => http.get("/bottomproduct")
 export const updateProductBottom = ({findProductsTitle, imgURL, title, buttonTitle, farmacoTitle, farmacoBtn, farmacoDesc, id}) => http.patch("/updateproductbottom", {findProductsTitle, imgURL, title, buttonTitle, farmacoTitle, farmacoBtn, farmacoDesc, id})
 export const getProductListBanner = () => http.get("/listadoproductosbanner")
 export const updateProductListBanner = ({description, imgURL, title, id}) => http.patch("/updatelistadoproductosbanner", {description, imgURL, title, id})
+export const productInfoForm = ({name, lastname, work, years, speciality, info, license, mail}) => http.post("/productinfoform", {name, lastname, work, years, speciality, info, license, mail})
 
 
 // our philosophy page

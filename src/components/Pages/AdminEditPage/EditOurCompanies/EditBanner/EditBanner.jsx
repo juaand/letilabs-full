@@ -35,7 +35,7 @@ function EditBanner() {
 
 
 
-    const {data, error, touch} = state
+    const {data} = state
     const [registerError, setRegisterError] = useState(null)
     const [disabled, setDisabled] = useState(true)
 
@@ -108,7 +108,7 @@ function EditBanner() {
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 140,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -135,7 +135,7 @@ function EditBanner() {
                         </div>
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
 
                 </div>

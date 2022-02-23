@@ -102,7 +102,7 @@ function EditBanner() {
                             onChange={handleBannerDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 200,
+                                height: 140,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
@@ -129,7 +129,7 @@ function EditBanner() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn mt-5 AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
                 </div>
                 {registerError && <div className="alert alert-danger">{registerError}</div>}

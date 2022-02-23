@@ -127,7 +127,7 @@ function EditTimeline() {
                                 onChange={onChange}
                                 name="year"
                                 type="text"
-                                cssStyle={`form-control ${touch.year && error.year ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.year && error.year ? "is-invalid" : ""}`}
                                 placeholder="Ingresa año"
                             />
                         </div>
@@ -154,7 +154,7 @@ function EditTimeline() {
                                 onChange={onChange}
                                 name="desc"
                                 type="text"
-                                cssStyle={`form-control ${touch.desc && error.desc ? "is-invalid" : ""}`}
+                                cssStyle={`form-control mb-0 ${touch.desc && error.desc ? "is-invalid" : ""}`}
                                 placeholder="Ingresa descripción"
                             />
                         </div>
