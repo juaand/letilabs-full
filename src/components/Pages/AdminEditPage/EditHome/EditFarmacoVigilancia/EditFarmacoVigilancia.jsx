@@ -1,13 +1,15 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {getFarmaco, updateFarmacoData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
 
 function EditFarmacoVigilancia() {
 
     const [farmacoData, setFarmacoData] = useState()
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -19,8 +21,8 @@ function EditFarmacoVigilancia() {
             },
             error: {
                 title: true,
-                subTitle: false,
-                buttonTitle: false,
+                subTitle: true,
+                buttonTitle: true,
             },
             touch: {},
         },
@@ -39,22 +41,28 @@ function EditFarmacoVigilancia() {
         event.preventDefault()
         data.id = farmacoData._id
 
-        try {
-            await updateFarmacoData(data)
-                .then(farmaco => {
-                    setFarmacoData(farmaco)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateFarmacoData(data)
+                    .then(farmaco => {
+                        setFarmacoData(farmaco)
+                        setMessage('Data atualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleFarmacoSubTitle = (e) => {
         data.subTitle = e.target.getContent()
+        error.subTitle = false
     }
-
 
     useEffect(() => {
 
@@ -119,7 +127,8 @@ function EditFarmacoVigilancia() {
                             }}
                         /></div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar Farmaco Vigilancia</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>

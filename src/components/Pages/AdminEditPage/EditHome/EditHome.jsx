@@ -4,7 +4,6 @@ import EditVideo from './EditVideo/EditVideo'
 import EditCarousel from './EditCarousel/EditCarousel'
 import EditUnidades from './EditUnidades/EditUnidades'
 import EditPortafolio from './EditPortafolio/EditPortafolio'
-import EditFindProduct from './EditFindProduct/EditFindProduct'
 import EditFarmacoVigilancia from './EditFarmacoVigilancia/EditFarmacoVigilancia'
 
 function EditHome() {
@@ -17,7 +16,6 @@ function EditHome() {
             <EditCarousel />
             <EditUnidades />
             <EditPortafolio />
-            <EditFindProduct />
             <EditFarmacoVigilancia />
         </main>
         
