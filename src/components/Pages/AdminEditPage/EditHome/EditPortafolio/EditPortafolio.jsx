@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getPortfolio, updatePortfolioData, updateTitlePortfolio} from '../../../../../services/ApiClient'
+import {getPortfolio, createPortfolio, updateTitlePortfolio} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
@@ -9,6 +9,7 @@ import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditPortafolio() {
 
+    const [newItemMessage, setNewItemMessage] = useState()
     const [portfolioData, setPortfolioData] = useState()
     const [modalData, setModalData] = useState()
     const [message, setMessage] = useState('')
@@ -41,19 +42,25 @@ function EditPortafolio() {
     const [registerError, setRegisterError] = useState(null)
 
 
-    const updatePortfolioInfo = async (event) => {
+    const createPortfolioItem = async (event) => {
         event.preventDefault()
+        data.superiorTitle = title
 
-        try {
-            await updatePortfolioData(data)
-                .then(portfolio => {
-                    setPortfolioData(portfolio[0])
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.title === false && error.description === false) {
+            try {
+                await createPortfolio(data)
+                    .then(portfolio => {
+                        setPortfolioData(portfolio)
+                        setNewItemMessage('Elemento añadido exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setNewItemMessage('Por favor rellene ambos campos')
         }
     }
 
@@ -80,6 +87,7 @@ function EditPortafolio() {
 
     const handlePortfolioDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
 
     const showModal = (data) => {
@@ -140,8 +148,9 @@ function EditPortafolio() {
                     <hr className="mt-5 mb-5" />
                     {registerError && <div className="alert alert-danger">{registerError}</div>}
                 </form>
-                <form className="AdminEdit__form" onSubmit={updatePortfolioInfo}>
+                <form className="AdminEdit__form" onSubmit={createPortfolioItem}>
                     <div className="row">
+                        <h3>Añadir elemento nuevo al portafolio</h3>
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Título
@@ -165,7 +174,7 @@ function EditPortafolio() {
                                 onChange={handlePortfolioDescription}
                                 apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                 init={{
-                                    height: 200,
+                                    height: 140,
                                     menubar: false,
                                     plugins: [
                                         'advlist autolink lists link image',
@@ -178,7 +187,8 @@ function EditPortafolio() {
                                 }}
                             /></div>
                         <div className="col-12">
-                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Editar Portfolio</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo elemento</Button>
+                            {newItemMessage && <span className="AdminEdit__message ">{newItemMessage}</span>}
                         </div>
 
                     </div>
