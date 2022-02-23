@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getPortfolio, updatePortfolioData} from '../../../../../services/ApiClient'
+import {getPortfolio, updatePortfolioData, updateTitlePortfolio} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
@@ -11,7 +11,9 @@ function EditPortafolio() {
 
     const [portfolioData, setPortfolioData] = useState()
     const [modalData, setModalData] = useState()
+    const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
+    const [title, setTitle] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -22,9 +24,9 @@ function EditPortafolio() {
                 description: portfolioData?.description,
             },
             error: {
-                superiorTitle: false,
-                title: false,
-                description: false,
+                superiorTitle: true,
+                title: true,
+                description: true,
             },
             touch: {},
         },
@@ -54,6 +56,28 @@ function EditPortafolio() {
             setRegisterError(err.response?.data?.message)
         }
     }
+
+    const updateInfo = async (event) => {
+        event.preventDefault()
+
+        if (error.superiorTitle === false) {
+            try {
+                await updateTitlePortfolio(data)
+                    .then(info => {
+                        setPortfolioData(info)
+                        setMessage('Título atualizado exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite el título')
+        }
+    }
+
     const handlePortfolioDescription = (e) => {
         data.description = e.target.getContent()
     }
@@ -69,10 +93,10 @@ function EditPortafolio() {
     }
 
     useEffect(() => {
-
         const fetchData = async () => {
             const getPortfolioData = await getPortfolio()
             setPortfolioData(getPortfolioData)
+            setTitle(getPortfolioData[0]?.superiorTitle)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -93,24 +117,34 @@ function EditPortafolio() {
                 </div>
             </section>
             <section className="container-fluid EditContent">
-                <h2>Añadir Portafolio</h2>
+                <h2>Añadir portafolio</h2>
+                <form className="AdminEdit__form" onSubmit={updateInfo}>
+                    <div className="row">
+                        <h3 className="mt-5">Editar título portafolio</h3>
+                        <div className="col-12">
+                            <InputWithLabel
+                                value={data.superiorTitle}
+                                label="Título carrusel"
+                                onChange={onChange}
+                                name="superiorTitle"
+                                type="text"
+                                cssStyle="form-control mb-5"
+                                placeholder={title}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <Button type="submit" cssStyle="leti-btn">Editar título</Button>
+                            {message && <span className="AdminEdit__message ">{message}</span>}
+                        </div>
+                    </div>
+                    <hr className="mt-5 mb-5" />
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
                 <form className="AdminEdit__form" onSubmit={updatePortfolioInfo}>
                     <div className="row">
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
-                                título sección
-                            </p>
-                            <InputWithLabel
-                                value={data?.superiorTitle}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="superiorTitle"
-                                type="text"
-                                cssStyle={`form-control ${touch.superiorTitle && error.superiorTitle ? "is-invalid" : ""}`}
-                                placeholder={portfolioData?.superiorTitle}
-                            />
-                            <p className="AdminEdit__form__label">
-                                titulo
+                                Título
                             </p>
                             <InputWithLabel
                                 value={data?.title}
@@ -124,7 +158,7 @@ function EditPortafolio() {
                         </div>
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
-                                description
+                                Descripción
                             </p>
                             <Editor
                                 initialValue={portfolioData?.description}
