@@ -25,6 +25,15 @@
   font-size: 1.4rem;
 }
 
+.ModalFarmacoVigilancia__desc strong {
+  color: #055aa5;
+  font-weight: 400;
+  display: inline-block !important;
+  font-family: 'Mulish', sans-serif !important;
+  font-size: 2rem !important;
+  margin: 0 !important;
+}
+
 .ModalFarmacoVigilancia__container {
   background: #fff;
   padding: 9rem;

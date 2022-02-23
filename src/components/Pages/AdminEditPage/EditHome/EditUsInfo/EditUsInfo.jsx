@@ -101,7 +101,7 @@ function EditUsInfo() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            URL del botón
+                            URL del botón <small>(en minúsculas y sin espacios en blanco)</small>
                         </p>
                         <InputWithLabel
                             value={data?.url}
@@ -126,7 +126,7 @@ function EditUsInfo() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Sobre Nosotros</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
 
                 </div>

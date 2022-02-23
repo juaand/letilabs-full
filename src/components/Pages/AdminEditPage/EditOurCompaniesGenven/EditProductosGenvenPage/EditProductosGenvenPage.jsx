@@ -160,7 +160,7 @@ function EditProductosGenvenPage() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.img1URL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img1URL} />
+                            <img src={bannerData?.img1URL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img1URL} />
                             <InputFile
                                 value={bannerData?.img1URL}
                                 onChange={onFileSelected}
@@ -173,7 +173,7 @@ function EditProductosGenvenPage() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.img2URL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img2URL} />
+                            <img src={bannerData?.img2URL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img2URL} />
                             <InputFile
                                 value={bannerData?.img2URL}
                                 onChange={onFileSelected}
@@ -186,7 +186,7 @@ function EditProductosGenvenPage() {
                     </div>
                     <div className="col-12 col-sm-6">
                         <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.img3URL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img3URL} />
+                            <img src={bannerData?.img3URL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.img3URL} />
                             <InputFile
                                 value={bannerData?.img3URL}
                                 onChange={onFileSelected}

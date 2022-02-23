@@ -1,35 +1,35 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getFarmaco, updateFarmacoData} from '../../../../../services/ApiClient'
+import {getModalFarmaco, updateModalFarmaco} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 
-function EditFarmacoVigilancia() {
+function EditFarmacoVigilanciaModal() {
 
-    const [farmacoData, setFarmacoData] = useState()
+    const [modalFarmacoData, setModalFarmacoData] = useState()
     const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
                 id: '',
-                title: farmacoData?.title,
-                subTitle: farmacoData?.subTitle,
-                buttonTitle: farmacoData?.buttonTitle,
+                title: modalFarmacoData?.title,
+                subTitle: modalFarmacoData?.subTitle,
+                description: modalFarmacoData?.description,
             },
             error: {
                 title: true,
                 subTitle: true,
-                buttonTitle: true,
+                description: true,
             },
             touch: {},
         },
         {
             title: v => v.length,
             subTitle: v => v.length,
-            buttonTitle: v => v.length,
+            description: v => v.length,
         }
     )
 
@@ -39,13 +39,13 @@ function EditFarmacoVigilancia() {
 
     const updateFarmaco = async (event) => {
         event.preventDefault()
-        data.id = farmacoData._id
+        data.id = modalFarmacoData._id
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
-                await updateFarmacoData(data)
+                await updateModalFarmaco(data)
                     .then(farmaco => {
-                        setFarmacoData(farmaco)
+                        setModalFarmacoData(farmaco[0])
                         setMessage('Data atualizada exitosamente')
                     })
                     .catch(error => {
@@ -59,16 +59,15 @@ function EditFarmacoVigilancia() {
         }
     }
 
-    const handleFarmacoSubTitle = (e) => {
-        data.subTitle = e.target.getContent()
-        error.subTitle = false
+    const handleDescription = (e) => {
+        data.description = e.target.getContent()
+        error.description = false
     }
 
     useEffect(() => {
-
         const fetchData = async () => {
-            const getFarmacoData = await getFarmaco()
-            setFarmacoData(getFarmacoData)
+            const getFarmacoData = await getModalFarmaco()
+            setModalFarmacoData(getFarmacoData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,8 +75,7 @@ function EditFarmacoVigilancia() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Farmaco vigilancia  
-            <small>(Edita los textos de farmacovigilancia de todo el site)</small></h2>
+            <h2>Modal farmaco vigilancia <small>(Edita el modal de farmacovigilancia de todo el site)</small></h2>
             <form className="AdminEdit__form" onSubmit={updateFarmaco}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -91,19 +89,19 @@ function EditFarmacoVigilancia() {
                             name="title"
                             type="text"
                             cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                            placeholder={farmacoData?.title}
+                            placeholder={modalFarmacoData?.title}
                         />
                         <p className="AdminEdit__form__label">
-                            Título del botón
+                            Subtítulo
                         </p>
                         <InputWithLabel
-                            value={data?.buttonTitle}
+                            value={data?.subTitle}
                             onBlur={onBlur}
                             onChange={onChange}
-                            name="buttonTitle"
+                            name="subTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
-                            placeholder={farmacoData?.buttonTitle}
+                            cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
+                            placeholder={modalFarmacoData?.subTitle}
                         />
                     </div>
                     <div className="col-12 col-sm-6">
@@ -111,8 +109,8 @@ function EditFarmacoVigilancia() {
                             Descripción
                         </p>
                         <Editor
-                            initialValue={farmacoData?.subTitle}
-                            onChange={handleFarmacoSubTitle}
+                            initialValue={modalFarmacoData?.description}
+                            onChange={handleDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
                                 height: 200,
@@ -139,4 +137,4 @@ function EditFarmacoVigilancia() {
     )
 }
 
-export default EditFarmacoVigilancia
+export default EditFarmacoVigilanciaModal

@@ -7,7 +7,7 @@ function EditCarousel() {
         <>
             <section className="container-fluid EditContent EditCarousel">
                 <h2>Añadir o editar productos del carrusel</h2>
-                <p>Para editar o añadir productos haga click en <Link to="/admin-productos">Productos</Link> en la botonera superior.</p>
+                <p>Para añadir productos al carrusel, haga click en <Link to="/admin-productos">Productos</Link> en la botonera superior.</p>
             </section>
         </>
     )

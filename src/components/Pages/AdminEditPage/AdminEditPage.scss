@@ -67,6 +67,12 @@
     padding: 0rem 1rem;
     color: $leti-blue;
     font-size: 2rem;
+
+    small {
+      margin-left: 0.8rem;
+      color: $leti-text;
+      font-size: 1.4rem;
+    }
   }
 
   h3 {
@@ -94,7 +100,8 @@
       font-weight: 600;
       color: $leti-nav;
 
-      strong {
+      strong,
+      small {
         color: $leti-blue;
       }
     }

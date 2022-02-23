@@ -1,8 +1,9 @@
 import './Portafolio.css'
 import React, {useState, useEffect} from 'react'
-import {Fade} from "react-awesome-reveal"
+
 import {getPortfolio} from '../../../../services/ApiClient'
 import Loader from '../../../Loader/Loader'
+import {Fade} from "react-awesome-reveal"
 
 function Portafolio() {
 
@@ -26,11 +27,11 @@ function Portafolio() {
             <section className="container-fluid Portafolio">
                 <div className="row">
                     <div className="col-11 col-sm-5 offset-sm-2 order-xs-2">
-                        <div className="row justify-content-between">
+                        <div className="row justify-content-center">
                             {getData.map(el =>
                                 <div className="col-12 col-sm-5 Portafolio__item">
                                     <h2>{el?.title}</h2>
-                                    <p>{el?.description}</p>
+                                    <p dangerouslySetInnerHTML={{__html: el?.description}} />
                                 </div>
                             )}
                         </div>

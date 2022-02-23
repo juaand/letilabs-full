@@ -63,12 +63,11 @@ function EditVideo() {
 
     return (
         <section className="container-fluid EditContent EditVideo">
-            <h2>Vídeo</h2>
-
+            <h2>Video</h2>
             {message ? <p className="is-message">{message}</p> :
                 <div className="row">
                     <div className="col-12">
-                        <a className="video-link" href={videoInfo} target="_blank" rel="noopener noreferrer">Ver vídeo actual</a>
+                        <a className="video-link" href={videoInfo} target="_blank" rel="noopener noreferrer">Ver video actual</a>
                         <InputFile
                             value={videoData}
                             onChange={onFileSelected}

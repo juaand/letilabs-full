@@ -63,7 +63,7 @@ function Carousel() {
                                 <div className="row justify-content-center align-items-center Carousel__Alliances__alone">
                                     {getData.map(el =>
                                         <div className="col-4 d-flex justify-content-center">
-                                            <img src={el.picPath} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="" />
+                                            <img src={el.picPath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="" />
                                         </div>
                                     )}
                                 </div>

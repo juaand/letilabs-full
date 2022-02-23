@@ -119,7 +119,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 <p className="EditElementsModal__text"><strong>Editar imagen</strong></p>
                                             </div>
                                             <div className="col-12 EditElementsModal__img">
-                                                <img src={element.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={element.name} />
+                                                <img src={element.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={element.name} />
                                                 <InputFile
                                                     value={element?.imgURL}
                                                     onChange={onFileSelected}

@@ -23,9 +23,9 @@ function BannerProductos() {
         <>
             {loading && <Loader />}
             <section className="container-fluid BannerProductos">
-                <img data-speed="-.2" data-axis="horizontal" src="./images/ulgarin.png" className="parallax BannerProductos__img-ulgarin" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="grupo leti ulgarin" />
-                <img data-speed=".08" data-axis="horizontal" src="./images/azitomicina.png" className="parallax BannerProductos__img-azitomicina" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="grupo leti azitomicina" />
-                <img data-speed="-.06" data-axis="horizontal" src="./images/diklason_box.png" className="parallax BannerProductos__img-diklason" onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="grupo leti diklason" />
+                <img data-speed="-.2" data-axis="horizontal" src="./images/ulgarin.png" className="parallax BannerProductos__img-ulgarin" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="grupo leti ulgarin" />
+                <img data-speed=".08" data-axis="horizontal" src="./images/azitomicina.png" className="parallax BannerProductos__img-azitomicina" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="grupo leti azitomicina" />
+                <img data-speed="-.06" data-axis="horizontal" src="./images/diklason_box.png" className="parallax BannerProductos__img-diklason" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt="grupo leti diklason" />
                 <div className="container">
                     <div className="row justify-content-end">
                         <div className="col-12 col-sm-8">

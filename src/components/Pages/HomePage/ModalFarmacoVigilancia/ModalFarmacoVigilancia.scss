@@ -26,6 +26,17 @@
     }
   }
 
+  &__desc {
+    strong {
+      color: $leti-blue;
+      font-weight: 400;
+      display: inline-block !important;
+      font-family: 'Mulish', sans-serif !important;
+      font-size: 2rem !important;
+      margin: 0 !important;
+    }
+  }
+
   &__container {
     background: $leti-white;
     padding: 9rem;

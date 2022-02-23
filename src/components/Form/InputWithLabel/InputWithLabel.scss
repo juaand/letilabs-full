@@ -17,6 +17,11 @@
     height: 6rem;
     margin-bottom: 2rem;
     padding-left: 2rem;
+
+    &:disabled {
+      background: $leti-back;
+      opacity: 0.3 !important;
+    }
   }
 }
 
