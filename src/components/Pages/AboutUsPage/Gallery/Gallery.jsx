@@ -35,14 +35,14 @@ function Gallery() {
         <>
             <section className="container-fluid Gallery">
                 <Fade direction="left" duration={600} triggerOnce>
-                    <h1>Hoy contamos con lo mejor</h1>
+                    <h1>{dataGallery[0]?.mainTitle}</h1>
                 </Fade>
                 <Fade delay={600} triggerOnce>
                     <div className="col-12 col-sm-6 Gallery__image" style={{
                         background: `url("${backImage}") no-repeat center center / cover`
                     }}>
                         <p className="Gallery__desc row">
-                            <span className="col-sm-11 col-12">{itemDesc}</span>
+                            <span dangerouslySetInnerHTML={{__html: itemDesc}} className="col-sm-11 col-12"/>
                         </p>
                     </div>
                 </Fade>

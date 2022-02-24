@@ -10,7 +10,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditMarcandoPauta() {
 
-    const [marcandoPautaData, setMarcandoPautaData] = useState()
+    const [marcandoPautaData, setMarcandoPautaData] = useState([])
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 

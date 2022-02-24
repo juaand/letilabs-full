@@ -1,12 +1,15 @@
 
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getGallery, addGalleryData} from '../../../../../services/ApiClient'
+import {Editor} from '@tinymce/tinymce-react'
+
+import {getGallery, addGalleryData, updateGalleryTitle} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
-import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import EditElementsModal from './EditElementsModal/EditElementsModal'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditGallery() {
 
@@ -14,29 +17,35 @@ function EditGallery() {
         {
             data: {
                 mainTitle: '',
+                desc: '',
                 title: '',
                 imgPath: '',
             },
             error: {
-                mainTitle: false,
-                title: false,
-                imgPath: false,
+                mainTitle: true,
+                desc: true,
+                title: true,
+                imgPath: true,
             },
             touch: {},
         },
         {
             mainTitle: v => v.length,
+            desc: v => v.length,
             title: v => v.length,
             imgPath: v => v.length,
         }
     )
 
-    const {data, error, touch} = state
+    const {data, error} = state
+
     const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
-    const [galleryData, setGalleryData] = useState()
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [galleryData, setGalleryData] = useState([])
+    const [modalData, setModalData] = useState([])
+    const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
-    const [disabled, setDisabled] = useState(true)
 
     const showModal = (data) => {
         setModalData(data)
@@ -45,18 +54,29 @@ function EditGallery() {
 
     const addGalleryItem = async (event) => {
         event.preventDefault()
+        data.mainTitle = galleryData[0]?.mainTitle
 
-        try {
-            await addGalleryData(data)
-                .then(gallery => {
-                    setGalleryData(gallery)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.title === false && error.imgPath === false && error.desc === false) {
+            try {
+                await addGalleryData(data)
+                    .then(gallery => {
+                        setGalleryData(gallery)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por rellene todos los campos')
         }
+    }
+
+    const handleDesc = (e) => {
+        data.desc = e.target.getContent()
+        error.desc = false
     }
 
     const deleteItem = (data) => {
@@ -65,6 +85,8 @@ function EditGallery() {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -75,16 +97,36 @@ function EditGallery() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setImageSuccess("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
-
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgPath = fileUrl
-        // console.log(fileUrl)
+        setIsDisabled(false)
+        error.imgPath = false
+    }
+
+    const updateInfo = async (event) => {
+        event.preventDefault()
+
+        if (error.mainTitle === false) {
+            try {
+                await updateGalleryTitle(data)
+                    .then(info => {
+                        setGalleryData(info)
+                        setMessage('Título atualizado exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite el título')
+        }
     }
 
     useEffect(() => {
@@ -98,6 +140,7 @@ function EditGallery() {
 
     return (
         <>
+            {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {galleryData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
@@ -112,40 +155,51 @@ function EditGallery() {
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo elemento a la Galería</h2>
+                <h2>Galería</h2>
+                <form className="AdminEdit__form" onSubmit={updateInfo}>
+                        <div className="row">
+                            <h3 className="mt-5">Editar título galería</h3>
+                            <div className="col-12">
+                                <InputWithLabel
+                                    value={data.mainTitle}
+                                    label="Título galería"
+                                    onChange={onChange}
+                                    name="mainTitle"
+                                    type="text"
+                                    cssStyle="form-control mb-5"
+                                    placeholder={galleryData[0]?.mainTitle}
+                                />
+                            </div>
+                            <div className="col-12 col-sm-6">
+                                <Button type="submit" cssStyle="leti-btn">Editar título</Button>
+                                {message && <span className="AdminEdit__message ">{message}</span>}
+                            </div>
+                        </div>
+
+                        <hr className="mt-5 mb-5" />
+
+                        {registerError && <div className="alert alert-danger">{registerError}</div>}
+                    </form>
                 <form className="AdminEdit__form" onSubmit={addGalleryItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                    <h3>Añadir nuevo elemento a la galería</h3>
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
-                                Nombre del producto
+                                Título
                             </p>
                             <InputWithLabel
-                                value={data?.name}
+                                value={data?.title}
                                 onBlur={onBlur}
                                 onChange={onChange}
-                                name="name"
+                                name="title"
                                 type="text"
-                                cssStyle={`form-control mb-0 ${touch.name && error.name ? "is-invalid" : ""}`}
+                                cssStyle="form-control mb-0"
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
-                                Descripción del producto
-                            </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción del producto"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Imagen del producto
+                                Imagen
                             </p>
                             <InputFile
                                 value={data?.imgPath}
@@ -154,9 +208,33 @@ function EditGallery() {
                                 name="picpath"
                                 type="file"
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
+                        </div>
+                        <div className="col-12">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={data?.desc}
+                                onChange={handleDesc}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 220,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            />
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo producto</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>

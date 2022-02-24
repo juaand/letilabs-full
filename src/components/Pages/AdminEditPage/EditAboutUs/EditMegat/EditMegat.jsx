@@ -22,8 +22,8 @@ function EditMegat() {
             error: {
                 title: true,
                 description: true,
-                url: false,
-                buttonTitle: false,
+                url: true,
+                buttonTitle: true,
             },
             touch: {},
         },
@@ -46,10 +46,8 @@ function EditMegat() {
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateMegatData(data)
-                console.log(data)
                     .then(megat => {
                         setMegatData(megat)
-                        console.log(megat)
                         setMessage('Data actualizada exitosamente')
                     })
                     .catch(error => {
@@ -87,13 +85,13 @@ function EditMegat() {
                         Título
                     </p>
                     <InputWithLabel
-                                value={data?.title}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="title"
-                                type="text"
-                                cssStyle="form-control"
-                                placeholder={megatData?.title}
+                        value={data?.title}
+                        onBlur={onBlur}
+                        onChange={onChange}
+                        name="title"
+                        type="text"
+                        cssStyle="form-control"
+                        placeholder={megatData?.title}
                     />
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
@@ -104,7 +102,7 @@ function EditMegat() {
                             onChange={handleMegatDescription}
                             apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                             init={{
-                                height: 160,
+                                height: 200,
                                 menubar: false,
                                 plugins: [
                                     'advlist autolink lists link image',
