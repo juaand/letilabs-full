@@ -39,7 +39,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         }
     )
 
-    const {data} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
     const [disabled, setDisabled] = useState(true)

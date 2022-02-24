@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
 import {getMegat, updateMegatData} from '../../../../../services/ApiClient'
+import {useFormState} from '../../../../../hooks/useFormState'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
-
 
 function EditMegat() {
 
     const [megatData, setMegatData] = useState()
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -28,14 +28,14 @@ function EditMegat() {
             touch: {},
         },
         {
-            dtitle: v => v.length,
+            title: v => v.length,
             description: v => v.length,
             url: v => v.length,
             buttonTitle: v => v.length,
         }
     )
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
@@ -43,18 +43,26 @@ function EditMegat() {
         event.preventDefault()
         data.id = megatData._id
 
-        try {
-            await updateMegatData(data)
-                .then(megat => {
-                    setMegatData(megat)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateMegatData(data)
+                console.log(data)
+                    .then(megat => {
+                        setMegatData(megat)
+                        console.log(megat)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
+
     const handleMegatDescription = (e) => {
         data.description = e.target.getContent()
     }
@@ -79,13 +87,13 @@ function EditMegat() {
                         Título
                     </p>
                     <InputWithLabel
-                        value={data?.title}
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        name="title"
-                        type="text"
-                        cssStyle={`form-control mb-5 ${touch.title && error.title ? "is-invalid" : ""}`}
-                        placeholder={megatData?.title}
+                                value={data?.title}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="title"
+                                type="text"
+                                cssStyle="form-control"
+                                placeholder={megatData?.title}
                     />
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
@@ -119,7 +127,7 @@ function EditMegat() {
                             onChange={onChange}
                             name="url"
                             type="text"
-                            cssStyle={`form-control mb-3 ${touch.url && error.url ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={megatData?.url}
                         />
                         <p className="AdminEdit__form__label">
@@ -131,13 +139,14 @@ function EditMegat() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control mb-0 ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={megatData?.buttonTitle}
                         />
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios
                         </Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>

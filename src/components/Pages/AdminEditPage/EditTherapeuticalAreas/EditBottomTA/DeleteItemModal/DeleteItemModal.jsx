@@ -24,6 +24,8 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
             },
             error: {
                 title: true,
+                buttonLink: false,
+                buttonTitle: false,
                 img: false,
             },
             touch: {},
@@ -31,6 +33,8 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         {
             title: v => v.length,
             img: v => v.length,
+            buttonLink: v => v.length,
+            buttonTitle: v => v.length,
         }
     )
 
