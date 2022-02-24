@@ -1,18 +1,20 @@
-import './DeleteItemModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem, updateTimelineAboutUs} from '../../../../../../services/ApiClient'
+import {Editor} from '@tinymce/tinymce-react'
+
+import {deleteTimeline, updateTimelineAboutUs} from '../../../../../../services/ApiClient'
+import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
-import {useFormState} from '../../../../../../hooks/useFormState'
-import {Editor} from '@tinymce/tinymce-react'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import Loader from '../../../../../Loader/Loader'
+import './DeleteItemModal.css'
 
 
 function EditElementsModal({deleteItem, element, hideModal}) {
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
+    const [message, setMessage] = useState('')
 
     const {state, onChange} = useFormState(
         {
@@ -25,7 +27,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
             error: {
                 year: true,
                 desc: true,
-                imgURL: false,
+                imgURL: true,
             },
             touch: {},
         },
@@ -36,26 +38,30 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         }
     )
 
-    const {data} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
     const [disabled, setDisabled] = useState(true)
 
     const deleteCarrouselItem = async (id) => {
-        const updateData = await deleteCarItem(id)
+        const updateData = await deleteTimeline(id)
         deleteItem(updateData)
     }
 
     const editCarrouselItem = async (id) => {
-        console.log(id)
-        try {
-            await updateTimelineAboutUs(data, id)
-                .then(updateData => {
-                    deleteItem(updateData)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateTimelineAboutUs(data, id)
+                    .then(updateData => {
+                        deleteItem(updateData)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
 
@@ -87,6 +93,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // console.log(fileUrl)
         setImageSuccess("Imagen subida correctamente")
         setIsDisabled(false)
+        error.imgURL = false
     }
 
     return (
@@ -113,6 +120,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                     type="text"
                                                     cssStyle="form-control"
                                                     placeholder="Ingresa año"
+                                                    value={data.year}
                                                 />
                                             </div>
                                             <div className="col-12">
@@ -128,6 +136,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                     type="file"
                                                     placeholder={element?.imgURL}
                                                 />
+                                                {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                             </div>
                                             <div className="col-12">
                                                 <p className="DeleteItemModal__text"><strong>Editar descripción</strong></p>
@@ -152,8 +161,14 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                             <div className="col-12 col-sm-6">
                                                 <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
                                             </div>
+
                                             <div className="col-12 col-sm-6">
-                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
+                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div>
+                                            </div>
+                                            <div className="col-12">
+                                                {message && <span className="AdminEdit__message m-0">{message}</span>}
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

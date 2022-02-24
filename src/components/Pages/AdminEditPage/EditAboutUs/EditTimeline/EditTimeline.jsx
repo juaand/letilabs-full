@@ -39,8 +39,8 @@ function EditTimeline() {
     const [bool, setBool] = useState(false)
     const [disabled, setDisabled] = useState(true)
 
-    const showModal = (data) => {
-        setModalData(data)
+    const showModal = (info) => {
+        setModalData(info)
         setBool(!bool)
     }
 
@@ -60,8 +60,8 @@ function EditTimeline() {
         }
     }
 
-    const deleteItem = (data) => {
-        setTimeLineData(data)
+    const deleteItem = (info) => {
+        setTimeLineData(info)
         setBool(!bool)
     }
 
