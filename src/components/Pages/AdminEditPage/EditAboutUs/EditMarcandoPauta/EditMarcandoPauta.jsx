@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {getMarcandoPauta, updateMarcandoPautaData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -12,7 +11,6 @@ import Loader from '../../../../Loader/Loader'
 function EditMarcandoPauta() {
 
     const [marcandoPautaData, setMarcandoPautaData] = useState()
-    const [disabled, setDisabled] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
@@ -25,7 +23,7 @@ function EditMarcandoPauta() {
             },
             error: {
                 description: true,
-                imgURL: false,
+                imgURL: true,
             },
             touch: {},
         },
@@ -143,6 +141,7 @@ function EditMarcandoPauta() {
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
