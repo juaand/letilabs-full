@@ -1,13 +1,15 @@
-import './EditTimeline.css'
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {getTimeLine, addTimeLineData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
-import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import EditElementsModal from './EditElementsModal/EditelementsModal'
-
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
+import './EditTimeline.css'
 
 function EditTimeline() {
 
@@ -19,9 +21,9 @@ function EditTimeline() {
                 desc: '',
             },
             error: {
-                year: false,
-                imgURL: false,
-                desc: false,
+                year: true,
+                imgURL: true,
+                desc: true,
             },
             touch: {},
         },
@@ -32,12 +34,15 @@ function EditTimeline() {
         }
     )
 
-    const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
     const [timelineData, setTimeLineData] = useState()
+    const [modalData, setModalData] = useState()
+    const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
-    const [disabled, setDisabled] = useState(true)
+
+    const {data, error, touch} = state
 
     const showModal = (info) => {
         setModalData(info)
@@ -47,16 +52,21 @@ function EditTimeline() {
     const addTimeLineItem = async (event) => {
         event.preventDefault()
 
-        try {
-            await addTimeLineData(data)
-                .then(timeline => {
-                    setTimeLineData(timeline)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.year === false && error.imgURL === false && error.desc === false) {
+            try {
+                await addTimeLineData(data)
+                    .then(timeline => {
+                        setTimeLineData(timeline)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor rellene todos los campos')
         }
     }
 
@@ -65,7 +75,14 @@ function EditTimeline() {
         setBool(!bool)
     }
 
+    const handleDesc = (e) => {
+        data.desc = e.target.getContent()
+        error.desc = false
+    }
+
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -76,17 +93,15 @@ function EditTimeline() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                // console.log('Uploaded')
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setImageSuccess("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
-
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
-        // console.log(fileUrl)
+        setIsDisabled(false)
+        error.imgURL = false
     }
 
     useEffect(() => {
@@ -100,6 +115,7 @@ function EditTimeline() {
 
     return (
         <>
+            {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
@@ -117,7 +133,7 @@ function EditTimeline() {
                 <h2>Añadir nuevo producto al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Año
                             </p>
@@ -131,7 +147,7 @@ function EditTimeline() {
                                 placeholder="Ingresa año"
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
@@ -143,23 +159,33 @@ function EditTimeline() {
                                 type="file"
                                 placeholder="Selecciona una imagen"
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12">
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción"
+                            <Editor
+                                initialValue={data?.desc}
+                                onChange={handleDesc}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 220,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Añadir nuevo año</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>
