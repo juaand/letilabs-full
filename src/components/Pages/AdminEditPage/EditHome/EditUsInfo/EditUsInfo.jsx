@@ -22,8 +22,8 @@ function EditUsInfo() {
             },
             error: {
                 description: true,
-                url: false,
-                buttonTitle: false,
+                url: true,
+                buttonTitle: true,
             },
             touch: {},
         },
@@ -40,17 +40,21 @@ function EditUsInfo() {
         event.preventDefault()
         data.id = usInfoData._id
 
-        try {
-            await updateUsInfoData(data)
-                .then(usInfo => {
-                    setUsInfoData(usInfo)
-                    setMessage('Cambios realizados con exito')
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateUsInfoData(data)
+                    .then(usInfo => {
+                        setUsInfoData(usInfo)
+                        setMessage('Cambios realizados con exito')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
 
@@ -73,7 +77,6 @@ function EditUsInfo() {
     return (
         <section className="container-fluid EditContent">
             <h2>Sobre nosotros</h2>
-            {message && <div className="alert alert-info">{message}</div>}
             <form className="AdminEdit__form" onSubmit={updateUsInfo}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -127,6 +130,7 @@ function EditUsInfo() {
                     </div>
                     <div className="col-12">
                         <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
                 </div>
