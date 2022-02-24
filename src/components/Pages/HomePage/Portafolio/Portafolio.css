@@ -59,6 +59,7 @@
   }
   .Portafolio__item {
     font-size: 1.6rem;
+    margin-left: 6rem;
   }
   .Portafolio__triangles .big-red-triangle {
     width: 70rem;

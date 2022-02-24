@@ -67,7 +67,7 @@ function Timeline() {
                         <>
                             <div className="Timeline__product row">
                                 <div className="Timeline__image col-12 col-sm-6" style={{
-                                    background: `url("./images/${el.imgURL}") no-repeat 1rem center / cover`
+                                    background: `url("${el.imgURL}") no-repeat 1rem center / cover`
                                 }}></div>
                                 <div className="col-12 col-sm-6 Timeline__info">
                                     <div className="Timeline__year">{el.year}</div>

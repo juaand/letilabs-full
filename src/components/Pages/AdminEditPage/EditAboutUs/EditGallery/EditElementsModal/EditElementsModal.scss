@@ -82,3 +82,11 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .EditElementsModal {
+    &__container {
+      padding: 2rem !important;
+    }
+  }
+}

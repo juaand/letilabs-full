@@ -72,3 +72,26 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .List {
+    &__products {
+      h1 {
+        margin-bottom: 1rem;
+      }
+    }
+
+    &__align {
+      justify-content: center;
+    }
+
+    .link,
+    .inactive {
+      margin: 1rem;
+    }
+
+    &__to-top {
+      bottom: -8rem;
+    }
+  }
+}

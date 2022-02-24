@@ -37,3 +37,39 @@
 .AdminEditPage__Nav-link-subnav {
   padding-left: 4rem;
 }
+
+@media (max-width: 576px) {
+  .AdminEditPage__adminmenu {
+    font-size: 1.4rem;
+    padding: 1rem 2rem;
+    text-align: right;
+    color: #cd202f;
+    position: relative;
+    padding-right: 4rem;
+  }
+  .AdminEditPage__adminmenu:after {
+    content: '';
+    top: 1.6rem;
+    right: 1.8rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    position: absolute;
+    display: block;
+    background: url(../../../../images/next-arrow-red.svg) no-repeat center center/contain;
+  }
+  .AdminEditPage__adminmenu-active:after {
+    background: url(../../../../images/close-red.svg) no-repeat center center/contain;
+  }
+  .AdminEditPage__Nav {
+    position: absolute;
+    width: 100%;
+    z-index: 3;
+    background: #fff;
+    left: -100%;
+    transition: all 0.3s ease-in-out;
+    border-top: solid 0.1rem #e9eaee;
+  }
+  .AdminEditPage__Nav-active {
+    left: 0;
+  }
+}

@@ -41,7 +41,7 @@ function EditInfoCardsID() {
                     <h2>Equipos I&D</h2>
                     <div className="row justify-content-around">
                         {ianddData?.map(el =>
-                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
+                            <div className="col-sm-3 col-12 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.picPath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.picPath} />
                                 <h4 className="mt-5">{el?.title}</h4>
                                 <p dangerouslySetInnerHTML={{__html: el?.info}} />

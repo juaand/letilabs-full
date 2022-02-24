@@ -207,8 +207,10 @@ function EditEquipoLetiPage() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios</Button>
                         {message && <span className="AdminEdit__message">{message}</span>}
+
                     </div>
 
                 </div>

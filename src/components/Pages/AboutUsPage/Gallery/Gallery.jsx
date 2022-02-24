@@ -39,7 +39,7 @@ function Gallery() {
                 </Fade>
                 <Fade delay={600} triggerOnce>
                     <div className="col-12 col-sm-6 Gallery__image" style={{
-                        background: `url("./images/${backImage}") no-repeat center center / cover`
+                        background: `url("${backImage}") no-repeat center center / cover`
                     }}>
                         <p className="Gallery__desc row">
                             <span className="col-sm-11 col-12">{itemDesc}</span>

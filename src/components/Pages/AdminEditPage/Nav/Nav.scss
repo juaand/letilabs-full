@@ -42,3 +42,47 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .AdminEditPage {
+    &__adminmenu {
+      font-size: 1.4rem;
+      padding: 1rem 2rem;
+      text-align: right;
+      color: $leti-red;
+      position: relative;
+      padding-right: 4rem;
+
+      &:after {
+        content: '';
+        top: 1.6rem;
+        right: 1.8rem;
+        width: 1.8rem;
+        height:1.8rem;
+        position: absolute;
+        display: block;
+        background: url(../../../../images/next-arrow-red.svg) no-repeat center center / contain;
+      }
+
+      &-active {
+        &:after {
+          background: url(../../../../images/close-red.svg) no-repeat center center / contain;
+        }
+      }
+    }
+
+    &__Nav {
+      position: absolute;
+      width: 100%;
+      z-index: 3;
+      background: $leti-white;
+      left: -100%;
+      transition: all 0.3s ease-in-out;
+      border-top: solid 0.1rem $leti-subnav;
+
+      &-active {
+        left: 0;
+      }
+    }
+  }
+}

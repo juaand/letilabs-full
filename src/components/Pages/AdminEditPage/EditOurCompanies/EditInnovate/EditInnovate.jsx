@@ -62,7 +62,7 @@ function EditInnovate() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Innovar Banner</h2>
+            <h2>Innovar</h2>
             <form className="AdminEdit__form" onSubmit={updateBanner}>
                 <div className="row">
                     <div className="col-12 col-sm-6">
@@ -88,7 +88,7 @@ function EditInnovate() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                     </div>
 
                 </div>

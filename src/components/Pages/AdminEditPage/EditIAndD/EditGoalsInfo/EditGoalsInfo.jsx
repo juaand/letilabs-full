@@ -146,7 +146,7 @@ function EditGoalsInfo() {
                     <div className="row justify-content-around">
                     <h3 className="mb-5">Editar objetivo</h3>
                         {ourGoalsData?.map(el =>
-                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
+                            <div className="col-sm-3 col-12 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <h4>{el?.name}</h4>
                                 <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
@@ -156,7 +156,7 @@ function EditGoalsInfo() {
                     <form className="AdminEdit__form" onSubmit={addItem}>
                         <div className="row">
                             <h3 className="mt-0">Añadir nuevo objetivo</h3>
-                            <div className="col-6">
+                            <div className="col-sm-6 col-12">
                                 <p className="AdminEdit__form__label">
                                     Título
                                 </p>
@@ -169,7 +169,7 @@ function EditGoalsInfo() {
                                     placeholder="Añadir título"
                                 />
                             </div>
-                            <div className="col-6">
+                            <div className="col-sm-6 col-12">
                                 <p className="AdminEdit__form__label">
                                     Descripción
                                 </p>

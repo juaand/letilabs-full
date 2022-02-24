@@ -71,7 +71,7 @@ function FindProduct({info}) {
                                     <div className="input-group">
                                         <div className="col-12 p-0 col-sm-7 FindProduct__label">
                                             <DropdownWithLabel
-                                                placeholder="Escribe nombre o condición"
+                                                placeholder="Buscar por producto"
                                                 value={data?.search}
                                                 label=""
                                                 name="search"

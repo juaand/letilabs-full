@@ -120,6 +120,9 @@
   .Nav .navbar-toggler .navbar-toggler-icon {
     background-image: url(../../images/toggler.svg);
   }
+  .Nav .navbar-toggler .navbar-toggler-icon-active {
+    background-image: url(../../images/close.svg);
+  }
   .Nav .navbar-nav {
     align-items: flex-start;
     background: #e9eaee;

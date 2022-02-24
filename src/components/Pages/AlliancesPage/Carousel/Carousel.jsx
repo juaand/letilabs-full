@@ -20,7 +20,8 @@ function Carousel() {
             {
                 breakpoint: 576,
                 settings: {
-                    arrows: true,
+                    arrows: false,
+                    dots: true,
                     slidesToShow: 1,
                     slidesToScroll: 1
                 }

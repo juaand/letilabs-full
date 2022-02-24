@@ -71,7 +71,7 @@ function EditNewsTags() {
                                 placeholder="Ingresa nueva etiqueta"
                             />
                         </div>
-                        <div className="col-6">
+                        <div className="col-sm-6 col-12">
                             <Button cssStyle="leti-btn hidden-label AdminEdit__form-leti-btn" >Añadir nueva etiqueta</Button>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ function EditNewsTags() {
                 <h2>Eliminar etiquetas</h2>
                 <div className="row">
                     {tagsData?.map(el =>
-                        <div onClick={() => deleteSelectedTag(el?.id)} className="col-sm-2 col-4 EditNewsTags-delete-tags">{el?.tag}</div>
+                        <div onClick={() => deleteSelectedTag(el?.id)} className="col-sm-2 col-6 EditNewsTags-delete-tags">{el?.tag}</div>
                     )}
                 </div>
             </section>

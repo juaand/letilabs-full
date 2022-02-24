@@ -100,10 +100,14 @@
 
       h1 {
         margin: 0rem;
+        margin-bottom: 3rem;
       }
 
       .slick-dots {
-        display: none !important;
+        margin-bottom: 2rem;
+        &:before {
+          border: 0;
+        }
       }
 
       .slick-next {

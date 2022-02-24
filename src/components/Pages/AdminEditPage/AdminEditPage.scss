@@ -138,3 +138,22 @@
     color: $leti-blue;
   }
 }
+
+@media (max-width: 576px) {
+  .AdminEditPage {
+  
+    &__Content {
+      padding-top: 0rem;
+    }
+  }
+
+  .EditContent {
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    &__title {
+      font-size: 1.8rem;
+    }
+  }
+}

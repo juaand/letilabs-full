@@ -36,7 +36,7 @@ function EditCompaniesInfoCardsLeti() {
                     <h2>Editar InfoCard</h2>
                     <div className="row justify-content-around">
                         {ourCompaniesOCData?.map(el =>
-                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
+                            <div className="col-sm-3 col-12 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <h4>{el?.title}</h4>
                                 <p>{el?.info}</p>
                             </div>

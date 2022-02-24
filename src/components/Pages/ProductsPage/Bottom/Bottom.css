@@ -47,11 +47,11 @@
   }
   .ProductBottom__clip {
     position: absolute;
-    background: url(../../../../images/products-bottom-bg.jpg) no-repeat 10rem top;
-    mask-position: top center;
+    background-position: 20rem 10rem !important;
+    background-size: contain !important;
+    mask-position: center 5rem !important;
     height: 45rem;
     mask-size: 40rem;
-    background-size: 100%;
     top: -11rem;
   }
   .ProductBottom__blue-stroke {
@@ -64,5 +64,8 @@
   }
   .ProductBottom__info {
     font-size: 1.6rem;
+  }
+  .ProductBottom__info h1 {
+    margin-top: 3rem;
   }
 }

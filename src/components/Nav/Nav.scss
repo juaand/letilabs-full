@@ -133,6 +133,10 @@
 
       .navbar-toggler-icon {
         background-image: url(../../images/toggler.svg);
+
+        &-active {
+          background-image: url(../../images/close.svg);
+        }
       }
     }
 

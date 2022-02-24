@@ -68,3 +68,19 @@
 .List__card .leti-btn {
   margin-top: 2rem;
 }
+
+@media (max-width: 576px) {
+  .List__products h1 {
+    margin-bottom: 1rem;
+  }
+  .List__align {
+    justify-content: center;
+  }
+  .List .link,
+  .List .inactive {
+    margin: 1rem;
+  }
+  .List__to-top {
+    bottom: -8rem;
+  }
+}

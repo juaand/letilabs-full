@@ -70,3 +70,25 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .ShowEditModal {
+    &__thumbnail{
+      padding-left: 6rem;
+      margin-bottom: 0 !important;
+      margin-top: 3rem;
+
+      h1 {
+        font-size: 2rem;
+        span {
+          font-size: 1.6rem;
+        }
+      }
+  
+      &-img {
+        width: 4rem;
+        height: 4rem;
+      }
+    }
+  }
+}

@@ -26,7 +26,7 @@ function Banner() {
             {loading && <Loader />}
             <section className="container-fluid Banner__Products">
                 <div className="container">
-                    <div className="row">
+                    <div className="row Banner__btns__align">
                         <div className="col-12 col-sm-9 Banner__Products__title">
                             <Fade duration={600} direction="left" triggerOnce>
                                 <h1 dangerouslySetInnerHTML={{__html: data?.title}} />

@@ -85,6 +85,9 @@
     padding: 4rem 0;
     font-size: 1.6rem;
   }
+  .Footer__copy {
+    font-size: 1.4rem;
+  }
   .Footer__logo {
     margin-left: 2rem;
   }

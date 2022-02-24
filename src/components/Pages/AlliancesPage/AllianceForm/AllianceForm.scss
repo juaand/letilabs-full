@@ -23,3 +23,13 @@
     }
   }
 }
+
+@media (max-width: 576px) {
+  .AllianceForm{
+    margin-top: 6rem;
+
+    &__form {
+      margin-top: 0;
+    }
+  }
+}

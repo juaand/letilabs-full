@@ -29,6 +29,9 @@
   .LoginPage {
     padding: 5rem 0;
   }
+  .LoginPage .leti-btn {
+    background: #fff;
+  }
   .LoginPage .leti-red-triangle {
     width: 30rem;
     height: 30rem;

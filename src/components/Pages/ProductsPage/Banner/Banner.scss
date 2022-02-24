@@ -63,9 +63,12 @@
 @media (max-width: 576px) {
   .Banner {
     &__Products {
-
       &__btns {
-        display: none;
+        position: static;
+
+        &__align {
+          justify-content: center;
+        }
       }
 
       &-logo {

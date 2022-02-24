@@ -61,11 +61,11 @@
 
 @media (max-width: 576px) {
   .FindProductList {
-    background: url(../../../../images/find-product-bg.png) no-repeat left 4rem /
+    background: url(../../../../images/find-product-bg.png) no-repeat left 6rem /
       30%;
     justify-content: flex-start;
     align-items: flex-start;
-    min-height: 58rem;
+    min-height: 36rem;
 
     h1 {
       margin: 11rem 0 20rem 11rem;
@@ -79,9 +79,10 @@
       .DropdownWithLabel {
         .form-control {
           &.category {
-            background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem
+            background: $leti-white url(../../../../images/dropdown-icon.svg) no-repeat 2rem
               center;
             padding-left: 6rem;
+            border-left: solid 0.1rem $leti-nav !important;
           }
         }
       }
@@ -98,6 +99,14 @@
               border: 0;
             }
           }
+
+          &.product {
+            height: 6.2rem;
+            border: 0;
+            border-radius: 0;
+            border-bottom: 0.1rem solid $leti-nav;
+            margin: 0;
+          }
         }
       }
 
@@ -105,6 +114,7 @@
         background: none;
         height: 6.2rem;
         width: 100.5%;
+        background: $leti-white;
 
         &:before {
           content: 'Buscar el producto';

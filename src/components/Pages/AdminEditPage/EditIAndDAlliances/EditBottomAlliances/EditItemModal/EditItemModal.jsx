@@ -109,7 +109,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                         <div className="col-sm-12">
                                             <h1 className="DeleteItemModal__ask">Editar<span className="ShowEditModal__news-title">{ctaData.title}</span></h1>
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-sm-6 col-12">
                                             <p className="AdminEdit__form__label">
                                                 Imagen CTA
                                             </p>
@@ -124,7 +124,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                             />
                                             {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-sm-6 col-12">
                                             <InputWithLabel
                                                 label="Título CTA"
                                                 onChange={onChange}
@@ -134,7 +134,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                                 placeholder={ctaData?.title}
                                             />
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-sm-6 col-12">
                                             <InputWithLabel
                                                 label="Texto del botón"
                                                 onChange={onChange}
@@ -144,7 +144,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                                 placeholder={ctaData?.buttonTitle}
                                             />
                                         </div>
-                                        <div className="col-6">
+                                        <div className="col-sm-6 col-12">
                                             <InputWithLabel
                                                 label="URL del botón"
                                                 onChange={onChange}

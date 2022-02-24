@@ -33,7 +33,7 @@ function EditFarmacoVigilanciaModal() {
         }
     )
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
@@ -73,7 +73,7 @@ function EditFarmacoVigilanciaModal() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    
+
     return (
         <section className="container-fluid EditContent">
             <h2>Modal farmaco vigilancia <small>(Edita el modal de farmacovigilancia de todo el site)</small></h2>
@@ -89,7 +89,7 @@ function EditFarmacoVigilanciaModal() {
                             onChange={onChange}
                             name="title"
                             type="text"
-                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={modalFarmacoData?.title}
                         />
                         <p className="AdminEdit__form__label">
@@ -101,7 +101,7 @@ function EditFarmacoVigilanciaModal() {
                             onChange={onChange}
                             name="subTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.subTitle && error.subTitle ? "is-invalid" : ""}`}
+                            cssStyle="form-control"
                             placeholder={modalFarmacoData?.subTitle}
                         />
                     </div>

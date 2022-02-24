@@ -53,10 +53,10 @@
 
 @media (max-width: 576px) {
   .FindProductList {
-    background: url(../../../../images/find-product-bg.png) no-repeat left 4rem/30%;
+    background: url(../../../../images/find-product-bg.png) no-repeat left 6rem/30%;
     justify-content: flex-start;
     align-items: flex-start;
-    min-height: 58rem;
+    min-height: 36rem;
   }
   .FindProductList h1 {
     margin: 11rem 0 20rem 11rem;
@@ -66,8 +66,9 @@
     border-bottom: 0;
   }
   .FindProductList__form .DropdownWithLabel .form-control.category {
-    background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem center;
+    background: #fff url(../../../../images/dropdown-icon.svg) no-repeat 2rem center;
     padding-left: 6rem;
+    border-left: solid 0.1rem #737b7f !important;
   }
   .FindProductList__form .form-group .form-control.category {
     height: 6.2rem;
@@ -77,10 +78,18 @@
     background: url(../../../../images/dropdown-resp-bottom.svg) no-repeat center bottom;
     border: 0;
   }
+  .FindProductList__form .form-group .form-control.product {
+    height: 6.2rem;
+    border: 0;
+    border-radius: 0;
+    border-bottom: 0.1rem solid #737b7f;
+    margin: 0;
+  }
   .FindProductList__form .leti-btn {
     background: none;
     height: 6.2rem;
     width: 100.5%;
+    background: #fff;
   }
   .FindProductList__form .leti-btn:before {
     content: 'Buscar el producto';

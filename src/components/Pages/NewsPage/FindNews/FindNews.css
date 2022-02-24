@@ -86,6 +86,10 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 0;
+    margin-bottom: 6rem;
+  }
+  .FindNews__form {
+    height: unset;
   }
   .FindNews__form-input {
     font-size: 1.6rem;
@@ -105,5 +109,17 @@
   }
   .FindNews .card-footer .leti-btn {
     display: block;
+  }
+  .FindNews__checkboxes {
+    border: solid 0.1rem #4a4a4a;
+    border-top: 0;
+  }
+  .FindNews__checkboxes .col {
+    padding: 1rem 2rem !important;
+    flex: none;
+    border-right: 0;
+  }
+  .FindNews__checkboxes .col:last-child {
+    border-right: 0;
   }
 }

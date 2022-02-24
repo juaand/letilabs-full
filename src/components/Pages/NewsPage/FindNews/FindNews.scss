@@ -91,6 +91,11 @@
     justify-content: flex-start;
     align-items: flex-start;
     margin-top: 0;
+    margin-bottom: 6rem;
+
+    &__form {
+      height: unset;
+    }
 
     &__form-input {
       font-size: 1.6rem;
@@ -113,6 +118,21 @@
       padding: 0 2rem;
       .leti-btn {
         display: block;
+      }
+    }
+
+    &__checkboxes {
+      border: solid 0.1rem $leti-text;
+      border-top: 0;
+  
+      .col {
+        padding: 1rem 2rem !important;
+        flex: none;
+        border-right: 0;
+  
+        &:last-child {
+          border-right: 0;
+        }
       }
     }
   }

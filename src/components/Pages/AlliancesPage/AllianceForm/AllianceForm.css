@@ -16,3 +16,12 @@
 .AllianceForm .DropdownWithLabel label {
   margin-bottom: 1rem;
 }
+
+@media (max-width: 576px) {
+  .AllianceForm {
+    margin-top: 6rem;
+  }
+  .AllianceForm__form {
+    margin-top: 0;
+  }
+}
