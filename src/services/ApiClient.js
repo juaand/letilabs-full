@@ -253,9 +253,12 @@ export const updateBottomOurPhilosophy = ({title, imgURL, description, buttonLin
 export const getBannerTA = () => http.get("/bannerta")
 export const updateBannerTA = ({title, description, imgURL, id}) => http.patch("/updatebannerta", {title, description, imgURL, id})
 export const getCarrouselTA = () => http.get("/carrouselta")
-export const updateCarrouselTA = ({title, mainTitle, desc, imgURL}, id) => http.patch("/updatecarrouselta", {title, mainTitle, desc, imgURL, id})
+export const updateCarrouselTA = ({title, mainTitle, desc, imgURL, id}) => http.patch("/updatecarrouselta", {title, mainTitle, desc, imgURL, id})
+export const createCarrouselTA = ({title, mainTitle, desc, imgURL}) => http.post("/createcarrouselta", {title, mainTitle, desc, imgURL})
+export const deleteTaCarrItem = (id) => http.get(`/carrouselta/${id}/delete`)
+export const updateTAGalleryTitle = ({mainTitle}) => http.post("/updatetagallerytitle", {mainTitle})
 export const getBottomTA = () => http.get("/bottomta")
-export const updateBottomTA = ({title, buttonLink, buttonTitle, img}, id) => http.patch("/updatebottomta", {title, buttonLink, buttonTitle, img, id})
+export const updateBottomTA = ({title, buttonLink, buttonTitle, img, id}) => http.patch("/updatebottomta", {title, buttonLink, buttonTitle, img, id})
 
 //news routes
 export const getNews = () => http.get("/newsdata")

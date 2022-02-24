@@ -1,12 +1,15 @@
 
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getCarrouselTA, updateCarrouselTA} from '../../../../../services/ApiClient'
+import {Editor} from '@tinymce/tinymce-react'
+
+import {getCarrouselTA, createCarrouselTA, updateTAGalleryTitle} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
-import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import EditElementsModal from './EditElementsModal/EditElementsModal'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditCarrouselTA() {
 
@@ -19,10 +22,10 @@ function EditCarrouselTA() {
                 desc: '',
             },
             error: {
-                mainTitle: false,
-                title: false,
-                imgURL: false,
-                desc: false,
+                mainTitle: true,
+                title: true,
+                imgURL: true,
+                desc: true,
             },
             touch: {},
         },
@@ -34,31 +37,62 @@ function EditCarrouselTA() {
         }
     )
 
-    const {data, error, touch} = state
+    const {data, error} = state
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [newItemMessage, setNewItemMessage] = useState('')
     const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
     const [carrouselTAData, setCarrouselTAData] = useState()
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [modalData, setModalData] = useState()
+    const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
-    const [disabled, setDisabled] = useState(true)
 
     const showModal = (data) => {
         setModalData(data)
         setBool(!bool)
     }
 
-    const updateCarrouselTAItem = async (event) => {
+    const updateInfo = async (event) => {
         event.preventDefault()
 
-        try {
-            await updateCarrouselTA(data)
-                .then(carrouselTA => {
-                    setCarrouselTAData(carrouselTA)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.mainTitle === false) {
+            try {
+                await updateTAGalleryTitle(data)
+                    .then(info => {
+                        setCarrouselTAData(info)
+                        setNewItemMessage('Título atualizado exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setNewItemMessage('Por favor edite el título')
+        }
+    }
+
+    const createCarrouselItem = async (event) => {
+        event.preventDefault()
+
+        if (error.title === false && error.imgURL === false && error.desc === false) {
+            data.mainTitle = carrouselTAData[0]?.mainTitle
+            try {
+                await createCarrouselTA(data)
+                    .then(carrouselTA => {
+                        setCarrouselTAData(carrouselTA)
+                        setMessage('Elemento añadido exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por rellene todos los campos')
         }
     }
 
@@ -67,7 +101,14 @@ function EditCarrouselTA() {
         setBool(!bool)
     }
 
+    const handleDesc = (e) => {
+        data.desc = e.target.getContent()
+        error.desc = false
+    }
+
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
@@ -78,16 +119,15 @@ function EditCarrouselTA() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
+                setImageSuccess("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
-
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.imgURL = fileUrl
-        // console.log(fileUrl)
+        setIsDisabled(false)
+        error.imgURL = false
     }
 
     useEffect(() => {
@@ -101,6 +141,7 @@ function EditCarrouselTA() {
 
     return (
         <>
+            {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {carrouselTAData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
@@ -115,26 +156,37 @@ function EditCarrouselTA() {
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo elemento a la Galería</h2>
-                <form className="AdminEdit__form" onSubmit={updateCarrouselTAItem}>
+                <form className="AdminEdit__form" onSubmit={updateInfo}>
                     <div className="row">
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Título Principal
-                            </p>
+                        <h3>Editar título galería</h3>
+                        <div className="col-12">
                             <InputWithLabel
                                 value={data?.mainTitle}
-                                onBlur={onBlur}
+                                label="Título carrusel"
                                 onChange={onChange}
                                 name="mainTitle"
                                 type="text"
-                                cssStyle={`form-control mb-0 ${touch.mainTitle && error.mainTitle ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción del producto"
+                                cssStyle="form-control mb-5"
+                                placeholder={carrouselTAData?.length > 0 && carrouselTAData[0]?.mainTitle}
                             />
                         </div>
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-6">
+                            <Button type="submit" cssStyle="leti-btn">Editar título</Button>
+                            {newItemMessage && <span className="AdminEdit__message ">{newItemMessage}</span>}
+                        </div>
+                    </div>
+
+                    <hr className="mt-5 mb-5" />
+
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+                <h2>Añadir nuevo elemento a la Galería</h2>
+                <form className="AdminEdit__form" onSubmit={createCarrouselItem}>
+                    <div className="row">
+                        <h3>Añadir elemento</h3>
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
-                                Título
+                                Título del área
                             </p>
                             <InputWithLabel
                                 value={data?.title}
@@ -142,25 +194,11 @@ function EditCarrouselTA() {
                                 onChange={onChange}
                                 name="title"
                                 type="text"
-                                cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
+                                cssStyle="form-control mb-0"
                                 placeholder="Ingresa descripción del producto"
                             />
                         </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Descripción Área
-                            </p>
-                            <InputWithLabel
-                                value={data?.desc}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="desc"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.desc && error.desc ? "is-invalid" : ""}`}
-                                placeholder="Ingresa descripción del producto"
-                            />
-                        </div>
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Imagen Área
                             </p>
@@ -171,9 +209,33 @@ function EditCarrouselTA() {
                                 name="picpath"
                                 type="file"
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
                         <div className="col-12">
-                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo producto</Button>
+                            <p className="AdminEdit__form__label">
+                                Descripción Área
+                            </p>
+                            <Editor
+                                initialValue={data?.desc}
+                                onChange={handleDesc}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 220,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir área</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>

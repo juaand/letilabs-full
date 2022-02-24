@@ -11,10 +11,9 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerTA() {
 
-    const [bannerData, setBannerData] = useState()
     const [imageSuccess, setImageSuccess] = useState('')
-    const [disabled, setDisabled] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState()
     const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
@@ -27,8 +26,8 @@ function EditBannerTA() {
             },
             error: {
                 description: true,
-                imgURL: false,
-                title: false,
+                imgURL: true,
+                title: true,
             },
             touch: {},
         },
@@ -84,7 +83,7 @@ function EditBannerTA() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setImageSuccess("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -145,6 +144,7 @@ function EditBannerTA() {
                                 type="file"
                                 placeholder={bannerData?.imgURL}
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
                         <p className="AdminEdit__form__label">
                             Título

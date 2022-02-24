@@ -105,7 +105,7 @@ const VerticalCarousel = () => {
                     <section className="outer-container container-fluid">
                         <div className="row">
                             <div className="col-8 offset-4">
-                                <h1>Nuestras áreas terapéuticas</h1>
+                                <h1>{areasTeraData[0]?.mainTitle}</h1>
                             </div>
                             <div className="carousel-wrapper col-4">
                                 <button
@@ -151,7 +151,7 @@ const VerticalCarousel = () => {
                                 <div className="content-img" style={{
                                     background: `url(${areasTeraData[activeIndex]?.imgURL}) no-repeat center / cover`
                                 }} />
-                                <p>{areasTeraData[activeIndex]?.desc}</p>
+                                <p dangerouslySetInnerHTML={{__html: areasTeraData[activeIndex]?.desc}} />
                             </div>
                         </div>
                     </section>

@@ -1,31 +1,37 @@
-import './EditElementsModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem, updateCarrouselTA} from '../../../../../../services/ApiClient'
+import {Editor} from '@tinymce/tinymce-react'
+
+import {deleteTaCarrItem, updateCarrouselTA} from '../../../../../../services/ApiClient'
+import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
-import {useFormState} from '../../../../../../hooks/useFormState'
-import {Editor} from '@tinymce/tinymce-react'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import Loader from '../../../../../Loader/Loader'
+import './EditElementsModal.css'
 
 function EditElementsModal({deleteItem, element, hideModal}) {
 
-    const [isDisabled, setIsDisabled] = useState(false)
+    console.log(element)
+
+    const [registerError, setRegisterError] = useState(null)
     const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [message, setMessage] = useState('')
 
     const {state, onChange} = useFormState(
         {
             data: {
+                id: '',
                 mainTitle: element.mainTitle,
                 title: element.title,
                 desc: element.desc,
-                imgPath: element.imgPath,
+                imgURL: element.imgURL,
             },
             error: {
                 mainTitle: true,
                 title: true,
                 desc: true,
-                imgPath: false,
+                imgURL: true,
             },
             touch: {},
         },
@@ -33,36 +39,32 @@ function EditElementsModal({deleteItem, element, hideModal}) {
             mainTitle: v => v.length,
             title: v => v.length,
             desc: v => v.length,
-            imgPath: v => v.length,
+            imgURL: v => v.length,
         }
     )
 
     const {data, error} = state
 
-    const [disabled, setDisabled] = useState(true)
-    const [registerError, setRegisterError] = useState(null)
-    const [message, setMessage] = useState('')
-
-
-
     const deleteCarrouselItem = async (id) => {
-        const updateData = await deleteCarItem(id)
+        const updateData = await deleteTaCarrItem(id)
         deleteItem(updateData)
     }
 
-    const editCarrouselItem = async (id) => {
+    const editCarrouselItem = async () => {
+        data.id = element._id
+
         if (Object.values(error).map(el => el).includes(false)) {
-        try {
-            await updateCarrouselTA(data, id)
-                .then(updateData => {
-                    deleteItem(updateData)
-                    setMessage('Data actualizada exitosamente')
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+            try {
+                await updateCarrouselTA(data)
+                    .then(updateData => {
+                        deleteItem(updateData)
+                        setMessage('Data actualizada exitosamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
             }
         } else {
             setMessage('Por favor edite alguno de los campos')
@@ -87,7 +89,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setImageSuccess("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -134,9 +136,10 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                     value={element?.imgURL}
                                                     onChange={onFileSelected}
                                                     id="fileButton"
-                                                    name="imgPath"
+                                                    name="imgURL"
                                                     type="file"
                                                 />
+                                                {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                             </div>
                                             <div className="col-12">
                                                 <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
@@ -162,7 +165,12 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
                                             </div>
                                             <div className="col-12 col-sm-6">
-                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
+                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div>
+                                            </div>
+                                            <div className="col-12 m-0">
+                                                {message && <span className="AdminEdit__message">{message}</span>}
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
