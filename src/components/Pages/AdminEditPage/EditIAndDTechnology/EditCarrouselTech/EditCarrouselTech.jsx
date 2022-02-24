@@ -190,7 +190,7 @@ function EditCarrouselTech() {
                     <form className="AdminEdit__form" onSubmit={addItem}>
                         <div className="row">
                             <h3 className="mt-0">Añadir elemento al carrusel</h3>
-                            <div className="col-6">
+                            <div className="col-sm-6 col-12">
                                 <p className="AdminEdit__form__label">
                                     Seleccionar imagen
                                 </p>
@@ -216,7 +216,7 @@ function EditCarrouselTech() {
                                     placeholder="Añadir título"
                                 />
                             </div>
-                            <div className="col-6">
+                            <div className="col-sm-6 col-12">
                                 <p className="AdminEdit__form__label">
                                     Descripción
                                 </p>

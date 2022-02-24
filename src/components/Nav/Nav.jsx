@@ -27,13 +27,16 @@ function Nav({initSearch}) {
     }
 
     const hideMenu = () => {
-
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {
             isMenuOpen.classList.remove('show')
             setBool(!bool)
         }
+    }
+
+    const togglerIcon = () => {
+        document.querySelector('.navbar-toggler-icon').classList.toggle('navbar-toggler-icon-active')
     }
 
     useEffect(() => {
@@ -70,7 +73,7 @@ function Nav({initSearch}) {
                         aria-expanded="false"
                         aria-label="Toggle navigation"
                     >
-                        <span className="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon" onClick={togglerIcon}></span>
                     </button>
                     <div
                         className="collapse navbar-collapse Nav__nav"
@@ -97,7 +100,6 @@ function Nav({initSearch}) {
                     </div>
                 </div>
             </nav>
-
             {
                 bool && !user &&
                 <div className="container Nav__sub-nav-container" onMouseLeave={() => setBool(!bool)}>

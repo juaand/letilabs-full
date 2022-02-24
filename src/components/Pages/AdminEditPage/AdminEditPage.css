@@ -133,6 +133,9 @@
 }
 
 @media (max-width: 576px) {
+  .AdminEditPage__Content {
+    padding-top: 0rem;
+  }
   .EditContent h2 {
     font-size: 1.6rem;
   }

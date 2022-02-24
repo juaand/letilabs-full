@@ -52,6 +52,11 @@
 
 .DeleteItemModal__ask {
   margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.DeleteItemModal__ask span {
+  font-size: 1.6rem;
 }
 
 .DeleteItemModal__container {

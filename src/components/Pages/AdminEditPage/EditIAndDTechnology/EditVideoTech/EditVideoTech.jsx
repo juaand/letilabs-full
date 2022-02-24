@@ -117,7 +117,7 @@ function EditVideoTech() {
         <>
             <div className="container-fluid p-0">
                 <div className="row">
-                    <div className="col-6">
+                    <div className="col-sm-6 col-12">
                         <div className="container-fluid EditContent">
                             <h2>Título del banner del video</h2>
                             <form className="AdminEdit__form" onSubmit={updateTitle}>
@@ -146,7 +146,7 @@ function EditVideoTech() {
                             </form>
                         </div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-sm-6 col-12">
                         <div className="container-fluid EditContent EditVideo">
                             <h2>Video</h2>
                             {videoMessage ? <p className="is-message">{videoMessage}</p> :

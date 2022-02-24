@@ -85,3 +85,9 @@
 .EditItemModal .AdminEdit__form .form-group .form-control {
   margin-bottom: 2rem;
 }
+
+@media (max-width: 576px) {
+  .EditItemModal__container {
+    padding: 2rem !important;
+  }
+}

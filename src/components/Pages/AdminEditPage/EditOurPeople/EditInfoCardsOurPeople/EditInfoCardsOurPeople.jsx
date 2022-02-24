@@ -91,7 +91,7 @@ function EditInfoCardsOurPeople() {
                     <div className="row justify-content-around mt-5">
                         <h3 className="mb-5">Editar equipos</h3>
                         {ourOCData?.map(el =>
-                            <div className="col-3 EditCarousel__edit logros" onClick={() => showModal(el)}>
+                            <div className="col-sm-3 col-12 EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <h4 className="mt-3 mb-3">{el?.title}</h4>
                                 <p>{el?.info}</p>
                             </div>
@@ -103,7 +103,7 @@ function EditInfoCardsOurPeople() {
                         <div className="col-12">
                             <form className="AdminEdit__form" onSubmit={createNewTeam}>
                                 <div className="row">
-                                    <div className="col-6">
+                                    <div className="col-sm-6 col-12">
                                         <InputWithLabel
                                             label="Título equipo"
                                             onChange={onChange}
@@ -113,7 +113,7 @@ function EditInfoCardsOurPeople() {
                                             placeholder="Ingrese título del equipo"
                                         />
                                     </div>
-                                    <div className="col-6">
+                                    <div className="col-sm-6 col-12">
                                         <InputWithLabel
                                             label="Info equipo"
                                             onChange={onChange}
