@@ -136,4 +136,7 @@
   .EditContent h2 {
     font-size: 1.6rem;
   }
+  .EditContent__title {
+    font-size: 1.8rem;
+  }
 }

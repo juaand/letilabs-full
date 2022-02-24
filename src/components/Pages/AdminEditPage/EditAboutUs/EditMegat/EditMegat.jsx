@@ -136,7 +136,7 @@ function EditMegat() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-0" >Guardar cambios
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios
                         </Button>
                     </div>
 

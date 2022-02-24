@@ -159,7 +159,7 @@ function EditTimeline() {
                             />
                         </div>
                         <div className="col-12">
-                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo año</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Añadir nuevo año</Button>
                         </div>
 
                     </div>
