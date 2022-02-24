@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {getBanner, updateBannerData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -12,7 +11,6 @@ import Loader from '../../../../Loader/Loader'
 function EditBanner() {
 
     const [bannerData, setBannerData] = useState()
-    const [disabled, setDisabled] = useState(true)
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
@@ -25,7 +23,7 @@ function EditBanner() {
             },
             error: {
                 description: true,
-                imgURL: false,
+                imgURL: true,
             },
             touch: {},
         },

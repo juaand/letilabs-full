@@ -24,7 +24,7 @@ function Banner() {
                 <div className="row d-flex">
                     <div className="col-12 col-sm-6 Banner__title">
                         <Fade direction="left" duration={600} triggerOnce>
-                            <h1>{bannerData?.description}</h1>
+                            <h1 dangerouslySetInnerHTML={{__html: bannerData?.description}} />
                         </Fade>
                     </div>
                     <div className="col-12 col-sm-6 Banner__bg">
