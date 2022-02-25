@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import EditItemModal from './EditItemModal/EditItemModal'
 import {getOurCompaniesInfoCardsLeti, createLetiInfoCard} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
+import EditItemModal from './EditItemModal/EditItemModal'
 import './EditCompaniesInfoCardsLeti.css'
 
 function EditCompaniesInfoCardsLeti() {

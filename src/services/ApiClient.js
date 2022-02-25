@@ -102,6 +102,8 @@ export const getBannerOCBiocontrolled = () => http.get("/bannerdataocbiocontroll
 export const updateBannerDataOCBiocontrolled = ({description, imgURL, logoURL, id}) => http.patch("/updatebannerdataocbiocontrolled", {description, imgURL, logoURL, id})
 export const getOurCompaniesInfoCardsBiocontrolled = () => http.get("/ourcompaniesinfocardsbiocontrolled")
 export const updateOurCompaniesInfoCardsBiocontrolled = ({title, info, id}) => http.patch("/updateourcompaniesinfocardsbiocontrolled", {title, info, id})
+export const deleteBiocontrolledInfoCard = (id) => http.get(`/deletebiocontrolledinfocard/${id}`)
+export const createBiocontrolledInfoCard = ({title, info}) => http.post("/createbiocontrolledinfocard", {title, info})
 export const getTimeLineBiocontrolled = () => http.get("/octimelinebiocontrolled")
 export const addTimeLineBiocontrolledData = ({desc, person, imgURL, buttonTitle, buttonLink, id}) => http.post("/addoctimelinebiocontrolled", {desc, person, imgURL, buttonTitle, buttonLink, id})
 export const updateTimeLineBiocontrolledData = ({desc, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateoctimelinebiocontrolled", {desc, imgURL, buttonTitle, buttonLink, id})

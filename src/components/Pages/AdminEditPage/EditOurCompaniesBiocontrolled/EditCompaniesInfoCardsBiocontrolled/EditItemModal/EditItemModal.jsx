@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
-import {deleteLetiInfoCard, updateOurCompaniesInfoCardsLeti} from '../../../../../../services/ApiClient'
+import {deleteBiocontrolledInfoCard, updateOurCompaniesInfoCardsBiocontrolled} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
@@ -42,7 +42,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
-                await updateOurCompaniesInfoCardsLeti(data)
+                await updateOurCompaniesInfoCardsBiocontrolled(data)
                     .then(info => {
                         setTimelineData(info)
                         setMessage('Data atualizada exitosamente')
@@ -65,7 +65,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     }
 
     const deleteSelected = async (id) => {
-        const updatedData = await deleteLetiInfoCard(id)
+        const updatedData = await deleteBiocontrolledInfoCard(id)
         deleteItem(updatedData)
     }
 
