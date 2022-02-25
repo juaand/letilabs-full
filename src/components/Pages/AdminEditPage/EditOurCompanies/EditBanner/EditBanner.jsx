@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
+
 import {getBannerOC, updateBannerDataOC} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 function EditBanner() {
 
-    const [bannerData, setBannerData] = useState()
+    const [registerError, setRegisterError] = useState(null)
     const [imageSuccess, setImageSuccess] = useState('')
-    const [message, setMessage] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState()
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -24,7 +25,7 @@ function EditBanner() {
             },
             error: {
                 description: true,
-                imgURL: false,
+                imgURL: true,
             },
             touch: {},
         },
@@ -37,8 +38,6 @@ function EditBanner() {
 
 
     const {data, error} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [disabled, setDisabled] = useState(true)
 
     const updateBanner = async (event) => {
         event.preventDefault()
