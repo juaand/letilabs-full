@@ -79,7 +79,7 @@ export const updateInnovationOC = ({description, imgURL, id}) => http.patch("/up
 export const getCareOC = () => http.get("/careoc")
 export const updateCareOC = ({description, imgURL, id}) => http.patch("/updatecareoc", {description, imgURL, id})
 export const getBottomOC = () => http.get("/bottomoc")
-export const updateBottomOC = ({title, url, button, img}, id) => http.patch("/updatebottomoc", {title, url, button, img, id})
+export const updateBottomOC = ({title, url, button, img, id}) => http.patch("/updatebottomoc", {title, url, button, img, id})
 
 //admin edit routes our companies Leti
 

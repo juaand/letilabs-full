@@ -1,14 +1,12 @@
 import React, {useState, useEffect} from 'react'
+
+import EditItemModal from '../../EditOurCompanies/EditBottomCta/EditItemModal/EditItemModal'
 import {getBottomOC} from '../../../../../services/ApiClient'
-import DeleteItemModal from '../../EditOurCompanies/EditBottomCta/DeleteItemModal/DeleteItemModal'
-
-
 
 function EditBottomCta() {
 
-    const [registerError, setRegisterError] = useState(null)
     const [modalData, setModalData] = useState()
-    const [ourCompaniesOCData, setOurCompaniesOCData] = useState()
+    const [ctaDta, setCtaData] = useState()
     const [bool, setBool] = useState(false)
 
     const showModal = (data) => {
@@ -16,15 +14,15 @@ function EditBottomCta() {
         setBool(!bool)
     }
 
-    const deleteItem = (data) => {
-        setOurCompaniesOCData(data)
+    const hideModal = (info) => {
+        setCtaData(info)
         setBool(!bool)
     }
 
     useEffect(() => {
         const fetchData = async () => {
-            const getOurCompaniesOCData = await getBottomOC()
-            setOurCompaniesOCData(getOurCompaniesOCData)
+            const getOCCtaData = await getBottomOC()
+            setCtaData(getOCCtaData)
 
         }
         fetchData()
@@ -33,15 +31,15 @@ function EditBottomCta() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} event deleteItem={(updateData) => deleteItem(updateData)} />}
-            {ourCompaniesOCData?.length > 0 &&
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} closeModal={() => setBool(!bool)} />}
+            {ctaDta?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar elementos CTA</h2>
+                    <h2>Editar CTA</h2>
                     <div className="row justify-content-around">
-                        {ourCompaniesOCData?.map(el =>
-                            <div className="col-5 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el.img.toLowerCase()} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el.img} />
-                                <p>{el.title}</p>
+                        {ctaDta?.map(el =>
+                            <div className="col-sm-4 col-12 EditCarousel__edit" onClick={() => showModal(el)}>
+                                <img className="EditCarousel__img" src={el.img} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el.img} />
+                                <h4 className="EditContent__boldtitle">{el.title}</h4>
                             </div>
                         )}
                     </div>

@@ -1,6 +1,6 @@
 @import '../../../../../../stylesheets/variables';
 
-.DeleteItemModal {
+.EditItemModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -55,10 +55,6 @@
 
   &__ask {
     margin-bottom: 2rem;
-    font-size: 2rem;
-    span {
-      font-size: 1.6rem;
-    }
   }
 
   &__container {
@@ -87,6 +83,14 @@
 
     &:hover {
       border: solid 0.3rem $leti-blue;
+    }
+  }
+
+  .AdminEdit__form {
+    .form-group {
+      .form-control {
+        margin-bottom: 2rem;
+      }
     }
   }
 }
