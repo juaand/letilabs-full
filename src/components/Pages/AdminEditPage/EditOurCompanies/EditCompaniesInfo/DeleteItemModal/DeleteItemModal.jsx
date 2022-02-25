@@ -1,18 +1,20 @@
-import './DeleteItemModal.css'
 import React, {useState} from 'react'
-import {deleteCarItem, updateOurCompaniesOC} from '../../../../../../services/ApiClient'
+import {Editor} from '@tinymce/tinymce-react'
+
+import {deleteOCNegocio, updateOurCompaniesOC} from '../../../../../../services/ApiClient'
+import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
-import {useFormState} from '../../../../../../hooks/useFormState'
-import {Editor} from '@tinymce/tinymce-react'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import Loader from '../../../../../Loader/Loader'
+import './DeleteItemModal.css'
 
 
 function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
+    const [message, setMessage] = useState('')
 
     const {state, onChange} = useFormState(
         {
@@ -27,7 +29,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                 name: true,
                 url: true,
                 info: true,
-                logo: false,
+                logo: true,
             },
             touch: {},
         },
@@ -39,25 +41,30 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         }
     )
 
-    const {data} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
     const [disabled, setDisabled] = useState(true)
 
     const deleteCarrouselItem = async (id) => {
-        const updateData = await deleteCarItem(id)
+        const updateData = await deleteOCNegocio(id)
         deleteItem(updateData)
     }
 
     const editCarrouselItem = async (id) => {
 
-        try {
-            await updateOurCompaniesOC(data, id)
-                .then(updateData => {
-                    deleteItem(updateData)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateOurCompaniesOC(data, id)
+                    .then(updateData => {
+                        deleteItem(updateData)
+                        setMessage('Data actualizada correctamente')
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
         }
     }
 
@@ -79,6 +86,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
             .then(() => {
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
+                setImageSuccess("Imagen subida correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -86,8 +94,8 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
         data.logo = fileUrl
-        setImageSuccess("Imagen subida correctamente")
         setIsDisabled(false)
+        error.logo = false
     }
 
     return (
@@ -128,6 +136,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                                     type="text"
                                                     cssStyle="form-control"
                                                     placeholder={element?.url}
+                                                    disabled
                                                 />
                                             </div>
                                             <div className="col-12">
@@ -143,6 +152,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                                     type="file"
                                                     placeholder={element?.logo}
                                                 />
+                                                {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                             </div>
                                             <div className="col-12">
                                                 <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
@@ -168,7 +178,12 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                                 <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
                                             </div>
                                             <div className="col-12 col-sm-6">
-                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div></div>
+                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div>
+                                            </div>
+                                            <div className="col-12">
+                                                {message && <span className="AdminEdit__message m-0">{message}</span>}
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +191,6 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                         </div>
                     </div>
                 </div>
-
             </div>
         </>
     )

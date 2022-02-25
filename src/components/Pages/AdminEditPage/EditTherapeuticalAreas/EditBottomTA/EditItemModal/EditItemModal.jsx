@@ -1,22 +1,22 @@
 import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
 
-import './EditItemModal.css'
-import {updateBottomTA} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {updateBottomTA} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import Button from '../../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../../services/firebase'
 import Loader from '../../../../../Loader/Loader'
+import './EditItemModal.css'
 
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [isDisabled, setIsDisabled] = useState(false)
     const [ctaData, setCtaData] = useState(infodata)
     const [message, setMessage] = useState('')
-    const [isDisabled, setIsDisabled] = useState(false)
-    const [imageSuccess, setImageSuccess] = useState('')
 
     const {state, onChange} = useFormState(
         {
@@ -73,8 +73,6 @@ function EditItemModal({infodata, hideModal, closeModal}) {
     const updateInfo = async (event) => {
         event.preventDefault()
         data.id = ctaData?._id
-
-        console.log(data)
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {

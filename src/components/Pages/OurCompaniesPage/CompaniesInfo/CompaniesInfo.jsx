@@ -50,7 +50,7 @@ function CompaniesInfo() {
                         {unidadesNegocio.map(el =>
                             <Link to={`/${seoURL(el?.name).toLowerCase()}`} className="col-sm-3 CompaniesInfo__card">
                                 <div className="CompaniesInfo__card-img">
-                                    <img src={`./images/${seoURL(el?.name).toLowerCase()}.svg`} className="CompaniesInfo__card-logo" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={"conoce más sobre " + el?.name} />
+                                    <img src={el?.logo} className="CompaniesInfo__card-logo" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={"conoce más sobre " + el?.name} />
                                 </div>
                                 <div className="CompaniesInfo__card-body">
                                     <p className="CompaniesInfo__card-text" dangerouslySetInnerHTML={{__html: el?.info}}>
