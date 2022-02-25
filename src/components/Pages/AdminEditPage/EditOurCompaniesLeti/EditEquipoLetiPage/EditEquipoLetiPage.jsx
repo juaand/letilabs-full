@@ -1,19 +1,20 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {getEquipoLetiOC, updateEquipoLetiOC} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
-import {Editor} from '@tinymce/tinymce-react'
+import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 
 function EditEquipoLetiPage() {
-    const [bannerData, setBannerData] = useState()
-    const [imageSuccess, setImageSuccess] = useState('')
-    const [message, setMessage] = useState('')
+    
     const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState()
+    const [message, setMessage] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -28,9 +29,9 @@ function EditEquipoLetiPage() {
             error: {
                 description: true,
                 person: true,
-                imgURL: false,
-                buttonTitle: false,
-                buttonLink: false,
+                imgURL: true,
+                buttonTitle: true,
+                buttonLink: true,
             },
             touch: {},
         },
@@ -47,9 +48,8 @@ function EditEquipoLetiPage() {
 
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
-    const [disabled, setDisabled] = useState(true)
 
-    const updateBanner = async (event) => {
+    const updateInfoEquipo = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
 
@@ -75,10 +75,6 @@ function EditEquipoLetiPage() {
         data.description = e.target.getContent()
         error.description = false
     }
-    const handleBannerPerson = (e) => {
-        data.person = e.target.getContent()
-        error.description = false
-    }
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
@@ -93,7 +89,7 @@ function EditEquipoLetiPage() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Imagen cargada correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -115,57 +111,12 @@ function EditEquipoLetiPage() {
 
     return (
         <>
-        {isDisabled && <Loader message="Cargando imagen..." />}
-        <section className="container-fluid EditContent">
-            <h2>Equipo Leti</h2>
-            <form className="AdminEdit__form" onSubmit={updateBanner}>
-                <div className="row">
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Descripción
-                        </p>
-                        <Editor
-                            initialValue={bannerData?.description}
-                            onChange={handleBannerDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Persona del equipo y cargo
-                        </p>
-                        <Editor
-                            initialValue={bannerData?.person}
-                            onChange={handleBannerPerson}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-4">
-                        <div className="col-12 EditElementsModal__img m-0">
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <section className="container-fluid EditContent">
+                <h2>Equipo Leti</h2>
+                <form className="AdminEdit__form" onSubmit={updateInfoEquipo}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6 EditElementsModal__img m-0">
                             <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
                             <InputFile
                                 value={bannerData?.imgURL}
@@ -177,46 +128,81 @@ function EditEquipoLetiPage() {
                                 placeholder={bannerData?.imgURL}
                             />
                         </div>
-                    </div>
-                    <div className="col-12 col-sm-4">
-                        <p className="AdminEdit__form__label">
-                            Texto botón
-                        </p>
-                        <InputWithLabel
-                            value={data?.buttonTitle}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="buttonTitle"
-                            type="text"
-                            cssStyle={`form-control mb-0 ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.buttonTitle}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-4">
-                        <p className="AdminEdit__form__label">
-                            URL botón
-                        </p>
-                        <InputWithLabel
-                            value={data?.buttonLink}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="buttonLink"
-                            type="text"
-                            cssStyle={`form-control mb-0 ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.buttonLink}
-                        />
-                    </div>
-                    <div className="col-12">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={bannerData?.description}
+                                onChange={handleBannerDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-4">
+                            <p className="AdminEdit__form__label">
+                                Persona del equipo y cargo
+                            </p>
+                            <InputWithLabel
+                                value={data?.person}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="person"
+                                type="text"
+                                cssStyle="form-control mb-0"
+                                placeholder={bannerData?.person}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-4">
+                            <p className="AdminEdit__form__label">
+                                Texto botón
+                            </p>
+                            <InputWithLabel
+                                value={data?.buttonTitle}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="buttonTitle"
+                                type="text"
+                                cssStyle="form-control mb-0"
+                                placeholder={bannerData?.buttonTitle}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-4">
+                            <p className="AdminEdit__form__label">
+                                URL botón
+                            </p>
+                            <InputWithLabel
+                                value={data?.buttonLink}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="buttonLink"
+                                type="text"
+                                cssStyle="form-control mb-0"
+                                placeholder={bannerData?.buttonLink}
+                            />
+                        </div>
+                        <div className="col-12">
 
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios</Button>
-                        {message && <span className="AdminEdit__message">{message}</span>}
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
+
+                        </div>
 
                     </div>
-
-                </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
         </>
     )
 }
