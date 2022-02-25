@@ -1,21 +1,21 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOCLeti, updateBannerDataOCLeti} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
-import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+
+import {getBannerOCLeti, updateBannerDataOCLeti} from '../../../../../services/ApiClient'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 function EditBannerOCLeti() {
 
-    const [bannerData, setBannerData] = useState()
-    const [imageSuccess, setImageSuccess] = useState('')
-    const [message, setMessage] = useState('')
+    const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState()
+    const [message, setMessage] = useState('')
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: '',
@@ -25,8 +25,8 @@ function EditBannerOCLeti() {
             },
             error: {
                 description: true,
-                imgURL: false,
-                logoURL: false,
+                imgURL: true,
+                logoURL: true,
             },
             touch: {},
         },
@@ -39,9 +39,7 @@ function EditBannerOCLeti() {
 
 
 
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [disabled, setDisabled] = useState(true)
+    const {data, error} = state
 
     const updateBanner = async (event) => {
         event.preventDefault()
@@ -83,7 +81,7 @@ function EditBannerOCLeti() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Imagen cargada correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -107,7 +105,7 @@ function EditBannerOCLeti() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Logo cargado correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -181,7 +179,7 @@ function EditBannerOCLeti() {
                         </div>
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                         {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 
