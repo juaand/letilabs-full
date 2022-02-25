@@ -34,7 +34,7 @@ function Cuidar() {
                         </div>
                         <div className="col-12 col-sm-5">
                             <Fade direction="down" triggerOnce>
-                                <h1 className="text-center">{bannerData?.description}</h1>
+                                <h1 dangerouslySetInnerHTML={{__html: bannerData?.description}} className="text-center" />
                             </Fade>
                         </div>
                     </div>
