@@ -116,7 +116,7 @@ export const updateEquipoBiocontrolledOC = ({description, person, imgURL, button
 export const getBannerOCGenven = () => http.get("/bannerdataocgenven")
 export const updateBannerDataOCGenven = ({description, imgURL, logoURL, id}) => http.patch("/updatebannerdataocgenven", {description, imgURL, logoURL, id})
 export const getOurCompaniesVideoGenven = () => http.get("/ourcompaniesvideogenven")
-export const updateOurCompaniesVideoGenven = ({videoURL, id}) => http.get("/updateourcompaniesvideogenven", {videoURL, id})
+export const updateOurCompaniesVideoGenven = (videoURL, id) => http.patch("/updateourcompaniesvideogenven", {videoURL, id})
 export const getTimeLineGenven = () => http.get("/octimelinegenven")
 export const addTimeLineGenvenData = ({description, person, imgURL, buttonTitle, buttonLink, id}) => http.get("/addoctimelinegenven", {description, person, imgURL, buttonTitle, buttonLink, id})
 export const getProductosGenvenOC = () => http.get("/ocproductosgenven")

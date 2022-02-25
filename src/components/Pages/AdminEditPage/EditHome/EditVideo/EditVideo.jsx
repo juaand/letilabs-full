@@ -9,8 +9,8 @@ import './EditVideo.css'
 function EditVideo() {
 
     const [videoData, setVideoData] = useState('')
-    const [message, setMessage] = useState('')
     const [videoInfo, setVideoInfo] = useState([])
+    const [message, setMessage] = useState('')
     const [videoId, setVideoId] = useState('')
 
     const onFileSelected = async (e) => {
