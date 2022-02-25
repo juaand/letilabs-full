@@ -50,7 +50,7 @@ function Productos() {
                 <div className="row">
                     <div className="col-9 col-sm-5 offset-sm-1 Productos__info">
                         <Fade direction="up" triggerOnce>
-                            <h1 className="Productos__desc">{bannerData?.description}</h1>
+                            <h1 dangerouslySetInnerHTML={{__html: bannerData?.description}} className="Productos__desc" />
                         </Fade>
                         <Reveal delay={200} keyframes={customAnimation} triggerOnce>
                             <Link to={bannerData?.buttonLink} className="leti-btn">{bannerData?.buttonTitle}</Link>

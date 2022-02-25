@@ -39,6 +39,10 @@
   text-align: right;
 }
 
+.Productos__desc strong {
+  color: #055aa5;
+}
+
 .Productos .leti-btn {
   margin-top: 3rem;
   float: right;

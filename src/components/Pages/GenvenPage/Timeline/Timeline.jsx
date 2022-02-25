@@ -1,9 +1,10 @@
-import './Timeline.css'
 import React, {useState, useEffect} from 'react'
-import Slider from "react-slick"
-import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
+import {Link} from 'react-router-dom'
+import Slider from "react-slick"
+
 import {getTimeLineGenven} from '../../../../services/ApiClient'
+import './Timeline.css'
 
 function Timeline() {
 
@@ -77,7 +78,7 @@ function Timeline() {
                                     {el?.buttonText &&
                                         <div className="row Timeline__leti__btn">
                                             <div className="col-11 col-sm-8">
-                                                <Link to="/" className="leti-btn">Conoce sobre esta iniciativa</Link>
+                                                <Link to={el?.buttonLink} className="leti-btn">{el?.buttonText}</Link>
                                             </div>
                                         </div>
                                     }

@@ -47,8 +47,8 @@ function EditTimelineLeti() {
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
 
-    const showModal = (data) => {
-        setModalData(data)
+    const showModal = (info) => {
+        setModalData(info)
         setBool(!bool)
     }
 
@@ -73,16 +73,16 @@ function EditTimelineLeti() {
         }
     }
 
-    const deleteItem = (data) => {
-        setTimeLineData(data)
+    const deleteItem = (info) => {
+        setTimeLineData(info)
         setBool(!bool)
     }
-
 
     const hideModal = (info) => {
         setTimeLineData(info)
         setBool(!bool)
     }
+
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
         error.desc = false
