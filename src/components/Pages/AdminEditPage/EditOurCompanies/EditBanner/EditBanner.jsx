@@ -11,12 +11,11 @@ import Loader from '../../../../Loader/Loader'
 function EditBanner() {
 
     const [registerError, setRegisterError] = useState(null)
-    const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState()
     const [message, setMessage] = useState('')
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: '',

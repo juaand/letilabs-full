@@ -1,21 +1,22 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerProductsOC, updateBannerProductsOC} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
-import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+
+import {getBannerProductsOC, updateBannerProductsOC} from '../../../../../services/ApiClient'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
+import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 
 function EditProdutcsBanner() {
-    const [bannerData, setBannerData] = useState()
-    const [imageSuccess, setImageSuccess] = useState('')
-    const [message, setMessage] = useState('')
-    const [isDisabled, setIsDisabled] = useState(false)
 
-    const {state, onBlur, onChange} = useFormState(
+    const [registerError, setRegisterError] = useState(null)
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [bannerData, setBannerData] = useState()
+    const [message, setMessage] = useState('')
+
+    const {state} = useFormState(
         {
             data: {
                 id: '',
@@ -28,9 +29,9 @@ function EditProdutcsBanner() {
             error: {
                 description: true,
                 description2: true,
-                imgURL: false,
-                img2URL: false,
-                img3URL: false,
+                imgURL: true,
+                img2URL: true,
+                img3URL: true,
             },
             touch: {},
         },
@@ -45,18 +46,18 @@ function EditProdutcsBanner() {
 
 
 
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [disabled, setDisabled] = useState(true)
+    const {data, error} = state
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
 
+        console.log(data)
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateBannerProductsOC(data)
                     .then(banner => {
+                        console.log(banner)
                         setBannerData(banner)
                         setMessage('Data actualizada exitosamente')
                     })
@@ -73,9 +74,11 @@ function EditProdutcsBanner() {
     
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
     const handleBannerDescription2 = (e) => {
         data.description2 = e.target.getContent()
+        error.description2 = false
     }
 
     const onFileSelected = async (e) => {
@@ -91,7 +94,7 @@ function EditProdutcsBanner() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Imagen uno subida correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -115,7 +118,7 @@ function EditProdutcsBanner() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Imagen dos subida correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -139,7 +142,7 @@ function EditProdutcsBanner() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Imagen tres subida correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -220,6 +223,7 @@ function EditProdutcsBanner() {
                                 name="imgURL"
                                 type="file"
                                 placeholder={bannerData?.imgURL}
+                                label="Imagen uno"
                             />
                         </div>
                     </div>
@@ -233,6 +237,7 @@ function EditProdutcsBanner() {
                                 name="imgURL"
                                 type="file"
                                 placeholder={bannerData?.img2URL}
+                                label="Imagen dos"
                             />
                         </div>
                     </div>
@@ -246,6 +251,7 @@ function EditProdutcsBanner() {
                                 name="imgURL"
                                 type="file"
                                 placeholder={bannerData?.img3URL}
+                                label="Imagen tres"
                             />
                         </div>
                     </div>
