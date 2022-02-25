@@ -36,9 +36,7 @@ function Equipo() {
                     </Fade>
                     <div className="col-11 col-sm-5 offset-sm-6 Equipo__info">
                         <Fade triggerOnce direction="up" delay={200}>
-                            <p className="Equipo__desc">{bannerData?.description}</p>
-
-                            <p className="blue-text">{bannerData?.person}</p>
+                            <p dangerouslySetInnerHTML={{__html: bannerData?.description}} className="Equipo__desc"/>
                         </Fade>
                         <Fade triggerOnce direction="up" delay={200}>
                             <Link to={bannerData?.buttonLink} className="leti-btn">{bannerData?.buttonTitle}</Link>

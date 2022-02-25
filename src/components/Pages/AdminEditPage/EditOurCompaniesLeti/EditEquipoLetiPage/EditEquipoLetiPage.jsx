@@ -21,14 +21,12 @@ function EditEquipoLetiPage() {
             data: {
                 id: '',
                 description: bannerData?.description,
-                person: bannerData?.person,
                 imgURL: bannerData?.imgURL,
                 buttonTitle: bannerData?.buttonTitle,
                 buttonLink: bannerData?.buttonLink,
             },
             error: {
                 description: true,
-                person: true,
                 imgURL: true,
                 buttonTitle: true,
                 buttonLink: true,
@@ -37,7 +35,6 @@ function EditEquipoLetiPage() {
         },
         {
             description: v => v.length,
-            person: v => v.length,
             imgURL: v => v.length,
             buttonTitle: v => v.length,
             buttonLink: v => v.length,
@@ -150,21 +147,7 @@ function EditEquipoLetiPage() {
                                 }}
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
-                            <p className="AdminEdit__form__label">
-                                Persona del equipo y cargo
-                            </p>
-                            <InputWithLabel
-                                value={data?.person}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="person"
-                                type="text"
-                                cssStyle="form-control mb-0"
-                                placeholder={bannerData?.person}
-                            />
-                        </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Texto botón
                             </p>
@@ -178,7 +161,7 @@ function EditEquipoLetiPage() {
                                 placeholder={bannerData?.buttonTitle}
                             />
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 URL botón
                             </p>
