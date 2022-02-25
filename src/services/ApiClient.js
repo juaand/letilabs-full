@@ -107,9 +107,12 @@ export const createBiocontrolledInfoCard = ({title, info}) => http.post("/create
 export const getTimeLineBiocontrolled = () => http.get("/octimelinebiocontrolled")
 export const addTimeLineBiocontrolledData = ({desc, person, imgURL, buttonTitle, buttonLink, id}) => http.post("/addoctimelinebiocontrolled", {desc, person, imgURL, buttonTitle, buttonLink, id})
 export const updateTimeLineBiocontrolledData = ({desc, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateoctimelinebiocontrolled", {desc, imgURL, buttonTitle, buttonLink, id})
+export const deleteTLBioData = (id) => http.get(`/deleteoctimelinebiocontrolled/${id}`)
 export const getCarrouselBiocontrolled = () => http.get("/occarrouselbiocontrolled")
 export const updateCarrouselBiocontrolledData = ({info, id}) => http.patch("/updateoccarrouselbiocontrolled", {info, id})
-export const addCarrouselBiocontrolledData = ({info, id}) => http.post("/addoccarrouselbiocontrolled", {info, id})
+export const updateBioCarrouselTitle = ({title}) => http.post("/updatebiocarrousletitle", {title})
+export const deleteCarrouselItem = (id) => http.get(`/deletebiocarrouselitem/${id}`)
+export const addCarrouselBiocontrolledData = ({title, info, id}) => http.post("/addoccarrouselbiocontrolled", {title, info, id})
 export const getEquipoBiocontrolledOC = () => http.get("/ocequipobiocontrolled")
 export const updateEquipoBiocontrolledOC = ({description, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateocequipobiocontrolled", {description, imgURL, buttonTitle, buttonLink, id})
 

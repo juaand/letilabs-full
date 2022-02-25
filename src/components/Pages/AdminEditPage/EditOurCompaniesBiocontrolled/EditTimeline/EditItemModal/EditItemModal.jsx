@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
-import {updateCarouselManufacture, deleteProccess} from '../../../../../../services/ApiClient'
+import {updateTimeLineBiocontrolledData, deleteTLBioData} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
 
 
-function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
+function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
 
     const [carouselData, setCarouselData] = useState(infodata)
     const [message, setMessage] = useState('')
@@ -16,11 +16,9 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {state, onChange} = useFormState(
         {
             data: {
-                title: infodata?.title,
                 info: infodata?.info,
             },
             error: {
-                title: true,
                 info: true,
             },
             touch: {},
@@ -40,7 +38,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
-                await updateCarouselManufacture(data)
+                await updateTimeLineBiocontrolledData(data)
                     .then(info => {
                         setCarouselData(info)
                         setMessage('Data atualizada exitosamente')
@@ -58,7 +56,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     }
 
     const deleteSelected = async (id) => {
-        const updatedData = await deleteProccess(id)
+        const updatedData = await deleteTLBioData(id)
         deleteItem(updatedData)
     }
 
@@ -66,7 +64,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         <div className="EditItemModal">
             <div className="container">
                 <div className="row justify-content-center">
-                    <Fade direction="down" className="col-11 col-sm-6 EditItemModal__container">
+                    <Fade direction="down" className="col-11 col-sm-10 EditItemModal__container">
                         <>
                             <span className="EditItemModal__close" onClick={closeModal}></span>
                             <form className="AdminEdit__form" onSubmit={updateInfo}>
@@ -84,17 +82,15 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                             placeholder={carouselData?.info}
                                         />
                                     </div>
-                                    <div className="col-12 col-sm-6">
+                                    <div className="col-12 col-sm-6 mt-5">
+                                            <div onClick={() => deleteSelected(carouselData?._id)} className="leti-btn delete">Eliminar proceso</div>
+                                        </div>
+                                    <div className="col-6 mt-5 mb-5">
                                         <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>
-                                    </div>
-                                    <div className="col-12 col-sm-6 d-flex justify-content-end">
-                                        <div onClick={() => deleteSelected(carouselData?._id)} className="leti-btn delete">Eliminar proceso</div>
+                                        {message && <span className="AdminEdit__message">{message}</span>}
                                     </div>
                                 </div>
-                                <div className="col-12">
-                                    {message && <span className="AdminEdit__message">{message}</span>}
-                                    {registerError && <div className="alert alert-danger">{registerError}</div>}
-                                </div>
+                                {registerError && <div className="alert alert-danger">{registerError}</div>}
                             </form>
                         </>
                     </Fade>

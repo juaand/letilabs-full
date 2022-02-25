@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {getCarouselManufacture, updateTitleProccess, createProccess} from '../../../../../services/ApiClient'
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 import EditItemModal from './EditItemModal/EditItemModal'
@@ -9,6 +9,7 @@ import EditItemModal from './EditItemModal/EditItemModal'
 function EditCarouselManufacture() {
 
     const [carouselManufactureData, setCarouselManufactureData] = useState([])
+    const [proccesMessage, setProccesMessage] = useState('')
     const [modalData, setModalData] = useState([])
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
@@ -79,7 +80,7 @@ function EditCarouselManufacture() {
                 await createProccess(data)
                     .then(info => {
                         setCarouselManufactureData(info)
-                        setMessage('Proceso añadido exitosamente')
+                        setProccesMessage('Proceso añadido exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -88,7 +89,7 @@ function EditCarouselManufacture() {
                 setRegisterError(err.response?.data?.message)
             }
         } else {
-            setMessage('Por añada un proceso.')
+            setProccesMessage('Por favor añada un proceso.')
         }
     }
 
@@ -156,8 +157,8 @@ function EditCarouselManufacture() {
                                     />
                                 </div>
                                 <div className="col-12 col-sm-6">
-                                    <Button type="submit" cssStyle="leti-btn">Editar título</Button>
-                                    {message && <span className="AdminEdit__message ">{message}</span>}
+                                    <Button type="submit" cssStyle="leti-btn">Añadir proceso</Button>
+                                    {proccesMessage && <span className="AdminEdit__message ">{proccesMessage}</span>}
                                 </div>
                             </div>
                         </form>

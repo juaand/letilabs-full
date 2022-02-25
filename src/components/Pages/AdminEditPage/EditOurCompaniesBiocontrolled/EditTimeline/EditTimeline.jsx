@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData, updateTimeLineBiocontrolledData} from '../../../../../services/ApiClient'
+import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditOurCompaniesBiocontrolled/EditTimeline/DeleteItemModal/DeleteItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
 import {Editor} from '@tinymce/tinymce-react'
 import Loader from '../../../../Loader/Loader'
 
@@ -111,14 +111,14 @@ function EditTimelineBiocontrolled() {
 
     return (
         <>
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {bool && <EditItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
                     <h2>Elminar elemento del TimeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-5 EditCarousel__edit" onClick={() => showModal(el)}>
-                                <img className="EditCarousel__img" src={el?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
+                                <img className="EditCarousel__img" src={el?.imgURL} onerror="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
                                 <p dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
@@ -129,7 +129,7 @@ function EditTimelineBiocontrolled() {
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
                         <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
+                        <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
                             <InputFile
@@ -142,7 +142,7 @@ function EditTimelineBiocontrolled() {
                             />
                         </div>
                         <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
+                        <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
                             <Editor

@@ -2,13 +2,13 @@ import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
-import {updateCarouselManufacture, deleteProccess} from '../../../../../../services/ApiClient'
+import {updateCarrouselBiocontrolledData, deleteCarrouselItem} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
 
 
-function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
+function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
 
     const [carouselData, setCarouselData] = useState(infodata)
     const [message, setMessage] = useState('')
@@ -16,11 +16,9 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {state, onChange} = useFormState(
         {
             data: {
-                title: infodata?.title,
                 info: infodata?.info,
             },
             error: {
-                title: true,
                 info: true,
             },
             touch: {},
@@ -40,7 +38,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
-                await updateCarouselManufacture(data)
+                await updateCarrouselBiocontrolledData(data)
                     .then(info => {
                         setCarouselData(info)
                         setMessage('Data atualizada exitosamente')
@@ -58,7 +56,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     }
 
     const deleteSelected = async (id) => {
-        const updatedData = await deleteProccess(id)
+        const updatedData = await deleteCarrouselItem(id)
         deleteItem(updatedData)
     }
 
@@ -91,6 +89,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                         <div onClick={() => deleteSelected(carouselData?._id)} className="leti-btn delete">Eliminar proceso</div>
                                     </div>
                                 </div>
+                               
                                 <div className="col-12">
                                     {message && <span className="AdminEdit__message">{message}</span>}
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}
