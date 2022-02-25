@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
+import {Editor} from '@tinymce/tinymce-react'
+
 import {getTimeLineLeti, addTimeLineLetiData} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
-import DeleteItemModal from '../../EditOurCompaniesLeti/EditTimeline/DeleteItemModal/DeleteItemModal'
-import {Editor} from '@tinymce/tinymce-react'
+import EditItemModal from './EditItemModal/EditItemModal'
+import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 function EditTimelineLeti() {
@@ -20,10 +21,10 @@ function EditTimelineLeti() {
                 url: '',
             },
             error: {
-                imgURL: false,
-                desc: false,
-                button: false,
-                url: false,
+                imgURL: true,
+                desc: true,
+                button: true,
+                url: true,
             },
             touch: {},
         },
@@ -36,14 +37,15 @@ function EditTimelineLeti() {
     )
 
     const {data, error, touch} = state
+
     const [registerError, setRegisterError] = useState(null)
-    const [modalData, setModalData] = useState()
-    const [timelineData, setTimeLineData] = useState()
-    const [bool, setBool] = useState(false)
     const [imageSuccess, setImageSuccess] = useState('')
-    const [message, setMessage] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
+    const [timelineData, setTimeLineData] = useState()
     const [disabled, setDisabled] = useState(true)
+    const [modalData, setModalData] = useState()
+    const [message, setMessage] = useState('')
+    const [bool, setBool] = useState(false)
 
     const showModal = (data) => {
         setModalData(data)
@@ -53,16 +55,21 @@ function EditTimelineLeti() {
     const addTimeLineItem = async (event) => {
         event.preventDefault()
 
-        try {
-            await addTimeLineLetiData(data)
-                .then(timeline => {
-                    setTimeLineData(timeline)
-                })
-                .catch(error => {
-                    setRegisterError(error)
-                })
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (error.imgURL === false && error.desc === false && error.button === false && error.url === false) {
+            try {
+                await addTimeLineLetiData(data)
+                    .then(timeline => {
+                        setTimeLineData(timeline)
+                        setMessage('Elemento añadido exitósamente')
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor rellene todos los campos')
         }
     }
 
@@ -71,8 +78,14 @@ function EditTimelineLeti() {
         setBool(!bool)
     }
 
+
+    const hideModal = (info) => {
+        setTimeLineData(info)
+        setBool(!bool)
+    }
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        error.desc = false
     }
 
     const onFileSelected = async (e) => {
@@ -89,15 +102,16 @@ function EditTimelineLeti() {
             .then(() => {
                 //Se habilita el botón para subir el blog
                 setDisabled(!disabled)
+                setImageSuccess("Imagen cargada correctamente")
             })
             .catch(err => {console.log(err)})
 
 
         // Get file url
         const fileUrl = await filePath.getDownloadURL()
-        data.logo = fileUrl
-        setImageSuccess("Imagen subida correctamente")
+        data.imgURL = fileUrl
         setIsDisabled(false)
+        error.imgURL = false
     }
 
     useEffect(() => {
@@ -111,16 +125,16 @@ function EditTimelineLeti() {
 
     return (
         <>
-
-            {bool && <DeleteItemModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} deleteItem={(updateData) => deleteItem(updateData)} closeModal={() => setBool(!bool)} />}
             {timelineData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar elemento del TimeLine</h2>
+                    <h2>Editar elemento del timeLine</h2>
                     <div className="row justify-content-around">
                         {timelineData?.map(el =>
                             <div className="col-sm-4 col-12 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.imgURL} />
-                                <p dangerouslySetInnerHTML={{__html: el?.desc}} />
+                                <h4 className="EditContent__boldtitle" dangerouslySetInnerHTML={{__html: el?.desc}} />
                             </div>
                         )}
                     </div>
@@ -131,7 +145,7 @@ function EditTimelineLeti() {
                     <div className="row">
                         <div className="col-12 col-sm-4">
                             <p className="AdminEdit__form__label">
-                                titulo boton
+                                Título botón
                             </p>
                             <InputWithLabel
                                 value={data?.button}
@@ -145,7 +159,7 @@ function EditTimelineLeti() {
                         </div>
                         <div className="col-12 col-sm-4">
                             <p className="AdminEdit__form__label">
-                                url
+                                Url botón
                             </p>
                             <InputWithLabel
                                 value={data?.url}
@@ -169,8 +183,9 @@ function EditTimelineLeti() {
                                 type="file"
                                 placeholder={data?.imgURL}
                             />
+                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
-                        <div className="col-12 col-sm-4">
+                        <div className="col-12">
                             <p className="AdminEdit__form__label">
                                 Descripción
                             </p>
@@ -194,6 +209,7 @@ function EditTimelineLeti() {
                         </div>
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Añadir nuevo timeline</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
                     </div>

@@ -66,16 +66,16 @@ function Timeline() {
                         <>
                             <div className="Timeline__leti__product row">
                                 <div className="Timeline__leti__image col-12 col-sm-6" style={{
-                                    background: `url(${el.imgURL}) no-repeat left center / cover`
+                                    background: `url(${el?.imgURL}) no-repeat left center / cover`
                                 }}></div>
                                 <div className="col-12 col-sm-6 Timeline__leti__info">
                                     <div className="row">
-                                        <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el.desc}}>
+                                        <p className="col-12 col-sm-8 Timeline__leti__desc" dangerouslySetInnerHTML={{__html: el?.desc}}>
                                         </p>
                                     </div>
                                     <div className="row Timeline__leti__btn">
                                         <div className="col-11 col-sm-4">
-                                            <Link to="/" className="leti-btn">Leer más</Link>
+                                            <Link to={el?.url} className="leti-btn">{el?.button}</Link>
                                         </div>
                                     </div>
                                 </div>

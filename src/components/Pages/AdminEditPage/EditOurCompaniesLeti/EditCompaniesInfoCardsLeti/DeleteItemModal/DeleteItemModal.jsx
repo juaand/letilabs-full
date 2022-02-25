@@ -25,7 +25,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
             error: {
                 title: true,
                 info: true,
-                logo: false,
+                logo: true,
             },
             touch: {},
         },
@@ -60,31 +60,6 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.info = e.target.getContent()
-    }
-
-    const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
-        // Get file
-        const file = e.target.files[0]
-
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
-
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
-            })
-            .catch(err => {console.log(err)})
-
-
-        // Get file title
-        const fileUrl = await filePath.getDownloadURL()
-        data.logo = fileUrl
-        setImageSuccess("Imagen subida correctamente")
-        setIsDisabled(false)
     }
 
     return (
