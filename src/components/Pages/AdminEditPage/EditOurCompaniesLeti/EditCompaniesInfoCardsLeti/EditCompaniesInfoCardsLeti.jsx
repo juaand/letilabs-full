@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import EditItemModal from '../../EditOurCompaniesLeti/EditCompaniesInfoCardsLeti/EditItemModal/EditItemModal'
+import EditItemModal from './EditItemModal/EditItemModal'
 import {getOurCompaniesInfoCardsLeti, createLetiInfoCard} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'

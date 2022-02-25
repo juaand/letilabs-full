@@ -11,7 +11,7 @@ import Loader from '../../../../Loader/Loader'
 
 
 function EditEquipoLetiPage() {
-    
+
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState()
     const [message, setMessage] = useState('')
@@ -46,7 +46,7 @@ function EditEquipoLetiPage() {
 
 
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
     const updateInfoEquipo = async (event) => {
