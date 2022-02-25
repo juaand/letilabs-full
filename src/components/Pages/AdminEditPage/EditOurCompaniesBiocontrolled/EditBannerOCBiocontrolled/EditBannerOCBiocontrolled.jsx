@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
+
 import {getBannerOCBiocontrolled, updateBannerDataOCBiocontrolled} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -10,11 +10,12 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerOCBiocontrolled() {
 
+    const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState([])
     const [message, setMessage] = useState('')
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: '',
@@ -24,8 +25,8 @@ function EditBannerOCBiocontrolled() {
             },
             error: {
                 description: true,
-                imgURL: false,
-                logoURL: false,
+                imgURL: true,
+                logoURL: true,
             },
             touch: {},
         },
@@ -36,11 +37,7 @@ function EditBannerOCBiocontrolled() {
         }
     )
 
-
-
-    const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-
+    const {data, error} = state
 
     const updateBanner = async (event) => {
         event.preventDefault()
@@ -82,7 +79,7 @@ function EditBannerOCBiocontrolled() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("Imagen cargada correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -106,7 +103,7 @@ function EditBannerOCBiocontrolled() {
         // Upload file
         await filePath.put(file)
             .then(() => {
-                setMessage("Imagen subida correctamente")
+                setMessage("logo cargado correctamente")
             })
             .catch(err => {console.log(err)})
 
@@ -180,7 +177,7 @@ function EditBannerOCBiocontrolled() {
                             </div>
                         </div>
                         <div className="col-12">
-                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                             {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 
