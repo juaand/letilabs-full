@@ -154,7 +154,7 @@ function EditTimelineLeti() {
                                 name="button"
                                 type="text"
                                 cssStyle={`form-control ${touch.button && error.button ? "is-invalid" : ""}`}
-                                placeholder="Ingresa titulo boton"
+                                placeholder="Ingresa texto del botón"
                             />
                         </div>
                         <div className="col-12 col-sm-4">

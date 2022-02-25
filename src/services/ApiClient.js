@@ -105,7 +105,7 @@ export const updateOurCompaniesInfoCardsBiocontrolled = ({title, info, id}) => h
 export const deleteBiocontrolledInfoCard = (id) => http.get(`/deletebiocontrolledinfocard/${id}`)
 export const createBiocontrolledInfoCard = ({title, info}) => http.post("/createbiocontrolledinfocard", {title, info})
 export const getTimeLineBiocontrolled = () => http.get("/octimelinebiocontrolled")
-export const addTimeLineBiocontrolledData = ({desc, person, imgURL, buttonTitle, buttonLink, id}) => http.post("/addoctimelinebiocontrolled", {desc, person, imgURL, buttonTitle, buttonLink, id})
+export const addTimeLineBiocontrolledData = ({desc, imgURL, buttonTitle, buttonLink, id}) => http.post("/addoctimelinebiocontrolled", {desc, imgURL, buttonTitle, buttonLink, id})
 export const updateTimeLineBiocontrolledData = ({desc, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateoctimelinebiocontrolled", {desc, imgURL, buttonTitle, buttonLink, id})
 export const deleteTLBioData = (id) => http.get(`/deleteoctimelinebiocontrolled/${id}`)
 export const getCarrouselBiocontrolled = () => http.get("/occarrouselbiocontrolled")
