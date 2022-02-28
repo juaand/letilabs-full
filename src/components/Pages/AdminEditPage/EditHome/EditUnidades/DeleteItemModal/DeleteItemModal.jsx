@@ -51,7 +51,6 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
         if (error.desc === false || error.logo === false) {
             data.id = id
-            console.log(id)
             try {
                 await updateUnidadesData(data)
                     .then(updateData => {

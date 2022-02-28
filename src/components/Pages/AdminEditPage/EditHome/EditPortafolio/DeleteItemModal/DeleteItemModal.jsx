@@ -43,6 +43,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     const editCarrouselItem = async (id) => {
 
         if (Object.values(error).map(el => el).includes(false)) {
+            data.id = id
             try {
                 await updatePortfolioData(data, id)
                     .then(updateData => {
@@ -105,13 +106,13 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                             />
                                         </div>
                                         <div className="col-12 col-sm-6">
-                                            <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div>
+                                            <div onClick={() => editCarrouselItem(element._id)} className="leti-btn mt-0">Editar elemento</div>
                                         </div>
                                         <div className="col-12 col-sm-6">
-                                            <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
+                                            <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn mt-0 delete">Eliminar elemento</div>
                                         </div>
-                                        <div className="col-12 d-flex justify-content-end"> {registerError && <div className="alert alert-danger">{registerError}</div>}
-                                            {message && <span className="AdminEdit__message">{message}</span>}</div>
+                                        <div className="col-12"> {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            {message && <span className="AdminEdit__message m-0">{message}</span>}</div>
                                     </div>
                                 </div>
                             </div>
