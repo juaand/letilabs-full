@@ -22,10 +22,25 @@
       margin-bottom: 1rem;
     }
   }
+
+  &__message {
+    margin: 6rem 0;
+    background: rgba($leti-back, 0.7);
+    padding: 6rem 3rem;
+
+    &-small {
+      font-size: 1.4rem;
+      color: $leti-text !important;
+    }
+
+    p {
+      color: $leti-blue;
+    }
+  }
 }
 
 @media (max-width: 576px) {
-  .AllianceForm{
+  .AllianceForm {
     margin-top: 6rem;
 
     &__form {

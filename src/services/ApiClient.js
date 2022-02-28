@@ -134,7 +134,7 @@ export const updateEquipoGenvenOC = ({description, imgURL, buttonTitle, buttonLi
 
 //farmaco vigilancia routes
 export const getFarmVigData = () => http.get("/farmvigdata")
-export const vigilanciaForm = ({name, lastname, sex, medicine, date, effects, prescribed, email}) => http.post("/vigilancia", {name, lastname, sex, medicine, date, effects, prescribed, email})
+export const vigilanciaForm = ({name, lastname, email, phone, country, company, message}) => http.post("/vigilancia", {name, lastname, email, phone, country, company, message})
 export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
 
 //content routes
@@ -193,9 +193,12 @@ export const updateTitleCarrouselAlliance = ({title}) => http.post("/updateallia
 export const deleteLogoCarouselAlliance = (id) => http.get(`/alliancelogos/${id}/delete`)
 export const createAlly = ({title, picPath}) => http.post("/createalliance", {title, picPath})
 export const getFormAlliances = () => http.get("/allianceform")
+export const allianceForm = ({name, lastname, mail, phone, country, company, message}) => http.post("/allianceform", {name, lastname, mail, phone, country, company, message})
 export const updateFormAlliances = ({title, desc, phone, email, id}) => http.post("/updateallianceform", {title, desc, phone, email, id})
 export const getBottomAlliancesData = () => http.get("/bottomalliances")
 export const updateBottomAlliancesData = ({title, img, buttonLink, buttonTitle, id}) => http.patch("/updatebottomalliances", {title, img, buttonLink, buttonTitle, id})
+export const getLeadsFormData = () => http.get("/leadsform")
+export const deleteLeadsCard = (id) => http.get(`/leadsform/${id}/delete`)
 
 
 //admin edit routes purpose and responsability

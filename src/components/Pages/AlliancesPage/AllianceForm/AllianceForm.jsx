@@ -1,13 +1,14 @@
-import './AllianceForm.css'
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../hooks/useFormState'
-import {getFormAlliances, vigilanciaForm} from '../../../../services/ApiClient'
-import Button from '../../../Form/FormButton/FormButton'
-import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+
+import {getFormAlliances, allianceForm} from '../../../../services/ApiClient'
 import TextAreaWithLabel from '../../../Form/TextAreaWithLabel/TextAreaWithLabel'
 import DropdownWithLabel from '../../../Form/DropdownWithLabel/DropdownWithLabel'
+import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../hooks/useFormState'
+import Button from '../../../Form/FormButton/FormButton'
 import dataCountry from '../../../../data/dataCountry'
 import Loader from '../../../Loader/Loader'
+import './AllianceForm.css'
 
 function AllianceForm() {
 
@@ -21,7 +22,7 @@ function AllianceForm() {
                 phone: "",
                 country: "",
                 company: "",
-                desc: ""
+                message: ""
             },
             error: {
                 name: true,
@@ -29,7 +30,7 @@ function AllianceForm() {
                 mail: true,
                 phone: true,
                 country: true,
-                desc: true,
+                message: true,
                 company: true
             },
             touch: {},
@@ -41,14 +42,14 @@ function AllianceForm() {
             phone: v => v.length,
             country: v => v.length,
             company: v => v.length,
-            desc: v => v.length
+            message: v => v.length
         }
     )
 
     // eslint-disable-next-line no-unused-vars
     const [registerError, setRegisterError] = useState(null)
-    const [init, setInit] = useState(state.data.desc)
     const [formResponse, setFormResponse] = useState([])
+    const [init, setInit] = useState(state.data.message)
     const [message, setMessage] = useState(false)
     const [formData, setFormData] = useState([])
     const [loading, setLoading] = useState(true)
@@ -57,23 +58,25 @@ function AllianceForm() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        data.desc = init
+        data.message = init
 
-        try {
-            console.log(data)
-            // const newVigilancia = await vigilanciaForm(data)
-            // document.querySelector('form').reset()
-            // document.querySelector('.ModalFarmacoVigilancia__container').classList.add('ModalFarmacoVigilancia__container--success')
-            // setFormResponse(newVigilancia)
-            // setMessage(!message)
-        } catch (err) {
-            setRegisterError(err.response?.data?.message)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                const newVigilancia = await allianceForm(data)
+                console.log(newVigilancia)
+                setFormResponse(newVigilancia)
+                setMessage(!message)
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor rellene todos los campos')
         }
     }
 
     const handleChange = (e) => {
         setInit(e.target.value)
-        error.desc = false
+        error.message = false
     }
 
 
@@ -82,6 +85,7 @@ function AllianceForm() {
     useEffect(() => {
         const fetchData = async () => {
             const getFormAlliancesData = await getFormAlliances()
+            console.log(getFormAlliancesData)
             setFormData(getFormAlliancesData[0])
         }
         fetchData()
@@ -96,27 +100,30 @@ function AllianceForm() {
                 <div className="container">
                     <div className="row justify-content-center">
                         <div className="col-11 col-sm-12 AllianceForm__container">
+                            <div className="row">
+                                <div className="col-12">
+                                    <h1>{formData?.title}</h1>
+                                </div>
+                                <div className="col-12 col-sm-5">
+                                    <p dangerouslySetInnerHTML={{__html: formData?.desc}} />
+                                    <div className="AllianceForm__links">
+                                        <a href={`tel:${formData?.phone}`}
+                                        >{formData?.phone}</a>                                     <a href={`mailto:${formData?.email}`}>{formData?.email}</a></div>
+                                </div>
+                            </div>
                             {message &&
-                                <>
-                                    <h1>Gracias {formResponse.name},</h1>
-                                    <p>Tu comentario ha sido enviado exitosamente.</p>
-                                    <div className="leti-blue-triangle"></div>
-                                    <div className="leti-red-triangle"></div>
-                                </>
+                                <div className="row AllianceForm__message">
+                                    <div className="col-12">
+                                        <h3>Gracias {formResponse.name},</h3>
+                                        <p>Tu comentario ha sido enviado exitosamente.</p>
+                                        <p className="AllianceForm__message-small">En breve nos pondremos en contacto contigo.</p>
+                                        <div className="leti-blue-triangle"></div>
+                                        <div className="leti-red-triangle"></div>
+                                    </div>
+                                </div>
                             }
                             {!message &&
                                 <>
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <h1>{formData?.title}</h1>
-                                        </div>
-                                        <div className="col-12 col-sm-5">
-                                            <p dangerouslySetInnerHTML={{__html: formData?.desc}} />
-                                            <div className="AllianceForm__links">
-                                                <a href={`tel:${formData?.phone}`}
-                                                >{formData?.phone}</a>                                     <a href={`mailto:${formData?.email}`}>{formData?.email}</a></div>
-                                        </div>
-                                    </div>
                                     <div className="row">
                                         <div className="col-12">
                                             <form onSubmit={handleSubmit} className="AllianceForm__form">
@@ -175,7 +182,6 @@ function AllianceForm() {
                                                     </div>
 
                                                     <div className="col-12 col-sm-6">
-
                                                         <DropdownWithLabel
                                                             value={data.country}
                                                             label="País"

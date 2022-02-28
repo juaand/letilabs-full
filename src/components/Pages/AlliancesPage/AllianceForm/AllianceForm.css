@@ -17,6 +17,21 @@
   margin-bottom: 1rem;
 }
 
+.AllianceForm__message {
+  margin: 6rem 0;
+  background: rgba(245, 245, 245, 0.7);
+  padding: 6rem 3rem;
+}
+
+.AllianceForm__message-small {
+  font-size: 1.4rem;
+  color: #4a4a4a !important;
+}
+
+.AllianceForm__message p {
+  color: #055aa5;
+}
+
 @media (max-width: 576px) {
   .AllianceForm {
     margin-top: 6rem;

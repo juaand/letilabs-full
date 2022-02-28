@@ -1,0 +1,135 @@
+.AdminFarVigPage__bg {
+  background: url(../../../images/farmvig-bg.jpg) no-repeat right top/contain;
+  height: 23rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.AdminFarVigPage .card {
+  border: 0;
+  border: solid 0.1rem #e9eaee;
+  border-radius: 0;
+  margin-bottom: 8rem;
+  padding: 2rem;
+  font-size: 1.6rem;
+  border-bottom: solid 0.3rem #055aa5;
+  min-height: 30rem;
+}
+
+.AdminFarVigPage .card .card-body {
+  position: relative;
+  padding-top: 3rem;
+}
+
+.AdminFarVigPage__download {
+  border: 0;
+  background: transparent;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  color: #055aa5;
+  padding: 1.5rem;
+  border: solid 0.2rem #055aa5;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  margin: -4rem auto 6rem auto;
+}
+
+.AdminFarVigPage__download:hover {
+  background: #055aa5;
+  color: white;
+}
+
+.AdminFarVigPage__download:hover:before {
+  background: url(../../../images/download_white.svg) no-repeat center center/contain;
+}
+
+.AdminFarVigPage__download:before {
+  content: '';
+  width: 2rem;
+  height: 2rem;
+  display: inline-block;
+  background: url(../../../images/download.svg) no-repeat center center/contain;
+  margin-right: 1rem;
+}
+
+.AdminFarVigPage__date {
+  font-size: 1.2rem;
+  color: #cd202f;
+  padding: 0 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: -1.5rem;
+  left: 0;
+}
+
+.AdminFarVigPage__delete {
+  position: absolute;
+  width: 6rem;
+  height: 1.8rem;
+  display: inline-block;
+  background: #fff url(../../../images/trash.svg) no-repeat center center/contain;
+  margin-left: 2rem;
+  top: -3rem;
+  right: 0;
+}
+
+.AdminFarVigPage__delete:hover {
+  cursor: pointer;
+}
+
+.AdminFarVigPage__medicine {
+  font-family: 'TripletaBold';
+  position: absolute;
+  background: #fff;
+  color: #055aa5;
+  top: -3.6rem;
+  left: 0rem;
+  padding: 0 0.8rem;
+}
+
+.AdminFarVigPage__patient {
+  font-weight: 600;
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+
+.AdminFarVigPage__patient-email {
+  font-size: 1.2rem;
+  color: #055aa5;
+  margin-bottom: 0.5rem;
+}
+
+.AdminFarVigPage__desc {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  margin-top: 1.2rem;
+}
+
+.AdminFarVigPage__effects {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #737b7f;
+}
+
+.AdminFarVigPage__search {
+  padding-left: 7rem;
+  height: 6.4rem;
+  font-size: 1.6rem;
+  border-radius: 0;
+  background: #fff url(../../../images/input-search.svg) no-repeat 2rem center/3.2rem;
+}
+
+@media (max-width: 576px) {
+  .AdminFarVigPage__search {
+    padding-left: 4rem;
+    font-size: 1.4rem;
+    border-radius: 0;
+    background-size: 2.2rem;
+    background-position-x: 1rem;
+  }
+}

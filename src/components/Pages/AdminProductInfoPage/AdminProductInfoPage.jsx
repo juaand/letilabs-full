@@ -21,7 +21,7 @@ function AdminProductInfoPage() {
         return (
             card.name.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1 ||
             card.lastname.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1 ||
-            card.license.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1||
+            card.license.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1 ||
             card.work.toLowerCase().indexOf(search.toLocaleLowerCase()) > -1
         )
     })
@@ -57,7 +57,7 @@ function AdminProductInfoPage() {
 
     return (
         <>
-            {loading && <Loader />}
+            {loading && <Loader message="Cargando mensajes..." />}
             <Helmet>
                 <title>Grupo Leti | Administrador Formulario Productos</title>
             </Helmet>

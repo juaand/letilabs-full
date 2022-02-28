@@ -191,7 +191,7 @@ function AdminNewsPage() {
 
     return (
         <>
-            {loading && <Loader />}
+            {loading && <Loader message="Cargando noticias..." />}
             {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>

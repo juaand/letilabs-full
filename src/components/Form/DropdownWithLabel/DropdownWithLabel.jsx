@@ -5,7 +5,7 @@ function DropdownWithLabel({label, placeholder, name, onChange, onBlur, cssStyle
 
     return (
         <div className="form-group mt-5 DropdownWithLabel">
-            {label && <label htmlFor={name}>{label}</label>}
+            {label && <label className="label" htmlFor={name}>{label}</label>}
             <input
                 placeholder={placeholder}
                 list={list}
