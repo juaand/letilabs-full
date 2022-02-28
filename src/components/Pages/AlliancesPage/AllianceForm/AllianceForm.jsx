@@ -85,7 +85,6 @@ function AllianceForm() {
     useEffect(() => {
         const fetchData = async () => {
             const getFormAlliancesData = await getFormAlliances()
-            console.log(getFormAlliancesData)
             setFormData(getFormAlliancesData[0])
         }
         fetchData()
