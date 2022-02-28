@@ -8,5 +8,5 @@
 
 .Video video {
   width: 100%;
-  object-fit: cover;
+  object-fit: none;
 }
