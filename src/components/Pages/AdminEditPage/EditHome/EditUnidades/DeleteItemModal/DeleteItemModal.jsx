@@ -18,10 +18,10 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     const {state, onChange} = useFormState(
         {
             data: {
-                id: element.id,
-                url: element.url,
-                desc: element.desc,
-                logo: element.logo,
+                id: element?.id,
+                url: element?.url,
+                desc: element?.desc,
+                logo: element?.logo,
             },
             error: {
                 url: true,
@@ -50,8 +50,9 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     const editCarrouselItem = async (id) => {
 
         if (error.desc === false || error.logo === false) {
+            data.id = id
             try {
-                await updateUnidadesData(data, id)
+                await updateUnidadesData(data)
                     .then(updateData => {
                         deleteItem(updateData)
                     })
@@ -157,13 +158,13 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                                 />
                                             </div>
                                             <div className="col-12 col-sm-6">
-                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete mt-0">Eliminar elemento</div>
-                                            </div>
-                                            <div className="col-12 col-sm-6">
                                                 <div onClick={() => editCarrouselItem(element._id)} className="leti-btn mt-0">Guardar cambios</div>
                                             </div>
-                                            <div className="col-12 d-flex justify-content-end">
-                                                {message && <span className="AdminEdit__message">{message}</span>}
+                                            <div className="col-12 col-sm-6">
+                                                <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete mt-0">Eliminar elemento</div>
+                                            </div>
+                                            <div className="col-12">
+                                                {message && <span className="AdminEdit__message m-0">{message}</span>}
                                             </div>
                                             <div className="col-12">
                                                 {registerError && <div className="alert alert-danger">{registerError}</div>}

@@ -13,7 +13,7 @@ import BiocontrolledPage from './components/Pages/BiocontrolledPage/Biocontrolle
 import SearchPage from './components/Pages/SearchPage/SearchPage'
 import LoginPage from './components/Pages/LoginPage/LoginPage'
 import AdminPage from './components/Pages/AdminPage/AdminPage'
-import AdminFarVigPage from './components/Pages/AdminFarVigPage/AdminFarVigPage'
+import AdminFormsPage from './components/Pages/AdminFormsPage/AdminFormsPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
 import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/AreasTerapeuticasPage'
@@ -31,8 +31,6 @@ import NewsPage from './components/Pages/NewsPage/NewsPage'
 import NewsSingle from './components/Pages/NewsSingle/NewsSingle'
 import AdminProductPage from './components/Pages/AdminProductPage/AdminProductPage'
 import AdminNewsPage from './components/Pages/AdminNewsPage/AdminNewsPage'
-import AdminProductInfoPage from './components/Pages/AdminProductInfoPage/AdminProductInfoPage'
-
 
 
 function App() {
@@ -67,8 +65,7 @@ function App() {
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
-        <AuthenticatedRoute exact path="/admin-farmacovigilancia" render={(props) => <AdminFarVigPage {...props} user={user} />} />
-        <AuthenticatedRoute exact path="/admin-infoform" render={(props) => <AdminProductInfoPage {...props} user={user} />} />
+        <AuthenticatedRoute exact path="/admin-forms" render={(props) => <AdminFormsPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-productos" render={(props) => <AdminProductPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-noticias" render={(props) => <AdminNewsPage {...props} user={user} />} />
         <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />

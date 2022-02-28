@@ -89,9 +89,8 @@ function Nav({initSearch}) {
                                         Hola, <span className="Nav__welcome-span">{user.name}</span>
                                         <div onClick={logout} className="Nav__logout"></div>
                                     </div>
-                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-editar-contenido">Editar contenido de páginas</NavLink>
-                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-farmacovigilancia">Formulario farmacovigilancia</NavLink>
-                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-infoform">Formulario productos</NavLink>
+                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-editar-contenido">Contenidos</NavLink>
+                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-forms">Formularios</NavLink>
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-productos">Productos</NavLink>
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-noticias">Noticias</NavLink>
                                 </>

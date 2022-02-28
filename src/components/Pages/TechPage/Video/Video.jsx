@@ -28,7 +28,7 @@ function Video() {
                 </section>
                 <section className="container-fluid Video">
                     {videoData && (
-                        <video poster="https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752" loop muted autoPlay playsInline>
+                        <video poster="https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fvideo-hero.jpg?alt=media&token=ac7994ed-0ede-4447-a252-94981fec24b5" loop muted autoPlay playsInline>
                             <source src={videoData?.videoURL} type="video/mp4" />
                         </video>
                     )}

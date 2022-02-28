@@ -1,17 +1,18 @@
-import './AdminProductPage.css'
 import React, {useState, useEffect} from 'react'
-import {Helmet} from 'react-helmet'
-import {addHomeScreen, getVadevecumData, addProductApi} from '../../../services/ApiClient'
-import ShowEditModal from './ShowEditModal/ShowEditModal'
-import Loader from '../../Loader/Loader'
-import {Reveal} from "react-awesome-reveal"
-import {keyframes} from "@emotion/react"
-import {useFormState} from '../../../hooks/useFormState'
-import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
-import InputFile from '../../Form/InputFile/InputFile'
 import {Editor} from '@tinymce/tinymce-react'
-import {app} from '../../../services/firebase'
+import {keyframes} from "@emotion/react"
+import {Helmet} from 'react-helmet'
+
+import {addHomeScreen, getVadevecumData, addProductApi} from '../../../services/ApiClient'
+import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import ShowEditModal from './ShowEditModal/ShowEditModal'
+import {useFormState} from '../../../hooks/useFormState'
+import InputFile from '../../Form/InputFile/InputFile'
 import Button from '../../Form/FormButton/FormButton'
+import {app} from '../../../services/firebase'
+import {Reveal} from "react-awesome-reveal"
+import Loader from '../../Loader/Loader'
+import './AdminProductPage.css'
 
 function AdminProductPage() {
 
@@ -206,7 +207,7 @@ function AdminProductPage() {
 
     return (
         <>
-            {loading && <Loader />}
+            {loading && <Loader message="Cargando productos..."/>}
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
