@@ -34,7 +34,7 @@ function InfoCards() {
                                     background: `url("${el?.picPath}") no-repeat center center / cover`
                                 }} />
                                 <h4>{el?.title}</h4>
-                                <p>{el?.info}</p>
+                                <p dangerouslySetInnerHTML={{__html: el?.info}} />
                                 <Link to={el?.btn} className="leti-btn InfoGoals__btn" />
                             </>
                         )}

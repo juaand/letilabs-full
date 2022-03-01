@@ -13,8 +13,6 @@ import Loader from '../../../../../Loader/Loader'
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
-    console.log('infodata', infodata)
-
     const [timelineData, setTimelineData] = useState(infodata)
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)

@@ -3,6 +3,12 @@
 .InfoCards {
   min-height: 35rem;
 
+  p {
+    p {
+      padding: 0;
+    }
+  }
+
   .InfoGoals {
     &__btn {
       width: 6rem;
