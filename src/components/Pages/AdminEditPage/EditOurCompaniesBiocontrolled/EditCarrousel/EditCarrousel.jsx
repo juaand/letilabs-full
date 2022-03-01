@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react'
+import {Editor} from '@tinymce/tinymce-react'
 
 import {getCarrouselBiocontrolled, addCarrouselBiocontrolledData, updateBioCarrouselTitle} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
@@ -79,7 +80,6 @@ function EditTimelineBiocontrolled() {
             try {
                 await addCarrouselBiocontrolledData(data)
                     .then(info => {
-                        console.log(info)
                         setCarouselManufactureData(info)
                         setGoalMessage('Logro añadido exitosamente')
                     })
@@ -92,6 +92,11 @@ function EditTimelineBiocontrolled() {
         } else {
             setGoalMessage('Por añada un logro.')
         }
+    }
+
+    const handleChange = (e) => {
+        data.title = e.target.getContent()
+        error.title = false
     }
 
     useEffect(() => {
@@ -116,14 +121,22 @@ function EditTimelineBiocontrolled() {
                             <div className="row">
                                 <h3 className="mt-5">Editar título Logros</h3>
                                 <div className="col-12">
-                                    <InputWithLabel
-                                        value={data.title}
-                                        label="Título carrusel"
-                                        onChange={onChange}
-                                        name="title"
-                                        type="text"
-                                        cssStyle="form-control mb-5"
-                                        placeholder={carouselManufactureData[0]?.title}
+                                    <Editor
+                                        initialValue={carouselManufactureData[0]?.title}
+                                        onChange={handleChange}
+                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                        init={{
+                                            height: 120,
+                                            menubar: false,
+                                            plugins: [
+                                                'advlist autolink lists link image',
+                                                'charmap print preview anchor help',
+                                                'searchreplace visualblocks code',
+                                                'insertdatetime media table paste wordcount'
+                                            ],
+                                            toolbar:
+                                                'bold',
+                                        }}
                                     />
                                 </div>
                                 <div className="col-12 col-sm-6">
