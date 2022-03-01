@@ -62,14 +62,14 @@ function SingleProductPage(props) {
                                                 }} />
                                                 <div className="col-12 col-sm-6 SingleProductPage__info">
                                                     <h1>{el?.name}</h1>
-                                                    <h2>{el?.active_principle}</h2>
-                                                    {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span>{el}</span>) : <span>{el?.therapeutic_group}</span>}
-                                                    <p><strong>Composición</strong> {el?.composition}</p>
-                                                    <p><strong>Indicación</strong> {el?.indication}
+                                                    <h2 dangerouslySetInnerHTML={{__html: el?.active_principle}} />
+                                                    {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span className="tag">{el}</span>) : <span>{el?.therapeutic_group}</span>}
+                                                    <p><strong>Composición</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}}/></p>
+                                                    <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}}/>
                                                     </p>
-                                                    <p><strong>Presentación</strong> {el?.presentation}</p>
-                                                    <p><strong>Registro sanitario</strong> {el?.health_register}</p>
-                                                    <p><strong>Vida útil</strong> {el?.util_life}</p>
+                                                    <p><strong>Presentación</strong> <span dangerouslySetInnerHTML={{__html: el?.presentation}}/></p>
+                                                    <p><strong>Registro sanitario</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}}/></p>
+                                                    <p><strong>Vida útil</strong> <span dangerouslySetInnerHTML={{__html: el?.util_life}}/></p>
                                                     <p className="SingleProductPage__cpe">{el?.CPE}</p>
                                                     <img src={el?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
                                                 </div>

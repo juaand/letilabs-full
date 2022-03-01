@@ -21,8 +21,8 @@
   align-items: center;
   justify-content: center;
   background: #e9eaee;
-  padding: 4.8rem;
   margin-bottom: 2rem;
+  height: 14rem;
 }
 
 .List .inactive {
@@ -59,14 +59,24 @@
 }
 
 .List__card {
-  border-bottom: solid 0.1rem #e9eaee;
   font-size: 1.8rem;
   padding-bottom: 3rem;
   margin-bottom: 3rem;
+  border: solid 2.4rem #fff;
+  border-bottom: solid 0.1rem #e9eaee;
 }
 
 .List__card .leti-btn {
   margin-top: 2rem;
+}
+
+.List__name {
+  color: #055aa5;
+}
+
+.List__composition {
+  display: block;
+  font-size: 1.6rem;
 }
 
 @media (max-width: 576px) {

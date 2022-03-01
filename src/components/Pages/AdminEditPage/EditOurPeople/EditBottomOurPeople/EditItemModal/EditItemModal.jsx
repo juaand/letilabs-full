@@ -13,10 +13,14 @@ import Loader from '../../../../../Loader/Loader'
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
-    const [ctaData, setCtaData] = useState(infodata)
-    const [message, setMessage] = useState('')
+    const [registerError, setRegisterError] = useState(null)
+
     const [isDisabled, setIsDisabled] = useState(false)
+
+    const [ctaData, setCtaData] = useState(infodata)
+
     const [imageSuccess, setImageSuccess] = useState('')
+    const [message, setMessage] = useState('')
 
     const {state, onChange} = useFormState(
         {
@@ -44,7 +48,6 @@ function EditItemModal({infodata, hideModal, closeModal}) {
     )
 
     const {data, error} = state
-    const [registerError, setRegisterError] = useState(null)
 
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)

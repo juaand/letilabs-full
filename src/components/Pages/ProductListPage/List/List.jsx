@@ -59,16 +59,18 @@ function List() {
                     </div>
                     <div className="row List__align">
                         {vadevecumData.filter(el => el.name.charAt(0) === currentLetter).map(el =>
-                            <div className="col-11 col-sm-12 col-sm-4 List__card">
-                                <div className="List__sku">SKU</div>
-                                <p><strong>Nombre</strong> <span dangerouslySetInnerHTML={{__html: el?.name}}>
-                                </span></p>
+                            <div className="col-11 col-sm-4 col-sm-4 List__card">
+                                <div className="List__sku" style={{
+                                    background: `url("${el?.picPath}") no-repeat center center / contain`
+                                }} />
+                                <p className="List__name"><strong><span dangerouslySetInnerHTML={{__html: el?.name}}>
+                                </span></strong></p>
                                 <p><strong>Categoría</strong>
                                     <ul className="List__list">
                                         {el.therapeutic_group.map(el => <li>{el}</li>)}
                                     </ul>
                                 </p>
-                                <p><strong>Composición</strong> {el.composition}</p>
+                                <p><strong>Composición</strong> <span  className="List__composition" dangerouslySetInnerHTML={{__html: el?.composition}}/></p>
                                 <Link to={{
                                     pathname: `/producto`,
                                     state: {

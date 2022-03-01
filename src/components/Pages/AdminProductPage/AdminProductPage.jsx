@@ -29,6 +29,13 @@ function AdminProductPage() {
                 presentation: "",
                 composition: "",
                 indication: "",
+                therapeutic_group: "",
+                category: "",
+                util_life: "",
+                cpe: "",
+                how_to_use: "",
+                contraindications: "",
+                adverse_reactions: "",
             },
             error: {
                 name: true,
@@ -41,6 +48,13 @@ function AdminProductPage() {
                 presentation: true,
                 composition: true,
                 indication: true,
+                therapeutic_group: false,
+                category: false,
+                util_life: true,
+                cpe: true,
+                how_to_use: true,
+                contraindications: true,
+                adverse_reactions: true,
             },
             touch: {},
         },
@@ -55,20 +69,30 @@ function AdminProductPage() {
             presentation: v => v.length,
             composition: v => v.length,
             indication: v => v.length,
+            therapeutic_group: v => v.length,
+            category: v => v.length,
+            util_life: v => v.length,
+            cpe: v => v.length,
+            how_to_use: v => v.length,
+            contraindications: v => v.length,
+            adverse_reactions: v => v.length,
         }
     )
 
     const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [search, setSearch] = useState('')
-    const [products, setProducts] = useState([])
-    const [message, setMessage] = useState('')
-    const [bool, setBool] = useState(false)
-    const [editProduct, setEditProduct] = useState('')
+
     const [createProduct, setCreateProduct] = useState(false)
-    const [productMessage, setProductMessage] = useState('')
-    const [filter, setFilter] = useState([])
+    const [registerError, setRegisterError] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [bool, setBool] = useState(false)
+
+    const [productMessage, setProductMessage] = useState('')
+    const [editProduct, setEditProduct] = useState('')
+    const [message, setMessage] = useState('')
+    const [search, setSearch] = useState('')
+
+    const [products, setProducts] = useState([])
+    const [filter, setFilter] = useState([])
 
     const createNewProduct = async (event) => {
         event.preventDefault()
@@ -161,29 +185,10 @@ function AdminProductPage() {
         error[e.target.name] = false
     }
 
-    const handleComposition = (e) => {
-        data.composition = e.target.getContent()
-        error.composition = false
-    }
-
-    const handleActivePrinciple = (e) => {
-        data.active_principle = e.target.getContent()
-        error.active_principle = false
-    }
-
-    const handlePosology = (e) => {
-        data.posology = e.target.getContent()
-        error.posology = false
-    }
-
-    const handlePresentation = (e) => {
-        data.presentation = e.target.getContent()
-        error.presentation = false
-    }
-
-    const handleIndication = (e) => {
-        data.indication = e.target.getContent()
-        error.indication = false
+    const handleEditor = (e) => {
+        data[e.target.settings.name] = e.target.getContent()
+        error[e.target.settings.name] = false
+        console.log(error)
     }
 
     const carouselHomeProducts = async (e) => {
@@ -279,7 +284,7 @@ function AdminProductPage() {
                                                                     type="file"
                                                                 />
                                                             </div>
-                                                            <div className="col-12 col-sm-4">
+                                                            <div className="col-12 col-sm-3">
                                                                 <InputWithLabel
                                                                     label="Nombre"
                                                                     value={data.name}
@@ -291,7 +296,7 @@ function AdminProductPage() {
                                                                     cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
                                                                 />
                                                             </div>
-                                                            <div className="col-12 col-sm-4">
+                                                            <div className="col-12 col-sm-3">
                                                                 <InputWithLabel
                                                                     label="Línea"
                                                                     value={data.line}
@@ -303,7 +308,7 @@ function AdminProductPage() {
                                                                     placeholder="Ingresa línea del producto"
                                                                 />
                                                             </div>
-                                                            <div className="col-12 col-sm-4">
+                                                            <div className="col-12 col-sm-3">
                                                                 <InputWithLabel
                                                                     label="Registro sanitario"
                                                                     value={data.health_register}
@@ -315,13 +320,26 @@ function AdminProductPage() {
                                                                     placeholder="Registro sanitario"
                                                                 />
                                                             </div>
+                                                            <div className="col-12 col-sm-3">
+                                                                <InputWithLabel
+                                                                    label="CPE"
+                                                                    value={data.cpe}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="cpe"
+                                                                    type="text"
+                                                                    cssStyle={`form-control ${touch.cpe && error.cpe ? "is-invalid" : ""}`}
+                                                                    placeholder="CPE"
+                                                                />
+                                                            </div>
                                                             <div className="row">
-                                                                <div className="col">
+                                                                <div className="col-12 col-sm-4">
                                                                     <p className="label">Composición</p>
                                                                     <Editor
-                                                                        onChange={handleComposition}
+                                                                        onChange={handleEditor}
                                                                         apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                                                         init={{
+                                                                            name: 'composition',
                                                                             placeholder: "Ingresa composición del producto",
                                                                             height: 200,
                                                                             menubar: false,
@@ -336,12 +354,13 @@ function AdminProductPage() {
                                                                         }}
                                                                     />
                                                                 </div>
-                                                                <div className="col">
+                                                                <div className="col-12 col-sm-4">
                                                                     <p className="label">Principio activo</p>
                                                                     <Editor
-                                                                        onChange={handleActivePrinciple}
+                                                                        onChange={handleEditor}
                                                                         apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                                                         init={{
+                                                                            name: "active_principle",
                                                                             placeholder: "Ingresa principio(s) activo(s) del producto",
                                                                             height: 200,
                                                                             menubar: false,
@@ -356,12 +375,13 @@ function AdminProductPage() {
                                                                         }}
                                                                     />
                                                                 </div>
-                                                                <div className="col">
+                                                                <div className="col-12 col-sm-4">
                                                                     <p className="label">Posología</p>
                                                                     <Editor
-                                                                        onChange={handlePosology}
+                                                                        onChange={handleEditor}
                                                                         apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                                                         init={{
+                                                                            name: "posology",
                                                                             placeholder: "Ingresa posología del producto",
                                                                             height: 200,
                                                                             menubar: false,
@@ -379,9 +399,10 @@ function AdminProductPage() {
                                                                 <div className="col">
                                                                     <p className="label">Presentación</p>
                                                                     <Editor
-                                                                        onChange={handlePresentation}
+                                                                        onChange={handleEditor}
                                                                         apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                                                         init={{
+                                                                            name: "presentation",
                                                                             placeholder: "Ingresa presentación del producto",
                                                                             height: 200,
                                                                             menubar: false,
@@ -399,9 +420,10 @@ function AdminProductPage() {
                                                                 <div className="col">
                                                                     <p className="label">Indicaciones</p>
                                                                     <Editor
-                                                                        onChange={handleIndication}
+                                                                        onChange={handleEditor}
                                                                         apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                                                         init={{
+                                                                            name: "indication",
                                                                             placeholder: "Ingresa indicaciones del producto",
                                                                             height: 200,
                                                                             menubar: false,
@@ -416,11 +438,94 @@ function AdminProductPage() {
                                                                         }}
                                                                     />
                                                                 </div>
-
+                                                                <div className="col">
+                                                                    <p className="label">Vida útil</p>
+                                                                    <Editor
+                                                                        onChange={handleEditor}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            name: "util_life",
+                                                                            placeholder: "Ingresa indicaciones del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Modo de empleo</p>
+                                                                    <Editor
+                                                                        onChange={handleEditor}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            name: "how_to_use",
+                                                                            placeholder: "Ingresa indicaciones del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Contraindicaciones</p>
+                                                                    <Editor
+                                                                        onChange={handleEditor}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            name: "contraindications",
+                                                                            placeholder: "Ingresa indicaciones del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
+                                                                <div className="col">
+                                                                    <p className="label">Reacciones adversas</p>
+                                                                    <Editor
+                                                                        onChange={handleEditor}
+                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                        init={{
+                                                                            name: "adverse_reactions",
+                                                                            placeholder: "Ingresa indicaciones del producto",
+                                                                            height: 200,
+                                                                            menubar: false,
+                                                                            plugins: [
+                                                                                'advlist autolink lists link image',
+                                                                                'charmap print preview anchor help',
+                                                                                'searchreplace visualblocks code',
+                                                                                'insertdatetime media table paste wordcount'
+                                                                            ],
+                                                                            toolbar:
+                                                                                'bold',
+                                                                        }}
+                                                                    />
+                                                                </div>
                                                             </div>
 
                                                             <div className="col-12 mt-5">
-                                                                <Button type="submit" className={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
+                                                                <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
                                                             </div>
                                                         </div>
 

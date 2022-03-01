@@ -31,6 +31,11 @@
     overflow: scroll;
     height: auto;
     padding-top: 4rem;
+
+    &.product-modal {
+      min-height: 96rem;
+      overflow: scroll;
+    }
   }
 
   &__close {

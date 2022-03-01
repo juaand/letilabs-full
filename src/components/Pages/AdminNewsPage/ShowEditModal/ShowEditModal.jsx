@@ -14,9 +14,13 @@ import Loader from '../../../Loader/Loader'
 
 function ShowEditModal({news, hideModal, updateData}) {
 
-    const [imageSuccess, setImageSuccess] = useState('')
+    const [registerError, setRegisterError] = useState(null)
+    
     const [isDisabled, setIsDisabled] = useState(false)
 
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [message, setMessage] = useState('')
+    
     const {state, onChange} = useFormState(
         {
             data: {
@@ -50,7 +54,7 @@ function ShowEditModal({news, hideModal, updateData}) {
         }
     )
 
-    const {data} = state
+    const {data, error} = state
 
     const handleContent = (e) => {
         data.content = e.target.getContent()
@@ -60,8 +64,23 @@ function ShowEditModal({news, hideModal, updateData}) {
         event.preventDefault()
         data.id = news.id
 
-        const updateNewsData = await updateNews(data)
-        updateData(updateNewsData)
+        if (Object.values(error).map(el => el).includes(false)) {
+            try {
+                await updateNews(data)
+                    .then(info => {
+                        updateData(info)
+                        setMessage('Data atualizada exitosamente')
+                        hideModal(info)
+                    })
+                    .catch(error => {
+                        setRegisterError(error)
+                    })
+            } catch (err) {
+                setRegisterError(err.response?.data?.message)
+            }
+        } else {
+            setMessage('Por favor edite alguno de los campos')
+        }
     }
 
     const deleteSelectedNews = async (id) => {
@@ -169,12 +188,14 @@ function ShowEditModal({news, hideModal, updateData}) {
                                             </div>
                                         </div>
                                         <div className="col-12 col-sm-6 mt-5">
-                                            <div onClick={() => deleteSelectedNews(news?.id)} className="leti-btn delete">Eliminar noticia</div>
+                                            <Button type="submit" cssStyle={`leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
+                                            {message && <span className="AdminEdit__message">{message}</span>}
                                         </div>
                                         <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
-                                            <Button type="submit" cssStyle={`leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
+                                            <div onClick={() => deleteSelectedNews(news?.id)} className="leti-btn delete">Eliminar noticia</div>
                                         </div>
                                     </div>
+                                    {registerError && <div className="alert alert-danger">{registerError}</div>}
                                 </form>
                             </>
                         </Fade>

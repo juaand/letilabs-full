@@ -14,6 +14,7 @@ import Loader from '../../../../../Loader/Loader'
 function EditItemModal({infodata, hideModal, closeModal}) {
 
     const [timelineData, setTimelineData] = useState(infodata)
+    const [registerError, setRegisterError] = useState(null)
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
@@ -41,7 +42,6 @@ function EditItemModal({infodata, hideModal, closeModal}) {
     )
 
     const {data, error} = state
-    const [registerError, setRegisterError] = useState(null)
 
     const onFileSelected = async (e) => {
         setMessage('')
