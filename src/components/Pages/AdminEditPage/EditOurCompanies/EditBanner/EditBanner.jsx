@@ -62,6 +62,7 @@ function EditBanner() {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
 
     const onFileSelected = async (e) => {
