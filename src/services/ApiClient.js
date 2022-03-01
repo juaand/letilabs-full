@@ -220,7 +220,7 @@ export const updateInfoCardsOurPeople = ({mainTitle, imgURL, title, info, id}) =
 export const getEquipoOurPeople = () => http.get("/equipoourpeople")
 export const updateEquipoOurPeople = ({title, description, person, imgURL, buttonTitle, buttonLink, id}) => http.patch("/updateourpeopleequipo", {title, description, person, imgURL, buttonTitle, buttonLink, id})
 export const getBottomOurPeople = () => http.get("/bottomourpeople")
-export const updateBottomOurPeople = ({title, buttoLink, buttonTitle, img, id}) => http.patch("/updatebottomourpeople", {title, buttoLink, buttonTitle, img, id})
+export const updateBottomOurPeople = ({title, buttonLink, buttonTitle, img, id}) => http.patch("/updatebottomourpeople", {title, buttonLink, buttonTitle, img, id})
 export const getCarreras = () => http.get("/carrerasdata")
 export const updateCarrerasData = ({title, description, url, buttonTitle, buttonLink, id}) => http.patch("/updatecarrerasdata", {title, description, url, buttonTitle, buttonLink, id})
 export const deleteOPInfoCard = (id) => http.get(`/ourpeopleinfocard/${id}/delete`)

@@ -22,7 +22,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
         {
             data: {
                 id: '',
-                buttoLink: ctaData?.buttonLink,
+                buttonLink: ctaData?.buttonLink,
                 buttonTitle: ctaData?.buttonTitle,
                 img: ctaData?.img,
                 title: ctaData?.title,
