@@ -54,8 +54,9 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     const editCarrouselItem = async (id) => {
 
         if (Object.values(error).map(el => el).includes(false)) {
+            data.id = element._id
             try {
-                await updateOurCompaniesOC(data, id)
+                await updateOurCompaniesOC(data)
                     .then(updateData => {
                         deleteItem(updateData)
                         setMessage('Data actualizada correctamente')
