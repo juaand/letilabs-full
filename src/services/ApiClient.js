@@ -63,7 +63,7 @@ export const updateBannerData = ({description, imgURL, id}) => http.patch("/upda
 export const updateTimelineAboutUs = ({year, desc, imgURL, id}) => http.patch(`/updatetimelineaboutus`, {year, desc, imgURL, id})
 export const deleteTimeline = (id) => http.get(`/deletetimelineaboutus/${id}`)
 export const updateMarcandoPautaData = ({description, imgURL, id}) => http.patch("/updatemarcandopautadata", {description, imgURL, id})
-export const updateMegatData = ({title, description, url, buttonTitle, id}) => http.patch("/updatemegatdata", {title, description, url, buttonTitle, id})
+export const updateMegatData = ({title, description, url, buttonTitle, logoURL, id}) => http.patch("/updatemegatdata", {title, description, url, buttonTitle, logoURL, id})
 
 //admin edit routes our companies
 

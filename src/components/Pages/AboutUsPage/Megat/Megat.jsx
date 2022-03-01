@@ -32,7 +32,9 @@ function Megat() {
                         <h1>{megatData?.title}</h1>
                     </Fade>
                     <Fade triggerOnce delay={200}>
-                        <div className="Megat__logo"></div>
+                        <div className="Megat__logo" style={{
+                            background: `url(${megatData?.logoURL}) no-repeat center center / contain`,
+                        }}></div>
                     </Fade>
                     <p className="Megat__desc" dangerouslySetInnerHTML={{__html: megatData?.description}} />
                     <a href={megatData?.url} target="_blank" className="leti-btn" rel="noopener noreferrer">{megatData?.buttonTitle}</a>

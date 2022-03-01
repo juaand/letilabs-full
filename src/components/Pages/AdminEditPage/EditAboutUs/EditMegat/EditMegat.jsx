@@ -1,12 +1,18 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
+
 import {getMegat, updateMegatData} from '../../../../../services/ApiClient'
-import {useFormState} from '../../../../../hooks/useFormState'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {useFormState} from '../../../../../hooks/useFormState'
+import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
+import {app} from '../../../../../services/firebase'
+import Loader from '../../../../Loader/Loader'
 
 function EditMegat() {
 
+    const [registerError, setRegisterError] = useState(null)
+    const [isDisabled, setIsDisabled] = useState(false)
     const [megatData, setMegatData] = useState()
     const [message, setMessage] = useState('')
 
@@ -18,12 +24,14 @@ function EditMegat() {
                 description: megatData?.description,
                 url: megatData?.url,
                 buttonTitle: megatData?.buttonTitle,
+                logoURL: megatData?.logoURL,
             },
             error: {
                 title: true,
                 description: true,
                 url: true,
                 buttonTitle: true,
+                logoURL: true,
             },
             touch: {},
         },
@@ -32,11 +40,11 @@ function EditMegat() {
             description: v => v.length,
             url: v => v.length,
             buttonTitle: v => v.length,
+            logoURL: v => v.length,
         }
     )
 
     const {data, error} = state
-    const [registerError, setRegisterError] = useState(null)
 
 
     const updateMegat = async (event) => {
@@ -66,6 +74,30 @@ function EditMegat() {
         error.description = false
     }
 
+    const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
+
+        // Get file
+        const file = e.target.files[0]
+
+        // Create storage ref
+        const storageRef = app.storage().ref()
+        const filePath = storageRef.child('images/' + file.name)
+
+        // Upload file
+        await filePath.put(file)
+            .then(() => {
+                setMessage("Imagen subida correctamente")
+            })
+            .catch(err => {console.log(err)})
+
+        // Get file url
+        const fileUrl = await filePath.getDownloadURL()
+        data.logoURL = fileUrl
+        setIsDisabled(false)
+        error.logoURL = false
+    }
+
 
     useEffect(() => {
 
@@ -78,80 +110,99 @@ function EditMegat() {
     }, [])
 
     return (
-        <section className="container-fluid EditContent">
-            <h2>Megat</h2>
-            <form className="AdminEdit__form" onSubmit={updateMegat}>
-                <div className="row">
-                    <p className="AdminEdit__form__label">
-                        Título
-                    </p>
-                    <InputWithLabel
-                        value={data?.title}
-                        onBlur={onBlur}
-                        onChange={onChange}
-                        name="title"
-                        type="text"
-                        cssStyle="form-control"
-                        placeholder={megatData?.title}
-                    />
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Descripción
-                        </p>
-                        <Editor
-                            initialValue={megatData?.description}
-                            onChange={handleMegatDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 200,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            URL del botón
-                        </p>
-                        <InputWithLabel
-                            value={data?.url}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="url"
-                            type="text"
-                            cssStyle="form-control"
-                            placeholder={megatData?.url}
-                        />
-                        <p className="AdminEdit__form__label">
-                            Título del botón
-                        </p>
-                        <InputWithLabel
-                            value={data?.buttonTitle}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="buttonTitle"
-                            type="text"
-                            cssStyle="form-control"
-                            placeholder={megatData?.buttonTitle}
-                        />
-                    </div>
-                    <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios
-                        </Button>
-                        {message && <span className="AdminEdit__message">{message}</span>}
-                    </div>
+        <>
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <section className="container-fluid EditContent">
+                <h2>Megat</h2>
+                <form className="AdminEdit__form" onSubmit={updateMegat}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Título
+                            </p>
+                            <InputWithLabel
+                                value={data?.title}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="title"
+                                type="text"
+                                cssStyle="form-control"
+                                placeholder={megatData?.title}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <div className="EditElementsModal__img m-0">
+                                <img src={megatData?.logoURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={megatData?.title} />
+                                <InputFile
+                                    value={data?.logoURL}
+                                    onChange={onFileSelected}
+                                    id="fileButton"
+                                    name="logoURL"
+                                    type="file"
+                                    placeholder={megatData?.logoURL}
+                                    label="Subir imagen"
+                                />
+                            </div>
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={megatData?.description}
+                                onChange={handleMegatDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                URL del botón
+                            </p>
+                            <InputWithLabel
+                                value={data?.url}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="url"
+                                type="text"
+                                cssStyle="form-control"
+                                placeholder={megatData?.url}
+                            />
+                            <p className="AdminEdit__form__label">
+                                Título del botón
+                            </p>
+                            <InputWithLabel
+                                value={data?.buttonTitle}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="buttonTitle"
+                                type="text"
+                                cssStyle="form-control"
+                                placeholder={megatData?.buttonTitle}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5" >Guardar cambios
+                            </Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
+                        </div>
 
-                </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
+        </>
     )
 }
 

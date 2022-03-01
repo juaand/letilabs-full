@@ -1,9 +1,10 @@
-import './Nav.css'
 import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import dataNav from '../../data/dataNav'
+
 import {useAuthContext} from '../../contexts/AuthContext'
 import {seoURL} from '../../hooks/seoURL'
+import dataNav from '../../data/dataNav'
+import './Nav.css'
 
 function Nav({initSearch}) {
 
