@@ -34,7 +34,7 @@ function Megat() {
                     <Fade triggerOnce delay={200}>
                         <div className="Megat__logo"></div>
                     </Fade>
-                    <p className="Megat__desc">{megatData?.description}</p>
+                    <p className="Megat__desc" dangerouslySetInnerHTML={{__html: megatData?.description}} />
                     <a href={megatData?.url} target="_blank" className="leti-btn" rel="noopener noreferrer">{megatData?.buttonTitle}</a>
                 </div>
             </div>

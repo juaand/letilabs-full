@@ -44,6 +44,7 @@ function EditGallery() {
     const [isDisabled, setIsDisabled] = useState(false)
     const [galleryData, setGalleryData] = useState([])
     const [modalData, setModalData] = useState([])
+    const [titleMessage, setTitleMessage] = useState('')
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
 
@@ -116,7 +117,7 @@ function EditGallery() {
                 await updateGalleryTitle(data)
                     .then(info => {
                         setGalleryData(info)
-                        setMessage('Título atualizado exitosamente')
+                        setTitleMessage('Título atualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -125,7 +126,7 @@ function EditGallery() {
                 setRegisterError(err.response?.data?.message)
             }
         } else {
-            setMessage('Por favor edite el título')
+            setTitleMessage('Por favor edite el título')
         }
     }
 
@@ -172,7 +173,7 @@ function EditGallery() {
                             </div>
                             <div className="col-12 col-sm-6">
                                 <Button type="submit" cssStyle="leti-btn">Editar título</Button>
-                                {message && <span className="AdminEdit__message ">{message}</span>}
+                                {titleMessage && <span className="AdminEdit__message ">{titleMessage}</span>}
                             </div>
                         </div>
 

@@ -19,7 +19,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     const {state, onChange} = useFormState(
         {
             data: {
-                id: element.id,
+                id: element._id,
                 mainTitle: element.mainTitle,
                 title: element.title,
                 desc: element.desc,
@@ -53,8 +53,8 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async (id) => {
-
         if (Object.values(error).map(el => el).includes(false)) {
+            data.id = element._id
             try {
                 await updateGalleryData(data, id)
                     .then(updateData => {

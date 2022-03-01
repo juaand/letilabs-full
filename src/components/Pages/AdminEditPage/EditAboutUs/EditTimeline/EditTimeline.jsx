@@ -130,7 +130,7 @@ function EditTimeline() {
                     </div>
                 </section>}
             <section className="container-fluid EditContent">
-                <h2>Añadir nuevo producto al timeline</h2>
+                <h2>Añadir nuevo elemento al timeline</h2>
                 <form className="AdminEdit__form" onSubmit={addTimeLineItem}>
                     <div className="row">
                         <div className="col-12 col-sm-6">
@@ -142,7 +142,7 @@ function EditTimeline() {
                                 onBlur={onBlur}
                                 onChange={onChange}
                                 name="year"
-                                type="text"
+                                type="number"
                                 cssStyle={`form-control mb-0 ${touch.year && error.year ? "is-invalid" : ""}`}
                                 placeholder="Ingresa año"
                             />

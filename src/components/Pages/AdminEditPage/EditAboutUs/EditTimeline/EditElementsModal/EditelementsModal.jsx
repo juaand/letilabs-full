@@ -49,11 +49,12 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
-    const editCarrouselItem = async (id) => {
-
+    const editCarrouselItem = async () => {
+            
         if (Object.values(error).map(el => el).includes(false)) {
+            data.id = element._id
             try {
-                await updateTimelineAboutUs(data, id)
+                await updateTimelineAboutUs(data)
                     .then(updateData => {
                         deleteItem(updateData)
                     })
@@ -117,7 +118,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 <InputWithLabel
                                                     onChange={onChange}
                                                     name="year"
-                                                    type="text"
+                                                    type="number"
                                                     cssStyle="form-control"
                                                     placeholder="Ingresa año"
                                                     value={data.year}
@@ -159,7 +160,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                 />
                                             </div>
                                             <div className="col-12 col-sm-6">
-                                                <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
+                                                <div onClick={editCarrouselItem} className="leti-btn">Editar elemento</div>
                                             </div>
 
                                             <div className="col-12 col-sm-6">
