@@ -148,7 +148,7 @@ function EditInfoCardsOurPhilosophy() {
                                 />
                             </div>
                             <div className="col-12">
-                                <Button cssStyle={`leti-btn AdminEdit__form-leti-btn ${isDisabled && 'disabled'}`}>Crear pilar</Button>
+                                <Button cssStyle={`leti-btn AdminEdit__form-leti-btn mt-5 ${isDisabled && 'disabled'}`}>Crear pilar</Button>
                                 {message && <span className="AdminEdit__message">{message}</span>}
                             </div>
 
