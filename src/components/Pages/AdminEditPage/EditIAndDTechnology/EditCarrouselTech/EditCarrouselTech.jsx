@@ -73,7 +73,7 @@ function EditCarrouselTech() {
                 await createTechCarousel(data)
                     .then(info => {
                         setOurGoalsOCData(info)
-                        setNewItemMessage('Elemento creado exitosamente')
+                        setMessage('Elemento creado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -82,7 +82,7 @@ function EditCarrouselTech() {
                 setRegisterError(err.response?.data?.message)
             }
         } else {
-            setNewItemMessage('Por favor rellene todos los campos')
+            setMessage('Por favor rellene todos los campos')
         }
     }
 
@@ -168,7 +168,7 @@ function EditCarrouselTech() {
                             </div>
                             <div className="col-12 col-sm-6">
                                 <Button type="submit" cssStyle="leti-btn">Editar título</Button>
-                                {message && <span className="AdminEdit__message ">{message}</span>}
+                                {newItemMessage && <span className="AdminEdit__message ">{newItemMessage}</span>}
                             </div>
                         </div>
 
@@ -240,7 +240,7 @@ function EditCarrouselTech() {
                             </div>
                             <div className="col-12 col-sm-6">
                                 <Button type="submit" cssStyle="leti-btn">Crear elemento</Button>
-                                {newItemMessage && <span className="AdminEdit__message ">{newItemMessage}</span>}
+                                {message && <span className="AdminEdit__message ">{message}</span>}
                             </div>
                         </div>
                     </form>
