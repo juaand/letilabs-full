@@ -3,15 +3,18 @@ import {Editor} from '@tinymce/tinymce-react'
 import {keyframes} from "@emotion/react"
 import {Helmet} from 'react-helmet'
 
-import {addHomeScreen, getVadevecumData, addProductApi} from '../../../services/ApiClient'
-import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
-import ShowEditModal from './ShowEditModal/ShowEditModal'
+import {addHomeScreen, getVadevecumData, addProductApi, getTherapeuticGroups} from '../../../services/ApiClient'
 import {useFormState} from '../../../hooks/useFormState'
-import InputFile from '../../Form/InputFile/InputFile'
-import Button from '../../Form/FormButton/FormButton'
 import {app} from '../../../services/firebase'
 import {Reveal} from "react-awesome-reveal"
+
+import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
+import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import ShowEditModal from './ShowEditModal/ShowEditModal'
+import InputFile from '../../Form/InputFile/InputFile'
+import Button from '../../Form/FormButton/FormButton'
 import Loader from '../../Loader/Loader'
+
 import './AdminProductPage.css'
 
 function AdminProductPage() {
@@ -29,7 +32,7 @@ function AdminProductPage() {
                 presentation: "",
                 composition: "",
                 indication: "",
-                therapeutic_group: "",
+                therapeutic_group: [],
                 util_life: "",
                 cpe: "",
                 how_to_use: "",
@@ -47,7 +50,7 @@ function AdminProductPage() {
                 presentation: true,
                 composition: true,
                 indication: true,
-                therapeutic_group: false,
+                therapeutic_group: true,
                 util_life: true,
                 cpe: true,
                 how_to_use: true,
@@ -88,6 +91,7 @@ function AdminProductPage() {
     const [message, setMessage] = useState('')
     const [search, setSearch] = useState('')
 
+    const [therapeuticGroups, setTherapeuticGroups] = useState([])
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState([])
 
@@ -160,6 +164,15 @@ function AdminProductPage() {
         setCreateProduct(!createProduct)
     }
 
+    const setTherapeuticGroup = (e) => {
+        error.therapeutic_group = false
+        if (!data.therapeutic_group.includes(e.target.value)) {
+            data.therapeutic_group.push(e.target.value)
+        } else {
+            data.therapeutic_group = (data.therapeutic_group.filter(el => el !== e.target.value))
+        }
+    }
+
     const onFileSelected = async (e) => {
 
         // Get file
@@ -200,6 +213,8 @@ function AdminProductPage() {
             setProducts(allProducts)
             setFilter(allProducts)
             setLoading(false)
+            const allTherapeuticGroups = await getTherapeuticGroups()
+            setTherapeuticGroups(allTherapeuticGroups)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -208,7 +223,7 @@ function AdminProductPage() {
 
     return (
         <>
-            {loading && <Loader message="Cargando productos..."/>}
+            {loading && <Loader message="Cargando productos..." />}
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
@@ -328,196 +343,204 @@ function AdminProductPage() {
                                                                     placeholder="CPE"
                                                                 />
                                                             </div>
-                                                            <div className="row">
-                                                                <div className="col-12 col-sm-4">
-                                                                    <p className="label">Composición</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: 'composition',
-                                                                            placeholder: "Ingresa composición del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col-12 col-sm-4">
-                                                                    <p className="label">Principio activo</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "active_principle",
-                                                                            placeholder: "Ingresa principio(s) activo(s) del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col-12 col-sm-4">
-                                                                    <p className="label">Posología</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "posology",
-                                                                            placeholder: "Ingresa posología del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Presentación</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "presentation",
-                                                                            placeholder: "Ingresa presentación del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Indicaciones</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "indication",
-                                                                            placeholder: "Ingresa indicaciones del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Vida útil</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "util_life",
-                                                                            placeholder: "Ingresa indicaciones del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Modo de empleo</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "how_to_use",
-                                                                            placeholder: "Ingresa indicaciones del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Contraindicaciones</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "contraindications",
-                                                                            placeholder: "Ingresa indicaciones del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
-                                                                <div className="col">
-                                                                    <p className="label">Reacciones adversas</p>
-                                                                    <Editor
-                                                                        onChange={handleEditor}
-                                                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                        init={{
-                                                                            name: "adverse_reactions",
-                                                                            placeholder: "Ingresa indicaciones del producto",
-                                                                            height: 200,
-                                                                            menubar: false,
-                                                                            plugins: [
-                                                                                'advlist autolink lists link image',
-                                                                                'charmap print preview anchor help',
-                                                                                'searchreplace visualblocks code',
-                                                                                'insertdatetime media table paste wordcount'
-                                                                            ],
-                                                                            toolbar:
-                                                                                'bold',
-                                                                        }}
-                                                                    />
-                                                                </div>
+                                                            <div className="col-12 AdminProductPage__therapeutic-group">
+                                                                <CheckBoxWithLabel
+                                                                    data={therapeuticGroups.map(el => el.tag)}
+                                                                    name="themes"
+                                                                    label="Etiquetas"
+                                                                    tabIndex="2"
+                                                                    onChange={setTherapeuticGroup}
+                                                                    styleClass="smalltag col-sm-2 col"
+                                                                     />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Composición</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: 'composition',
+                                                                        placeholder: "Ingresa composición del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Principio activo</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "active_principle",
+                                                                        placeholder: "Ingresa principio(s) activo(s) del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Posología</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "posology",
+                                                                        placeholder: "Ingresa posología del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Presentación</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "presentation",
+                                                                        placeholder: "Ingresa presentación del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Indicaciones</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "indication",
+                                                                        placeholder: "Ingresa indicaciones del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Vida útil</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "util_life",
+                                                                        placeholder: "Ingresa indicaciones del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Modo de empleo</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "how_to_use",
+                                                                        placeholder: "Ingresa indicaciones del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Contraindicaciones</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "contraindications",
+                                                                        placeholder: "Ingresa indicaciones del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
+                                                            </div>
+                                                            <div className="col-12 col-sm-4">
+                                                                <p className="label">Reacciones adversas</p>
+                                                                <Editor
+                                                                    onChange={handleEditor}
+                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                                    init={{
+                                                                        name: "adverse_reactions",
+                                                                        placeholder: "Ingresa indicaciones del producto",
+                                                                        height: 200,
+                                                                        menubar: false,
+                                                                        plugins: [
+                                                                            'advlist autolink lists link image',
+                                                                            'charmap print preview anchor help',
+                                                                            'searchreplace visualblocks code',
+                                                                            'insertdatetime media table paste wordcount'
+                                                                        ],
+                                                                        toolbar:
+                                                                            'bold',
+                                                                    }}
+                                                                />
                                                             </div>
 
                                                             <div className="col-12 mt-5">

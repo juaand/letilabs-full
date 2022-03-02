@@ -7,6 +7,12 @@
   padding-bottom: 1rem;
 }
 
+.AdminProductPage__therapeutic-group {
+  background: #f5f5f5;
+  margin: 3rem 0;
+  padding: 2rem;
+}
+
 .AdminProductPage__add {
   border: 0;
   background: transparent;

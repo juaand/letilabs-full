@@ -1,19 +1,21 @@
 import React, {useState, useEffect} from 'react'
-import {Helmet} from 'react-helmet'
-import {keyframes} from "@emotion/react"
-import {Reveal} from "react-awesome-reveal"
 import {Editor} from '@tinymce/tinymce-react'
+import {Reveal} from "react-awesome-reveal"
+import {keyframes} from "@emotion/react"
+import {Helmet} from 'react-helmet'
 
 import './AdminNewsPage.css'
+
 import {addOutstandingNews, getNews, addNewsApi, getTags} from '../../../services/ApiClient'
 import {useFormState} from '../../../hooks/useFormState'
 import {app} from '../../../services/firebase'
-import ShowEditModal from './ShowEditModal/ShowEditModal'
-import Loader from '../../Loader/Loader'
+
+import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
+import ShowEditModal from './ShowEditModal/ShowEditModal'
 import InputFile from '../../Form/InputFile/InputFile'
 import Button from '../../Form/FormButton/FormButton'
-import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
+import Loader from '../../Loader/Loader'
 
 function AdminNewsPage() {
 

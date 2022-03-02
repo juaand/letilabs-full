@@ -137,6 +137,10 @@ body {
   color: #055aa5;
 }
 
+.smalltag label {
+  font-size: 1.4rem !important;
+}
+
 @keyframes alerta {
   0% {
     opacity: 0;

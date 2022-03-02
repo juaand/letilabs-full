@@ -83,6 +83,12 @@ body {
   color: $leti-blue;
 }
 
+.smalltag {
+  label {
+    font-size: 1.4rem !important;
+  }
+}
+
 @keyframes alerta {
   0% {
     opacity: 0;
