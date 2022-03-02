@@ -30,7 +30,6 @@ function AdminProductPage() {
                 composition: "",
                 indication: "",
                 therapeutic_group: "",
-                category: "",
                 util_life: "",
                 cpe: "",
                 how_to_use: "",
@@ -49,7 +48,6 @@ function AdminProductPage() {
                 composition: true,
                 indication: true,
                 therapeutic_group: false,
-                category: false,
                 util_life: true,
                 cpe: true,
                 how_to_use: true,
@@ -70,7 +68,6 @@ function AdminProductPage() {
             composition: v => v.length,
             indication: v => v.length,
             therapeutic_group: v => v.length,
-            category: v => v.length,
             util_life: v => v.length,
             cpe: v => v.length,
             how_to_use: v => v.length,
@@ -188,7 +185,6 @@ function AdminProductPage() {
     const handleEditor = (e) => {
         data[e.target.settings.name] = e.target.getContent()
         error[e.target.settings.name] = false
-        console.log(error)
     }
 
     const carouselHomeProducts = async (e) => {

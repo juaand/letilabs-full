@@ -1,10 +1,10 @@
-import './SingleProductPage.css'
 import React, {useState, useEffect} from 'react'
-import {getProduct} from '../../../services/ApiClient'
-import Slider from "react-slick"
-import {Link} from 'react-router-dom'
 import {Fade} from 'react-awesome-reveal'
-import Loader from '../../Loader/Loader'
+import {Link} from 'react-router-dom'
+import Slider from "react-slick"
+
+import {getProduct} from '../../../services/ApiClient'
+import './SingleProductPage.css'
 
 function SingleProductPage(props) {
 
@@ -29,7 +29,6 @@ function SingleProductPage(props) {
     const buscar = props?.location?.state?.buscar
 
     const [product, setProduct] = useState([])
-    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         window.scrollTo(0, 0)
@@ -38,13 +37,11 @@ function SingleProductPage(props) {
             setProduct(getProductData)
         }
         fetchData()
-        setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [buscar])
 
     return (
         <>
-            {loading && <Loader />}
             <section className="container SingleProductPage">
                 <div className="row">
                     <div className="col-12 SingleProductPage__back">
@@ -55,6 +52,7 @@ function SingleProductPage(props) {
                             <Slider {...settings}>
                                 {product[0].map(el =>
                                     <>
+                                    {console.log(el)}
                                         <div className="col-12 SingleProductPage__product">
                                             <div className="row">
                                                 <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
@@ -63,7 +61,7 @@ function SingleProductPage(props) {
                                                 <div className="col-12 col-sm-6 SingleProductPage__info">
                                                     <h1>{el?.name}</h1>
                                                     <h2 dangerouslySetInnerHTML={{__html: el?.active_principle}} />
-                                                    {el?.therapeutic_group?.length > 1 ? el?.therapeutic_group.map(el => <span className="tag">{el}</span>) : <span>{el?.therapeutic_group}</span>}
+                                                    {el?.therapeutic_group.map(el => <span className="tag">{el}</span>)}
                                                     <p><strong>Composición</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}}/></p>
                                                     <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}}/>
                                                     </p>
@@ -189,7 +187,6 @@ function SingleProductPage(props) {
                         <div className="row justify-content-between">
                             {product[1]?.map(el =>
                                 <div className="col-12 col-sm-3 SingleProductPage__another__block">
-                                    {/* <img src={el?.picPath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} className="SingleProductPage__another__img" /> */}
                                     <h2 className="SingleProductPage__another__img SingleProductPage__another__img-txt">{el?.name}<sup>&reg;</sup></h2>
                                     <h2>{el?.name}</h2>
                                     <p className="SingleProductPage__another__principle">{el?.active_principle}</p>
