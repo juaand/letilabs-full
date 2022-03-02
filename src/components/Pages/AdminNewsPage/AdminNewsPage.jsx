@@ -18,6 +18,22 @@ import Button from '../../Form/FormButton/FormButton'
 import Loader from '../../Loader/Loader'
 
 function AdminNewsPage() {
+    
+    const [registerError, setRegisterError] = useState(null)
+    const [createNews, setCreateNews] = useState(false)
+    const [isDisabled, setIsDisabled] = useState(false)
+    const [loading, setLoading] = useState(true)
+    const [bool, setBool] = useState(false)
+
+    const [allTagsData, setAllTagsData] = useState([])
+    const [newsData, setNewsData] = useState([])
+    const [filter, setFilter] = useState([])
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [newsMessage, setNewsMessage] = useState('')
+    const [editNews, setEditNews] = useState('')
+    const [message, setMessage] = useState('')
+    const [search, setSearch] = useState('')
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -49,19 +65,6 @@ function AdminNewsPage() {
     )
 
     const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-    const [search, setSearch] = useState('')
-    const [newsData, setNewsData] = useState([])
-    const [message, setMessage] = useState('')
-    const [bool, setBool] = useState(false)
-    const [editNews, setEditNews] = useState('')
-    const [createNews, setCreateNews] = useState(false)
-    const [newsMessage, setNewsMessage] = useState('')
-    const [filter, setFilter] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [allTagsData, setAllTagsData] = useState([])
-    const [imageSuccess, setImageSuccess] = useState('')
-    const [isDisabled, setIsDisabled] = useState(false)
 
     const createNewNews = async (event) => {
         event.preventDefault()

@@ -52,7 +52,7 @@ function SingleProductPage(props) {
                             <Slider {...settings}>
                                 {product[0].map(el =>
                                     <>
-                                    {console.log(el)}
+                                        {console.log(el)}
                                         <div className="col-12 SingleProductPage__product">
                                             <div className="row">
                                                 <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
@@ -62,13 +62,13 @@ function SingleProductPage(props) {
                                                     <h1>{el?.name}</h1>
                                                     <h2 dangerouslySetInnerHTML={{__html: el?.active_principle}} />
                                                     {el?.therapeutic_group.map(el => <span className="tag">{el}</span>)}
-                                                    <p><strong>Composición</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}}/></p>
-                                                    <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}}/>
+                                                    <p><strong>Composición</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}} /></p>
+                                                    <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}} />
                                                     </p>
-                                                    <p><strong>Presentación</strong> <span dangerouslySetInnerHTML={{__html: el?.presentation}}/></p>
-                                                    <p><strong>Registro sanitario</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}}/></p>
-                                                    <p><strong>Vida útil</strong> <span dangerouslySetInnerHTML={{__html: el?.util_life}}/></p>
-                                                    <p className="SingleProductPage__cpe">{el?.CPE}</p>
+                                                    <p><strong>Presentación</strong> <span dangerouslySetInnerHTML={{__html: el?.presentation}} /></p>
+                                                    <p><strong>Registro sanitario</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}} /></p>
+                                                    <p><strong>Vida útil</strong> <span dangerouslySetInnerHTML={{__html: el?.util_life}} /></p>
+                                                    <p><strong>CPE</strong> <span className="SingleProductPage__cpe">{el?.cpe}</span></p>
                                                     <img src={el?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
                                                 </div>
                                             </div>

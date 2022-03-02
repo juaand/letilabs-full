@@ -31,7 +31,7 @@
 }
 
 .ShowEditModal__container.product-modal {
-  min-height: 96rem;
+  height: 96rem;
   overflow: scroll;
 }
 

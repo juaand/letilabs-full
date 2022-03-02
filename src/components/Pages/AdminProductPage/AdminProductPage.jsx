@@ -83,10 +83,12 @@ function AdminProductPage() {
 
     const [createProduct, setCreateProduct] = useState(false)
     const [registerError, setRegisterError] = useState(null)
+    const [isDisabled, setIsDisabled] = useState(false)
     const [loading, setLoading] = useState(true)
     const [bool, setBool] = useState(false)
 
     const [productMessage, setProductMessage] = useState('')
+    const [imageSuccess, setImageSuccess] = useState('')
     const [editProduct, setEditProduct] = useState('')
     const [message, setMessage] = useState('')
     const [search, setSearch] = useState('')
@@ -174,6 +176,7 @@ function AdminProductPage() {
     }
 
     const onFileSelected = async (e) => {
+        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
@@ -193,6 +196,8 @@ function AdminProductPage() {
         const fileUrl = await filePath.getDownloadURL()
         data[e.target.name] = fileUrl
         error[e.target.name] = false
+        setImageSuccess("Imagen subida correctamente")
+        setIsDisabled(false)
     }
 
     const handleEditor = (e) => {
@@ -224,6 +229,7 @@ function AdminProductPage() {
     return (
         <>
             {loading && <Loader message="Cargando productos..." />}
+            {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
@@ -284,6 +290,7 @@ function AdminProductPage() {
                                                                     name="picPath"
                                                                     type="file"
                                                                 />
+                                                                {imageSuccess && <small className="img-success col-12">{imageSuccess}</small>}
                                                             </div>
                                                             <div className="col-12 col-sm-6">
                                                                 <InputFile
@@ -351,7 +358,7 @@ function AdminProductPage() {
                                                                     tabIndex="2"
                                                                     onChange={setTherapeuticGroup}
                                                                     styleClass="smalltag col-sm-2 col"
-                                                                     />
+                                                                />
                                                             </div>
                                                             <div className="col-12 col-sm-4">
                                                                 <p className="label">Composición</p>
