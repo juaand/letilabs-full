@@ -96,7 +96,6 @@ function ShowEditModal({product, hideModal, updateData}) {
                 }
                 await updateProduct(data)
                     .then((info) => {
-                        console.log(info)
                         updateData(info)
                         setMessage('Data atualizada exitosamente')
                     })

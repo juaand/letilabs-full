@@ -9,12 +9,14 @@ import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
 
 function EditPortafolio() {
 
-    const [newItemMessage, setNewItemMessage] = useState()
-    const [portfolioData, setPortfolioData] = useState()
-    const [modalData, setModalData] = useState()
+    const [newItemMessage, setNewItemMessage] = useState([])
+    const [portfolioData, setPortfolioData] = useState([])
+    const [modalData, setModalData] = useState([])
+    
     const [message, setMessage] = useState('')
-    const [bool, setBool] = useState(false)
     const [title, setTitle] = useState('')
+
+    const [bool, setBool] = useState(false)
 
     const {state, onBlur, onChange} = useFormState(
         {
@@ -128,7 +130,7 @@ function EditPortafolio() {
                 <h2>Añadir portafolio</h2>
                 <form className="AdminEdit__form" onSubmit={updateInfo}>
                     <div className="row">
-                        <h3 className="mt-5">Editar título portafolio</h3>
+                        <h3>Editar título portafolio</h3>
                         <div className="col-12">
                             <InputWithLabel
                                 value={data.superiorTitle}

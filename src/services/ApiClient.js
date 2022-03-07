@@ -29,6 +29,7 @@ export const logOut = () => http.post("/logout")
 //admin edit routes inicio
 export const getUsInfo = () => http.get("/usinfodata")
 export const getUnidades = () => http.get("/unidadesiniciodata")
+export const updateTitleUnidadesNegocio = ({mainTitle}) => http.post("/updateunidadesnegociotitle", {mainTitle})
 export const getPortfolio = () => http.get("/portfolioiniciodata")
 export const getFarmaco = () => http.get("/farmacoiniciodata")
 export const getModalFarmaco = () => http.get("/modalfarmacoiniciodata")
