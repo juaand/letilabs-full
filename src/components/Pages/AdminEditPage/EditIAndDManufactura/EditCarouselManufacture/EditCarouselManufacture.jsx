@@ -2,16 +2,19 @@ import React, {useState, useEffect} from 'react'
 
 import {getCarouselManufacture, updateTitleProccess, createProccess} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 import EditItemModal from './EditItemModal/EditItemModal'
+
+import {useFormState} from '../../../../../hooks/useFormState'
 
 function EditCarouselManufacture() {
 
     const [carouselManufactureData, setCarouselManufactureData] = useState([])
-    const [proccesMessage, setProccesMessage] = useState('')
     const [modalData, setModalData] = useState([])
+
+    const [proccesMessage, setProccesMessage] = useState('')
     const [message, setMessage] = useState('')
+
     const [bool, setBool] = useState(false)
 
     const {state, onChange} = useFormState(

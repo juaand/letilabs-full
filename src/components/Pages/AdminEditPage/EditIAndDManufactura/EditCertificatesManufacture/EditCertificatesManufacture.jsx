@@ -1,22 +1,28 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getCertificatesManufacture, deleteCertificate, updateCertificatesManufactureData, createCertificate} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
+import {getCertificatesManufacture, updateCertificatesManufactureData, createCertificate} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
+import {app} from '../../../../../services/firebase'
+
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
-import {app} from '../../../../../services/firebase'
+import EditItemModal from './EditItemModal/EditItemModal'
 import Loader from '../../../../Loader/Loader'
 
 function EditCertificatesManufacture() {
 
     const [certificatesManufactureData, setCertificatesManufactureData] = useState([])
+    const [modalData, setModalData] = useState([])
+
     const [registerError, setRegisterError] = useState(null)
-    const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
-    const [infoMessage, setInfoMessage] = useState('')
     const [disabled, setDisabled] = useState(true)
+    const [bool, setBool] = useState(false)
+
+    const [imageSuccess, setImageSuccess] = useState('')
+    const [infoMessage, setInfoMessage] = useState('')
     const [message, setMessage] = useState('')
 
 
@@ -95,9 +101,14 @@ function EditCertificatesManufacture() {
         error.desc = false
     }
 
-    const deleteItem = async (id) => {
-        const getUpdated = await deleteCertificate(id)
-        setCertificatesManufactureData(getUpdated)
+    const showModal = (info) => {
+        setModalData(info)
+        setBool(!bool)
+    }
+
+    const hideModal = (info) => {
+        setCertificatesManufactureData(info)
+        setBool(!bool)
     }
 
     const onFileSelected = async (e) => {
@@ -138,6 +149,7 @@ function EditCertificatesManufacture() {
     return (
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
+            {bool && <EditItemModal hideModal={(info) => hideModal(info)} infodata={modalData} closeModal={() => setBool(!bool)} />}
             <section className="container-fluid EditContent">
                 <h2>Editar info certificados</h2>
                 <form className="AdminEdit__form" onSubmit={updateCertificateInfo}>
@@ -188,10 +200,10 @@ function EditCertificatesManufacture() {
             </section>
             {certificatesManufactureData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Eliminar certificado</h2>
+                    <h2>Editar certificado</h2>
                     <div className="row justify-content-around">
                         {certificatesManufactureData?.map(el =>
-                            <div className="col-3 EditUnidades__trash" onClick={() => deleteItem(el._id)}>
+                            <div className="col-3 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <img className="EditCarousel__img" src={el.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el.title} />
                             </div>
                         )}
