@@ -6,6 +6,7 @@ import EditCarousel from './EditCarousel/EditCarousel'
 import EditUnidades from './EditUnidades/EditUnidades'
 import EditUsInfo from './EditUsInfo/EditUsInfo'
 import EditVideo from './EditVideo/EditVideo'
+import EditBottomCTA from './EditBottomCTA/EditBottomCTA'
 
 function EditHome() {
 
@@ -17,10 +18,11 @@ function EditHome() {
             <EditCarousel />
             <EditUnidades />
             <EditPortafolio />
+            <EditBottomCTA />
             <EditFarmacoVigilancia />
             <EditFarmacoVigilanciaModal />
         </main>
-        
+
     )
 }
 

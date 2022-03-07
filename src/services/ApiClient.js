@@ -45,6 +45,7 @@ export const deleteUnitItem = (id) => http.get(`/deleteunititem/${id}`)
 export const getApiVideo = () => http.get("/videoiniciodata")
 export const updateVideoData = (url, id) => http.patch("/updatevideodata", {url, id})
 export const getHomeBottom = () => http.get("/homebottomdata")
+export const updateBottomHome = ({title, img, button, url, id}) => http.patch("/updatebottomhome", {title, img, button, url, id})
 export const addHomeScreen = (show_in_home, id) => http.post(`/addprodtohomescreen/${id}`, {show_in_home, id})
 
 //admin edit routes about us
