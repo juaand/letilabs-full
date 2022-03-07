@@ -42,6 +42,7 @@
 
 .Timeline__leti__desc strong {
   color: #055aa5;
+  font-weight: unset;
 }
 
 .Timeline__leti .slick-slider {

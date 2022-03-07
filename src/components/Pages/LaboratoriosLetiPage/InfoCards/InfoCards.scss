@@ -19,6 +19,11 @@
         margin-top: 3rem;
         font-size: 1.8rem;
         line-height: 3rem;
+
+        strong {
+          color: $leti-blue;
+          font-weight: unset;
+        }
       }
     }
   }

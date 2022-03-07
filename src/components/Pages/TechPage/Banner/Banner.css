@@ -15,6 +15,11 @@
   justify-content: center;
 }
 
+.Banner__Tech__title strong {
+  color: #055aa5;
+  font-weight: unset;
+}
+
 .Banner__Tech__title h3 {
   font-size: 3rem;
   font-family: 'Mulish', sans-serif;

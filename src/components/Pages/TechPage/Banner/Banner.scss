@@ -15,6 +15,11 @@
       flex-direction: column;
       justify-content: center;
 
+      strong {
+        color: $leti-blue;
+        font-weight: unset;
+      }
+
       h3 {
         font-size: 3rem;
         font-family: 'Mulish', sans-serif;

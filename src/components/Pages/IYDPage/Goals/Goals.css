@@ -51,6 +51,11 @@
   padding-right: 10rem;
 }
 
+.Goals__desc strong {
+  color: #055aa5;
+  font-weight: unset;
+}
+
 .Goals__cells-001 {
   width: 19rem;
   height: 19rem;

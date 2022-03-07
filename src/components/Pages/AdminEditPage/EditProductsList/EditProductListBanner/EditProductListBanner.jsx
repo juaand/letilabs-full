@@ -49,7 +49,7 @@ function EditProductListBanner() {
         data.id = bannerData._id
 
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.description === '' || data.title === '') {
+            if (data.description.trim() === '' || data.title.trim() === '') {
                 setMessage('El título o descripción no pueden ir vacios, por favor llene ambos campos')
             } else {
                 try {

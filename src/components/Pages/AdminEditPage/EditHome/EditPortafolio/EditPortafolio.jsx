@@ -49,7 +49,7 @@ function EditPortafolio() {
         data.superiorTitle = title
 
         if (error.title === false && error.description === false) {
-            if (data.title === '' || data.description === '') {
+            if (data.title.trim() === '' || data.description.trim() === '') {
                 setNewItemMessage('Por favor complete todos los campos')
             } else {
                 try {

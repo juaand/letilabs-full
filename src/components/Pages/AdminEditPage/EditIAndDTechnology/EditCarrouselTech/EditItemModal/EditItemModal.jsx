@@ -70,10 +70,10 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const updateInfo = async (event) => {
         event.preventDefault()
-
+console.log(data)
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.title === '') {
-                setMessage('Por favor ingrese un título')
+            if (data.title.trim() === '' || data.description.trim() === '') {
+                setMessage('El título o la descripción no pueden estar vacíos, por favor complete ambos campos')
             } else {
                 try {
                     await updateCarouselTech(data)
@@ -90,7 +90,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                 }
             }
         } else {
-            setMessage('Por favor complete alguno de los campos')
+            setMessage('Por favor edite alguno de los campos')
         }
     }
 

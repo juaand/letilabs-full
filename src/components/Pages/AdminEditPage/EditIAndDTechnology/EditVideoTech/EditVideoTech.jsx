@@ -88,8 +88,9 @@ function EditVideoTech() {
             try {
                 await updateVideoTech(data)
                     .then(video => {
-                        setVideoInfo(video[0])
+                        setVideoInfo(video)
                         setMessage('Título actualizado exitosamente.')
+                        setVideoTitle(video.title)
                     })
                     .catch(error => {
                         setRegisterError(error)

@@ -50,6 +50,11 @@
     color: $leti-nav;
     margin-bottom: 9rem;
     padding-right: 10rem;
+
+    strong {
+      color: $leti-blue;
+      font-weight: unset;
+    }
   }
 
   &__cells {

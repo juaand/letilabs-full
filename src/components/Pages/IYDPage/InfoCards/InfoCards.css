@@ -40,6 +40,11 @@
   padding: 0 4rem;
 }
 
+.InfoCards__cards p strong {
+  color: #055aa5;
+  font-weight: unset;
+}
+
 .InfoCards__image {
   height: 24rem;
 }

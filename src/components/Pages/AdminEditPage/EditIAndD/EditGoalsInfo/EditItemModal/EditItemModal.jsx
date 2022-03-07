@@ -41,18 +41,23 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         event.preventDefault()
 
         if (Object.values(error).map(el => el).includes(false)) {
-            try {
-                await updateGoalsIdData(data)
-                    .then(info => {
-                        setTimelineData(info)
-                        setMessage('Data atualizada exitosamente')
-                        hideModal(info)
-                    })
-                    .catch(error => {
-                        setRegisterError(error)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.name.trim() === '' || data.desc.trim() === '') {
+                setMessage('El título o la descripción no pueden estar vacíos, por favor complete ambos campos')
+            } else {
+                try {
+                    await updateGoalsIdData(data)
+                        .then(info => {
+                            setTimelineData(info)
+                            setMessage('Data atualizada exitosamente')
+                            hideModal(info)
+                        })
+                        .catch(error => {
+                            setRegisterError(error)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
+
             }
         } else {
             setMessage('Por favor edite alguno de los campos')
@@ -81,8 +86,8 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                 <form className="AdminEdit__form" onSubmit={updateInfo}>
                                     <div className="row">
                                         <div className="col-sm-12 mb-5">
-                                            <h1 className="DeleteItemModal__ask">Editar elemento 
-                                            <span class="ShowEditModal__news-title">{timelineData?.name}</span></h1>
+                                            <h1 className="DeleteItemModal__ask">Editar elemento
+                                                <span class="ShowEditModal__news-title">{timelineData?.name}</span></h1>
                                         </div>
                                         <div className="col-12">
                                             <p className="AdminEdit__form__label">
@@ -99,7 +104,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                         </div>
                                         <div className="col-12">
                                             <p className="AdminEdit__form__label mt-5">
-                                                 Descripción
+                                                Descripción
                                             </p>
                                             <Editor
                                                 initialValue={timelineData?.desc}

@@ -42,6 +42,11 @@
       font-size: 1.8rem;
       line-height: 3rem;
       padding: 0 4rem;
+
+      strong {
+        color: $leti-blue;
+        font-weight: unset;
+      }
     }
   }
 
