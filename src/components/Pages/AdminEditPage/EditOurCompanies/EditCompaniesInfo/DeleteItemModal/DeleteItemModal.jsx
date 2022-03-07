@@ -1,22 +1,25 @@
 import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {deleteOCNegocio, updateOurCompaniesOC} from '../../../../../../services/ApiClient'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {updateOurCompaniesOC} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import Loader from '../../../../../Loader/Loader'
+
 import './DeleteItemModal.css'
 
 
 function DeleteItemModal({deleteItem, element, hideModal}) {
 
-    const [imageSuccess, setImageSuccess] = useState('')
+    const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
+    const [disabled, setDisabled] = useState(true)
+
+    const [imageSuccess, setImageSuccess] = useState('')
     const [message, setMessage] = useState('')
 
-    const {state, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: element.id,
@@ -42,14 +45,11 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     )
 
     const {data, error} = state
-    const [registerError, setRegisterError] = useState(null)
 
-    const [disabled, setDisabled] = useState(true)
-
-    const deleteCarrouselItem = async (id) => {
-        const updateData = await deleteOCNegocio(id)
-        deleteItem(updateData)
-    }
+    // const deleteCarrouselItem = async (id) => {
+    //     const updateData = await deleteOCNegocio(id)
+    //     deleteItem(updateData)
+    // }
 
     const editCarrouselItem = async (id) => {
 
@@ -71,6 +71,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.info = e.target.getContent()
+        error.info = false
     }
 
     const onFileSelected = async (e) => {
@@ -113,33 +114,6 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                 <div className="card">
                                     <div className="card-body EditElementsModal__body">
                                         <div className="row align-items-center">
-                                            <div className="col-sm-12">
-                                                <p className="EditElementsModal__text"><strong>Editar name</strong></p>
-                                            </div>
-                                            <div className="col-sm-12">
-                                                <InputWithLabel
-                                                    value={data?.name}
-                                                    onChange={onChange}
-                                                    name="name"
-                                                    type="text"
-                                                    cssStyle="form-control"
-                                                    placeholder={element?.name}
-                                                />
-                                            </div>
-                                            <div className="col-sm-12">
-                                                <p className="EditElementsModal__text"><strong>Editar url</strong></p>
-                                            </div>
-                                            <div className="col-sm-12">
-                                                <InputWithLabel
-                                                    value={data?.url}
-                                                    onChange={onChange}
-                                                    name="url"
-                                                    type="text"
-                                                    cssStyle="form-control"
-                                                    placeholder={element?.url}
-                                                    disabled
-                                                />
-                                            </div>
                                             <div className="col-12">
                                                 <p className="EditElementsModal__text"><strong>Editar logo</strong></p>
                                             </div>
@@ -178,9 +152,9 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                             <div className="col-12 col-sm-6">
                                                 <div onClick={() => editCarrouselItem(element._id)} className="leti-btn">Editar elemento</div>
                                             </div>
-                                            <div className="col-12 col-sm-6">
+                                            {/* <div className="col-12 col-sm-6">
                                                 <div onClick={() => deleteCarrouselItem(element._id)} className="leti-btn delete">Eliminar elemento</div>
-                                            </div>
+                                            </div> */}
                                             <div className="col-12">
                                                 {message && <span className="AdminEdit__message m-0">{message}</span>}
                                                 {registerError && <div className="alert alert-danger">{registerError}</div>}

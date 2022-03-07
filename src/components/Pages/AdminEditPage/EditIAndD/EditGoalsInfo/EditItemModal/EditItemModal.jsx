@@ -80,7 +80,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                 <span className="EditItemModal__close" onClick={closeModal}></span>
                                 <form className="AdminEdit__form" onSubmit={updateInfo}>
                                     <div className="row">
-                                        <div className="col-sm-12 ShowEditModal__thumbnail mb-5">
+                                        <div className="col-sm-12 mb-5">
                                             <h1 className="DeleteItemModal__ask">Editar elemento 
                                             <span class="ShowEditModal__news-title">{timelineData?.name}</span></h1>
                                         </div>
@@ -119,15 +119,15 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-6 mt-5">
-                                            <div onClick={() => deleteSelected(timelineData?._id)} className="leti-btn delete">Eliminar objetivo</div>
+                                        <div className="col-12 col-sm-6 mt-5 ">
+                                            <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>
                                         </div>
                                         <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
-                                            <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>
+                                            <div onClick={() => deleteSelected(timelineData?._id)} className="leti-btn delete">Eliminar objetivo</div>
                                         </div>
                                         {message &&
                                             <div className="row">
-                                                <span className="AdminEdit__message col-12 d-flex justify-content-end">{message}</span>
+                                                <span className="AdminEdit__message col-12 m-0">{message}</span>
                                             </div>}
                                     </div>
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}

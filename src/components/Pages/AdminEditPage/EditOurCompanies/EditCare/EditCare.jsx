@@ -144,7 +144,7 @@ function EditCare() {
                             </div>
                         </div>
                         <div className="col-12">
-                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios - Banner</Button>
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                             {message && <span className="AdminEdit__message">{message}</span>}
                         </div>
 

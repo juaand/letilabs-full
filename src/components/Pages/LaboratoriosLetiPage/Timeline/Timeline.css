@@ -40,6 +40,10 @@
   margin-bottom: 0rem;
 }
 
+.Timeline__leti__desc strong {
+  color: #055aa5;
+}
+
 .Timeline__leti .slick-slider {
   position: relative;
   display: block;

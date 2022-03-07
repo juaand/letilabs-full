@@ -80,13 +80,13 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                 <span className="EditItemModal__close" onClick={closeModal}></span>
                                 <form className="AdminEdit__form" onSubmit={updateInfo}>
                                     <div className="row">
-                                        <div className="col-sm-12 ShowEditModal__thumbnail mb-5">
+                                        <div className="col-sm-12 mb-5">
                                             <h1 className="DeleteItemModal__ask">Editar elemento
                                                 <span class="ShowEditModal__news-title">{timelineData?.title}</span></h1>
                                         </div>
                                         <div className="col-12">
                                             <p className="AdminEdit__form__label">
-                                                Objetivo
+                                                Título
                                             </p>
                                             <InputWithLabel
                                                 value={data?.title}

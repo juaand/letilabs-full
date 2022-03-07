@@ -4,11 +4,12 @@
   justify-content: center;
   align-items: center;
   background: none;
+  margin: 20rem 0;
 }
 
 @media (max-width: 576px) {
   .Video__genven {
     height: 30rem;
-    margin-top: 20rem;
+    margin: 20rem 0 0 0;
   }
 }
