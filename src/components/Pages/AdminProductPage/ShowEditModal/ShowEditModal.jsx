@@ -216,13 +216,13 @@ function ShowEditModal({product, hideModal, updateData}) {
                                     </div>
                                     <div className="col-12">
                                         <InputWithLabel
-                                            label="Categoría"
+                                            label="Categoría(s) / Separadas por comas"
                                             value={data?.therapeutic_group}
                                             onChange={onChange}
                                             name="therapeutic_group"
                                             type="text"
                                             cssStyle="form-control"
-                                            placeholder="Categoría"
+                                            placeholder="Categoría(s) / Separadas por comas"
                                         />
                                     </div>
                                     <div className="row">

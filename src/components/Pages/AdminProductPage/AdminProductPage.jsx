@@ -3,12 +3,11 @@ import {Editor} from '@tinymce/tinymce-react'
 import {keyframes} from "@emotion/react"
 import {Helmet} from 'react-helmet'
 
-import {addHomeScreen, getVadevecumData, addProductApi, getTherapeuticGroups} from '../../../services/ApiClient'
+import {addHomeScreen, getVadevecumData, addProductApi} from '../../../services/ApiClient'
 import {useFormState} from '../../../hooks/useFormState'
 import {app} from '../../../services/firebase'
 import {Reveal} from "react-awesome-reveal"
 
-import CheckBoxWithLabel from '../../Form/CheckBoxWithLabel/CheckBoxWithLabel'
 import InputWithLabel from '../../Form/InputWithLabel/InputWithLabel'
 import ShowEditModal from './ShowEditModal/ShowEditModal'
 import InputFile from '../../Form/InputFile/InputFile'
@@ -32,7 +31,7 @@ function AdminProductPage() {
                 presentation: "",
                 composition: "",
                 indication: "",
-                therapeutic_group: [],
+                therapeutic_group: "",
                 util_life: "",
                 cpe: "",
                 how_to_use: "",
@@ -93,12 +92,15 @@ function AdminProductPage() {
     const [message, setMessage] = useState('')
     const [search, setSearch] = useState('')
 
-    const [therapeuticGroups, setTherapeuticGroups] = useState([])
     const [products, setProducts] = useState([])
     const [filter, setFilter] = useState([])
 
     const createNewProduct = async (event) => {
         event.preventDefault()
+        if (error.therapeutic_group === false) {
+            const setCategories = data.therapeutic_group.split(',')
+            data.therapeutic_group = setCategories
+        }
 
         try {
             setProductMessage('Cargando producto...')
@@ -166,15 +168,6 @@ function AdminProductPage() {
         setCreateProduct(!createProduct)
     }
 
-    const setTherapeuticGroup = (e) => {
-        error.therapeutic_group = false
-        if (!data.therapeutic_group.includes(e.target.value)) {
-            data.therapeutic_group.push(e.target.value)
-        } else {
-            data.therapeutic_group = (data.therapeutic_group.filter(el => el !== e.target.value))
-        }
-    }
-
     const onFileSelected = async (e) => {
         setIsDisabled(!isDisabled)
 
@@ -218,8 +211,6 @@ function AdminProductPage() {
             setProducts(allProducts)
             setFilter(allProducts)
             setLoading(false)
-            const allTherapeuticGroups = await getTherapeuticGroups()
-            setTherapeuticGroups(allTherapeuticGroups)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -350,14 +341,16 @@ function AdminProductPage() {
                                                                     placeholder="CPE"
                                                                 />
                                                             </div>
-                                                            <div className="col-12 AdminProductPage__therapeutic-group">
-                                                                <CheckBoxWithLabel
-                                                                    data={therapeuticGroups.map(el => el.tag)}
-                                                                    name="themes"
-                                                                    label="Etiquetas"
-                                                                    tabIndex="2"
-                                                                    onChange={setTherapeuticGroup}
-                                                                    styleClass="smalltag col-sm-2 col"
+                                                            <div className="col-12">
+                                                                <InputWithLabel
+                                                                    label="Categoría(s) / Separadas por coma"
+                                                                    value={data.therapeutic_group}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="therapeutic_group"
+                                                                    type="text"
+                                                                    cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
+                                                                    placeholder="Categoría(s) separadas por coma"
                                                                 />
                                                             </div>
                                                             <div className="col-12 col-sm-4">
