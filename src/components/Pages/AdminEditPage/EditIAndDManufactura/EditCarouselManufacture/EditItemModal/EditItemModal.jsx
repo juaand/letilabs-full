@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
+import {Editor} from '@tinymce/tinymce-react'
 
-import './EditItemModal.css'
 import {updateCarouselManufacture, deleteProccess} from '../../../../../../services/ApiClient'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
+
 import Button from '../../../../../Form/FormButton/FormButton'
+import './EditItemModal.css'
 
 
 function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
@@ -13,7 +14,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const [carouselData, setCarouselData] = useState(infodata)
     const [message, setMessage] = useState('')
 
-    const {state, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 title: infodata?.title,
@@ -62,6 +63,11 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         deleteItem(updatedData)
     }
 
+    const handleChange = (e) => {
+        data.info = e.target.getContent()
+        error.info = false
+    }
+
     return (
         <div className="EditItemModal">
             <div className="container">
@@ -75,13 +81,23 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                         <h1 className="DeleteItemModal__ask">Editar proceso</h1>
                                     </div>
                                     <div className="col-12">
-                                        <InputWithLabel
-                                            label="Descripción del proceso"
-                                            onChange={onChange}
-                                            name="info"
-                                            type="text"
-                                            cssStyle="form-control"
-                                            placeholder={carouselData?.info}
+                                        <Editor
+                                            initialValue={carouselData?.info}
+                                            onChange={handleChange}
+                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                            init={{
+                                                name: 'composition',
+                                                height: 140,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image',
+                                                    'charmap print preview anchor help',
+                                                    'searchreplace visualblocks code',
+                                                    'insertdatetime media table paste wordcount'
+                                                ],
+                                                toolbar:
+                                                    'bold',
+                                            }}
                                         />
                                     </div>
                                     <div className="col-12 col-sm-6">
@@ -92,7 +108,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                     </div>
                                 </div>
                                 <div className="col-12">
-                                    {message && <span className="AdminEdit__message">{message}</span>}
+                                    {message && <span className="AdminEdit__message m-0">{message}</span>}
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}
                                 </div>
                             </form>

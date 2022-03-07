@@ -55,10 +55,9 @@ function Carousel() {
                     <div className="container-fluid p-0">
                         <Slider {...settings}>
                             {manufactureCarousel?.map(el =>
-                                <div>
-                                    <h3 className="col-8 col-sm-4 Carousel__Biocontrolled__desc">
-                                        {el.info}</h3>
-                                </div>
+                                <>
+                                    <h3 className="col-8 col-sm-4 Carousel__Biocontrolled__desc" dangerouslySetInnerHTML={{__html: el.info}} />
+                                </>
                             )}
                         </Slider>
                     </div>

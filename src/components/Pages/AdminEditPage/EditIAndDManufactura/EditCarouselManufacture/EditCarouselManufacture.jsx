@@ -138,7 +138,7 @@ function EditCarouselManufacture() {
                         <h3 className="mb-5">Editar procesos</h3>
                         {carouselManufactureData?.map(el =>
                             <div className="col-sm-3 col-12 EditCarousel__edit logros" onClick={() => showModal(el)}>
-                                <p>{el?.info}</p>
+                            <p dangerouslySetInnerHTML={{__html: el.info}} />
                             </div>
                         )}
                         <hr className="mt-5 mb-5" />

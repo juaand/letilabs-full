@@ -71,7 +71,7 @@ function EditMapTech() {
                 <div className="row">
                     <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
-                            Mapa URL
+                            URL del mapa de Google Maps (embed code)
                         </p>
                         <InputWithLabel
                             value={data?.mapURL}
