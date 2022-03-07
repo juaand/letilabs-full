@@ -21,6 +21,10 @@
     bottom: -10rem;
     left: 0.7rem;
     right: 0;
+
+    strong {
+      color: $leti-blue;
+    }
   }
 
   &__nav {

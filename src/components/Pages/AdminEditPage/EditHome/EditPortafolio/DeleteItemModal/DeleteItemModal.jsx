@@ -44,13 +44,17 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
         if (Object.values(error).map(el => el).includes(false)) {
             data.id = id
-            try {
-                await updatePortfolioData(data, id)
-                    .then(updateData => {
-                        deleteItem(updateData)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.title == '' || data.description == '') {
+                setMessage('El título o la descripción no pueden ir vacios, por favor, rellene ambos campos.')
+            } else {
+                try {
+                    await updatePortfolioData(data, id)
+                        .then(updateData => {
+                            deleteItem(updateData)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
             }
         } else {
             setMessage('Por favor edite alguno de los campos')

@@ -11,6 +11,10 @@
   margin-right: 4rem;
 }
 
+.Portafolio__item strong {
+  color: #055aa5;
+}
+
 .Portafolio__triangles {
   position: relative;
 }

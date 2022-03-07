@@ -10,6 +10,10 @@
     font-size: 2.4rem;
     color: $leti-text;
     margin-right: 4rem;
+
+    strong {
+      color: $leti-blue;
+    }
   }
 
   &__triangles {

@@ -20,9 +20,9 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {state, onChange} = useFormState(
         {
             data: {
-                id: infocardsData._id,
-                title: infocardsData.title,
-                picPath: infocardsData.picPath,
+                id: infocardsData?._id,
+                title: infocardsData?.title,
+                picPath: infocardsData?.picPath,
             },
             error: {
                 title: true,
@@ -89,6 +89,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         data.picPath = fileUrl
         setImageSuccess("Imagen subida correctamente")
         setIsDisabled(false)
+        error.picPath = false
     }
 
     return (
@@ -130,14 +131,14 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                             />
                                         </div>
                                         <div className="col-12 col-sm-6 mt-5">
-                                            <div onClick={() => deleteSelected(infocardsData?._id)} className="leti-btn delete">Eliminar {infocardsData?.title}</div>
+                                            <Button type="submit" cssStyle={`leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
                                         </div>
                                         <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
-                                            <Button type="submit" cssStyle={`leti-btn ${isDisabled && 'disabled'}`}>Guardar cambios</Button>
+                                            <div onClick={() => deleteSelected(infocardsData?._id)} className="leti-btn delete">Eliminar {infocardsData?.title}</div>
                                         </div>
                                         {message &&
                                                 <div className="row">
-                                                    <span className="AdminEdit__message col-12 d-flex justify-content-end">{message}</span>
+                                                    <span className="AdminEdit__message col-12 m-0">{message}</span>
                                                 </div>}
                                     </div>
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}

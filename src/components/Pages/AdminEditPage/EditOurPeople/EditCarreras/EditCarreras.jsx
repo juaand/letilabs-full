@@ -1,12 +1,16 @@
 import React, {useState, useEffect} from 'react'
+import {Editor} from '@tinymce/tinymce-react'
 
 import {getCarreras, updateCarrerasData} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
+
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 
 function EditCarreras() {
 
+
+    const [registerError, setRegisterError] = useState(null)
     const [carrerasData, setCarrerasData] = useState([])
     const [message, setMessage] = useState('')
 
@@ -36,8 +40,6 @@ function EditCarreras() {
     )
 
     const {data, error, touch} = state
-    const [registerError, setRegisterError] = useState(null)
-
 
     const updateCarreras = async (event) => {
         event.preventDefault()
@@ -61,11 +63,16 @@ function EditCarreras() {
         }
     }
 
+    const handleDescription = (e) => {
+        data[e.target.settings.name] = e.target.getContent()
+        error[e.target.settings.name] = false
+    }
 
     useEffect(() => {
         const fetchData = async () => {
             const getCarrerasData = await getCarreras()
             setCarrerasData(getCarrerasData)
+            console.log(getCarrerasData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,7 +83,7 @@ function EditCarreras() {
             <h2>Carreras</h2>
             <form className="AdminEdit__form" onSubmit={updateCarreras}>
                 <div className="row">
-                    <div className="col-12 col-sm-3">
+                    <div className="col-12 col-sm-6">
                         <p className="AdminEdit__form__label">
                             Título
                         </p>
@@ -86,25 +93,10 @@ function EditCarreras() {
                             onChange={onChange}
                             name="title"
                             type="text"
-                            cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
+                            cssStyle={`form-control mb-4 ${touch.title && error.title ? "is-invalid" : ""}`}
                             placeholder={carrerasData?.title}
                         />
-                    </div>
-                    <div className="col-12 col-sm-3">
-                        <p className="AdminEdit__form__label">
-                            Descripción
-                        </p>
-                        <InputWithLabel
-                            value={data?.description}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="description"
-                            type="text"
-                            cssStyle={`form-control mb-0 ${touch.description && error.description ? "is-invalid" : ""}`}
-                            placeholder={carrerasData?.description}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-3">
+
                         <p className="AdminEdit__form__label">
                             Título del botón
                         </p>
@@ -114,11 +106,9 @@ function EditCarreras() {
                             onChange={onChange}
                             name="buttonTitle"
                             type="text"
-                            cssStyle={`form-control ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
+                            cssStyle={`form-control mb-4 ${touch.buttonTitle && error.buttonTitle ? "is-invalid" : ""}`}
                             placeholder={carrerasData?.buttonTitle}
                         />
-                    </div>
-                    <div className="col-12 col-sm-3">
                         <p className="AdminEdit__form__label">
                             buttonLink del botón
                         </p>
@@ -130,6 +120,29 @@ function EditCarreras() {
                             type="text"
                             cssStyle={`form-control ${touch.buttonLink && error.buttonLink ? "is-invalid" : ""}`}
                             placeholder={carrerasData?.buttonLink}
+                        />
+                    </div>
+                    <div className="col-12 col-sm-6">
+                        <p className="AdminEdit__form__label">
+                            Descripción
+                        </p>
+                        <Editor
+                            initialValue={carrerasData?.description}
+                            onChange={handleDescription}
+                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                            init={{
+                                name: 'description',
+                                height: 275,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image',
+                                    'charmap print preview anchor help',
+                                    'searchreplace visualblocks code',
+                                    'insertdatetime media table paste wordcount'
+                                ],
+                                toolbar:
+                                    'bold',
+                            }}
                         />
                     </div>
                     <div className="col-12">

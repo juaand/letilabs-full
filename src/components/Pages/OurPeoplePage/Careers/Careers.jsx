@@ -26,7 +26,7 @@ function Careers() {
                 <div className="row justify-content-center">
                     <div className="col-12 col-sm-4">
                         <h1>{data?.title}</h1>
-                        <p>{data?.description}</p>
+                        <p dangerouslySetInnerHTML={{__html: data?.description}} />
                     </div>
                     <div className="col-12 col-sm-4 d-flex align-items-center">
                         <a href={data?.buttonLink} target="_blank" className="leti-btn" rel="noopener noreferrer">{data?.buttonTitle}</a>

@@ -49,17 +49,21 @@ function EditProductListBanner() {
         data.id = bannerData._id
 
         if (Object.values(error).map(el => el).includes(false)) {
-            try {
-                await updateProductListBanner(data)
-                    .then(banner => {
-                        setBannerData(banner)
-                        setMessage('Data atualizada exitosamente')
-                    })
-                    .catch(error => {
-                        setRegisterError(error)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.description === '' || data.title === '') {
+                setMessage('El título o descripción no pueden ir vacios, por favor llene ambos campos')
+            } else {
+                try {
+                    await updateProductListBanner(data)
+                        .then(banner => {
+                            setBannerData(banner)
+                            setMessage('Data atualizada exitosamente')
+                        })
+                        .catch(error => {
+                            setRegisterError(error)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
             }
         } else {
             setMessage('Por favor complete alguno de los campos')

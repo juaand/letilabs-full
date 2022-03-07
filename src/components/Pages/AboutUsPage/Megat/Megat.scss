@@ -13,6 +13,10 @@
 
   &__desc {
     margin-bottom: 3rem;
+
+    strong {
+      color: $leti-blue;
+    }
   }
 
   &__clip {

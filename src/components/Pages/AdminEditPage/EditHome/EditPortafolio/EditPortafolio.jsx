@@ -12,7 +12,7 @@ function EditPortafolio() {
     const [newItemMessage, setNewItemMessage] = useState([])
     const [portfolioData, setPortfolioData] = useState([])
     const [modalData, setModalData] = useState([])
-    
+
     const [message, setMessage] = useState('')
     const [title, setTitle] = useState('')
 
@@ -49,17 +49,21 @@ function EditPortafolio() {
         data.superiorTitle = title
 
         if (error.title === false && error.description === false) {
-            try {
-                await createPortfolio(data)
-                    .then(portfolio => {
-                        setPortfolioData(portfolio)
-                        setNewItemMessage('Elemento añadido exitosamente')
-                    })
-                    .catch(error => {
-                        setRegisterError(error)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.title === '' || data.description === '') {
+                setNewItemMessage('Por favor complete todos los campos')
+            } else {
+                try {
+                    await createPortfolio(data)
+                        .then(portfolio => {
+                            setPortfolioData(portfolio)
+                            setNewItemMessage('Elemento añadido exitosamente')
+                        })
+                        .catch(error => {
+                            setRegisterError(error)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
             }
         } else {
             setNewItemMessage('Por favor rellene ambos campos')

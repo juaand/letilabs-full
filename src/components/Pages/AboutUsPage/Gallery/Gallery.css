@@ -22,6 +22,10 @@
   right: 0;
 }
 
+.Gallery__desc strong {
+  color: #055aa5;
+}
+
 .Gallery__nav {
   position: relative;
   padding: 4rem 4rem 0 0;
