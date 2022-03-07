@@ -10,6 +10,11 @@
   align-items: center;
 }
 
+.Banner__ourCompanies__title strong {
+  color: #055aa5;
+  font-weight: 500;
+}
+
 .Banner__ourCompanies__bg [class*='css-'] {
   height: 70rem;
   position: absolute;

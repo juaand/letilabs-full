@@ -9,6 +9,11 @@
       height: 70rem;
       display: flex;
       align-items: center;
+
+      strong {
+        color: $leti-blue;
+        font-weight: 500;
+      }
     }
 
     &__bg {
