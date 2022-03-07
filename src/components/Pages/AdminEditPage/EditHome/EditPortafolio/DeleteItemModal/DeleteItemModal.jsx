@@ -59,6 +59,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
 
     return (
