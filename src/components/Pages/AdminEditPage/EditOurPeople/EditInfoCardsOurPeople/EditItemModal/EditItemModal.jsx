@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
@@ -37,8 +38,6 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const updateInfo = async (event) => {
         event.preventDefault()
 
-        console.log(data)
-
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateInfoCardsOurPeople(data)
@@ -62,6 +61,11 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const deleteSelected = async (id) => {
         const updateData = await deleteOPInfoCard(id)
         deleteItem(updateData)
+    }
+    
+    const handleDescription = (e) => {
+        data[e.target.settings.name] = e.target.getContent()
+        error[e.target.settings.name] = false
     }
 
 
@@ -88,24 +92,37 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                         />
                                     </div>
                                     <div className="col-12">
-                                        <InputWithLabel
-                                            label="Info equipo"
-                                            onChange={onChange}
-                                            name="info"
-                                            type="text"
-                                            cssStyle="form-control"
-                                            placeholder={infocardsData?.info}
+                                        <p className="AdminEdit__form__label">
+                                            Info equipo
+                                        </p>
+                                        <Editor
+                                            initialValue={infocardsData?.info}
+                                            onChange={handleDescription}
+                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                            init={{
+                                                name: 'info',
+                                                height: 180,
+                                                menubar: false,
+                                                plugins: [
+                                                    'advlist autolink lists link image',
+                                                    'charmap print preview anchor help',
+                                                    'searchreplace visualblocks code',
+                                                    'insertdatetime media table paste wordcount'
+                                                ],
+                                                toolbar:
+                                                    'bold',
+                                            }}
                                         />
                                     </div>
                                     <div className="col-12 col-sm-6 mt-5">
-                                        <div onClick={() => deleteSelected(infocardsData?._id)} className="leti-btn delete">Eliminar info</div>
+                                        <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>
                                     </div>
                                     <div className="col-12 col-sm-6 mt-5 d-flex justify-content-end">
-                                        <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>
+                                        <div onClick={() => deleteSelected(infocardsData?._id)} className="leti-btn delete">Eliminar info</div>
                                     </div>
                                     {message &&
                                         <div className="row">
-                                            <span className="AdminEdit__message col-12 d-flex justify-content-end">{message}</span>
+                                            <span className="AdminEdit__message col-12 m-0">{message}</span>
                                         </div>}
                                 </div>
                                 {registerError && <div className="alert alert-danger">{registerError}</div>}

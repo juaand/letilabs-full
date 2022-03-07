@@ -2,20 +2,20 @@ import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {getBannerOurPeople, updateBannerOurPeople} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
+import {app} from '../../../../../services/firebase'
+
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
-import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 function EditBannerOurPeople() {
 
-    const [bannerData, setBannerData] = useState()
+    const [bannerData, setBannerData] = useState([])
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
-    const {state, onBlur, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 id: '',
@@ -39,13 +39,15 @@ function EditBannerOurPeople() {
 
 
 
-    const {data, error, touch} = state
+    const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
+
+        console.log(data)
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -64,9 +66,10 @@ function EditBannerOurPeople() {
             setMessage('Por favor edite alguno de los campos')
         }
     }
+    
     const handleBannerDescription = (e) => {
-        data.description = e.target.getContent()
-        error.description = false
+        data[e.target.settings.name] = e.target.getContent()
+        error[e.target.settings.name] = false
     }
 
     const onFileSelected = async (e) => {
@@ -109,7 +112,7 @@ function EditBannerOurPeople() {
                 <h2>Banner</h2>
                 <form className="AdminEdit__form" onSubmit={updateBanner}>
                     <div className="row">
-                        <div className="col-12 col-sm-6">
+                        <div className="col-12">
                             <p className="AdminEdit__form__label">
                                 Imagen
                             </p>
@@ -120,17 +123,28 @@ function EditBannerOurPeople() {
                                 name="imgURL"
                                 type="file"
                             />
-                            <p className="AdminEdit__form__label mt-5">
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
                                 Título
                             </p>
-                            <InputWithLabel
-                                value={data?.title}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="title"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.title}
+                            <Editor
+                                initialValue={bannerData?.title}
+                                onChange={handleBannerDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    name: 'title',
+                                    height: 180,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
                         <div className="col-12 col-sm-6">
@@ -142,6 +156,7 @@ function EditBannerOurPeople() {
                                 onChange={handleBannerDescription}
                                 apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                 init={{
+                                    name: 'description',
                                     height: 180,
                                     menubar: false,
                                     plugins: [

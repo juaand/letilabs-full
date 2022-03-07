@@ -39,7 +39,7 @@ function InfoCards() {
                                     {dataOurPeople.map(el =>
                                         <>
                                             <h4>{el.title}</h4>
-                                            <p>{el.info}</p>
+                                            <p dangerouslySetInnerHTML={{__html: el.info}} />
                                         </>)}
                                 </Fade>
                             </div>

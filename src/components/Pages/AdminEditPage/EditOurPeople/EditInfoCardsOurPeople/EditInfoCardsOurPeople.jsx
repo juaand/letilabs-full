@@ -93,7 +93,7 @@ function EditInfoCardsOurPeople() {
                         {ourOCData?.map(el =>
                             <div className="col-sm-3 col-12 EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <h4 className="mt-3 mb-3">{el?.title}</h4>
-                                <p>{el?.info}</p>
+                                <p dangerouslySetInnerHTML={{__html: el?.info}} />
                             </div>
                         )}
                     </div>
