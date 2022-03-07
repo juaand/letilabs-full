@@ -7,14 +7,16 @@ import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import Loader from '../../../../../Loader/Loader'
+
 import './EditElementsModal.css'
 
 
 function EditElementsModal({deleteItem, element, hideModal}) {
 
     const [imageSuccess, setImageSuccess] = useState('')
-    const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
+    
+    const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onChange} = useFormState(
         {
@@ -52,11 +54,11 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
-    const editCarrouselItem = async (id) => {
+    const editCarrouselItem = async () => {
         if (Object.values(error).map(el => el).includes(false)) {
             data.id = element._id
             try {
-                await updateGalleryData(data, id)
+                await updateGalleryData(data)
                     .then(updateData => {
                         deleteItem(updateData)
                     })

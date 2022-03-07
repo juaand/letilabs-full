@@ -68,6 +68,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        error.desc = false
     }
 
     const onFileSelected = async (e) => {
