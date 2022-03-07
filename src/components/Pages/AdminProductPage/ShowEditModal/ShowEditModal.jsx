@@ -11,8 +11,6 @@ import {app} from '../../../../services/firebase'
 import './ShowEditModal.css'
 
 function ShowEditModal({product, hideModal, updateData}) {
-
-
     const [registerError, setRegisterError] = useState(null)
     const [message, setMessage] = useState('')
 
@@ -92,8 +90,13 @@ function ShowEditModal({product, hideModal, updateData}) {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
+                if (error.therapeutic_group === false) {
+                    const setCategories = data.therapeutic_group.split(',')
+                    data.therapeutic_group = setCategories
+                }
                 await updateProduct(data)
                     .then((info) => {
+                        console.log(info)
                         updateData(info)
                         setMessage('Data atualizada exitosamente')
                     })
@@ -211,6 +214,17 @@ function ShowEditModal({product, hideModal, updateData}) {
                                             type="file"
                                         />
                                     </div>
+                                    <div className="col-12">
+                                        <InputWithLabel
+                                            label="Categoría"
+                                            value={data?.therapeutic_group}
+                                            onChange={onChange}
+                                            name="therapeutic_group"
+                                            type="text"
+                                            cssStyle="form-control"
+                                            placeholder="Categoría"
+                                        />
+                                    </div>
                                     <div className="row">
                                         <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Composición</strong></p>
@@ -275,7 +289,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-2">
+                                        <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Presentación</strong></p>
                                             <Editor
                                                 initialValue={data?.presentation}
@@ -296,7 +310,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-2">
+                                        <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Indicaciones</strong></p>
                                             <Editor
                                                 initialValue={data?.indication}
@@ -317,7 +331,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-2">
+                                        <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Vida útil</strong></p>
                                             <Editor
                                                 initialValue={data?.util_life}
@@ -338,7 +352,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-2">
+                                        <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Modo de empleo</strong></p>
                                             <Editor
                                                 initialValue={data?.how_to_use}
@@ -359,7 +373,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-2">
+                                        <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Contraindicaciones</strong></p>
                                             <Editor
                                                 initialValue={data?.contraindications}
@@ -380,7 +394,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 }}
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-2">
+                                        <div className="col-12 col-sm-4">
                                             <p className="label"><strong>Reacciones adversas</strong></p>
                                             <Editor
                                                 initialValue={data?.adverse_reactions}
