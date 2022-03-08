@@ -8,6 +8,7 @@ import EditUsInfo from './EditUsInfo/EditUsInfo'
 import EditVideo from './EditVideo/EditVideo'
 import EditBottomCTA from './EditBottomCTA/EditBottomCTA'
 import EditCookies from './EditCookies/EditCookies'
+import EditRrss from './EditRrss/EditRrss'
 
 function EditHome() {
 
@@ -23,6 +24,7 @@ function EditHome() {
             <EditFarmacoVigilancia />
             <EditFarmacoVigilanciaModal />
             <EditCookies />
+            <EditRrss />
         </main>
 
     )

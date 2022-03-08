@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import {Fade} from 'react-awesome-reveal'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {deleteNews, updateNews, getTags} from '../../../../services/ApiClient'
