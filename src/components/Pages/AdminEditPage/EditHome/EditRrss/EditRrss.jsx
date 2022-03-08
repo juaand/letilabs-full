@@ -16,13 +16,11 @@ function EditCookies() {
             data: {
                 id: rrssData?._id,
                 facebook: rrssData?.facebook,
-                instagram: rrssData?.instagram,
                 linkedin: rrssData?.linkedin,
                 whatsapp: rrssData?.whatsapp,
             },
             error: {
                 facebook: true,
-                instagram: true,
                 linkedin: true,
                 whatsapp: true,
             },
@@ -30,7 +28,6 @@ function EditCookies() {
         },
         {
             facebook: v => v.length,
-            instagram: v => v.length,
             linkedin: v => v.length,
             whatsapp: v => v.length,
         }
@@ -48,7 +45,6 @@ function EditCookies() {
             try {
                 await updateRrssInfo(data)
                     .then(cookie => {
-                        console.log(cookie)
                         setRrssData(cookie)
                         setMessage('Data atualizada exitosamente')
                     })
@@ -78,7 +74,7 @@ function EditCookies() {
             <h2>Redes sociales</h2>
             <form className="AdminEdit__form" onSubmit={updateFarmaco}>
                 <div className="row">
-                    <div className="col-3">
+                    <div className="col-sm-4 col-12">
                         <p className="AdminEdit__form__label">
                             Facebook URL (No olvide el http://)
                         </p>
@@ -91,7 +87,7 @@ function EditCookies() {
                             placeholder={rrssData?.facebook}
                         />
                     </div>
-                    <div className="col-3">
+                    <div className="col-sm-4 col-12">
                         <p className="AdminEdit__form__label">
                             Linkedin URL (No olvide el http://)
                         </p>
@@ -104,22 +100,9 @@ function EditCookies() {
                             placeholder={rrssData?.linkedin}
                         />
                     </div>
-                    <div className="col-3">
+                    <div className="col-sm-4 col-12">
                         <p className="AdminEdit__form__label">
-                            Instagram URL (No olvide el http://)
-                        </p>
-                        <InputWithLabel
-                            value={data?.instagram}
-                            onChange={onChange}
-                            name="instagram"
-                            type="text"
-                            cssStyle="form-control"
-                            placeholder={rrssData?.instagram}
-                        />
-                    </div>
-                    <div className="col-3">
-                        <p className="AdminEdit__form__label">
-                            Whatsapp URL (No olvide el http://)
+                            Teléfono Whatsapp (Ej: 5712345678)
                         </p>
                         <InputWithLabel
                             value={data?.whatsapp}

@@ -2,6 +2,17 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
+    <meta property="og:url" content="https://www.grupoleti.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Grupo Leti" />
+    <meta
+      property="og:description"
+      content="Grupo Leti es un grupo farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos."
+    />
+    <meta
+      property="og:image"
+      content="https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Ffacebook.jpg?alt=media&token=9939ff45-c7c6-47ea-89ff-8a6037bc753d"
+    />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#FFFFFF" />
@@ -23,5 +34,18 @@
       crossorigin="anonymous"
     ></script>
     <script src="./js/parallax.js"></script>
+
+    <script>
+      ;(function (d, s, id) {
+        var js,
+          fjs = d.getElementsByTagName(s)[0]
+        if (d.getElementById(id)) return
+        js = d.createElement(s)
+        js.id = id
+        js.src =
+          'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0'
+        fjs.parentNode.insertBefore(js, fjs)
+      })(document, 'script', 'facebook-jssdk')
+    </script>
   </body>
 </html>

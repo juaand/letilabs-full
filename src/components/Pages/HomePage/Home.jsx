@@ -81,9 +81,7 @@ function Home() {
                             <h1>Política de cookies</h1>
                         </div>
                         <div className="col-12 col-sm-6">
-                            {/* <p>
-                                Utilizamos cookies para poder ofrecerle la mejor experiencia posible en el sitio web. Esto incluye las cookies que son necesarias para el funcionamiento del sitio web, así como otras cookies que se utilizan únicamente con fines estadísticos anónimos. {" "}</p> */}
-                                <p dangerouslySetInnerHTML={{__html: cookieInfo}} />
+                            <p dangerouslySetInnerHTML={{__html: cookieInfo}} />
                         </div>
                     </div>
                 </div>

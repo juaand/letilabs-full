@@ -1,8 +1,8 @@
 import axios from "axios"
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
-    //baseURL: "https://grupoleti-api.herokuapp.com/",
+    //baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+    baseURL: "https://grupoleti-api.herokuapp.com/",
     withCredentials: true,
 })
 
@@ -51,7 +51,7 @@ export const addHomeScreen = (show_in_home, id) => http.post(`/addprodtohomescre
 export const getCookieInfo = () => http.get("/cookieinfo")
 export const updateCookieInfo = ({info, id}) => http.patch("/updatecookieinfo", {info, id})
 export const getRrssInfo = () => http.get("/rrssinfo")
-export const updateRrssInfo = ({facebook, instagram, linkedin, whatsapp, id}) => http.patch("/updaterrssinfo", {facebook, instagram, linkedin, whatsapp, id})
+export const updateRrssInfo = ({facebook, linkedin, whatsapp, id}) => http.patch("/updaterrssinfo", {facebook, linkedin, whatsapp, id})
 
 //admin edit routes about us
 

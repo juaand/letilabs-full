@@ -1,13 +1,20 @@
-import './Footer.css'
+/* eslint-disable jsx-a11y/anchor-has-content */
 import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import dataNav from '../../data/dataNav'
+
 import {useAuthContext} from '../../contexts/AuthContext'
+import {getRrssInfo} from '../../services/ApiClient'
 import {seoURL} from '../../hooks/seoURL'
+
+import dataNav from '../../data/dataNav'
+
+import './Footer.css'
 
 function Footer() {
 
     const {user} = useAuthContext()
+
+    const [rrssData, setRrssData] = useState()
 
     const [bool, setBool] = useState(false)
 
@@ -15,6 +22,12 @@ function Footer() {
         if (window.screen.width <= 576) {
             setBool(!bool)
         }
+
+        const fetchData = async () => {
+            const getRrssData = await getRrssInfo()
+            setRrssData(getRrssData[0])
+        }
+        fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -64,8 +77,9 @@ function Footer() {
                             </ul>
                         </div>
                         <div className="col-6 col-sm-4 Footer__rrss">
-                            <Link to="/" className="Footer__icon facebook"></Link>
-                            <Link to="/" className="Footer__icon instagram"></Link>
+                            <div id="fb-root"></div>
+                            <div className="Footer__icon facebook fb-share-button" data-href="https://www.grupoleti.com" />
+                            <a href={`https://wa.me/${rrssData?.whatsapp}`} className="Footer__icon whatsapp"/>
                             <Link to="/" className="Footer__icon linkedin"></Link>
                         </div>
                     </div>
