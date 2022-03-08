@@ -1,26 +1,28 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Editor} from '@tinymce/tinymce-react'
 
-import './ShowEditModal.css'
-import {deleteNews, updateNews} from '../../../../services/ApiClient'
-import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+import {deleteNews, updateNews, getTags} from '../../../../services/ApiClient'
 import {useFormState} from '../../../../hooks/useFormState'
-import InputFile from '../../../Form/InputFile/InputFile'
 import {app} from '../../../../services/firebase'
+
+import InputWithLabel from '../../../Form/InputWithLabel/InputWithLabel'
+import InputFile from '../../../Form/InputFile/InputFile'
 import Button from '../../../Form/FormButton/FormButton'
 import Loader from '../../../Loader/Loader'
 
+import './ShowEditModal.css'
 
 function ShowEditModal({news, hideModal, updateData}) {
 
     const [registerError, setRegisterError] = useState(null)
-    
     const [isDisabled, setIsDisabled] = useState(false)
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [message, setMessage] = useState('')
-    
+
+    const [tagsData, setTagsData] = useState([])
+
     const {state, onChange} = useFormState(
         {
             data: {
@@ -58,6 +60,7 @@ function ShowEditModal({news, hideModal, updateData}) {
 
     const handleContent = (e) => {
         data.content = e.target.getContent()
+        error.content = false
     }
 
     const updateThisNews = async (event) => {
@@ -66,6 +69,10 @@ function ShowEditModal({news, hideModal, updateData}) {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
+                if (error.tag === false) {
+                    const setTags = data.tag.split(',')
+                    data.tag = setTags
+                }
                 await updateNews(data)
                     .then(info => {
                         updateData(info)
@@ -110,24 +117,34 @@ function ShowEditModal({news, hideModal, updateData}) {
         data.urlToPic = fileUrl
         setImageSuccess("Imagen subida correctamente")
         setIsDisabled(false)
+        error.urlToPic = false
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const getTagsData = await getTags()
+            setTagsData(getTagsData)
+        }
+        fetchData()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     return (
         <>
-            {isDisabled && <Loader message="Cargando imagen..."/>}
+            {isDisabled && <Loader message="Cargando imagen..." />}
             <main className="modal ShowEditModal">
                 <div className="container">
                     <div className="row justify-content-center">
-                        <Fade direction="down" className="col-12 ShowEditModal__container">
+                        <div className="col-12 ShowEditModal__container">
                             <>
                                 <span className="ShowEditModal__close" onClick={hideModal}></span>
                                 <form className="AdminEdit__form" onSubmit={updateThisNews}>
                                     <div className="row">
                                         <div className="col-sm-12 ShowEditModal__thumbnail">
-                                        <div className="ShowEditModal__thumbnail-img" style={{
-                                            background: `url(${data?.urlToPic}) no-repeat center center / cover`,
-                                        }}></div>
+                                            <div className="ShowEditModal__thumbnail-img" style={{
+                                                background: `url(${data?.urlToPic}) no-repeat center center / cover`,
+                                            }}></div>
                                             <h1 className="DeleteItemModal__ask">Editar noticia <span className="ShowEditModal__news-title">{news.title}</span></h1>
                                         </div>
                                         <div className="col-12 col-sm-4">
@@ -158,6 +175,17 @@ function ShowEditModal({news, hideModal, updateData}) {
                                                 value={data?.subTitle}
                                                 onChange={onChange}
                                                 name="subTitle"
+                                                type="text"
+                                                cssStyle="form-control"
+                                                placeholder="Ingresa el subtítulo de la noticia"
+                                            />
+                                        </div>
+                                        <div className="col-12">
+                                            <InputWithLabel
+                                                label={`Etiquetas:  ${tagsData?.map(el => el.tag).join(', ')} (separadas por coma)`}
+                                                value={data?.tag}
+                                                onChange={onChange}
+                                                name="tag"
                                                 type="text"
                                                 cssStyle="form-control"
                                                 placeholder="Ingresa el subtítulo de la noticia"
@@ -198,7 +226,7 @@ function ShowEditModal({news, hideModal, updateData}) {
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}
                                 </form>
                             </>
-                        </Fade>
+                        </div>
                     </div>
                 </div>
             </main>

@@ -12,6 +12,11 @@
   flex-direction: column;
 }
 
+.Banner__OurPeople__title strong {
+  color: #055aa5;
+  font-weight: unset;
+}
+
 .Banner__OurPeople__title h1 {
   font-size: 5.4rem;
   margin-bottom: 4rem;

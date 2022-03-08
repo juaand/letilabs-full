@@ -26,6 +26,11 @@
   margin-top: 6rem;
 }
 
+.InfoCards__OurPeople__cards strong {
+  color: #055aa5;
+  font-weight: unset;
+}
+
 .InfoCards__OurPeople__cards h4 {
   font-family: 'TripletaBold';
   font-size: 2.4rem;

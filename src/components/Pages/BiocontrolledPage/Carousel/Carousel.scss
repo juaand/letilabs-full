@@ -17,6 +17,10 @@
       margin: auto;
       padding-top: 7rem;
 
+      strong {
+        color: $leti-blue;
+      }
+
       &:before {
         content: '';
         position: absolute;

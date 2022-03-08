@@ -27,7 +27,7 @@ function AdminNewsPage() {
 
     const [allTagsData, setAllTagsData] = useState([])
     const [newsData, setNewsData] = useState([])
-    const [filter, setFilter] = useState([])
+    // const [filter, setFilter] = useState([])
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [newsMessage, setNewsMessage] = useState('')
@@ -164,12 +164,12 @@ function AdminNewsPage() {
         error.content = false
     }
 
-    const carouselHomeProducts = async (e) => {
-        e.target.checked ?
-            setNewsData(newsData.filter(el => el?.outstanding === true))
-            :
-            setNewsData(filter)
-    }
+    // const carouselHomeProducts = async (e) => {
+    //     e.target.checked ?
+    //         setNewsData(newsData.filter(el => el?.outstanding === true))
+    //         :
+    //         setNewsData(filter)
+    // }
 
     const setTag = (e) => {
         error.tag = false
@@ -185,7 +185,7 @@ function AdminNewsPage() {
             const allNews = await getNews()
             const allTags = await getTags()
             setNewsData(allNews)
-            setFilter(allNews)
+            // setFilter(allNews)
             setAllTagsData(allTags)
             setLoading(false)
         }
@@ -198,7 +198,7 @@ function AdminNewsPage() {
         <>
             {loading && <Loader message="Cargando noticias..." />}
             {isDisabled && <Loader message="Cargando imagen..." />}
-            {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} />}
+            {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} allTagsData={allTagsData} />}
             <Helmet>
                 <title>Grupo Leti | Administrador Productos</title>
             </Helmet>
@@ -217,7 +217,7 @@ function AdminNewsPage() {
                                     <button className="AdminNewsPage__add" onClick={showAddNewForm}>Añadir nueva noticia</button>
                                 </div>
                             </div>
-                            {filteredNews.length > 0 &&
+                            {/* {filteredNews.length > 0 &&
                                 <div className="row">
                                     <div className="col-12 AdminNewsPage__shownews">
                                         <div className="form-check">
@@ -229,7 +229,7 @@ function AdminNewsPage() {
                                         </div>
                                     </div>
                                 </div>
-                            }
+                            } */}
                             {!filteredNews.length &&
                                 <div className="row">
                                     <div className="col-12">

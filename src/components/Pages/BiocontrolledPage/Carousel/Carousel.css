@@ -240,6 +240,10 @@
   padding-top: 7rem;
 }
 
+.Carousel__Biocontrolled__desc strong {
+  color: #055aa5;
+}
+
 .Carousel__Biocontrolled__desc:before {
   content: '';
   position: absolute;

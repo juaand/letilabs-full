@@ -12,6 +12,11 @@
       justify-content: center;
       flex-direction: column;
 
+      strong {
+        color: $leti-blue;
+        font-weight: unset;
+      }
+
       h1 {
         font-size: 5.4rem;
         margin-bottom: 4rem;

@@ -45,17 +45,21 @@ function EditBannerManufacture() {
         data.id = bannerData._id
 
         if (Object.values(error).map(el => el).includes(false)) {
-            try {
-                await updateBannerManufacture(data)
-                    .then(banner => {
-                        setBannerData(banner)
-                        setMessage('Data atualizada exitosamente')
-                    })
-                    .catch(error => {
-                        setRegisterError(error)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.title.trim() === '' || data.description.trim() === '') {
+                setMessage('El título o la descripción no pueden ir vacios, por favor, rellene ambos campos.')
+            } else {
+                try {
+                    await updateBannerManufacture(data)
+                        .then(banner => {
+                            setBannerData(banner)
+                            setMessage('Data atualizada exitosamente')
+                        })
+                        .catch(error => {
+                            setRegisterError(error)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
             }
         } else {
             setMessage('Por favor edite alguno de los campos')

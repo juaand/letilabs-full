@@ -48,6 +48,8 @@ export const updateVideoData = (url, id) => http.patch("/updatevideodata", {url,
 export const getHomeBottom = () => http.get("/homebottomdata")
 export const updateBottomHome = ({title, img, button, url, id}) => http.patch("/updatebottomhome", {title, img, button, url, id})
 export const addHomeScreen = (show_in_home, id) => http.post(`/addprodtohomescreen/${id}`, {show_in_home, id})
+export const getCookieInfo = () => http.get("/cookieinfo")
+export const updateCookieInfo = ({info, id}) => http.patch("/updatecookieinfo", {info, id})
 
 //admin edit routes about us
 

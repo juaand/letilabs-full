@@ -49,14 +49,14 @@ function EditProductListBanner() {
         data.id = bannerData._id
 
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.description.trim() === '' || data.title.trim() === '') {
+            if (data?.description?.trim() === '' || data?.title?.trim() === '') {
                 setMessage('El título o descripción no pueden ir vacios, por favor llene ambos campos')
             } else {
                 try {
                     await updateProductListBanner(data)
                         .then(banner => {
                             setBannerData(banner)
-                            setMessage('Data atualizada exitosamente')
+                            setMessage('Data actualizada exitosamente')
                         })
                         .catch(error => {
                             setRegisterError(error)
@@ -113,7 +113,7 @@ function EditProductListBanner() {
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
             <section className="container-fluid EditContent">
-                <h2>Banner Lista de Productos</h2>
+                <h2>Banner listado de productos</h2>
                 <form className="AdminEdit__form" onSubmit={updateBanner}>
                     <div className="row">
                         <div className="col-12 col-sm-6">

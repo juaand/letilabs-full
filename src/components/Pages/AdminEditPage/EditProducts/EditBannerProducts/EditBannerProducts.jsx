@@ -78,8 +78,9 @@ function EditProductBanner() {
         }
     }
 
-    const handleBannerDescription = (e) => {
-        data.description = e.target.getContent()
+    const handleDescription = (e) => {
+        data[e.target.settings.name] = e.target.getContent()
+        error[e.target.settings.name] = false
     }
 
     const onFileSelected = async (e) => {
@@ -123,19 +124,7 @@ function EditProductBanner() {
                 <h2>Banner productos</h2>
                 <form className="AdminEdit__form" onSubmit={updateBanner}>
                     <div className="row">
-                        <div className="col-12 col-sm-6">
-                            <p className="AdminEdit__form__label">
-                                Título
-                            </p>
-                            <InputWithLabel
-                                value={data?.title}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="title"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.title}
-                            />
+                        <div className="col-12">
                             <p className="AdminEdit__form__label mt-5">
                                 Imagen
                             </p>
@@ -145,7 +134,30 @@ function EditProductBanner() {
                                 onChange={onFileSelected}
                                 id="fileButton"
                                 name="urlToPic"
-                                type="file" 
+                                type="file"
+                            />
+                        </div>
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Título
+                            </p>
+                            <Editor
+                                initialValue={bannerData?.title}
+                                onChange={handleDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    name: 'title',
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
                         <div className="col-12 col-sm-6">
@@ -154,9 +166,10 @@ function EditProductBanner() {
                             </p>
                             <Editor
                                 initialValue={bannerData?.description}
-                                onChange={handleBannerDescription}
+                                onChange={handleDescription}
                                 apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                 init={{
+                                    name: 'description',
                                     height: 200,
                                     menubar: false,
                                     plugins: [

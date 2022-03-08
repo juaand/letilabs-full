@@ -1,3 +1,8 @@
+.Careers strong {
+  color: #055aa5;
+  font-weight: unset;
+}
+
 @media (max-width: 576px) {
   .Careers {
     padding: 2rem;

@@ -9,6 +9,8 @@ function EditNewsTags() {
 
     const [tagsData, setTagsData] = useState([])
 
+    const [message, setMessage] = useState('')
+
     const {state, onBlur, onChange} = useFormState(
         {
             data: {
@@ -40,6 +42,7 @@ function EditNewsTags() {
     const deleteSelectedTag = async (id) => {
         const result = await deleteTag(id)
         setTagsData(result)
+        setMessage('Etiqueta borrada correctamente.')
     }
 
     useEffect(() => {
@@ -83,6 +86,9 @@ function EditNewsTags() {
                     {tagsData?.map(el =>
                         <div onClick={() => deleteSelectedTag(el?.id)} className="col-sm-2 col-6 EditNewsTags-delete-tags">{el?.tag}</div>
                     )}
+                    <div className="col-12">
+                        {message && <span className="AdminEdit__message m-0">{message}</span>}
+                    </div>
                 </div>
             </section>
         </>

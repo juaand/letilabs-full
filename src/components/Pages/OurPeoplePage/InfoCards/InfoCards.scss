@@ -25,6 +25,11 @@
       margin: 1rem;
       margin-top: 6rem;
 
+      strong {
+        color: $leti-blue;
+        font-weight: unset;
+      }
+
       h4 {
         font-family: 'TripletaBold';
         font-size: 2.4rem;

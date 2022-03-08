@@ -7,6 +7,7 @@ import EditUnidades from './EditUnidades/EditUnidades'
 import EditUsInfo from './EditUsInfo/EditUsInfo'
 import EditVideo from './EditVideo/EditVideo'
 import EditBottomCTA from './EditBottomCTA/EditBottomCTA'
+import EditCookies from './EditCookies/EditCookies'
 
 function EditHome() {
 
@@ -21,6 +22,7 @@ function EditHome() {
             <EditBottomCTA />
             <EditFarmacoVigilancia />
             <EditFarmacoVigilanciaModal />
+            <EditCookies />
         </main>
 
     )

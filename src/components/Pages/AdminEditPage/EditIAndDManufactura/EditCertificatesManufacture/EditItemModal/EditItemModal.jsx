@@ -107,17 +107,20 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                             <h1 className="DeleteItemModal__ask">Editar certificado</h1>
                                         </div>
                                         <div className="col-12">
-                                            <img src={infodata?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={infodata?.title} width="15%" />
-                                            <InputFile
-                                                value={infodata?.imgURL}
-                                                onChange={onFileSelected}
-                                                id="fileButton"
-                                                name="picpath"
-                                                type="file"
-                                                placeholder="Selecciona una imagen"
-                                            />
-                                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
+                                            <div className="col-12 EditElementsModal__img mb-0">
+                                                <img src={infodata?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={infodata?.title} width="15%" />
+                                                <InputFile
+                                                    value={infodata?.imgURL}
+                                                    onChange={onFileSelected}
+                                                    id="fileButton"
+                                                    name="picpath"
+                                                    type="file"
+                                                    placeholder="Selecciona una imagen"
+                                                />
+                                            </div>
                                         </div>
+                                        <div className="col-12">
+                                                {imageSuccess && <span className="AdminEdit__message mt-1 m-0">{imageSuccess}</span>}</div>
                                         <div className="col-12 col-sm-6">
                                             <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>
                                         </div>

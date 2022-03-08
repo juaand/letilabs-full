@@ -1,7 +1,7 @@
 import './Home.css'
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import {createContent} from '../../../services/ApiClient'
+import {createContent, getCookieInfo} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
 import Video from './Video/Video'
 import UsInfo from './UsInfo/UsInfo'
@@ -14,6 +14,8 @@ import CookieConsent from "react-cookie-consent"
 
 
 function Home() {
+
+    const [cookieInfo, setCookieInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -40,6 +42,12 @@ function Home() {
         if (isMenuOpen) {
             isMenuOpen.classList.remove('show')
         }
+
+        const fetchData = async () => {
+            const getCookieInfoData = await getCookieInfo()
+            setCookieInfo(getCookieInfoData.info)
+        }
+        fetchData()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -73,8 +81,9 @@ function Home() {
                             <h1>Política de cookies</h1>
                         </div>
                         <div className="col-12 col-sm-6">
-                            <p>
-                                Utilizamos cookies para poder ofrecerle la mejor experiencia posible en el sitio web. Esto incluye las cookies que son necesarias para el funcionamiento del sitio web, así como otras cookies que se utilizan únicamente con fines estadísticos anónimos. {" "}</p>
+                            {/* <p>
+                                Utilizamos cookies para poder ofrecerle la mejor experiencia posible en el sitio web. Esto incluye las cookies que son necesarias para el funcionamiento del sitio web, así como otras cookies que se utilizan únicamente con fines estadísticos anónimos. {" "}</p> */}
+                                <p dangerouslySetInnerHTML={{__html: cookieInfo}} />
                         </div>
                     </div>
                 </div>
