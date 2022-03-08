@@ -79,17 +79,21 @@ function EditCarrouselTA() {
 
         if (error.title === false && error.imgURL === false && error.desc === false) {
             data.mainTitle = carrouselTAData[0]?.mainTitle
-            try {
-                await createCarrouselTA(data)
-                    .then(carrouselTA => {
-                        setCarrouselTAData(carrouselTA)
-                        setMessage('Elemento añadido exitosamente')
-                    })
-                    .catch(error => {
-                        setRegisterError(error)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.desc.length < 37) {
+                setMessage('La descripción debe tener al menos 30 caracteres')
+            } else {
+                try {
+                    await createCarrouselTA(data)
+                        .then(carrouselTA => {
+                            setCarrouselTAData(carrouselTA)
+                            setMessage('Elemento añadido exitosamente')
+                        })
+                        .catch(error => {
+                            setRegisterError(error)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
             }
         } else {
             setMessage('Por rellene todos los campos')
@@ -145,7 +149,7 @@ function EditCarrouselTA() {
             {bool && <EditElementsModal hideModal={() => setBool(!bool)} element={modalData} deleteItem={(updateData) => deleteItem(updateData)} />}
             {carrouselTAData?.length > 0 &&
                 <section className="container-fluid EditContent EditContent-timeline">
-                    <h2>Editar elemento del carrusel</h2>
+                    <h2>Editar elemento de la galería</h2>
                     <div className="row justify-content-around">
                         {carrouselTAData?.map(el =>
                             <div className="col-sm-1 col-6 EditCarousel__edit" onClick={() => showModal(el)}>
@@ -158,7 +162,7 @@ function EditCarrouselTA() {
             <section className="container-fluid EditContent">
                 <form className="AdminEdit__form" onSubmit={updateInfo}>
                     <div className="row">
-                        <h3>Editar título galería</h3>
+                        <h3>Editar título de la galería</h3>
                         <div className="col-12">
                             <InputWithLabel
                                 value={data?.mainTitle}
@@ -180,10 +184,10 @@ function EditCarrouselTA() {
 
                     {registerError && <div className="alert alert-danger">{registerError}</div>}
                 </form>
-                <h2>Añadir nuevo elemento a la Galería</h2>
+                <h2>Galería</h2>
                 <form className="AdminEdit__form" onSubmit={createCarrouselItem}>
                     <div className="row">
-                        <h3>Añadir elemento</h3>
+                        <h3>Añadir nuevo elemento a la galería</h3>
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Título del área
@@ -195,7 +199,7 @@ function EditCarrouselTA() {
                                 name="title"
                                 type="text"
                                 cssStyle="form-control mb-0"
-                                placeholder="Ingresa descripción del producto"
+                                placeholder="Ingresa título"
                             />
                         </div>
                         <div className="col-12 col-sm-6">

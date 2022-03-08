@@ -103,7 +103,7 @@ function AdminProductPage() {
         }
 
         try {
-            setProductMessage('Cargando producto...')
+            // setProductMessage('Cargando producto...')
             const newProduct = await addProductApi(data)
             document.querySelector('form').reset()
             setProducts(newProduct)
@@ -341,18 +341,6 @@ function AdminProductPage() {
                                                                     placeholder="CPE"
                                                                 />
                                                             </div>
-                                                            <div className="col-12">
-                                                                <InputWithLabel
-                                                                    label="Categoría(s) / Separadas por coma"
-                                                                    value={data.therapeutic_group}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="therapeutic_group"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
-                                                                    placeholder="Categoría(s) separadas por coma"
-                                                                />
-                                                            </div>
                                                             <div className="col-12 col-sm-4">
                                                                 <p className="label">Composición</p>
                                                                 <Editor
@@ -542,7 +530,18 @@ function AdminProductPage() {
                                                                     }}
                                                                 />
                                                             </div>
-
+                                                            <div className="col-12">
+                                                                <InputWithLabel
+                                                                    label="Categoría(s) / Separadas por coma"
+                                                                    value={data.therapeutic_group}
+                                                                    onBlur={onBlur}
+                                                                    onChange={onChange}
+                                                                    name="therapeutic_group"
+                                                                    type="text"
+                                                                    cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
+                                                                    placeholder="Categoría(s) separadas por coma"
+                                                                />
+                                                            </div>
                                                             <div className="col-12 mt-5">
                                                                 <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
                                                             </div>

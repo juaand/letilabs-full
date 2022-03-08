@@ -69,17 +69,21 @@ function EditCarrouselTech() {
         data.mainTitle = ourGoalsOCData[0]?.mainTitle
 
         if (error.title === false && error.description === false && error.imgURL === false) {
-            try {
-                await createTechCarousel(data)
-                    .then(info => {
-                        setOurGoalsOCData(info)
-                        setMessage('Elemento creado exitosamente')
-                    })
-                    .catch(error => {
-                        setRegisterError(error)
-                    })
-            } catch (err) {
-                setRegisterError(err.response?.data?.message)
+            if (data.description.length < 37) {
+                setMessage('La descripción debe tener al menos 30 caracteres')
+            } else {
+                try {
+                    await createTechCarousel(data)
+                        .then(info => {
+                            setOurGoalsOCData(info)
+                            setMessage('Elemento creado exitosamente')
+                        })
+                        .catch(error => {
+                            setRegisterError(error)
+                        })
+                } catch (err) {
+                    setRegisterError(err.response?.data?.message)
+                }
             }
         } else {
             setMessage('Por favor rellene todos los campos')
@@ -180,7 +184,7 @@ function EditCarrouselTech() {
                     <div className="row justify-content-around">
                         <h3 className="mb-5">Editar elementos del carrusel</h3>
                         {ourGoalsOCData?.map(el =>
-                            <div className="col EditCarousel__edit logros" onClick={() => showModal(el)}>
+                            <div className="col-1 EditCarousel__edit logros" onClick={() => showModal(el)}>
                                 <img src={el?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} />
                                 <h4 className="mt-5">{el?.title}</h4>
                             </div>
