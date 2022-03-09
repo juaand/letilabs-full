@@ -1,8 +1,9 @@
 import React from 'react'
-import EditBannerAlliances from './EditBannerAlliances/EditBannerAlliances'
 import EditCarrouselAlliances from './EditCarrouselAlliances/EditCarrouselAlliances'
+import EditBannerAlliances from './EditBannerAlliances/EditBannerAlliances'
 import EditBottomAlliances from './EditBottomAlliances/EditBottomAlliances'
 import EditFormAlliances from './FormAlliances/FormAlliances'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditIAndDAlliances() {
     return (
@@ -12,6 +13,7 @@ function EditIAndDAlliances() {
             <EditCarrouselAlliances />
             <EditFormAlliances />
             <EditBottomAlliances />
+            <EditSeo />
         </div>
     )
 }

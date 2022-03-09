@@ -1,10 +1,11 @@
 import React from 'react'
-import EditBanner from './EditBanner/EditBanner'
-import EditCompaniesInfo from './EditCompaniesInfo/EditCompaniesInfo'
 import EditProdutcsBanner from './EditProdutcsBanner/EditProdutcsBanner'
-import EditInnovate from './EditInnovate/EditInnovate'
-import EditCare from './EditCare/EditCare'
+import EditCompaniesInfo from './EditCompaniesInfo/EditCompaniesInfo'
 import EditBottomCta from './EditBottomCta/EditBottomCta'
+import EditInnovate from './EditInnovate/EditInnovate'
+import EditBanner from './EditBanner/EditBanner'
+import EditCare from './EditCare/EditCare'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditOurCompanies() {
     return (
@@ -17,6 +18,7 @@ function EditOurCompanies() {
             <EditInnovate />
             <EditCare />
             <EditBottomCta />
+            <EditSeo />
         </main>
     )
 }

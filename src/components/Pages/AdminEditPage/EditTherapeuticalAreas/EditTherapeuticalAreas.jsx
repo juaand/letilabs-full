@@ -2,6 +2,7 @@ import React from 'react'
 import EditBannerTA from './EditBannerTA/EditBannerTA'
 import EditBottomTA from './EditBottomTA/EditBottomTA'
 import EditCarrouselTA from './EditCarrouselTA/EditCarrouselTA'
+import EditSeo from './EditSeo/EditSeo'
 
 
 function EditTherapeuticalAreas() {
@@ -12,6 +13,7 @@ function EditTherapeuticalAreas() {
             <EditBannerTA />
             <EditCarrouselTA />
             <EditBottomTA />
+            <EditSeo />
         </main>
     )
 }

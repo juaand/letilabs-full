@@ -1,8 +1,9 @@
 import React from 'react'
+import EditCertificatesManufacture from './EditCertificatesManufacture/EditCertificatesManufacture'
 import EditBannerManufacture from './EditBannerManufacture/EditBannerManufacture'
 import EditBottomManufacture from './EditBottomManufacture/EditBottomManufacture'
 import EditCarouselManufacture from './EditCarouselManufacture/EditCarouselManufacture'
-import EditCertificatesManufacture from './EditCertificatesManufacture/EditCertificatesManufacture'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditIAndDManufactura() {
     return (
@@ -12,6 +13,7 @@ function EditIAndDManufactura() {
             <EditCarouselManufacture />
             <EditCertificatesManufacture />
             <EditBottomManufacture />
+            <EditSeo />
         </div>
     )
 }

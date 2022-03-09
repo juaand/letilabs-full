@@ -2,6 +2,7 @@ import React from 'react'
 import EditTimeLinePurpose from './EditTimelinePurpose/EditTimelinePurpose'
 import EditBannerPurpose from './EditBannerPurpose/EditBannerPurpose'
 import EditPurposeVideo from './EditPurposeVideo/EditPurposeVideo'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditPurpose() {
     return (
@@ -10,6 +11,7 @@ function EditPurpose() {
             <EditBannerPurpose />
             <EditPurposeVideo />
             <EditTimeLinePurpose />
+            <EditSeo />
         </main>
     )
 }

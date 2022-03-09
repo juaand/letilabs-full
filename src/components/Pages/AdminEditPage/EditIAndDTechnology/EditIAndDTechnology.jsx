@@ -1,9 +1,10 @@
 import React from 'react'
+import EditCarrouselTech from './EditCarrouselTech/EditCarrouselTech'
 import EditBannerTech from './EditBannerTech/EditBannerTech'
 import EditBottomTech from './EditBottomTech/EditBottomTech'
-import EditCarrouselTech from './EditCarrouselTech/EditCarrouselTech'
-import EditMapTech from './EditMapTech/EditMapTech'
 import EditVideoTech from './EditVideoTech/EditVideoTech'
+import EditMapTech from './EditMapTech/EditMapTech'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditIAndDTechnology() {
     return (
@@ -14,6 +15,7 @@ function EditIAndDTechnology() {
             <EditCarrouselTech />
             <EditMapTech />
             <EditBottomTech />
+            <EditSeo />
         </div>
     )
 }

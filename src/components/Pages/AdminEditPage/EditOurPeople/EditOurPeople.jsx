@@ -1,11 +1,11 @@
 import React from 'react'
-import EditInfoCardsOurPeople  from './EditInfoCardsOurPeople/EditInfoCardsOurPeople'
-import EditEquipoOurPeople  from './EditEquipoOurPeople/EditEquipoOurPeople'
+import EditInfoCardsOurPeople from './EditInfoCardsOurPeople/EditInfoCardsOurPeople'
+import EditEquipoOurPeople from './EditEquipoOurPeople/EditEquipoOurPeople'
 import EditBannerOurPeople from './EditBannerOurPeople/EditBannerOurPeople'
 import EditBottomOurPeople from './EditBottomOurPeople/EditBottomOurPeople'
-import EditBannerTeams  from './EditBannerTeams/EditBannerTeams'
+import EditBannerTeams from './EditBannerTeams/EditBannerTeams'
 import EditCarreras from './EditCarreras/EditCarreras'
-
+import EditSeo from './EditSeo/EditSeo'
 
 function EditOurPeople() {
     return (
@@ -17,6 +17,7 @@ function EditOurPeople() {
             <EditCarreras />
             <EditEquipoOurPeople />
             <EditBottomOurPeople />
+            <EditSeo />
         </main>
     )
 }

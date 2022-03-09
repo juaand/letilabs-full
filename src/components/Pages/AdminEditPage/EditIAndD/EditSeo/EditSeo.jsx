@@ -16,7 +16,7 @@ function EditSeo() {
             data: {
                 id: '',
                 keywords: seoData?.keywords,
-                page: 'Inicio',
+                page: 'Investigación y desarrollo',
                 description: seoData?.description,
             },
             error: {
@@ -51,7 +51,7 @@ function EditSeo() {
                 }
                 await updateSeo(data)
                     .then(seo => {
-                        setSeoData(seo[0])
+                        setSeoData(seo)
                         setMessage('SEO atualizado exitosamente')
                     })
                     .catch(error => {
@@ -73,7 +73,7 @@ function EditSeo() {
     useEffect(() => {
         const fetchData = async () => {
             const getSeoData = await getSeo()
-            const filterSeo = getSeoData.filter(seo => seo.page === 'Inicio')
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Investigación y desarrollo')
             setSeoData(filterSeo[0])
         }
         fetchData()

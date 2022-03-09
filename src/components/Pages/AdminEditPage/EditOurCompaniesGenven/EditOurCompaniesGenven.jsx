@@ -1,9 +1,10 @@
 import React from 'react'
-import EditBannerOCGenven from './EditBannerOCGenven/EditBannerOCGenven'
 import EditCompaniesVideoGenven from './EditCompaniesVideoGenven/EditCompaniesVideoGenven'
-import EditEquipoGenvenPage from './EditEquipoGenvenPage/EditEquipoGenvenPage'
 import EditProductosGenvenPage from './EditProductosGenvenPage/EditProductosGenvenPage'
+import EditEquipoGenvenPage from './EditEquipoGenvenPage/EditEquipoGenvenPage'
+import EditBannerOCGenven from './EditBannerOCGenven/EditBannerOCGenven'
 import EditTimelineGenven from './EditTimelineGenven/EditTimelineGenven'
+import EditSeo from './EditSeo/EditSeo'
 
 
 function EditOurCompaniesGenven() {
@@ -16,6 +17,7 @@ function EditOurCompaniesGenven() {
             <EditProductosGenvenPage />
             <EditTimelineGenven />
             <EditEquipoGenvenPage />
+            <EditSeo />
         </main>
     )
 }

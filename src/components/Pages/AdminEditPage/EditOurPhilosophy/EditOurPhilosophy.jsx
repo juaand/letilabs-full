@@ -1,8 +1,9 @@
 import React from 'react'
+import EditInfoCardsOurPhilosophy from './EditInfoCardsOurPhilosophy/EditInfoCardsOurPhilosophy'
 import EditBannerOurPhilosophy from './EditBannerOurPhilosophy/EditBannerOurPhilosophy'
 import EditBottomOurPhilosophy from './EditBottomOurPhilosophy/EditBottomOurPhilosophy'
-import EditInfoCardsOurPhilosophy from './EditInfoCardsOurPhilosophy/EditInfoCardsOurPhilosophy'
 import EditLetterOurPhilosophy from './EditLetterOurPhilosophy/EditLetterOurPhilosophy'
+import EditSeo from './EditSeo/EditSeo'
 
 
 function EditOurPhilosophy() {
@@ -14,6 +15,7 @@ function EditOurPhilosophy() {
             <EditInfoCardsOurPhilosophy />
             <EditLetterOurPhilosophy />
             <EditBottomOurPhilosophy />
+            <EditSeo />
         </main>
     )
 }

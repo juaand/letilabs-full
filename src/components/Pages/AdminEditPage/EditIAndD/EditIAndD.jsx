@@ -1,8 +1,9 @@
 import React from 'react'
+import EditInfoCardsID from './EditInfoCardsID/EditInfoCardsID'
+import EditGoalsInfo from './EditGoalsInfo/EditGoalsInfo'
 import EditBannerID from './EditBannerIAD/EditBannerIAD'
 import EditBottomID from './EditBottomID/EditBottomID'
-import EditGoalsInfo from './EditGoalsInfo/EditGoalsInfo'
-import EditInfoCardsID from './EditInfoCardsID/EditInfoCardsID'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditIAndD() {
     return (
@@ -12,6 +13,7 @@ function EditIAndD() {
             <EditInfoCardsID />
             <EditGoalsInfo />
             <EditBottomID />
+            <EditSeo />
         </div>
     )
 }

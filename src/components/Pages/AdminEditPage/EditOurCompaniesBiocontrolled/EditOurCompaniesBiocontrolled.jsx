@@ -1,9 +1,10 @@
 import React from 'react'
 import EditBannerOCBiocontrolled from './EditBannerOCBiocontrolled/EditBannerOCBiocontrolled'
-import EditCarrouselBiocontrolled from './EditCarrousel/EditCarrousel'
-import EditCompaniesInfoCardsBiocontrolled from './EditCompaniesInfoCardsBiocontrolled/EditCompaniesInfoCardsBiocontrolled'
 import EditEquipoBiocontrolledPage from './EditEquipoBiocontrolledPage/EditEquipoBiocontrolledPage'
+import EditCompaniesInfoCardsBiocontrolled from './EditCompaniesInfoCardsBiocontrolled/EditCompaniesInfoCardsBiocontrolled'
+import EditCarrouselBiocontrolled from './EditCarrousel/EditCarrousel'
 import EditTimelineBiocontrolled from './EditTimeline/EditTimeline'
+import EditSeo from './EditSeo/EditSeo'
 
 
 function EditOurCompaniesBiocontrolled() {
@@ -16,6 +17,7 @@ function EditOurCompaniesBiocontrolled() {
             <EditCarrouselBiocontrolled />
             <EditTimelineBiocontrolled />
             <EditEquipoBiocontrolledPage />
+            <EditSeo />
         </main>
     )
 }

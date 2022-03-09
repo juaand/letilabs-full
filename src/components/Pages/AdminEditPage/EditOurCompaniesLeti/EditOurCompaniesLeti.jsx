@@ -1,8 +1,9 @@
 import React from 'react'
-import EditBannerOCLeti from './EditBannerOCLeti/EditBannerOCLeti'
 import EditCompaniesInfoCardsLeti from './EditCompaniesInfoCardsLeti/EditCompaniesInfoCardsLeti'
 import EditProdutcsBanner from './EditEquipoLetiPage/EditEquipoLetiPage'
+import EditBannerOCLeti from './EditBannerOCLeti/EditBannerOCLeti'
 import EditTimelineLeti from './EditTimeline/EditTimeline'
+import EditSeo from './EditSeo/EditSeo'
 
 
 function EditOurCompaniesLeti() {
@@ -14,6 +15,7 @@ function EditOurCompaniesLeti() {
             <EditCompaniesInfoCardsLeti />
             <EditTimelineLeti />
             <EditProdutcsBanner />
+            <EditSeo />
         </main>
     )
 }
