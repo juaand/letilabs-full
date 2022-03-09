@@ -1,19 +1,23 @@
-import './NewsPage.css'
 import React, {useState, useEffect} from 'react'
-import {getNews, getNewsTitles} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
-import Lastest from './Lastest/Lastest'
-import Most from './Most/Most'
+
+import {getNews, getNewsTitles, getSeo} from '../../../services/ApiClient'
+
 import FindNews from './FindNews/FindNews'
 import LetiNews from './LetiNews/LetiNews'
 import Loader from '../../Loader/Loader'
+import Lastest from './Lastest/Lastest'
+import Banner from './Banner/Banner'
+import Most from './Most/Most'
+
+import './NewsPage.css'
 
 function NewsPage() {
 
-    const [newsData, setNewsData] = useState([])
     const [titlesData, setTitlesData] = useState([])
+    const [newsData, setNewsData] = useState([])
     const [loading, setLoading] = useState(true)
+    const [seoInfo, setSeoInfo] = useState('')
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +25,9 @@ function NewsPage() {
             const getTitlesData = await getNewsTitles()
             setNewsData(getNewsData)
             setTitlesData(getTitlesData)
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Noticias')
+            setSeoInfo(filterSeo[0])
         }
         fetchData()
         setLoading(!loading)
@@ -31,9 +38,9 @@ function NewsPage() {
         <>
             {loading && <Loader />}
             <Helmet>
-                <title>Grupo Leti | Noticias</title>
-                <meta name="description" content="Para nosotros siempre ha sido prioridad contar con la tecnología e infraestructura que nos permita desarrollar los mejores productos, y además en las cantidades necesarias para cuidar de la salud de todo el país." />
-                <meta name="keywords" content="Grupo Leti, Noticias" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner newsData={newsData?.filter(el => el?.outstanding === true)} />

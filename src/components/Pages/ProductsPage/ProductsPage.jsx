@@ -1,14 +1,18 @@
 import React, {useState, useEffect} from 'react'
+
+import {createContent, getProductBottom, getFarmaco, getSeo} from '../../../services/ApiClient'
+
 import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent, getProductBottom, getFarmaco} from '../../../services/ApiClient'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
-import FindProduct from './FindProduct/FindProduct'
-import Bottom from './Bottom/Bottom'
+
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
+import FindProduct from './FindProduct/FindProduct'
 import Loader from '../../Loader/Loader'
+import Bottom from './Bottom/Bottom'
+import Banner from './Banner/Banner'
 
 function ProductsPage() {
+
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -16,8 +20,9 @@ function ProductsPage() {
         name: 'Productos',
     }
 
-    const [bottomData, setBottomData] = useState()
-    const [farmacoData, setFarmacoData] = useState()
+    const [farmacoData, setFarmacoData] = useState([])
+    const [bottomData, setBottomData] = useState([])
+    const [seoInfo, setSeoInfo] = useState('')
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -50,6 +55,9 @@ function ProductsPage() {
             setBottomData(getBottomData[0])
             const getFarmacoData = await getFarmaco()
             setFarmacoData(getFarmacoData)
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Productos')
+            setSeoInfo(filterSeo[0])
         }
         fetchData()
         setLoading(!loading)
@@ -62,9 +70,9 @@ function ProductsPage() {
         <>
             {loading && <Loader />}
             <Helmet>
-                <title>Grupo Leti | Productos</title>
-                <meta name="description" content="Trabajamos cada día para poner nuestros conocimientos y habilidades al servicio de las personas: Desarrollando y poniendo a su disposición productos que abarquen una amplia gama de necesidades." />
-                <meta name="keywords" content="Grupo Leti, Productos" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

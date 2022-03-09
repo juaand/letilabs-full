@@ -1,15 +1,19 @@
-import './AlliancesPage.css'
-import React, {useEffect} from 'react'
-import {createContent} from '../../../services/ApiClient'
-import {useAuthContext} from '../../../contexts/AuthContext'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
-import Carousel from './Carousel/Carousel'
-import BottomCta from './BottomCta/BottomCta'
-import AllianceForm from './AllianceForm/AllianceForm'
 
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
+import AllianceForm from './AllianceForm/AllianceForm'
+import BottomCta from './BottomCta/BottomCta'
+import Carousel from './Carousel/Carousel'
+import Banner from './Banner/Banner'
+
+import './AlliancesPage.css'
 
 function AlliancesPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -41,15 +45,22 @@ function AlliancesPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Alianzas')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Alianzas</title>
-                <meta name="description" content="Para lograr nuestro propósito de cuidar de la salud de los venezolanos, es importante contar con aliados que aporten al proceso y nos ayuden a ofrecer lo mejor." />
-                <meta name="keywords" content="Grupo Leti, Alianzas" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

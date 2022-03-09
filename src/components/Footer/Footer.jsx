@@ -77,8 +77,8 @@ function Footer() {
                             </ul>
                         </div>
                         <div className="col-6 col-sm-4 Footer__rrss">
-                            <div id="fb-root"></div>
-                            <div className="Footer__icon facebook fb-share-button" data-href="https://www.grupoleti.com" />
+                            {/* <div id="fb-root"></div> */}
+                            <div className="Footer__icon facebook"  />
                             <a href={`https://wa.me/${rrssData?.whatsapp}`} className="Footer__icon whatsapp"/>
                             <Link to="/" className="Footer__icon linkedin"></Link>
                         </div>

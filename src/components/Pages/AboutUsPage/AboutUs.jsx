@@ -1,16 +1,20 @@
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 
-import './AboutUs.css'
-import {createContent} from '../../../services/ApiClient'
+import {createContent, getSeo} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import Banner from './Banner/Banner'
+
 import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 import Timeline from './Timeline/Timeline'
-import Megat from './Megat/Megat'
 import Gallery from './Gallery/Gallery'
+import Banner from './Banner/Banner'
+import Megat from './Megat/Megat'
+
+import './AboutUs.css'
 
 function AboutUs() {
+
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -32,15 +36,22 @@ function AboutUs() {
             fetchData()
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Sobre nosotros')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Sobre nosotros</title>
-                <meta name="description" content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
-                <meta name="keywords" content="Grupo Leti, Sobre nosotros" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

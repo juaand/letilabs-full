@@ -1,13 +1,18 @@
-import React, {useEffect} from 'react'
-import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent} from '../../../services/ApiClient'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
 import InfoCards from './InfoCards/InfoCards'
 import Letter from './Letter/Letter'
+import Banner from './Banner/Banner'
 import Megat from './Bottom/Bottom'
 
 function OurPhilosophyPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
+
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -38,14 +43,21 @@ function OurPhilosophyPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Nuestra filosofía')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Nuestra filosofía</title>
-                <meta name="description" content="Todos los líderes de cada unidad y demás áreas de trabajo, trabajan en conjunto para promover la relación de sinergia entre todas las empresas y así lograr los mejores resultados. Contamos con un talento humano excepcional y altamente calificado que trabaja día a día generando soluciones para los venezolanos, bajo los principios y ética del grupo.." />
-                <meta name="keywords" content="Grupo Leti, Nuestra filosofía" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

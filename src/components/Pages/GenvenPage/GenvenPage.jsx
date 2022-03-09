@@ -1,16 +1,20 @@
-import './GenvenPage.css'
-import React, {useEffect} from 'react'
-import {createContent} from '../../../services/ApiClient'
-import {useAuthContext} from '../../../contexts/AuthContext'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
-import Video from './Video/Video'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
+import Productos from './Productos/Productos'
 import Timeline from './Timeline/Timeline'
 import Equipo from './Equipo/Equipo'
-import Productos from './Productos/Productos'
+import Banner from './Banner/Banner'
+import Video from './Video/Video'
 
+import './GenvenPage.css'
 
 function GenvenPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -43,15 +47,22 @@ function GenvenPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Genven')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             <Helmet>
-                <title>Grrupo Leti | Genven</title>
-                <meta name="description" content="Genven Genéricos Venezolanos, es nuestra línea de genéricos de Laboratorios Leti S.A.V, con más de 25 años en el mercado farmacéutico venezolano." />
-                <meta name="keywords" content="Grupo Leti, Genven" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

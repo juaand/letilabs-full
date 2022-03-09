@@ -1,8 +1,8 @@
 import axios from "axios"
 
 const http = axios.create({
-    //baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
-    baseURL: "https://grupoleti-api.herokuapp.com/",
+    baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+    //baseURL: "https://grupoleti-api.herokuapp.com/",
     withCredentials: true,
 })
 
@@ -292,3 +292,7 @@ export const getRandomNews = (category) => http.post("/getrandomnews", {category
 export const addOutstandingNews = (outstanding, id) => http.post(`/addoutstandingnews/${id}`, {outstanding, id})
 export const deleteNews = (id) => http.get(`/news/${id}/delete`)
 export const updateNews = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate, id}) => http.patch(`/updatenews/${id}`, {title, subTitle, urlToPic, tag, content, outstanding, publishDate, id})
+
+//seo routes
+export const getSeo = () => http.get("/seodata")
+export const updateSeo = ({keywords, description, page, id}) => http.patch("/updateseo", {keywords, description, page, id})

@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
+import {Helmet} from 'react-helmet'
 import Slider from "react-slick"
 
 import {getProduct} from '../../../services/ApiClient'
+
 import './SingleProductPage.css'
 
 function SingleProductPage(props) {
@@ -42,6 +44,11 @@ function SingleProductPage(props) {
 
     return (
         <>
+            <Helmet>
+                <title>{`Grupo Leti | ${product?.name}`}</title>
+                <meta name="description" content={`Resultado de búsqueda de producto del Grupo Leti: ${product?.name}`} />
+                <meta name="keywords" content={`Grupo Leti, productos leti, ${product?.name}`} />
+            </Helmet>
             <section className="container SingleProductPage">
                 <div className="row">
                     <div className="col-12 SingleProductPage__back">

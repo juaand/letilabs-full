@@ -1,14 +1,19 @@
-import './LaboratoriosLetiPage.css'
-import React, {useEffect} from 'react'
-import {createContent} from '../../../services/ApiClient'
-import {useAuthContext} from '../../../contexts/AuthContext'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
 import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
+import Banner from './Banner/Banner'
 import Equipo from './Equipo/Equipo'
 
+import './LaboratoriosLetiPage.css'
+
 function LaboratoriosLetiPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -41,15 +46,22 @@ function LaboratoriosLetiPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Leti')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Laboratorios Leti</title>
-                <meta name="description" content="Esta es la unidad que se encarga de desarrollar la gama de productos que abarca diferentes áreas terapéuticas: cardiovascular, metabolismo, gástrica, respiratoria, neurológicas, músculo-esqueléticas, dolor, antibióticos, vitaminas, tanto para el paciente pediátrico como para el paciente adulto." />
-                <meta name="keywords" content="Grupo Leti, Laboratorios Leti, Leti" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

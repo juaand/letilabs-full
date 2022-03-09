@@ -1,14 +1,21 @@
-import './AreasTerapeuticasPage.css'
-import React, {useEffect} from 'react'
-import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent} from '../../../services/ApiClient'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
-import BottomCta from './BottomCta/BottomCta'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
 import VerticalCarousel from './VerticalCarousel/VerticalCarousel'
+import BottomCta from './BottomCta/BottomCta'
+import Banner from './Banner/Banner'
+
+import './AreasTerapeuticasPage.css'
 
 function AreasTerapeuticasPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
+
     const {user} = useAuthContext()
+
     const data = {
         content: [],
         url: '/areas-terapeuticas',
@@ -38,16 +45,22 @@ function AreasTerapeuticasPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Áreas terapéuticas')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
-
             <Helmet>
-                <title>Grupo Leti | Áreas terapéuticas</title>
-                <meta name="description" content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
-                <meta name="keywords" content="Grupo Leti, Áreas Terapéuticas" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

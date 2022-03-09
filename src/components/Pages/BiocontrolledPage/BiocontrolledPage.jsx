@@ -1,16 +1,20 @@
-import './BiocontrolledPage.css'
-import React, {useEffect} from 'react'
-import {createContent} from '../../../services/ApiClient'
+import React, {useState, useEffect} from 'react'
+import {Helmet} from 'react-helmet'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import { Helmet } from 'react-helmet'
-import Banner from './Banner/Banner'
+
 import InfoCards from './InfoCards/InfoCards'
 import Timeline from './Timeline/Timeline'
-import Equipo from './Equipo/Equipo'
 import Carousel from './Carousel/Carousel'
+import Banner from './Banner/Banner'
+import Equipo from './Equipo/Equipo'
 
+import './BiocontrolledPage.css'
 
 function BiocontrolledPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -42,15 +46,22 @@ function BiocontrolledPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Biocontrolled')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Biocontrolled</title>
-                <meta name="description" content="Esta es la unidad de explorar nuevas maneras y eficaces maneras de desarrollar medicamentos, gracias a Biocontrolled es que nos mantenemos a la vanguardia y podemos seguir ofreciendo productos cada vez más beneficiosos." />
-                <meta name="keywords" content="Grupo Leti, Biocontrolled" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

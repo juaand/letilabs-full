@@ -1,13 +1,18 @@
-import React, {useEffect} from 'react'
-import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent} from '../../../services/ApiClient'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
-import Banner from './Banner/Banner'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
 import InfoCards from './InfoCards/InfoCards'
 import BottomCta from './BottomCta/BottomCta'
+import Banner from './Banner/Banner'
 import Goals from './Goals/Goals'
 
 function IYDPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
+
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -38,14 +43,21 @@ function IYDPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Investigación y desarrollo')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Investigación y desarrollo</title>
-                <meta name="description" content="Para nosotros siempre ha sido prioridad contar con la tecnlogía e infraestructura que nos permita desarrollar los mejores productos, y además en las cantidades necesarias para cuidar de la salud de todo el país." />
-                <meta name="keywords" content="Grupo Leti, Investigación y desarrollo" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Banner />

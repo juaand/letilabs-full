@@ -1,21 +1,24 @@
-import './Home.css'
 import React, {useState, useEffect} from 'react'
+import CookieConsent from "react-cookie-consent"
 import {Helmet} from 'react-helmet'
-import {createContent, getCookieInfo} from '../../../services/ApiClient'
+
+import {createContent, getCookieInfo, getSeo} from '../../../services/ApiClient'
+import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import Video from './Video/Video'
-import UsInfo from './UsInfo/UsInfo'
+
+import FindProduct from './FindProduct/FindProduct'
+import Portafolio from './Portafolio/Portafolio'
 import Carousel from './Carousel/Carousel'
 import Unidades from './Unidades/Unidades'
-import Portafolio from './Portafolio/Portafolio'
-import FindProduct from './FindProduct/FindProduct'
-import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
-import CookieConsent from "react-cookie-consent"
+import UsInfo from './UsInfo/UsInfo'
+import Video from './Video/Video'
 
+import './Home.css'
 
 function Home() {
 
     const [cookieInfo, setCookieInfo] = useState('')
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -45,7 +48,10 @@ function Home() {
 
         const fetchData = async () => {
             const getCookieInfoData = await getCookieInfo()
+            const getSeoData = await getSeo()
             setCookieInfo(getCookieInfoData.info)
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Inicio')
+            setSeoInfo(filterSeo[0])
         }
         fetchData()
 
@@ -55,9 +61,9 @@ function Home() {
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Inicio</title>
-                <meta name="description" content="Laboratorios Leti es un laboratorio farmacéutico venezolano que desde hace 70 años, crea soluciones de salud a través de la producción y comercialización de un amplio portafolio de medicamentos desarrollados con tecnología y seguridad, de la mano de un talento humano caliﬁcado que trabaja día a día para acompañar a los venezolanos." />
-                <meta name="keywords" content="Grupo Leti, Inicio" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
                 <Video />

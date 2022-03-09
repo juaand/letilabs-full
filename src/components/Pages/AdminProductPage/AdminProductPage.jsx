@@ -86,7 +86,6 @@ function AdminProductPage() {
     const [loading, setLoading] = useState(true)
     const [bool, setBool] = useState(false)
 
-    const [productMessage, setProductMessage] = useState('')
     const [imageSuccess, setImageSuccess] = useState('')
     const [editProduct, setEditProduct] = useState('')
     const [message, setMessage] = useState('')
@@ -103,7 +102,6 @@ function AdminProductPage() {
         }
 
         try {
-            // setProductMessage('Cargando producto...')
             const newProduct = await addProductApi(data)
             document.querySelector('form').reset()
             setProducts(newProduct)
@@ -265,292 +263,286 @@ function AdminProductPage() {
                                     <>
                                         <div className={`col-12 AdminProductPage__create ${createProduct && 'show'}`}>
                                             <h1>Crear producto</h1>
-                                            {productMessage && <div className="product-message">{productMessage}</div>
-                                            }
-                                            {!productMessage &&
-                                                <>
-                                                    <small>* Todos los campos son obligatorios</small>
-                                                    <form className="AdminEdit__form" onSubmit={createNewProduct}>
-                                                        <div className="row">
-                                                            <div className="col-12 col-sm-6">
-                                                                <InputFile
-                                                                    label="Imagen producto"
-                                                                    value={data.picPath}
-                                                                    onChange={onFileSelected}
-                                                                    id="fileButton"
-                                                                    name="picPath"
-                                                                    type="file"
-                                                                />
-                                                                {imageSuccess && <small className="img-success col-12">{imageSuccess}</small>}
-                                                            </div>
-                                                            <div className="col-12 col-sm-6">
-                                                                <InputFile
-                                                                    label="QR producto"
-                                                                    value={data.QRpath}
-                                                                    onChange={onFileSelected}
-                                                                    id="fileButton"
-                                                                    name="QRpath"
-                                                                    type="file"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-3">
-                                                                <InputWithLabel
-                                                                    label="Nombre"
-                                                                    value={data.name}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="name"
-                                                                    type="text"
-                                                                    placeholder="Ingresa nombre del producto"
-                                                                    cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-3">
-                                                                <InputWithLabel
-                                                                    label="Línea"
-                                                                    value={data.line}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="line"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.line && error.line ? "is-invalid" : ""}`}
-                                                                    placeholder="Ingresa línea del producto"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-3">
-                                                                <InputWithLabel
-                                                                    label="Registro sanitario"
-                                                                    value={data.health_register}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="health_register"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.health_register && error.health_register ? "is-invalid" : ""}`}
-                                                                    placeholder="Registro sanitario"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-3">
-                                                                <InputWithLabel
-                                                                    label="CPE"
-                                                                    value={data.cpe}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="cpe"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.cpe && error.cpe ? "is-invalid" : ""}`}
-                                                                    placeholder="CPE"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Composición</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: 'composition',
-                                                                        placeholder: "Ingresa composición del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Principio activo</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "active_principle",
-                                                                        placeholder: "Ingresa principio(s) activo(s) del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Posología</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "posology",
-                                                                        placeholder: "Ingresa posología del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Presentación</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "presentation",
-                                                                        placeholder: "Ingresa presentación del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Indicaciones</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "indication",
-                                                                        placeholder: "Ingresa indicaciones del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Vida útil</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "util_life",
-                                                                        placeholder: "Ingresa indicaciones del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Modo de empleo</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "how_to_use",
-                                                                        placeholder: "Ingresa indicaciones del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Contraindicaciones</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "contraindications",
-                                                                        placeholder: "Ingresa indicaciones del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 col-sm-4">
-                                                                <p className="label">Reacciones adversas</p>
-                                                                <Editor
-                                                                    onChange={handleEditor}
-                                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                                    init={{
-                                                                        name: "adverse_reactions",
-                                                                        placeholder: "Ingresa indicaciones del producto",
-                                                                        height: 200,
-                                                                        menubar: false,
-                                                                        plugins: [
-                                                                            'advlist autolink lists link image',
-                                                                            'charmap print preview anchor help',
-                                                                            'searchreplace visualblocks code',
-                                                                            'insertdatetime media table paste wordcount'
-                                                                        ],
-                                                                        toolbar:
-                                                                            'bold',
-                                                                    }}
-                                                                />
-                                                            </div>
-                                                            <div className="col-12">
-                                                                <InputWithLabel
-                                                                    label="Categoría(s) / Separadas por coma"
-                                                                    value={data.therapeutic_group}
-                                                                    onBlur={onBlur}
-                                                                    onChange={onChange}
-                                                                    name="therapeutic_group"
-                                                                    type="text"
-                                                                    cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
-                                                                    placeholder="Categoría(s) separadas por coma"
-                                                                />
-                                                            </div>
-                                                            <div className="col-12 mt-5">
-                                                                <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
-                                                            </div>
-                                                        </div>
+                                            <small>* Todos los campos son obligatorios</small>
+                                            <form className="AdminEdit__form" onSubmit={createNewProduct}>
+                                                <div className="row">
+                                                    <div className="col-12 col-sm-6">
+                                                        <InputFile
+                                                            label="Imagen producto"
+                                                            value={data.picPath}
+                                                            onChange={onFileSelected}
+                                                            id="fileButton"
+                                                            name="picPath"
+                                                            type="file"
+                                                        />
+                                                        {imageSuccess && <small className="img-success col-12">{imageSuccess}</small>}
+                                                    </div>
+                                                    <div className="col-12 col-sm-6">
+                                                        <InputFile
+                                                            label="QR producto"
+                                                            value={data.QRpath}
+                                                            onChange={onFileSelected}
+                                                            id="fileButton"
+                                                            name="QRpath"
+                                                            type="file"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-3">
+                                                        <InputWithLabel
+                                                            label="Nombre"
+                                                            value={data.name}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="name"
+                                                            type="text"
+                                                            placeholder="Ingresa nombre del producto"
+                                                            cssStyle={`form-control ${touch.name && error.name ? "is-invalid" : ""}`}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-3">
+                                                        <InputWithLabel
+                                                            label="Línea"
+                                                            value={data.line}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="line"
+                                                            type="text"
+                                                            cssStyle={`form-control ${touch.line && error.line ? "is-invalid" : ""}`}
+                                                            placeholder="Ingresa línea del producto"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-3">
+                                                        <InputWithLabel
+                                                            label="Registro sanitario"
+                                                            value={data.health_register}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="health_register"
+                                                            type="text"
+                                                            cssStyle={`form-control ${touch.health_register && error.health_register ? "is-invalid" : ""}`}
+                                                            placeholder="Registro sanitario"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-3">
+                                                        <InputWithLabel
+                                                            label="CPE"
+                                                            value={data.cpe}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="cpe"
+                                                            type="text"
+                                                            cssStyle={`form-control ${touch.cpe && error.cpe ? "is-invalid" : ""}`}
+                                                            placeholder="CPE"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Composición</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: 'composition',
+                                                                placeholder: "Ingresa composición del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Principio activo</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "active_principle",
+                                                                placeholder: "Ingresa principio(s) activo(s) del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Posología</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "posology",
+                                                                placeholder: "Ingresa posología del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Presentación</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "presentation",
+                                                                placeholder: "Ingresa presentación del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Indicaciones</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "indication",
+                                                                placeholder: "Ingresa indicaciones del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Vida útil</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "util_life",
+                                                                placeholder: "Ingresa indicaciones del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Modo de empleo</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "how_to_use",
+                                                                placeholder: "Ingresa indicaciones del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Contraindicaciones</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "contraindications",
+                                                                placeholder: "Ingresa indicaciones del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 col-sm-4">
+                                                        <p className="label">Reacciones adversas</p>
+                                                        <Editor
+                                                            onChange={handleEditor}
+                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                                            init={{
+                                                                name: "adverse_reactions",
+                                                                placeholder: "Ingresa indicaciones del producto",
+                                                                height: 200,
+                                                                menubar: false,
+                                                                plugins: [
+                                                                    'advlist autolink lists link image',
+                                                                    'charmap print preview anchor help',
+                                                                    'searchreplace visualblocks code',
+                                                                    'insertdatetime media table paste wordcount'
+                                                                ],
+                                                                toolbar:
+                                                                    'bold',
+                                                            }}
+                                                        />
+                                                    </div>
+                                                    <div className="col-12">
+                                                        <InputWithLabel
+                                                            label="Categoría(s) / Separadas por coma"
+                                                            value={data.therapeutic_group}
+                                                            onBlur={onBlur}
+                                                            onChange={onChange}
+                                                            name="therapeutic_group"
+                                                            type="text"
+                                                            cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
+                                                            placeholder="Categoría(s) separadas por coma"
+                                                        />
+                                                    </div>
+                                                    <div className="col-12 mt-5">
+                                                        <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
+                                                    </div>
+                                                </div>
 
-                                                        {registerError && <div className="alert alert-danger">{registerError}</div>}
-                                                    </form>
-                                                </>
-                                            }
+                                                {registerError && <div className="alert alert-danger">{registerError}</div>}
+                                            </form>
                                         </div>
                                     </>
                                 </Reveal>

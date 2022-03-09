@@ -2,13 +2,14 @@ import React from 'react'
 import EditFarmacoVigilanciaModal from './EditFarmacoVigilanciaModal/EditFarmacoVigilanciaModal'
 import EditFarmacoVigilancia from './EditFarmacoVigilancia/EditFarmacoVigilancia'
 import EditPortafolio from './EditPortafolio/EditPortafolio'
-import EditCarousel from './EditCarousel/EditCarousel'
+import EditBottomCTA from './EditBottomCTA/EditBottomCTA'
 import EditUnidades from './EditUnidades/EditUnidades'
+import EditCarousel from './EditCarousel/EditCarousel'
+import EditCookies from './EditCookies/EditCookies'
 import EditUsInfo from './EditUsInfo/EditUsInfo'
 import EditVideo from './EditVideo/EditVideo'
-import EditBottomCTA from './EditBottomCTA/EditBottomCTA'
-import EditCookies from './EditCookies/EditCookies'
 import EditRrss from './EditRrss/EditRrss'
+import EditSeo from './EditSeo/EditSeo'
 
 function EditHome() {
 
@@ -25,6 +26,7 @@ function EditHome() {
             <EditFarmacoVigilanciaModal />
             <EditCookies />
             <EditRrss />
+            <EditSeo />
         </main>
 
     )

@@ -1,15 +1,21 @@
-import './TechPage.css'
-import React, {useEffect} from 'react'
-import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent} from '../../../services/ApiClient'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
+import {useAuthContext} from '../../../contexts/AuthContext'
+
+import VerticalCarousel from './VerticalCarousel/VerticalCarousel'
+import BottomCta from './BottomCta/BottomCta'
 import Banner from './Banner/Banner'
 import Video from './Video/Video'
 import Map from './Map/Map'
-import BottomCta from './BottomCta/BottomCta'
-import VerticalCarousel from './VerticalCarousel/VerticalCarousel'
+
+import './TechPage.css'
 
 function TechPage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
+
     const {user} = useAuthContext()
     const data = {
         content: [],
@@ -40,14 +46,21 @@ function TechPage() {
             isCloseSearch.classList.remove('Header__search-close')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Tecnología')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Tecnología</title>
-                <meta name="description" content="Nuestra planta está ubicada en Guarenas, estado Miranda, y es la planta producción de fármacos más grande a nivel nacional. Cuenta con la única planta de cefalosporínicos existentes en Venezuela y una de las pocas penicilínicos, siendo modelo de Latinoamérica." />
-                <meta name="keywords" content="Grupo Leti, Tecnología" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main className="Tech">
                 <Banner />

@@ -1,15 +1,20 @@
-import './OurPeoplePage.css'
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
+
+import {createContent, getSeo} from '../../../services/ApiClient'
 import {useAuthContext} from '../../../contexts/AuthContext'
-import {createContent} from '../../../services/ApiClient'
-import Banner from './Banner/Banner'
+
 import InfoCards from './InfoCards/InfoCards'
-import Director from './Director/Director'
 import BottomCta from './BottomCta/BottomCta'
+import Director from './Director/Director'
 import Careers from './Careers/Careers'
+import Banner from './Banner/Banner'
+
+import './OurPeoplePage.css'
 
 function OurPeoplePage() {
+
+    const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
     const data = {
@@ -37,15 +42,22 @@ function OurPeoplePage() {
             isMenuOpen.classList.remove('show')
         }
 
+        const fetchData = async () => {
+            const getSeoData = await getSeo()
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Nuestra gente')
+            setSeoInfo(filterSeo[0])
+        }
+        fetchData()
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Nuestra gente</title>
-                <meta name="description" content="Contamos con un talento humano especializado que tienen años trabajando en el campo, y más importante, trabajando con nosotros." />
-                <meta name="keywords" content="Grupo Leti,  Nuestra gente" />
+                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <meta name="description" content={`${seoInfo?.description}`} />
+                <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main className="OurPeoplePage">
                 <Banner />

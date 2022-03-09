@@ -1,10 +1,14 @@
-import './NewsSingle.css'
 import React, {useState, useEffect} from 'react'
 import {Fade} from 'react-awesome-reveal'
-import {drawTime} from '../../../helpers/globals'
 import {Link} from 'react-router-dom'
+import {Helmet} from 'react-helmet'
+
 import {getRandomNews} from '../../../services/ApiClient'
+import {drawTime} from '../../../helpers/globals'
+
 import Loader from '../../Loader/Loader'
+
+import './NewsSingle.css'
 
 function NewsSingle(props) {
     const noticia = props?.location?.state?.data
@@ -25,6 +29,11 @@ function NewsSingle(props) {
 
     return (
         <>
+            <Helmet>
+                <title>{`Grupo Leti | ${noticia?.title}`}</title>
+                <meta name="description" content={`Resultado de búsqueda de noticia del Grupo Leti: ${noticia?.title}`} />
+                <meta name="keywords" content={`Grupo Leti, noticias Grupo Leti, ${noticia?.title}`} />
+            </Helmet>
             {loading && <Loader />}
             <section className="container-fluid NewsSingle__Banner" style={{
                 background: `url(${noticia?.urlToPic}) no-repeat center center / cover`,
