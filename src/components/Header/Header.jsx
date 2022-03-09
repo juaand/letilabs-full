@@ -1,9 +1,11 @@
-import './Header.css'
 import React, {useState} from 'react'
 import {NavLink, useLocation, useHistory} from 'react-router-dom'
-import Nav from '../Nav/Nav'
-import Search from '../Form/Search/Search'
+
 import {useAuthContext} from '../../contexts/AuthContext'
+import Search from '../Form/Search/Search'
+import Nav from '../Nav/Nav'
+
+import './Header.css'
 
 function Header() {
 
@@ -25,14 +27,30 @@ function Header() {
     }
 
     const logoutUser = () => {
-        logout()
-        history.push({
-            pathname: '/login'
-        })
+        setTimeout(() => {history.push("/")}, 1)
+        setTimeout(() => {history.push("/sobre-nosotros")}, 1)
+        setTimeout(() => {history.push("/nuestras-empresas")}, 1)
+        setTimeout(() => {history.push("/leti")}, 1)
+        setTimeout(() => {history.push("/genven")}, 1)
+        setTimeout(() => {history.push("/biocontrolled")}, 1)
+        setTimeout(() => {history.push("/areas-terapeuticas")}, 1)
+        setTimeout(() => {history.push("/investigacion-y-desarrollo")}, 1)
+        setTimeout(() => {history.push("/tecnologia")}, 1)
+        setTimeout(() => {history.push("/manufactura")}, 1)
+        setTimeout(() => {history.push("/alianzas")}, 1)
+        setTimeout(() => {history.push("/proposito-y-responsabilidad-social")}, 1)
+        setTimeout(() => {history.push("/nuestra-gente")}, 1)
+        setTimeout(() => {history.push("/nuestra-filosofia")}, 1)
+        setTimeout(() => {history.push("/productos")}, 1)
+        setTimeout(() => {logout()}, 1)
+        setTimeout(() => {
+            history.push({
+                pathname: '/login'
+            })
+        }, 1)
     }
 
     const isSearchPage = location.pathname === '/buscar'
-
 
     return (
         <>

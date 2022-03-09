@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getModalFarmaco, updateModalFarmaco} from '../../../../../services/ApiClient'
+import {getSeo, updateSeo} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -43,7 +43,7 @@ function EditSeo() {
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
-                await updateModalFarmaco(data)
+                await updateSeo(data)
                     .then(farmaco => {
                         setModalFarmacoData(farmaco[0])
                         setMessage('Data atualizada exitosamente')
@@ -66,7 +66,7 @@ function EditSeo() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const getFarmacoData = await getModalFarmaco()
+            const getFarmacoData = await getSeo()
             setModalFarmacoData(getFarmacoData)
         }
         fetchData()

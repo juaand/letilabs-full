@@ -1,18 +1,38 @@
 import './Banner.css'
 import React, {useState, useEffect} from 'react'
 import {Fade} from "react-awesome-reveal"
-import {getBannerOurPeople} from '../../../../services/ApiClient'
+import {getBannerOurPeople, createContent} from '../../../../services/ApiClient'
 import Loader from '../../../Loader/Loader'
+import {useAuthContext} from '../../../../contexts/AuthContext'
 
 function Banner() {
-
+    const {user} = useAuthContext()
     const [data, setData] = useState()
     const [loading, setLoading] = useState(true)
 
+
+    const contentData = {
+        content: [],
+        url: '/nuestra-gente',
+        name: 'Nuestra gente'
+    }
+
     useEffect(() => {
+
         const fetchData = async () => {
             const getBannerData = await getBannerOurPeople()
             setData(getBannerData)
+            if (user) {
+                const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+                mainContent.forEach(content => {
+                    contentData.content.push(content.innerText)
+                })
+
+                const fetchData = async () => {
+                    await createContent(contentData)
+                }
+                fetchData()
+            }
         }
         fetchData()
         setLoading(!loading)
