@@ -17,6 +17,7 @@ function OurPeoplePage() {
     const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
+    
     const data = {
         content: [],
         url: '/nuestra-gente',

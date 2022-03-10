@@ -23,19 +23,18 @@ function ManufacturePage() {
     }
 
     useEffect(() => {
+
         if (user) {
             const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
             mainContent.forEach(content => {
                 data.content.push(content.innerText)
             })
-            const fetchData2 = async () => {
+
+            const fetchData = async () => {
                 await createContent(data)
             }
-            fetchData2()
-}
-    }, [data, user])
-
-    useEffect(() => {
+            fetchData()
+        }
 
         const isMenuOpen = document.querySelector('.show')
         if (isMenuOpen) {
