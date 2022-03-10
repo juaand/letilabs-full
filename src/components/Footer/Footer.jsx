@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-has-content */
 import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 
@@ -14,9 +13,8 @@ function Footer() {
 
     const {user} = useAuthContext()
 
-    const [rrssData, setRrssData] = useState()
-
     const [bool, setBool] = useState(false)
+    const [rrss, setRrss] = useState()
 
     useEffect(() => {
         if (window.screen.width <= 576) {
@@ -25,9 +23,13 @@ function Footer() {
 
         const fetchData = async () => {
             const getRrssData = await getRrssInfo()
-            setRrssData(getRrssData[0])
+            setRrss(getRrssData)
+            console.log(getRrssData)
         }
         fetchData()
+
+
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -77,10 +79,9 @@ function Footer() {
                             </ul>
                         </div>
                         <div className="col-6 col-sm-4 Footer__rrss">
-                            {/* <div id="fb-root"></div> */}
-                            <div className="Footer__icon facebook"  />
-                            <a href={`https://wa.me/${rrssData?.whatsapp}`} className="Footer__icon whatsapp"/>
-                            <Link to="/" className="Footer__icon linkedin"></Link>
+                            <Link to={rrss?.facebook} className="Footer__icon facebook"></Link>
+                            <Link to={rrss?.instagram} className="Footer__icon instagram"></Link>
+                            <Link to={rrss?.linkedin} className="Footer__icon linkedin"></Link>
                         </div>
                     </div>
                 </div>
