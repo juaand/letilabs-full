@@ -17,7 +17,7 @@ function OurPeoplePage() {
     const [seoInfo, setSeoInfo] = useState('')
 
     const {user} = useAuthContext()
-    
+
     const data = {
         content: [],
         url: '/nuestra-gente',
@@ -25,19 +25,18 @@ function OurPeoplePage() {
     }
 
     useEffect(() => {
-        if (user) {
-            const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
-            mainContent.forEach(content => {
-                data.content.push(content.innerText)
-            })
-            const fetchData2 = async () => {
-                await createContent(data)
-            }
-            fetchData2()
-}
-    }, [data, user])
-
-    useEffect(() => {
+        setTimeout(() => {
+            if (user) {
+                const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
+                mainContent.forEach(content => {
+                    data.content.push(content.innerText)
+                })
+                const fetchData2 = async () => {
+                    await createContent(data)
+                }
+                fetchData2()
+        }
+        }, 15000)
 
         const isMenuOpen = document.querySelector('.show')
 
