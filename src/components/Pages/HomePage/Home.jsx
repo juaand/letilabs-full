@@ -33,13 +33,14 @@ function Home() {
             mainContent.forEach(content => {
                 data.content.push(content.innerText)
             })
-
-            const fetchData = async () => {
+            const fetchData2 = async () => {
                 await createContent(data)
             }
-            fetchData()
-        }
+            fetchData2()
+}
+    }, [data, user])
 
+    useEffect(() => {
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {
@@ -56,7 +57,7 @@ function Home() {
         fetchData()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')])
 
     return (
         <>

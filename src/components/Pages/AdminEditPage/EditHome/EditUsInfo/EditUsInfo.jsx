@@ -61,6 +61,7 @@ function EditUsInfo() {
 
     const handleUsInfoDescription = (e) => {
         data.description = e.target.getContent()
+        error.description = false
     }
 
 

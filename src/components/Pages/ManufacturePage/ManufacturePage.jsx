@@ -28,12 +28,14 @@ function ManufacturePage() {
             mainContent.forEach(content => {
                 data.content.push(content.innerText)
             })
-
-            const fetchData = async () => {
+            const fetchData2 = async () => {
                 await createContent(data)
             }
-            fetchData()
-        }
+            fetchData2()
+}
+    }, [data, user])
+
+    useEffect(() => {
 
         const isMenuOpen = document.querySelector('.show')
         if (isMenuOpen) {

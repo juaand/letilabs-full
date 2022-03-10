@@ -29,16 +29,23 @@ function AboutUs() {
             mainContent.forEach(content => {
                 data.content.push(content.innerText)
             })
-
-            const fetchData = async () => {
+            const fetchData2 = async () => {
                 await createContent(data)
             }
-            fetchData()
+            fetchData2()
+}
+    }, [data, user])
+
+    useEffect(() => {
+        const isMenuOpen = document.querySelector('.show')
+
+        if (isMenuOpen) {
+            isMenuOpen.classList.remove('show')
         }
 
         const fetchData = async () => {
             const getSeoData = await getSeo()
-            const filterSeo = getSeoData.filter(seo => seo.page === 'Sobre nosotros')
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Inicio')
             setSeoInfo(filterSeo[0])
         }
         fetchData()

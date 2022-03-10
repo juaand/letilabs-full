@@ -10,8 +10,8 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBanner() {
 
-    const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState()
+    const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 
     const {state} = useFormState(

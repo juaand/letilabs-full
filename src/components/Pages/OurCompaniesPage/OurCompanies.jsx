@@ -12,6 +12,7 @@ import Banner from './Banner/Banner'
 import Cuidar from './Cuidar/Cuidar'
 
 import './OurCompanies.css'
+import Home from '../HomePage/Home'
 
 function OurCompanies() {
 
@@ -30,13 +31,14 @@ function OurCompanies() {
             mainContent.forEach(content => {
                 data.content.push(content.innerText)
             })
-
-            const fetchData = async () => {
+            const fetchData2 = async () => {
                 await createContent(data)
             }
-            fetchData()
-        }
+            fetchData2()
+}
+    }, [data, user])
 
+    useEffect(() => {
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {
