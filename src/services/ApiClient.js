@@ -51,7 +51,7 @@ export const addHomeScreen = (show_in_home, id) => http.post(`/addprodtohomescre
 export const getCookieInfo = () => http.get("/cookieinfo")
 export const updateCookieInfo = ({info, id}) => http.patch("/updatecookieinfo", {info, id})
 export const getRrssInfo = () => http.get("/rrssinfo")
-export const updateRrssInfo = ({facebook, linkedin, whatsapp, id}) => http.patch("/updaterrssinfo", {facebook, linkedin, whatsapp, id})
+export const updateRrssInfo = ({facebook, linkedin, instagram, id}) => http.patch("/updaterrssinfo", {facebook, linkedin, instagram, id})
 
 //admin edit routes about us
 
@@ -289,6 +289,7 @@ export const getNewsTitles = () => http.get("/newstitles")
 export const updateNewsTitles = ({lastestTitle, mostTitle, searchTitle, picPath, id}) => http.patch("/updatenewstitles", {lastestTitle, mostTitle, searchTitle, picPath, id})
 export const addNewsApi = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate}) => http.post("/createnews", {title, subTitle, urlToPic, tag, content, outstanding, publishDate})
 export const getRandomNews = (category) => http.post("/getrandomnews", {category})
+export const getLinkedNews = (id) => http.get(`/noticia/${id}`)
 export const addOutstandingNews = (outstanding, id) => http.post(`/addoutstandingnews/${id}`, {outstanding, id})
 export const deleteNews = (id) => http.get(`/news/${id}/delete`)
 export const updateNews = ({title, subTitle, urlToPic, tag, content, outstanding, publishDate, id}) => http.patch(`/updatenews/${id}`, {title, subTitle, urlToPic, tag, content, outstanding, publishDate, id})

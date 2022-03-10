@@ -23,10 +23,7 @@ function LetiNews({newsData, title}) {
                                 </div>
                                 <div className="card-footer">
                                     <Link to={{
-                                        pathname: `/noticia`,
-                                        state: {
-                                            data: el
-                                        }
+                                        pathname: `/noticia/${el?.id}`
                                     }} className="leti-btn"></Link>
                                 </div>
                             </>

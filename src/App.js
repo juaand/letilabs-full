@@ -61,7 +61,7 @@ function App() {
         <Route exact path="/producto" render={(props) => <SingleProductPage {...props} />} />
         <Route exact path="/listado-de-productos" render={(props) => <ProductListPage {...props} />} />
         <Route exact path="/noticias" render={(props) => <NewsPage {...props} />} />
-        <Route exact path="/noticia" render={(props) => <NewsSingle {...props} />} />
+        <Route exact path="/noticia/:id" render={(props) => <NewsSingle {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
         <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />

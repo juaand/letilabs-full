@@ -3,7 +3,7 @@ import {Fade} from 'react-awesome-reveal'
 import {Link} from 'react-router-dom'
 import {Helmet} from 'react-helmet'
 
-import {getRandomNews} from '../../../services/ApiClient'
+import {getRandomNews, getLinkedNews} from '../../../services/ApiClient'
 import {drawTime} from '../../../helpers/globals'
 
 import Loader from '../../Loader/Loader'
@@ -11,18 +11,23 @@ import Loader from '../../Loader/Loader'
 import './NewsSingle.css'
 
 function NewsSingle(props) {
-    const noticia = props?.location?.state?.data
 
     const [getRandom, setGetRandom] = useState([])
+    const [noticia, setNoticia] = useState([])
     const [loading, setLoading] = useState(true)
+
 
     useEffect(() => {
         window.scrollTo(0, 0)
         const fetchData = async () => {
+            const id = props?.match?.params?.id
+            const getNewsData = await getLinkedNews(id)
+            setNoticia(getNewsData)
             const getRandomData = await getRandomNews()
             setGetRandom(getRandomData)
         }
         fetchData()
+
         setLoading(!loading)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -53,16 +58,16 @@ function NewsSingle(props) {
                 <Fade triggerOnce direction="up">
                     <section className="container NewsSingle__content">
                         <div className="NewsSingle__rrss">
-                            <div className="facebook" />
-                            <div className="whatsapp" />
-                            <div className="linkedin" />
+                            <Link to={{pathname: `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}} target="_blank" className="facebook" />
+                            <Link to={{pathname: `https://web.whatsapp.com/send?text=${window.location.href}`}} target="_blank" className="whatsapp" />
+                            <Link to={{pathname: `https://www.linkedin.com/shareArticle/?mini=true&url=${window.location.href}`}} target="_blank" className="linkedin" />
                         </div>
                         <div className="row justify-content-center">
                             <div className="col-10 NewsSingle__content-desc">
                                 <div className="NewsSingle__rrss NewsSingle__rrss-bottom">
-                                    <div className="facebook" />
-                                    <div className="whatsapp" />
-                                    <div className="linkedin" />
+                                    <Link to={{pathname: `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`}} target="_blank" className="facebook" />
+                                    <Link to={{pathname: `https://web.whatsapp.com/send?text=${window.location.href}`}} target="_blank" className="whatsapp" />
+                                    <Link to={{pathname: `https://www.linkedin.com/shareArticle/?mini=true&url=${window.location.href}`}} target="_blank" className="linkedin" />
                                 </div>
                                 <p dangerouslySetInnerHTML={{__html: noticia?.content}} />
                             </div>

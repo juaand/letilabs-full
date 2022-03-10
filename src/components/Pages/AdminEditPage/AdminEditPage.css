@@ -17,6 +17,10 @@
   position: relative;
 }
 
+.EditContent__active {
+  border-width: 0.4rem;
+}
+
 .EditContent__boldtitle {
   font-family: 'Tripleta', sans-serif;
   color: #4a4a4a;

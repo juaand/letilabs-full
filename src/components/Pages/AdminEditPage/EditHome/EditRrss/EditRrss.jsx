@@ -17,19 +17,19 @@ function EditCookies() {
                 id: rrssData?._id,
                 facebook: rrssData?.facebook,
                 linkedin: rrssData?.linkedin,
-                whatsapp: rrssData?.whatsapp,
+                instagram: rrssData?.instagram,
             },
             error: {
                 facebook: true,
                 linkedin: true,
-                whatsapp: true,
+                instagram: true,
             },
             touch: {},
         },
         {
             facebook: v => v.length,
             linkedin: v => v.length,
-            whatsapp: v => v.length,
+            instagram: v => v.length,
         }
     )
 
@@ -70,7 +70,7 @@ function EditCookies() {
 
 
     return (
-        <section className="container-fluid EditContent">
+        <section className="container-fluid EditContent EditContent__active">
             <h2>Redes sociales</h2>
             <form className="AdminEdit__form" onSubmit={updateFarmaco}>
                 <div className="row">
@@ -102,15 +102,15 @@ function EditCookies() {
                     </div>
                     <div className="col-sm-4 col-12">
                         <p className="AdminEdit__form__label">
-                            Teléfono Whatsapp (Ej: 5712345678)
+                            Instagram URL (No olvide el http://)
                         </p>
                         <InputWithLabel
-                            value={data?.whatsapp}
+                            value={data?.instagram}
                             onChange={onChange}
-                            name="whatsapp"
+                            name="instagram"
                             type="text"
                             cssStyle="form-control"
-                            placeholder={rrssData?.whatsapp}
+                            placeholder={rrssData?.instagram}
                         />
                     </div>
                     <div className="col-12">
