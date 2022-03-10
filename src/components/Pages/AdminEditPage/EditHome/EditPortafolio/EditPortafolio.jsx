@@ -1,10 +1,12 @@
 import React, {useState, useEffect} from 'react'
-import {useFormState} from '../../../../../hooks/useFormState'
-import {getPortfolio, createPortfolio, updateTitlePortfolio} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
-import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
+
+import {getPortfolio, createPortfolio, updateTitlePortfolio, createContent} from '../../../../../services/ApiClient'
+import {useFormState} from '../../../../../hooks/useFormState'
+
+import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import DeleteItemModal from './DeleteItemModal/DeleteItemModal'
+import Button from '../../../../Form/FormButton/FormButton'
 
 
 function EditPortafolio() {
@@ -48,6 +50,12 @@ function EditPortafolio() {
         event.preventDefault()
         data.superiorTitle = title
 
+        if (contentData.content.length > 0) {
+            console.log(contentData)
+            contentData.type = `Portafolio ${data?.title}`
+            createContent(contentData)
+        }
+
         if (error.title === false && error.description === false) {
             if (data.title.trim() === '' || data.description.trim() === '') {
                 setNewItemMessage('El título o la descripción no pueden ir vacios, por favor, rellene ambos campos.')
@@ -68,6 +76,13 @@ function EditPortafolio() {
         } else {
             setNewItemMessage('Por favor rellene ambos campos')
         }
+    }
+
+    const contentData = {
+        content: '',
+        url: '/',
+        name: 'Inicio',
+        type: '',
     }
 
     const updateInfo = async (event) => {
@@ -93,6 +108,7 @@ function EditPortafolio() {
 
     const handlePortfolioDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

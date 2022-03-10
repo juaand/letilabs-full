@@ -20,9 +20,8 @@ function ManufacturePage() {
         content: [],
         url: '/manufactura',
         name: 'Manufactura',
+
     }
-
-
 
     useEffect(() => {
         setTimeout(() => {

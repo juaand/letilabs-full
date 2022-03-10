@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getUsInfo, updateUsInfoData} from '../../../../../services/ApiClient'
+import {getUsInfo, updateUsInfoData, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
@@ -34,11 +34,21 @@ function EditUsInfo() {
     )
 
     const {data, error, touch} = state
-    
+
+    const contentData = {
+        content: '',
+        url: '/',
+        name: 'Inicio',
+        type: 'Sobre Nosotros',
+    }
 
     const updateUsInfo = async (event) => {
         event.preventDefault()
         data.id = usInfoData._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -61,6 +71,7 @@ function EditUsInfo() {
 
     const handleUsInfoDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 
@@ -129,7 +140,7 @@ function EditUsInfo() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button  cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                         {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 

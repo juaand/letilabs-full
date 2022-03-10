@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {deleteUnitItem, updateUnidadesData} from '../../../../../../services/ApiClient'
+import {deleteUnitItem, updateUnidadesData, createContent} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
@@ -11,6 +11,8 @@ import './DeleteItemModal.css'
 
 
 function DeleteItemModal({deleteItem, element, hideModal}) {
+
+    console.log(element)
 
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
@@ -47,7 +49,18 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
+    const contentData = {
+        content: '',
+        url: '/',
+        name: 'Inicio',
+        type: `Unidades de negocio ${element?.name}`,
+    }
+
     const editCarrouselItem = async (id) => {
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (error.desc === false || error.logo === false) {
             data.id = id
@@ -66,6 +79,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

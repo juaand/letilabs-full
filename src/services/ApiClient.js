@@ -144,7 +144,7 @@ export const vigilanciaForm = ({name, lastname, email, phone, country, company, 
 export const dropVigCard = (id) => http.get(`/vigilancia/${id}/delete`)
 
 //content routes
-export const createContent = ({content, url, name}) => http.post("/update-content", {content, url, name})
+export const createContent = ({content, url, name, type}) => http.post("/update-content", {content, url, name, type})
 
 //admin I+D routes
 export const getBannerID = () => http.get("/bannerdataid")

@@ -2,9 +2,8 @@ import React, {useState, useEffect} from 'react'
 import CookieConsent from "react-cookie-consent"
 import {Helmet} from 'react-helmet'
 
-import {createContent, getCookieInfo, getSeo} from '../../../services/ApiClient'
+import {getCookieInfo, getSeo} from '../../../services/ApiClient'
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
-import {useAuthContext} from '../../../contexts/AuthContext'
 
 import FindProduct from './FindProduct/FindProduct'
 import Portafolio from './Portafolio/Portafolio'
@@ -20,30 +19,8 @@ function Home() {
     const [cookieInfo, setCookieInfo] = useState('')
     const [seoInfo, setSeoInfo] = useState('')
 
-    const {user} = useAuthContext()
-    const data = {
-        content: [],
-        url: '/',
-        name: 'Inicio'
-    }
 
-    
-    
-    
     useEffect(() => {
-        setTimeout(() => {
-            if (user) {
-                const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
-                mainContent.forEach(content => {
-                    data.content.push(content.innerText)
-                })
-                const fetchData2 = async () => {
-                    await createContent(data)
-                }
-                fetchData2()
-        }
-        }, 15000)
-        
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {
@@ -60,7 +37,7 @@ function Home() {
         fetchData()
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')])
+    }, [])
 
     return (
         <>
