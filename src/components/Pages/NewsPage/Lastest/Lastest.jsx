@@ -20,12 +20,7 @@ function Lastest({newsData, title}) {
                                 <h5 className="card-subtitle">{el?.subTitle}</h5>
                             </div>
                             <div className="card-footer">
-                                <Link to={{
-                                    pathname: `/noticia`,
-                                    state: {
-                                        data: el
-                                    }
-                                }} className="leti-btn"></Link>
+                                <Link to={{pathname: `/noticia/${el?.id}`}} className="leti-btn"></Link>
                             </div>
                         </>
                     )}

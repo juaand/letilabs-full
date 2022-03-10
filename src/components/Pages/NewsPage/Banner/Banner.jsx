@@ -9,14 +9,10 @@ function Banner({newsData}) {
     return (
         <>
             {newsData?.map(el =>
-                <Link to={{
-                    pathname: `/noticia`,
-                    state: {
-                        data: el
-                    }
-                }} className="container-fluid p-0 NewsPage__hero" style={{
-                    background: `url(${el?.urlToPic}) no-repeat center center / cover`,
-                }}>
+                <Link to={{pathname: `/noticia/${el?.id}`}}
+                    className="container-fluid p-0 NewsPage__hero" style={{
+                        background: `url(${el?.urlToPic}) no-repeat center center / cover`,
+                    }}>
                     <div className="NewsPage__container container">
                         <Fade triggerOnce direction="left" cascade>
                             <span>{drawTime(el?.publishDate)}</span>
