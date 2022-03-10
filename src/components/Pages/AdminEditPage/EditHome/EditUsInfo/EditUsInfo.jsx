@@ -5,7 +5,6 @@ import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {Editor} from '@tinymce/tinymce-react'
 
-
 function EditUsInfo() {
 
     const [usInfoData, setUsInfoData] = useState()
@@ -35,6 +34,7 @@ function EditUsInfo() {
     )
 
     const {data, error, touch} = state
+    
 
     const updateUsInfo = async (event) => {
         event.preventDefault()
@@ -63,7 +63,6 @@ function EditUsInfo() {
         data.description = e.target.getContent()
         error.description = false
     }
-
 
     useEffect(() => {
 
@@ -130,7 +129,7 @@ function EditUsInfo() {
                         />
                     </div>
                     <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                        <Button  cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                         {message && <span className="AdminEdit__message">{message}</span>}
                     </div>
 

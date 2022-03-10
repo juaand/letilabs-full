@@ -3,7 +3,6 @@ import React from 'react'
 import {useHistory} from 'react-router'
 import {seoURL} from '../../../../hooks/seoURL'
 
-
 function Nav({getActiveItem}) {
 
     const adminNav = ['Inicio', 'Sobre nosotros', 'Áreas Terapéuticas', 'Nuestras empresas', 'Leti', 'Genven', 'Biocontrolled', 'Investigación y desarrollo', 'Tecnología', 'Manufactura', 'Alianzas', 'Propósito y responsabilidad social', 'Nuestra gente', 'Nuestra filosofía', 'Productos', 'Listado de productos','Noticias', 'Etiquetas']
@@ -22,24 +21,25 @@ function Nav({getActiveItem}) {
 
         isActive.forEach(el => el.classList.remove('active'))
     }
+   
 
     function handleClick() {
         setTimeout(() => {history.push("/")}, 1)
-        setTimeout(() => {history.push("/sobre-nosotros")}, 1000)
-        setTimeout(() => {history.push("/nuestras-empresas")}, 3000)
-        setTimeout(() => {history.push("/leti")}, 5000)
-        setTimeout(() => {history.push("/genven")}, 7000)
-        setTimeout(() => {history.push("/biocontrolled")}, 9000)
-        setTimeout(() => {history.push("/areas-terapeuticas")}, 11000)
-        setTimeout(() => {history.push("/investigacion-y-desarrollo")}, 13000)
-        setTimeout(() => {history.push("/tecnologia")}, 15000)
-        setTimeout(() => {history.push("/manufactura")}, 17000)
-        setTimeout(() => {history.push("/alianzas")}, 19000)
-        setTimeout(() => {history.push("/proposito-y-responsabilidad-social")}, 21000)
-        setTimeout(() => {history.push("/nuestra-gente")}, 23000)
-        setTimeout(() => {history.push("/nuestra-filosofia")}, 25000)
-        setTimeout(() => {history.push("/productos")}, 27000)
-        setTimeout(() => {history.push("/admin-editar-contenido")}, 29000)
+        setTimeout(() => {history.push("/sobre-nosotros")}, 5000)
+        setTimeout(() => {history.push("/nuestras-empresas")}, 10000)
+        setTimeout(() => {history.push("/leti")}, 15000)
+        setTimeout(() => {history.push("/genven")}, 20000)
+        setTimeout(() => {history.push("/biocontrolled")}, 25000)
+        setTimeout(() => {history.push("/areas-terapeuticas")}, 30000)
+        setTimeout(() => {history.push("/investigacion-y-desarrollo")}, 35000)
+        setTimeout(() => {history.push("/tecnologia")}, 40000)
+        setTimeout(() => {history.push("/manufactura")}, 45000)
+        setTimeout(() => {history.push("/alianzas")}, 50000)
+        setTimeout(() => {history.push("/proposito-y-responsabilidad-social")}, 55000)
+        setTimeout(() => {history.push("/nuestra-gente")}, 60000)
+        setTimeout(() => {history.push("/nuestra-filosofia")}, 65000)
+        setTimeout(() => {history.push("/productos")}, 70000)
+        setTimeout(() => {history.push("/admin-editar-contenido")}, 75000)
     }
 
     const checkSubNav = (tag) => {
