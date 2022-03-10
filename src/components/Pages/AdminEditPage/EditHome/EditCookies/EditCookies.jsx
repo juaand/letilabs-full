@@ -69,7 +69,7 @@ function EditCookies() {
 
 
     return (
-        <section className="container-fluid EditContent">
+        <section className="container-fluid EditContent EditContent__active">
             <h2>Política de cookies</h2>
             <form className="AdminEdit__form" onSubmit={updateFarmaco}>
                 <div className="row">

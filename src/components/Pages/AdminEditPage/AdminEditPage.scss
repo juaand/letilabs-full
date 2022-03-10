@@ -18,6 +18,10 @@
   padding: 3rem 2.4rem;
   position: relative;
 
+  &__active {
+    border-width: 0.4rem;
+  }
+
   &__boldtitle {
     font-family: 'Tripleta', sans-serif;
     color: $leti-text;

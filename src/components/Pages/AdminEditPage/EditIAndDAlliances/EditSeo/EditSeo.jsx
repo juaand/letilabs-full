@@ -66,7 +66,7 @@ function EditSeo() {
     }
 
     const handleDescription = (e) => {
-        data.description = e.target.getContent({ format: "text" })
+        data.description = e.target.getContent({format: "text"})
         error.description = false
     }
 
@@ -82,7 +82,7 @@ function EditSeo() {
 
 
     return (
-        <section className="container-fluid EditContent">
+        <section className="container-fluid EditContent EditContent__active">
             <h2>SEO</h2>
             <form className="AdminEdit__form" onSubmit={updateSeoData}>
                 <div className="row">
