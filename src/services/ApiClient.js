@@ -51,7 +51,7 @@ export const addHomeScreen = (show_in_home, id) => http.post(`/addprodtohomescre
 export const getCookieInfo = () => http.get("/cookieinfo")
 export const updateCookieInfo = ({info, id}) => http.patch("/updatecookieinfo", {info, id})
 export const getRrssInfo = () => http.get("/rrssinfo")
-export const updateRrssInfo = ({facebook, linkedin, whatsapp, id}) => http.patch("/updaterrssinfo", {facebook, linkedin, whatsapp, id})
+export const updateRrssInfo = ({facebook, linkedin, instagram, id}) => http.patch("/updaterrssinfo", {facebook, linkedin, instagram, id})
 
 //admin edit routes about us
 

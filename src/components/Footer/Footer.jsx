@@ -14,7 +14,7 @@ function Footer() {
     const {user} = useAuthContext()
 
     const [bool, setBool] = useState(false)
-    const [rrss, setRrss] = useState()
+    const [rrss, setRrss] = useState([])
 
     useEffect(() => {
         if (window.screen.width <= 576) {
@@ -23,8 +23,7 @@ function Footer() {
 
         const fetchData = async () => {
             const getRrssData = await getRrssInfo()
-            setRrss(getRrssData)
-            console.log(getRrssData)
+            setRrss(getRrssData[0])
         }
         fetchData()
 
@@ -79,9 +78,9 @@ function Footer() {
                             </ul>
                         </div>
                         <div className="col-6 col-sm-4 Footer__rrss">
-                            <Link to={rrss?.facebook} className="Footer__icon facebook"></Link>
-                            <Link to={rrss?.instagram} className="Footer__icon instagram"></Link>
-                            <Link to={rrss?.linkedin} className="Footer__icon linkedin"></Link>
+                            <Link to={{pathname: `${rrss?.facebook}`}} target="_blank" className="Footer__icon facebook" />
+                            <Link to={{pathname: `${rrss?.instagram}`}} target="_blank" className="Footer__icon instagram" />
+                            <Link to={{pathname: `${rrss?.linkedin}`}} target="_blank" className="Footer__icon linkedin" />
                         </div>
                     </div>
                 </div>
