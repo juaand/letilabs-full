@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getTimeLine, addTimeLineData} from '../../../../../services/ApiClient'
+import {getTimeLine, addTimeLineData, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import EditElementsModal from './EditElementsModal/EditelementsModal'
 import {useFormState} from '../../../../../hooks/useFormState'
@@ -49,8 +49,20 @@ function EditTimeline() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: '',
+        url: '/sobre-nosotros',
+        name: 'Sobre Nosotros',
+        type: '',
+    }
+
     const addTimeLineItem = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Sobre nosotros - ${data?.year}`
+            createContent(contentData)
+        }
 
         if (error.year === false && error.imgURL === false && error.desc === false) {
             try {
@@ -77,6 +89,7 @@ function EditTimeline() {
 
     const handleDesc = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

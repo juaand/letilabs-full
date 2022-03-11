@@ -1,16 +1,17 @@
 import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {deleteTimeline, updateTimelineAboutUs} from '../../../../../../services/ApiClient'
+import {deleteTimeline, updateTimelineAboutUs, createContent} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import Loader from '../../../../../Loader/Loader'
-import './DeleteItemModal.css'
+import './EditelementsModal.css'
 
 
 function EditElementsModal({deleteItem, element, hideModal}) {
+    console.log(element)
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
@@ -49,7 +50,18 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
+    const contentData = {
+        content: '',
+        url: '/sobre-nosotros',
+        name: 'Sobre nosotros',
+        type: `${element?._id}`,
+    }
+
     const editCarrouselItem = async () => {
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
             
         if (Object.values(error).map(el => el).includes(false)) {
             data.id = element._id
@@ -68,6 +80,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

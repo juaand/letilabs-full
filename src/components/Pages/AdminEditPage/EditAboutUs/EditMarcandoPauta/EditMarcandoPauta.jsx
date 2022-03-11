@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getMarcandoPauta, updateMarcandoPautaData} from '../../../../../services/ApiClient'
+import {getMarcandoPauta, updateMarcandoPautaData, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -36,10 +36,20 @@ function EditMarcandoPauta() {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/sobre-nosotros',
+        name: 'Sobre nosotros',
+        type: 'Sobre nosotros marcando pauta',
+    }
 
     const updateMarcandoPauta = async (event) => {
         event.preventDefault()
         data.id = marcandoPautaData._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -61,6 +71,7 @@ function EditMarcandoPauta() {
     
     const handleMarcandoPautaDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

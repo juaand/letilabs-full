@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getGallery, addGalleryData, updateGalleryTitle} from '../../../../../services/ApiClient'
+import {getGallery, addGalleryData, updateGalleryTitle, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import EditElementsModal from './EditElementsModal/EditElementsModal'
 import {useFormState} from '../../../../../hooks/useFormState'
@@ -53,9 +53,21 @@ function EditGallery() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: '',
+        url: '/sobre-nosotros',
+        name: 'Sobre Nosotros',
+        type: '',
+    }
+
     const addGalleryItem = async (event) => {
         event.preventDefault()
         data.mainTitle = galleryData[0]?.mainTitle
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Sobre nosotros - ${data?.title}`
+            createContent(contentData)
+        }
 
         if (error.title === false && error.imgPath === false && error.desc === false) {
             try {
@@ -77,6 +89,7 @@ function EditGallery() {
 
     const handleDesc = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

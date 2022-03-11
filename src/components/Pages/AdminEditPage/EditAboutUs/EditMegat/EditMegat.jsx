@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getMegat, updateMegatData} from '../../../../../services/ApiClient'
+import {getMegat, updateMegatData, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
@@ -46,10 +46,20 @@ function EditMegat() {
 
     const {data, error} = state
 
+    const contentData = {
+        content: '',
+        url: '/sobre-nosotros',
+        name: 'Sobre nosotros',
+        type: 'Sobre nosotros megat',
+    }
 
     const updateMegat = async (event) => {
         event.preventDefault()
         data.id = megatData._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -71,6 +81,7 @@ function EditMegat() {
 
     const handleMegatDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

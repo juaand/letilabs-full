@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {deleteGalleryItem, updateGalleryData} from '../../../../../../services/ApiClient'
+import {deleteGalleryItem, updateGalleryData, createContent} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../../Form/InputFile/InputFile'
@@ -54,7 +54,18 @@ function EditElementsModal({deleteItem, element, hideModal}) {
         deleteItem(updateData)
     }
 
+    const contentData = {
+        content: '',
+        url: '/sobre-nosotros',
+        name: 'Sobre nosotros',
+        type: `${element?._id}`,
+    }
+
     const editCarrouselItem = async () => {
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
+
         if (Object.values(error).map(el => el).includes(false)) {
             data.id = element._id
             try {
@@ -72,6 +83,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 
