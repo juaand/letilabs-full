@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getCarrouselTA, createCarrouselTA, updateTAGalleryTitle} from '../../../../../services/ApiClient'
+import {getCarrouselTA, createCarrouselTA, updateTAGalleryTitle, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import EditElementsModal from './EditElementsModal/EditElementsModal'
 import {useFormState} from '../../../../../hooks/useFormState'
@@ -74,8 +74,20 @@ function EditCarrouselTA() {
         }
     }
 
+    const contentData = {
+        content: '',
+        url: '/areas-terapeuticas',
+        name: 'Áreas terapeúticas',
+        type: '',
+    }
+
     const createCarrouselItem = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Áreas terapéuticas - ${data?.title}`
+            createContent(contentData)
+        }
 
         if (error.title === false && error.imgURL === false && error.desc === false) {
             data.mainTitle = carrouselTAData[0]?.mainTitle
@@ -107,6 +119,7 @@ function EditCarrouselTA() {
 
     const handleDesc = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 
