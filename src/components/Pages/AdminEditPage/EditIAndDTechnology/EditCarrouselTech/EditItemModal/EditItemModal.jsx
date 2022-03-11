@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
-import './EditItemModal.css'
-import {deleteCarouselTech, updateCarouselTech} from '../../../../../../services/ApiClient'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {deleteCarouselTech, updateCarouselTech, createContent} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
+import {app} from '../../../../../../services/firebase'
+
+import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import Button from '../../../../../Form/FormButton/FormButton'
-import {app} from '../../../../../../services/firebase'
 import Loader from '../../../../../Loader/Loader'
+import './EditItemModal.css'
 
 function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
@@ -68,9 +69,20 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         error.imgURL = false
     }
 
+    const contentData = {
+        content: '',
+        url: '/tecnologia',
+        name: 'Tecnología',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
-console.log(data)
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
+
         if (Object.values(error).map(el => el).includes(false)) {
             if (data.title.trim() === '' || data.description.trim() === '') {
                 setMessage('El título o la descripción no pueden estar vacíos, por favor complete ambos campos')
@@ -96,6 +108,7 @@ console.log(data)
 
     const handleDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

@@ -9,7 +9,7 @@ import EditSeo from './EditSeo/EditSeo'
 function EditIAndDTechnology() {
     return (
         <div>
-            <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo Tecnologia</h2>
+            <h2 className="EditContent EditContent__title">Editar Investigación y Desarrollo Tecnología</h2>
             <EditBannerTech />
             <EditVideoTech />
             <EditCarrouselTech />

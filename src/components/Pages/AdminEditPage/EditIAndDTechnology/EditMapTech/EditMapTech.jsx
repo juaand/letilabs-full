@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {getMapTech, updateMapTech} from '../../../../../services/ApiClient'
+import {getMapTech, updateMapTech, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -32,10 +32,20 @@ function EditMapTech() {
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: data?.description,
+        url: '/tecnologia',
+        name: 'Tecnología',
+        type: `${mapData?._id}`,
+    }
 
     const updatemap = async (event) => {
         event.preventDefault()
         data.id = mapData._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
