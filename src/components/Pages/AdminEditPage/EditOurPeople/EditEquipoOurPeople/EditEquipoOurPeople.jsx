@@ -49,6 +49,7 @@ function EditEquipoOurPeople() {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+
     const updateInfo = async (event) => {
         event.preventDefault()
         data.id = bannerData._id

@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getCarreras, updateCarrerasData} from '../../../../../services/ApiClient'
+import {getCarreras, updateCarrerasData, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
@@ -41,9 +41,20 @@ function EditCarreras() {
 
     const {data, error, touch} = state
 
+    const contentData = {
+        content: '',
+        url: '/nuestra-gente',
+        name: 'Nuestra gente',
+        type: `${carrerasData?._id}`,
+    }
+
     const updateCarreras = async (event) => {
         event.preventDefault()
         data.id = carrerasData._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -65,6 +76,7 @@ function EditCarreras() {
 
     const handleDescription = (e) => {
         data[e.target.settings.name] = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error[e.target.settings.name] = false
     }
 
@@ -72,7 +84,6 @@ function EditCarreras() {
         const fetchData = async () => {
             const getCarrerasData = await getCarreras()
             setCarrerasData(getCarrerasData)
-            console.log(getCarrerasData)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps

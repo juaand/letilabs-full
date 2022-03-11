@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getBannerOurPeople, updateBannerOurPeople} from '../../../../../services/ApiClient'
+import {getBannerOurPeople, updateBannerOurPeople, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {app} from '../../../../../services/firebase'
 
@@ -38,16 +38,23 @@ function EditBannerOurPeople() {
     )
 
 
-
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/nuestra-gente',
+        name: 'Nuestra gente',
+        type: `${bannerData?._id}`,
+    }
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
 
-        console.log(data)
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -69,6 +76,7 @@ function EditBannerOurPeople() {
     
     const handleBannerDescription = (e) => {
         data[e.target.settings.name] = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error[e.target.settings.name] = false
     }
 

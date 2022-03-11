@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {getInfoCardsOurPeople, createTeam} from '../../../../../services/ApiClient'
+import {getInfoCardsOurPeople, createTeam, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -51,9 +51,20 @@ function EditInfoCardsOurPeople() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: data?.info,
+        url: '/nuestra-gente',
+        name: 'Nuestra gente',
+        type: `Nuestra gente - ${data?.title}`,
+    }
+
     const createNewTeam = async (event) => {
         event.preventDefault()
         data.id = ourOCData[0]?._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (error.title === false && error.info === false) {
             try {
