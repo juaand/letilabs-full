@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 
-import {getCarouselManufacture, updateTitleProccess, createProccess} from '../../../../../services/ApiClient'
+import {getCarouselManufacture, updateTitleProccess, createProccess, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import EditItemModal from './EditItemModal/EditItemModal'
@@ -74,9 +74,21 @@ function EditCarouselManufacture() {
         }
     }
 
+    const contentData = {
+        content: data?.info,
+        url: '/manufactura',
+        name: 'Manufactura',
+        type: '',
+    }
+
     const addProccess = async (event) => {
         event.preventDefault()
         data.title = carouselManufactureData[0]?.title
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Manufactura ${data?.info}`
+            createContent(contentData)
+        }
 
         if (error.info === false) {
             try {

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {updateCarouselManufacture, deleteProccess} from '../../../../../../services/ApiClient'
+import {updateCarouselManufacture, deleteProccess, createContent} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 
 import Button from '../../../../../Form/FormButton/FormButton'
@@ -35,9 +35,20 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/manufactura',
+        name: 'Manufactura',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
         data.id = carouselData?._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -65,6 +76,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const handleChange = (e) => {
         data.info = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.info = false
     }
 

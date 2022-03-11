@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getCertificatesManufacture, updateCertificatesManufactureData, createCertificate} from '../../../../../services/ApiClient'
+import {getCertificatesManufacture, updateCertificatesManufactureData, createCertificate, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 import {app} from '../../../../../services/firebase'
 
@@ -71,8 +71,19 @@ function EditCertificatesManufacture() {
         }
     }
 
+    const contentData = {
+        content: '',
+        url: '/manufactura',
+        name: 'Manufactura',
+        type: 'Manufactura certificados',
+    }
+
     const updateCertificateInfo = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (error.title === false || error.desc === false) {
             /* eslint-disable no-self-assign */
@@ -98,6 +109,7 @@ function EditCertificatesManufacture() {
 
     const handleCerificateDescChange = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 
