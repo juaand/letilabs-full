@@ -62,7 +62,7 @@ function EditTimelineBiocontrolled() {
     const addTimeLineItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Biocontrolled - ${data?.buttonTitle}`
             createContent(contentData)
         }

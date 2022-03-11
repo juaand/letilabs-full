@@ -68,7 +68,7 @@ function EditCompaniesInfoCardsLeti() {
     const addItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Leti ${data?.title}`
             createContent(contentData)
         }

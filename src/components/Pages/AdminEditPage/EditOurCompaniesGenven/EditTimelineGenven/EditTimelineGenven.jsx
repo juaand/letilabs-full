@@ -62,7 +62,7 @@ function EditTimelineGenven() {
     const addTimeLineItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Genven - ${data?.buttonText}`
             createContent(contentData)
         }

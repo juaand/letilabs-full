@@ -46,7 +46,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         event.preventDefault()
         data.id = carouselData?._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

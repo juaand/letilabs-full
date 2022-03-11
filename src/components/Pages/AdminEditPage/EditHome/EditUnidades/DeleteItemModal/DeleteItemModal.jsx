@@ -58,7 +58,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const editCarrouselItem = async (id) => {
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

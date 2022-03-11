@@ -59,7 +59,7 @@ function EditTimeline() {
     const addTimeLineItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Sobre nosotros - ${data?.year}`
             createContent(contentData)
         }

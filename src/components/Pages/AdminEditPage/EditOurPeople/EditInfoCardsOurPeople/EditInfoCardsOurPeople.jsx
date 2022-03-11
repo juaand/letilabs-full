@@ -13,7 +13,7 @@ function EditInfoCardsOurPeople() {
     const [ourOCData, setOurOCData] = useState()
     const [newTeamMessage, setNewTeamMessage] = useState('')
     const [bool, setBool] = useState(false)
-    
+
 
     const {state, onChange} = useFormState(
         {
@@ -62,7 +62,7 @@ function EditInfoCardsOurPeople() {
         event.preventDefault()
         data.id = ourOCData[0]?._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

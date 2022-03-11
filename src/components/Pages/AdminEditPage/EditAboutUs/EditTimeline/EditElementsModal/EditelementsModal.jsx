@@ -59,10 +59,10 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     const editCarrouselItem = async () => {
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
-            
+
         if (Object.values(error).map(el => el).includes(false)) {
             data.id = element._id
             try {

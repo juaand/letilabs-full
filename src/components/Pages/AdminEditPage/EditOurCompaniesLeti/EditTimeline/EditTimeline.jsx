@@ -62,7 +62,7 @@ function EditTimelineLeti() {
     const addTimeLineItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Leti timeline ${data?.button}`
             createContent(contentData)
         }

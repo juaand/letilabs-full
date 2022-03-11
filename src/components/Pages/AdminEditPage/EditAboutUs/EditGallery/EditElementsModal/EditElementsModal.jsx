@@ -15,7 +15,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [message, setMessage] = useState('')
-    
+
     const [isDisabled, setIsDisabled] = useState(false)
 
     const {state, onChange} = useFormState(
@@ -62,7 +62,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const editCarrouselItem = async () => {
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

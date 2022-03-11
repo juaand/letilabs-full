@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getBottomOurPhilosophy, updateBottomOurPhilosophy} from '../../../../../services/ApiClient'
+import {getBottomOurPhilosophy, updateBottomOurPhilosophy, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
@@ -46,13 +46,23 @@ function EditBottomOurPhilosophy() {
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/nuestra-filosofia',
+        name: 'Nuestra filosofía',
+        type: `${bottomOurPhilosophyData?._id}`,
+    }
 
     const updateBotBannerOP = async (event) => {
         event.preventDefault()
         data.id = bottomOurPhilosophyData._id
 
+        if (contentData?.content?.length > 0) {
+            createContent(contentData)
+        }
+
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.title.trim() === '' && data.description.trim() === '') {
+            if (data?.title?.trim() === '' && data?.description?.trim() === '') {
                 setMessage('Por favor, rellene el título o la descripción.')
             } else {
                 try {
@@ -74,6 +84,7 @@ function EditBottomOurPhilosophy() {
     }
     const handleBottomOurPhilosophyDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

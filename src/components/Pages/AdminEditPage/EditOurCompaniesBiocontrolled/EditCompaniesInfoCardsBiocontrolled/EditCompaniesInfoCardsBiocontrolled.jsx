@@ -67,7 +67,7 @@ function EditCompaniesInfoCardsBiocontrolled() {
     const addItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Biocontrolled ${data?.title}`
             createContent(contentData)
         }

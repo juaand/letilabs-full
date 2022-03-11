@@ -52,7 +52,7 @@ function EditCarreras() {
         event.preventDefault()
         data.id = carrerasData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

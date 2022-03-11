@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
+import {getProductBanner, updateProductBanner, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getProductBanner, updateProductBanner} from '../../../../../services/ApiClient'
+import {app} from '../../../../../services/firebase'
+
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import InputFile from '../../../../Form/InputFile/InputFile'
-import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 
@@ -55,10 +56,20 @@ function EditProductBanner() {
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: data?.description,
+        url: '/productos',
+        name: 'Productos',
+        type: `${bannerData?._id}`,
+    }
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
+
+        if (contentData?.content?.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -79,7 +90,7 @@ function EditProductBanner() {
     }
 
     const handleDescription = (e) => {
-        data[e.target.settings.name] = e.target.getContent()
+        data[e.target.settings.name] = e.target.getContent({format: 'text'})
         error[e.target.settings.name] = false
     }
 

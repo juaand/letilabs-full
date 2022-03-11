@@ -52,7 +52,7 @@ function EditBannerOurPeople() {
         event.preventDefault()
         data.id = bannerData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
@@ -73,7 +73,7 @@ function EditBannerOurPeople() {
             setMessage('Por favor edite alguno de los campos')
         }
     }
-    
+
     const handleBannerDescription = (e) => {
         data[e.target.settings.name] = e.target.getContent()
         contentData.content = e.target.getContent({format: "text"})

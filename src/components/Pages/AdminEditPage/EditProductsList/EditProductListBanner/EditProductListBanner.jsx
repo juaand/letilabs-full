@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getProductListBanner, updateProductListBanner} from '../../../../../services/ApiClient'
+import {getProductListBanner, updateProductListBanner, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import Button from '../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../services/firebase'
@@ -43,10 +43,22 @@ function EditProductListBanner() {
     const {data, error, touch} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: data?.description,
+        url: '/listado-de-productos',
+        name: 'Listado de productos',
+        type: `${bannerData?._id}`,
+    }
+
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
+
+
+        if (contentData?.content?.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             if (data?.description?.trim() === '' || data?.title?.trim() === '') {
@@ -72,6 +84,7 @@ function EditProductListBanner() {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

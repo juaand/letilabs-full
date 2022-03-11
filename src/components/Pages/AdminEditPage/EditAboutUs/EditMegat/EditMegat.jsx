@@ -57,7 +57,7 @@ function EditMegat() {
         event.preventDefault()
         data.id = megatData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

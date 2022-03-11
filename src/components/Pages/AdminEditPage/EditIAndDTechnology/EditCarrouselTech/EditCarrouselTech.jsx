@@ -75,7 +75,7 @@ function EditCarrouselTech() {
         event.preventDefault()
         data.mainTitle = ourGoalsOCData[0]?.mainTitle
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Tecnología ${data?.title}`
             createContent(contentData)
         }

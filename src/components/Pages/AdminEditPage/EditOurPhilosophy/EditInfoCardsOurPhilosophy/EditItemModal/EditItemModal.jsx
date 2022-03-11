@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
-import {deleteOPPillar, updateOPPillar} from '../../../../../../services/ApiClient'
+import {deleteOPPillar, updateOPPillar, createContent} from '../../../../../../services/ApiClient'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
 import {useFormState} from '../../../../../../hooks/useFormState'
@@ -39,8 +39,19 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: data?.title,
+        url: '/nuestra-filosofia',
+        name: 'Nuestra filosofía',
+        type: `${infodata?._id}`,
+    }
+
     const updatePillar = async (event) => {
         event.preventDefault()
+
+        if (contentData?.content?.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -137,9 +148,9 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                             <div onClick={() => deleteSelected(infocardsData?._id)} className="leti-btn delete">Eliminar {infocardsData?.title}</div>
                                         </div>
                                         {message &&
-                                                <div className="row">
-                                                    <span className="AdminEdit__message col-12 m-0">{message}</span>
-                                                </div>}
+                                            <div className="row">
+                                                <span className="AdminEdit__message col-12 m-0">{message}</span>
+                                            </div>}
                                     </div>
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}
                                 </form>

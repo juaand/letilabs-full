@@ -46,7 +46,7 @@ function EditUsInfo() {
         event.preventDefault()
         data.id = usInfoData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

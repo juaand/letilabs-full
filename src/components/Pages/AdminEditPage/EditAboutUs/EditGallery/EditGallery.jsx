@@ -64,7 +64,7 @@ function EditGallery() {
         event.preventDefault()
         data.mainTitle = galleryData[0]?.mainTitle
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Sobre nosotros - ${data?.title}`
             createContent(contentData)
         }
@@ -171,32 +171,32 @@ function EditGallery() {
             <section className="container-fluid EditContent">
                 <h2>Galería</h2>
                 <form className="AdminEdit__form" onSubmit={updateInfo}>
-                        <div className="row">
-                            <h3 className="mt-5">Editar título galería</h3>
-                            <div className="col-12">
-                                <InputWithLabel
-                                    value={data.mainTitle}
-                                    label="Título galería"
-                                    onChange={onChange}
-                                    name="mainTitle"
-                                    type="text"
-                                    cssStyle="form-control mb-5"
-                                    placeholder={galleryData[0]?.mainTitle}
-                                />
-                            </div>
-                            <div className="col-12 col-sm-6">
-                                <Button type="submit" cssStyle="leti-btn">Editar título</Button>
-                                {titleMessage && <span className="AdminEdit__message ">{titleMessage}</span>}
-                            </div>
+                    <div className="row">
+                        <h3 className="mt-5">Editar título galería</h3>
+                        <div className="col-12">
+                            <InputWithLabel
+                                value={data.mainTitle}
+                                label="Título galería"
+                                onChange={onChange}
+                                name="mainTitle"
+                                type="text"
+                                cssStyle="form-control mb-5"
+                                placeholder={galleryData[0]?.mainTitle}
+                            />
                         </div>
+                        <div className="col-12 col-sm-6">
+                            <Button type="submit" cssStyle="leti-btn">Editar título</Button>
+                            {titleMessage && <span className="AdminEdit__message ">{titleMessage}</span>}
+                        </div>
+                    </div>
 
-                        <hr className="mt-5 mb-5" />
+                    <hr className="mt-5 mb-5" />
 
-                        {registerError && <div className="alert alert-danger">{registerError}</div>}
-                    </form>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
                 <form className="AdminEdit__form" onSubmit={addGalleryItem}>
                     <div className="row">
-                    <h3>Añadir nuevo elemento a la galería</h3>
+                        <h3>Añadir nuevo elemento a la galería</h3>
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Título

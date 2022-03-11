@@ -8,7 +8,7 @@ import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
 
 
-function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
+function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const [carouselData, setCarouselData] = useState(infodata)
     const [message, setMessage] = useState('')
@@ -43,7 +43,7 @@ function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
         event.preventDefault()
         data.id = carouselData?._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
@@ -100,7 +100,7 @@ function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
                                         <div onClick={() => deleteSelected(carouselData?._id)} className="leti-btn delete">Eliminar proceso</div>
                                     </div>
                                 </div>
-                               
+
                                 <div className="col-12">
                                     {message && <span className="AdminEdit__message">{message}</span>}
                                     {registerError && <div className="alert alert-danger">{registerError}</div>}

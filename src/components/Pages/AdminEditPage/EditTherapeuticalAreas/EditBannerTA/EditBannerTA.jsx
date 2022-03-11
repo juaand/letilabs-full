@@ -52,7 +52,7 @@ function EditBannerTA() {
         event.preventDefault()
         data.id = bannerData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
@@ -116,68 +116,68 @@ function EditBannerTA() {
 
     return (
         <>
-        {isDisabled && <Loader message="Cargando imagen..." />}
-        <section className="container-fluid EditContent">
-            <h2>Banner</h2>
-            <form className="AdminEdit__form" onSubmit={updateBanner}>
-                <div className="row">
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Descripción
-                        </p>
-                        <Editor
-                            initialValue={bannerData?.description}
-                            onChange={handleBannerDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 220,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.title} />
-                            <InputFile
-                                value={bannerData?.imgURL}
-                                onChange={onFileSelected}
-                                id="fileButton"
-                                name="imgURL"
-                                type="file"
-                                placeholder={bannerData?.imgURL}
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <section className="container-fluid EditContent">
+                <h2>Banner</h2>
+                <form className="AdminEdit__form" onSubmit={updateBanner}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={bannerData?.description}
+                                onChange={handleBannerDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 220,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
-                            {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
-                        <p className="AdminEdit__form__label">
-                            Título
-                        </p>
-                        <InputWithLabel
-                            value={data?.title}
-                            onBlur={onBlur}
-                            onChange={onChange}
-                            name="title"
-                            type="text"
-                            cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
-                            placeholder={bannerData?.title}
-                        />
-                    </div>
-                    <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-0" >Guardar cambios</Button>
-                        {message && <span className="AdminEdit__message">{message}</span>}
-                    </div>
+                        <div className="col-12 col-sm-6">
+                            <div className="col-12 EditElementsModal__img">
+                                <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.title} />
+                                <InputFile
+                                    value={bannerData?.imgURL}
+                                    onChange={onFileSelected}
+                                    id="fileButton"
+                                    name="imgURL"
+                                    type="file"
+                                    placeholder={bannerData?.imgURL}
+                                />
+                                {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
+                            </div>
+                            <p className="AdminEdit__form__label">
+                                Título
+                            </p>
+                            <InputWithLabel
+                                value={data?.title}
+                                onBlur={onBlur}
+                                onChange={onChange}
+                                name="title"
+                                type="text"
+                                cssStyle={`form-control ${touch.title && error.title ? "is-invalid" : ""}`}
+                                placeholder={bannerData?.title}
+                            />
+                        </div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-0" >Guardar cambios</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
+                        </div>
 
-                </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
         </>
     )
 }

@@ -83,7 +83,7 @@ function EditTimelineBiocontrolled() {
         event.preventDefault()
         data.title = carouselManufactureData[0]?.title
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

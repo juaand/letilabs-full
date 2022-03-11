@@ -21,8 +21,8 @@ function EditGoalsInfo() {
             data: {
                 id: '',
                 title: ourGoalsData[0]?.title,
-                name:'',
-                desc:''
+                name: '',
+                desc: ''
             },
             error: {
                 title: true,
@@ -94,7 +94,7 @@ function EditGoalsInfo() {
         event.preventDefault()
         data.title = ourGoalsData[0]?.title
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `I&D ${data?.name}`
             createContent(contentData)
         }
@@ -157,7 +157,7 @@ function EditGoalsInfo() {
                     </form>
                     <h2>Editar objetivos</h2>
                     <div className="row justify-content-around">
-                    <h3 className="mb-5">Editar objetivo</h3>
+                        <h3 className="mb-5">Editar objetivo</h3>
                         {ourGoalsData?.map(el =>
                             <div className="col-sm-3 col-12 EditCarousel__edit" onClick={() => showModal(el)}>
                                 <h4>{el?.name}</h4>

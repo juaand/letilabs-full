@@ -57,7 +57,7 @@ function EditPortafolio() {
         event.preventDefault()
         data.superiorTitle = title
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Portafolio ${data?.title}`
             createContent(contentData)
         }

@@ -49,7 +49,7 @@ function EditBanner() {
         event.preventDefault()
         data.id = bannerData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
@@ -112,54 +112,54 @@ function EditBanner() {
 
     return (
         <>
-        {isDisabled && <Loader message="Cargando imagen..." />}
-        <section className="container-fluid EditContent">
-            <h2>Banner</h2>
-            <form className="AdminEdit__form" onSubmit={updateBanner}>
-                <div className="row">
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Descripción
-                        </p>
-                        <Editor
-                            initialValue={bannerData?.description}
-                            onChange={handleBannerDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 140,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                        <div className="col-12 EditElementsModal__img">
-                            <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
-                            <InputFile
-                                value={data?.imgURL}
-                                onChange={onFileSelected}
-                                id="fileButton"
-                                name="picpath"
-                                type="file"
-                                placeholder={bannerData?.imgURL}
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <section className="container-fluid EditContent">
+                <h2>Banner</h2>
+                <form className="AdminEdit__form" onSubmit={updateBanner}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={bannerData?.description}
+                                onChange={handleBannerDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 140,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
+                        <div className="col-12 col-sm-6">
+                            <div className="col-12 EditElementsModal__img">
+                                <img src={bannerData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={bannerData?.imgURL} />
+                                <InputFile
+                                    value={data?.imgURL}
+                                    onChange={onFileSelected}
+                                    id="fileButton"
+                                    name="picpath"
+                                    type="file"
+                                    placeholder={bannerData?.imgURL}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
+                        </div>
                     </div>
-                    <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
-                        {message && <span className="AdminEdit__message">{message}</span>}
-                    </div>
-                </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
         </>
     )
 }

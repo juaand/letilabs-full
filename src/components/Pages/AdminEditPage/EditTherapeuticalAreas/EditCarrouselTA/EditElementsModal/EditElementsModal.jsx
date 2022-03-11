@@ -60,7 +60,7 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     const editCarrouselItem = async () => {
         data.id = element._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

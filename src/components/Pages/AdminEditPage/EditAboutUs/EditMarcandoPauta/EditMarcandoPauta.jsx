@@ -47,7 +47,7 @@ function EditMarcandoPauta() {
         event.preventDefault()
         data.id = marcandoPautaData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
@@ -68,7 +68,7 @@ function EditMarcandoPauta() {
             setMessage('Por favor edite alguno de los campos')
         }
     }
-    
+
     const handleMarcandoPautaDescription = (e) => {
         data.description = e.target.getContent()
         contentData.content = e.target.getContent({format: "text"})
@@ -110,55 +110,55 @@ function EditMarcandoPauta() {
 
     return (
         <>
-        {isDisabled && <Loader message="Cargando imagen..." />}
-        <section className="container-fluid EditContent">
-            <h2>Marcando pauta</h2>
-            <form className="AdminEdit__form" onSubmit={updateMarcandoPauta}>
-                <div className="row">
-                    <div className="col-12 col-sm-6">
-                        <p className="AdminEdit__form__label">
-                            Descripción
-                        </p>
-                        <Editor
-                            initialValue={marcandoPautaData?.description}
-                            onChange={handleMarcandoPautaDescription}
-                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                            init={{
-                                height: 140,
-                                menubar: false,
-                                plugins: [
-                                    'advlist autolink lists link image',
-                                    'charmap print preview anchor help',
-                                    'searchreplace visualblocks code',
-                                    'insertdatetime media table paste wordcount'
-                                ],
-                                toolbar:
-                                    'bold',
-                            }}
-                        />
-                    </div>
-                    <div className="col-12 col-sm-6">
-                    <div className="col-12 EditElementsModal__img">
-                            <img src={marcandoPautaData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={marcandoPautaData?.imgURL} />
-                            <InputFile
-                                value={data?.imgURL}
-                                onChange={onFileSelected}
-                                id="fileButton"
-                                name="picpath"
-                                type="file"
-                                placeholder={marcandoPautaData?.imgURL}
+            {isDisabled && <Loader message="Cargando imagen..." />}
+            <section className="container-fluid EditContent">
+                <h2>Marcando pauta</h2>
+                <form className="AdminEdit__form" onSubmit={updateMarcandoPauta}>
+                    <div className="row">
+                        <div className="col-12 col-sm-6">
+                            <p className="AdminEdit__form__label">
+                                Descripción
+                            </p>
+                            <Editor
+                                initialValue={marcandoPautaData?.description}
+                                onChange={handleMarcandoPautaDescription}
+                                apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                init={{
+                                    height: 140,
+                                    menubar: false,
+                                    plugins: [
+                                        'advlist autolink lists link image',
+                                        'charmap print preview anchor help',
+                                        'searchreplace visualblocks code',
+                                        'insertdatetime media table paste wordcount'
+                                    ],
+                                    toolbar:
+                                        'bold',
+                                }}
                             />
                         </div>
-                    </div>
-                    <div className="col-12">
-                        <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
-                        {message && <span className="AdminEdit__message">{message}</span>}
-                    </div>
+                        <div className="col-12 col-sm-6">
+                            <div className="col-12 EditElementsModal__img">
+                                <img src={marcandoPautaData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={marcandoPautaData?.imgURL} />
+                                <InputFile
+                                    value={data?.imgURL}
+                                    onChange={onFileSelected}
+                                    id="fileButton"
+                                    name="picpath"
+                                    type="file"
+                                    placeholder={marcandoPautaData?.imgURL}
+                                />
+                            </div>
+                        </div>
+                        <div className="col-12">
+                            <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
+                            {message && <span className="AdminEdit__message">{message}</span>}
+                        </div>
 
-                </div>
-                {registerError && <div className="alert alert-danger">{registerError}</div>}
-            </form>
-        </section>
+                    </div>
+                    {registerError && <div className="alert alert-danger">{registerError}</div>}
+                </form>
+            </section>
         </>
     )
 }

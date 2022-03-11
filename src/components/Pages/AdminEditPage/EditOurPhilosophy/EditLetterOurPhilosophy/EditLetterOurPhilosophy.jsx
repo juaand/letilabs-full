@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getLetterOurPhilosophy, updateLetterOurPhilosophy} from '../../../../../services/ApiClient'
+import {getLetterOurPhilosophy, updateLetterOurPhilosophy, createContent} from '../../../../../services/ApiClient'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
 import {app} from '../../../../../services/firebase'
@@ -39,10 +39,20 @@ function EditBannerOurPhilosophy() {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/nuestra-filosofia',
+        name: 'Nuestra filosofía',
+        type: `${bannerData?._id}`,
+    }
 
     const updateLetter = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
+
+        if (contentData?.content?.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -64,6 +74,7 @@ function EditBannerOurPhilosophy() {
 
     const handleBody = (e) => {
         data.body = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.body = false
     }
 

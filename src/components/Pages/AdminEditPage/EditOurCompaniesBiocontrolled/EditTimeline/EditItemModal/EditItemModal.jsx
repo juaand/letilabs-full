@@ -12,7 +12,7 @@ import Loader from '../../../../../Loader/Loader'
 import './EditItemModal.css'
 
 
-function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
+function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const [timelineData, setTimelineData] = useState(infodata)
     const [imageSuccess, setImageSuccess] = useState('')
@@ -82,7 +82,7 @@ function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
     const updateInfo = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

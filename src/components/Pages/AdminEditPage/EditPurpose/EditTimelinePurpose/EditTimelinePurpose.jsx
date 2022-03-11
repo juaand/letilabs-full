@@ -84,7 +84,7 @@ function EditTimelinePurpose() {
         setMessage('')
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Propósito ${data?.desc}`
             createContent(contentData)
         }

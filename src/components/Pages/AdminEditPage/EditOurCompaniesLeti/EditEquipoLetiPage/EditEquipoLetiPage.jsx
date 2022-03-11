@@ -55,7 +55,7 @@ function EditEquipoLetiPage() {
         event.preventDefault()
         data.id = bannerData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

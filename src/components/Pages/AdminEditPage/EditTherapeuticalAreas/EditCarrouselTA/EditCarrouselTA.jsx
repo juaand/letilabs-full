@@ -84,7 +84,7 @@ function EditCarrouselTA() {
     const createCarrouselItem = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             contentData.type = `Áreas terapéuticas - ${data?.title}`
             createContent(contentData)
         }

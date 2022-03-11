@@ -45,7 +45,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const updateInfo = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
@@ -73,7 +73,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         const updateData = await deleteOPInfoCard(id)
         deleteItem(updateData)
     }
-    
+
     const handleDescription = (e) => {
         data[e.target.settings.name] = e.target.getContent()
         contentData.content = e.target.getContent({format: "text"})

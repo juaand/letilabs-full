@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getInfoCardsOurPhilosophy, createPillar} from '../../../../../services/ApiClient'
+import {getInfoCardsOurPhilosophy, createPillar, createContent} from '../../../../../services/ApiClient'
 import {app} from '../../../../../services/firebase'
 import Button from '../../../../Form/FormButton/FormButton'
 import InputFile from '../../../../Form/InputFile/InputFile'
@@ -53,10 +53,22 @@ function EditInfoCardsOurPhilosophy() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: data?.title,
+        url: '/nuestra-filosofia',
+        name: 'Nuestra filosofía',
+        type: '',
+    }
+
     const addPillar = async (event) => {
         event.preventDefault()
 
-        if (Object.values(error).map(el => el).includes(false)) {
+        if (contentData?.content?.length > 0) {
+            contentData.type = `Nuestra filosofía - ${data?.title}`
+            createContent(contentData)
+        }
+
+        if (error.title === false && error.picPath === false) {
             const newPillar = await createPillar(data)
             setOurOCData(newPillar)
             setMessage('Pilar creado exitosamente')
@@ -89,6 +101,7 @@ function EditInfoCardsOurPhilosophy() {
         data.picPath = fileUrl
         setImageSuccess("Imagen subida correctamente")
         setIsDisabled(false)
+        error.picPath = false
     }
 
     useEffect(() => {

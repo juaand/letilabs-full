@@ -79,7 +79,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
     const updateInfo = async (event) => {
         event.preventDefault()
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 

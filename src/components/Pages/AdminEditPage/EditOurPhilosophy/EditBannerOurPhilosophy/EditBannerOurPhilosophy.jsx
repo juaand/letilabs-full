@@ -1,12 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
+import {getBannerOurPhilosophy, updateBannerOurPhilosophy, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
-import {getBannerOurPhilosophy, updateBannerOurPhilosophy} from '../../../../../services/ApiClient'
+import {app} from '../../../../../services/firebase'
+
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
-import {app} from '../../../../../services/firebase'
 import Loader from '../../../../Loader/Loader'
 
 function EditBannerOurPhilosophy() {
@@ -41,9 +42,20 @@ function EditBannerOurPhilosophy() {
     const [registerError, setRegisterError] = useState(null)
 
 
+    const contentData = {
+        content: '',
+        url: '/nuestra-filosofia',
+        name: 'Nuestra filosofía',
+        type: `${bannerData?._id}`,
+    }
+
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
+
+        if (contentData?.content?.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -65,6 +77,7 @@ function EditBannerOurPhilosophy() {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

@@ -43,7 +43,7 @@ function EditMapTech() {
         event.preventDefault()
         data.id = mapData._id
 
-        if (contentData.content.length > 0) {
+        if (contentData?.content?.length > 0) {
             createContent(contentData)
         }
 
