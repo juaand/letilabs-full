@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getTimeLineLeti, addTimeLineLetiData} from '../../../../../services/ApiClient'
+import {getTimeLineLeti, addTimeLineLetiData, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
@@ -52,8 +52,20 @@ function EditTimelineLeti() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: '',
+        url: '/leti',
+        name: 'Leti',
+        type: '',
+    }
+
     const addTimeLineItem = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Leti timeline ${data?.button}`
+            createContent(contentData)
+        }
 
         if (error.imgURL === false && error.desc === false && error.button === false && error.url === false) {
             try {
@@ -85,6 +97,7 @@ function EditTimelineLeti() {
 
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 
