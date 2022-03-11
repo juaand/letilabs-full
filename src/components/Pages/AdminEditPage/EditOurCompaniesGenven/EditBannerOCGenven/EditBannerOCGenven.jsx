@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getBannerOCGenven, updateBannerDataOCGenven} from '../../../../../services/ApiClient'
+import {getBannerOCGenven, updateBannerDataOCGenven, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -41,9 +41,20 @@ function EditBannerOCGenven() {
 
     const {data, error} = state
 
+    const contentData = {
+        content: '',
+        url: '/genven',
+        name: 'Genven',
+        type: `${bannerData?._id}`,
+    }
+
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -65,6 +76,7 @@ function EditBannerOCGenven() {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

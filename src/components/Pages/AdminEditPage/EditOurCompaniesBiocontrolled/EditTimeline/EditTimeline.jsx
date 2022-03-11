@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData} from '../../../../../services/ApiClient'
+import {getTimeLineBiocontrolled, addTimeLineBiocontrolledData, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
@@ -52,8 +52,20 @@ function EditTimelineBiocontrolled() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: '',
+        url: '/biocontrolled',
+        name: 'Biocontrolled',
+        type: '',
+    }
+
     const addTimeLineItem = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Biocontrolled - ${data?.buttonTitle}`
+            createContent(contentData)
+        }
 
         if (error.imgURL === false && error.desc === false && error.buttonTitle === false && error.buttonLink === false) {
             try {
@@ -86,6 +98,7 @@ function EditTimelineBiocontrolled() {
 
     const handleBannerDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

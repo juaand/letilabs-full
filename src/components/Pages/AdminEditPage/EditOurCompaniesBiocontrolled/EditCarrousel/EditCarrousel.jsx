@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getCarrouselBiocontrolled, addCarrouselBiocontrolledData, updateBioCarrouselTitle} from '../../../../../services/ApiClient'
+import {getCarrouselBiocontrolled, addCarrouselBiocontrolledData, updateBioCarrouselTitle, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -72,9 +72,20 @@ function EditTimelineBiocontrolled() {
         }
     }
 
+    const contentData = {
+        content: data?.info,
+        url: '/biocontrolled',
+        name: 'Biocontrolled',
+        type: `Biocontrolled ${data?.info}`,
+    }
+
     const addGoal = async (event) => {
         event.preventDefault()
         data.title = carouselManufactureData[0]?.title
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (error.info === false) {
             try {

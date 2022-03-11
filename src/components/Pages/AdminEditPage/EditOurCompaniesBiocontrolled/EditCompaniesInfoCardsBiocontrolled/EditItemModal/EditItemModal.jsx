@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
-import {deleteBiocontrolledInfoCard, updateOurCompaniesInfoCardsBiocontrolled} from '../../../../../../services/ApiClient'
+import {deleteBiocontrolledInfoCard, updateOurCompaniesInfoCardsBiocontrolled, createContent} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
@@ -37,8 +37,19 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/biocontrolled',
+        name: 'Biocontrolled',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -61,6 +72,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const handleDescription = (e) => {
         data.info = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.info = false
     }
 

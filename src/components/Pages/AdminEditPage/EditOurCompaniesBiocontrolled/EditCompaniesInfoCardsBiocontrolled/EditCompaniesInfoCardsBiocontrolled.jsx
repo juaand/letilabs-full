@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getOurCompaniesInfoCardsBiocontrolled, createBiocontrolledInfoCard} from '../../../../../services/ApiClient'
+import {getOurCompaniesInfoCardsBiocontrolled, createBiocontrolledInfoCard, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -53,11 +53,24 @@ function EditCompaniesInfoCardsBiocontrolled() {
 
     const handleDescription = (e) => {
         data.info = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.info = false
+    }
+
+    const contentData = {
+        content: '',
+        url: '/biocontrolled',
+        name: 'Biocontrolled',
+        type: '',
     }
 
     const addItem = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Biocontrolled ${data?.title}`
+            createContent(contentData)
+        }
 
         if (error.title === false && error.info === false) {
             try {

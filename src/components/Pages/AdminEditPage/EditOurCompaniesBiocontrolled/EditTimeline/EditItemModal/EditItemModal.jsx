@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
-import {updateTimeLineBiocontrolledData, deleteTLBioData} from '../../../../../../services/ApiClient'
+import {updateTimeLineBiocontrolledData, deleteTLBioData, createContent} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
@@ -72,8 +72,19 @@ function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
         error.imgURL = false
     }
 
+    const contentData = {
+        content: data?.info,
+        url: '/biocontrolled',
+        name: 'Biocontrolled',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -96,6 +107,7 @@ function EditItemModal({deleteItem,infodata, hideModal, closeModal}) {
 
     const handleDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

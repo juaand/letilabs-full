@@ -45,6 +45,13 @@ function EditPortafolio() {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/',
+        name: 'Inicio',
+        type: '',
+    }
+
 
     const createPortfolioItem = async (event) => {
         event.preventDefault()
@@ -75,13 +82,6 @@ function EditPortafolio() {
         } else {
             setNewItemMessage('Por favor rellene ambos campos')
         }
-    }
-
-    const contentData = {
-        content: '',
-        url: '/',
-        name: 'Inicio',
-        type: '',
     }
 
     const updateInfo = async (event) => {
