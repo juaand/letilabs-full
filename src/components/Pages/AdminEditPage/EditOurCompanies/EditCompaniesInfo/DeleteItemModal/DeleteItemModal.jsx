@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {updateOurCompaniesOC} from '../../../../../../services/ApiClient'
+import {updateOurCompaniesOC, createContent} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import {app} from '../../../../../../services/firebase'
@@ -46,12 +46,18 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const {data, error} = state
 
-    // const deleteCarrouselItem = async (id) => {
-    //     const updateData = await deleteOCNegocio(id)
-    //     deleteItem(updateData)
-    // }
+    const contentData = {
+        content: '',
+        url: '/nuestras-empresas',
+        name: 'Nuestras empresas',
+        type: `${element?._id}`,
+    }
 
     const editCarrouselItem = async (id) => {
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             data.id = element._id
@@ -71,6 +77,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
 
     const handleBannerDescription = (e) => {
         data.info = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.info = false
     }
 
