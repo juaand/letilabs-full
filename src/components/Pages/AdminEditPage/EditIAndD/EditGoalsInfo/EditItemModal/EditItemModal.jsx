@@ -3,7 +3,7 @@ import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
-import {deleteIDGoals, updateGoalsIdData} from '../../../../../../services/ApiClient'
+import {deleteIDGoals, updateGoalsIdData, createContent} from '../../../../../../services/ApiClient'
 import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
@@ -37,8 +37,19 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/investigacion-y-desarrollo',
+        name: 'Investigación y desarrollo',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             if (data.name.trim() === '' || data.desc.trim() === '') {
@@ -66,6 +77,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const handleDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

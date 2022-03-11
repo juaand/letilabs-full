@@ -2,14 +2,15 @@ import React, {useState} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
-import './EditItemModal.css'
-import {updateInfoCardsIdData} from '../../../../../../services/ApiClient'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
+import {updateInfoCardsIdData, createContent} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
+import {app} from '../../../../../../services/firebase'
+
+import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import Button from '../../../../../Form/FormButton/FormButton'
-import {app} from '../../../../../../services/firebase'
 import Loader from '../../../../../Loader/Loader'
+import './EditItemModal.css'
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
@@ -68,8 +69,19 @@ function EditItemModal({infodata, hideModal, closeModal}) {
         error.picPath = false
     }
 
+    const contentData = {
+        content: '',
+        url: '/investigacion-y-desarrollo',
+        name: 'Investigación y desarrollo',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -92,6 +104,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
 
     const handleInfo = (e) => {
         data.info = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.info = false
     }
 

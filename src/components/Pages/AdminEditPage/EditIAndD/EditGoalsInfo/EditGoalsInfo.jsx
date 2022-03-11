@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getGoalsIdData, updateGoalsTitle, createIDGoal} from '../../../../../services/ApiClient'
+import {getGoalsIdData, updateGoalsTitle, createIDGoal, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -58,6 +58,7 @@ function EditGoalsInfo() {
 
     const handleDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 
@@ -82,9 +83,21 @@ function EditGoalsInfo() {
         }
     }
 
+    const contentData = {
+        content: '',
+        url: '/investigacion-y-desarrollo',
+        name: 'Investigación y desarrollo',
+        type: '',
+    }
+
     const addItem = async (event) => {
         event.preventDefault()
         data.title = ourGoalsData[0]?.title
+
+        if (contentData.content.length > 0) {
+            contentData.type = `I&D ${data?.name}`
+            createContent(contentData)
+        }
 
         if (error.name === false && error.desc === false) {
             try {
