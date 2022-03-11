@@ -41,8 +41,6 @@ function EditSeo() {
         event.preventDefault()
         data.id = seoData.id
 
-        console.log(data)
-
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 if (error.keywords === false) {

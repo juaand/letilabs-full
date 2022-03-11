@@ -63,7 +63,7 @@ function EditPortafolio() {
         }
 
         if (error.title === false && error.description === false) {
-            if (data.title.trim() === '' || data.description.trim() === '') {
+            if (data?.title?.trim() === '' || data?.description?.trim() === '') {
                 setNewItemMessage('El título o la descripción no pueden ir vacios, por favor, rellene ambos campos.')
             } else {
                 try {

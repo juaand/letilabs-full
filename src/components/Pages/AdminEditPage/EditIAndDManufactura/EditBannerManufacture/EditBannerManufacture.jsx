@@ -56,7 +56,7 @@ function EditBannerManufacture() {
         }
 
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.title.trim() === '' || data.description.trim() === '') {
+            if (data?.title?.trim() === '' || data?.description?.trim() === '') {
                 setMessage('El título o la descripción no pueden ir vacios, por favor, rellene ambos campos.')
             } else {
                 try {

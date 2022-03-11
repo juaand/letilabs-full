@@ -62,7 +62,6 @@ function AdminFarVigPage() {
     useEffect(() => {
         const fetchData = async () => {
             const allFarmVig = await getFarmVigData()
-            console.log(allFarmVig)
             setFarVig(allFarmVig)
             setLoading(false)
         }

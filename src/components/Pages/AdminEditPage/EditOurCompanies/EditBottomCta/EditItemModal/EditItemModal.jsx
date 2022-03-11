@@ -78,7 +78,6 @@ function EditItemModal({infodata, hideModal, closeModal}) {
             try {
                 await updateBottomOC(data)
                     .then(info => {
-                        console.log(info)
                         setCtaData(info)
                         setMessage('Data atualizada exitosamente')
                         hideModal(info)

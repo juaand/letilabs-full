@@ -38,7 +38,6 @@ function EditCookies() {
             try {
                 await updateCookieInfo(data)
                     .then(cookie => {
-                        console.log(cookie)
                         setCookieData(cookie)
                         setMessage('Data atualizada exitosamente')
                     })

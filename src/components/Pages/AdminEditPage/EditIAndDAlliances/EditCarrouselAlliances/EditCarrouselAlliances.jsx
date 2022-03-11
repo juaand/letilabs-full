@@ -67,8 +67,6 @@ function EditCarrouselAlliances() {
         event.preventDefault()
         data.title = logoAlliData[0]?.title
 
-        console.log(data)
-
         if (error.picPath === false) {
             try {
                 await createAlly(data)

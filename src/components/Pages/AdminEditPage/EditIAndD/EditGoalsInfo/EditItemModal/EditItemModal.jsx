@@ -10,8 +10,6 @@ import Button from '../../../../../Form/FormButton/FormButton'
 
 function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
-    console.log('infodata', infodata)
-
     const [timelineData, setTimelineData] = useState(infodata)
     const [message, setMessage] = useState('')
 
@@ -52,7 +50,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         }
 
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.name.trim() === '' || data.desc.trim() === '') {
+            if (data?.name?.trim() === '' || data?.desc?.trim() === '') {
                 setMessage('El título o la descripción no pueden estar vacíos, por favor complete ambos campos')
             } else {
                 try {

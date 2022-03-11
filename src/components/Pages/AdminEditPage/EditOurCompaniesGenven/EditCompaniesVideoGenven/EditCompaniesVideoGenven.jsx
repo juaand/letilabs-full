@@ -52,7 +52,6 @@ function EditCompaniesVideoGenven() {
     useEffect(() => {
         const fetchData = async () => {
             const getVideoData = await getOurCompaniesVideoGenven()
-            console.log(getVideoData)
             setVideoInfo(getVideoData[0]?.videoURL)
             setVideoId(getVideoData[0]?._id)
         }

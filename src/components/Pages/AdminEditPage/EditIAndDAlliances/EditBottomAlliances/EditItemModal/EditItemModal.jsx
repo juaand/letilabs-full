@@ -74,8 +74,6 @@ function EditItemModal({infodata, hideModal, closeModal}) {
         event.preventDefault()
         data.id = ctaData?._id
 
-        console.log(data)
-
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateBottomAlliancesData(data)

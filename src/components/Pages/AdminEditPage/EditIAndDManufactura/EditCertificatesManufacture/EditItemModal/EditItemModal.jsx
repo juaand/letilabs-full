@@ -12,8 +12,6 @@ import Loader from '../../../../../Loader/Loader'
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
-    console.log('infodata', infodata)
-
     const [isDisabled, setIsDisabled] = useState(false)
     const [disabled, setDisabled] = useState(true)
 

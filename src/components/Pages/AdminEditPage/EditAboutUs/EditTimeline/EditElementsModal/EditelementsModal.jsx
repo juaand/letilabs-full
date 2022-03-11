@@ -11,7 +11,6 @@ import './EditelementsModal.css'
 
 
 function EditElementsModal({deleteItem, element, hideModal}) {
-    console.log(element)
 
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)

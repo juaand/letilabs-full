@@ -71,7 +71,6 @@ function EditTimelineBiocontrolled() {
             try {
                 await addTimeLineBiocontrolledData(data)
                     .then(timeline => {
-                        console.log(timeline)
                         setTimeLineData(timeline)
                         setMessage('Elemento añadido exitósamente')
                     })

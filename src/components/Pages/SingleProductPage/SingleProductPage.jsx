@@ -59,7 +59,6 @@ function SingleProductPage(props) {
                             <Slider {...settings}>
                                 {product[0].map(el =>
                                     <>
-                                        {console.log(el)}
                                         <div className="col-12 SingleProductPage__product">
                                             <div className="row">
                                                 <div className="col-12 col-sm-6 SingleProductPage__pic" style={{

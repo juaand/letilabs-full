@@ -84,7 +84,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         }
 
         if (Object.values(error).map(el => el).includes(false)) {
-            if (data.title.trim() === '' || data.description.trim() === '') {
+            if (data?.title?.trim() === '' || data?.description?.trim() === '') {
                 setMessage('El título o la descripción no pueden estar vacíos, por favor complete ambos campos')
             } else {
                 try {

@@ -44,8 +44,6 @@ function EditFormAlliances() {
         event.preventDefault()
         data.id = bannerData._id
 
-        console.log(data)
-
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateFormAlliances(data)

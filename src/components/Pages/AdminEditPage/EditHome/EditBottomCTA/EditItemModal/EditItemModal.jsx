@@ -12,7 +12,7 @@ import Loader from '../../../../../Loader/Loader'
 
 
 function EditItemModal({infodata, hideModal, closeModal}) {
-console.log(infodata)
+
     const [ctaData, setCtaData] = useState(infodata)
     const [message, setMessage] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
@@ -73,7 +73,7 @@ console.log(infodata)
     const updateInfo = async (event) => {
         event.preventDefault()
         data.id = ctaData?._id
-console.log(data)
+
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateBottomHome(data)

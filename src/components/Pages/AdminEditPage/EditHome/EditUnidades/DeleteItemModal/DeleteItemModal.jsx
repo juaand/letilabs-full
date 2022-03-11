@@ -12,8 +12,6 @@ import './DeleteItemModal.css'
 
 function DeleteItemModal({deleteItem, element, hideModal}) {
 
-    console.log(element)
-
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
 

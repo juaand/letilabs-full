@@ -10,8 +10,6 @@ import './EditItemModal.css'
 
 function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
-    console.log('infodata', infodata)
-
     const [timelineData, setTimelineData] = useState(infodata)
     const [message, setMessage] = useState('')
 

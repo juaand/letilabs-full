@@ -63,7 +63,6 @@ function AllianceForm() {
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 const newVigilancia = await allianceForm(data)
-                console.log(newVigilancia)
                 setFormResponse(newVigilancia)
                 setMessage(!message)
             } catch (err) {
