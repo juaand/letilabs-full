@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Helmet} from 'react-helmet'
 
-import {createContent, getSeo} from '../../../services/ApiClient'
-import {useAuthContext} from '../../../contexts/AuthContext'
+import {getSeo} from '../../../services/ApiClient'
 
 import VerticalCarousel from './VerticalCarousel/VerticalCarousel'
 import BottomCta from './BottomCta/BottomCta'
@@ -13,30 +12,8 @@ import './AreasTerapeuticasPage.css'
 function AreasTerapeuticasPage() {
 
     const [seoInfo, setSeoInfo] = useState('')
-
-    const {user} = useAuthContext()
-
-    const data = {
-        content: [],
-        url: '/areas-terapeuticas',
-        name: 'Áreas terapéuticas',
-    }
-
-    
     
     useEffect(() => {
-        setTimeout(() => {
-            if (user) {
-                const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
-                mainContent.forEach(content => {
-                    data.content.push(content.innerText)
-                })
-                const fetchData2 = async () => {
-                    await createContent(data)
-                }
-                fetchData2()
-        }
-        }, 15000)
 
         const isMenuOpen = document.querySelector('.show')
         if (isMenuOpen) {

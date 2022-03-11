@@ -1,9 +1,7 @@
 import React, {useState, useEffect} from 'react'
-
-import {createContent, getProductBottom, getFarmaco, getSeo} from '../../../services/ApiClient'
-
-import {useAuthContext} from '../../../contexts/AuthContext'
 import {Helmet} from 'react-helmet'
+
+import {getProductBottom, getFarmaco, getSeo} from '../../../services/ApiClient'
 
 import FarmacoVigilancia from './FarmacoVigilancia/FarmacoVigilancia'
 import FindProduct from './FindProduct/FindProduct'
@@ -13,33 +11,12 @@ import Banner from './Banner/Banner'
 
 function ProductsPage() {
 
-    const {user} = useAuthContext()
-    const data = {
-        content: [],
-        url: '/productos',
-        name: 'Productos',
-    }
-
     const [farmacoData, setFarmacoData] = useState([])
     const [bottomData, setBottomData] = useState([])
     const [seoInfo, setSeoInfo] = useState('')
     const [loading, setLoading] = useState(true)
     
-    
-    
     useEffect(() => {
-        setTimeout(() => {
-            if (user) {
-                const mainContent = document.querySelectorAll('p, h1, h2, h3, h4, h5, h6')
-                mainContent.forEach(content => {
-                    data.content.push(content.innerText)
-                })
-                const fetchData2 = async () => {
-                    await createContent(data)
-                }
-                fetchData2()
-        }
-        }, 15000)
 
         const isMenuOpen = document.querySelector('.show')
         if (isMenuOpen) {

@@ -12,7 +12,6 @@ import GenvenPage from './components/Pages/GenvenPage/GenvenPage'
 import BiocontrolledPage from './components/Pages/BiocontrolledPage/BiocontrolledPage'
 import SearchPage from './components/Pages/SearchPage/SearchPage'
 import LoginPage from './components/Pages/LoginPage/LoginPage'
-import AdminPage from './components/Pages/AdminPage/AdminPage'
 import AdminFormsPage from './components/Pages/AdminFormsPage/AdminFormsPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
@@ -63,7 +62,6 @@ function App() {
         <Route exact path="/noticias" render={(props) => <NewsPage {...props} />} />
         <Route exact path="/noticia/:id" render={(props) => <NewsSingle {...props} />} />
         <Route exact path="/login" login component={LoginPage} />
-        <AuthenticatedRoute exact path="/admin" render={(props) => <AdminPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-editar-contenido" render={(props) => <AdminEditPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-forms" render={(props) => <AdminFormsPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-productos" render={(props) => <AdminProductPage {...props} user={user} />} />
