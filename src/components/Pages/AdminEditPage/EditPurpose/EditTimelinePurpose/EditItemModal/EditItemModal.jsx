@@ -3,7 +3,7 @@ import {Editor} from '@tinymce/tinymce-react'
 import {Fade} from 'react-awesome-reveal'
 
 import './EditItemModal.css'
-import {deleteTimelinePurpose, updateTimeLinePurpose} from '../../../../../../services/ApiClient'
+import {deleteTimelinePurpose, updateTimeLinePurpose, createContent} from '../../../../../../services/ApiClient'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import InputFile from '../../../../../Form/InputFile/InputFile'
 import Button from '../../../../../Form/FormButton/FormButton'
@@ -64,10 +64,19 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         error.imgURL = false
     }
 
+    const contentData = {
+        content: '',
+        url: '/proposito-y-responsabilidad-social',
+        name: 'Propósito y responsabilidad social',
+        type: `${infodata?._id}`,
+    }
+
     const updateInfo = async (event) => {
         event.preventDefault()
 
-        console.log(data)
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
 
         if (Object.values(error).map(el => el).includes(false)) {
             try {
@@ -90,6 +99,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const handleDescription = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 

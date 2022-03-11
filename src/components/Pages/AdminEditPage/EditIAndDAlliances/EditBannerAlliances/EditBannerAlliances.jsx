@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getBannerAlliances, updateBannerAlliances} from '../../../../../services/ApiClient'
+import {getBannerAlliances, updateBannerAlliances, createContent} from '../../../../../services/ApiClient'
 import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
@@ -44,16 +44,25 @@ function EditBannerAlliances() {
     const {data, error} = state
     const [registerError, setRegisterError] = useState(null)
 
+    const contentData = {
+        content: '',
+        url: '/alianzas',
+        name: 'Alianzas',
+        type: `${bannerData?._id}`,
+    }
 
     const updateBanner = async (event) => {
         event.preventDefault()
         data.id = bannerData._id
 
+        if (contentData.content.length > 0) {
+            createContent(contentData)
+        }
+
         if (Object.values(error).map(el => el).includes(false)) {
             try {
                 await updateBannerAlliances(data)
                     .then(banner => {
-                        console.log(banner)
                         setBannerData(banner)
                         setMessage('Data atualizada exitosamente')
                     })
@@ -70,6 +79,7 @@ function EditBannerAlliances() {
 
     const handleBannerDescription = (e) => {
         data.description = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.description = false
     }
 

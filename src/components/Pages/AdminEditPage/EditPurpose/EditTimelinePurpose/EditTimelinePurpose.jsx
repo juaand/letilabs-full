@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
-import {getTimeLinePurpose, addTimeLinePurposeData} from '../../../../../services/ApiClient'
+import {getTimeLinePurpose, addTimeLinePurposeData, createContent} from '../../../../../services/ApiClient'
 import {useFormState} from '../../../../../hooks/useFormState'
 import InputFile from '../../../../Form/InputFile/InputFile'
 import Button from '../../../../Form/FormButton/FormButton'
@@ -40,6 +40,7 @@ function EditTimelinePurpose() {
 
     const handleDesc = (e) => {
         data.desc = e.target.getContent()
+        contentData.content = e.target.getContent({format: "text"})
         error.desc = false
     }
 
@@ -72,9 +73,21 @@ function EditTimelinePurpose() {
         setBool(!bool)
     }
 
+    const contentData = {
+        content: '',
+        url: '/proposito-y-responsabilidad-social',
+        name: 'Propósito y responsabilidad social',
+        type: '',
+    }
+
     const addTimeLineItem = async (event) => {
         setMessage('')
         event.preventDefault()
+
+        if (contentData.content.length > 0) {
+            contentData.type = `Propósito ${data?.desc}`
+            createContent(contentData)
+        }
 
         if (error.imgURL === false && error.desc === false) {
             try {
