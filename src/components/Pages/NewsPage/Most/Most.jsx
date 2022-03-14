@@ -15,7 +15,7 @@ function Most({newsData, title}) {
                     <Fade cascade delay={300} direction="up" triggerOnce className="card NewsPage__card col-12">
                         {newsData?.filter(el => el?.outstanding !== true).slice(3, 4).map(el =>
                             <>
-                                <img src={el?.urlToPic} className="card-img-top" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.title} />
+                                <img src={el?.urlToPic} className="card-img-top" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={el?.title} />
                                 <div className="card-body">
                                     <span className="card-time">{drawTime(el?.publishDate)}</span>
                                     {el.tag.map(el => <small className="FindNews__tag">{el}</small>)}

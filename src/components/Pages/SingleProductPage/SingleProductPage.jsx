@@ -75,7 +75,7 @@ function SingleProductPage(props) {
                                                     <p><strong>Registro sanitario</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}} /></p>
                                                     <p><strong>Vida útil</strong> <span dangerouslySetInnerHTML={{__html: el?.util_life}} /></p>
                                                     <p><strong>CPE</strong> <span className="SingleProductPage__cpe">{el?.cpe}</span></p>
-                                                    <img src={el?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
+                                                    <img src={el?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
                                                 </div>
                                             </div>
                                         </div>
@@ -142,7 +142,7 @@ function SingleProductPage(props) {
                                             <p><strong>Registro sanitario</strong> {product[0]?.health_register}</p>
                                             <p><strong>Vida útil</strong> {product[0]?.util_life}</p>
                                             <p className="SingleProductPage__cpe">{product[0]?.CPE}</p>
-                                            <img src={product[0]?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={product[0]?.name + ' código de barras'} className="SingleProductPage__cb" />
+                                            <img src={product[0]?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={product[0]?.name + ' código de barras'} className="SingleProductPage__cb" />
                                         </>
                                     </div>
                                 </div>

@@ -552,8 +552,8 @@ function AdminProductPage() {
                                     <div className="col-sm-4 col-12">
                                         <div className="card AdminProductPage__card">
                                             <div className="card-body">
-                                                <img src={el?.picPath} className="AdminProductPage__img-top" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} />
-                                                <img src={el?.QRpath} className="AdminProductPage__img-bottom" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={el?.name} />
+                                                <img src={el?.picPath} className="AdminProductPage__img-top" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={el?.name} />
+                                                <img src={el?.QRpath} className="AdminProductPage__img-bottom" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={el?.name} />
                                             </div>
                                             <div className="card-body">
                                                 <h5 dangerouslySetInnerHTML={{__html: el?.line}}>

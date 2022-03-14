@@ -106,7 +106,7 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                         </div>
                                         <div className="col-12">
                                             <div className="col-12 EditElementsModal__img mb-0">
-                                                <img src={infodata?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupo-leti-fd84e.appspot.com/o/images%2Fno-image.png?alt=media&token=73bf7cd8-629d-4deb-b281-9e629fbfb752';" alt={infodata?.title} width="15%" />
+                                                <img src={infodata?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={infodata?.title} width="15%" />
                                                 <InputFile
                                                     value={infodata?.imgURL}
                                                     onChange={onFileSelected}

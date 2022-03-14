@@ -164,9 +164,7 @@ function EditBottomOurPhilosophy() {
                                 cssStyle={`form-control mb-0 ${touch.title && error.title ? "is-invalid" : ""}`}
                                 placeholder={bottomOurPhilosophyData?.title}
                             />
-                            <p className="AdminEdit__form__label mt-4">
-                                Imagen
-                            </p>
+                            <img src={bottomOurPhilosophyData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={bottomOurPhilosophyData?.imgURL} />
                             <InputFile
                                 value={data?.imgURL}
                                 onChange={onFileSelected}
