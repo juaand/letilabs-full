@@ -114,17 +114,19 @@ function EditBannerTeams() {
                                 />
                             </div>
                             <div className="col-12 col-sm-6">
-                                <img src={teamsBanner[0]?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={teamsBanner[0]?.imgURL} />
-                                <InputFile
-                                    classStyle="mb-0"
-                                    value={data?.imgURL}
-                                    onChange={onFileSelected}
-                                    id="fileButton"
-                                    name="imgURL"
-                                    type="file"
-                                    placeholder={teamsBanner[0]?.imgURL}
-                                />
-                                {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
+                                <div className="col-12 EditElementsModal__img">
+                                    <img src={teamsBanner[0]?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={teamsBanner[0]?.imgURL} />
+                                    <InputFile
+                                        classStyle="mb-0"
+                                        value={data?.imgURL}
+                                        onChange={onFileSelected}
+                                        id="fileButton"
+                                        name="imgURL"
+                                        type="file"
+                                        placeholder={teamsBanner[0]?.imgURL}
+                                    />
+                                    {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
+                                </div>
                             </div>
                             <div className="col-12">
                                 <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5">Guardar cambios</Button>

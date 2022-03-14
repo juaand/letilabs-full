@@ -102,10 +102,10 @@ function EditNewsTitles() {
         <>
             {isDisabled && <Loader message="Cargando imagen..." />}
             <section className="container-fluid EditContent">
-                <h2>Títulos Noticias Page</h2>
+                <h2>Títulos Noticias</h2>
                 <form className="AdminEdit__form" onSubmit={updateTitles}>
                     <div className="row">
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-4">
                             <p className="AdminEdit__form__label">
                                 Título <strong>{titlesdata?.lastestTitle}</strong>
                             </p>
@@ -119,7 +119,7 @@ function EditNewsTitles() {
                                 placeholder={titlesdata?.lastestTitle}
                             />
                         </div>
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-4">
                             <p className="AdminEdit__form__label">
                                 Título <strong>{titlesdata?.mostTitle}</strong>
                             </p>
@@ -133,7 +133,7 @@ function EditNewsTitles() {
                                 placeholder={titlesdata?.mostTitle}
                             />
                         </div>
-                        <div className="col-12 col-sm-3">
+                        <div className="col-12 col-sm-4">
                             <p className="AdminEdit__form__label">
                                 Título <strong>{titlesdata?.searchTitle}</strong>
                             </p>
@@ -147,17 +147,19 @@ function EditNewsTitles() {
                                 placeholder={titlesdata?.searchTitle}
                             />
                         </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Imagen artículos Grupo Leti
-                            </p>
-                            <InputFile
-                                value={data?.picPath}
-                                onChange={onFileSelected}
-                                id="fileButton"
-                                name="urlToPic"
-                                type="file"
-                            />
+                        <div className="col-12">
+                            <div className="col-12 EditElementsModal__img">
+                                <img src={titlesdata?.picPath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt="Noticias Leti" />
+
+                                <InputFile
+                                    value={data?.picPath}
+                                    onChange={onFileSelected}
+                                    id="fileButton"
+                                    name="urlToPic"
+                                    type="file"
+                                    label="Seleccionar imagen"
+                                />
+                            </div>
                         </div>
 
                         <div className="col-12">
