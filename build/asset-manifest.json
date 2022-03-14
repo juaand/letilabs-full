@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.2c973c8e.css",
-    "main.js": "/static/js/main.a4cabae5.js",
+    "main.css": "/static/css/main.a78467ec.css",
+    "main.js": "/static/js/main.bdbdebb7.js",
     "static/media/bubbles.png": "/static/media/bubbles.824b2aa8ee9f6410d740.png",
     "static/media/manufacture-banner.png": "/static/media/manufacture-banner.fcc3b1e34aab9741615b.png",
     "static/media/search-bg.png": "/static/media/search-bg.1721ec2cbd9053ec2ecd.png",
@@ -52,6 +52,7 @@
     "static/media/title-icon.svg": "/static/media/title-icon.7800ebc758057930d0dc.svg",
     "static/media/whatsapp-single.svg": "/static/media/whatsapp-single.991b66101ba72b979535.svg",
     "static/media/whatsapp.svg": "/static/media/whatsapp.9ed3acba57d56cd51a73.svg",
+    "static/media/instagram.svg": "/static/media/instagram.06fea6c9527a9bae5739.svg",
     "static/media/linkedin-single.svg": "/static/media/linkedin-single.b3c63827a224f6e72126.svg",
     "static/media/triangulo-rojo.svg": "/static/media/triangulo-rojo.7f4be7f599bad2036e6e.svg",
     "static/media/triangulo-azul.svg": "/static/media/triangulo-azul.0c904f24f1905abba9df.svg",
@@ -83,11 +84,11 @@
     "static/media/back-arrow.svg": "/static/media/back-arrow.c9af9948a60311c5dcce.svg",
     "static/media/dropdown-resp-bottom.svg": "/static/media/dropdown-resp-bottom.6fb2f99d03b6f6e845a0.svg",
     "static/media/inputwithlabel.svg": "/static/media/inputwithlabel.da48adc264351885fe52.svg",
-    "main.2c973c8e.css.map": "/static/css/main.2c973c8e.css.map",
-    "main.a4cabae5.js.map": "/static/js/main.a4cabae5.js.map"
+    "main.a78467ec.css.map": "/static/css/main.a78467ec.css.map",
+    "main.bdbdebb7.js.map": "/static/js/main.bdbdebb7.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c973c8e.css",
-    "static/js/main.a4cabae5.js"
+    "static/css/main.a78467ec.css",
+    "static/js/main.bdbdebb7.js"
   ]
 }

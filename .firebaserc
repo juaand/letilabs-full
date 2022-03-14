@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "grupo-leti-fd84e"
-  }
+    "default": "grupoleti",
+    "grupoleti": "grupoleti"
+  },
+  "targets": {}
 }
