@@ -55,7 +55,7 @@ function EditProductBottom() {
                 await updateProductBottom(data)
                     .then(banner => {
                         setBannerData(banner)
-                        setTitleMessage('Título atualizado exitosamente')
+                        setTitleMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

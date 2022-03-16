@@ -52,3 +52,8 @@
 .ShowEditModal__close:hover {
   border: solid 0.3rem #055aa5;
 }
+
+.ShowEditModal__close.big {
+  width: 5rem;
+  height: 5rem;
+}

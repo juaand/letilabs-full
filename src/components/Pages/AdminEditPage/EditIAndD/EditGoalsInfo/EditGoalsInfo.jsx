@@ -70,7 +70,7 @@ function EditGoalsInfo() {
                 await updateGoalsTitle(data)
                     .then(info => {
                         setOurGoalsData(info)
-                        setMessage('Título atualizado exitosamente')
+                        setMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

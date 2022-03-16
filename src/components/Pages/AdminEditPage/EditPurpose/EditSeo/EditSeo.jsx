@@ -50,7 +50,7 @@ function EditSeo() {
                 await updateSeo(data)
                     .then(seo => {
                         setSeoData(seo)
-                        setMessage('SEO atualizado exitosamente')
+                        setMessage('SEO actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

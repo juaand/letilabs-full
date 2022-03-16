@@ -130,7 +130,7 @@ function EditGallery() {
                 await updateGalleryTitle(data)
                     .then(info => {
                         setGalleryData(info)
-                        setTitleMessage('Título atualizado exitosamente')
+                        setTitleMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

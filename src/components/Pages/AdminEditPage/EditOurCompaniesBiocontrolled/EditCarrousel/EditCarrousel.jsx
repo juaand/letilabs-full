@@ -59,7 +59,7 @@ function EditTimelineBiocontrolled() {
                 await updateBioCarrouselTitle(data)
                     .then(info => {
                         setCarouselManufactureData(info)
-                        setMessage('Título atualizado exitosamente')
+                        setMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

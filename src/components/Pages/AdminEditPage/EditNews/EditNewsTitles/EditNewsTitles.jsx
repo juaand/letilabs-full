@@ -52,7 +52,7 @@ function EditNewsTitles() {
                 await updateNewsTitles(data)
                     .then(titles => {
                         setTitlesData(titles)
-                        setMessage('Títulos atualizados exitosamente')
+                        setMessage('Títulos actualizados exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

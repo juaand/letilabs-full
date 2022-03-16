@@ -116,7 +116,7 @@ function EditCarrouselTech() {
                 await updateCarouselTitleTech(data)
                     .then(info => {
                         setOurGoalsOCData(info)
-                        setNewItemMessage('Título atualizado exitosamente')
+                        setNewItemMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

@@ -153,7 +153,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                     <div className="row justify-content-center">
                         <Fade direction="down" className="col-11 ShowEditModal__container product-modal">
                             <>
-                                <span className="ShowEditModal__close" onClick={hideModal}></span>
+                                <span className="ShowEditModal__close big" onClick={hideModal}></span>
                                 <form className="AdminEdit__form" onSubmit={updateThisProduct}>
                                     <div className="row">
                                         <div className="col-sm-12">

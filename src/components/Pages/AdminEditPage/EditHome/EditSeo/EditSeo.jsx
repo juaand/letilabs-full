@@ -50,7 +50,7 @@ function EditSeo() {
                 await updateSeo(data)
                     .then(seo => {
                         setSeoData(seo[0])
-                        setMessage('SEO atualizado exitosamente')
+                        setMessage('SEO actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)
@@ -64,7 +64,7 @@ function EditSeo() {
     }
 
     const handleDescription = (e) => {
-        data.description = e.target.getContent({ format: "text" })
+        data.description = e.target.getContent({format: "text"})
         error.description = false
     }
 

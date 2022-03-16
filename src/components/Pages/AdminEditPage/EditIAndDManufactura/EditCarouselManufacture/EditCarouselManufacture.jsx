@@ -61,7 +61,7 @@ function EditCarouselManufacture() {
                 await updateTitleProccess(data)
                     .then(info => {
                         setCarouselManufactureData(info)
-                        setMessage('Título atualizado exitosamente')
+                        setMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

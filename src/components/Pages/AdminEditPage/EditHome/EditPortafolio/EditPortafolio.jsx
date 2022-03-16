@@ -92,7 +92,7 @@ function EditPortafolio() {
                 await updateTitlePortfolio(data)
                     .then(info => {
                         setPortfolioData(info)
-                        setMessage('Título atualizado exitosamente')
+                        setMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

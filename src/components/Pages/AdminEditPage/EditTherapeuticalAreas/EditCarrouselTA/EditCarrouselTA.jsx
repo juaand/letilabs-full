@@ -61,7 +61,7 @@ function EditCarrouselTA() {
                 await updateTAGalleryTitle(data)
                     .then(info => {
                         setCarrouselTAData(info)
-                        setNewItemMessage('Título atualizado exitosamente')
+                        setNewItemMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)

@@ -238,19 +238,6 @@ function AdminProductPage() {
                                     <button className="AdminProductPage__add" onClick={showAddNewForm}>Añadir nuevo producto</button>
                                 </div>
                             </div>
-                            {filteredProducts.length > 0 &&
-                                <div className="row">
-                                    <div className="col-12 AdminProductPage__showproducts">
-                                        <div className="form-check">
-                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
-                                                onChange={carouselHomeProducts} />
-                                            <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                Mostrar sólo los productos del carrusel del home.
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                            }
                             {!filteredProducts.length &&
                                 <div className="row">
                                     <div className="col-12">
@@ -260,7 +247,7 @@ function AdminProductPage() {
                             }
                             {createProduct &&
                                 <Reveal triggerOnce keyframes={customAnimation} duration={600} className="row">
-                                    <>
+                                    <><span className="ShowEditModal__close big" onClick={() => setCreateProduct(false)}></span>
                                         <div className={`col-12 AdminProductPage__create ${createProduct && 'show'}`}>
                                             <h1>Crear producto</h1>
                                             <small>* Todos los campos son obligatorios</small>
@@ -547,6 +534,20 @@ function AdminProductPage() {
                                     </>
                                 </Reveal>
                             }
+                            {filteredProducts.length > 0 &&
+                                <div className="row">
+                                    <div className="col-12 AdminProductPage__showproducts">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+                                                onChange={carouselHomeProducts} />
+                                            <label className="form-check-label" htmlFor="flexCheckDefault">
+                                                Mostrar sólo los productos del carrusel del home.<br/>
+                                                <small><strong>*Seleccionar mínimo 4 productos y máximo 18 para mostrar en el carrusel del home.</strong></small>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                             <div className="row">
                                 {filteredProducts.map(el =>
                                     <div className="col-sm-4 col-12">
@@ -564,7 +565,7 @@ function AdminProductPage() {
                                                 <li className="list-group-item AdminProductPage__check"><div className="form-check">
                                                     <input className="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked={el.show_in_home} onChange={(e) => showAtHome(e, el._id)} />
                                                     <label className="form-check-label" htmlFor="flexCheckChecked">
-                                                        mostrar en carrusel del home
+                                                        mostrar en carrusel del home<strong>*</strong>
                                                     </label>
                                                 </div></li>
                                                 <span className="card-title">Composición</span><li className="list-group-item" dangerouslySetInnerHTML={{__html: el?.composition}} />

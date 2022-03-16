@@ -61,7 +61,7 @@ function EditUnidades() {
                 await updateTitleUnidadesNegocio(data)
                     .then(info => {
                         setTitleData(info)
-                        setMessage('Título atualizado exitosamente')
+                        setMessage('Título actualizado exitosamente')
                     })
                     .catch(error => {
                         setRegisterError(error)
