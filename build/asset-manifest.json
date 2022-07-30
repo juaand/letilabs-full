@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.86c746c4.css",
-    "main.js": "/static/js/main.a8fb08f0.js",
+    "main.css": "/static/css/main.16a06a2b.css",
+    "main.js": "/static/js/main.773d7cd9.js",
     "static/media/bubbles.png": "/static/media/bubbles.824b2aa8ee9f6410d740.png",
     "static/media/manufacture-banner.png": "/static/media/manufacture-banner.fcc3b1e34aab9741615b.png",
     "static/media/search-bg.png": "/static/media/search-bg.1721ec2cbd9053ec2ecd.png",
@@ -17,7 +17,6 @@
     "static/media/farmvig-bg.jpg": "/static/media/farmvig-bg.4693100d5823281322f4.jpg",
     "static/media/manufactura-medicamento.jpg": "/static/media/manufactura-medicamento.bd80dce8cf43ecd90ceb.jpg",
     "static/media/TripletaLight.woff": "/static/media/TripletaLight.ec632e9cf52d5ee974c2.woff",
-    "static/media/areas-terapeuticas-portfolio.jpg": "/static/media/areas-terapeuticas-portfolio.c5d687ea06b727a862a2.jpg",
     "static/media/aliado-antiguo.jpg": "/static/media/aliado-antiguo.fde526269d26056d7af1.jpg",
     "static/media/manufactura-terapias.jpg": "/static/media/manufactura-terapias.d7fff5fe83a46abe7c51.jpg",
     "static/media/bicontrolled-bottom.jpg": "/static/media/bicontrolled-bottom.97386a3b9060f488492e.jpg",
@@ -27,7 +26,6 @@
     "static/media/TripletaLight.woff2": "/static/media/TripletaLight.7f41a6a2258d9fb89535.woff2",
     "static/media/equipo.jpg": "/static/media/equipo.acf7d95cf87880d5c7dc.jpg",
     "static/media/TRIPLETAExtraBold.woff": "/static/media/TRIPLETAExtraBold.0d508dea1294812bfb42.woff",
-    "static/media/areas-terapeuticas-investigacion.jpg": "/static/media/areas-terapeuticas-investigacion.2059f36afc1c2ad6e4e7.jpg",
     "static/media/iyd-equipo.jpg": "/static/media/iyd-equipo.186e40029d340bda6611.jpg",
     "static/media/TRIPLETAExtraBold.woff2": "/static/media/TRIPLETAExtraBold.89cfba7f75a99ea84f72.woff2",
     "static/media/tech-manufactura.jpg": "/static/media/tech-manufactura.a2849fbedeafe1b705b8.jpg",
@@ -84,11 +82,11 @@
     "static/media/back-arrow.svg": "/static/media/back-arrow.c9af9948a60311c5dcce.svg",
     "static/media/dropdown-resp-bottom.svg": "/static/media/dropdown-resp-bottom.6fb2f99d03b6f6e845a0.svg",
     "static/media/inputwithlabel.svg": "/static/media/inputwithlabel.da48adc264351885fe52.svg",
-    "main.86c746c4.css.map": "/static/css/main.86c746c4.css.map",
-    "main.a8fb08f0.js.map": "/static/js/main.a8fb08f0.js.map"
+    "main.16a06a2b.css.map": "/static/css/main.16a06a2b.css.map",
+    "main.773d7cd9.js.map": "/static/js/main.773d7cd9.js.map"
   },
   "entrypoints": [
-    "static/css/main.86c746c4.css",
-    "static/js/main.a8fb08f0.js"
+    "static/css/main.16a06a2b.css",
+    "static/js/main.773d7cd9.js"
   ]
 }

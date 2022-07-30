@@ -235,6 +235,10 @@ export const createTeam = ({title, info}) => http.post("/createteam", {title, in
 export const getBannerTeams = () => http.get("/bannerdatateams")
 export const updateBannerTeams = ({mainTitle, imgURL, id}) => http.patch("/updatebannerdatateams", {mainTitle, imgURL, id})
 
+//admin nav routes 
+export const getNav = () => http.get("/getnavdata")
+export const updateNavData = ({title, desc, nav_btn, nav_cta, id}) => http.patch("/updatenavdata", {title, desc, nav_btn, nav_cta, id})
+
 //search routes
 export const searchContent = (search) => http.get(`/search/${search}`)
 export const searchNews = (data) => http.post(`/buscarnoticia`, {data})

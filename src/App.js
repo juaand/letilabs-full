@@ -15,12 +15,12 @@ import LoginPage from './components/Pages/LoginPage/LoginPage'
 import AdminFormsPage from './components/Pages/AdminFormsPage/AdminFormsPage'
 import AdminEditPage from './components/Pages/AdminEditPage/AdminEditPage'
 import NotFoundPage from './components/Pages/NotFoundPage/NotFoundPage'
-import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/AreasTerapeuticasPage'
+// import AreasTerapeuticasPage from './components/Pages/AreasTerapeuticasPage/AreasTerapeuticasPage'
 import IYDPage from './components/Pages/IYDPage/IYDPage'
 import TechPage from './components/Pages/TechPage/TechPage'
 import ManufacturePage from './components/Pages/ManufacturePage/ManufacturePage'
 import AlliancesPage from './components/Pages/AlliancesPage/AlliancesPage'
-import PurposePage from './components/Pages/PurposePage/PurposePage'
+// import PurposePage from './components/Pages/PurposePage/PurposePage'
 import OurPeoplePage from './components/Pages/OurPeoplePage/OurPeoplePage'
 import OurPhilosophyPage from './components/Pages/OurPhilosophyPage/OurPhilosophyPage'
 import ProductsPage from './components/Pages/ProductsPage/ProductsPage'
@@ -30,6 +30,7 @@ import NewsPage from './components/Pages/NewsPage/NewsPage'
 import NewsSingle from './components/Pages/NewsSingle/NewsSingle'
 import AdminProductPage from './components/Pages/AdminProductPage/AdminProductPage'
 import AdminNewsPage from './components/Pages/AdminNewsPage/AdminNewsPage'
+import AdminNavPage from './components/Pages/AdminNavPage/AdminNavPage'
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
         <AuthenticatedRoute exact path="/admin-forms" render={(props) => <AdminFormsPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-productos" render={(props) => <AdminProductPage {...props} user={user} />} />
         <AuthenticatedRoute exact path="/admin-noticias" render={(props) => <AdminNewsPage {...props} user={user} />} />
+        <AuthenticatedRoute exact path="/admin-navegacion" render={(props) => <AdminNavPage {...props} user={user} />} />
         <Route exact path="/buscar" render={(props) => <SearchPage {...props} />} />
         <Route path="*" render={() => <NotFoundPage />} />
         {!user && <Redirect to='/' />}
