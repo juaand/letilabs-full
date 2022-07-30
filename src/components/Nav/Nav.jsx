@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 
+import {getNav} from '../../services/ApiClient'
+
 import {useAuthContext} from '../../contexts/AuthContext'
 import {seoURL} from '../../hooks/seoURL'
-import dataNav from '../../data/dataNav'
 import './Nav.css'
 
 function Nav({initSearch}) {
@@ -15,6 +16,7 @@ function Nav({initSearch}) {
     const [subNavSet, setSubNavSet] = useState({})
     const [bool, setBool] = useState(false)
     const [isDevice, setIsDevice] = useState(false)
+    const [dataNav, setDataNav] = useState([])
 
     const showSubNav = (e, data) => {
 
@@ -46,17 +48,25 @@ function Nav({initSearch}) {
             setIsDevice(!isDevice)
         }
 
-        if (!user) {
-            const getNavW = document.querySelector('.navbar-nav').offsetWidth
-            const getNavH = document.querySelector('.navbar-nav').offsetHeight
-            const getNav = document.querySelector('.navbar-nav').getBoundingClientRect()
-            setSubNavSet({
-                width: getNavW,
-                height: getNavH,
-                top: getNavH,
-                x: getNav.x
-            })
+        const fetchData = async () => {
+            const getNavData = await getNav()
+            setDataNav(getNavData)
+            if (!user) {
+                const getNavW = document.querySelector('.navbar-nav').offsetWidth
+                const getNavH = document.querySelector('.navbar-nav').offsetHeight
+                const getNavInfo = document.querySelector('.navbar-nav').getBoundingClientRect()
+                setSubNavSet({
+                    width: getNavW,
+                    height: getNavH,
+                    top: getNavH,
+                    x: getNavInfo.x
+                })
+                console.log(getNavW, getNavH, getNavInfo)
+            }
+
+
         }
+        fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -94,6 +104,7 @@ function Nav({initSearch}) {
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-forms">Formularios</NavLink>
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-productos">Productos</NavLink>
                                     <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-noticias">Noticias</NavLink>
+                                    <NavLink activeClassName="active" className="nav-link nav-link__admin" to="/admin-navegacion">Navegación</NavLink>
                                 </>
                             }
                         </div>
@@ -111,12 +122,12 @@ function Nav({initSearch}) {
                         <div className="row">
                             <div className="col-12 col-sm-4 Nav__sub-nav-info">
                                 {isDevice && <p onClick={() => setBool(!bool)} className="Nav__sub-nav-device">Atrás</p>}
-                                <h3>{subNavData.title}</h3>
-                                <p>{subNavData.desc}</p>
-                                <Link onClick={hideMenu} className="Nav__sub-nav-cta" to={seoURL(subNavData.nav_btn)}>{subNavData.nav_cta}</Link>
+                                <h3>{subNavData?.title}</h3>
+                                <p dangerouslySetInnerHTML={{__html: subNavData?.desc}} />
+                                <Link onClick={hideMenu} className="Nav__sub-nav-cta" to={seoURL(subNavData?.nav_btn)}>{subNavData?.nav_cta}</Link>
                             </div>
                             <div className="col-12 col-sm-4 Nav__sub-nav-anchors">
-                                {subNavData.sub_nav.map(el =>
+                                {subNavData?.sub_nav.map(el =>
                                     <Link onClick={hideMenu} to={`${seoURL(el.sub_text)}`}>{el.sub_text}</Link>
                                 )}
                             </div>
