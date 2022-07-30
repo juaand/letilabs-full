@@ -10,7 +10,7 @@ import EditSeo from './EditSeo/EditSeo'
 function EditOurPeople() {
     return (
         <main>
-            <h2 className="EditContent EditContent__title">Editar página nuestra gente</h2>
+            <h2 className="EditContent EditContent__title">Editar página gente LETI</h2>
             <EditBannerOurPeople />
             <EditBannerTeams />
             <EditInfoCardsOurPeople />

@@ -8,13 +8,11 @@
   border-left: solid #fff 6rem;
   position: relative;
 }
-
 .CompaniesInfo__absolute {
   position: absolute;
   z-index: 1;
   top: -8rem;
 }
-
 .CompaniesInfo__card {
   font-size: 1.8rem;
   padding-top: 12rem;
@@ -22,11 +20,9 @@
   text-decoration: none;
   transition: all 0.3s ease-in-out;
 }
-
 .CompaniesInfo__card strong {
   color: #4a4a4a;
 }
-
 .CompaniesInfo__card-body {
   position: relative;
   max-height: 16rem;
@@ -34,9 +30,8 @@
   padding: 0 3rem;
   transition: all 0.3s ease-in-out;
 }
-
 .CompaniesInfo__card-body:after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;
@@ -46,19 +41,15 @@
   opacity: 1;
   transition: all 0.3s ease-in-out;
 }
-
 .CompaniesInfo__card:nth-child(1) .CompaniesInfo__card-logo {
   width: 12rem;
 }
-
 .CompaniesInfo__card:nth-child(2) .CompaniesInfo__card-logo {
   width: 19rem;
 }
-
 .CompaniesInfo__card:nth-child(3) .CompaniesInfo__card-logo {
   width: 28rem;
 }
-
 .CompaniesInfo__card-img {
   height: 8.5rem;
   display: flex;
@@ -66,7 +57,6 @@
   align-items: center;
   margin: 2rem 0;
 }
-
 .CompaniesInfo__card-link {
   width: 6rem;
   height: 6rem;
@@ -76,30 +66,24 @@
   background: url(../../../../images/down-gray-arrow.svg) no-repeat center/3rem;
   transition: all 0.3s ease-in-out;
 }
-
 .CompaniesInfo__card:hover {
   background: #f5f5f5;
   padding-top: 2rem;
   color: #737b7f;
 }
-
 .CompaniesInfo__card:hover .CompaniesInfo {
   overflow: visible;
 }
-
 .CompaniesInfo__card:hover .CompaniesInfo__absolute {
   top: -4rem;
 }
-
 .CompaniesInfo__card:hover .CompaniesInfo__card-body {
   max-height: unset;
   height: auto;
 }
-
 .CompaniesInfo__card:hover .CompaniesInfo__card-body:after {
   opacity: 0;
 }
-
 .CompaniesInfo__card:hover .CompaniesInfo__card-link {
   border: solid 0.1rem #055aa5;
   background: url(../../../../images/plus.svg) no-repeat center/3rem;
@@ -172,7 +156,7 @@
     left: 0;
     width: 2rem;
     height: 2rem;
-    content: '•';
+    content: "•";
     text-align: center;
     opacity: 0.3;
     color: #abadb2;

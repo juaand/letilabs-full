@@ -4,11 +4,9 @@
   background: #f5f5f5;
   margin: 20rem 0 6rem 0;
 }
-
 .ProductBottom__desc {
   margin-bottom: 3rem;
 }
-
 .ProductBottom__clip {
   position: absolute;
   top: 50%;
@@ -21,7 +19,6 @@
   mask-repeat: no-repeat;
   mask-position: top left;
 }
-
 .ProductBottom__blue-stroke {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   position: absolute;

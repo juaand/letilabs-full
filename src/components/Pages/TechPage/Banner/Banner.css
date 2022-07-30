@@ -1,12 +1,10 @@
 .Banner__Tech {
   position: relative;
 }
-
 .Banner__Tech-logo {
   margin-top: 6rem;
   display: block;
 }
-
 .Banner__Tech__title {
   height: 70rem;
   display: flex;
@@ -14,19 +12,16 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .Banner__Tech__title strong {
   color: #055aa5;
   font-weight: unset;
 }
-
 .Banner__Tech__title h3 {
   font-size: 3rem;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-weight: 500;
   margin: 1rem auto 10rem auto;
 }
-
 .Banner__Tech__bg {
   position: absolute;
   width: 54rem;
@@ -36,7 +31,6 @@
   top: -10rem;
   transform: rotate(0deg);
 }
-
 .Banner__Tech__blue {
   position: absolute;
   width: 44rem;

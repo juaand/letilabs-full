@@ -2,14 +2,12 @@
   margin: 20rem auto 10rem auto;
   position: relative;
 }
-
 .Unidades .big-gray-triangle,
 .Unidades .small-gray-triangle {
   position: absolute;
   opacity: 0.4;
   z-index: -1;
 }
-
 .Unidades .big-gray-triangle {
   background: url(../../../../images/big-grey.svg) no-repeat center center/contain;
   width: 70rem;
@@ -17,23 +15,19 @@
   right: -10rem;
   top: -15rem;
 }
-
 .Unidades .small-gray-triangle {
   background: url(../../../../images/small-grey.svg) no-repeat center center/contain;
   width: 50rem;
   height: 55rem;
   right: 27rem;
 }
-
 .Unidades__row {
   margin: 8rem 0;
 }
-
 .Unidades__logo {
   min-height: 40rem;
   background-size: 30rem 10rem !important;
 }
-
 .Unidades__desc {
   display: flex;
   align-items: flex-start;
@@ -41,12 +35,10 @@
   padding: 0 3rem;
   flex-direction: column;
 }
-
 .Unidades__desc__right {
   text-align: right;
   align-items: flex-end;
 }
-
 .Unidades__square-btn {
   background: url(../../../../images/plus.svg) no-repeat center center/contain;
   width: 6.5rem;
@@ -56,13 +48,11 @@
   margin-top: 3rem;
   transition: all 200ms ease-in-out;
 }
-
 .Unidades__square-btn:hover {
   background: #055aa5 url(../../../../images/plus-white.svg) no-repeat center center/contain;
   background-size: 3rem;
 }
-
-.Unidades__logos [class*="css-"]:nth-child(3) .Unidades__logo {
+.Unidades__logos [class*=css-]:nth-child(3) .Unidades__logo {
   background-size: 45rem 30rem !important;
 }
 
@@ -74,7 +64,7 @@
     margin-left: 2rem;
   }
   .Unidades .big-gray-triangle,
-  .Unidades .small-gray-triangle {
+.Unidades .small-gray-triangle {
     display: none;
   }
   .Unidades__row {
@@ -88,10 +78,10 @@
     min-height: 18rem;
     background-size: 15rem !important;
   }
-  .Unidades__logos [class*="css-"]:nth-child(1) .Unidades__logo {
+  .Unidades__logos [class*=css-]:nth-child(1) .Unidades__logo {
     background-size: 11rem 10rem !important;
   }
-  .Unidades__logos [class*="css-"]:nth-child(3) .Unidades__logo {
+  .Unidades__logos [class*=css-]:nth-child(3) .Unidades__logo {
     background-size: 24rem 10rem !important;
   }
 }

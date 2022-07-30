@@ -73,7 +73,7 @@ function AdminFarVigPage() {
         <>
             {loading && <Loader message="Cargando mensajes..." />}
             <Helmet>
-                <title>Grupo Leti | Administrador FarmacoVigilancia</title>
+                <title>Grupo LETI | Administrador FarmacoVigilancia</title>
             </Helmet>
             <main className="container-fluid AdminFarVigPage">
                 {bool && <DeleteFarmVigModal card={card} hideModal={hideModal} data={updateCardsData} />}

@@ -18,7 +18,7 @@ import Button from '../../Form/FormButton/FormButton'
 import Loader from '../../Loader/Loader'
 
 function AdminNewsPage() {
-    
+
     const [registerError, setRegisterError] = useState(null)
     const [createNews, setCreateNews] = useState(false)
     const [isDisabled, setIsDisabled] = useState(false)
@@ -200,7 +200,7 @@ function AdminNewsPage() {
             {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <ShowEditModal news={editNews} hideModal={hideModal} updateData={(data) => updateData(data)} allTagsData={allTagsData} />}
             <Helmet>
-                <title>Grupo Leti | Administrador Productos</title>
+                <title>Grupo LETI | Administrador Productos</title>
             </Helmet>
             <main className="container-fluid AdminNewsPage">
                 {message && <div className="alert alert-danger" role="alert">{message}</div>}

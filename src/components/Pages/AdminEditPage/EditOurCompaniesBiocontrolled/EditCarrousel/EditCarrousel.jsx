@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {Editor} from '@tinymce/tinymce-react'
 
 import {getCarrouselBiocontrolled, addCarrouselBiocontrolledData, updateBioCarrouselTitle, createContent} from '../../../../../services/ApiClient'
-import InputWithLabel from '../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../hooks/useFormState'
 import Button from '../../../../Form/FormButton/FormButton'
 import EditItemModal from './EditItemModal/EditItemModal'
@@ -15,7 +14,7 @@ function EditTimelineBiocontrolled() {
     const [message, setMessage] = useState('')
     const [bool, setBool] = useState(false)
 
-    const {state, onChange} = useFormState(
+    const {state} = useFormState(
         {
             data: {
                 title: '',
@@ -110,6 +109,11 @@ function EditTimelineBiocontrolled() {
         error.title = false
     }
 
+    const handleChangeDesc = (e) => {
+        data.info = e.target.getContent()
+        error.info = false
+    }
+
     useEffect(() => {
         const fetchData = async () => {
             const getOurCarouselManufactureData = await getCarrouselBiocontrolled()
@@ -163,7 +167,7 @@ function EditTimelineBiocontrolled() {
                         <h3 className="mb-5">Editar Logros</h3>
                         {carouselManufactureData?.map(el =>
                             <div className="col-sm-3 col-12 EditCarousel__edit logros" onClick={() => showModal(el)}>
-                                <p>{el?.info}</p>
+                                <p dangerouslySetInnerHTML={{__html: el?.info}}/>
                             </div>
                         )}
                         <hr className="mt-5 mb-5" />
@@ -171,14 +175,22 @@ function EditTimelineBiocontrolled() {
                         <form className="AdminEdit__form" onSubmit={addGoal}>
                             <div className="row">
                                 <div className="col-12">
-                                    <InputWithLabel
-                                        value={data.info}
-                                        label="Descripción del logro"
-                                        onChange={onChange}
-                                        name="info"
-                                        type="text"
-                                        cssStyle="form-control mb-5"
-                                        placeholder="Añada descripción del logro"
+                                    <Editor
+                                        initialValue={data.info}
+                                        onChange={handleChangeDesc}
+                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                        init={{
+                                            height: 120,
+                                            menubar: false,
+                                            plugins: [
+                                                'advlist autolink lists link image',
+                                                'charmap print preview anchor help',
+                                                'searchreplace visualblocks code',
+                                                'insertdatetime media table paste wordcount'
+                                            ],
+                                            toolbar:
+                                                'bold',
+                                        }}
                                     />
                                 </div>
                                 <div className="col-12 col-sm-6">

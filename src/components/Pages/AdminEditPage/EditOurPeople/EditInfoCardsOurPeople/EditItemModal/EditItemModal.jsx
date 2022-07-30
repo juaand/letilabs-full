@@ -37,8 +37,8 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
     const contentData = {
         content: '',
-        url: '/nuestra-gente',
-        name: 'Nuestra gente',
+        url: '/gente-leti',
+        name: 'Gente LETI',
         type: `${infodata?._id}`,
     }
 

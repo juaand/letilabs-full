@@ -56,8 +56,8 @@ function EditElementsModal({deleteItem, element, hideModal}) {
 
     const contentData = {
         content: '',
-        url: '/sobre-nosotros',
-        name: 'Sobre nosotros',
+        url: '/somos-leti',
+        name: 'Somos Leti',
         type: `${element?._id}`,
     }
 

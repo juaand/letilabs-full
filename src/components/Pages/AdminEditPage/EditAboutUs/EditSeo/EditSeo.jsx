@@ -16,7 +16,7 @@ function EditSeo() {
             data: {
                 id: '',
                 keywords: seoData?.keywords,
-                page: 'Sobre nosotros',
+                page: 'Somos Leti',
                 description: seoData?.description,
             },
             error: {
@@ -71,7 +71,7 @@ function EditSeo() {
     useEffect(() => {
         const fetchData = async () => {
             const getSeoData = await getSeo()
-            const filterSeo = getSeoData.filter(seo => seo.page === 'Sobre nosotros')
+            const filterSeo = getSeoData.filter(seo => seo.page === 'Somos leti')
             setSeoData(filterSeo[0])
         }
         fetchData()

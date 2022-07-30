@@ -32,7 +32,7 @@ function LetiNews({newsData, title}) {
                 </div>
                 <div className="col-12 col-sm-5 NewsPage__leti-hero">
                     <Fade cascade delay={300} direction="up" triggerOnce className="card NewsPage__leti__card col-12">
-                        <img src={title?.picPath} className="card-img-top" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt="Noticias destacadas Grupo Leti" />
+                        <img src={title?.picPath} className="card-img-top" onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt="Noticias destacadas Grupo LETI" />
                     </Fade>
                 </div>
             </div>

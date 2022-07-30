@@ -4,11 +4,9 @@
   position: relative;
   padding: 10rem 0;
 }
-
-.Goals [class*='cells'] {
+.Goals [class*=cells] {
   position: absolute;
 }
-
 .Goals__number {
   background: #055aa5;
   color: #fff;
@@ -20,9 +18,8 @@
   align-items: center;
   position: absolute;
 }
-
 .Goals__number:after {
-  content: '';
+  content: "";
   width: 7.7rem;
   height: 7.7rem;
   border: solid 0.1rem #055aa5;
@@ -32,72 +29,61 @@
   left: -1rem;
   border-radius: 14rem;
 }
-
 .Goals__info {
   margin-left: 10rem;
 }
-
 .Goals__subtitle {
-  font-family: 'tripletaBold';
+  font-family: "tripletaBold";
   font-size: 3rem;
   display: flex;
   align-items: center;
 }
-
 .Goals__desc {
   font-size: 2.4rem;
   color: #737b7f;
   margin-bottom: 9rem;
   padding-right: 10rem;
 }
-
 .Goals__desc strong {
   color: #055aa5;
   font-weight: unset;
 }
-
 .Goals__cells-001 {
   width: 19rem;
   height: 19rem;
   left: -4rem;
   bottom: -4rem;
 }
-
 .Goals__cells-002 {
   width: 7rem;
   height: 7rem;
   top: 7rem;
   left: 7rem;
 }
-
 .Goals__cells-003 {
   width: 1.8rem;
   height: 1.8rem;
   top: -6rem;
   right: 15rem;
 }
-
 .Goals__cells-004 {
   width: 6.5rem;
   height: 6.5rem;
   top: 3.2rem;
   left: 35%;
 }
-
 .Goals__cells-005 {
   width: 3rem;
   height: 3rem;
   left: 30rem;
   top: 25rem;
 }
-
 .Goals__cells-006 {
   width: 5rem;
   height: 5rem;
   right: 6rem;
   top: 30rem;
 }
-
 .Goals__cells-007 {
   width: 3rem;
   height: 3rem;

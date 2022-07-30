@@ -5,9 +5,9 @@ import {seoURL} from '../../../../hooks/seoURL'
 
 function Nav({getActiveItem}) {
 
-    const adminNav = ['Inicio', 'Sobre nosotros', 'Áreas Terapéuticas', 'Nuestras empresas', 'Leti', 'Genven', 'Biocontrolled', 'Investigación y desarrollo', 'Tecnología', 'Manufactura', 'Alianzas', 'Propósito y responsabilidad social', 'Nuestra gente', 'Nuestra filosofía', 'Productos', 'Listado de productos','Noticias', 'Etiquetas']
+    const adminNav = ['Inicio', 'Somos Leti', 'Nuestras empresas', 'Leti', 'Genven', 'Biocontrolled', 'Investigación y desarrollo', 'Tecnología', 'Manufactura', 'Alianzas', 'Propósito y responsabilidad social', 'Gente LETI', 'Nuestra filosofía', 'Productos', 'Listado de productos','Noticias', 'Etiquetas']
 
-    const subAdminNav = ['Áreas Terapéuticas', 'Leti', 'Genven', 'Biocontrolled', 'Tecnología', 'Manufactura', 'Alianzas', 'Listado de productos', 'Etiquetas']
+    const subAdminNav = ['Leti', 'Genven', 'Biocontrolled', 'Tecnología', 'Manufactura', 'Alianzas', 'Listado de productos', 'Etiquetas']
 
     const clearInitActive = () => {
         const initActive = document.querySelector('.currentActive')

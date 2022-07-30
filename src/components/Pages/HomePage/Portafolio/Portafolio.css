@@ -3,22 +3,18 @@
   padding: 15rem 0 12rem 0;
   overflow: visible;
 }
-
 .Portafolio__item {
   margin-bottom: 3rem;
   font-size: 2.4rem;
   color: #4a4a4a;
   margin-right: 4rem;
 }
-
 .Portafolio__item strong {
   color: #055aa5;
 }
-
 .Portafolio__triangles {
   position: relative;
 }
-
 .Portafolio__triangles .big-red-triangle {
   position: absolute;
   width: 140rem;
@@ -35,11 +31,9 @@
   padding-top: 10rem;
   transform: rotate(0);
 }
-
 .Portafolio__triangles .big-red-triangle h1 {
   font-size: 3.8rem;
 }
-
 .Portafolio__triangles .big-blue-triangle {
   position: absolute;
   width: 100rem;

@@ -1,59 +1,47 @@
 .SearchPage {
   font-size: 1.8rem;
 }
-
 .SearchPage__bg {
   background: url(../../../images/search-bg.png) no-repeat center top/cover;
   padding-top: 23rem;
 }
-
 .SearchPage__form-input {
   color: #055aa5 !important;
   padding-bottom: 3rem;
 }
-
 .SearchPage__resultados {
   margin: 3rem 0 8rem 0;
 }
-
 .SearchPage__resultados-vacio {
   margin: 4rem 0 8rem 0;
 }
-
 .SearchPage__resultados-vacio p:first-child {
   margin-bottom: 4rem;
 }
-
 .SearchPage__resultados-matchs {
   margin-bottom: 5rem;
   border-bottom: 1px solid #e9eaee;
   padding-bottom: 5rem;
 }
-
 .SearchPage__link {
   color: #4a4a4a;
   text-decoration: none;
 }
-
 .SearchPage__link:hover {
   color: #055aa5;
 }
-
 .SearchPage__link:hover .SearchPage__url {
   color: #055aa5;
 }
-
 .SearchPage__title {
   font-size: 3rem;
   font-weight: 500;
 }
-
 .SearchPage__url {
   font-size: 1.8rem;
   font-weight: 400;
   opacity: 0.8;
 }
-
 .SearchPage__content {
   font-size: 2.4rem;
   margin-top: 3rem;

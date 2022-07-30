@@ -33,7 +33,7 @@ function AdminEditPage() {
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Administrador de contenidos</title>
+                <title>Grupo LETI | Administrador de contenidos</title>
             </Helmet>
             <main className="container-fluid AdminEditPage">
                 <div className="row">
@@ -42,7 +42,7 @@ function AdminEditPage() {
                     </div>
                     <div className="col-sm-10 AdminEditPage__Content">
                         {initNavValue === 'inicio' && <EditHome />}
-                        {initNavValue === 'sobre-nosotros' && <EditAboutUs />}
+                        {initNavValue === 'somos-leti' && <EditAboutUs />}
                         {initNavValue === 'areas-terapeuticas' && <EditTherapeuticalAreas />}
                         {initNavValue === 'nuestras-empresas' && <EditOurCompanies />}
                         {initNavValue === 'leti' && <EditOurCompaniesLeti />}
@@ -53,7 +53,7 @@ function AdminEditPage() {
                         {initNavValue === 'manufactura' && <EditIAndDManufactura />}
                         {initNavValue === 'alianzas' && <EditIAndDAlliances />}
                         {initNavValue === 'proposito-y-responsabilidad-social' && <EditPurpose />}
-                        {initNavValue === 'nuestra-gente' && <EditOurPeople />}
+                        {initNavValue === 'gente-leti' && <EditOurPeople />}
                         {initNavValue === 'nuestra-filosofia' && <EditOurPhilosophy />}
                         {initNavValue === 'productos' && <EditProducts />}
                         {initNavValue === 'listado-de-productos' && <EditProductList />}

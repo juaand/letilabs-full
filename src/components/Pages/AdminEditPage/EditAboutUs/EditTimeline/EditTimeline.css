@@ -1,7 +1,6 @@
 .EditContent-timeline {
   padding-top: 6rem;
 }
-
 .EditContent-timeline img {
   width: 100%;
   height: auto;
@@ -9,7 +8,6 @@
   position: relative;
   object-fit: cover;
 }
-
 .EditContent-timeline p {
   margin-top: 1rem;
   font-size: 1.4rem;
@@ -19,9 +17,8 @@
 .EditCarousel__edit {
   position: relative;
 }
-
 .EditCarousel__edit:before {
-  content: '';
+  content: "";
   width: 3rem;
   height: 3rem;
   display: block;
@@ -30,33 +27,27 @@
   right: -3rem;
   top: -2rem;
 }
-
 .EditCarousel__edit:hover {
   cursor: pointer;
   opacity: 0.8;
 }
-
 .EditCarousel__edit.logros {
   border: solid 0.1rem #e9eaee;
   margin: 0 0.5rem 2rem 0.5rem;
   background: transparent;
 }
-
 .EditCarousel__edit.logros:before {
   right: 1rem;
   top: -2rem;
   background: #fff url(../../../../../images/edit.svg) no-repeat center center/2rem;
   z-index: 1;
 }
-
 .EditCarousel__edit.logros img {
   margin-top: 2rem;
 }
-
 .EditCarousel__edit.logros h4 {
-  font-family: 'TripletaBold';
+  font-family: "TripletaBold";
 }
-
 .EditCarousel__edit-force:before {
   right: 0rem;
   z-index: 1;

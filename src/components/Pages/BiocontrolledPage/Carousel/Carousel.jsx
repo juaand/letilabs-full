@@ -55,8 +55,7 @@ function Carousel() {
                         <Slider {...settings}>
                             {biocontrolledCarousel.map(el =>
                                 <div>
-                                    <h3 className="col-8 col-sm-4 Carousel__Biocontrolled__desc">
-                                        {el.info}</h3>
+                                    <h3 dangerouslySetInnerHTML={{__html: el?.info}} className="col-8 col-sm-4 Carousel__Biocontrolled__desc"/>
                                 </div>
                             )}
                         </Slider>

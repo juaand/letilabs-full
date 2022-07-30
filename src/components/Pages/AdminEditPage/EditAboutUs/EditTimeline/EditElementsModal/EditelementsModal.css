@@ -10,7 +10,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .DeleteItemModal__img {
   overflow: hidden;
   display: flex;
@@ -18,46 +17,37 @@
   padding-bottom: 1rem;
   margin: 2rem 0;
 }
-
 .DeleteItemModal__img img {
   width: 20%;
   margin-right: 2rem;
 }
-
 .DeleteItemModal__text {
   margin: 0;
 }
-
 .DeleteItemModal__text strong {
   color: #055aa5;
 }
-
 .DeleteItemModal__body {
   font-size: 1.6rem;
 }
-
 .DeleteItemModal .card {
   margin-bottom: 0;
   padding-bottom: 0;
   border: 0;
   border-top: solid 0.1rem #e9eaee;
 }
-
 .DeleteItemModal .card .leti-btn {
   margin-top: 4rem;
   padding: 0.8rem 1.6rem;
 }
-
 .DeleteItemModal .card .leti-btn.delete {
   border-color: #cd202f;
   color: #fff;
   background: #cd202f;
 }
-
 .DeleteItemModal__ask {
   margin-bottom: 2rem;
 }
-
 .DeleteItemModal__container {
   background: #fff;
   padding: 2rem 4rem;
@@ -67,7 +57,6 @@
   height: auto;
   padding-top: 4rem;
 }
-
 .DeleteItemModal__close {
   position: absolute;
   top: 2rem;
@@ -81,7 +70,6 @@
   background: url("../../../../../../images/close.svg") no-repeat center/contain;
   background-size: 50%;
 }
-
 .DeleteItemModal__close:hover {
   border: solid 0.3rem #055aa5;
 }

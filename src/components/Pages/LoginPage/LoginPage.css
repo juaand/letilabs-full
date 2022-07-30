@@ -2,7 +2,6 @@
   position: relative;
   padding: 10rem 0 20rem 0;
 }
-
 .LoginPage .leti-red-triangle {
   background: url(../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 95rem;
@@ -13,7 +12,6 @@
   transform: rotate(50deg);
   z-index: -1;
 }
-
 .LoginPage .leti-blue-triangle {
   background: url(../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 80rem;

@@ -55,8 +55,8 @@ function EditGallery() {
 
     const contentData = {
         content: '',
-        url: '/sobre-nosotros',
-        name: 'Sobre Nosotros',
+        url: '/somos-leti',
+        name: 'Somos Leti',
         type: '',
     }
 
@@ -65,7 +65,7 @@ function EditGallery() {
         data.mainTitle = galleryData[0]?.mainTitle
 
         if (contentData?.content?.length > 0) {
-            contentData.type = `Sobre nosotros - ${data?.title}`
+            contentData.type = `Somos Leti - ${data?.title}`
             createContent(contentData)
         }
 

@@ -35,9 +35,9 @@ function NewsSingle(props) {
     return (
         <>
             <Helmet>
-                <title>{`Grupo Leti | ${noticia?.title}`}</title>
-                <meta name="description" content={`Resultado de búsqueda de noticia del Grupo Leti: ${noticia?.title}`} />
-                <meta name="keywords" content={`Grupo Leti, noticias Grupo Leti, ${noticia?.title}`} />
+                <title>{`Grupo LETI | ${noticia?.title}`}</title>
+                <meta name="description" content={`Resultado de búsqueda de noticia del Grupo LETI: ${noticia?.title}`} />
+                <meta name="keywords" content={`Grupo LETI, noticias Grupo LETI, ${noticia?.title}`} />
             </Helmet>
             {loading && <Loader />}
             <section className="container-fluid NewsSingle__Banner" style={{

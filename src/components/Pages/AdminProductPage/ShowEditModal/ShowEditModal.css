@@ -10,16 +10,13 @@
   justify-content: center;
   align-items: center;
 }
-
 .ShowEditModal .label {
   font-size: 1.6rem;
   color: #737b7f;
 }
-
 .ShowEditModal .leti-btn:hover {
   background: #055aa5;
 }
-
 .ShowEditModal__container {
   background: #fff;
   padding: 2rem 4rem;
@@ -29,12 +26,10 @@
   height: auto;
   padding-top: 4rem;
 }
-
 .ShowEditModal__container.product-modal {
   height: 96rem;
   overflow: scroll;
 }
-
 .ShowEditModal__close {
   position: absolute;
   top: 2rem;
@@ -48,11 +43,9 @@
   background: url("../../../../images/close.svg") no-repeat center/contain;
   background-size: 50%;
 }
-
 .ShowEditModal__close:hover {
   border: solid 0.3rem #055aa5;
 }
-
 .ShowEditModal__close.big {
   width: 5rem;
   height: 5rem;

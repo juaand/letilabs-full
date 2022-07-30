@@ -32,11 +32,6 @@ function AdminProductPage() {
                 composition: "",
                 indication: "",
                 therapeutic_group: "",
-                util_life: "",
-                cpe: "",
-                how_to_use: "",
-                contraindications: "",
-                adverse_reactions: "",
             },
             error: {
                 name: true,
@@ -50,11 +45,6 @@ function AdminProductPage() {
                 composition: true,
                 indication: true,
                 therapeutic_group: true,
-                util_life: true,
-                cpe: true,
-                how_to_use: true,
-                contraindications: true,
-                adverse_reactions: true,
             },
             touch: {},
         },
@@ -70,11 +60,6 @@ function AdminProductPage() {
             composition: v => v.length,
             indication: v => v.length,
             therapeutic_group: v => v.length,
-            util_life: v => v.length,
-            cpe: v => v.length,
-            how_to_use: v => v.length,
-            contraindications: v => v.length,
-            adverse_reactions: v => v.length,
         }
     )
 
@@ -221,7 +206,7 @@ function AdminProductPage() {
             {isDisabled && <Loader message="Cargando imagen..." />}
             {bool && <ShowEditModal product={editProduct} hideModal={hideModal} updateData={(data) => updateData(data)} />}
             <Helmet>
-                <title>Grupo Leti | Administrador Productos</title>
+                <title>Grupo LETI | Administrador Productos</title>
             </Helmet>
             <main className="container-fluid AdminProductPage">
                 {message && <div className="alert alert-danger" role="alert">{message}</div>}
@@ -312,14 +297,14 @@ function AdminProductPage() {
                                                     </div>
                                                     <div className="col-12 col-sm-3">
                                                         <InputWithLabel
-                                                            label="CPE"
-                                                            value={data.cpe}
+                                                            label="Áreas terapéuticas / Separadas por coma"
+                                                            value={data.therapeutic_group}
                                                             onBlur={onBlur}
                                                             onChange={onChange}
-                                                            name="cpe"
+                                                            name="therapeutic_group"
                                                             type="text"
-                                                            cssStyle={`form-control ${touch.cpe && error.cpe ? "is-invalid" : ""}`}
-                                                            placeholder="CPE"
+                                                            cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
+                                                            placeholder="Áreas terapéuticas separadas por coma"
                                                         />
                                                     </div>
                                                     <div className="col-12 col-sm-4">
@@ -385,7 +370,7 @@ function AdminProductPage() {
                                                             }}
                                                         />
                                                     </div>
-                                                    <div className="col-12 col-sm-4">
+                                                    <div className="col-12 col-sm-6">
                                                         <p className="label">Presentación</p>
                                                         <Editor
                                                             onChange={handleEditor}
@@ -406,7 +391,7 @@ function AdminProductPage() {
                                                             }}
                                                         />
                                                     </div>
-                                                    <div className="col-12 col-sm-4">
+                                                    <div className="col-12 col-sm-6">
                                                         <p className="label">Indicaciones</p>
                                                         <Editor
                                                             onChange={handleEditor}
@@ -427,102 +412,6 @@ function AdminProductPage() {
                                                             }}
                                                         />
                                                     </div>
-                                                    <div className="col-12 col-sm-4">
-                                                        <p className="label">Vida útil</p>
-                                                        <Editor
-                                                            onChange={handleEditor}
-                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                            init={{
-                                                                name: "util_life",
-                                                                placeholder: "Ingresa indicaciones del producto",
-                                                                height: 200,
-                                                                menubar: false,
-                                                                plugins: [
-                                                                    'advlist autolink lists link image',
-                                                                    'charmap print preview anchor help',
-                                                                    'searchreplace visualblocks code',
-                                                                    'insertdatetime media table paste wordcount'
-                                                                ],
-                                                                toolbar:
-                                                                    'bold',
-                                                            }}
-                                                        />
-                                                    </div>
-                                                    <div className="col-12 col-sm-4">
-                                                        <p className="label">Modo de empleo</p>
-                                                        <Editor
-                                                            onChange={handleEditor}
-                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                            init={{
-                                                                name: "how_to_use",
-                                                                placeholder: "Ingresa indicaciones del producto",
-                                                                height: 200,
-                                                                menubar: false,
-                                                                plugins: [
-                                                                    'advlist autolink lists link image',
-                                                                    'charmap print preview anchor help',
-                                                                    'searchreplace visualblocks code',
-                                                                    'insertdatetime media table paste wordcount'
-                                                                ],
-                                                                toolbar:
-                                                                    'bold',
-                                                            }}
-                                                        />
-                                                    </div>
-                                                    <div className="col-12 col-sm-4">
-                                                        <p className="label">Contraindicaciones</p>
-                                                        <Editor
-                                                            onChange={handleEditor}
-                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                            init={{
-                                                                name: "contraindications",
-                                                                placeholder: "Ingresa indicaciones del producto",
-                                                                height: 200,
-                                                                menubar: false,
-                                                                plugins: [
-                                                                    'advlist autolink lists link image',
-                                                                    'charmap print preview anchor help',
-                                                                    'searchreplace visualblocks code',
-                                                                    'insertdatetime media table paste wordcount'
-                                                                ],
-                                                                toolbar:
-                                                                    'bold',
-                                                            }}
-                                                        />
-                                                    </div>
-                                                    <div className="col-12 col-sm-4">
-                                                        <p className="label">Reacciones adversas</p>
-                                                        <Editor
-                                                            onChange={handleEditor}
-                                                            apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                            init={{
-                                                                name: "adverse_reactions",
-                                                                placeholder: "Ingresa indicaciones del producto",
-                                                                height: 200,
-                                                                menubar: false,
-                                                                plugins: [
-                                                                    'advlist autolink lists link image',
-                                                                    'charmap print preview anchor help',
-                                                                    'searchreplace visualblocks code',
-                                                                    'insertdatetime media table paste wordcount'
-                                                                ],
-                                                                toolbar:
-                                                                    'bold',
-                                                            }}
-                                                        />
-                                                    </div>
-                                                    <div className="col-12">
-                                                        <InputWithLabel
-                                                            label="Categoría(s) / Separadas por coma"
-                                                            value={data.therapeutic_group}
-                                                            onBlur={onBlur}
-                                                            onChange={onChange}
-                                                            name="therapeutic_group"
-                                                            type="text"
-                                                            cssStyle={`form-control ${touch.therapeutic_group && error.therapeutic_group ? "is-invalid" : ""}`}
-                                                            placeholder="Categoría(s) separadas por coma"
-                                                        />
-                                                    </div>
                                                     <div className="col-12 mt-5">
                                                         <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
                                                     </div>
@@ -541,7 +430,7 @@ function AdminProductPage() {
                                             <input className="form-check-input" type="checkbox" value="" id="flexCheckDefault"
                                                 onChange={carouselHomeProducts} />
                                             <label className="form-check-label" htmlFor="flexCheckDefault">
-                                                Mostrar sólo los productos del carrusel del home.<br/>
+                                                Mostrar sólo los productos del carrusel del home.<br />
                                                 <small><strong>*Seleccionar mínimo 4 productos y máximo 18 para mostrar en el carrusel del home.</strong></small>
                                             </label>
                                         </div>

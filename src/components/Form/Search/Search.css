@@ -10,20 +10,16 @@
   z-index: 10;
   transition: all 300ms ease-in-out;
 }
-
 .Search.show {
   top: 14rem;
   height: 32rem;
 }
-
 .Search.show.thin {
   top: 10rem;
 }
-
 .Search__form {
   width: 100%;
 }
-
 .Search__form-input {
   border-radius: 0;
   border: 0;
@@ -35,7 +31,6 @@
   padding-bottom: 2rem;
   width: 100%;
 }
-
 .Search__form-input:focus {
   background-color: transparent;
   outline: none;

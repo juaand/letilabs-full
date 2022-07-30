@@ -1,12 +1,10 @@
 .Banner__Leti {
   position: relative;
 }
-
 .Banner__Leti-logo {
   margin-top: 6rem;
   display: block;
 }
-
 .Banner__Leti__title {
   height: 70rem;
   display: flex;
@@ -14,14 +12,12 @@
   flex-direction: column;
   justify-content: space-around;
 }
-
 .Banner__Leti__title h3 {
   font-size: 3rem;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-weight: 500;
   margin-bottom: 8rem;
 }
-
 .Banner__Leti__bg {
   position: absolute;
   width: 54rem;
@@ -30,7 +26,6 @@
   top: -10rem;
   transform: rotate(0deg);
 }
-
 .Banner__Leti__blue {
   position: absolute;
   width: 44rem;

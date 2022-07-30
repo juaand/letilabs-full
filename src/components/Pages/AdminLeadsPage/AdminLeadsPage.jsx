@@ -54,9 +54,9 @@ function AdminLeadsPage() {
 
     return (
         <>
-            {loading && <Loader message="Cargando mensajes..."/>}
+            {loading && <Loader message="Cargando mensajes..." />}
             <Helmet>
-                <title>Grupo Leti | Administrador Formulario Productos</title>
+                <title>Grupo LETI | Administrador Formulario Productos</title>
             </Helmet>
             <main className="container-fluid AdminLeadsPage">
                 {bool && <DeleteFarmVigModal card={card} hideModal={(info) => updateCardsData(info)} updateData={(info) => updateCardsData(info)} closeModal={() => setBool(!bool)} />}

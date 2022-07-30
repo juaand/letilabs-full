@@ -15,10 +15,10 @@ import './OurCompanies.css'
 function OurCompanies() {
 
     const [seoInfo, setSeoInfo] = useState('')
-    
-    
+
+
     useEffect(() => {
-        
+
         const isMenuOpen = document.querySelector('.show')
 
         if (isMenuOpen) {
@@ -38,7 +38,7 @@ function OurCompanies() {
     return (
         <>
             <Helmet>
-                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <title>{`Grupo LETI | ${seoInfo?.page}`}</title>
                 <meta name="description" content={`${seoInfo?.description}`} />
                 <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>

@@ -1,26 +1,21 @@
 .Banner__Products {
   position: relative;
 }
-
 .Banner__Products .leti-btn {
   margin-right: 2rem;
   margin-top: 3rem;
 }
-
 .Banner__Products .leti-btn:last-child {
   margin-right: 0;
 }
-
 .Banner__Products__btns {
   position: absolute;
   bottom: 4rem;
 }
-
 .Banner__Products-logo {
   margin-top: 6rem;
   display: block;
 }
-
 .Banner__Products__title {
   height: 70rem;
   display: flex;
@@ -28,19 +23,16 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .Banner__Products__title strong {
   color: #055aa5;
   font-weight: unset;
 }
-
 .Banner__Products__title h3 {
   font-size: 3rem;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-weight: 500;
   margin: 1rem auto;
 }
-
 .Banner__Products__bg {
   position: absolute;
   width: 54rem;
@@ -49,7 +41,6 @@
   top: -10rem;
   transform: rotate(0deg);
 }
-
 .Banner__Products__blue {
   position: absolute;
   width: 44rem;

@@ -15,7 +15,7 @@ function ProductsPage() {
     const [bottomData, setBottomData] = useState([])
     const [seoInfo, setSeoInfo] = useState('')
     const [loading, setLoading] = useState(true)
-    
+
     useEffect(() => {
 
         const isMenuOpen = document.querySelector('.show')
@@ -49,7 +49,7 @@ function ProductsPage() {
         <>
             {loading && <Loader />}
             <Helmet>
-                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <title>{`Grupo LETI | ${seoInfo?.page}`}</title>
                 <meta name="description" content={`${seoInfo?.description}`} />
                 <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>

@@ -26,8 +26,6 @@ function EditProductBanner() {
                 title: bannerData?.title,
                 button1Title: bannerData?.button1Title,
                 button1Link: bannerData?.button1Link,
-                button2Title: bannerData?.button2Title,
-                button2Link: bannerData?.button2Link,
             },
             error: {
                 description: true,
@@ -35,8 +33,6 @@ function EditProductBanner() {
                 title: true,
                 button1Title: true,
                 button1Link: true,
-                button2Title: true,
-                button2Link: true,
             },
             touch: {},
         },
@@ -46,8 +42,6 @@ function EditProductBanner() {
             title: v => v.length,
             button1Title: v => v.length,
             button1Link: v => v.length,
-            button2Title: v => v.length,
-            button2Link: v => v.length,
         }
     )
 
@@ -195,7 +189,7 @@ function EditProductBanner() {
                         </div>
                         <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
-                                Botón izquierdo
+                                Texto botón
                             </p>
                             <InputWithLabel
                                 value={data?.button1Title}
@@ -209,7 +203,7 @@ function EditProductBanner() {
                         </div>
                         <div className="col-12 col-sm-3">
                             <p className="AdminEdit__form__label">
-                                Ruta botón izquierdo
+                                Ruta botón
                             </p>
                             <InputWithLabel
                                 value={data?.button1Link}
@@ -219,34 +213,6 @@ function EditProductBanner() {
                                 type="text"
                                 cssStyle={`form-control mb-0 ${touch.button1Link && error.button1Link ? "is-invalid" : ""}`}
                                 placeholder={bannerData?.button1Link}
-                            />
-                        </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Botón derecho
-                            </p>
-                            <InputWithLabel
-                                value={data?.button2Title}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="button2Title"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.button2Title && error.button2Title ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.button2Title}
-                            />
-                        </div>
-                        <div className="col-12 col-sm-3">
-                            <p className="AdminEdit__form__label">
-                                Ruta botón derecho
-                            </p>
-                            <InputWithLabel
-                                value={data?.button2Link}
-                                onBlur={onBlur}
-                                onChange={onChange}
-                                name="button2Link"
-                                type="text"
-                                cssStyle={`form-control mb-0 ${touch.button2Link && error.button2Link ? "is-invalid" : ""}`}
-                                placeholder={bannerData?.button2Link}
                             />
                         </div>
                         <div className="col-12">

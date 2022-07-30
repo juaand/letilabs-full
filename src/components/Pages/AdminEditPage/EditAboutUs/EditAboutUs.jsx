@@ -10,7 +10,7 @@ function EditAboutUs() {
     return (
 
         <main>
-            <h2 className="EditContent EditContent__title">Editar página sobre nosotros</h2>
+            <h2 className="EditContent EditContent__title">Editar página somos leti</h2>
             <EditBanner />
             <EditMarcandoPauta />
             <EditTimeline />

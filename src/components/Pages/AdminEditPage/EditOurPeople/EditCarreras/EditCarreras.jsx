@@ -43,8 +43,8 @@ function EditCarreras() {
 
     const contentData = {
         content: '',
-        url: '/nuestra-gente',
-        name: 'Nuestra gente',
+        url: '/gente-leti',
+        name: 'Gente LETI',
         type: `${carrerasData?._id}`,
     }
 

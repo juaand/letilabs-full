@@ -53,9 +53,9 @@ function EditInfoCardsOurPeople() {
 
     const contentData = {
         content: data?.info,
-        url: '/nuestra-gente',
-        name: 'Nuestra gente',
-        type: `Nuestra gente - ${data?.title}`,
+        url: '/gente-leti',
+        name: 'Gente LETI',
+        type: `Gente LETI - ${data?.title}`,
     }
 
     const createNewTeam = async (event) => {

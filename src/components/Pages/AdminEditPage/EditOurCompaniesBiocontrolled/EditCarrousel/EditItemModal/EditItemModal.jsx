@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import {Fade} from 'react-awesome-reveal'
+import {Editor} from '@tinymce/tinymce-react'
 
 import './EditItemModal.css'
 import {updateCarrouselBiocontrolledData, deleteCarrouselItem, createContent} from '../../../../../../services/ApiClient'
-import InputWithLabel from '../../../../../Form/InputWithLabel/InputWithLabel'
 import {useFormState} from '../../../../../../hooks/useFormState'
 import Button from '../../../../../Form/FormButton/FormButton'
 
@@ -13,7 +13,7 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const [carouselData, setCarouselData] = useState(infodata)
     const [message, setMessage] = useState('')
 
-    const {state, onChange} = useFormState(
+    const {state,} = useFormState(
         {
             data: {
                 info: infodata?.info,
@@ -71,6 +71,11 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
         deleteItem(updatedData)
     }
 
+    const handleChangeDesc = (e) => {
+        data.info = e.target.getContent()
+        error.info = false
+    }
+
     return (
         <div className="EditItemModal">
             <div className="container">
@@ -84,14 +89,23 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                         <h1 className="DeleteItemModal__ask">Editar proceso</h1>
                                     </div>
                                     <div className="col-12">
-                                        <InputWithLabel
-                                            label="Descripción del proceso"
-                                            onChange={onChange}
-                                            name="info"
-                                            type="text"
-                                            cssStyle="form-control"
-                                            placeholder={carouselData?.info}
-                                        />
+                                        <Editor
+                                        initialValue={data.info}
+                                        onChange={handleChangeDesc}
+                                        apiKey={process.env.REACT_APP_API_TINY_CLOUD}
+                                        init={{
+                                            height: 120,
+                                            menubar: false,
+                                            plugins: [
+                                                'advlist autolink lists link image',
+                                                'charmap print preview anchor help',
+                                                'searchreplace visualblocks code',
+                                                'insertdatetime media table paste wordcount'
+                                            ],
+                                            toolbar:
+                                                'bold',
+                                        }}
+                                    />
                                     </div>
                                     <div className="col-12 col-sm-6">
                                         <Button type="submit" cssStyle="leti-btn">Guardar cambios</Button>

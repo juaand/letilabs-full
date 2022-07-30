@@ -87,7 +87,7 @@ function Footer() {
             </footer>
             <section className="container-fluid">
                 <div className="row">
-                    <div className="col-12 Footer__copy" translate="no"> Todos los derechos reservados {new Date().getFullYear()} © Grupo Leti</div>
+                    <div className="col-12 Footer__copy" translate="no"> Todos los derechos reservados {new Date().getFullYear()} © Grupo LETI</div>
                 </div>
             </section>
         </>

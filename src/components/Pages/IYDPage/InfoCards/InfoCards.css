@@ -1,11 +1,9 @@
 .InfoCards {
   min-height: 35rem;
 }
-
 .InfoCards p p {
   padding: 0;
 }
-
 .InfoCards .InfoGoals__btn {
   width: 6rem;
   height: 6rem;
@@ -14,37 +12,31 @@
   margin-left: 4rem;
   margin-bottom: 2rem;
 }
-
 .InfoCards .InfoGoals__btn:hover {
   background: #055aa5 url(../../../../images/plus-white.svg) no-repeat center;
 }
-
 .InfoCards__cards {
   background: #f5f5f5;
   padding: 0;
   border: solid 1rem #fff;
 }
-
 .InfoCards__cards h4 {
-  font-family: 'TripletaBold';
+  font-family: "TripletaBold";
   font-size: 2.4rem;
   color: #4a4a4a;
   padding: 0 4rem;
   margin-top: 2rem;
 }
-
 .InfoCards__cards p {
   margin-top: 3rem;
   font-size: 1.8rem;
   line-height: 3rem;
   padding: 0 4rem;
 }
-
 .InfoCards__cards p strong {
   color: #055aa5;
   font-weight: unset;
 }
-
 .InfoCards__image {
   height: 24rem;
 }

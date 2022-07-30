@@ -6,24 +6,19 @@
   position: relative;
   margin: 10rem auto 15rem auto;
 }
-
 .Nosotros__valor {
   margin: 6rem 0;
   line-height: 3.8rem;
 }
-
 .Nosotros__valor strong {
   color: #055aa5;
 }
-
 .Nosotros .leti-btn {
   background: #fff;
 }
-
 .Nosotros .leti-btn:hover {
   background: #055aa5;
 }
-
 .Nosotros .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 65rem;
@@ -33,7 +28,6 @@
   bottom: calc(var(--section-padding) * -1);
   transform: rotate(50deg);
 }
-
 .Nosotros .leti-blue-triangle {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 50rem;
@@ -63,11 +57,11 @@
     right: 0;
   }
   .Nosotros .leti-blue-triangle,
-  .Nosotros .leti-red-triangle {
+.Nosotros .leti-red-triangle {
     top: 55rem;
     z-index: -1;
   }
-  .Nosotros [class*='css-'] {
+  .Nosotros [class*=css-] {
     z-index: -1;
   }
 }

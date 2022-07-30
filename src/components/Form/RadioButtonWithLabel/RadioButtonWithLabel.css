@@ -2,27 +2,21 @@
   margin: 2rem 0 5rem 0;
   display: block;
 }
-
 .RadioButtonWithLabel__label {
   color: #737b7f;
 }
-
 .RadioButtonWithLabel__radio-buttons {
   margin-top: 2rem;
 }
-
 .RadioButtonWithLabel__radio-buttons .form-check {
   margin-right: 4rem;
 }
-
 .RadioButtonWithLabel__radio-buttons .form-check .form-check-label {
   color: #737b7f;
 }
-
 .RadioButtonWithLabel__radio-buttons .form-check .form-check-input {
   border: 0.1rem solid #055aa5;
 }
-
 .RadioButtonWithLabel__radio-buttons .form-check .form-check-input:checked {
   background-color: #055aa5;
 }
