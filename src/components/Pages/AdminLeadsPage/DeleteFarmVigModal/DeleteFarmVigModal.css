@@ -10,22 +10,18 @@
   justify-content: center;
   align-items: center;
 }
-
 .DeleteFarmVigModal .card {
   margin-bottom: 0;
   padding-bottom: 0;
   border: 0;
   border-top: solid 0.1rem #e9eaee;
 }
-
 .DeleteFarmVigModal .card .leti-btn {
   margin-top: 2rem;
 }
-
 .DeleteFarmVigModal__ask {
   margin-bottom: 4rem;
 }
-
 .DeleteFarmVigModal__container {
   background: #fff;
   padding: 4rem;
@@ -35,7 +31,6 @@
   height: auto;
   padding-top: 4rem;
 }
-
 .DeleteFarmVigModal__close {
   position: absolute;
   top: 3rem;
@@ -49,7 +44,6 @@
   background: url("../../../../images/close.svg") no-repeat center/contain;
   background-size: 50%;
 }
-
 .DeleteFarmVigModal__close:hover {
   border: solid 0.3rem #055aa5;
 }

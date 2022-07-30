@@ -45,9 +45,9 @@ function SingleProductPage(props) {
     return (
         <>
             <Helmet>
-                <title>{`Grupo Leti | ${product?.name}`}</title>
-                <meta name="description" content={`Resultado de búsqueda de producto del Grupo Leti: ${product?.name}`} />
-                <meta name="keywords" content={`Grupo Leti, productos leti, ${product?.name}`} />
+                <title>{`Grupo LETI | ${product?.name}`}</title>
+                <meta name="description" content={`Resultado de búsqueda de producto del Grupo LETI: ${product?.name}`} />
+                <meta name="keywords" content={`Grupo LETI, productos leti, ${product?.name}`} />
             </Helmet>
             <section className="container SingleProductPage">
                 <div className="row">
@@ -68,13 +68,13 @@ function SingleProductPage(props) {
                                                     <h1>{el?.name}</h1>
                                                     <h2 dangerouslySetInnerHTML={{__html: el?.active_principle}} />
                                                     {el?.therapeutic_group.map(el => <span className="tag">{el}</span>)}
-                                                    <p><strong>Composición</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}} /></p>
-                                                    <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}} />
-                                                    </p>
-                                                    <p><strong>Presentación</strong> <span dangerouslySetInnerHTML={{__html: el?.presentation}} /></p>
-                                                    <p><strong>Registro sanitario</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}} /></p>
-                                                    <p><strong>Vida útil</strong> <span dangerouslySetInnerHTML={{__html: el?.util_life}} /></p>
-                                                    <p><strong>CPE</strong> <span className="SingleProductPage__cpe">{el?.cpe}</span></p>
+                                                    <p><strong>Composición:</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}} /></p>
+                                                    <p><strong>Registro sanitario:</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}} /></p>
+                                                    {/* <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}} />
+                                                    </p> */}
+                                                    {/* <p><strong>Presentación</strong> <span dangerouslySetInnerHTML={{__html: el?.presentation}} /></p> */}
+                                                    {/* <p><strong>Vida útil</strong> <span dangerouslySetInnerHTML={{__html: el?.util_life}} /></p> */}
+                                                    {/* <p><strong>CPE</strong> <span className="SingleProductPage__cpe">{el?.cpe}</span></p> */}
                                                     <img src={el?.QRpath} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={el?.name + ' código de barras'} className="SingleProductPage__cb" />
                                                 </div>
                                             </div>
@@ -82,40 +82,31 @@ function SingleProductPage(props) {
                                         <div className="row justify-content-between">
                                             <div className="col-sm-3 col-12 SingleProductPage__posology">
                                                 <p>
-                                                    <h2>Reacciones adversas</h2>
+                                                    <h2>Indicación</h2>
                                                     <ul>
-                                                        <li dangerouslySetInnerHTML={{__html: el?.adverse_reactions}}>
+                                                        <li dangerouslySetInnerHTML={{__html: el?.indication}}>
                                                         </li>
                                                     </ul>
                                                 </p>
                                             </div>
                                             <div className="col-sm-3 col-12 SingleProductPage__posology">
                                                 <p>
-                                                    <h2>Modo de empleo</h2>
+                                                    <h2>Presentación</h2>
                                                     <ul>
-                                                        <li dangerouslySetInnerHTML={{__html: el?.how_to_use}}>
+                                                        <li dangerouslySetInnerHTML={{__html: el?.presentation}}>
                                                         </li>
                                                     </ul>
                                                 </p>
                                             </div>
                                             <div className="col-sm-3 col-12 SingleProductPage__posology">
                                                 <p>
-                                                    <h2>Contraindicaciones</h2>
+                                                    <h2>Posología</h2>
                                                     <ul>
-                                                        <li dangerouslySetInnerHTML={{__html: el?.contraindications}}>
+                                                        <li dangerouslySetInnerHTML={{__html: el?.posology}}>
                                                         </li>
                                                     </ul>
                                                 </p>
                                             </div>
-                                        </div>
-                                        <div className="col-12 SingleProductPage__posology wborder">
-                                            <p>
-                                                <h2>Posología</h2>
-                                                <ul>
-                                                    <li dangerouslySetInnerHTML={{__html: el?.posology}}>
-                                                    </li>
-                                                </ul>
-                                            </p>
                                         </div>
                                     </>
                                 )}
@@ -195,7 +186,7 @@ function SingleProductPage(props) {
                                 <div className="col-12 col-sm-3 SingleProductPage__another__block">
                                     <h2 className="SingleProductPage__another__img SingleProductPage__another__img-txt">{el?.name}<sup>&reg;</sup></h2>
                                     <h2>{el?.name}</h2>
-                                    <p className="SingleProductPage__another__principle">{el?.active_principle}</p>
+                                    <p dangerouslySetInnerHTML={{__html: el?.active_principle}}/>
                                     <Link to={{
                                         pathname: '/producto',
                                         state: {

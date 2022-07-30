@@ -48,9 +48,9 @@ function EditMegat() {
 
     const contentData = {
         content: '',
-        url: '/sobre-nosotros',
-        name: 'Sobre nosotros',
-        type: 'Sobre nosotros megat',
+        url: '/somos-leti',
+        name: 'Somos Leti',
+        type: 'Somos leti megat',
     }
 
     const updateMegat = async (event) => {

@@ -1,7 +1,6 @@
 .List {
   position: relative;
 }
-
 .List__to-top {
   height: 8rem;
   width: 8rem;
@@ -11,11 +10,9 @@
   bottom: 3rem;
   z-index: 1;
 }
-
 .List__to-top:hover {
   cursor: pointer;
 }
-
 .List__sku {
   display: flex;
   align-items: center;
@@ -24,40 +21,32 @@
   margin-bottom: 2rem;
   height: 14rem;
 }
-
 .List .inactive {
   opacity: 0.3;
 }
-
 .List .link.active {
   color: #cd202f;
   text-decoration: underline;
   pointer-events: none;
 }
-
 .List .link:hover {
   color: #cd202f;
   text-decoration: underline;
   cursor: pointer;
 }
-
 .List__products {
   margin: 6rem auto 12rem auto;
 }
-
 .List__products h1 {
   margin-bottom: 6rem;
 }
-
 .List__list {
   padding: 0;
   list-style: none;
 }
-
 .List__list li {
   list-style: none;
 }
-
 .List__card {
   font-size: 1.8rem;
   padding-bottom: 3rem;
@@ -65,15 +54,12 @@
   border: solid 2.4rem #fff;
   border-bottom: solid 0.1rem #e9eaee;
 }
-
 .List__card .leti-btn {
   margin-top: 2rem;
 }
-
 .List__name {
   color: #055aa5;
 }
-
 .List__composition {
   display: block;
   font-size: 1.6rem;
@@ -87,7 +73,7 @@
     justify-content: center;
   }
   .List .link,
-  .List .inactive {
+.List .inactive {
     margin: 1rem;
   }
   .List__to-top {

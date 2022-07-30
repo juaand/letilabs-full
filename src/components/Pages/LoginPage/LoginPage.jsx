@@ -56,7 +56,7 @@ const LoginPage = () => {
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Ingresa</title>
+                <title>Grupo LETI | Ingresa</title>
             </Helmet>
             <main className="container-fluid LoginPage">
                 <div className="container">

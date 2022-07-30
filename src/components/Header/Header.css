@@ -5,15 +5,12 @@
   z-index: 5;
   width: 100%;
 }
-
 .Header.thin {
   box-shadow: 0 0.2rem 0.8rem 0 rgba(0, 0, 0, 0.2);
 }
-
 .Header__logo {
   position: relative;
 }
-
 .Header__logo .navbar-brand {
   background: url(../../images/grupo-leti.svg) no-repeat center center/contain;
   width: 18rem;
@@ -22,13 +19,11 @@
   margin: 2rem auto;
   transition: all 0.3s;
 }
-
 .Header__logo .navbar-brand.thin {
   width: 15rem;
   height: 5rem;
   margin: 1rem auto;
 }
-
 .Header__welcome {
   display: flex;
   align-items: center;
@@ -38,16 +33,14 @@
   margin-top: -1.5rem;
   margin-left: 2rem;
 }
-
 .Header__welcome-span {
   font-weight: 600;
   color: #cd202f;
   display: inline-block;
   margin-left: 0.4rem;
 }
-
 .Header__welcome:before {
-  content: '';
+  content: "";
   width: 3rem;
   height: 3rem;
   border-radius: 3rem;
@@ -58,7 +51,6 @@
   transform: rotate(180deg);
   border: solid 0.2rem #cd202f;
 }
-
 .Header__logout, .Header__search {
   border: 0;
   width: 3rem;
@@ -69,24 +61,19 @@
   top: 50%;
   margin-top: -1.5rem;
 }
-
 .Header__search {
   background: url(../../images/search.svg) no-repeat center center/contain;
 }
-
 .Header__search:hover {
   cursor: pointer;
 }
-
 .Header__search-close {
   background: url(../../images/close.svg) no-repeat center center/contain;
 }
-
 .Header__logout {
   background: url(../../images/logout.svg) no-repeat center center/contain;
   margin-right: 2rem;
 }
-
 .Header__logout:hover {
   cursor: pointer;
 }

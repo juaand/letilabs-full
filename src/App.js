@@ -41,19 +41,19 @@ function App() {
       <Header />
       <Switch>
         <Route exact path="/" render={(props) => <Home {...props} />} />
-        <Route exact path="/sobre-nosotros" render={(props) => <AboutUs {...props} />} />
+        <Route exact path="/somos-leti" render={(props) => <AboutUs {...props} />} />
         <Route exact path="/nuestras-empresas" render={(props) => <OurCompanies {...props} />} />
         <Route exact path="/leti" render={(props) => <LaboratoriosLetiPage {...props} />} />
         <Route exact path="/genven" render={(props) => <GenvenPage {...props} />} />
         <Route exact path="/biocontrolled" render={(props) => <BiocontrolledPage {...props} />} />
-        <Route exact path="/areas-terapeuticas" render={(props) => <AreasTerapeuticasPage {...props} />} />
+        {/* <Route exact path="/areas-terapeuticas" render={(props) => <AreasTerapeuticasPage {...props} />} /> */}
         <Route exact path="/investigacion-y-desarrollo" render={(props) => <IYDPage {...props} />} />
         <Route exact path="/tecnologia" render={(props) => <TechPage {...props} />} />
         <Route exact path="/manufactura" render={(props) => <ManufacturePage {...props} />} />
         <Route exact path="/alianzas" render={(props) => <AlliancesPage {...props} />} />
-        <Route exact path="/proposito-y-responsabilidad-social" render={(props) =>
-          <PurposePage {...props} />} />
-        <Route exact path="/nuestra-gente" render={(props) => <OurPeoplePage {...props} />} />
+        {/* <Route exact path="/proposito-y-responsabilidad-social" render={(props) =>
+          <PurposePage {...props} />} /> */}
+        <Route exact path="/gente-leti" render={(props) => <OurPeoplePage {...props} />} />
         <Route exact path="/nuestra-filosofia" render={(props) =>
           <OurPhilosophyPage {...props} />} />
         <Route exact path="/productos" render={(props) => <ProductsPage {...props} />} />

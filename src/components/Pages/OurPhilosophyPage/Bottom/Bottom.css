@@ -2,11 +2,9 @@
   padding: 20rem 0 10rem 0;
   position: relative;
 }
-
 .Bottom__desc {
   margin-bottom: 3rem;
 }
-
 .Bottom__clip {
   position: absolute;
   top: -20rem;
@@ -19,7 +17,6 @@
   mask-repeat: no-repeat;
   mask-position: top left;
 }
-
 .Bottom__blue-stroke {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   position: absolute;

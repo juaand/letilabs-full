@@ -1,12 +1,10 @@
 .NotFoundPage {
   font-size: 2.4rem;
 }
-
 .NotFoundPage__icon {
   height: 28rem;
   background: url(../../../images/404-icon.svg) no-repeat center/contain;
 }
-
 .NotFoundPage .leti-btn {
   margin: 4rem auto 4rem auto;
 }

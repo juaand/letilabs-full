@@ -2,9 +2,8 @@
   background: url(../../../images/cuidar-right-bg.svg) no-repeat right top;
   position: relative;
 }
-
 .AdminNewsPage__close {
-  content: '';
+  content: "";
   display: block;
   width: 6rem;
   height: 6rem;
@@ -14,17 +13,14 @@
   top: 6rem;
   border: solid 0.2rem #055aa5;
 }
-
 .AdminNewsPage__close:hover {
   cursor: pointer;
   border-width: 0.4rem;
 }
-
 .AdminNewsPage__shownews {
   font-size: 1.4rem;
   padding-bottom: 1rem;
 }
-
 .AdminNewsPage__add {
   border: 0;
   background: transparent;
@@ -38,32 +34,27 @@
   transition: all 0.3s ease-in-out;
   margin: -4rem auto 6rem auto;
 }
-
 .AdminNewsPage__add:hover {
   background: #055aa5;
   color: white;
 }
-
 .AdminNewsPage__add:hover:before {
   background: url(../../../images/add-white.svg) no-repeat center center/contain;
 }
-
 .AdminNewsPage__add:before {
-  content: '';
+  content: "";
   width: 2rem;
   height: 2rem;
   display: inline-block;
   background: url(../../../images/add.svg) no-repeat center center/contain;
   margin-right: 1rem;
 }
-
 .AdminNewsPage__bg {
   height: 23rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .AdminNewsPage__search {
   padding-left: 7rem;
   height: 6.4rem;
@@ -71,14 +62,12 @@
   border-radius: 0;
   background: #fff url(../../../images/input-search.svg) no-repeat 2rem center/3.2rem;
 }
-
 .AdminNewsPage__card {
   margin-bottom: 3rem;
   border-radius: 0.5rem;
   border: solid 0.1rem #055aa5;
   font-size: 1.6rem;
 }
-
 .AdminNewsPage__img-title {
   position: absolute;
   z-index: 1;
@@ -90,7 +79,6 @@
   margin-bottom: 0;
   font-size: 1.6rem;
 }
-
 .AdminNewsPage__img-tag {
   display: inline;
   background-color: #055aa5;
@@ -101,21 +89,18 @@
   border-radius: 4rem;
   margin-right: 0.6rem;
 }
-
 .AdminNewsPage__img-alltags {
   position: absolute;
   top: 0;
   width: 100%;
   padding: 0.6rem;
 }
-
 .AdminNewsPage__img-top {
   height: 18rem;
   width: fit-content;
   display: block;
   margin: auto;
 }
-
 .AdminNewsPage__img-bottom {
   height: 6rem;
   width: fit-content;
@@ -124,11 +109,9 @@
   top: 0.8rem;
   right: 0.8rem;
 }
-
 .AdminNewsPage__check {
   background: rgba(233, 234, 238, 0.8);
 }
-
 .AdminNewsPage__create {
   display: block;
   transition: all 0.3s ease-in-out;
@@ -137,7 +120,6 @@
   border: 0;
   background: #fff;
 }
-
 .AdminNewsPage__create.show {
   height: auto;
   padding: 3rem 0;
@@ -145,39 +127,32 @@
   border-bottom: solid 0.1rem #e9eaee;
   margin-bottom: 6rem;
 }
-
 .AdminNewsPage small {
   color: #cd202f;
   font-size: 1.4rem;
   margin-bottom: 3rem;
   display: block;
 }
-
 .AdminNewsPage .label {
   font-size: 1.6rem;
 }
-
 .AdminNewsPage .form-check-label {
   font-size: 1.4rem;
 }
-
 .AdminNewsPage .form-control {
   margin-bottom: 1rem !important;
 }
-
 .AdminNewsPage .card-title {
-  font-family: 'TripletaBold';
+  font-family: "TripletaBold";
   font-size: 1.2rem;
   color: rgba(5, 90, 165, 0.6);
   padding-left: 1rem;
   margin-bottom: 0;
 }
-
 .AdminNewsPage .card-footer {
   padding: 0;
   background: transparent;
 }
-
 .AdminNewsPage .card-footer .leti-btn {
   width: 100%;
   border: 0;
@@ -186,27 +161,22 @@
   background: #055aa5;
   color: #fff;
 }
-
 .AdminNewsPage .card-footer .leti-btn:hover {
   background: rgba(5, 90, 165, 0.8);
 }
-
 .AdminNewsPage .card-body {
   position: relative;
 }
-
 .AdminNewsPage .card-body-img {
   overflow: hidden;
   padding: 0;
 }
-
 .AdminNewsPage .card-body-img img {
   width: 100%;
   height: 24rem;
   object-fit: cover;
   border-radius: 0.4rem 0.4rem 0 0;
 }
-
 .AdminNewsPage .alert-danger {
   position: fixed;
   top: 50%;
@@ -219,7 +189,6 @@
   text-align: center;
   margin-left: -25%;
 }
-
 .AdminNewsPage .card-text {
   font-weight: 600;
   color: #000;

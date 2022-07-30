@@ -10,11 +10,9 @@
   justify-content: center;
   align-items: center;
 }
-
 .ModalFarmacoVigilancia__form {
   position: relative;
 }
-
 .ModalFarmacoVigilancia__form .alert {
   position: absolute;
   bottom: 0;
@@ -24,16 +22,14 @@
   width: 90%;
   font-size: 1.4rem;
 }
-
 .ModalFarmacoVigilancia__desc strong {
   color: #055aa5;
   font-weight: 400;
   display: inline-block !important;
-  font-family: 'Mulish', sans-serif !important;
+  font-family: "Mulish", sans-serif !important;
   font-size: 2rem !important;
   margin: 0 !important;
 }
-
 .ModalFarmacoVigilancia__container {
   background: #fff;
   padding: 9rem;
@@ -42,17 +38,14 @@
   overflow: scroll;
   height: 90vh;
 }
-
 .ModalFarmacoVigilancia__container--success {
   height: auto;
   position: relative;
   overflow: hidden;
 }
-
 .ModalFarmacoVigilancia__container--success .leti-btn {
   margin-top: 3rem;
 }
-
 .ModalFarmacoVigilancia__container--success .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 45rem;
@@ -63,7 +56,6 @@
   transform: rotate(50deg);
   z-index: 0;
 }
-
 .ModalFarmacoVigilancia__container--success .leti-blue-triangle {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 30rem;
@@ -74,14 +66,12 @@
   transform: rotate(-150deg);
   z-index: 0;
 }
-
 .ModalFarmacoVigilancia__container strong {
-  font-family: 'TripletaBold';
+  font-family: "TripletaBold";
   font-size: 2.4rem;
   display: block;
   margin: 3rem 0;
 }
-
 .ModalFarmacoVigilancia__close {
   position: absolute;
   top: 9rem;
@@ -95,79 +85,62 @@
   background: url("../../../../images/close.svg") no-repeat center/contain;
   background-size: 50%;
 }
-
 .ModalFarmacoVigilancia__close:hover {
   border: solid 0.3rem #055aa5;
 }
-
 .ModalFarmacoVigilancia__date label {
   display: block;
 }
-
 .ModalFarmacoVigilancia__date .react-datetime-picker {
   width: 100%;
   height: 6rem;
 }
-
 .ModalFarmacoVigilancia__date .react-datetime-picker__wrapper {
   border-color: #737b7f;
   padding: 0 1rem;
 }
-
 .ModalFarmacoVigilancia__date .react-datetime-picker__inputGroup {
   color: #737b7f;
 }
-
 .ModalFarmacoVigilancia__date .react-datetime-picker__inputGroup input {
   color: #737b7f;
 }
-
 .ModalFarmacoVigilancia__date .react-datetime-picker__button__icon {
   stroke: #737b7f;
 }
-
 .ModalFarmacoVigilancia__date .react-datetime-picker__calendar {
   width: 100%;
-  font-family: 'Mulish', sans-serif !important;
+  font-family: "Mulish", sans-serif !important;
 }
-
 .ModalFarmacoVigilancia .react-calendar {
   width: 100% !important;
 }
-
 .ModalFarmacoVigilancia .react-calendar__tile {
   color: #737b7f;
   text-transform: capitalize;
   font-size: 1.8rem;
 }
-
 .ModalFarmacoVigilancia .react-calendar__tile--hasActive {
   background: #055aa5;
   color: #fff;
 }
-
 .ModalFarmacoVigilancia .react-calendar__tile--active {
   background: transparent;
   border: solid 0.2rem #055aa5;
   color: #055aa5 !important;
 }
-
 .ModalFarmacoVigilancia .react-calendar__tile--now {
   background: rgba(5, 90, 165, 0.1);
 }
-
 .ModalFarmacoVigilancia .react-calendar__month-view__days__day {
   color: #737b7f;
 }
-
 .ModalFarmacoVigilancia .react-calendar__month-view__weekdays {
   color: #cd202f;
 }
-
 .ModalFarmacoVigilancia .react-calendar__month-view--weekend {
   color: #cd202f;
 }
-
 .ModalFarmacoVigilancia .react-calendar__navigation button {
   font-size: 1.4rem;
   text-transform: uppercase;

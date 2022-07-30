@@ -20,7 +20,7 @@ function AdminFormsPage() {
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | Administrador Formularios</title>
+                <title>Grupo LETI | Administrador Formularios</title>
             </Helmet>
             <main className="container-fluid AdminEditPage">
                 <div className="row">

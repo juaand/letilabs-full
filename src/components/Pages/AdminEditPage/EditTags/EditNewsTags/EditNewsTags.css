@@ -2,18 +2,15 @@
   font-size: 1.6rem;
   margin-bottom: 2rem;
 }
-
 .EditNewsTags-delete-tags:nth-child(n+6) {
   margin-bottom: 0;
 }
-
 .EditNewsTags-delete-tags:before {
-  content: 'x';
+  content: "x";
   font-size: 1.6rem;
   color: #cd202f;
   margin-right: 0.5rem;
 }
-
 .EditNewsTags-delete-tags:hover {
   cursor: pointer;
   color: #cd202f;

@@ -59,7 +59,7 @@ function AdminProductInfoPage() {
         <>
             {loading && <Loader message="Cargando mensajes..." />}
             <Helmet>
-                <title>Grupo Leti | Administrador Formulario Productos</title>
+                <title>Grupo LETI | Administrador Formulario Productos</title>
             </Helmet>
             <main className="container-fluid AdminProductInfoPage">
                 {bool && <DeleteFarmVigModal card={card} hideModal={(info) => hideModal(info)} data={updateCardsData} />}

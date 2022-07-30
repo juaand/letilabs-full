@@ -1,15 +1,12 @@
 const dataNav = [
     {
         id: 1,
-        nav_btn: 'Sobre nosotros',
+        nav_btn: 'Somos LETI',
         title: 'Ingenio y calidad humana',
         desc: 'Trabajamos día a día por la salud de los venezolanos para crear soluciones',
         nav_cta: 'Conoce más sobre nosotros',
-        nav_path: 'sobre-nosotros',
-        sub_nav: [{
-            sub_text: 'Áreas terapéuticas',
-            subNav_path: 'areas-terapeuticas'
-        }]
+        nav_path: 'somos-leti',
+        sub_nav: []
     },
     {
         id: 2,
@@ -55,22 +52,22 @@ const dataNav = [
             }
         ]
     },
-    {
-        id: 4,
-        nav_btn: 'Propósito y responsabilidad social',
-        title: 'Comprometidos con ayudar',
-        desc: 'Lorem ipsum et architecto architecto id mollitia quas rem maiores voluptas ex earum ipsam aut delectus eaque.',
-        nav_cta: 'Nuestras iniciativas',
-        nav_path: 'proposito-y-responsabilidad-social',
-        sub_nav: []
-    },
+    // {
+    //     id: 4,
+    //     nav_btn: 'Propósito y responsabilidad social',
+    //     title: 'Comprometidos con ayudar',
+    //     desc: 'Lorem ipsum et architecto architecto id mollitia quas rem maiores voluptas ex earum ipsam aut delectus eaque.',
+    //     nav_cta: 'Nuestras iniciativas',
+    //     nav_path: 'proposito-y-responsabilidad-social',
+    //     sub_nav: []
+    // },
     {
         id: 5,
-        nav_btn: 'Nuestra gente',
+        nav_btn: 'Gente LETI',
         title: 'Ingenio y dedicación',
         desc: 'Nuestro talento humano especializado tiene años trabajando por la salud de los venezolanos',
         nav_cta: 'Conoce a los expertos',
-        nav_path: 'nuestra-gente',
+        nav_path: 'gente-leti',
         sub_nav: []
     },
     {

@@ -35,11 +35,6 @@ function ShowEditModal({product, hideModal, updateData}) {
                 indication: product.indication,
                 therapeutic_group: product.therapeutic_group,
                 category: product.category,
-                util_life: product.util_life,
-                cpe: product.cpe,
-                how_to_use: product.how_to_use,
-                contraindications: product.contraindications,
-                adverse_reactions: product.adverse_reactions,
             },
             error: {
                 name: true,
@@ -54,11 +49,6 @@ function ShowEditModal({product, hideModal, updateData}) {
                 indication: true,
                 therapeutic_group: true,
                 category: true,
-                util_life: true,
-                cpe: true,
-                how_to_use: true,
-                contraindications: true,
-                adverse_reactions: true,
             },
             touch: {},
         },
@@ -75,11 +65,6 @@ function ShowEditModal({product, hideModal, updateData}) {
             indication: v => v.length,
             therapeutic_group: v => v.length,
             category: v => v.length,
-            util_life: v => v.length,
-            cpe: v => v.length,
-            how_to_use: v => v.length,
-            contraindications: v => v.length,
-            adverse_reactions: v => v.length,
         }
     )
 
@@ -159,7 +144,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                         <div className="col-sm-12">
                                             <h1 className="DeleteItemModal__ask">Editar {product.name}</h1>
                                         </div>
-                                        <div className="col-12 col-sm-3">
+                                        <div className="col-12 col-sm-4">
                                             <InputWithLabel
                                                 label="Nombre"
                                                 value={data?.name}
@@ -169,7 +154,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 cssStyle="form-control"
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-3">
+                                        <div className="col-12 col-sm-4">
                                             <InputWithLabel
                                                 label="Línea"
                                                 value={data?.line}
@@ -180,7 +165,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 placeholder="Ingresa línea del producto"
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-3">
+                                        <div className="col-12 col-sm-4">
                                             <InputWithLabel
                                                 label="Registro sanitario"
                                                 value={data?.health_register}
@@ -191,18 +176,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 placeholder="Registro sanitario"
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-3">
-                                            <InputWithLabel
-                                                label="CPE"
-                                                value={data?.cpe}
-                                                onChange={onChange}
-                                                name="cpe"
-                                                type="text"
-                                                cssStyle="form-control"
-                                                placeholder="CPE"
-                                            />
-                                        </div>
-                                        <div className="col-12 col-sm-6">
+                                        <div className="col-12 col-sm-4">
                                             <InputFile
                                                 label="Imagen producto"
                                                 value={data?.picPath}
@@ -212,7 +186,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 type="file"
                                             />
                                         </div>
-                                        <div className="col-12 col-sm-6">
+                                        <div className="col-12 col-sm-4">
                                             <InputFile
                                                 label="QR producto"
                                                 value={data?.QRpath}
@@ -222,15 +196,15 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                 type="file"
                                             />
                                         </div>
-                                        <div className="col-12">
+                                        <div className="col-4">
                                             <InputWithLabel
-                                                label="Categoría(s) / Separadas por comas"
+                                                label="Áreas terapéuticas / Separadas por comas"
                                                 value={data?.therapeutic_group}
                                                 onChange={onChange}
                                                 name="therapeutic_group"
                                                 type="text"
                                                 cssStyle="form-control"
-                                                placeholder="Categoría(s) / Separadas por comas"
+                                                placeholder="Áreas terapéuticas / Separadas por comas"
                                             />
                                         </div>
                                         <div className="row">
@@ -297,7 +271,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                     }}
                                                 />
                                             </div>
-                                            <div className="col-12 col-sm-4">
+                                            <div className="col-12 col-sm-6">
                                                 <p className="label"><strong>Presentación</strong></p>
                                                 <Editor
                                                     initialValue={data?.presentation}
@@ -318,7 +292,7 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                     }}
                                                 />
                                             </div>
-                                            <div className="col-12 col-sm-4">
+                                            <div className="col-12 col-sm-6">
                                                 <p className="label"><strong>Indicaciones</strong></p>
                                                 <Editor
                                                     initialValue={data?.indication}
@@ -326,90 +300,6 @@ function ShowEditModal({product, hideModal, updateData}) {
                                                     apiKey={process.env.REACT_APP_API_TINY_CLOUD}
                                                     init={{
                                                         name: 'indication',
-                                                        height: 140,
-                                                        menubar: false,
-                                                        plugins: [
-                                                            'advlist autolink lists link image',
-                                                            'charmap print preview anchor help',
-                                                            'searchreplace visualblocks code',
-                                                            'insertdatetime media table paste wordcount'
-                                                        ],
-                                                        toolbar:
-                                                            'bold',
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="col-12 col-sm-4">
-                                                <p className="label"><strong>Vida útil</strong></p>
-                                                <Editor
-                                                    initialValue={data?.util_life}
-                                                    onChange={handleChange}
-                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                    init={{
-                                                        name: 'util_life',
-                                                        height: 140,
-                                                        menubar: false,
-                                                        plugins: [
-                                                            'advlist autolink lists link image',
-                                                            'charmap print preview anchor help',
-                                                            'searchreplace visualblocks code',
-                                                            'insertdatetime media table paste wordcount'
-                                                        ],
-                                                        toolbar:
-                                                            'bold',
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="col-12 col-sm-4">
-                                                <p className="label"><strong>Modo de empleo</strong></p>
-                                                <Editor
-                                                    initialValue={data?.how_to_use}
-                                                    onChange={handleChange}
-                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                    init={{
-                                                        name: 'how_to_use',
-                                                        height: 140,
-                                                        menubar: false,
-                                                        plugins: [
-                                                            'advlist autolink lists link image',
-                                                            'charmap print preview anchor help',
-                                                            'searchreplace visualblocks code',
-                                                            'insertdatetime media table paste wordcount'
-                                                        ],
-                                                        toolbar:
-                                                            'bold',
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="col-12 col-sm-4">
-                                                <p className="label"><strong>Contraindicaciones</strong></p>
-                                                <Editor
-                                                    initialValue={data?.contraindications}
-                                                    onChange={handleChange}
-                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                    init={{
-                                                        name: 'contraindications',
-                                                        height: 140,
-                                                        menubar: false,
-                                                        plugins: [
-                                                            'advlist autolink lists link image',
-                                                            'charmap print preview anchor help',
-                                                            'searchreplace visualblocks code',
-                                                            'insertdatetime media table paste wordcount'
-                                                        ],
-                                                        toolbar:
-                                                            'bold',
-                                                    }}
-                                                />
-                                            </div>
-                                            <div className="col-12 col-sm-4">
-                                                <p className="label"><strong>Reacciones adversas</strong></p>
-                                                <Editor
-                                                    initialValue={data?.adverse_reactions}
-                                                    onChange={handleChange}
-                                                    apiKey={process.env.REACT_APP_API_TINY_CLOUD}
-                                                    init={{
-                                                        name: 'adverse_reactions',
                                                         height: 140,
                                                         menubar: false,
                                                         plugins: [

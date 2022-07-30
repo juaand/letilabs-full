@@ -5,113 +5,96 @@
   align-items: center;
   position: relative;
 }
-
 .Innovar__title {
   margin-left: 30rem;
 }
-
-.Innovar [class*='bubbles'] {
+.Innovar [class*=bubbles] {
   position: absolute;
 }
-
 .Innovar__bubbles-mid {
   width: 15.5rem;
   height: 15.5rem;
   right: -5rem;
   top: 20rem;
 }
-
 .Innovar__bubbles-big {
   width: 51rem;
   height: 51rem;
   top: -5rem;
   left: -18.5rem;
 }
-
 .Innovar__bubbles-000 {
   width: 2.8rem;
   height: 2.8rem;
   right: 13rem;
   top: 23rem;
 }
-
 .Innovar__bubbles-002 {
   width: 4.5rem;
   height: 4.5rem;
   top: -10rem;
   left: 10rem;
 }
-
 .Innovar__bubbles-003 {
   width: 1.8rem;
   height: 1.8rem;
   top: -6rem;
   left: 15rem;
 }
-
 .Innovar__bubbles-004 {
   width: 6.5rem;
   height: 6.5rem;
   top: 3.2rem;
   left: 31rem;
 }
-
 .Innovar__bubbles-005 {
   width: 3rem;
   height: 3rem;
   left: 30rem;
   top: 35rem;
 }
-
 .Innovar__bubbles-006 {
   width: 6.5rem;
   height: 6.5rem;
   left: 52rem;
   top: 30rem;
 }
-
 .Innovar__bubbles-007 {
   width: 3rem;
   height: 3rem;
   left: 87rem;
   top: 34rem;
 }
-
 .Innovar__bubbles-008 {
   width: 4.5rem;
   height: 4.5rem;
   left: 90.5rem;
   top: 4.6rem;
 }
-
 .Innovar__bubbles-009 {
   width: 3rem;
   height: 3rem;
   left: 88rem;
   top: 11rem;
 }
-
 .Innovar__bubbles-0010 {
   width: 1.8rem;
   height: 1.8rem;
   left: 117.5rem;
   top: 12rem;
 }
-
 .Innovar__bubbles-0011 {
   width: 1.8rem;
   height: 1.8rem;
   left: 120rem;
   top: 32rem;
 }
-
 .Innovar__bubbles-0012 {
   width: 5.5rem;
   height: 5.5rem;
   left: 122rem;
   top: 33rem;
 }
-
 .Innovar__bubbles-0014 {
   width: 5.5rem;
   height: 5.5rem;

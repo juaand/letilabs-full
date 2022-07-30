@@ -3,7 +3,6 @@
   margin-top: 45rem;
   position: relative;
 }
-
 .Director__image {
   height: 61rem;
   padding: 0;
@@ -11,45 +10,37 @@
   left: 0;
   top: -35rem;
 }
-
 .Director__info {
   font-size: 2.4rem;
   padding: 8rem 0 10rem 0;
   position: relative;
 }
-
 .Director__info h1 {
   position: absolute;
   left: 3rem;
   font-size: 5rem;
   top: -20rem;
 }
-
 .Director__info p, .Director__info small {
   padding-left: 3rem;
 }
-
 .Director__info p {
   margin-bottom: 0rem;
   position: relative;
 }
-
 .Director__info p:before, .Director__info p:after {
   content: '"';
   font-size: 3rem;
 }
-
 .Director__info small {
   margin-bottom: 3rem;
   display: block;
   font-size: 1.6rem;
   font-style: italic;
 }
-
 .Director__info small:before {
-  content: '- ';
+  content: "- ";
 }
-
 .Director__info .leti-btn {
   margin-left: 3rem;
 }

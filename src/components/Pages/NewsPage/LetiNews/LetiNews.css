@@ -1,43 +1,35 @@
 .NewsPage__leti {
   margin-top: 12rem;
 }
-
 .NewsPage__leti h1 {
   margin: 10rem 0 6rem 0;
 }
-
 .NewsPage__leti__logo {
   width: 31rem;
   margin-bottom: 3rem;
 }
-
 .NewsPage__leti-hero {
   position: absolute;
   right: 0;
   padding: 0;
 }
-
 .NewsPage__leti-hero .card-body,
 .NewsPage__leti-hero .card-footer {
   padding-left: 30%;
 }
-
 .NewsPage__leti__card {
   max-height: 50rem;
 }
-
 .NewsPage__leti__card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-
 .NewsPage__leti-resume .card {
   border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
   padding-bottom: 3rem;
   margin-bottom: 3rem;
 }
-
 .NewsPage__leti-resume .card:last-child {
   border-bottom: none;
 }
@@ -63,7 +55,7 @@
     border-bottom: solid 0.1rem rgba(74, 74, 74, 0.1);
   }
   .NewsPage__leti-hero .card-body,
-  .NewsPage__leti-hero .card-footer {
+.NewsPage__leti-hero .card-footer {
     padding: 0 2rem;
     padding-bottom: 1rem;
     margin-bottom: 1rem;

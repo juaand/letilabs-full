@@ -3,7 +3,6 @@
   position: relative;
   overflow: hidden;
 }
-
 .Banner__OurPeople__title {
   height: 70rem;
   display: flex;
@@ -11,18 +10,15 @@
   justify-content: center;
   flex-direction: column;
 }
-
 .Banner__OurPeople__title strong {
   color: #055aa5;
   font-weight: unset;
 }
-
 .Banner__OurPeople__title h1 {
   font-size: 5.4rem;
   margin-bottom: 4rem;
 }
-
-.Banner__OurPeople__bg [class*='css-'] {
+.Banner__OurPeople__bg [class*=css-] {
   height: 90rem;
   position: absolute;
   bottom: 0;
@@ -31,18 +27,15 @@
   display: flex;
   align-items: flex-end;
 }
-
-.Banner__OurPeople__bg [class*='css-'] img {
+.Banner__OurPeople__bg [class*=css-] img {
   height: 70%;
 }
-
 .Banner__OurPeople .leti-red-triangle,
 .Banner__OurPeople .leti-blue-triangle {
   position: absolute;
   z-index: 0;
   transform: rotate(0);
 }
-
 .Banner__OurPeople .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 75rem;
@@ -50,7 +43,6 @@
   right: -8rem;
   top: 0rem;
 }
-
 .Banner__OurPeople .leti-blue-triangle {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 55rem;
@@ -72,10 +64,10 @@
   .Banner__OurPeople__title p {
     font-size: 2rem;
   }
-  .Banner__OurPeople__bg [class*='css-'] {
+  .Banner__OurPeople__bg [class*=css-] {
     right: 10%;
   }
-  .Banner__OurPeople__bg [class*='css-'] img {
+  .Banner__OurPeople__bg [class*=css-] img {
     height: 45%;
   }
   .Banner__OurPeople .leti-red-triangle {

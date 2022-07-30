@@ -3,19 +3,16 @@
   position: relative;
   overflow: hidden;
 }
-
 .Banner__ourCompanies__title {
   height: 70rem;
   display: flex;
   align-items: center;
 }
-
 .Banner__ourCompanies__title strong {
   color: #055aa5;
   font-weight: 500;
 }
-
-.Banner__ourCompanies__bg [class*='css-'] {
+.Banner__ourCompanies__bg [class*=css-] {
   height: 70rem;
   position: absolute;
   bottom: 0;
@@ -24,18 +21,15 @@
   display: flex;
   align-items: flex-end;
 }
-
-.Banner__ourCompanies__bg [class*='css-'] img {
+.Banner__ourCompanies__bg [class*=css-] img {
   height: 90%;
 }
-
 .Banner__ourCompanies .leti-red-triangle,
 .Banner__ourCompanies .leti-blue-triangle {
   position: absolute;
   z-index: 0;
   transform: rotate(0);
 }
-
 .Banner__ourCompanies .leti-red-triangle {
   background: url(../../../../images/triangulo-rojo-stroke.svg) no-repeat center center/contain;
   width: 75rem;
@@ -43,7 +37,6 @@
   right: -8rem;
   top: 0rem;
 }
-
 .Banner__ourCompanies .leti-blue-triangle {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   width: 55rem;
@@ -60,10 +53,10 @@
   .Banner__ourCompanies__title h1 {
     margin-top: 3rem;
   }
-  .Banner__ourCompanies__bg [class*='css-'] {
+  .Banner__ourCompanies__bg [class*=css-] {
     right: -15%;
   }
-  .Banner__ourCompanies__bg [class*='css-'] img {
+  .Banner__ourCompanies__bg [class*=css-] img {
     height: 55%;
   }
   .Banner__ourCompanies .leti-red-triangle {

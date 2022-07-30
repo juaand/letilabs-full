@@ -1,11 +1,9 @@
 .AdminEditPage {
   border-top: solid 0.1rem #e9eaee;
 }
-
 .AdminEditPage__NavContent {
   border-right: solid 0.1rem #e9eaee;
 }
-
 .AdminEditPage__Content {
   padding: 2rem;
 }
@@ -16,13 +14,11 @@
   padding: 3rem 2.4rem;
   position: relative;
 }
-
 .EditContent__active {
   border-width: 0.4rem;
 }
-
 .EditContent__boldtitle {
-  font-family: 'Tripleta', sans-serif;
+  font-family: "Tripleta", sans-serif;
   color: #4a4a4a;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -31,19 +27,17 @@
   padding: 2rem;
   line-height: 2.8rem;
 }
-
 .EditContent__boldtitle strong {
   color: #055aa5;
   font-weight: 600;
 }
-
 .EditContent__title {
   font-size: 2.4rem;
   font-weight: 400;
   border: 0;
   margin: 0;
   margin-left: 2rem;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   color: #055aa5;
   position: relative;
   display: flex;
@@ -51,9 +45,8 @@
   background: #fff;
   padding-left: 3rem;
 }
-
 .EditContent__title:before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 5rem;
   height: 5rem;
@@ -63,9 +56,8 @@
   z-index: 0;
   left: 0;
 }
-
 .EditContent h2 {
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-weight: 400;
   position: absolute;
   top: -1.4rem;
@@ -75,13 +67,11 @@
   color: #055aa5;
   font-size: 2rem;
 }
-
 .EditContent h2 small {
   margin-left: 0.8rem;
   color: #4a4a4a;
   font-size: 1.4rem;
 }
-
 .EditContent h3 {
   color: #cd202f;
   font-size: 2rem;
@@ -89,51 +79,42 @@
 
 .AdminEdit__form h3 {
   color: #cd202f;
-  font-family: 'Tripleta', sans-serif;
+  font-family: "Tripleta", sans-serif;
 }
-
 .AdminEdit__form__title {
   font-size: 1.6rem;
   font-weight: 600;
   color: #055aa5;
 }
-
 .AdminEdit__form__label {
   font-size: 1.4rem;
   margin-bottom: 1rem;
   font-weight: 600;
   color: #737b7f;
 }
-
 .AdminEdit__form__label strong,
 .AdminEdit__form__label small {
   color: #055aa5;
 }
-
 .AdminEdit__form-leti-btn {
   background: transparent;
   padding: 1.4rem 3.2rem;
 }
-
 .AdminEdit__form .tox-tinymce {
   border: 1px solid #737b7f;
 }
-
 .AdminEdit__form .tox .tox-statusbar {
   display: none;
 }
-
 .AdminEdit__form .form-group {
   margin-top: 0;
 }
-
 .AdminEdit__form .form-group .form-control {
   height: 5.5rem;
   border-radius: 0;
   border-color: #737b7f;
   margin-bottom: 5rem;
 }
-
 .AdminEdit__message {
   display: inline-block;
   margin-left: 2rem;

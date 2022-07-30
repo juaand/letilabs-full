@@ -2,14 +2,12 @@
   margin: 7rem 0;
   background: url(../../../../images/cuidar-left-bg.svg) no-repeat -15% center, url(../../../../images/cuidar-right-bg.svg) no-repeat 115% center;
 }
-
 .Cuidar__clip {
   display: flex;
   justify-content: center;
   position: relative;
   overflow: visible;
 }
-
 .Cuidar__clip-content {
   position: static;
   height: 60rem;
@@ -21,7 +19,6 @@
   margin-bottom: 3rem;
   transform: rotate(0deg);
 }
-
 .Cuidar__stroke {
   position: absolute;
   background: url(../../../../images/cuidar-stroke.svg) no-repeat center/contain;

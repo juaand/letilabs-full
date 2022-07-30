@@ -22,7 +22,7 @@ function InfoCards() {
     return (
         <>
             {loading && <Loader />}
-            <section className="container InfoCards">
+            <section className="container InfoCards InfoCards__custom--margin">
                 <div className="row justify-content-around">
                     <Fade className="col InfoCards__Leti__cards" cascade delay={300} direction="up" triggerOnce>
                         {dataBiocontrolled.map(el =>

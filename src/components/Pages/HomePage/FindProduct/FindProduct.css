@@ -4,21 +4,17 @@
   display: flex;
   align-items: center;
 }
-
 .FindProduct form {
   padding: 0;
 }
-
 .FindProduct__row {
   justify-content: center;
 }
-
 .FindProduct__form {
   display: flex;
   align-items: center;
   height: 7.6rem;
 }
-
 .FindProduct__form .DropdownWithLabel .form-control.category {
   background: url(../../../../images/dropdown-icon.svg) no-repeat 2rem center;
   padding-left: 6rem;
@@ -29,24 +25,20 @@
   border-top: solid 0.1rem #737b7f;
   border-bottom: solid 0.1rem #737b7f;
 }
-
 .FindProduct__form .DropdownWithLabel .form-control.product {
   border-left: solid 0.1rem #737b7f;
   padding-left: 2rem;
   border-left: solid 0.1rem #737b7f;
   background: url(../../../../images/inputwithlabel.svg) no-repeat right center;
 }
-
 .FindProduct__form .form-group {
   margin: 0 !important;
 }
-
 .FindProduct__form .leti-btn {
   background: url(../../../../images/search.svg) no-repeat center/4rem;
   height: 7.6rem;
   transition: all 0.1s ease-in-out;
 }
-
 .FindProduct__form .leti-btn:hover {
   border-width: 0.3rem;
 }
@@ -128,7 +120,6 @@
     border-width: 0.3rem;
   }
 }
-
 @media (max-width: 576px) and (max-width: 576px) {
   .FindProduct__form .leti-btn .FindProduct {
     background: url(../../../../images/find-product-bg.png) no-repeat left 4rem/30%;
@@ -161,19 +152,20 @@
     width: 100.5%;
   }
   .FindProduct__form .leti-btn .FindProduct__form .leti-btn:before {
-    content: 'Buscar el producto';
+    content: "Buscar el producto";
     font-size: 1.8rem;
   }
   .FindProduct__form .leti-btn .FindProduct__form .leti-btn:hover {
     background: blue;
   }
 }
-
 @media (max-width: 576px) {
   .FindProduct__form .leti-btn:before {
-    content: 'Buscar el producto';
+    content: "Buscar el producto";
     font-size: 1.8rem;
   }
+}
+@media (max-width: 576px) {
   .FindProduct__form .leti-btn:hover {
     background: blue;
   }

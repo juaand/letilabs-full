@@ -3,49 +3,39 @@
   padding: 8rem 0;
   font-size: 1.8rem;
 }
-
 .Footer__logo {
   background: url(../../images/grupo-leti.svg) no-repeat left center/contain;
   height: 7rem;
 }
-
 .Footer__info {
   padding-top: 3rem;
 }
-
 .Footer__info ul {
   list-style: none;
   padding: 0;
 }
-
 .Footer__info ul li {
   font-size: 1.8rem;
   font-weight: 500;
 }
-
 .Footer__info a {
   color: #4a4a4a;
   text-decoration: none;
 }
-
 .Footer__nav {
   display: flex;
   align-items: center;
 }
-
 .Footer__nav li {
   list-style: none;
 }
-
 .Footer__nav li a {
   color: #737b7f;
   text-decoration: none;
 }
-
 .Footer__nav li a:hover {
   color: #cd202f;
 }
-
 .Footer__copy {
   background: #4a4a4a;
   color: #fff;
@@ -55,31 +45,25 @@
   padding: 1rem 0;
   font-size: 1.8rem;
 }
-
 .Footer__rrss {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: flex-end;
 }
-
 .Footer__icon {
   width: 3rem;
   height: 3rem;
 }
-
 .Footer__icon.facebook {
   background: url(../../images/facebook.svg) no-repeat center center/cover;
 }
-
 .Footer__icon.whatsapp {
   background: url(../../images/whatsapp.svg) no-repeat center center/cover;
 }
-
 .Footer__icon.linkedin {
   background: url(../../images/linkedin.svg) no-repeat center center/cover;
 }
-
 .Footer__icon.instagram {
   background: url(../../images/instagram.svg) no-repeat center center/cover;
 }

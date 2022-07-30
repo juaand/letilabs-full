@@ -40,9 +40,9 @@ function EditBanner() {
 
     const contentData = {
         content: '',
-        url: '/sobre-nosotros',
-        name: 'Sobre nosotros',
-        type: 'Sobre nosotros banner',
+        url: '/somos-leti',
+        name: 'Somos Leti',
+        type: 'Somos leti banner',
     }
 
     const updateBanner = async (event) => {

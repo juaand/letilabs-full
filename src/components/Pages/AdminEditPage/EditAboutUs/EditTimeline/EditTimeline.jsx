@@ -51,8 +51,8 @@ function EditTimeline() {
 
     const contentData = {
         content: '',
-        url: '/sobre-nosotros',
-        name: 'Sobre Nosotros',
+        url: '/somos-leti',
+        name: 'Somos Leti',
         type: '',
     }
 
@@ -60,7 +60,7 @@ function EditTimeline() {
         event.preventDefault()
 
         if (contentData?.content?.length > 0) {
-            contentData.type = `Sobre nosotros - ${data?.year}`
+            contentData.type = `Sobre leti - ${data?.year}`
             createContent(contentData)
         }
 

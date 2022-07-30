@@ -1,23 +1,19 @@
 .CheckBoxWithLabel p {
   margin-left: 1rem;
 }
-
 .CheckBoxWithLabel label {
   margin-left: 1rem;
   font-size: 1.6rem;
   color: #737b7f;
 }
-
 .CheckBoxWithLabel .label-title {
   margin-left: 0;
 }
-
 .CheckBoxWithLabel .form-check {
   margin-bottom: 0;
   padding: 2rem 0 2rem 6rem;
   font-size: 1.6rem;
 }
-
 .CheckBoxWithLabel .CheckBoxWithLabel {
   padding: 0 1.5rem;
 }

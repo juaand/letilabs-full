@@ -38,9 +38,9 @@ function EditMarcandoPauta() {
 
     const contentData = {
         content: '',
-        url: '/sobre-nosotros',
-        name: 'Sobre nosotros',
-        type: 'Sobre nosotros marcando pauta',
+        url: '/somos-leti',
+        name: 'Somos Leti',
+        type: 'Somos Leti marcando pauta',
     }
 
     const updateMarcandoPauta = async (event) => {

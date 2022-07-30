@@ -13,9 +13,13 @@
 
 .slick-slider {
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
+  -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
@@ -37,6 +41,10 @@
 
 .slick-slider .slick-list,
 .slick-slider .slick-track {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -48,7 +56,7 @@
 .slick-track:after,
 .slick-track:before {
   display: table;
-  content: '';
+  content: "";
 }
 
 .slick-track:after {
@@ -62,7 +70,7 @@
   min-height: 1px;
 }
 
-[dir='rtl'] .slick-slide {
+[dir=rtl] .slick-slide {
   float: right;
 }
 
@@ -90,7 +98,7 @@
 
 .slick-arrow.slick-hidden {
   display: none;
-}
+} /*# sourceMappingURL=slick.min.css.map */
 .slick-dots,
 .slick-next,
 .slick-prev {
@@ -114,6 +122,8 @@
   top: 50%;
   width: 20px;
   height: 20px;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
   cursor: pointer;
   color: transparent;
@@ -145,7 +155,7 @@
   left: -25px;
 }
 
-[dir='rtl'] .slick-prev {
+[dir=rtl] .slick-prev {
   right: -25px;
   left: auto;
 }
@@ -154,7 +164,7 @@
   right: -25px;
 }
 
-[dir='rtl'] .slick-next {
+[dir=rtl] .slick-next {
   right: auto;
   left: -25px;
 }
@@ -213,7 +223,7 @@
   left: 0;
   width: 20px;
   height: 20px;
-  content: '•';
+  content: "•";
   text-align: center;
   opacity: 0.25;
   color: #000;
@@ -222,26 +232,22 @@
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
   color: #000;
-}
+} /*# sourceMappingURL=slick-theme.min.css.map */
 .Carousel__Alliances {
   background: #f5f5f5;
   margin: 10rem 0;
   padding: 10rem 0;
 }
-
 .Carousel__Alliances h1 {
   text-align: center;
   margin-bottom: 4rem;
 }
-
 .Carousel__Alliances__image {
   height: 8rem;
 }
-
 .Carousel__Alliances__desc {
   text-align: center;
 }
-
 .Carousel__Alliances .slick-next,
 .Carousel__Alliances .slick-prev {
   position: absolute;
@@ -251,40 +257,33 @@
   opacity: 0.4;
   transition: all 200ms ease-in-out;
 }
-
 .Carousel__Alliances .slick-next:hover,
 .Carousel__Alliances .slick-prev:hover {
   opacity: 1;
 }
-
 .Carousel__Alliances .slick-next:before,
 .Carousel__Alliances .slick-prev:before {
-  content: '';
+  content: "";
 }
-
 .Carousel__Alliances .slick-next {
   background: url(../../../../images/next-arrow.svg) no-repeat center center/contain;
   margin-right: 6rem;
 }
-
 .Carousel__Alliances .slick-prev {
   background: url(../../../../images/prev-arrow.svg) no-repeat center center/contain;
   margin-left: 6rem;
 }
-
 .Carousel__Alliances .slick-slide:not(.slick-current) h3 {
   display: none;
 }
-
 .Carousel__Alliances .slick-dots {
   bottom: -6rem;
   width: auto;
   left: 50%;
   margin-left: -7.5rem;
 }
-
 .Carousel__Alliances .slick-dots:before {
-  content: '';
+  content: "";
   display: inline-block;
   width: 20rem;
   border-top: solid 0.1px #4a4a4a;
@@ -292,7 +291,6 @@
   left: 50%;
   margin-left: -10rem;
 }
-
 .Carousel__Alliances .slick-dots .slick-active button {
   width: 2rem;
   height: 2rem;
@@ -300,7 +298,6 @@
   border-radius: 4rem;
   opacity: 0.7;
 }
-
 .Carousel__Alliances__alone img {
   max-height: 10rem;
 }

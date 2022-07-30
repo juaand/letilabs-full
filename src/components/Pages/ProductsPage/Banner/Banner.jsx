@@ -36,7 +36,6 @@ function Banner() {
                         <Fade duration={600} direction="down" triggerOnce className="col-12 Banner__Products__btns">
                             <div className="row">
                                 <Link to={data?.button1Link} className="col-12 col-sm-3 col-lg-3 leti-btn">{data?.button1Title}</Link>
-                                <Link to={data?.button2Link} className="col-12 col-sm-3 col-lg-3  leti-btn">{data?.button2Title}</Link>
                             </div>
                         </Fade>
                         <Fade cascade delay={600} triggerOnce>

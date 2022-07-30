@@ -1,12 +1,10 @@
 .Banner__IYD {
   position: relative;
 }
-
 .Banner__IYD-logo {
   margin-top: 6rem;
   display: block;
 }
-
 .Banner__IYD__title {
   height: 70rem;
   display: flex;
@@ -14,14 +12,12 @@
   flex-direction: column;
   justify-content: center;
 }
-
 .Banner__IYD__title h3 {
   font-size: 3rem;
-  font-family: 'Mulish', sans-serif;
+  font-family: "Mulish", sans-serif;
   font-weight: 500;
   margin: 1rem auto 10rem auto;
 }
-
 .Banner__IYD__bg {
   position: absolute;
   width: 54rem;
@@ -30,7 +26,6 @@
   top: -10rem;
   transform: rotate(0deg);
 }
-
 .Banner__IYD__blue {
   position: absolute;
   width: 44rem;

@@ -10,16 +10,13 @@
   justify-content: center;
   align-items: center;
 }
-
 .ShowEditModal .label {
   font-size: 1.6rem;
   color: #737b7f;
 }
-
 .ShowEditModal .leti-btn:hover {
   background: #055aa5;
 }
-
 .ShowEditModal__container {
   background: #fff;
   padding: 2rem 4rem;
@@ -30,7 +27,6 @@
   height: auto;
   padding-top: 4rem;
 }
-
 .ShowEditModal__close {
   position: absolute;
   top: 2rem;
@@ -44,22 +40,18 @@
   background: url("../../../../images/close.svg") no-repeat center/contain;
   background-size: 50%;
 }
-
 .ShowEditModal__close:hover {
   border: solid 0.3rem #055aa5;
 }
-
 .ShowEditModal__news-title {
   color: #055aa5;
   display: block;
   font-size: 3rem;
 }
-
 .ShowEditModal__thumbnail {
   position: relative;
   padding-left: 14rem;
 }
-
 .ShowEditModal__thumbnail-img {
   width: 10rem;
   height: 10rem;

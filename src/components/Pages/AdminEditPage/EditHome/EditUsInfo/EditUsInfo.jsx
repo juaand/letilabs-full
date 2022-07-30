@@ -39,7 +39,7 @@ function EditUsInfo() {
         content: '',
         url: '/',
         name: 'Inicio',
-        type: 'Sobre Nosotros',
+        type: 'Somos Leti',
     }
 
     const updateUsInfo = async (event) => {
@@ -87,7 +87,7 @@ function EditUsInfo() {
 
     return (
         <section className="container-fluid EditContent">
-            <h2>Sobre nosotros</h2>
+            <h2>Somos Leti</h2>
             <form className="AdminEdit__form" onSubmit={updateUsInfo}>
                 <div className="row">
                     <div className="col-12 col-sm-6">

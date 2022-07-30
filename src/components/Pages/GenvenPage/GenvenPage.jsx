@@ -40,7 +40,7 @@ function GenvenPage() {
     return (
         <>
             <Helmet>
-                <title>{`Grupo Leti | ${seoInfo?.page}`}</title>
+                <title>{`Grupo LETI | ${seoInfo?.page}`}</title>
                 <meta name="description" content={`${seoInfo?.description}`} />
                 <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>

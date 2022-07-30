@@ -1,7 +1,6 @@
 import './Innovar.css'
 import React, {useState, useEffect} from 'react'
-import {Reveal} from "react-awesome-reveal"
-import {keyframes} from "@emotion/react"
+import {Fade} from "react-awesome-reveal"
 import {getInnovationOC} from '../../../../services/ApiClient'
 import Loader from '../../../Loader/Loader'
 
@@ -9,17 +8,6 @@ function Innovar() {
 
     const [bannerData, setBannerData] = useState()
     const [loading, setLoading] = useState(true)
-
-    const customAnimation = keyframes`
-  from {
-    opacity: 0;
-    transform: translate3d(-10rem, -10rem, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }`
 
     useEffect(() => {
         const fetchData = async () => {
@@ -85,9 +73,9 @@ function Innovar() {
                 <div className="container">
                     <div className="row">
                         <div className="col-12 col-sm-6 Innovar__title">
-                            <Reveal keyframes={customAnimation}>
+                        <Fade direction="left" duration={600}>
                                 <h1>{bannerData?.description}</h1>
-                            </Reveal>
+                            </Fade>
                         </div>
                     </div>
                 </div>

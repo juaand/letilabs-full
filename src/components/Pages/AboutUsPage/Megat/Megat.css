@@ -3,21 +3,17 @@
   margin-top: 24rem;
   position: relative;
 }
-
 .Megat__logo {
   width: 26rem;
   height: 11rem;
   margin: 3rem 0;
 }
-
 .Megat__desc {
   margin-bottom: 3rem;
 }
-
 .Megat__desc strong {
   color: #055aa5;
 }
-
 .Megat__clip {
   position: absolute;
   top: -20rem;
@@ -32,7 +28,6 @@
   mask-repeat: no-repeat;
   mask-position: top left;
 }
-
 .Megat__blue-stroke {
   background: url(../../../../images/triangulo-azul-stroke.svg) no-repeat center center/contain;
   position: absolute;

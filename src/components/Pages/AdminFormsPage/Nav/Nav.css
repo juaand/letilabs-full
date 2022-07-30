@@ -2,7 +2,6 @@
   padding: 0;
   position: relative;
 }
-
 .AdminEditPage__Nav-link {
   font-size: 1.4rem;
   border-bottom: solid 0.1rem #e9eaee;
@@ -10,30 +9,25 @@
   list-style: none;
   color: #737b7f;
 }
-
 .AdminEditPage__Nav-link:hover {
   cursor: pointer;
   color: #055aa5;
   border-right: solid 0.3rem #055aa5;
 }
-
 .AdminEditPage__Nav-link.active, .AdminEditPage__Nav-link.currentActive {
   color: #055aa5;
   font-weight: 600;
   border-right: solid 0.3rem #055aa5;
   pointer-events: none;
 }
-
 .AdminEditPage__Nav-link.api {
   color: #fff;
   background: #055aa5;
 }
-
 .AdminEditPage__Nav-link.api:hover {
   background: #cd202f;
   border-right: solid 0.3rem #cd202f;
 }
-
 .AdminEditPage__Nav-link-subnav {
   padding-left: 4rem;
 }
@@ -48,7 +42,7 @@
     padding-right: 4rem;
   }
   .AdminEditPage__adminmenu:after {
-    content: '';
+    content: "";
     top: 1.6rem;
     right: 1.8rem;
     width: 1.8rem;

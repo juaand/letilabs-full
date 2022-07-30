@@ -71,9 +71,9 @@ function SearchPage(props) {
         <>
             {loading && <Loader />}
             <Helmet>
-                <title>Grupo Leti | Buscar</title>
+                <title>Grupo LETI | Buscar</title>
                 <meta name="description" content="Resultados de búsqueda" />
-                <meta name="keywords" content="Grupo Leti,  Nuestras empresas, Leti" />
+                <meta name="keywords" content="Grupo LETI,  Nuestras empresas, LETI" />
             </Helmet>
             <section className="container-fluid SearchPage">
                 <div className="row">
@@ -113,7 +113,7 @@ function SearchPage(props) {
                         {matches.map(match =>
                             <div className="col-12 SearchPage__resultados-matchs">
                                 <Link className="SearchPage__link" to={match.url}>
-                                    <p className="SearchPage__title">{match.name} | Grupo Leti</p>
+                                    <p className="SearchPage__title">{match.name} | Grupo LETI</p>
                                     <p className="SearchPage__url">{document.location.origin}{match.url}</p>
                                 </Link>
                                 <p className="SearchPage__content" dangerouslySetInnerHTML={{__html: `${truncate(match.content, 110)}`}}>

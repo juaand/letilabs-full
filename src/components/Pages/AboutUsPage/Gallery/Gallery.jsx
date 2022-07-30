@@ -41,9 +41,11 @@ function Gallery() {
                     <div className="col-12 col-sm-6 Gallery__image" style={{
                         background: `url("${backImage}") no-repeat center center / cover`
                     }}>
+                    {itemDesc && 
                         <p className="Gallery__desc row">
                             <span dangerouslySetInnerHTML={{__html: itemDesc}} className="col-sm-11 col-12"/>
                         </p>
+                    }
                     </div>
                 </Fade>
             </section>

@@ -13,9 +13,13 @@
 
 .slick-slider {
   box-sizing: border-box;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
   -khtml-user-select: none;
+  -ms-touch-action: pan-y;
   touch-action: pan-y;
   -webkit-tap-highlight-color: transparent;
 }
@@ -37,6 +41,10 @@
 
 .slick-slider .slick-list,
 .slick-slider .slick-track {
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  -ms-transform: translate3d(0, 0, 0);
+  -o-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
 }
 
@@ -48,7 +56,7 @@
 .slick-track:after,
 .slick-track:before {
   display: table;
-  content: '';
+  content: "";
 }
 
 .slick-track:after {
@@ -62,7 +70,7 @@
   min-height: 1px;
 }
 
-[dir='rtl'] .slick-slide {
+[dir=rtl] .slick-slide {
   float: right;
 }
 
@@ -90,7 +98,7 @@
 
 .slick-arrow.slick-hidden {
   display: none;
-}
+} /*# sourceMappingURL=slick.min.css.map */
 .slick-dots,
 .slick-next,
 .slick-prev {
@@ -114,6 +122,8 @@
   top: 50%;
   width: 20px;
   height: 20px;
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
   cursor: pointer;
   color: transparent;
@@ -145,7 +155,7 @@
   left: -25px;
 }
 
-[dir='rtl'] .slick-prev {
+[dir=rtl] .slick-prev {
   right: -25px;
   left: auto;
 }
@@ -154,7 +164,7 @@
   right: -25px;
 }
 
-[dir='rtl'] .slick-next {
+[dir=rtl] .slick-next {
   right: auto;
   left: -25px;
 }
@@ -213,7 +223,7 @@
   left: 0;
   width: 20px;
   height: 20px;
-  content: '•';
+  content: "•";
   text-align: center;
   opacity: 0.25;
   color: #000;
@@ -222,16 +232,15 @@
 .slick-dots li.slick-active button:before {
   opacity: 0.75;
   color: #000;
-}
+} /*# sourceMappingURL=slick-theme.min.css.map */
 .Carousel__Biocontrolled {
   margin: 10rem 0;
+  position: relative;
 }
-
 .Carousel__Biocontrolled h1 {
   text-align: center;
   margin-bottom: 4rem;
 }
-
 .Carousel__Biocontrolled__desc {
   text-align: center;
   position: relative;
@@ -239,13 +248,12 @@
   margin: auto;
   padding-top: 7rem;
 }
-
 .Carousel__Biocontrolled__desc strong {
+  font-family: "TripletaBold";
   color: #055aa5;
 }
-
 .Carousel__Biocontrolled__desc:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 1rem;
   left: 50%;
@@ -256,9 +264,8 @@
   background-color: #055aa5;
   z-index: 2;
 }
-
 .Carousel__Biocontrolled__desc:after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 0rem;
@@ -271,21 +278,18 @@
   z-index: 1;
   background: #fff;
 }
-
 .Carousel__Biocontrolled .slick-list {
   position: relative;
   width: 80%;
   margin: auto;
 }
-
 .Carousel__Biocontrolled .slick-list:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   border-top: solid 0.3rem #055aa5;
   top: 2.5rem;
 }
-
 .Carousel__Biocontrolled .slick-next,
 .Carousel__Biocontrolled .slick-prev {
   position: absolute;
@@ -296,22 +300,18 @@
   opacity: 0.4;
   transition: all 200ms ease-in-out;
 }
-
 .Carousel__Biocontrolled .slick-next:hover,
 .Carousel__Biocontrolled .slick-prev:hover {
   opacity: 1;
 }
-
 .Carousel__Biocontrolled .slick-next:before,
 .Carousel__Biocontrolled .slick-prev:before {
-  content: '';
+  content: "";
 }
-
 .Carousel__Biocontrolled .slick-next {
   background: url(../../../../images/next-arrow.svg) no-repeat center center/contain;
   right: 6rem;
 }
-
 .Carousel__Biocontrolled .slick-prev {
   background: url(../../../../images/prev-arrow.svg) no-repeat center center/contain;
   left: 6rem;
@@ -328,14 +328,14 @@
     width: 100%;
   }
   .Carousel__Biocontrolled .slick-list:before {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
     border-top: solid 0.3rem #055aa5;
     top: 2.5rem;
   }
   .Carousel__Biocontrolled .slick-next,
-  .Carousel__Biocontrolled .slick-prev {
+.Carousel__Biocontrolled .slick-prev {
     top: 14rem;
   }
   .Carousel__Biocontrolled .slick-next {

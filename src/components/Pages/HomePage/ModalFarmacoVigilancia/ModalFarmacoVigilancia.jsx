@@ -195,7 +195,7 @@ function ModalFarmacoVigilancia({hideModal}) {
                                                         label="Medicamento que tomó"
                                                         name="medicine"
                                                         onChange={onChange}
-                                                        cssStyle={`form-control  mt-5 ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
+                                                        cssStyle={`form-control ${touch.medicine && error.medicine ? "is-invalid" : ""}`}
                                                         tabIndex="6"
                                                         list="medicines"
                                                         data={dataList}

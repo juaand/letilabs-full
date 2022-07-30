@@ -7,7 +7,7 @@ function NotFoundPage() {
     return (
         <>
             <Helmet>
-                <title>Grupo Leti | 404</title>
+                <title>Grupo LETI | 404</title>
             </Helmet>
             <main className="container NotFoundPage">
                 <div className="row justify-content-center">
