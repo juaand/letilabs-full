@@ -18,11 +18,15 @@ function EditCookies() {
                 facebook: rrssData?.facebook,
                 linkedin: rrssData?.linkedin,
                 instagram: rrssData?.instagram,
+                twitter: rrssData?.twitter,
+                youtube: rrssData?.youtube,
             },
             error: {
                 facebook: true,
                 linkedin: true,
                 instagram: true,
+                twitter: true,
+                youtube: true
             },
             touch: {},
         },
@@ -30,6 +34,8 @@ function EditCookies() {
             facebook: v => v.length,
             linkedin: v => v.length,
             instagram: v => v.length,
+            twitter: v => v.length,
+            youtube: v => v.length
         }
     )
 
@@ -111,6 +117,32 @@ function EditCookies() {
                             type="text"
                             cssStyle="form-control"
                             placeholder={rrssData?.instagram}
+                        />
+                    </div>
+                    <div className="col-sm-4 col-12">
+                        <p className="AdminEdit__form__label">
+                            Twitter URL (No olvide el http://)
+                        </p>
+                        <InputWithLabel
+                            value={data?.twitter}
+                            onChange={onChange}
+                            name="twitter"
+                            type="text"
+                            cssStyle="form-control"
+                            placeholder={rrssData?.twitter}
+                        />
+                    </div>
+                    <div className="col-sm-4 col-12">
+                        <p className="AdminEdit__form__label">
+                            Youtube URL (No olvide el http://)
+                        </p>
+                        <InputWithLabel
+                            value={data?.youtube}
+                            onChange={onChange}
+                            name="youtube"
+                            type="text"
+                            cssStyle="form-control"
+                            placeholder={rrssData?.youtube}
                         />
                     </div>
                     <div className="col-12">

@@ -2,10 +2,8 @@ import React, {useState, useEffect} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 
 import {useAuthContext} from '../../contexts/AuthContext'
-import {getRrssInfo} from '../../services/ApiClient'
+import {getRrssInfo, getNav} from '../../services/ApiClient'
 import {seoURL} from '../../hooks/seoURL'
-
-import dataNav from '../../data/dataNav'
 
 import './Footer.css'
 
@@ -15,6 +13,7 @@ function Footer() {
 
     const [bool, setBool] = useState(false)
     const [rrss, setRrss] = useState([])
+    const [dataNav, setDataNav] = useState([])
 
     useEffect(() => {
         if (window.screen.width <= 576) {
@@ -24,6 +23,8 @@ function Footer() {
         const fetchData = async () => {
             const getRrssData = await getRrssInfo()
             setRrss(getRrssData[0])
+            const getNavData = await getNav()
+            setDataNav(getNavData)
         }
         fetchData()
 

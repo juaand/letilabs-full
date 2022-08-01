@@ -61,7 +61,6 @@ function Nav({initSearch}) {
                     top: getNavH,
                     x: getNavInfo.x
                 })
-                console.log(getNavW, getNavH, getNavInfo)
             }
 
 
