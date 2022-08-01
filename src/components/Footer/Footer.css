@@ -54,6 +54,7 @@
 .Footer__icon {
   width: 3rem;
   height: 3rem;
+  margin: 0.8rem 0;
 }
 .Footer__icon.facebook {
   background: url(../../images/facebook.svg) no-repeat center center/cover;
@@ -66,6 +67,12 @@
 }
 .Footer__icon.instagram {
   background: url(../../images/instagram.svg) no-repeat center center/cover;
+}
+.Footer__icon.twitter {
+  background: url(../../images/twitter.svg) no-repeat center center/cover;
+}
+.Footer__icon.youtube {
+  background: url(../../images/youtube.svg) no-repeat center center/contain;
 }
 
 @media (max-width: 576px) {

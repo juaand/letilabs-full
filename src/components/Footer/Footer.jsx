@@ -82,6 +82,8 @@ function Footer() {
                             <Link to={{pathname: `${rrss?.facebook}`}} target="_blank" className="Footer__icon facebook" />
                             <Link to={{pathname: `${rrss?.instagram}`}} target="_blank" className="Footer__icon instagram" />
                             <Link to={{pathname: `${rrss?.linkedin}`}} target="_blank" className="Footer__icon linkedin" />
+                            <Link to={{pathname: `${rrss?.twitter}`}} target="_blank" className="Footer__icon twitter" />
+                            <Link to={{pathname: `${rrss?.youtube}`}} target="_blank" className="Footer__icon youtube" />
                         </div>
                     </div>
                 </div>
