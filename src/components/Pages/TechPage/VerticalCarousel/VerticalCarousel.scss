@@ -66,6 +66,7 @@
     display: block;
     transition: transform 0.4s ease, opacity 0.4s ease;
     text-align: right;
+    height: 3.6rem;
 
     &.visible {
       opacity: 1;

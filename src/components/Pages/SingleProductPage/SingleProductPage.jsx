@@ -31,12 +31,14 @@ function SingleProductPage(props) {
     const buscar = props?.location?.state?.buscar
 
     const [product, setProduct] = useState([])
+    const [productName, setProductName] = useState('')
 
     useEffect(() => {
         window.scrollTo(0, 0)
         const fetchData = async () => {
             const getProductData = await getProduct(buscar)
             setProduct(getProductData)
+            setProductName(getProductData[0][0].name)
         }
         fetchData()
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -44,10 +46,11 @@ function SingleProductPage(props) {
 
     return (
         <>
+        {console.log(productName)}
             <Helmet>
-                <title>{`Grupo LETI | ${product?.name}`}</title>
-                <meta name="description" content={`Resultado de búsqueda de producto del Grupo LETI: ${product?.name}`} />
-                <meta name="keywords" content={`Grupo LETI, productos leti, ${product?.name}`} />
+                <title>{`Grupo LETI | ${productName}`}</title>
+                <meta name="description" content={`Resultado de búsqueda de producto del Grupo LETI: ${productName}`} />
+                <meta name="keywords" content={`Grupo LETI, productos leti, ${productName}`} />
             </Helmet>
             <section className="container SingleProductPage">
                 <div className="row">
