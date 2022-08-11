@@ -6,6 +6,7 @@ import {getSeo} from '../../../services/ApiClient'
 import MarcandoPauta from './MarcandoPauta/MarcandoPauta'
 import Timeline from './Timeline/Timeline'
 import Gallery from './Gallery/Gallery'
+import Science from './Science/Science'
 import Banner from './Banner/Banner'
 import Megat from './Megat/Megat'
 
@@ -45,6 +46,7 @@ function AboutUs() {
                 <MarcandoPauta />
                 <Timeline />
                 <Gallery />
+                <Science />
                 <Megat />
             </main>
         </>

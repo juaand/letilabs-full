@@ -40,15 +40,29 @@
 .SingleProductPage__info h2 {
   margin-bottom: 3rem;
 }
+.SingleProductPage__info__tag--wrapper {
+  background: #f5f5f5;
+  border-radius: 5rem;
+  border: solid 1px #4a4a4a;
+  margin-bottom: 3rem;
+  padding: 1.5rem 2rem;
+  display: inline-flex;
+}
 .SingleProductPage__info .tag {
   background: #055aa5;
   color: #fff;
   padding: 0.8rem 2rem;
   display: inline-block;
-  margin-bottom: 3rem;
   text-transform: capitalize;
   margin-right: 2rem;
   font-size: 2.8rem;
+  border-radius: 5rem;
+}
+.SingleProductPage__info .tag:last-child {
+  margin-right: 0;
+}
+.SingleProductPage__info .tag__only {
+  margin-right: 0;
 }
 .SingleProductPage__info p {
   color: #737b7f;
@@ -154,6 +168,12 @@
   }
   .SingleProductPage__info {
     padding: 2rem;
+    font-size: 1.8rem;
+  }
+  .SingleProductPage__info__tag--wrapper {
+    padding: 0.8rem 1.2rem;
+  }
+  .SingleProductPage__info .tag {
     font-size: 1.8rem;
   }
   .SingleProductPage__posology {

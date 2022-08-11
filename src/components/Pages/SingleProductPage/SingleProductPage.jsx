@@ -67,7 +67,9 @@ function SingleProductPage(props) {
                                                 <div className="col-12 col-sm-6 SingleProductPage__info">
                                                     <h1>{el?.name}</h1>
                                                     <h2 dangerouslySetInnerHTML={{__html: el?.active_principle}} />
-                                                    {el?.therapeutic_group.map(el => <span className="tag">{el}</span>)}
+                                                    <div className="SingleProductPage__info__tag--wrapper">
+                                                    {el?.therapeutic_group.map(tag => <span className={el?.therapeutic_group?.length > 1 ? 'tag' : 'tag tag__only'}>{tag}</span>)}
+                                                    </div>
                                                     <p><strong>Composición:</strong> <span dangerouslySetInnerHTML={{__html: el?.composition}} /></p>
                                                     <p><strong>Registro sanitario:</strong> <span dangerouslySetInnerHTML={{__html: el?.health_register}} /></p>
                                                     {/* <p><strong>Indicación</strong> <span dangerouslySetInnerHTML={{__html: el?.indication}} />
