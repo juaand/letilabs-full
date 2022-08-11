@@ -1,8 +1,8 @@
 import axios from "axios"
 
 const http = axios.create({
-    baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
-    //baseURL: "https://grupoleti-api.herokuapp.com/",
+    //baseURL: process.env.REACT_APP_API_URL || "http://localhost:3001",
+    baseURL: "https://grupoleti-api.herokuapp.com/",
     withCredentials: true,
 })
 
@@ -59,6 +59,7 @@ export const getTimeLine = () => http.get("/timelineaboutusdata")
 export const getBanner = () => http.get("/bannerdata")
 export const getMarcandoPauta = () => http.get("/marcandopautadata")
 export const getMegat = () => http.get("/megatdata")
+export const getScience = () => http.get("/sciencedata")
 export const getGallery = () => http.get("/galleryaboutusdata")
 export const deleteGalleryItem = (id) => http.get(`/deletegalleryitem/${id}`)
 export const addTimeLineData = ({year, imgURL, desc}) => http.post("/addtimelineaboutusdata", {year, imgURL, desc})
@@ -70,6 +71,7 @@ export const updateTimelineAboutUs = ({year, desc, imgURL, id}) => http.patch(`/
 export const deleteTimeline = (id) => http.get(`/deletetimelineaboutus/${id}`)
 export const updateMarcandoPautaData = ({description, imgURL, id}) => http.patch("/updatemarcandopautadata", {description, imgURL, id})
 export const updateMegatData = ({title, description, url, buttonTitle, logoURL, id}) => http.patch("/updatemegatdata", {title, description, url, buttonTitle, logoURL, id})
+export const updateScienceData = ({title, desc, imgURL, id}) => http.patch("/updatesciencedata", {title, desc, imgURL, id})
 
 //admin edit routes our companies
 

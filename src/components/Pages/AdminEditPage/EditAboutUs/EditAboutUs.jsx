@@ -5,6 +5,7 @@ import EditGallery from './EditGallery/EditGallery'
 import EditBanner from './EditBanner/EditBanner'
 import EditMegat from './EditMegat/EditMegat'
 import EditSeo from './EditSeo/EditSeo'
+import EditScience from './EditScience/EditScience'
 
 function EditAboutUs() {
     return (
@@ -15,6 +16,7 @@ function EditAboutUs() {
             <EditMarcandoPauta />
             <EditTimeline />
             <EditGallery />
+            <EditScience />
             <EditMegat />
             <EditSeo />
         </main>
