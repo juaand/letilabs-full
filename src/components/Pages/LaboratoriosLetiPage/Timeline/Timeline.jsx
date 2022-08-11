@@ -75,7 +75,7 @@ function Timeline() {
                                         </p>
                                     </div>
                                     <div className="row Timeline__leti__btn">
-                                        <div className="col-11 col-sm-4">
+                                        <div className="col-11 col-sm-6">
                                             <Link to={el?.url} className="leti-btn">{el?.button}</Link>
                                         </div>
                                     </div>
