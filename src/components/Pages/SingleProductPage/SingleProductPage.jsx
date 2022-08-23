@@ -65,7 +65,7 @@ function SingleProductPage(props) {
                                         <div className="col-12 SingleProductPage__product">
                                             <div className="row">
                                                 <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
-                                                    background: `url(${el?.picPath}) no-repeat center / 60%`,
+                                                    background: `url(${el?.picPath}) no-repeat center / contain`,
                                                 }} />
                                                 <div className="col-12 col-sm-6 SingleProductPage__info">
                                                     <h1>{el?.name}</h1>
@@ -122,7 +122,7 @@ function SingleProductPage(props) {
                             <div className="col-12 SingleProductPage__product">
                                 <div className="row">
                                     <div className="col-12 col-sm-6 SingleProductPage__pic" style={{
-                                        background: `url(${product[0]?.picPath}) no-repeat center / 60%`,
+                                        background: `url(${product[0]?.picPath}) no-repeat center / contain`,
                                     }} />
                                     <div className="col-12 col-sm-6 SingleProductPage__info">
                                         <>

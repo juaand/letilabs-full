@@ -3,10 +3,12 @@ import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import {Fade} from "react-awesome-reveal"
 import {getVadevecumData} from '../../../../services/ApiClient'
+import Loader from '../../../Loader/Loader'
 
 function Carousel() {
 
     const [getData, setGetData] = useState([])
+    const [loading, setLoading] = useState(true)
 
     let settings = {
         className: "center",
@@ -33,6 +35,7 @@ function Carousel() {
             const data = await getVadevecumData()
             const dataFiltered = data?.filter(el => el?.show_in_home === true)
             setGetData(dataFiltered)
+            setLoading(!loading)
 
             if (dataFiltered.length >= 4) {
                 const getSlickDots = document.querySelector('.slick-dots').getBoundingClientRect()
@@ -47,12 +50,12 @@ function Carousel() {
             }
         }
         fetchData()
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [getData.length])
 
     return (
         <>
+        {/* {loading && <Loader/>} */}
             {getData.length >= 4 &&
                 <Fade delay={800} triggerOnce>
                     <section className="Carousel">

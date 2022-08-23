@@ -413,7 +413,7 @@ function AdminProductPage() {
                                                         />
                                                     </div>
                                                     <div className="col-12 mt-5">
-                                                        <Button type="submit" cssStyle={`leti-btn ${isError && "disabled"}`}>Crear producto</Button>
+                                                        <Button type="submit" cssStyle="leti-btn">Crear producto</Button>
                                                     </div>
                                                 </div>
 
