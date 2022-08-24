@@ -81,26 +81,33 @@ function AdminProductPage() {
 
     const createNewProduct = async (event) => {
         event.preventDefault()
+        console.log(data.therapeutic_group.length)
         if (error.therapeutic_group === false) {
-            const setCategories = data.therapeutic_group.split(',')
-            data.therapeutic_group = setCategories
+            if (data.therapeutic_group.includes(",")) {
+                const setCategories = data.therapeutic_group.split(',')
+                data.therapeutic_group = setCategories
+            }
         }
+
+        if (error.name === false && error.line === false && error.health_register === false && error.active_principle === false && error.posology === false && error.presentation === false && error.composition === false && error.indication === false && error.therapeutic_group === false) {
 
         try {
             const newProduct = await addProductApi(data)
-            document.querySelector('form').reset()
             setProducts(newProduct)
             setMessage('Producto creado con éxito')
             setCreateProduct(!createProduct)
-            setTimeout(() => {
-                setMessage('')
-            }, 2000)
+            setMessage('')
+            data.name=''
+            data.line=''
+            data.health_register=''
+            data.therapeutic_group=''
         } catch (err) {
             setRegisterError(err.response?.data?.message)
         }
+        } else {
+            setMessage('Por favor rellene todos los campos')
+        }
     }
-
-    const isError = Object.values(error).some(err => err)
 
     const customAnimation = keyframes`
   from {
@@ -209,7 +216,6 @@ function AdminProductPage() {
                 <title>Grupo LETI | Administrador Productos</title>
             </Helmet>
             <main className="container-fluid AdminProductPage">
-                {message && <div className="alert alert-danger" role="alert">{message}</div>}
                 <div className="row">
                     <div className="col-12 AdminProductPage__bg">
                         <div className="container">
@@ -418,6 +424,8 @@ function AdminProductPage() {
                                                 </div>
 
                                                 {registerError && <div className="alert alert-danger">{registerError}</div>}
+
+                                                {message && <div className="alert-message">{message}</div>}
                                             </form>
                                         </div>
                                     </>

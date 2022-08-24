@@ -138,6 +138,11 @@
   text-align: center;
   margin-left: -25%;
 }
+.AdminProductPage .alert-message {
+  color: #cd202f;
+  font-size: 14px;
+  display: block;
+}
 .AdminProductPage .card-text {
   font-weight: 600;
   color: #000;
