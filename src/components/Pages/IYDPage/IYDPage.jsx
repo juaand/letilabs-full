@@ -3,6 +3,7 @@ import {Helmet} from 'react-helmet'
 
 import {getSeo} from '../../../services/ApiClient'
 
+import InfoBanner from './InfoBanner/InfoBanner'
 import InfoCards from './InfoCards/InfoCards'
 import BottomCta from './BottomCta/BottomCta'
 import Banner from './Banner/Banner'
@@ -41,6 +42,7 @@ function IYDPage() {
                 <meta name="keywords" content={`${seoInfo?.keywords}`} />
             </Helmet>
             <main>
+                <InfoBanner />
                 <Banner />
                 <InfoCards />
                 <Goals />

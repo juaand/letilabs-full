@@ -17,6 +17,19 @@
     }
   }
 
+  .leti-counter {
+    position: absolute;
+    top: 6rem;
+    right: 30rem;
+
+    .value {
+      font-size: 16rem;
+      font-weight: bold;
+      display: inline;
+    }
+
+  }
+
   .leti-btn {
     background: $leti-white;
 

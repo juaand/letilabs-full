@@ -27,7 +27,7 @@ function BottomCta() {
             <section className="container-fluid BottomCta">
                 <div className="row">
                     {ourCompaniesOCData?.map((el, key) =>
-                        <div className="col-12 col-sm-6 p-0 BottomCta__img">
+                        <div className={key > 0 ? "col-12 p-0 BottomCta__img d-none" : "col-12 p-0 BottomCta__img"}>
                             {key === 0 ? <div className="BottomCta__talento" style={{
                                 background: `url("${el?.img}") no-repeat center center / cover`
                             }} /> :

@@ -1,6 +1,33 @@
 .MarcandoPauta {
   background: #f5f5f5;
 }
+.MarcandoPauta__bg {
+  position: relative;
+}
+.MarcandoPauta__absolute {
+  position: absolute;
+  width: 26rem;
+  height: 26rem;
+  left: 50%;
+  top: 48%;
+  margin-left: -13rem;
+  margin-top: -13rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 6.8rem;
+  line-height: 6rem;
+}
+.MarcandoPauta__absolute .red-text {
+  color: #cd202f;
+  font-size: 4.6rem;
+  line-height: 4rem;
+}
+.MarcandoPauta__absolute .value {
+  display: contents;
+}
 .MarcandoPauta__text {
   display: flex;
   align-items: center;
@@ -10,6 +37,20 @@
 }
 
 @media (max-width: 576px) {
+  .MarcandoPauta__absolute {
+    width: 20rem;
+    height: 20rem;
+    left: 50%;
+    top: 48%;
+    margin-left: -10rem;
+    margin-top: -10rem;
+    font-size: 2.8rem;
+    line-height: 3rem;
+  }
+  .MarcandoPauta__absolute .red-text {
+    font-size: 2.6rem;
+    line-height: 2rem;
+  }
   .MarcandoPauta__text {
     margin-top: 3rem;
     height: 30rem;

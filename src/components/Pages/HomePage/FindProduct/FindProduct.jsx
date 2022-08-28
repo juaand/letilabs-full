@@ -57,6 +57,7 @@ function FindProduct() {
         }
         fetchData()
         setLoading(!loading)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
 

@@ -1,0 +1,118 @@
+.InfoBanner {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fgente-leti-bg.jpg?alt=media&token=fa4d9a68-5def-4b93-b966-9a83eff85dce) no-repeat center/cover;
+  position: relative;
+  overflow: hidden;
+  height: 70rem;
+  padding: 0;
+}
+.InfoBanner-data {
+  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.86);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.InfoBanner-colaboradores {
+  color: #8c8c8c;
+  font-size: 10rem;
+  font-weight: 600;
+  border-bottom: solid 1px #000;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-left: 13rem;
+  padding-top: 2rem;
+}
+.InfoBanner-colaboradores-texto {
+  color: #000;
+  font-weight: 600;
+  display: block;
+  font-size: 3.4rem;
+  margin-top: 4rem;
+}
+.InfoBanner-colaboradores:before {
+  content: "";
+  width: 10rem;
+  height: 10rem;
+  display: inline-block;
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fhands.svg?alt=media&token=80c266f5-66ea-438c-a743-109499665cf5) no-repeat center/contain;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.aside {
+  padding-top: 4rem;
+}
+.aside .custom-margin {
+  margin-top: 5rem;
+}
+.aside .custom-margin,
+.aside .text {
+  font-size: 7rem;
+  color: #8c8c8c;
+}
+.aside .InfoBanner-colaboradores {
+  border-bottom: 0;
+}
+.aside .InfoBanner-colaboradores-mujeres, .aside .InfoBanner-colaboradores-hombres {
+  padding: 0 0 0 7rem;
+  font-size: 7rem;
+}
+.aside .InfoBanner-colaboradores-mujeres:before, .aside .InfoBanner-colaboradores-hombres:before {
+  width: 7rem;
+  height: 7rem;
+  top: 2rem;
+}
+.aside .InfoBanner-colaboradores-mujeres:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fmujejres.svg?alt=media&token=a7887451-319a-4ffa-973b-b9af8c87fc47) no-repeat center/contain;
+}
+.aside .InfoBanner-colaboradores-hombres:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fhombres.svg?alt=media&token=6c333005-afdc-42e5-882a-ccc5084f3ff4) no-repeat center/contain;
+}
+.aside .InfoBanner-colaboradores-texto {
+  margin-top: 2rem;
+  padding-left: 7.3rem;
+}
+
+@media (max-width: 576px) {
+  .InfoBanner .text-desc {
+    padding-left: 2rem;
+  }
+  .InfoBanner-data {
+    padding: 2rem 0;
+  }
+  .InfoBanner-colaboradores {
+    font-size: 6rem;
+  }
+  .InfoBanner-colaboradores-texto {
+    font-size: 2.2rem;
+    margin-top: 2rem;
+  }
+  .InfoBanner-colaboradores:before {
+    height: 6rem;
+  }
+  .InfoBanner__title {
+    height: 70rem;
+    align-items: flex-start;
+  }
+  .InfoBanner__title h1 {
+    margin-top: 3rem;
+  }
+  .aside .custom-margin,
+.aside .text {
+    font-size: 3rem;
+  }
+  .aside .InfoBanner-colaboradores-mujeres, .aside .InfoBanner-colaboradores-hombres {
+    font-size: 5rem;
+  }
+  .aside .InfoBanner-colaboradores-mujeres:before, .aside .InfoBanner-colaboradores-hombres:before {
+    width: 7rem;
+    height: 7rem;
+    top: 2rem;
+  }
+  .aside .InfoBanner-colaboradores-texto {
+    margin-top: 0rem;
+    padding-left: 7.3rem;
+  }
+}

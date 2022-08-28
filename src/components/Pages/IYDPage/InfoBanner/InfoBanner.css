@@ -1,0 +1,115 @@
+.InfoBannerID {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fid-bg.jpg?alt=media&token=19a66cee-e781-4463-8ac3-999112a636e7) no-repeat center/cover;
+  position: relative;
+  overflow: hidden;
+  height: 70rem;
+  padding: 0;
+}
+.InfoBannerID-data {
+  padding: 4rem 0;
+  background: rgba(255, 255, 255, 0.86);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.InfoBannerID-colaboradores {
+  color: #000;
+  font-size: 10rem;
+  font-weight: 600;
+  border-bottom: solid 1px #000;
+  padding-bottom: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  padding-left: 13rem;
+  padding-top: 2rem;
+}
+.InfoBannerID-colaboradores-texto {
+  color: #000;
+  font-weight: normal;
+  display: block;
+  font-size: 1.4rem;
+  margin-top: 4rem;
+}
+.InfoBannerID-colaboradores:before {
+  content: "";
+  width: 10rem;
+  height: 10rem;
+  display: inline-block;
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fhands.svg?alt=media&token=80c266f5-66ea-438c-a743-109499665cf5) no-repeat center/contain;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.InfoBanner-aside {
+  padding-top: 4rem;
+}
+.InfoBanner-aside .custom-margin {
+  margin-top: 5rem;
+}
+.InfoBanner-aside .custom-margin,
+.InfoBanner-aside .text {
+  font-size: 2rem;
+  color: #000;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores {
+  border-bottom: 0;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-parque, .InfoBanner-aside .InfoBannerID-colaboradores-almacen, .InfoBanner-aside .InfoBannerID-colaboradores-centros, .InfoBanner-aside .InfoBannerID-colaboradores-desarrollos, .InfoBanner-aside .InfoBannerID-colaboradores-lineas, .InfoBanner-aside .InfoBannerID-colaboradores-formas, .InfoBanner-aside .InfoBannerID-colaboradores-plantas, .InfoBanner-aside .InfoBannerID-colaboradores-registros {
+  padding: 0 0 0 8rem;
+  font-size: 4rem;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-parque:before, .InfoBanner-aside .InfoBannerID-colaboradores-almacen:before, .InfoBanner-aside .InfoBannerID-colaboradores-centros:before, .InfoBanner-aside .InfoBannerID-colaboradores-desarrollos:before, .InfoBanner-aside .InfoBannerID-colaboradores-lineas:before, .InfoBanner-aside .InfoBannerID-colaboradores-formas:before, .InfoBanner-aside .InfoBannerID-colaboradores-plantas:before, .InfoBanner-aside .InfoBannerID-colaboradores-registros:before {
+  width: 7rem;
+  height: 7rem;
+  top: 0;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-parque:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fmujejres.svg?alt=media&token=a7887451-319a-4ffa-973b-b9af8c87fc47) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-almacen:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fhombres.svg?alt=media&token=6c333005-afdc-42e5-882a-ccc5084f3ff4) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-centros:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fcentros.svg?alt=media&token=157bd096-e298-4bec-b606-1a1fb98ba26c) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-desarrollos:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fdesarrollos.svg?alt=media&token=84c247c5-26cb-4550-8f8c-edc0c62bcac2) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-lineas:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Flineas.svg?alt=media&token=644d82f1-c5e3-4055-b2d1-bba992fde59f) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-formas:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fformas.svg?alt=media&token=e013f729-edc1-40d1-b46f-cd671ca0b3c9) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-plantas:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fplantas.svg?alt=media&token=267cf209-79a8-45d5-bd02-97f93a534d85) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-registros:before {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fregistros.svg?alt=media&token=0486ad3f-81bd-481e-8954-df7232b9fc7e) no-repeat center/contain;
+}
+.InfoBanner-aside .InfoBannerID-colaboradores-texto {
+  margin-top: 0;
+  padding-left: 8rem;
+}
+
+@media (max-width: 576px) {
+  .InfoBanner-aside .InfoBannerID-colaboradores-parque, .InfoBanner-aside .InfoBannerID-colaboradores-almacen, .InfoBanner-aside .InfoBannerID-colaboradores-centros, .InfoBanner-aside .InfoBannerID-colaboradores-desarrollos, .InfoBanner-aside .InfoBannerID-colaboradores-lineas, .InfoBanner-aside .InfoBannerID-colaboradores-formas, .InfoBanner-aside .InfoBannerID-colaboradores-plantas, .InfoBanner-aside .InfoBannerID-colaboradores-registros {
+    font-size: 2rem;
+    padding: 0 0 0 4rem;
+  }
+  .InfoBanner-aside .InfoBannerID-colaboradores-parque:before, .InfoBanner-aside .InfoBannerID-colaboradores-almacen:before, .InfoBanner-aside .InfoBannerID-colaboradores-centros:before, .InfoBanner-aside .InfoBannerID-colaboradores-desarrollos:before, .InfoBanner-aside .InfoBannerID-colaboradores-lineas:before, .InfoBanner-aside .InfoBannerID-colaboradores-formas:before, .InfoBanner-aside .InfoBannerID-colaboradores-plantas:before, .InfoBanner-aside .InfoBannerID-colaboradores-registros:before {
+    width: 3rem;
+    height: 3rem;
+  }
+  .InfoBanner-aside .InfoBannerID-colaboradores-texto {
+    padding-left: 4rem;
+  }
+  .InfoBanner-aside__title {
+    height: 70rem;
+    align-items: flex-start;
+  }
+  .InfoBanner-aside__title h1 {
+    margin-top: 3rem;
+  }
+}

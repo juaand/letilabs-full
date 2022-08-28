@@ -9,6 +9,27 @@ function MarcandoPauta() {
     const [marcandoPautaData, setMarcandoPautaData] = useState()
 
     useEffect(() => {
+        const counters = document.querySelectorAll('.value')
+        const speed = 200
+
+        counters.forEach(counter => {
+            const animate = () => {
+                const value = +counter.getAttribute('akhi')
+                const data = +counter.innerText
+
+                const time = value / speed
+                if (data < value) {
+                    counter.innerText = Math.ceil(data + time)
+                    setTimeout(animate, 1)
+                } else {
+                    counter.innerText = value
+                }
+
+            }
+
+            animate()
+        })
+
         const fetchData = async () => {
             const getMarcandoPautaData = await getMarcandoPauta()
             setMarcandoPautaData(getMarcandoPautaData)
@@ -30,11 +51,13 @@ function MarcandoPauta() {
                     </div>
                 </div>
                 <div className="col-12 col-sm-6 MarcandoPauta__bg" style={{
-                    background: `url(${marcandoPautaData?.imgURL}) no-repeat right bottom / contain`,
-                }} />
+                    background: `url(${marcandoPautaData?.imgURL}) no-repeat center / contain`,
+                }}>
+                    <div className="MarcandoPauta__absolute">Más de <span className="value" akhi="70">0</span> años <div className="red-text">marcando la pauta</div></div></div>
             </div>
         </section>
     )
 }
 
 export default MarcandoPauta
+

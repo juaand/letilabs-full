@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react'
 import Slider from "react-slick"
 import {Fade} from "react-awesome-reveal"
 import {getVadevecumData} from '../../../../services/ApiClient'
-import Loader from '../../../Loader/Loader'
 
 function Carousel() {
 

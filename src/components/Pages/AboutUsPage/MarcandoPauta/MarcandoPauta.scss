@@ -3,6 +3,37 @@
 .MarcandoPauta {
   background: $leti-back;
 
+  &__bg {
+    position: relative;
+  }
+
+  &__absolute {
+    position: absolute;
+    width: 26rem;
+    height: 26rem;
+    left: 50%;
+    top: 48%;
+    margin-left: -13rem;
+    margin-top: -13rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 6.8rem;
+    line-height: 6rem;
+
+    .red-text {
+      color: $leti-red;
+      font-size: 4.6rem;
+      line-height: 4rem;
+    }
+
+    .value {
+      display: contents;
+    }
+  }
+
   &__text {
     display: flex;
     align-items: center;
@@ -14,6 +45,21 @@
 
 @media (max-width: 576px) {
   .MarcandoPauta {
+    &__absolute {
+    width: 20rem;
+    height: 20rem;
+    left: 50%;
+    top: 48%;
+    margin-left: -10rem;
+    margin-top: -10rem;
+    font-size: 2.8rem;
+    line-height: 3rem;
+
+    .red-text {
+      font-size: 2.6rem;
+      line-height: 2rem;
+    }
+  }
     &__text {
       margin-top: 3rem;
       height: 30rem;

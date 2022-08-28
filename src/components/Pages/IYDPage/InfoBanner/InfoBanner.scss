@@ -1,0 +1,188 @@
+@import '../../../../stylesheets/variables';
+
+.InfoBannerID {
+  background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fid-bg.jpg?alt=media&token=19a66cee-e781-4463-8ac3-999112a636e7)
+    no-repeat center / cover;
+  position: relative;
+  overflow: hidden;
+  height: 70rem;
+  padding: 0;
+
+  &-data {
+    padding: 4rem 0;
+    background: rgba($leti-white, 0.86);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+  &-colaboradores {
+    color: $leti-black;
+    font-size: 10rem;
+    font-weight: 600;
+    border-bottom: solid 1px $leti-black;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    position: relative;
+    padding-left: 13rem;
+    padding-top: 2rem;
+
+    &-texto {
+      color: $leti-black;
+      font-weight: normal;
+      display: block;
+      font-size: 1.4rem;
+      margin-top: 4rem;
+    }
+
+    &:before {
+      content: '';
+      width: 10rem;
+      height: 10rem;
+      display: inline-block;
+      background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fhands.svg?alt=media&token=80c266f5-66ea-438c-a743-109499665cf5)
+        no-repeat center / contain;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.InfoBanner-aside {
+  padding-top: 4rem;
+
+  .custom-margin {
+    margin-top: 5rem;
+  }
+
+  .custom-margin,
+  .text {
+    font-size: 2rem;
+    color: $leti-black;
+  }
+
+  .InfoBannerID {
+    &-colaboradores {
+      border-bottom: 0;
+
+      &-parque,
+      &-almacen,
+      &-centros,
+      &-desarrollos,
+      &-lineas,
+      &-formas,
+      &-plantas,
+      &-registros {
+        padding: 0 0 0 8rem;
+        font-size: 4rem;
+
+        &:before {
+          width: 7rem;
+          height: 7rem;
+          top: 0;
+        }
+      }
+
+      &-parque {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fmujejres.svg?alt=media&token=a7887451-319a-4ffa-973b-b9af8c87fc47)
+            no-repeat center / contain;
+        }
+      }
+
+      &-almacen {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fhombres.svg?alt=media&token=6c333005-afdc-42e5-882a-ccc5084f3ff4)
+            no-repeat center / contain;
+        }
+      }
+
+      &-centros {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fcentros.svg?alt=media&token=157bd096-e298-4bec-b606-1a1fb98ba26c)
+            no-repeat center / contain;
+        }
+      }
+
+      &-desarrollos {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fdesarrollos.svg?alt=media&token=84c247c5-26cb-4550-8f8c-edc0c62bcac2)
+            no-repeat center / contain;
+        }
+      }
+
+      &-lineas {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Flineas.svg?alt=media&token=644d82f1-c5e3-4055-b2d1-bba992fde59f)
+            no-repeat center / contain;
+        }
+      }
+
+      &-formas {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fformas.svg?alt=media&token=e013f729-edc1-40d1-b46f-cd671ca0b3c9)
+            no-repeat center / contain;
+        }
+      }
+
+      &-plantas {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fplantas.svg?alt=media&token=267cf209-79a8-45d5-bd02-97f93a534d85)
+            no-repeat center / contain;
+        }
+      }
+
+      &-registros {
+        &:before {
+          background: url(https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fregistros.svg?alt=media&token=0486ad3f-81bd-481e-8954-df7232b9fc7e)
+            no-repeat center / contain;
+        }
+      }
+
+      &-texto {
+        margin-top: 0;
+        padding-left: 8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .InfoBanner-aside {
+  .InfoBannerID {
+    &-colaboradores {
+
+      &-parque,
+      &-almacen,
+      &-centros,
+      &-desarrollos,
+      &-lineas,
+      &-formas,
+      &-plantas,
+      &-registros {
+        font-size: 2rem;
+        padding: 0 0 0 4rem;
+
+        &:before {
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+
+      &-texto {
+        padding-left: 4rem;
+      }
+    }
+  }
+
+    &__title {
+      height: 70rem;
+      align-items: flex-start;
+
+      h1 {
+        margin-top: 3rem;
+      }
+    }
+  }
+}

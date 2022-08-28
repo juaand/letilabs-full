@@ -13,6 +13,16 @@
 .Nosotros__valor strong {
   color: #055aa5;
 }
+.Nosotros .leti-counter {
+  position: absolute;
+  top: 6rem;
+  right: 30rem;
+}
+.Nosotros .leti-counter .value {
+  font-size: 16rem;
+  font-weight: bold;
+  display: inline;
+}
 .Nosotros .leti-btn {
   background: #fff;
 }

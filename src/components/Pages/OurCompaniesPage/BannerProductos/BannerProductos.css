@@ -15,16 +15,20 @@
 .BannerProductos__img-azitomicina {
   bottom: 0;
   left: 28rem;
+  max-width: 40rem;
+  height: auto;
   transform: rotate(0deg);
 }
 .BannerProductos__img-diklason {
   bottom: 10%;
-  right: 8%;
+  right: -10rem;
   height: 50rem;
 }
 .BannerProductos__img-ulgarin {
   transform: rotate(22deg);
-  left: 10rem;
+  left: 0;
+  max-width: 40rem;
+  height: auto;
 }
 
 @media (max-width: 576px) {

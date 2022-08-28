@@ -7,13 +7,15 @@
 }
 .Productos__genven-001 {
   width: 37rem;
+  max-width: 37rem;
   height: 42rem;
   top: 12rem;
   right: 3rem;
   transform: rotate(0deg);
 }
 .Productos__genven-002 {
-  width: 52rem;
+  width: 43rem;
+  max-width: 43rem;
   height: 23.5rem;
   top: 54rem;
   right: -15rem;
@@ -21,7 +23,8 @@
   z-index: 1;
 }
 .Productos__genven-003 {
-  width: 40rem;
+  width: 26rem;
+  max-width: 43rem;
   height: 37.5rem;
   top: -6rem;
   right: -20rem;

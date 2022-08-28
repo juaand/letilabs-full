@@ -5,6 +5,7 @@
 }
 .Timeline__image {
   height: 65rem;
+  background-color: #fff;
 }
 .Timeline__info {
   display: flex;
