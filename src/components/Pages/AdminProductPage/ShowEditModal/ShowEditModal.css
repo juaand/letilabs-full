@@ -10,6 +10,15 @@
   justify-content: center;
   align-items: center;
 }
+.ShowEditModal small {
+  color: #cd202f;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+  margin-top: -4rem;
+}
 .ShowEditModal .label {
   font-size: 1.6rem;
   color: #737b7f;

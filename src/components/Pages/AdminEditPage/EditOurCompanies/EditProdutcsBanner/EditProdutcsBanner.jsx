@@ -11,6 +11,9 @@ import Loader from '../../../../Loader/Loader'
 
 function EditProdutcsBanner() {
 
+    const [fileSizeMessage1, setFileSizeMessage1] = useState('')
+    const [fileSizeMessage2, setFileSizeMessage2] = useState('')
+    const [fileSizeMessage3, setFileSizeMessage3] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState()
@@ -109,59 +112,77 @@ function EditProdutcsBanner() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
+
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setMessage('')
+            setFileSizeMessage1("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage1('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen uno subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen uno subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-        setIsDisabled(false)
-        error.imgURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgURL = fileUrl
+            setIsDisabled(false)
+            error.imgURL = false
+        }
     }
 
     const onFileSelected2 = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setMessage('')
+            setFileSizeMessage2("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage2('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen dos subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen dos subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.img2URL = fileUrl
-        setIsDisabled(false)
-        error.img2URL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.img2URL = fileUrl
+            setIsDisabled(false)
+            error.img2URL = false
+        }
     }
 
     const onFileSelected3 = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
+        if (file.size > 300000) {
+            setMessage('')
+            setFileSizeMessage3("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage3('')
         // Create storage ref
         const storageRef = app.storage().ref()
         const filePath = storageRef.child('images/' + file.name)
@@ -178,6 +199,7 @@ function EditProdutcsBanner() {
         data.img3URL = fileUrl
         setIsDisabled(false)
         error.img3URL = false
+        }
     }
 
     useEffect(() => {
@@ -252,6 +274,10 @@ function EditProdutcsBanner() {
                                     placeholder={bannerData?.imgURL}
                                     label="Imagen uno"
                                 />
+                                {
+                                    fileSizeMessage1 &&
+                                    <small>{fileSizeMessage1}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12 col-sm-4">
@@ -266,6 +292,10 @@ function EditProdutcsBanner() {
                                     placeholder={bannerData?.img2URL}
                                     label="Imagen dos"
                                 />
+                                {
+                                    fileSizeMessage2 &&
+                                    <small>{fileSizeMessage2}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12 col-sm-4">
@@ -280,6 +310,10 @@ function EditProdutcsBanner() {
                                     placeholder={bannerData?.img3URL}
                                     label="Imagen tres"
                                 />
+                                {
+                                    fileSizeMessage3 &&
+                                    <small>{fileSizeMessage3}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12">

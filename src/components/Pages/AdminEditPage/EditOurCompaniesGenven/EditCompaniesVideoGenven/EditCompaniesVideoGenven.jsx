@@ -6,6 +6,7 @@ import {app} from '../../../../../services/firebase'
 
 function EditCompaniesVideoGenven() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [videoData, setVideoData] = useState('')
     const [videoInfo, setVideoInfo] = useState([])
     const [message, setMessage] = useState('')
@@ -16,25 +17,31 @@ function EditCompaniesVideoGenven() {
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('videos/' + file.name)
+        if (file.size > 2000000) {
+            setMessage('')
+            setFileSizeMessage("El tamaño del vídeo excede el máximo permitido (20MB), por favor optimícelo y vuelva a intentar")
+        } else {
 
-        // Upload file
-        setMessage('Espere unos segundos, subiendo vídeo...')
-        await filePath.put(file)
-            .then(() => {
-                setMessage('El vídeo ha sido editado correctamente.')
-            })
-            .catch(err => {console.log(err)})
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('videos/' + file.name)
 
-        // Get file url
-        await filePath.getDownloadURL()
-            .then((vdata) => {
-                setVideoData(vdata)
-                updateVideoPath(vdata)
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            setMessage('Espere unos segundos, subiendo vídeo...')
+            await filePath.put(file)
+                .then(() => {
+                    setMessage('El vídeo ha sido editado correctamente.')
+                })
+                .catch(err => {console.log(err)})
+
+            // Get file url
+            await filePath.getDownloadURL()
+                .then((vdata) => {
+                    setVideoData(vdata)
+                    updateVideoPath(vdata)
+                })
+                .catch(err => {console.log(err)})
+        }
     }
 
     const updateVideoPath = async (vdata) => {
@@ -75,7 +82,13 @@ function EditCompaniesVideoGenven() {
                             classStyle="video"
                         />
                     </div>
-                </div>}
+                    {fileSizeMessage &&
+                        <div className="col-12">
+                            <small>{fileSizeMessage}</small>
+                        </div>
+                    }
+                </div>
+            }
         </section>
     )
 }

@@ -9,6 +9,7 @@ import Loader from '../../../../Loader/Loader'
 import EditItemModal from './EditItemModal/EditItemModal'
 
 function EditInfoCardsOurPhilosophy() {
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [modalData, setModalData] = useState()
     const [ourOCData, setOurOCData] = useState()
     const [bool, setBool] = useState(false)
@@ -80,28 +81,33 @@ function EditInfoCardsOurPhilosophy() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                // console.log('Uploaded')
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    // console.log('Uploaded')
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.picPath = fileUrl
-        setImageSuccess("Imagen subida correctamente")
-        setIsDisabled(false)
-        error.picPath = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.picPath = fileUrl
+            setImageSuccess("Imagen subida correctamente")
+            setIsDisabled(false)
+            error.picPath = false
+        }
     }
 
     useEffect(() => {
@@ -160,6 +166,12 @@ function EditInfoCardsOurPhilosophy() {
                                     placeholder="Ingresa título del pilar"
                                 />
                             </div>
+                            {
+                                fileSizeMessage &&
+                                <div className="col-12">
+                                    <small>{fileSizeMessage}</small>
+                                </div>
+                            }
                             <div className="col-12">
                                 <Button cssStyle={`leti-btn AdminEdit__form-leti-btn mt-5 ${isDisabled && 'disabled'}`}>Crear pilar</Button>
                                 {message && <span className="AdminEdit__message">{message}</span>}

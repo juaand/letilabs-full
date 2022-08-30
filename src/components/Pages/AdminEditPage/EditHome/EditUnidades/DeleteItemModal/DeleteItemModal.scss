@@ -1,6 +1,6 @@
 @import '../../../../../../stylesheets/variables';
 
-.DeleteItemModal {
+.EditElementsModal {
   position: fixed;
   top: 0;
   left: 0;
@@ -11,6 +11,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  small {
+    color: $leti-red;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: -4rem;
+  }
 
   &__img {
     &-small {

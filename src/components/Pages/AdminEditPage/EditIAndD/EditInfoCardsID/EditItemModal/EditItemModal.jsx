@@ -14,6 +14,7 @@ import './EditItemModal.css'
 
 function EditItemModal({infodata, hideModal, closeModal}) {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [timelineData, setTimelineData] = useState(infodata)
     const [registerError, setRegisterError] = useState(null)
     const [imageSuccess, setImageSuccess] = useState('')
@@ -45,28 +46,33 @@ function EditItemModal({infodata, hideModal, closeModal}) {
     const {data, error} = state
 
     const onFileSelected = async (e) => {
-        setMessage('')
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setMessage('')
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setImageSuccess("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setImageSuccess("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.picPath = fileUrl
-        setIsDisabled(false)
-        error.picPath = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.picPath = fileUrl
+            setIsDisabled(false)
+            error.picPath = false
+        }
     }
 
     const contentData = {
@@ -155,6 +161,12 @@ function EditItemModal({infodata, hideModal, closeModal}) {
                                             />
                                             {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                         </div>
+                                        {
+                                            fileSizeMessage &&
+                                            <div className="col-12">
+                                                <small>{fileSizeMessage}</small>
+                                            </div>
+                                        }
                                         <div className="col-12">
                                             <p className="AdminEdit__form__label mt-5">
                                                 Editar descripción

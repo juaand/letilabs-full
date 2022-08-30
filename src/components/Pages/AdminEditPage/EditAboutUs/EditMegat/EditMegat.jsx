@@ -11,6 +11,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditMegat() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [megatData, setMegatData] = useState()
@@ -86,27 +87,33 @@ function EditMegat() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setMessage('')
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.logoURL = fileUrl
-        setIsDisabled(false)
-        error.logoURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.logoURL = fileUrl
+            setIsDisabled(false)
+            error.logoURL = false
+        }
     }
 
 
@@ -155,6 +162,12 @@ function EditMegat() {
                                 />
                             </div>
                         </div>
+                        {
+                            fileSizeMessage &&
+                            <div className="col-12">
+                                <small>{fileSizeMessage}</small>
+                            </div>
+                        }
                         <div className="col-12 col-sm-6">
                             <p className="AdminEdit__form__label">
                                 Descripción

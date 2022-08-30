@@ -10,6 +10,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerTeams() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
@@ -38,27 +39,32 @@ function EditBannerTeams() {
     const {data, error} = state
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setFileSizeMessage('')
+            setIsDisabled(!isDisabled)
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setImageSuccess("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setImageSuccess("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-        setIsDisabled(false)
-        error.imgURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgURL = fileUrl
+            setIsDisabled(false)
+            error.imgURL = false
+        }
     }
 
     const updateBannerTeamsData = async (event) => {
@@ -128,6 +134,12 @@ function EditBannerTeams() {
                                     {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                 </div>
                             </div>
+                            {
+                                fileSizeMessage &&
+                                <div className="col-12">
+                                    <small>{fileSizeMessage}</small>
+                                </div>
+                            }
                             <div className="col-12">
                                 <Button cssStyle="leti-btn AdminEdit__form-leti-btn mt-5">Guardar cambios</Button>
                                 {message && <span className="AdminEdit__message">{message}</span>}

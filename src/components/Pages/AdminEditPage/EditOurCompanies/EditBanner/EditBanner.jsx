@@ -10,6 +10,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBanner() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState()
@@ -76,11 +77,16 @@ function EditBanner() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
+        if (file.size > 300000) {
+            setMessage('')
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setMessage('')
+            setIsDisabled(!isDisabled)
         // Create storage ref
         const storageRef = app.storage().ref()
         const filePath = storageRef.child('images/' + file.name)
@@ -97,6 +103,7 @@ function EditBanner() {
         data.imgURL = fileUrl
         setIsDisabled(false)
         error.imgURL = false
+        }
     }
 
     useEffect(() => {
@@ -150,6 +157,12 @@ function EditBanner() {
                                 />
                             </div>
                         </div>
+                        {
+                            fileSizeMessage &&
+                            <div className="col-12">
+                                <small>{fileSizeMessage}</small>
+                            </div>
+                        }
                         <div className="col-12">
                             <Button cssStyle="leti-btn AdminEdit__form-leti-btn" >Guardar cambios</Button>
                             {message && <span className="AdminEdit__message">{message}</span>}

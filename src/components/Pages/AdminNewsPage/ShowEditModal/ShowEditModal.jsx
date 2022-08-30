@@ -14,6 +14,7 @@ import './ShowEditModal.css'
 
 function ShowEditModal({news, hideModal, updateData}) {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
 
@@ -95,28 +96,33 @@ function ShowEditModal({news, hideModal, updateData}) {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                // console.log('Uploaded')
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    // console.log('Uploaded')
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.urlToPic = fileUrl
-        setImageSuccess("Imagen subida correctamente")
-        setIsDisabled(false)
-        error.urlToPic = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.urlToPic = fileUrl
+            setImageSuccess("Imagen subida correctamente")
+            setIsDisabled(false)
+            error.urlToPic = false
+        }
     }
 
     useEffect(() => {
@@ -179,6 +185,12 @@ function ShowEditModal({news, hideModal, updateData}) {
                                                 placeholder="Ingresa el subtítulo de la noticia"
                                             />
                                         </div>
+                                        {
+                                            fileSizeMessage &&
+                                            <div className="col-12">
+                                                <small>{fileSizeMessage}</small>
+                                            </div>
+                                        }
                                         <div className="col-12">
                                             <InputWithLabel
                                                 label={`Etiquetas:  ${tagsData?.map(el => el.tag).join(', ')} (separadas por coma)`}

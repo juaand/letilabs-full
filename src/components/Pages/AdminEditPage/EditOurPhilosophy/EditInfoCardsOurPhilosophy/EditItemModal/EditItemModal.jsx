@@ -12,6 +12,7 @@ import Loader from '../../../../../Loader/Loader'
 
 function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
     const [infocardsData, setInfoCardsData] = useState(infodata)
@@ -79,28 +80,33 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setFileSizeMessage('')
+            setIsDisabled(!isDisabled)
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                // console.log('Uploaded')
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    // console.log('Uploaded')
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.picPath = fileUrl
-        setImageSuccess("Imagen subida correctamente")
-        setIsDisabled(false)
-        error.picPath = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.picPath = fileUrl
+            setImageSuccess("Imagen subida correctamente")
+            setIsDisabled(false)
+            error.picPath = false
+        }
     }
 
     return (
@@ -131,6 +137,12 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                             />
                                             {imageSuccess && <small className="img-success">{imageSuccess}</small>}
                                         </div>
+                                        {
+                                            fileSizeMessage &&
+                                            <div className="col-12">
+                                                <small>{fileSizeMessage}</small>
+                                            </div>
+                                        }
                                         <div className="col-12">
                                             <InputWithLabel
                                                 label="Título pilar"

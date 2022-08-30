@@ -13,6 +13,7 @@ import './EditElementsModal.css'
 
 function EditElementsModal({deleteItem, element, hideModal}) {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [imageSuccess, setImageSuccess] = useState('')
     const [message, setMessage] = useState('')
 
@@ -88,29 +89,35 @@ function EditElementsModal({deleteItem, element, hideModal}) {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+            setImageSuccess('')
+        } else {
+            setImageSuccess('')
+            setIsDisabled(!isDisabled)
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                //Se habilita el botón para subir el blog
-                setDisabled(!disabled)
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    //Se habilita el botón para subir el blog
+                    setDisabled(!disabled)
+                })
+                .catch(err => {console.log(err)})
 
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgPath = fileUrl
-        setImageSuccess("Imagen subida correctamente")
-        setIsDisabled(false)
-        error.imgPath = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgPath = fileUrl
+            setImageSuccess("Imagen subida correctamente")
+            setIsDisabled(false)
+            error.imgPath = false
+        }
     }
 
     return (
@@ -158,6 +165,12 @@ function EditElementsModal({deleteItem, element, hideModal}) {
                                                     </div>
                                                 }
                                             </div>
+                                            {
+                                                fileSizeMessage && 
+                                                <div className="col-12">
+                                                    <small>{fileSizeMessage}</small>
+                                                </div>
+                                            }
                                             <div className="col-12">
                                                 <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
                                                 <Editor

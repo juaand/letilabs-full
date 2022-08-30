@@ -8,35 +8,40 @@ import './EditVideo.css'
 
 function EditVideo() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [videoData, setVideoData] = useState('')
     const [videoInfo, setVideoInfo] = useState([])
     const [message, setMessage] = useState('')
     const [videoId, setVideoId] = useState('')
 
     const onFileSelected = async (e) => {
-
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('videos/' + file.name)
+        if (file.size > 2000000) {
+            setMessage('')
+            setFileSizeMessage("El tamaño del vídeo excede el máximo permitido (20MB), por favor optimícelo y vuelva a intentar")
+        } else {
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('videos/' + file.name)
 
-        // Upload file
-        setMessage('Espere unos segundos, subiendo vídeo...')
-        await filePath.put(file)
-            .then(() => {
-                setMessage('El vídeo ha sido editado correctamente.')
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            setMessage('Espere unos segundos, subiendo vídeo...')
+            await filePath.put(file)
+                .then(() => {
+                    setMessage('El vídeo ha sido editado correctamente.')
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        await filePath.getDownloadURL()
-            .then((vdata) => {
-                setVideoData(vdata)
-                updateVideoPath(vdata)
-            })
-            .catch(err => {console.log(err)})
+            // Get file url
+            await filePath.getDownloadURL()
+                .then((vdata) => {
+                    setVideoData(vdata)
+                    updateVideoPath(vdata)
+                })
+                .catch(err => {console.log(err)})
+        }
     }
 
     const updateVideoPath = async (vdata) => {
@@ -77,7 +82,13 @@ function EditVideo() {
                             classStyle="video"
                         />
                     </div>
-                </div>}
+                    {fileSizeMessage &&
+                        <div className="col-12">
+                            <small>{fileSizeMessage}</small>
+                        </div>
+                    }
+                </div>
+            }
         </section>
     )
 }

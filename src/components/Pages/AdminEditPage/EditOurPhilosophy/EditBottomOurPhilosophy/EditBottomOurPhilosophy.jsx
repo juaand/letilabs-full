@@ -11,6 +11,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBottomOurPhilosophy() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [bottomOurPhilosophyData, setBottomOurPhilosophyData] = useState()
     const [isDisabled, setIsDisabled] = useState(false)
     const [message, setMessage] = useState('')
@@ -89,27 +90,32 @@ function EditBottomOurPhilosophy() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-        setIsDisabled(false)
-        error.imgURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgURL = fileUrl
+            setIsDisabled(false)
+            error.imgURL = false
+        }
     }
 
     useEffect(() => {
@@ -165,14 +171,18 @@ function EditBottomOurPhilosophy() {
                                 placeholder={bottomOurPhilosophyData?.title}
                             />
                             <div className="col-12 EditElementsModal__img">
-                            <img src={bottomOurPhilosophyData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={bottomOurPhilosophyData?.imgURL} />
-                            <InputFile
-                                value={data?.imgURL}
-                                onChange={onFileSelected}
-                                id="fileButton"
-                                name="imgURL"
-                                type="file"
-                            />
+                                <img src={bottomOurPhilosophyData?.imgURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={bottomOurPhilosophyData?.imgURL} />
+                                <InputFile
+                                    value={data?.imgURL}
+                                    onChange={onFileSelected}
+                                    id="fileButton"
+                                    name="imgURL"
+                                    type="file"
+                                />
+                                {
+                                    fileSizeMessage &&
+                                    <small>{fileSizeMessage}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12 col-sm-6">

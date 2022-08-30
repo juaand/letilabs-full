@@ -71,6 +71,7 @@ function AdminProductPage() {
     const [loading, setLoading] = useState(true)
     const [bool, setBool] = useState(false)
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [imageSuccess, setImageSuccess] = useState('')
     const [editProduct, setEditProduct] = useState('')
     const [message, setMessage] = useState('')
@@ -159,28 +160,35 @@ function AdminProductPage() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 500000) {
+            setImageSuccess('')
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (500KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            setImageSuccess('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                //console.log('Uploaded')
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    //console.log('Uploaded')
+                })
+                .catch(err => {setMessage(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data[e.target.name] = fileUrl
-        error[e.target.name] = false
-        setImageSuccess("Imagen subida correctamente")
-        setIsDisabled(false)
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data[e.target.name] = fileUrl
+            error[e.target.name] = false
+            setImageSuccess("Imagen subida correctamente")
+            setIsDisabled(false)
+        }
     }
 
     const handleEditor = (e) => {
@@ -265,6 +273,11 @@ function AdminProductPage() {
                                                             type="file"
                                                         />
                                                     </div>
+                                                    {fileSizeMessage && 
+                                                        <div className="col-12">
+                                                            <small>{fileSizeMessage}</small>
+                                                        </div>
+                                                    }
                                                     <div className="col-12 col-sm-3">
                                                         <InputWithLabel
                                                             label="Nombre"

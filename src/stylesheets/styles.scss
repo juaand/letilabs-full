@@ -83,6 +83,15 @@ body {
   color: $leti-blue;
 }
 
+small {
+  color: $leti-red;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+}
+
 .smalltag {
   label {
     font-size: 1.4rem !important;

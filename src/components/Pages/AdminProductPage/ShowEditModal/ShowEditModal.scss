@@ -12,6 +12,16 @@
   justify-content: center;
   align-items: center;
 
+  small {
+    color: $leti-red;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1rem;
+    margin-top: -4rem;
+  }
+
   .label {
     font-size: 1.6rem;
     color: $leti-nav;

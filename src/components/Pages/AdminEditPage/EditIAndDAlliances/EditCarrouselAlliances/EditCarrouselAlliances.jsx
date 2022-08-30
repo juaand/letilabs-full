@@ -10,6 +10,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditCarrouselAlliances() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [logoAlliData, setLogoAlliData] = useState([])
     const [imageMessage, setImageMessage] = useState('')
     const [imageSuccess, setImageSuccess] = useState('')
@@ -87,27 +88,33 @@ function EditCarrouselAlliances() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setImageSuccess("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.picPath = fileUrl
-        setIsDisabled(false)
-        error.picPath = false
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setImageSuccess("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
+
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.picPath = fileUrl
+            setIsDisabled(false)
+            error.picPath = false
+        }
     }
 
     useEffect(() => {
@@ -165,6 +172,12 @@ function EditCarrouselAlliances() {
                             />
                             {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                         </div>
+                        {
+                            fileSizeMessage &&
+                            <div className="col-12">
+                                <small>{fileSizeMessage}</small>
+                            </div>
+                        }
                         <div className="col-12 col-sm-6">
                             <Button type="submit" cssStyle="leti-btn mt-5">Añadir aliado</Button>
                             {imageMessage && <span className="AdminEdit__message ">{imageMessage}</span>}

@@ -12,6 +12,9 @@ import Loader from '../../../../Loader/Loader'
 
 function EditProductosGenvenPage() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
+    const [fileSizeMessage2, setFileSizeMessage2] = useState('')
+    const [fileSizeMessage3, setFileSizeMessage3] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState()
@@ -91,75 +94,99 @@ function EditProductosGenvenPage() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
+
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+            setMessage('')
+        } else {
+            setIsDisabled(!isDisabled)
+            setMessage('')
+            setFileSizeMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen uno subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen uno subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.img1URL = fileUrl
-        setIsDisabled(false)
-        error.img1URL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.img1URL = fileUrl
+            setIsDisabled(false)
+            error.img1URL = false
+        }
     }
 
     const onFileSelected2 = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage2("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+            setMessage('')
+        } else {
+            setIsDisabled(!isDisabled)
+            setMessage('')
+            setFileSizeMessage2('')
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen dos subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.img2URL = fileUrl
-        setIsDisabled(false)
-        error.img2URL = false
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen dos subida correctamente")
+                })
+                .catch(err => {console.log(err)})
+
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.img2URL = fileUrl
+            setIsDisabled(false)
+            error.img2URL = false
+        }
     }
 
     const onFileSelected3 = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage2("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+            setMessage('')
+        } else {
+            setIsDisabled(!isDisabled)
+            setMessage('')
+            setFileSizeMessage3('')
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen tres subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.img3URL = fileUrl
-        setIsDisabled(false)
-        error.img3URL = false
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen tres subida correctamente")
+                })
+                .catch(err => {console.log(err)})
+
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.img3URL = fileUrl
+            setIsDisabled(false)
+            error.img3URL = false
+        }
     }
 
     useEffect(() => {
@@ -238,6 +265,10 @@ function EditProductosGenvenPage() {
                                     placeholder={bannerData?.img1URL}
                                     label="Imagen uno"
                                 />
+                                {
+                                    fileSizeMessage &&
+                                    <small>{fileSizeMessage}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12 col-sm-4">
@@ -252,6 +283,10 @@ function EditProductosGenvenPage() {
                                     placeholder={bannerData?.img2URL}
                                     label="Imagen dos"
                                 />
+                                {
+                                    fileSizeMessage2 &&
+                                    <small>{fileSizeMessage2}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12 col-sm-4">
@@ -266,6 +301,10 @@ function EditProductosGenvenPage() {
                                     placeholder={bannerData?.img3URL}
                                     label="Imagen tres"
                                 />
+                                {
+                                    fileSizeMessage3 &&
+                                    <small>{fileSizeMessage3}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12">

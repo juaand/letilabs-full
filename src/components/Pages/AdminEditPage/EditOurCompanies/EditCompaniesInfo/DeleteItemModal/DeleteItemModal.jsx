@@ -12,6 +12,7 @@ import './DeleteItemModal.css'
 
 function DeleteItemModal({deleteItem, element, hideModal}) {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [disabled, setDisabled] = useState(true)
@@ -82,10 +83,16 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
+
         // Get file
         const file = e.target.files[0]
 
+        if (file.size > 300000) {
+            setImageSuccess('')
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setImageSuccess('')
         // Create storage ref
         const storageRef = app.storage().ref()
         const filePath = storageRef.child('images/' + file.name)
@@ -105,6 +112,7 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
         data.logo = fileUrl
         setIsDisabled(false)
         error.logo = false
+        }
     }
 
     return (
@@ -136,6 +144,12 @@ function DeleteItemModal({deleteItem, element, hideModal}) {
                                                 />
                                                 {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                             </div>
+                                            {
+                                                fileSizeMessage && 
+                                                <div className="col-12">
+                                                    <small>{fileSizeMessage}</small>
+                                                </div>
+                                            }
                                             <div className="col-12">
                                                 <p className="EditElementsModal__text"><strong>Editar descripción</strong></p>
                                                 <Editor

@@ -13,6 +13,7 @@ import './EditItemModal.css'
 
 function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [timelineData, setTimelineData] = useState(infodata)
     const [imageSuccess, setImageSuccess] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
@@ -47,28 +48,36 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
     const [registerError, setRegisterError] = useState(null)
 
     const onFileSelected = async (e) => {
-        setMessage('')
-        setIsDisabled(!isDisabled)
+
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+            setImageSuccess('')
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setImageSuccess("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+        } else {
+            setMessage('')
+            setIsDisabled(!isDisabled)
+            setImageSuccess('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-        setIsDisabled(false)
-        error.imgURL = false
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setImageSuccess("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
+
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgURL = fileUrl
+            setIsDisabled(false)
+            error.imgURL = false
+        }
     }
 
     const contentData = {
@@ -148,6 +157,12 @@ function EditItemModal({deleteItem, infodata, hideModal, closeModal}) {
                                             />
                                             {imageSuccess && <span className="AdminEdit__message mt-1">{imageSuccess}</span>}
                                         </div>
+                                        {
+                                            fileSizeMessage &&
+                                            <div className="col-12">
+                                                <small>{fileSizeMessage}</small>
+                                            </div>
+                                        }
                                         <div className="col-12 col-sm-6">
                                             <p className="AdminEdit__form__label">
                                                 Texto botón

@@ -10,6 +10,8 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerOCBiocontrolled() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
+    const [fileSizeMessage2, setFileSizeMessage2] = useState('')
     const [registerError, setRegisterError] = useState(null)
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState([])
@@ -79,51 +81,65 @@ function EditBannerOCBiocontrolled() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+            setMessage('')
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            setMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen cargada correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen cargada correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-        setIsDisabled(false)
-        error.imgURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgURL = fileUrl
+            setIsDisabled(false)
+            error.imgURL = false
+        }
     }
 
     const onFileSelected2 = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setMessage('')
+            setFileSizeMessage2("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setMessage('')
+            setFileSizeMessage2('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("logo cargado correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("logo cargado correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.logoURL = fileUrl
-        setIsDisabled(false)
-        error.logoURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.logoURL = fileUrl
+            setIsDisabled(false)
+            error.logoURL = false
+        }
     }
 
     useEffect(() => {
@@ -175,6 +191,10 @@ function EditBannerOCBiocontrolled() {
                                     type="file"
                                     placeholder={bannerData?.imgURL}
                                 />
+                                {
+                                    fileSizeMessage &&
+                                    <small>{fileSizeMessage}</small>
+                                }
                             </div>
                             <div className="col-12 EditElementsModal__img">
                                 <img src={bannerData?.logoURL} onError="this.src = 'https://firebasestorage.googleapis.com/v0/b/grupoleti.appspot.com/o/images%2Fno-image.png?alt=media&token=6e518b16-dc11-46e3-83e8-ae4b84a18293';" alt={bannerData?.logoURL} />
@@ -186,6 +206,10 @@ function EditBannerOCBiocontrolled() {
                                     type="file"
                                     placeholder={bannerData?.logoURL}
                                 />
+                                {
+                                    fileSizeMessage2 &&
+                                    <small>{fileSizeMessage2}</small>
+                                }
                             </div>
                         </div>
                         <div className="col-12">

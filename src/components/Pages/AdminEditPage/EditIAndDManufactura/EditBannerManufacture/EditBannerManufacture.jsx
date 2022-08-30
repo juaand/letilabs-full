@@ -11,6 +11,7 @@ import Loader from '../../../../Loader/Loader'
 
 function EditBannerManufacture() {
 
+    const [fileSizeMessage, setFileSizeMessage] = useState('')
     const [isDisabled, setIsDisabled] = useState(false)
     const [bannerData, setBannerData] = useState([])
     const [message, setMessage] = useState('')
@@ -84,27 +85,32 @@ function EditBannerManufacture() {
     }
 
     const onFileSelected = async (e) => {
-        setIsDisabled(!isDisabled)
 
         // Get file
         const file = e.target.files[0]
 
-        // Create storage ref
-        const storageRef = app.storage().ref()
-        const filePath = storageRef.child('images/' + file.name)
+        if (file.size > 300000) {
+            setFileSizeMessage("El tamaño de la imagen excede el máximo permitido (300KB), por favor optimícela y vuelva a intentar")
+        } else {
+            setIsDisabled(!isDisabled)
+            setFileSizeMessage('')
+            // Create storage ref
+            const storageRef = app.storage().ref()
+            const filePath = storageRef.child('images/' + file.name)
 
-        // Upload file
-        await filePath.put(file)
-            .then(() => {
-                setMessage("Imagen subida correctamente")
-            })
-            .catch(err => {console.log(err)})
+            // Upload file
+            await filePath.put(file)
+                .then(() => {
+                    setMessage("Imagen subida correctamente")
+                })
+                .catch(err => {console.log(err)})
 
-        // Get file url
-        const fileUrl = await filePath.getDownloadURL()
-        data.imgURL = fileUrl
-        setIsDisabled(false)
-        error.imgURL = false
+            // Get file url
+            const fileUrl = await filePath.getDownloadURL()
+            data.imgURL = fileUrl
+            setIsDisabled(false)
+            error.imgURL = false
+        }
     }
 
     useEffect(() => {
@@ -155,6 +161,10 @@ function EditBannerManufacture() {
                                     name="imgURL"
                                     type="file"
                                 />
+                                {
+                                    fileSizeMessage &&
+                                    <small>{fileSizeMessage}</small>
+                                }
                             </div>
                             <p className="AdminEdit__form__label">
                                 Título
